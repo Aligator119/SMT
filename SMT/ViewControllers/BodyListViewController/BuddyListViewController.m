@@ -171,6 +171,23 @@
     return str;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat heigth = 0.0;
+    switch (indexPath.section) {
+        case INCOMING_QWERY:
+            heigth = 80;
+            break;
+            
+        case FRIEND_LIST:
+            heigth = 44;
+            break;
+        case INVITE_FRIEND:
+            heigth = 44;
+            break;
+    }
+    return heigth;
+}
 
 - (void)didReceiveMemoryWarning
 {
