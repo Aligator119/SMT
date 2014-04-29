@@ -19,6 +19,8 @@
 		040806AC190EA37D00E063C3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04080694190EA37D00E063C3 /* UIKit.framework */; };
 		040806B4190EA37D00E063C3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 040806B2190EA37D00E063C3 /* InfoPlist.strings */; };
 		040806B6190EA37D00E063C3 /* SMTTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 040806B5190EA37D00E063C3 /* SMTTests.m */; };
+		044093FE190F7B1300C4A558 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044093FC190F7B1300C4A558 /* LoginViewController.m */; };
+		044093FF190F7B1300C4A558 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044093FD190F7B1300C4A558 /* LoginViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,9 @@
 		040806B1190EA37D00E063C3 /* SMTTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SMTTests-Info.plist"; sourceTree = "<group>"; };
 		040806B3190EA37D00E063C3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		040806B5190EA37D00E063C3 /* SMTTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMTTests.m; sourceTree = "<group>"; };
+		044093FB190F7B1300C4A558 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ViewControllers/LoginViewController/LoginViewController.h; sourceTree = "<group>"; };
+		044093FC190F7B1300C4A558 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ViewControllers/LoginViewController/LoginViewController.m; sourceTree = "<group>"; };
+		044093FD190F7B1300C4A558 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = ViewControllers/LoginViewController/LoginViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +114,7 @@
 			children = (
 				0408069F190EA37D00E063C3 /* AppDelegate.h */,
 				040806A0190EA37D00E063C3 /* AppDelegate.m */,
+				044093F9190F7ABC00C4A558 /* ViewControllers */,
 				040806A2190EA37D00E063C3 /* Images.xcassets */,
 				04080697190EA37D00E063C3 /* Supporting Files */,
 			);
@@ -142,6 +148,24 @@
 				040806B2190EA37D00E063C3 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		044093F9190F7ABC00C4A558 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				044093FA190F7AD000C4A558 /* LoginViewController */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		044093FA190F7AD000C4A558 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				044093FB190F7B1300C4A558 /* LoginViewController.h */,
+				044093FC190F7B1300C4A558 /* LoginViewController.m */,
+				044093FD190F7B1300C4A558 /* LoginViewController.xib */,
+			);
+			name = LoginViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +245,7 @@
 			files = (
 				0408069B190EA37D00E063C3 /* InfoPlist.strings in Resources */,
 				040806A3190EA37D00E063C3 /* Images.xcassets in Resources */,
+				044093FF190F7B1300C4A558 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +266,7 @@
 			files = (
 				040806A1190EA37D00E063C3 /* AppDelegate.m in Sources */,
 				0408069D190EA37D00E063C3 /* main.m in Sources */,
+				044093FE190F7B1300C4A558 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +463,7 @@
 				040806BB190EA37D00E063C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		040806BC190EA37D00E063C3 /* Build configuration list for PBXNativeTarget "SMTTests" */ = {
 			isa = XCConfigurationList;
@@ -445,6 +472,7 @@
 				040806BE190EA37D00E063C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
