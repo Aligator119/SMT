@@ -14,7 +14,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[LoginViewController alloc]initWithNibName:@"LoginViewController" bundle:nil];
+    NSString * nibName = [AppDelegate nibNameForBaseName:@"LoginViewController"];
+    self.viewController = [[LoginViewController alloc]initWithNibName:nibName bundle:nil];
     self.navigationController = [[UINavigationController alloc]initWithRootViewController:self.viewController];
     self.window.rootViewController = self.navigationController;
     self.window.backgroundColor = [UIColor whiteColor];
@@ -29,6 +30,59 @@
 {
     return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
 }
+
+#pragma mark nibName for xib
+//--------------------------------------------------------------------------------------------------------------------
++ (BOOL) isiPhone5 {
+    int height = [UIScreen mainScreen].bounds.size.height;
+    
+    if (height == 568)
+        return YES;
+    
+    return NO;
+}
+
++ (BOOL) isiPhone4 {
+    int height = [UIScreen mainScreen].bounds.size.height;
+    
+    if (height == 480)
+        return YES;
+    
+    return NO;
+}
+
++ (NSString*) nibNameForBaseName:(NSString *)baseName {
+    NSString* result = [baseName stringByAppendingString:@"_"];
+    
+    if ([AppDelegate isiPhone5])
+    {
+        result = [result stringByAppendingString:@"iPhone5"];
+    }
+    else if ([AppDelegate isiPhone4])
+    {
+        result = [result stringByAppendingString:@"iPhone4"];
+    }
+    else
+    {
+        return baseName;
+    }
+    
+    return result;
+    
+}
+//--------------------------------------------------------------------------------------------------------------------
+
++ (void)OpenAlertwithTitle:(NSString *)_title andContent:(NSString *)_content{
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:_title
+                                                            message:_content
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+}
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application

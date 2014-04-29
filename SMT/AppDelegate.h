@@ -16,4 +16,7 @@
 @property (strong, nonatomic) LoginViewController * viewController;
 @property (strong, nonatomic) UINavigationController * navigationController;
 
++ (NSString*) nibNameForBaseName:(NSString *)baseName;
++ (void)OpenAlertwithTitle:(NSString *)_title andContent:(NSString *)_content;
+
 @end

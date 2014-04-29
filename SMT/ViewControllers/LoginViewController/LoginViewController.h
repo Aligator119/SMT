@@ -1,16 +1,19 @@
 //
-//  LoginViewController.h
-//  SMT
+//  HPLoginViewController.h
+//  HunterPredictor
 //
-//  Created by Mac on 4/29/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
+//  Created by Admin on 12/24/13.
+//  Copyright (c) 2013 mobilesoft365. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import <FacebookSDK/FacebookSDK.h>
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController <UITextFieldDelegate>
 
-@property (strong, nonatomic) FBSession * session;
+@property (strong, nonatomic) IBOutlet UIButton * btnFb;
+
+- (void)fbUserLogin:(NSString*)uName password:(NSString*)uPassword;
+- (void)fbUserFirstLogin:(NSString*)_name fbID:(NSString*)_fbID;
+- (void)sessionIsActive;
 
 @end

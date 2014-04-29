@@ -19,9 +19,19 @@
 		040806AC190EA37D00E063C3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04080694190EA37D00E063C3 /* UIKit.framework */; };
 		040806B4190EA37D00E063C3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 040806B2190EA37D00E063C3 /* InfoPlist.strings */; };
 		040806B6190EA37D00E063C3 /* SMTTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 040806B5190EA37D00E063C3 /* SMTTests.m */; };
-		044093FE190F7B1300C4A558 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044093FC190F7B1300C4A558 /* LoginViewController.m */; };
-		044093FF190F7B1300C4A558 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 044093FD190F7B1300C4A558 /* LoginViewController.xib */; };
 		04409401190F7CD100C4A558 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04409400190F7CD100C4A558 /* FacebookSDK.framework */; };
+		04409406190F825F00C4A558 /* FlyoutMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04409404190F825F00C4A558 /* FlyoutMenuViewController.m */; };
+		04409407190F825F00C4A558 /* FlyoutMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04409405190F825F00C4A558 /* FlyoutMenuViewController.xib */; };
+		04409421190F975E00C4A558 /* LoginViewController_iPhone4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0440941C190F975E00C4A558 /* LoginViewController_iPhone4.xib */; };
+		04409422190F975E00C4A558 /* LoginViewController_iPhone5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0440941D190F975E00C4A558 /* LoginViewController_iPhone5.xib */; };
+		04409423190F975E00C4A558 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0440941F190F975E00C4A558 /* LoginViewController.m */; };
+		04409424190F975E00C4A558 /* LoginViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04409420190F975E00C4A558 /* LoginViewController~ipad.xib */; };
+		04409428190FA53900C4A558 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04409426190FA53900C4A558 /* ForgotPasswordViewController.m */; };
+		04409429190FA53900C4A558 /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04409427190FA53900C4A558 /* ForgotPasswordViewController.xib */; };
+		0440943E190FA98B00C4A558 /* RegisterViewController_iPhone4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04409439190FA98B00C4A558 /* RegisterViewController_iPhone4.xib */; };
+		0440943F190FA98B00C4A558 /* RegisterViewController_iPhone5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0440943A190FA98B00C4A558 /* RegisterViewController_iPhone5.xib */; };
+		04409440190FA98B00C4A558 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0440943C190FA98B00C4A558 /* RegisterViewController.m */; };
+		04409441190FA98B00C4A558 /* RegisterViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0440943D190FA98B00C4A558 /* RegisterViewController~ipad.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,10 +61,23 @@
 		040806B1190EA37D00E063C3 /* SMTTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SMTTests-Info.plist"; sourceTree = "<group>"; };
 		040806B3190EA37D00E063C3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		040806B5190EA37D00E063C3 /* SMTTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMTTests.m; sourceTree = "<group>"; };
-		044093FB190F7B1300C4A558 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ViewControllers/LoginViewController/LoginViewController.h; sourceTree = "<group>"; };
-		044093FC190F7B1300C4A558 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ViewControllers/LoginViewController/LoginViewController.m; sourceTree = "<group>"; };
-		044093FD190F7B1300C4A558 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = ViewControllers/LoginViewController/LoginViewController.xib; sourceTree = "<group>"; };
 		04409400190F7CD100C4A558 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = library/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		04409403190F825F00C4A558 /* FlyoutMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlyoutMenuViewController.h; path = ViewControllers/FlyoutMenuViewController/FlyoutMenuViewController.h; sourceTree = "<group>"; };
+		04409404190F825F00C4A558 /* FlyoutMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlyoutMenuViewController.m; path = ViewControllers/FlyoutMenuViewController/FlyoutMenuViewController.m; sourceTree = "<group>"; };
+		04409405190F825F00C4A558 /* FlyoutMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FlyoutMenuViewController.xib; path = ViewControllers/FlyoutMenuViewController/FlyoutMenuViewController.xib; sourceTree = "<group>"; };
+		0440941C190F975E00C4A558 /* LoginViewController_iPhone4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController_iPhone4.xib; path = ViewControllers/LoginViewController/LoginViewController_iPhone4.xib; sourceTree = "<group>"; };
+		0440941D190F975E00C4A558 /* LoginViewController_iPhone5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController_iPhone5.xib; path = ViewControllers/LoginViewController/LoginViewController_iPhone5.xib; sourceTree = "<group>"; };
+		0440941E190F975E00C4A558 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ViewControllers/LoginViewController/LoginViewController.h; sourceTree = "<group>"; };
+		0440941F190F975E00C4A558 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ViewControllers/LoginViewController/LoginViewController.m; sourceTree = "<group>"; };
+		04409420190F975E00C4A558 /* LoginViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "LoginViewController~ipad.xib"; path = "ViewControllers/LoginViewController/LoginViewController~ipad.xib"; sourceTree = "<group>"; };
+		04409425190FA53900C4A558 /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForgotPasswordViewController.h; path = SMT/ViewControllers/LoginViewController/ForgorYourPaswordWebView/ForgotPasswordViewController.h; sourceTree = SOURCE_ROOT; };
+		04409426190FA53900C4A558 /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForgotPasswordViewController.m; path = SMT/ViewControllers/LoginViewController/ForgorYourPaswordWebView/ForgotPasswordViewController.m; sourceTree = SOURCE_ROOT; };
+		04409427190FA53900C4A558 /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForgotPasswordViewController.xib; path = SMT/ViewControllers/LoginViewController/ForgorYourPaswordWebView/ForgotPasswordViewController.xib; sourceTree = SOURCE_ROOT; };
+		04409439190FA98B00C4A558 /* RegisterViewController_iPhone4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegisterViewController_iPhone4.xib; path = ViewControllers/RegisterViewController/RegisterViewController_iPhone4.xib; sourceTree = "<group>"; };
+		0440943A190FA98B00C4A558 /* RegisterViewController_iPhone5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RegisterViewController_iPhone5.xib; path = ViewControllers/RegisterViewController/RegisterViewController_iPhone5.xib; sourceTree = "<group>"; };
+		0440943B190FA98B00C4A558 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterViewController.h; path = ViewControllers/RegisterViewController/RegisterViewController.h; sourceTree = "<group>"; };
+		0440943C190FA98B00C4A558 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterViewController.m; path = ViewControllers/RegisterViewController/RegisterViewController.m; sourceTree = "<group>"; };
+		0440943D190FA98B00C4A558 /* RegisterViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "RegisterViewController~ipad.xib"; path = "ViewControllers/RegisterViewController/RegisterViewController~ipad.xib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +181,8 @@
 			isa = PBXGroup;
 			children = (
 				044093FA190F7AD000C4A558 /* LoginViewController */,
+				0440942A190FA66600C4A558 /* RegisterViewController */,
+				04409402190F820100C4A558 /* FlyoutMenuViewController */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -165,11 +190,46 @@
 		044093FA190F7AD000C4A558 /* LoginViewController */ = {
 			isa = PBXGroup;
 			children = (
-				044093FB190F7B1300C4A558 /* LoginViewController.h */,
-				044093FC190F7B1300C4A558 /* LoginViewController.m */,
-				044093FD190F7B1300C4A558 /* LoginViewController.xib */,
+				04409408190F951800C4A558 /* ForgorYourPaswordWebView */,
+				0440941C190F975E00C4A558 /* LoginViewController_iPhone4.xib */,
+				0440941D190F975E00C4A558 /* LoginViewController_iPhone5.xib */,
+				0440941E190F975E00C4A558 /* LoginViewController.h */,
+				0440941F190F975E00C4A558 /* LoginViewController.m */,
+				04409420190F975E00C4A558 /* LoginViewController~ipad.xib */,
 			);
 			name = LoginViewController;
+			sourceTree = "<group>";
+		};
+		04409402190F820100C4A558 /* FlyoutMenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04409403190F825F00C4A558 /* FlyoutMenuViewController.h */,
+				04409404190F825F00C4A558 /* FlyoutMenuViewController.m */,
+				04409405190F825F00C4A558 /* FlyoutMenuViewController.xib */,
+			);
+			name = FlyoutMenuViewController;
+			sourceTree = "<group>";
+		};
+		04409408190F951800C4A558 /* ForgorYourPaswordWebView */ = {
+			isa = PBXGroup;
+			children = (
+				04409425190FA53900C4A558 /* ForgotPasswordViewController.h */,
+				04409426190FA53900C4A558 /* ForgotPasswordViewController.m */,
+				04409427190FA53900C4A558 /* ForgotPasswordViewController.xib */,
+			);
+			path = ForgorYourPaswordWebView;
+			sourceTree = "<group>";
+		};
+		0440942A190FA66600C4A558 /* RegisterViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04409439190FA98B00C4A558 /* RegisterViewController_iPhone4.xib */,
+				0440943A190FA98B00C4A558 /* RegisterViewController_iPhone5.xib */,
+				0440943B190FA98B00C4A558 /* RegisterViewController.h */,
+				0440943C190FA98B00C4A558 /* RegisterViewController.m */,
+				0440943D190FA98B00C4A558 /* RegisterViewController~ipad.xib */,
+			);
+			name = RegisterViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,9 +307,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04409407190F825F00C4A558 /* FlyoutMenuViewController.xib in Resources */,
 				0408069B190EA37D00E063C3 /* InfoPlist.strings in Resources */,
+				04409429190FA53900C4A558 /* ForgotPasswordViewController.xib in Resources */,
+				04409421190F975E00C4A558 /* LoginViewController_iPhone4.xib in Resources */,
+				04409422190F975E00C4A558 /* LoginViewController_iPhone5.xib in Resources */,
+				0440943F190FA98B00C4A558 /* RegisterViewController_iPhone5.xib in Resources */,
+				04409424190F975E00C4A558 /* LoginViewController~ipad.xib in Resources */,
+				0440943E190FA98B00C4A558 /* RegisterViewController_iPhone4.xib in Resources */,
 				040806A3190EA37D00E063C3 /* Images.xcassets in Resources */,
-				044093FF190F7B1300C4A558 /* LoginViewController.xib in Resources */,
+				04409441190FA98B00C4A558 /* RegisterViewController~ipad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,9 +335,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04409406190F825F00C4A558 /* FlyoutMenuViewController.m in Sources */,
 				040806A1190EA37D00E063C3 /* AppDelegate.m in Sources */,
+				04409440190FA98B00C4A558 /* RegisterViewController.m in Sources */,
 				0408069D190EA37D00E063C3 /* main.m in Sources */,
-				044093FE190F7B1300C4A558 /* LoginViewController.m in Sources */,
+				04409428190FA53900C4A558 /* ForgotPasswordViewController.m in Sources */,
+				04409423190F975E00C4A558 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
