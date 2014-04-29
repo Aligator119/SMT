@@ -147,6 +147,7 @@
 }
 
 -(IBAction)SignUp:(id)sender{
+    
     NSString * firstName = self.firstNameTextField.text;
     NSString * lastName = self.lastNameTextField.text;
     NSString * email = self.emailTextField.text;
@@ -158,6 +159,7 @@
     
     NSString * strFirstName = self.firstNameTextField.text;
     NSString * strLastName = self.lastNameTextField.text;
+     
     /*
     if(![self removeGaps:strFirstName] || ![self removeGaps:strLastName]){
         [AppDelegate OpenAlertwithTitle:@"Error" andContent:@"Enter correctly \nFirst name and Last name"];

@@ -16,6 +16,8 @@
 #import "AppDelegate.h"
 //#import "UserInfo.h"
 
+#import "BuddyListViewController.h"
+
 
 @interface LoginViewController (){
     //DataLoader * dataLoader;
@@ -84,6 +86,11 @@
 }
 
 -(IBAction)goToHomeScreen:(id)sender{
+    
+    
+   
+    BuddyListViewController * newView = [[BuddyListViewController alloc]initWithNibName:@"BuddyListViewController" bundle:nil];
+    [self.navigationController pushViewController:newView animated:YES];
     /*
     if(self.userNameTextField.text.length == 0) {
         [AppDelegate OpenAlertwithTitle:@"Error" andContent:@"Email field is empty"];

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040706B4190FC1CE000D6660 /* BuddyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040706B2190FC1CE000D6660 /* BuddyListViewController.m */; };
+		040706B5190FC1CE000D6660 /* BuddyListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040706B3190FC1CE000D6660 /* BuddyListViewController.xib */; };
 		04080691190EA37D00E063C3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04080690190EA37D00E063C3 /* Foundation.framework */; };
 		04080693190EA37D00E063C3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04080692190EA37D00E063C3 /* CoreGraphics.framework */; };
 		04080695190EA37D00E063C3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04080694190EA37D00E063C3 /* UIKit.framework */; };
@@ -32,6 +34,13 @@
 		0440943F190FA98B00C4A558 /* RegisterViewController_iPhone5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0440943A190FA98B00C4A558 /* RegisterViewController_iPhone5.xib */; };
 		04409440190FA98B00C4A558 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0440943C190FA98B00C4A558 /* RegisterViewController.m */; };
 		04409441190FA98B00C4A558 /* RegisterViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0440943D190FA98B00C4A558 /* RegisterViewController~ipad.xib */; };
+		046C6BEC190FDF1D00E3AC56 /* back_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 046C6BEB190FDF1D00E3AC56 /* back_arrow.png */; };
+		046C6C08190FECA700E3AC56 /* IncomingFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046C6C06190FECA700E3AC56 /* IncomingFriendCell.m */; };
+		046C6C09190FECA700E3AC56 /* IncomingFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C6C07190FECA700E3AC56 /* IncomingFriendCell.xib */; };
+		046C6C0D190FECC400E3AC56 /* InviteFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046C6C0B190FECC400E3AC56 /* InviteFriendCell.m */; };
+		046C6C0E190FECC400E3AC56 /* InviteFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C6C0C190FECC400E3AC56 /* InviteFriendCell.xib */; };
+		046C6C12190FECEE00E3AC56 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046C6C10190FECEE00E3AC56 /* Cell.m */; };
+		046C6C13190FECEE00E3AC56 /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C6C11190FECEE00E3AC56 /* Cell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +54,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040706B1190FC1CE000D6660 /* BuddyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuddyListViewController.h; path = ViewControllers/BodyListViewController/BuddyListViewController.h; sourceTree = "<group>"; };
+		040706B2190FC1CE000D6660 /* BuddyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuddyListViewController.m; path = ViewControllers/BodyListViewController/BuddyListViewController.m; sourceTree = "<group>"; };
+		040706B3190FC1CE000D6660 /* BuddyListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BuddyListViewController.xib; path = ViewControllers/BodyListViewController/BuddyListViewController.xib; sourceTree = "<group>"; };
 		0408068D190EA37D00E063C3 /* SMT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SMT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04080690190EA37D00E063C3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		04080692190EA37D00E063C3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -78,6 +90,16 @@
 		0440943B190FA98B00C4A558 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterViewController.h; path = ViewControllers/RegisterViewController/RegisterViewController.h; sourceTree = "<group>"; };
 		0440943C190FA98B00C4A558 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterViewController.m; path = ViewControllers/RegisterViewController/RegisterViewController.m; sourceTree = "<group>"; };
 		0440943D190FA98B00C4A558 /* RegisterViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "RegisterViewController~ipad.xib"; path = "ViewControllers/RegisterViewController/RegisterViewController~ipad.xib"; sourceTree = "<group>"; };
+		046C6BEB190FDF1D00E3AC56 /* back_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back_arrow.png; path = Image/back_arrow.png; sourceTree = "<group>"; };
+		046C6C05190FECA700E3AC56 /* IncomingFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IncomingFriendCell.h; path = ViewControllers/BodyListViewController/CustomCell/IncomingFriendCell.h; sourceTree = "<group>"; };
+		046C6C06190FECA700E3AC56 /* IncomingFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IncomingFriendCell.m; path = ViewControllers/BodyListViewController/CustomCell/IncomingFriendCell.m; sourceTree = "<group>"; };
+		046C6C07190FECA700E3AC56 /* IncomingFriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IncomingFriendCell.xib; path = ViewControllers/BodyListViewController/CustomCell/IncomingFriendCell.xib; sourceTree = "<group>"; };
+		046C6C0A190FECC400E3AC56 /* InviteFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InviteFriendCell.h; path = ViewControllers/BodyListViewController/CustomCell/InviteFriendCell.h; sourceTree = "<group>"; };
+		046C6C0B190FECC400E3AC56 /* InviteFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InviteFriendCell.m; path = ViewControllers/BodyListViewController/CustomCell/InviteFriendCell.m; sourceTree = "<group>"; };
+		046C6C0C190FECC400E3AC56 /* InviteFriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InviteFriendCell.xib; path = ViewControllers/BodyListViewController/CustomCell/InviteFriendCell.xib; sourceTree = "<group>"; };
+		046C6C0F190FECEE00E3AC56 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cell.h; path = ViewControllers/BodyListViewController/CustomCell/Cell.h; sourceTree = "<group>"; };
+		046C6C10190FECEE00E3AC56 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Cell.m; path = ViewControllers/BodyListViewController/CustomCell/Cell.m; sourceTree = "<group>"; };
+		046C6C11190FECEE00E3AC56 /* Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Cell.xib; path = ViewControllers/BodyListViewController/CustomCell/Cell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +127,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040706B0190FC190000D6660 /* BuddyListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				046C6C04190FEC6400E3AC56 /* CustomCell */,
+				040706B1190FC1CE000D6660 /* BuddyListViewController.h */,
+				040706B2190FC1CE000D6660 /* BuddyListViewController.m */,
+				040706B3190FC1CE000D6660 /* BuddyListViewController.xib */,
+			);
+			name = BuddyListViewController;
+			sourceTree = "<group>";
+		};
 		04080684190EA37D00E063C3 = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +184,7 @@
 		04080697190EA37D00E063C3 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				046C6BEA190FDF0E00E3AC56 /* image */,
 				04080698190EA37D00E063C3 /* SMT-Info.plist */,
 				04080699190EA37D00E063C3 /* InfoPlist.strings */,
 				0408069C190EA37D00E063C3 /* main.m */,
@@ -183,6 +217,7 @@
 				044093FA190F7AD000C4A558 /* LoginViewController */,
 				0440942A190FA66600C4A558 /* RegisterViewController */,
 				04409402190F820100C4A558 /* FlyoutMenuViewController */,
+				040706B0190FC190000D6660 /* BuddyListViewController */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -230,6 +265,30 @@
 				0440943D190FA98B00C4A558 /* RegisterViewController~ipad.xib */,
 			);
 			name = RegisterViewController;
+			sourceTree = "<group>";
+		};
+		046C6BEA190FDF0E00E3AC56 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				046C6BEB190FDF1D00E3AC56 /* back_arrow.png */,
+			);
+			name = image;
+			sourceTree = "<group>";
+		};
+		046C6C04190FEC6400E3AC56 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				046C6C05190FECA700E3AC56 /* IncomingFriendCell.h */,
+				046C6C06190FECA700E3AC56 /* IncomingFriendCell.m */,
+				046C6C07190FECA700E3AC56 /* IncomingFriendCell.xib */,
+				046C6C0A190FECC400E3AC56 /* InviteFriendCell.h */,
+				046C6C0B190FECC400E3AC56 /* InviteFriendCell.m */,
+				046C6C0C190FECC400E3AC56 /* InviteFriendCell.xib */,
+				046C6C0F190FECEE00E3AC56 /* Cell.h */,
+				046C6C10190FECEE00E3AC56 /* Cell.m */,
+				046C6C11190FECEE00E3AC56 /* Cell.xib */,
+			);
+			name = CustomCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,14 +367,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				04409407190F825F00C4A558 /* FlyoutMenuViewController.xib in Resources */,
+				046C6C13190FECEE00E3AC56 /* Cell.xib in Resources */,
 				0408069B190EA37D00E063C3 /* InfoPlist.strings in Resources */,
 				04409429190FA53900C4A558 /* ForgotPasswordViewController.xib in Resources */,
 				04409421190F975E00C4A558 /* LoginViewController_iPhone4.xib in Resources */,
+				046C6C0E190FECC400E3AC56 /* InviteFriendCell.xib in Resources */,
+				046C6BEC190FDF1D00E3AC56 /* back_arrow.png in Resources */,
 				04409422190F975E00C4A558 /* LoginViewController_iPhone5.xib in Resources */,
 				0440943F190FA98B00C4A558 /* RegisterViewController_iPhone5.xib in Resources */,
+				046C6C09190FECA700E3AC56 /* IncomingFriendCell.xib in Resources */,
 				04409424190F975E00C4A558 /* LoginViewController~ipad.xib in Resources */,
 				0440943E190FA98B00C4A558 /* RegisterViewController_iPhone4.xib in Resources */,
 				040806A3190EA37D00E063C3 /* Images.xcassets in Resources */,
+				040706B5190FC1CE000D6660 /* BuddyListViewController.xib in Resources */,
 				04409441190FA98B00C4A558 /* RegisterViewController~ipad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,10 +401,14 @@
 			files = (
 				04409406190F825F00C4A558 /* FlyoutMenuViewController.m in Sources */,
 				040806A1190EA37D00E063C3 /* AppDelegate.m in Sources */,
+				046C6C0D190FECC400E3AC56 /* InviteFriendCell.m in Sources */,
 				04409440190FA98B00C4A558 /* RegisterViewController.m in Sources */,
+				046C6C08190FECA700E3AC56 /* IncomingFriendCell.m in Sources */,
+				046C6C12190FECEE00E3AC56 /* Cell.m in Sources */,
 				0408069D190EA37D00E063C3 /* main.m in Sources */,
 				04409428190FA53900C4A558 /* ForgotPasswordViewController.m in Sources */,
 				04409423190F975E00C4A558 /* LoginViewController.m in Sources */,
+				040706B4190FC1CE000D6660 /* BuddyListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
