@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface LoginViewController : UIViewController
+
+@property (strong, nonatomic) FBSession * session;
 
 @end
