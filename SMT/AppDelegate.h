@@ -10,6 +10,13 @@
 #import "LoginViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "UserInfo.h"
+#import <GoogleMaps/GoogleMaps.h>
+
+@class UserInfo;
+@class UserLocationInThisMoment;
+
+static NSString * const kGoogleMapsKey = @"AIzaSyCyCqldV67LGrJTLb9oSNr61-iHMUIUlsA";
+static NSString * const kGoogleBrouserAPIkey = @"AIzaSyAgYW3MOr37pwGSATMfWXWklbfn_oaBhCA";
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate>
 

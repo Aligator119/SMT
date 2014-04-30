@@ -19,6 +19,8 @@
 #import "BuddyListViewController.h"
 
 
+#import "MapViewController.h"
+
 @interface LoginViewController (){
     DataLoader * dataLoader;
     BOOL wasFacebookClick;
