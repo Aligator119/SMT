@@ -19,6 +19,8 @@
 #import "BuddyListViewController.h"
 
 
+#import "MapViewController.h"
+
 @interface LoginViewController (){
     DataLoader * dataLoader;
     BOOL wasFacebookClick;
@@ -86,7 +88,7 @@
 }
 
 -(IBAction)goToHomeScreen:(id)sender{
-    
+        
     if(self.userNameTextField.text.length == 0) {
         [AppDelegate OpenAlertwithTitle:@"Error" andContent:@"Email field is empty"];
         return;

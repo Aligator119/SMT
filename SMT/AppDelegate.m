@@ -21,6 +21,8 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
+    [GMSServices provideAPIKey:kGoogleBrouserAPIkey];
+    
     //Test with versionOfBuild
     /*
      NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
