@@ -54,7 +54,6 @@
                     <constraint firstAttribute="trailing" secondItem="Xl3-KT-Tmb" secondAttribute="trailing" constant="10" id="Yuw-PC-tvu"/>
                     <constraint firstItem="Xl3-KT-Tmb" firstAttribute="leading" secondItem="mk3-9N-Rdn" secondAttribute="trailing" constant="10" id="dG1-A4-nMs"/>
                     <constraint firstItem="Xl3-KT-Tmb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="fPj-eC-DKq"/>
-                    <constraint firstItem="Xl3-KT-Tmb" firstAttribute="leading" secondItem="mk3-9N-Rdn" secondAttribute="trailing" constant="10" id="frx-7I-YHE"/>
                     <constraint firstItem="Hbt-hm-NsO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="lHI-dd-YAc"/>
                 </constraints>
             </tableViewCellContentView>

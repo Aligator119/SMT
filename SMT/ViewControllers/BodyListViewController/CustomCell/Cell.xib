@@ -28,6 +28,7 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back_arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="tDA-6n-m1p">
                         <rect key="frame" x="310" y="0.0" width="10" height="43"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="10" id="q6S-75-vHn"/>
                         </constraints>

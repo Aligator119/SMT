@@ -83,6 +83,20 @@
     }
 }
 
+- (void)getPredictionsCalls{
+    NSDictionary *retrievedDictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"preddictionCalls"];
+    if(retrievedDictionary != nil)
+        self.predictionsCalls = [[retrievedDictionary objectForKey:@"countCalls"] intValue];
+    else self.predictionsCalls = 0;
+}
+
+//------------------
++ (BOOL)removeGapsWithString:(NSString*)_str{
+    NSString *trimmedString = [_str stringByTrimmingCharactersInSet:
+                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if(trimmedString.length != 0) return YES;
+    else return NO;
+}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -9,18 +9,18 @@
 #import "LoginViewController.h"
 #import "FlyoutMenuViewController.h"
 #import "RegisterViewController.h"
-//#import "DataLoader.h"
-//#import "FBConnectClass.h"
-//#import "ConstantsClass.h"
+#import "DataLoader.h"
+#import "FBConnectClass.h"
+#import "ConstantsClass.h"
 #import "ForgotPasswordViewController.h"
 #import "AppDelegate.h"
-//#import "UserInfo.h"
+#import "UserInfo.h"
 
 #import "BuddyListViewController.h"
 
 
 @interface LoginViewController (){
-    //DataLoader * dataLoader;
+    DataLoader * dataLoader;
     BOOL wasFacebookClick;
     BOOL isFirstMoment; // for save user - automaticaly login
 }
@@ -40,8 +40,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-  //self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height - 20);
-    //dataLoader = [DataLoader instance];
+    self.scrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height - 20);
+    dataLoader = [DataLoader instance];
     self.scrollView.contentSize = self.view.frame.size;
     [self registerForKeyboardNotifications];
     
@@ -66,14 +66,14 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    /*
+    
     AppDelegate * appDel = [UIApplication sharedApplication].delegate;
     if(appDel.isUserSign && isFirstMoment) {
         [self.activityIndicat startAnimating];
         [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
         [self fbUserLogin:appDel.user.userName password:appDel.user.userPassword];
     }
-     */
+     
 }
 
 -(BOOL) checkEmail: (NSString*) email{
@@ -91,7 +91,7 @@
    
     BuddyListViewController * newView = [[BuddyListViewController alloc]initWithNibName:@"BuddyListViewController" bundle:nil];
     [self.navigationController pushViewController:newView animated:YES];
-    /*
+    
     if(self.userNameTextField.text.length == 0) {
         [AppDelegate OpenAlertwithTitle:@"Error" andContent:@"Email field is empty"];
         return;
@@ -148,8 +148,8 @@
             [self.activityIndicat stopAnimating];
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];
             
-            HPHomeViewController * homeVC = [[HPHomeViewController alloc] initWithNibName:@"HPHomeViewController" bundle:nil];
-            [self.navigationController pushViewController:homeVC animated:YES];
+            FlyoutMenuViewController * fmVC = [[FlyoutMenuViewController alloc] initWithNibName:@"FlyoutMenuViewController" bundle:nil];
+            [self.navigationController pushViewController:fmVC animated:YES];
         } else {
             [self.activityIndicat stopAnimating];
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];
@@ -157,7 +157,7 @@
     });
                         
     });
-        */
+    
 }
 
 -(IBAction)signUpAct:(id)sender{
@@ -169,22 +169,22 @@
 #pragma mark - Work with FACEBOOK
 
 - (IBAction)openDashBoard:(id)sender {
-   /*
+   
     FBConnectClass * connect = [FBConnectClass instance];
     connect.delegate = self;
     [self.activityIndicat startAnimating];
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     
     [connect sentRequest:requestLogin];
-     */
+    
 }
 
 - (void)fbUserLogin:(NSString *)uName password:(NSString *)uPassword{
-    /*
+    
     FBConnectClass * connect = [FBConnectClass instance];
     
     if(connect.haveError){
-        //[HPAppDelegate OpenAlertwithTitle:@"Error" andContent:@"Problem in connection.\nPlease, try again"];
+        [AppDelegate OpenAlertwithTitle:@"Error" andContent:@"Problem in connection.\nPlease, try again"];
         [self.activityIndicat stopAnimating];
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         
@@ -201,27 +201,27 @@
                 [self.activityIndicat stopAnimating];
                 [[UIApplication sharedApplication] endIgnoringInteractionEvents];
                 
-            HPHomeViewController * homeView = [[HPHomeViewController alloc] initWithNibName:@"HPHomeViewController" bundle:nil];
+            FlyoutMenuViewController * fmView = [[FlyoutMenuViewController alloc] initWithNibName:@"FlyoutMenuViewController" bundle:nil];
         
-            HPAppDelegate * appDelegate = [UIApplication sharedApplication].delegate;
+            AppDelegate * appDelegate = [UIApplication sharedApplication].delegate;
             [appDelegate getPredictionsCalls];
         
-            [self.navigationController pushViewController:homeView animated:YES];
+            [self.navigationController pushViewController:fmView animated:YES];
             });
         } else {
             dispatch_async(dispatch_get_main_queue(), ^(){
-                //[HPAppDelegate OpenAlertwithTitle:@"Error" andContent:@"Problem in connection.\nPlease, try again"];
+                [AppDelegate OpenAlertwithTitle:@"Error" andContent:@"Problem in connection.\nPlease, try again"];
                 [self.activityIndicat stopAnimating];
                 [[UIApplication sharedApplication] endIgnoringInteractionEvents];
             });
         }
         });
     }
-     */
+    
 }
 
 - (void)fbUserFirstLogin:(NSString *)_name fbID:(NSString *)_fbID{
-    /*
+    
     dispatch_async(dispatch_get_main_queue(), ^(){
         
     [self.activityIndicat stopAnimating];
@@ -235,7 +235,7 @@
     [AppDelegate OpenAlertwithTitle:@"" andContent:@"Please, enter correct username\n and password"];
         
     });
-     */
+     
 }
 
 - (IBAction)forgotPassword:(id)sender{
