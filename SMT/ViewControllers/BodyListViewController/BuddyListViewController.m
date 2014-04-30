@@ -10,6 +10,7 @@
 #import "DataLoader.h"
 #import "AppDelegate.h"
 #import "Buddy.h"
+#import "ConstantsClass.h"
 
 
 #define FRIEND_LIST    @"   My buddies"
@@ -79,34 +80,35 @@
 //--------------------------------------------------------------------------------------------------------------------
     NSMutableArray * array = [[NSMutableArray alloc]init];
     AppDelegate * app = [[UIApplication sharedApplication] delegate];
-    NSMutableArray * friendBuffer = [[NSMutableArray alloc]init];
-    for (int i=0; i<app.listUserBuddies.count; i++) {
-        Buddy * buddy = [app.listUserBuddies objectAtIndex:i];
-        NSString * str = [[buddy.userName stringByAppendingString:@" "] stringByAppendingString:buddy.userFirstName];
-         NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:str, @"name", FRIEND_LIST, @"type", nil];
-        [friendBuffer addObject:dict];
-    }
+    NSMutableArray * buddies = [NSMutableArray new];
+    NSMutableArray * pendingBuddies = [NSMutableArray new];
+    NSMutableArray * buddiesReceived = [NSMutableArray new];
     
-    friendList = [[NSArray alloc]initWithArray:friendBuffer];
-    if (friendList) {
+    for (Buddy * buddy in app.listUserBuddies) {
+        if([buddy.userRelation isEqualToString:StatusAccepted]){
+            [buddies addObject:buddy];
+        } else if([buddy.userRelation isEqualToString:StatusSent]){  //@"REQUEST_SENT"
+            [pendingBuddies addObject:buddy];
+        } else if([buddy.userRelation isEqualToString:StatusReceived]){
+            [buddiesReceived addObject:buddy];
+        }
+    }
+   
+    friendList = [[NSArray alloc]initWithArray:buddies];
+    if (friendList.count) {
         [array addObject:friendList];
     }
-    NSDictionary * dict2 = [[NSDictionary alloc]initWithObjectsAndKeys:@"incoming", @"name", INCOMING_QWERY, @"type", nil];
-    incomingQwery = [[NSArray alloc]initWithObjects:dict2, nil];
-    if (incomingQwery) {
+    incomingQwery = [[NSArray alloc]initWithArray:buddiesReceived];
+    if (incomingQwery.count) {
         [array addObject:incomingQwery];
     }
-    NSDictionary * dict3 = [[NSDictionary alloc]initWithObjectsAndKeys:@"invite friend", @"name", INVITE_FRIEND, @"type", nil];
-    inviteFriend = [[NSArray alloc]initWithObjects:dict3, nil];
-    if (inviteFriend) {
+    inviteFriend = [[NSArray alloc]initWithArray:pendingBuddies];
+    if (inviteFriend.count) {
         [array addObject:inviteFriend];
     }
     
-    
-    
-    
     allBuddyList = [[NSArray alloc]initWithArray:array];
-    
+//--------------------------------------------------------------------------------------------------------------------
     
     UINib *cellNib1 = [UINib nibWithNibName:@"Cell" bundle:[NSBundle mainBundle]];
     [self.table registerNib:cellNib1 forCellReuseIdentifier:@"Cell"];
@@ -137,37 +139,38 @@
 {
     UITableViewCell * cell;// = nil;
     NSArray * buffer = [allBuddyList objectAtIndex:indexPath.section];
-    
-   if ([INCOMING_QWERY isEqualToString:[[buffer objectAtIndex:indexPath.row] objectForKey:@"type"]]) {
+    Buddy * buddy = [buffer objectAtIndex:indexPath.row];
+   if ([buddy.userRelation isEqualToString:StatusReceived]) {
        
             cell = [tableView dequeueReusableCellWithIdentifier:@"IncomingFriendCell"];
             if (!cell) {
                 cell = [[IncomingFriendCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"IncomingFriendCell"];
             }
-            ((IncomingFriendCell *)cell).lbFriendName.text = [[buffer objectAtIndex:indexPath.row] objectForKey:@"name"];
+            ((IncomingFriendCell *)cell).lbFriendName.text = buddy.userFirstName;
             [((IncomingFriendCell *)cell).btnDone addTarget:self action:@selector(actDone:) forControlEvents:UIControlEventTouchUpInside];
             [((IncomingFriendCell *)cell).btnAccept addTarget:self action:@selector(actAccept:) forControlEvents:UIControlEventTouchUpInside];
         }
     
             
-        if ([FRIEND_LIST isEqualToString:[[buffer objectAtIndex:indexPath.row] objectForKey:@"type"]])
+        if ([buddy.userRelation isEqualToString:StatusAccepted])
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
             if (!cell) {
                 cell = [[Cell alloc]initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"Cell"];
             }
-            ((Cell *)cell).lbFriendName.text = [[buffer objectAtIndex:indexPath.row] objectForKey:@"name"];
-            //cell.detailTextLabel.text = @"detail info";
+            ((Cell *)cell).lbFriendName.text = buddy.userFirstName;
+            ((Cell *)cell).detailTextLabel.text = buddy.userSecondName;
         }
     
             
-        if ([INVITE_FRIEND isEqualToString:[[buffer objectAtIndex:indexPath.row] objectForKey:@"type"]])
+        if ([buddy.userRelation isEqualToString:StatusSent])
         {
             cell = [tableView dequeueReusableCellWithIdentifier:@"InviteFriendCell"];
             if (!cell) {
                 cell = [[InviteFriendCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"InviteFriendCell"];
             }
-            ((InviteFriendCell *)cell).lbFriendName.text = [[buffer objectAtIndex:indexPath.row] objectForKey:@"name"];
+            ((InviteFriendCell *)cell).lbFriendName.text = buddy.userFirstName;
+            ((Cell *)cell).detailTextLabel.text = buddy.userSecondName;
             [((InviteFriendCell *)cell).btnHidde addTarget:self action:@selector(actHidden:) forControlEvents:UIControlEventTouchUpInside];
         }
     
@@ -177,15 +180,23 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    
-    return [[[allBuddyList objectAtIndex:section] firstObject] objectForKey:@"type"];
+    NSString * str;
+    Buddy * buf = [[allBuddyList objectAtIndex:section] firstObject];
+    if ([buf.userRelation isEqualToString:StatusReceived]) {
+        str = @"   Buddy Requests";
+    } else if ([buf.userRelation isEqualToString:StatusSent]) {
+        str = @"   Request Sent";
+    } else if ([buf.userRelation isEqualToString:StatusAccepted]){
+        str = @"   My buddies";
+    }
+    return str;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CGFloat heigth = 0.0;
-    
-    if ([[[[allBuddyList objectAtIndex:indexPath.section] firstObject] objectForKey:@"type"] isEqualToString:INCOMING_QWERY]) {
+    Buddy * buf = [[allBuddyList objectAtIndex:indexPath.section] firstObject];
+    if ([buf.userRelation isEqualToString:StatusReceived]) {
         heigth = INCOMING_CELL_HEIGTTH;
     } else {
             heigth = CELL_HEIGTH;

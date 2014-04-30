@@ -88,7 +88,7 @@
 }
 
 -(IBAction)goToHomeScreen:(id)sender{
-        
+    
     if(self.userNameTextField.text.length == 0) {
         [AppDelegate OpenAlertwithTitle:@"Error" andContent:@"Email field is empty"];
         return;
@@ -154,10 +154,14 @@
     });
                         
     });
+//---------------------
+    BuddyListViewController * blvc = [[BuddyListViewController alloc]initWithNibName:@"BuddyListViewController" bundle:nil];
+    [self.navigationController pushViewController:blvc animated:YES];
     
 }
 
 -(IBAction)signUpAct:(id)sender{
+    
     NSString * nibName = [AppDelegate nibNameForBaseName:@"RegisterViewController"];
     RegisterViewController * flyoutMenu = [[RegisterViewController alloc] initWithNibName:nibName bundle:nil];
     [self.navigationController pushViewController:flyoutMenu animated:YES];
