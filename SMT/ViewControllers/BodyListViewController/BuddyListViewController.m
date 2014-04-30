@@ -7,6 +7,9 @@
 //
 
 #import "BuddyListViewController.h"
+#import "DataLoader.h"
+#import "AppDelegate.h"
+#import "Buddy.h"
 
 
 #define FRIEND_LIST    @"   My buddies"
@@ -23,6 +26,7 @@
     NSArray * incomingQwery;
     NSArray * inviteFriend;
     NSArray * allBuddyList;
+    DataLoader * dataLoader;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
@@ -49,6 +53,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    dataLoader = [DataLoader instance];
+    
+    [dataLoader buddyGetListUsersBuddies];
     
     UIButton * btnBack = [UIButton buttonWithType:UIButtonTypeCustom];
     btnBack.frame = CGRectMake(0, 0, 60, 40);
@@ -71,9 +78,16 @@
     self.navigationItem.rightBarButtonItem = add;
 //--------------------------------------------------------------------------------------------------------------------
     NSMutableArray * array = [[NSMutableArray alloc]init];
-    NSDictionary * dict1 = [[NSDictionary alloc]initWithObjectsAndKeys:@"myFriend)))", @"name", FRIEND_LIST, @"type", nil];
-     NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:@"myFriend#2$", @"name", FRIEND_LIST, @"type", nil];
-    friendList = [[NSArray alloc]initWithObjects:dict1, dict, nil];
+    AppDelegate * app = [[UIApplication sharedApplication] delegate];
+    NSMutableArray * friendBuffer = [[NSMutableArray alloc]init];
+    for (int i=0; i<app.listUserBuddies.count; i++) {
+        Buddy * buddy = [app.listUserBuddies objectAtIndex:i];
+        NSString * str = [[buddy.userName stringByAppendingString:@" "] stringByAppendingString:buddy.userFirstName];
+         NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:str, @"name", FRIEND_LIST, @"type", nil];
+        [friendBuffer addObject:dict];
+    }
+    
+    friendList = [[NSArray alloc]initWithArray:friendBuffer];
     if (friendList) {
         [array addObject:friendList];
     }

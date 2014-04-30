@@ -9,9 +9,38 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
+@synthesize session;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    session = [[FBSession alloc] init];
+    // Set the active session
+    [FBSession setActiveSession:session];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // Override point for customization after application launch.
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    //Test with versionOfBuild
+    /*
+     NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
+     NSString * build = [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey];
+     NSLog(@"Version : %@ Build : %@",version,build);
+     */
+    self.predictionsCalls = 0;
+    [self getPredictionsCalls];
+    self.user = [[UserInfo alloc] init];
+    /*
+    BOOL isSignBefore = [self isUserSignBefore];
+    if(isSignBefore){
+        self.isUserSign = [self isUserSignIn];
+        if(self.isUserSign) [self getSignUser];
+    }
+    */
+    self.listUserBuddies = [NSMutableArray new];
+    
+    //self.userLocation = [UserLocationInThisMoment instance];
+//------------------------------------------------------------------------------
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     NSString * nibName = [AppDelegate nibNameForBaseName:@"LoginViewController"];
