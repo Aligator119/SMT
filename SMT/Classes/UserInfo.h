@@ -23,16 +23,23 @@ enum fbAttribute{
 @property (strong, nonatomic) NSString * userPassword;
 @property (nonatomic, readonly) int userID;
 @property (strong, nonatomic) NSString * userFID;
+@property (strong, nonatomic) NSString * userFirstName;
+@property (strong, nonatomic) NSString * userSecondName;
+@property (strong, nonatomic) NSString * avatarAdress;
+@property (strong, nonatomic) NSData * imgData;
+
 
 - (id) init;
 - (void)setUserInfoName:(NSString*) _name password:(NSString*)_pass appID:(int) _appID;
 - (void)setUserInfoName:(NSString*) _name appID:(int) _appID;
 - (void)setUserInfoPassword:(NSString*) _pass;
 - (void)setInfoFID:(NSString*)_fid;
+- (void)setUserFirstName:(NSString*)_firstName andSecondName:(NSString*)_secondName;
 
 + (int)itsFirstMomentWhenUserLoginAndIsWithFacebook:(NSString*)usName;
 + (BOOL)itsFirstMomentWhenUserLogin:(NSString*)usName;
 - (void)saveUser;
 - (void)redwriteUserFbID:(NSString*) usName andFID:(NSString*)_FbID;
+- (void)loadImg;
 
 @end

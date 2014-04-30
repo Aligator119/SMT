@@ -19,7 +19,7 @@
 #import "BuddyListViewController.h"
 
 
-#import "MapViewController.h"
+
 
 @interface LoginViewController (){
     DataLoader * dataLoader;
@@ -154,9 +154,6 @@
     });
                         
     });
-//---------------------
-    BuddyListViewController * blvc = [[BuddyListViewController alloc]initWithNibName:@"BuddyListViewController" bundle:nil];
-    [self.navigationController pushViewController:blvc animated:YES];
     
 }
 

@@ -12,7 +12,6 @@
 #import "UserInfo.h"
 #import "AppDelegate.h"
 #import "Location.h"
-//#import "DailyPrediction.h"
 #import "FBConnectClass.h"
 #import "ConstantsClass.h"
 #import "NSString+HTML.h"
@@ -25,9 +24,9 @@
 #define RequestDelete @"DELETE"
 #define RequestPut @"PUT"
 
-#define APP_ID_KEY /*@"app_id=eefffe70&app_key=99b043c0142398fcd928b4a4b62700e4"*/@"app_id=b63800ad&app_key=34eddb50efc407d00f3498dc1874526c"
+#define APP_ID_KEY @"app_id=b63800ad&app_key=34eddb50efc407d00f3498dc1874526c"
 #define URL_USER_LOGIN @"user=%@&password=%@&%@"
-#define URL_USER_CREATE @"firstname=%@&lastname=%@&username=%@&password=%@&birthYear=%@&sex=%@&app_id=b63800ad&app_key=34eddb50efc407d00f3498dc1874526c"
+#define URL_USER_CREATE @"firstname=%@&lastname=%@&username=%@&password=%@&birthYear=%@&sex=%@&%@"
 
 #define SubstringLogin @"login"
 #define SubstringRegister @"user"
@@ -70,78 +69,9 @@
 - (void)setInitialData{
     keyUsername = @"Username";
     keyUserID = @"User ID";
+    keyUserFirstName = @"First Name";
+    keyUserSecondName = @"Last Name";
     self.isCorrectRezult = NO;
-}
-
-#pragma mark - Work With Protocol
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    // get answer from server
-    [receivedData setLength:0];
-    NSLog(@"Responce : %@",response.description);
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    // add new data to receivedData
-    [receivedData appendData:data];
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    // выводим сообщение об ошибке
-   /* NSString *errorString = [[NSString alloc] initWithFormat:@"Connection failed! Error - %@ %@ %@",
-                             [error localizedDescription],
-                             [error description],
-                             [[error userInfo] objectForKey:NSURLErrorFailingURLStringErrorKey]];
-    NSLog(@"Problem in connection : %@",errorString);*/
-    NSString * received = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
-    NSString * bodyExeption;
-    if([received isEqualToString:@"Error: Username or Password is invalid"]) bodyExeption = @"Username or Password is invalid";
-    else bodyExeption = @"Problem with connection.\nPlease, try again";
-    [AppDelegate OpenAlertwithTitle:@"Error" andContent:bodyExeption];
-    NSLog(@"receivedData %@",received);
-    
-    // освобождаем соединение и полученные данные
-    receivedData = nil;
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSLog(@"Finish connection succesfull");
-    //*****
-    /*NSError * jsonError = nil;
-    CJSONDeserializer *deserializer = [CJSONDeserializer deserializer];
-    info = [deserializer deserialize:receivedData error:&jsonError];
-    if(jsonError != nil) {
-        NSLog(@"Error JSON :%@", jsonError.description);
-    }
-    else {
-        //NSLog(@"INFO : %@",info);
-        [self connectionWasSuccesfull];
-    }*/
-    if([typeRequest isEqualToString: RequestDelete]){
-        NSLog(@"receivedData %@",[[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding]);
-        self.isCorrectRezult = YES;
-        //[self connectionWasSuccesfull];
-    }
-    else {
-        NSError * jsonError = nil;
-        CJSONDeserializer *deserializer = [CJSONDeserializer deserializer];
-        info = [deserializer deserialize:receivedData error:&jsonError];
-        if(jsonError != nil) {
-            NSLog(@"Error JSON :%@", jsonError.description);
-            NSLog(@"receivedData %@",[[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding]);
-            
-            NSString * htmlString = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
-            NSString * as = [[[htmlString stringByStrippingTags] stringByRemovingNewLinesAndWhitespace] stringByDecodingHTMLEntities];
-            [AppDelegate OpenAlertwithTitle:@"Error" andContent:as];
-        }
-        else {
-            // NSLog(@"INFO : %@",info);
-            //[self connectionWasSuccesfull];
-            self.isCorrectRezult = YES;
-        }
-    }
 }
 
 #pragma mark - Helpes methods
@@ -169,7 +99,7 @@
     NSString * _userMale = userMale;
     
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@",strUrl,SubstringRegister];
-    NSString * strUrlRequestData = [NSString stringWithFormat:URL_USER_CREATE,_firstName,_secondName,_userName,_userPassword,_birthYear,_userMale];
+    NSString * strUrlRequestData = [NSString stringWithFormat:URL_USER_CREATE,_firstName,_secondName,_userName,_userPassword,_birthYear,_userMale,APP_ID_KEY];
     
     enterPassword = userPassword;
     typeOfServiceRequest = ApplicationServiceRequestCreateUser;
@@ -177,24 +107,28 @@
     [self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestPost setHeaders:NO andTypeRequest:ApplicationServiceRequestCreateUser];
 }
 
-//-(void) getPredictionWithLocationID: (int) lid andSpecieID: (int)sid {
-//    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"http://api.sportsmantracker.com/v1/predict/?lid=%@&sid=%@&%@", [NSString stringWithFormat:@"%d", lid], [NSString stringWithFormat:@"%d", sid] , APP_ID_KEY];
-//    NSString * strUrlRequestData = @"";
-//    typeOfServiceRequest = ApplicationServiceRequestPredictionInfo;
-//    [self startRequest:strUrlRequestAddress andData:strUrlRequestData typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestPredictionInfo];
-//}
+-(void) sendInvitationEmailWithEmail: (NSString*) _email andName: (NSString*) _name{
+    NSString * email = [self convertString:_email];
+    NSString * name = [self convertString:_name];
+    
+    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"http://api.sportsmantracker.com/v1/sendBuddyTrackingInvite/?email=%@&app=fp&name=%@&%@", email, name, APP_ID_KEY ];
+    NSString * strUrlRequestData = @"";
+    
+    typeOfServiceRequest = ApplicationServiceRequestSendInvitation;
+     [self startRequest:strUrlRequestAddress andData:strUrlRequestData typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestSendInvitation];
+}
 
 -(void) createLocationWithName : (NSString*) name Latitude: (double) latitude Longitude: (double) longitude{
     
     CFTimeInterval begin = CACurrentMediaTime();
-    NSString * LocationName = [self convertString:name/*@"ыиъйзж"*/];
+    NSString * LocationName = [self convertString:name];
     NSString * lat = [self convertString:[NSString stringWithFormat:@"%f", latitude]];
     NSString * longit = [self convertString:[NSString stringWithFormat:@"%f", longitude]];
     
     NSString *userId = [NSString stringWithFormat:@"%d", appDel.user.userID];
     
     NSString * strUrlRequestAddress = @"http://api.sportsmantracker.com/v1/location";
-    NSString * strUrlRequestData = [NSString stringWithFormat: @"user_id=%@&type_id=1&name=%@&latitude=%@&longitude=%@&%@", userId, LocationName, lat, longit, APP_ID_KEY];
+    NSString * strUrlRequestData = [NSString stringWithFormat: @"user_id=%@&type_id=2&name=%@&latitude=%@&longitude=%@&%@", userId, LocationName, lat, longit,APP_ID_KEY];
     typeOfServiceRequest = ApplicationServiceRequestCreateLocation;
     
     [self startRequest:strUrlRequestAddress andData:strUrlRequestData typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestCreateLocation];
@@ -220,7 +154,7 @@
     typeOfServiceRequest = ApplicationServiceRequestLocationsAssociatedWithUser;
     NSString * strLocations = [NSString stringWithFormat:@"%i?%@",appDel.user.userID,APP_ID_KEY];
     
-    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@%@&%@",strUrl,SubstringLocations,strLocations, APP_ID_KEY];
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@%@",strUrl,SubstringLocations,strLocations];
     NSLog(@"URL : %@",strUrlRequestAdress);
     [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestLocationsAssociatedWithUser];
 }
@@ -243,12 +177,26 @@
     //curl -v  -X PUT "http://api.sportsmantracker.com/v1/location/61" -d 'name=pole+1&latitude=32.3223&longitude=32.3223&app_id=eefffe70&app_key=99b043c0142398fcd928b4a4b62700e4'
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@%i",strUrl,SubstringLocation,_locID];
     NSLog(@"URL : %@",strUrlRequestAdress);
-    NSString * strUrlRequestData = [NSString stringWithFormat:@"name=%@&latitude=%@&longitude=%@&%@",[self convertString:_newName],_lati,_long, APP_ID_KEY];
+    NSString * strUrlRequestData = [NSString stringWithFormat:@"name=%@&latitude=%@&longitude=%@&%@",[self convertString:_newName],_lati,_long,APP_ID_KEY];
     
     [self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestPut setHeaders:YES andTypeRequest:ApplicationServiceRequestUpdateLocation];
 }
 
 #pragma mark - Work with Buddies request
+
+- (void) updateUserTrackingVisibility: (BOOL) _tracking_visibility{
+    int tracking_visibility = _tracking_visibility ? 1 : 0;
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@privacy/%i",strUrl, appDel.user.userID];
+    NSString * strUrlRequestData = [NSString stringWithFormat:@"tracking_visibility=%i&%@",tracking_visibility,APP_ID_KEY];
+    typeOfServiceRequest = ApplicationServiceRequestChangeTrackingVisibility;
+    [self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestPut setHeaders:YES andTypeRequest:ApplicationServiceRequestChangeTrackingVisibility];
+}
+
+- (void) getUserTrackingVisibility{
+     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@privacy/%i?%@",strUrl, appDel.user.userID,APP_ID_KEY];
+    typeOfServiceRequest = ApplicationServiceRequestGetUserTrackingVisibility;
+    [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetUserTrackingVisibility];
+}
 
 - (void) buddyGetListUsersBuddies{
     //curl -v -H "X-Username:venko_132@ukr.net" -H "X-Password:1234++" -X GET "http://api.sportsmantracker.com/v1/buddies?app_id=eefffe70&app_key=99b043c0142398fcd928b4a4b62700e4"
@@ -330,7 +278,7 @@
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i",strUrl,SubstringCurrentLocation,appDel.user.userID];
     NSLog(@"URL : %@",strUrlRequestAdress);
     
-    NSString * strUrlRequestData1 = [NSString stringWithFormat:@"latitude=%@&longitude=%@&%@",_latitude,_longitude, APP_ID_KEY];
+    NSString * strUrlRequestData1 = [NSString stringWithFormat:@"latitude=%@&longitude=%@&%@",_latitude,_longitude,APP_ID_KEY];
     
     [self startRequest:strUrlRequestAdress andData:strUrlRequestData1 typeRequest:RequestPut setHeaders:YES andTypeRequest:ApplicationServiceRequestUpdateUserCurrentLocation];
 }
@@ -366,20 +314,7 @@
     NSError * reqError = nil;
     NSURLResponse * response = nil;
     receivedData = (NSMutableData* )[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&reqError];
-    //*** A.C.
-    
-   /* NSURLConnection * connection = [NSURLConnection connectionWithRequest:request delegate:self];
-    if (connection) {
-        NSLog(@"Connecting...");
-        // создаем NSMutableData, чтобы сохранить полученные данные
-        receivedData = [NSMutableData data];
-    } else {
-        NSLog(@"Connection error!");
-        [HPAppDelegate OpenAlertwithTitle:@"Error" andContent:@"Problem with internet\nconnection"];
-        return;
-    }*/
-   // NSLog(@"Responce : %@",response);
-    //NSLog(@"receivedData %@",[[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding]);
+
     if(reqError == nil){
         if([_type isEqualToString: RequestDelete]){
             NSLog(@"receivedData %@",[[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding]);
@@ -398,34 +333,22 @@
                 NSString * htmlString = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
                  NSString * as = [[[htmlString stringByStrippingTags] stringByRemovingNewLinesAndWhitespace] stringByDecodingHTMLEntities];
                 NSLog(@"AS : %@",as);
-                
                 NSString * bdExeption;
-                if([as isEqualToString:@"Error Couldn't create user Attribute: username This email already exists."])
-                    bdExeption = @"Couldn't create user.\nThis email already exists.";
-                
+                if([as isEqualToString:@"Error Couldn't create user Attribute: username This email already exists."]) bdExeption = @"Couldn't create user.\nThis email already exists.";
                 else if([as isEqualToString:@"Missing first_name and/or last_name"])
                     bdExeption = @"Missing users with these\nfirst name and last name";
-                
                 else if ([as isEqualToString:@"No users were found"])
                     bdExeption = @"No users were found";
-                else bdExeption = @"Problem with connection.\nPlease, try again";
+                else bdExeption = @"Problem in connection.\nPlease, try again";
                 
-                //No buddies were found
-                if(typeReust == ApplicationServiceRequestGetListOfBuddies){
-                    info = [NSDictionary new];
-                    [self connectionWasSuccesfull:typeReust];
-                    self.isCorrectRezult = YES;
-                } else {
-                    dispatch_async(dispatch_get_main_queue(), ^(){
-                        if(typeReust != ApplicationServiceRequestGetListOfBuddies)
-                            [AppDelegate OpenAlertwithTitle:@"Error" andContent:bdExeption];
+                dispatch_async(dispatch_get_main_queue(), ^(){
                     
-                        //if([[UIApplication sharedApplication] isIgnoringInteractionEvents])
-                        //   [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-                    });
-                }
+                    [AppDelegate OpenAlertwithTitle:@"Error" andContent:bdExeption];
+                    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+                });
             }
             else {
+            // NSLog(@"INFO : %@",info);
                 [self connectionWasSuccesfull:typeReust];
                 self.isCorrectRezult = YES;
             }
@@ -464,7 +387,7 @@
         NSLog(@"receivedData %@",received);
         NSString * bodyExeption;
         if([received isEqualToString:@"Error: Username or Password is invalid"]) bodyExeption = @"Username or Password is invalid";
-        else bodyExeption = @"Problem with connection.\nPlease, try again";
+        else bodyExeption = @"Problem in connection.\nPlease, try again";
         
         dispatch_async(dispatch_get_main_queue(), ^(){
             if(!appDel.isApplicationInBackground){
@@ -491,9 +414,6 @@
         case ApplicationServiceRequestLocationsAssociatedWithUser:
             [self proccesingDataGetLocationsAssociatedWithUser];
             break;
-//        case ApplicationServiceRequestPredictionInfo:
-//           [self processingPredictionData];
-//            break;
         case ApplicationServiceRequestDeleteLocation:
             [self processingPredictionDataDeleteLocation];
             break;
@@ -524,26 +444,33 @@
         case ApplicationServiceRequestSearchBuddy:
             [self processingPredictionDataSearchBuddy];
             break;
-            
+        case ApplicationServiceRequestGetUserTrackingVisibility:
+            [self processingTrackingVisibilityInfo];
+            break;
         default:
             break;
     }
 }
-
+// * * * Add user First Name and Second Name
 - (void)processingDataCreateUser{
     [appDel.user setUserInfoName:[info objectForKey:keyUsername] appID:[[info objectForKey:keyUserID] intValue]];
     [appDel.user setUserInfoPassword:enterPassword];
+    [appDel.user setUserFirstName:[info objectForKey:keyUserFirstName] andSecondName:[info objectForKey:keyUserSecondName]];
+    appDel.user.avatarAdress = [info objectForKey:@"Avatar"];
     
     NSDictionary *retrievedDictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:FB_USER_SIGN];
     if(retrievedDictionary == nil)
-        //[FBConnectClass saveUserIDapp:appDel.user.userID andFacebook:appDel.user.userFID pass:appDel.user.userPassword name:appDel.user.userName];
         [appDel.user saveUser];
     info = nil;
 }
 
 - (void)processingDataAvtorizeUser{
+    NSLog(@"processingDataAvtorizeUser");
+    NSLog(@"INFO : %@",info);
     [appDel.user setUserInfoName:[info objectForKey:keyUsername] appID:[[info objectForKey:keyUserID] intValue]];
     [appDel.user setUserInfoPassword:enterPassword];
+    [appDel.user setUserFirstName:[info objectForKey:keyUserFirstName] andSecondName:[info objectForKey:keyUserSecondName]];
+    appDel.user.avatarAdress = [info objectForKey:@"Avatar"];
     info = nil;
 }
 
@@ -556,7 +483,7 @@
         for (NSDictionary * dicInfo in info) {
             Location * location = [Location new];
             [location setValuesFromDict:dicInfo];
-            if(![location isLocationDelete] && location.typeLocation == typeHunting)
+            if(![location isLocationDelete] && location.typeLocation == typeFishing)
                 [listLocations addObject:location];
         }
         self.isCorrectRezult = YES;
@@ -565,19 +492,11 @@
         self.isCorrectRezult = NO;
         NSLog(@"ERROR !");
     }
-    appDel.listLocations = [[NSMutableArray alloc] initWithArray:listLocations];
+    //if(self.isCorrectRezult)
+        appDel.listLocations = [[NSMutableArray alloc] initWithArray:listLocations];
+    //else appDel.listLocations = nil;
+    //NSLog(@"%@",info);
 }
-
-//- (void) processingPredictionData{
-//    NSMutableArray * dailyPredictionsList = [NSMutableArray new];
-//        for (NSDictionary * dict in info){
-//            DailyPrediction * dailyPrediction = [DailyPrediction new];
-//            [dailyPrediction fillInfoFromDictionary:dict];
-//            [dailyPredictionsList addObject:dailyPrediction];
-//        }
-//    appDel.dailyPredict = nil;
-//    appDel.dailyPredict = [[NSMutableArray alloc] initWithArray:dailyPredictionsList];
-//}
 
 - (void)processingPredictionDataDeleteLocation{
     NSLog(@"Location was deleted");
@@ -612,18 +531,11 @@
     NSLog(@"LOCATION : %@",info);
     
     NSMutableArray * buddiesList = [NSMutableArray new];
-    @try {
         for(NSDictionary * dic in info){
             Buddy * buddy = [Buddy new];
             [buddy setData:dic];
             [buddiesList addObject:buddy];
         }
-    }
-    @catch (NSException *exception) {
-        NSLog(@"Error with getting buddies list in LocationViewController Timer");
-    }
-
-    
     appDel.listUserBuddies = nil;
     appDel.listUserBuddies = [[NSMutableArray alloc] initWithArray:buddiesList];
 }
@@ -651,7 +563,6 @@
 
 - (void)processingPredictionDataChangeTypeOfBuddyStatus{
     NSLog(@"ChangeTypeOfBuddyStatus");
-    //NSLog(@"%@",info);
 }
 
 - (void)processingPredictionDataUpdateUserCurrentLocation{
@@ -674,9 +585,11 @@
     
     UINavigationController * controller = (UINavigationController*)appDel.window.rootViewController;
     id obj = [controller.viewControllers objectAtIndex:(controller.viewControllers.count - 1)];
-    if([obj isKindOfClass:[BuddySearchViewController class]]){
-        BuddySearchViewController * viewC = (BuddySearchViewController*)[controller.viewControllers objectAtIndex:(controller.viewControllers.count - 1)];
-        [viewC addFindingUsers:buddiesList];
+    if([obj isKindOfClass:[UITabBarController class]]){
+        
+        UITabBarController * tabBar = (UITabBarController*) obj;
+        BuddySearchViewController * buddySearchVC = (BuddySearchViewController*) [tabBar.viewControllers objectAtIndex:1];
+        [buddySearchVC addFindingUsers:buddiesList];
     }
 }
 
@@ -687,7 +600,14 @@
         Buddy * _buddy = (Buddy* )[appDel.listUserBuddies objectAtIndex:i];
         if([_buddy.userID isEqualToString:_userID]) return YES;
     }
+    
     return isBuddy;
+}
+
+-(void) processingTrackingVisibilityInfo{
+    for (NSDictionary * dic in info){
+        appDel.userTrackingVisibility = [[dic objectForKey:@"tracking_visibility"] boolValue];
+    }
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "FlyoutMenuViewController.h"
 #import "WeatherViewController.h"
+#import "AppDelegate.h"
 
 @interface FlyoutMenuViewController ()
 {
@@ -33,6 +34,28 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    AppDelegate * app = [[UIApplication sharedApplication] delegate];
+    
+    app.isUserSign = YES;
+    [app saveStateOfUser: app.isUserSign];
+    [app saveSignUser: app.user];
+    
+    
+    //self.lblFirstAndSecondName.text = [NSString stringWithFormat:@"%@ %@",app.user.userFirstName,app.user.userSecondName];
+    //self.lblFirstAndSecondName.textColor = [UIColor colorWithRed:(225.0f/255.0f) green:(225.0f/255.0f) blue:(225.0f/255.0f) alpha:1.0f];
+    //self.lblUserName.text = @"Powered By SportsmanTracker.com";
+    //self.lblUserName.textColor = [UIColor colorWithRed:(225.0f/255.0f) green:(225.0f/255.0f) blue:(225.0f/255.0f) alpha:1.0f];
+    
+    /*[app.user loadImg];
+     self.imgAvatar.image = [UIImage imageWithData:app.user.imgData];*/
+    
+
+    
+    self.lbName.text = app.user.userName;
+    //self.lbLocation.text = app.user.userSecondName;
+    //NSURL * imgURL = [NSURL alloc]initWithString:app.user.imgData
+    //self.imgUser.image = [UIImage imageWithData:app.user.imgData];
+//--------------------------------------------------------------------------------------------------------------------
     menuItems = [[NSArray alloc]initWithObjects:@"Log an Activity", @"Hunting Map", @"Fishing Map", @"Camera/Photos", @"Prediction", @"Reports", @"Weather", @"Buddies", @"Settings", @"Logout", nil];
     NSArray *functionsArrayIdentifiers = [[NSArray alloc] initWithObjects:@"openLogAnActivity", @"openHuntingMap", @"openFishingMap", @"openCameraAndPhotos", @"openPrediction", @"openReports", @"openWeather", @"openBuddies", @"openSettings", @"logout", nil];
     functionsDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:functionsArrayIdentifiers, @"identifiers", menuItems, @"strings", nil];

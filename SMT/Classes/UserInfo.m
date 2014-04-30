@@ -11,7 +11,7 @@
 
 @implementation UserInfo
 
-@synthesize userName, userPassword, userID, userFID;
+@synthesize userName, userPassword, userID, userFID, userFirstName, userSecondName;
 
 - (id)init
 {
@@ -42,6 +42,11 @@
     userFID = _fid;
 }
 
+- (void)setUserFirstName:(NSString*)_firstName andSecondName:(NSString*)_secondName{
+    userSecondName = _secondName;
+    userFirstName = _firstName;
+}
+
 - (id) initWithCoder:(NSCoder *)aDecoder{
     
     if (self = [super init]){
@@ -49,6 +54,8 @@
         userFID = [aDecoder decodeObjectForKey:@"userFID"];
         userName = [aDecoder decodeObjectForKey:@"userName"];
         userPassword = [aDecoder decodeObjectForKey:@"userPassword"];
+        userFirstName = [aDecoder decodeObjectForKey:@"userFirstName"];
+        userSecondName = [aDecoder decodeObjectForKey:@"userSecondName"];
     }
     return self;
 }
@@ -58,6 +65,8 @@
     [aCoder encodeObject:userFID forKey:@"userFID"];
     [aCoder encodeObject:userName forKey:@"userName"];
     [aCoder encodeObject:userPassword forKey:@"userPassword"];
+    [aCoder encodeObject:userFirstName forKey:@"userFirstName"];
+    [aCoder encodeObject:userSecondName forKey:@"userSecondName"];
 }
 
 + (BOOL)itsFirstMomentWhenUserLogin:(NSString*)usName{
@@ -121,7 +130,9 @@
 }
 
 
-
+- (void)loadImg{
+    self.imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.avatarAdress]];
+}
 
 
 

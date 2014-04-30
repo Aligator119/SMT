@@ -38,6 +38,7 @@ static NSString * const kGoogleBrouserAPIkey = @"AIzaSyAgYW3MOr37pwGSATMfWXWklbf
 
 //@property (strong, nonatomic) UserLocationInThisMoment * userLocation;
 //@property (strong, nonatomic) NSTimer * timerForUserPositionsUpdating;
+@property (nonatomic) BOOL userTrackingVisibility;
 
 + (NSString*) nibNameForBaseName:(NSString *)baseName;
 + (void)OpenAlertwithTitle:(NSString *)_title andContent:(NSString *)_content;
@@ -45,5 +46,11 @@ static NSString * const kGoogleBrouserAPIkey = @"AIzaSyAgYW3MOr37pwGSATMfWXWklbf
 - (void)getPredictionsCalls;
 
 + (BOOL)removeGapsWithString:(NSString*)_str;
+
+- (void)getSignUser;
+- (void)saveSignUser:(UserInfo*)_userInfo;
+- (BOOL)isUserSignIn;
+- (void)saveStateOfUser:(BOOL)_isSign;
+- (void)startUpdateUserPosition;
 
 @end

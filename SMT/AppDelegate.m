@@ -129,6 +129,53 @@
     else return NO;
 }
 
+//--------------------------------------------------------------------------------------------------------------------
+/*
+- (void)saveSignUser:(UserInfo*)_userInfo{
+    // UserInfo * user =  [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:USER_SIGN_KEY]];
+    
+    NSData *savedPredictData = [NSKeyedArchiver archivedDataWithRootObject:_userInfo];
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setObject:savedPredictData forKey:USER_SIGN_KEY];
+    [defaults synchronize];
+}
+
+- (void)getSignUser{
+    UserInfo * userGet =  [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:USER_SIGN_KEY]];
+    if(userGet != nil)
+        self.user = userGet;
+}
+
+- (BOOL)isUserSignIn{
+    BOOL isSign = NO;
+    
+    NSDictionary *retrievedDictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:IS_USER_SIGN_KEY];
+    
+    if(retrievedDictionary != nil){
+        isSign = [[retrievedDictionary objectForKey:@"isSign"] boolValue];
+    }
+    
+    return isSign;
+}
+
+- (BOOL)isUserSignBefore{
+    BOOL isSign = NO;
+    
+    NSDictionary *retrievedDictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:IS_USER_SIGN_KEY];
+    
+    if(retrievedDictionary != nil) isSign = YES;
+    
+    return isSign;
+}
+*/
+- (void)saveStateOfUser:(BOOL)_isSign{
+    NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithBool:_isSign],@"isSign", nil];
+    
+    //[[NSUserDefaults standardUserDefaults] setObject:dic forKey:IS_USER_SIGN_KEY];
+    //[[NSUserDefaults standardUserDefaults] synchronize];
+}
+//--------------------------------------------------------------------------------------------------------------------
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

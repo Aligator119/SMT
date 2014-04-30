@@ -25,7 +25,10 @@ enum ApplicationServiceRequest
     ApplicationServiceRequestDeleteFromBuddies = 11,
     ApplicationServiceRequestChangeTypeOfBuddyRequest = 12,
     ApplicationServiceRequestUpdateUserCurrentLocation = 13,
-    ApplicationServiceRequestSearchBuddy = 14
+    ApplicationServiceRequestSearchBuddy = 14,
+    ApplicationServiceRequestSendInvitation = 15,
+    ApplicationServiceRequestChangeTrackingVisibility = 16,
+    ApplicationServiceRequestGetUserTrackingVisibility = 17
 };
 
 @interface DataLoader : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
@@ -35,6 +38,8 @@ enum ApplicationServiceRequest
     
     NSString * keyUsername;
     NSString * keyUserID;
+    NSString * keyUserFirstName;
+    NSString * keyUserSecondName;
     
     NSDictionary * info;
     
@@ -58,7 +63,6 @@ enum ApplicationServiceRequest
                       birthYear:(int) birthYear
                             sex:(NSString*) userMale;
 - (void)getLocationsAssociatedWithUser;
-//- (void) getPredictionWithLocationID: (int) lid andSpecieID: (int)sid;
 - (void) createLocationWithName : (NSString*) name Latitude: (double) latitude Longitude: (double) longitude;
 - (void)deleteLocationWithID:(int) _locID;
 - (void)updateChooseLocation:(int)_locID
@@ -74,5 +78,8 @@ enum ApplicationServiceRequest
 - (void)updateUserLocationLat:(NSString*)_latitude andLong:(NSString*)_longitude;
 
 - (void)buddySearchByLastName:(NSString*)_name;
+- (void) sendInvitationEmailWithEmail: (NSString*) _email andName: (NSString*) _name;
+- (void) updateUserTrackingVisibility: (BOOL) _tracking_visibility;
+- (void) getUserTrackingVisibility;
 
 @end
