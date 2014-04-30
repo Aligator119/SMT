@@ -12,7 +12,7 @@
 #import "UserInfo.h"
 #import "AppDelegate.h"
 #import "Location.h"
-#import "DailyPrediction.h"
+//#import "DailyPrediction.h"
 #import "FBConnectClass.h"
 #import "ConstantsClass.h"
 #import "NSString+HTML.h"
@@ -177,12 +177,12 @@
     [self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestPost setHeaders:NO andTypeRequest:ApplicationServiceRequestCreateUser];
 }
 
--(void) getPredictionWithLocationID: (int) lid andSpecieID: (int)sid {
-    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"http://api.sportsmantracker.com/v1/predict/?lid=%@&sid=%@&%@", [NSString stringWithFormat:@"%d", lid], [NSString stringWithFormat:@"%d", sid] , APP_ID_KEY];
-    NSString * strUrlRequestData = @"";
-    typeOfServiceRequest = ApplicationServiceRequestPredictionInfo;
-    [self startRequest:strUrlRequestAddress andData:strUrlRequestData typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestPredictionInfo];
-}
+//-(void) getPredictionWithLocationID: (int) lid andSpecieID: (int)sid {
+//    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"http://api.sportsmantracker.com/v1/predict/?lid=%@&sid=%@&%@", [NSString stringWithFormat:@"%d", lid], [NSString stringWithFormat:@"%d", sid] , APP_ID_KEY];
+//    NSString * strUrlRequestData = @"";
+//    typeOfServiceRequest = ApplicationServiceRequestPredictionInfo;
+//    [self startRequest:strUrlRequestAddress andData:strUrlRequestData typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestPredictionInfo];
+//}
 
 -(void) createLocationWithName : (NSString*) name Latitude: (double) latitude Longitude: (double) longitude{
     
@@ -491,9 +491,9 @@
         case ApplicationServiceRequestLocationsAssociatedWithUser:
             [self proccesingDataGetLocationsAssociatedWithUser];
             break;
-        case ApplicationServiceRequestPredictionInfo:
-           [self processingPredictionData];
-            break;
+//        case ApplicationServiceRequestPredictionInfo:
+//           [self processingPredictionData];
+//            break;
         case ApplicationServiceRequestDeleteLocation:
             [self processingPredictionDataDeleteLocation];
             break;
@@ -568,16 +568,16 @@
     appDel.listLocations = [[NSMutableArray alloc] initWithArray:listLocations];
 }
 
-- (void) processingPredictionData{
-    NSMutableArray * dailyPredictionsList = [NSMutableArray new];
-        for (NSDictionary * dict in info){
-            DailyPrediction * dailyPrediction = [DailyPrediction new];
-            [dailyPrediction fillInfoFromDictionary:dict];
-            [dailyPredictionsList addObject:dailyPrediction];
-        }
-    appDel.dailyPredict = nil;
-    appDel.dailyPredict = [[NSMutableArray alloc] initWithArray:dailyPredictionsList];
-}
+//- (void) processingPredictionData{
+//    NSMutableArray * dailyPredictionsList = [NSMutableArray new];
+//        for (NSDictionary * dict in info){
+//            DailyPrediction * dailyPrediction = [DailyPrediction new];
+//            [dailyPrediction fillInfoFromDictionary:dict];
+//            [dailyPredictionsList addObject:dailyPrediction];
+//        }
+//    appDel.dailyPredict = nil;
+//    appDel.dailyPredict = [[NSMutableArray alloc] initWithArray:dailyPredictionsList];
+//}
 
 - (void)processingPredictionDataDeleteLocation{
     NSLog(@"Location was deleted");
