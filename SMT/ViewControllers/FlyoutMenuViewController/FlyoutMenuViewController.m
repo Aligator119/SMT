@@ -7,10 +7,12 @@
 //
 
 #import "FlyoutMenuViewController.h"
+#import "WeatherViewController.h"
 
 @interface FlyoutMenuViewController ()
 {
     NSArray * menuItems;
+    NSDictionary *functionsDictionary;
 }
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
@@ -32,6 +34,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     menuItems = [[NSArray alloc]initWithObjects:@"Log an Activity", @"Hunting Map", @"Fishing Map", @"Camera/Photos", @"Prediction", @"Reports", @"Weather", @"Buddies", @"Settings", @"Logout", nil];
+    NSArray *functionsArrayIdentifiers = [[NSArray alloc] initWithObjects:@"openLogAnActivity", @"openHuntingMap", @"openFishingMap", @"openCameraAndPhotos", @"openPrediction", @"openReports", @"openWeather", @"openBuddies", @"openSettings", @"logout", nil];
+    functionsDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:functionsArrayIdentifiers, @"identifiers", menuItems, @"strings", nil];
+}
+
+- (void)openWeather
+{
+    [self.navigationController pushViewController:[[WeatherViewController alloc]init] animated:YES];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -62,6 +71,11 @@
     [cell.contentView setBackgroundColor:[UIColor colorWithRed:56/255.0 green:84/255.0 blue:135/255.0 alpha:1.0]];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSelector:NSSelectorFromString([[functionsDictionary objectForKey:@"identifiers"] objectAtIndex:indexPath.row])];
 }
 
 - (void)didReceiveMemoryWarning

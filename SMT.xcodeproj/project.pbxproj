@@ -38,10 +38,7 @@
 		043354B01910ED9F003767D0 /* CJSONSerializedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 043354A31910ED9F003767D0 /* CJSONSerializedData.m */; };
 		043354B11910ED9F003767D0 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 043354A51910ED9F003767D0 /* CJSONSerializer.m */; };
 		043354B21910ED9F003767D0 /* NSDictionary_JSONExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 043354A81910ED9F003767D0 /* NSDictionary_JSONExtensions.m */; };
-		043354B51910EDEC003767D0 /* DailyPrediction.m in Sources */ = {isa = PBXBuildFile; fileRef = 043354B41910EDEC003767D0 /* DailyPrediction.m */; };
 		043354B81910EE31003767D0 /* Buddy.m in Sources */ = {isa = PBXBuildFile; fileRef = 043354B71910EE31003767D0 /* Buddy.m */; };
-		043354BB1910EE5D003767D0 /* HourlyPrediction.m in Sources */ = {isa = PBXBuildFile; fileRef = 043354BA1910EE5D003767D0 /* HourlyPrediction.m */; };
-		043354BE1910EE92003767D0 /* HourlyPredictionDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 043354BD1910EE92003767D0 /* HourlyPredictionDetails.m */; };
 		043354C11910EEB7003767D0 /* SearchingBuddy.m in Sources */ = {isa = PBXBuildFile; fileRef = 043354C01910EEB7003767D0 /* SearchingBuddy.m */; };
 		043354C61910EF3E003767D0 /* BuddySearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043354C41910EF3E003767D0 /* BuddySearchViewController.m */; };
 		043354C71910EF3E003767D0 /* BuddySearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043354C51910EF3E003767D0 /* BuddySearchViewController.xib */; };
@@ -67,6 +64,12 @@
 		046C6C0E190FECC400E3AC56 /* InviteFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C6C0C190FECC400E3AC56 /* InviteFriendCell.xib */; };
 		046C6C12190FECEE00E3AC56 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046C6C10190FECEE00E3AC56 /* Cell.m */; };
 		046C6C13190FECEE00E3AC56 /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C6C11190FECEE00E3AC56 /* Cell.xib */; };
+		1136267919111CB7004E5857 /* WeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1136267619111CB7004E5857 /* WeatherViewController.m */; };
+		1136267A19111CB7004E5857 /* WeatherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1136267719111CB7004E5857 /* WeatherViewController.xib */; };
+		1136267B19111CB7004E5857 /* WeatherViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1136267819111CB7004E5857 /* WeatherViewController~ipad.xib */; };
+		1136268019112340004E5857 /* WeatherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1136267E19112340004E5857 /* WeatherCell.m */; };
+		1136268119112340004E5857 /* WeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1136267F19112340004E5857 /* WeatherCell.xib */; };
+		113626841911239B004E5857 /* CurrentCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 113626831911239B004E5857 /* CurrentCondition.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,14 +137,8 @@
 		043354A61910ED9F003767D0 /* JSONRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSONRepresentation.h; path = Classes/TouchJSON/JSONRepresentation.h; sourceTree = "<group>"; };
 		043354A71910ED9F003767D0 /* NSDictionary_JSONExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSDictionary_JSONExtensions.h; path = Classes/TouchJSON/NSDictionary_JSONExtensions.h; sourceTree = "<group>"; };
 		043354A81910ED9F003767D0 /* NSDictionary_JSONExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSDictionary_JSONExtensions.m; path = Classes/TouchJSON/NSDictionary_JSONExtensions.m; sourceTree = "<group>"; };
-		043354B31910EDEC003767D0 /* DailyPrediction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DailyPrediction.h; path = Classes/DailyPrediction.h; sourceTree = "<group>"; };
-		043354B41910EDEC003767D0 /* DailyPrediction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DailyPrediction.m; path = Classes/DailyPrediction.m; sourceTree = "<group>"; };
 		043354B61910EE31003767D0 /* Buddy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Buddy.h; path = Classes/Buddy.h; sourceTree = "<group>"; };
 		043354B71910EE31003767D0 /* Buddy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Buddy.m; path = Classes/Buddy.m; sourceTree = "<group>"; };
-		043354B91910EE5D003767D0 /* HourlyPrediction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HourlyPrediction.h; path = Classes/HourlyPrediction.h; sourceTree = "<group>"; };
-		043354BA1910EE5D003767D0 /* HourlyPrediction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HourlyPrediction.m; path = Classes/HourlyPrediction.m; sourceTree = "<group>"; };
-		043354BC1910EE92003767D0 /* HourlyPredictionDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HourlyPredictionDetails.h; path = Classes/HourlyPredictionDetails.h; sourceTree = "<group>"; };
-		043354BD1910EE92003767D0 /* HourlyPredictionDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HourlyPredictionDetails.m; path = Classes/HourlyPredictionDetails.m; sourceTree = "<group>"; };
 		043354BF1910EEB7003767D0 /* SearchingBuddy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchingBuddy.h; path = Classes/SearchingBuddy.h; sourceTree = "<group>"; };
 		043354C01910EEB7003767D0 /* SearchingBuddy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchingBuddy.m; path = Classes/SearchingBuddy.m; sourceTree = "<group>"; };
 		043354C31910EF3E003767D0 /* BuddySearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuddySearchViewController.h; path = ViewControllers/BuddySearchViewController/BuddySearchViewController.h; sourceTree = "<group>"; };
@@ -178,6 +175,15 @@
 		046C6C0F190FECEE00E3AC56 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cell.h; path = ViewControllers/BodyListViewController/CustomCell/Cell.h; sourceTree = "<group>"; };
 		046C6C10190FECEE00E3AC56 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Cell.m; path = ViewControllers/BodyListViewController/CustomCell/Cell.m; sourceTree = "<group>"; };
 		046C6C11190FECEE00E3AC56 /* Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Cell.xib; path = ViewControllers/BodyListViewController/CustomCell/Cell.xib; sourceTree = "<group>"; };
+		1136267519111CB7004E5857 /* WeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherViewController.h; sourceTree = "<group>"; };
+		1136267619111CB7004E5857 /* WeatherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherViewController.m; sourceTree = "<group>"; };
+		1136267719111CB7004E5857 /* WeatherViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherViewController.xib; sourceTree = "<group>"; };
+		1136267819111CB7004E5857 /* WeatherViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "WeatherViewController~ipad.xib"; sourceTree = "<group>"; };
+		1136267D19112340004E5857 /* WeatherCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherCell.h; sourceTree = "<group>"; };
+		1136267E19112340004E5857 /* WeatherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherCell.m; sourceTree = "<group>"; };
+		1136267F19112340004E5857 /* WeatherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherCell.xib; sourceTree = "<group>"; };
+		113626821911239B004E5857 /* CurrentCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentCondition.h; path = Classes/CurrentCondition.h; sourceTree = "<group>"; };
+		113626831911239B004E5857 /* CurrentCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentCondition.m; path = Classes/CurrentCondition.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,15 +300,11 @@
 			isa = PBXGroup;
 			children = (
 				043354BF1910EEB7003767D0 /* SearchingBuddy.h */,
+				113626821911239B004E5857 /* CurrentCondition.h */,
+				113626831911239B004E5857 /* CurrentCondition.m */,
 				043354C01910EEB7003767D0 /* SearchingBuddy.m */,
-				043354BC1910EE92003767D0 /* HourlyPredictionDetails.h */,
-				043354BD1910EE92003767D0 /* HourlyPredictionDetails.m */,
-				043354B91910EE5D003767D0 /* HourlyPrediction.h */,
-				043354BA1910EE5D003767D0 /* HourlyPrediction.m */,
 				043354B61910EE31003767D0 /* Buddy.h */,
 				043354B71910EE31003767D0 /* Buddy.m */,
-				043354B31910EDEC003767D0 /* DailyPrediction.h */,
-				043354B41910EDEC003767D0 /* DailyPrediction.m */,
 				043354931910ED7B003767D0 /* touch JSON */,
 				043354901910E800003767D0 /* FBConnectClass.h */,
 				043354911910E800003767D0 /* FBConnectClass.m */,
@@ -375,6 +377,7 @@
 		044093F9190F7ABC00C4A558 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1136267419111CB7004E5857 /* WeatherViewController */,
 				043354C21910EF20003767D0 /* BuddySearchViewController */,
 				044093FA190F7AD000C4A558 /* LoginViewController */,
 				0440942A190FA66600C4A558 /* RegisterViewController */,
@@ -451,6 +454,29 @@
 				046C6C11190FECEE00E3AC56 /* Cell.xib */,
 			);
 			name = CustomCell;
+			sourceTree = "<group>";
+		};
+		1136267419111CB7004E5857 /* WeatherViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1136267C19112340004E5857 /* WeatherCell */,
+				1136267519111CB7004E5857 /* WeatherViewController.h */,
+				1136267619111CB7004E5857 /* WeatherViewController.m */,
+				1136267719111CB7004E5857 /* WeatherViewController.xib */,
+				1136267819111CB7004E5857 /* WeatherViewController~ipad.xib */,
+			);
+			name = WeatherViewController;
+			path = ViewControllers/WeatherViewController;
+			sourceTree = "<group>";
+		};
+		1136267C19112340004E5857 /* WeatherCell */ = {
+			isa = PBXGroup;
+			children = (
+				1136267D19112340004E5857 /* WeatherCell.h */,
+				1136267E19112340004E5857 /* WeatherCell.m */,
+				1136267F19112340004E5857 /* WeatherCell.xib */,
+			);
+			path = WeatherCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -532,15 +558,18 @@
 				046C6C13190FECEE00E3AC56 /* Cell.xib in Resources */,
 				043354CE1910F0A7003767D0 /* BuddySearchCell.xib in Resources */,
 				0408069B190EA37D00E063C3 /* InfoPlist.strings in Resources */,
+				1136268119112340004E5857 /* WeatherCell.xib in Resources */,
 				04409429190FA53900C4A558 /* ForgotPasswordViewController.xib in Resources */,
 				04409421190F975E00C4A558 /* LoginViewController_iPhone4.xib in Resources */,
 				043354C71910EF3E003767D0 /* BuddySearchViewController.xib in Resources */,
 				046C6C0E190FECC400E3AC56 /* InviteFriendCell.xib in Resources */,
 				046C6BEC190FDF1D00E3AC56 /* back_arrow.png in Resources */,
+				1136267B19111CB7004E5857 /* WeatherViewController~ipad.xib in Resources */,
 				04409422190F975E00C4A558 /* LoginViewController_iPhone5.xib in Resources */,
 				0440943F190FA98B00C4A558 /* RegisterViewController_iPhone5.xib in Resources */,
 				046C6C09190FECA700E3AC56 /* IncomingFriendCell.xib in Resources */,
 				04409424190F975E00C4A558 /* LoginViewController~ipad.xib in Resources */,
+				1136267A19111CB7004E5857 /* WeatherViewController.xib in Resources */,
 				0440943E190FA98B00C4A558 /* RegisterViewController_iPhone4.xib in Resources */,
 				040806A3190EA37D00E063C3 /* Images.xcassets in Resources */,
 				040706B5190FC1CE000D6660 /* BuddyListViewController.xib in Resources */,
@@ -572,13 +601,13 @@
 				04409440190FA98B00C4A558 /* RegisterViewController.m in Sources */,
 				046C6C08190FECA700E3AC56 /* IncomingFriendCell.m in Sources */,
 				043354B01910ED9F003767D0 /* CJSONSerializedData.m in Sources */,
-				043354BB1910EE5D003767D0 /* HourlyPrediction.m in Sources */,
 				046C6C12190FECEE00E3AC56 /* Cell.m in Sources */,
 				0408069D190EA37D00E063C3 /* main.m in Sources */,
 				043354AA1910ED9F003767D0 /* CDataScanner.m in Sources */,
 				0433548E1910E7C9003767D0 /* NSString+HTML.m in Sources */,
 				043354AE1910ED9F003767D0 /* CJSONScanner.m in Sources */,
 				04409428190FA53900C4A558 /* ForgotPasswordViewController.m in Sources */,
+				1136268019112340004E5857 /* WeatherCell.m in Sources */,
 				043354C61910EF3E003767D0 /* BuddySearchViewController.m in Sources */,
 				0433548D1910E7C9003767D0 /* Location.m in Sources */,
 				0433548B1910E7C9003767D0 /* DataLoader.m in Sources */,
@@ -586,13 +615,13 @@
 				04409423190F975E00C4A558 /* LoginViewController.m in Sources */,
 				043354A91910ED9F003767D0 /* CDataScanner_Extensions.m in Sources */,
 				043354B21910ED9F003767D0 /* NSDictionary_JSONExtensions.m in Sources */,
-				043354BE1910EE92003767D0 /* HourlyPredictionDetails.m in Sources */,
+				1136267919111CB7004E5857 /* WeatherViewController.m in Sources */,
 				043354C11910EEB7003767D0 /* SearchingBuddy.m in Sources */,
 				043354AF1910ED9F003767D0 /* CJSONSerialization.m in Sources */,
 				043354AB1910ED9F003767D0 /* CFilteringJSONSerializer.m in Sources */,
+				113626841911239B004E5857 /* CurrentCondition.m in Sources */,
 				043354AD1910ED9F003767D0 /* CJSONDeserializer.m in Sources */,
 				040706B4190FC1CE000D6660 /* BuddyListViewController.m in Sources */,
-				043354B51910EDEC003767D0 /* DailyPrediction.m in Sources */,
 				043354CD1910F0A7003767D0 /* BuddySearchCell.m in Sources */,
 				043354B11910ED9F003767D0 /* CJSONSerializer.m in Sources */,
 				0433548A1910E7C9003767D0 /* ConstantsClass.m in Sources */,

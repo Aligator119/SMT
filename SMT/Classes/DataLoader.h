@@ -58,7 +58,7 @@ enum ApplicationServiceRequest
                       birthYear:(int) birthYear
                             sex:(NSString*) userMale;
 - (void)getLocationsAssociatedWithUser;
-- (void) getPredictionWithLocationID: (int) lid andSpecieID: (int)sid;
+//- (void) getPredictionWithLocationID: (int) lid andSpecieID: (int)sid;
 - (void) createLocationWithName : (NSString*) name Latitude: (double) latitude Longitude: (double) longitude;
 - (void)deleteLocationWithID:(int) _locID;
 - (void)updateChooseLocation:(int)_locID
