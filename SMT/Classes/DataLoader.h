@@ -28,7 +28,8 @@ enum ApplicationServiceRequest
     ApplicationServiceRequestSearchBuddy = 14,
     ApplicationServiceRequestSendInvitation = 15,
     ApplicationServiceRequestChangeTrackingVisibility = 16,
-    ApplicationServiceRequestGetUserTrackingVisibility = 17
+    ApplicationServiceRequestGetUserTrackingVisibility = 17,
+    ApplicationServiceRequestGetWeatherForecast = 18
 };
 
 @interface DataLoader : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
@@ -41,7 +42,7 @@ enum ApplicationServiceRequest
     NSString * keyUserFirstName;
     NSString * keyUserSecondName;
     
-    NSDictionary * info;
+    //NSDictionary * info;
     
     NSString * enterPassword;
     AppDelegate * appDel;
@@ -81,5 +82,6 @@ enum ApplicationServiceRequest
 - (void) sendInvitationEmailWithEmail: (NSString*) _email andName: (NSString*) _name;
 - (void) updateUserTrackingVisibility: (BOOL) _tracking_visibility;
 - (void) getUserTrackingVisibility;
+- (void)getWeatherPredictionForCurrentLocation:(int)_idLocation;
 
 @end

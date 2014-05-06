@@ -50,6 +50,7 @@
     self.navigationController = [[UINavigationController alloc]initWithRootViewController:self.viewController];
     self.window.rootViewController = self.navigationController;
     self.window.backgroundColor = [UIColor whiteColor];
+    self.defaultLocation = [[Location alloc]init];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -127,6 +128,13 @@
                                [NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if(trimmedString.length != 0) return YES;
     else return NO;
+}
+
+- (NSString*)deleteZeroFromTime:(NSString*)_time{
+    NSString * strNewTime = [[NSString alloc] initWithString:_time];
+    if([[strNewTime substringToIndex:1] isEqualToString:@"0"])
+        strNewTime = [strNewTime substringFromIndex:1];
+    return strNewTime;
 }
 
 //--------------------------------------------------------------------------------------------------------------------
