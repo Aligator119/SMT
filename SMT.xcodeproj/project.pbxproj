@@ -33,8 +33,6 @@
 		0425C39C1911146D0097709E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0425C39B1911146D0097709E /* OpenGLES.framework */; };
 		0425C39E191114760097709E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0425C39D191114760097709E /* QuartzCore.framework */; };
 		0425C3A0191114850097709E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0425C39F191114850097709E /* SystemConfiguration.framework */; };
-		0425C3A5191115DD0097709E /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425C3A3191115DD0097709E /* MapViewController.m */; };
-		0425C3A6191115DD0097709E /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0425C3A4191115DD0097709E /* MapViewController.xib */; };
 		0425C3AB19111ECA0097709E /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0425C3AA19111ECA0097709E /* GoogleMaps.framework */; };
 		0425C3AF19111F020097709E /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0425C3AE19111F020097709E /* GoogleMaps.bundle */; };
 		0433548A1910E7C9003767D0 /* ConstantsClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 0433547F1910E7C9003767D0 /* ConstantsClass.m */; };
@@ -86,6 +84,21 @@
 		1136268019112340004E5857 /* WeatherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1136267E19112340004E5857 /* WeatherCell.m */; };
 		1136268119112340004E5857 /* WeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1136267F19112340004E5857 /* WeatherCell.xib */; };
 		113626841911239B004E5857 /* CurrentCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 113626831911239B004E5857 /* CurrentCondition.m */; };
+		11C9F67B191780DC00CDAFBA /* WheatherPredict.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F67A191780DC00CDAFBA /* WheatherPredict.m */; };
+		11C9F67E1917814600CDAFBA /* DayPredict.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F67D1917814600CDAFBA /* DayPredict.m */; };
+		11C9F6811917818800CDAFBA /* HourlyWheather.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F6801917818800CDAFBA /* HourlyWheather.m */; };
+		11C9F684191781F100CDAFBA /* Astronomy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F683191781F100CDAFBA /* Astronomy.m */; };
+		11C9F6871917821800CDAFBA /* TidesPredict.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F6861917821800CDAFBA /* TidesPredict.m */; };
+		11C9F68A1917E52A00CDAFBA /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F6891917E52A00CDAFBA /* UIImageView+AFNetworking.m */; };
+		11C9F6A51917E5FF00CDAFBA /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F6931917E5FF00CDAFBA /* AFHTTPRequestOperation.m */; };
+		11C9F6A61917E5FF00CDAFBA /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F6951917E5FF00CDAFBA /* AFHTTPRequestOperationManager.m */; };
+		11C9F6A71917E5FF00CDAFBA /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F6971917E5FF00CDAFBA /* AFHTTPSessionManager.m */; };
+		11C9F6A81917E5FF00CDAFBA /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F69A1917E5FF00CDAFBA /* AFNetworkReachabilityManager.m */; };
+		11C9F6A91917E5FF00CDAFBA /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F69C1917E5FF00CDAFBA /* AFSecurityPolicy.m */; };
+		11C9F6AA1917E5FF00CDAFBA /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F69E1917E5FF00CDAFBA /* AFURLConnectionOperation.m */; };
+		11C9F6AB1917E5FF00CDAFBA /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F6A01917E5FF00CDAFBA /* AFURLRequestSerialization.m */; };
+		11C9F6AC1917E5FF00CDAFBA /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F6A21917E5FF00CDAFBA /* AFURLResponseSerialization.m */; };
+		11C9F6AD1917E5FF00CDAFBA /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F6A41917E5FF00CDAFBA /* AFURLSessionManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,9 +143,6 @@
 		0425C39B1911146D0097709E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		0425C39D191114760097709E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0425C39F191114850097709E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		0425C3A2191115DD0097709E /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = ViewControllers/MapViewController/MapViewController.h; sourceTree = "<group>"; };
-		0425C3A3191115DD0097709E /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = ViewControllers/MapViewController/MapViewController.m; sourceTree = "<group>"; };
-		0425C3A4191115DD0097709E /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapViewController.xib; path = ViewControllers/MapViewController/MapViewController.xib; sourceTree = "<group>"; };
 		0425C3AA19111ECA0097709E /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = library/GoogleMaps.framework; sourceTree = "<group>"; };
 		0425C3AE19111F020097709E /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = library/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		0433547E1910E7C9003767D0 /* ConstantsClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConstantsClass.h; path = Classes/ConstantsClass.h; sourceTree = "<group>"; };
@@ -217,6 +227,37 @@
 		1136267F19112340004E5857 /* WeatherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherCell.xib; sourceTree = "<group>"; };
 		113626821911239B004E5857 /* CurrentCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentCondition.h; path = Classes/CurrentCondition.h; sourceTree = "<group>"; };
 		113626831911239B004E5857 /* CurrentCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentCondition.m; path = Classes/CurrentCondition.m; sourceTree = "<group>"; };
+		11C9F679191780DC00CDAFBA /* WheatherPredict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WheatherPredict.h; path = Classes/WheatherPredict.h; sourceTree = "<group>"; };
+		11C9F67A191780DC00CDAFBA /* WheatherPredict.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WheatherPredict.m; path = Classes/WheatherPredict.m; sourceTree = "<group>"; };
+		11C9F67C1917814600CDAFBA /* DayPredict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DayPredict.h; path = Classes/DayPredict.h; sourceTree = "<group>"; };
+		11C9F67D1917814600CDAFBA /* DayPredict.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DayPredict.m; path = Classes/DayPredict.m; sourceTree = "<group>"; };
+		11C9F67F1917818800CDAFBA /* HourlyWheather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HourlyWheather.h; path = Classes/HourlyWheather.h; sourceTree = "<group>"; };
+		11C9F6801917818800CDAFBA /* HourlyWheather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HourlyWheather.m; path = Classes/HourlyWheather.m; sourceTree = "<group>"; };
+		11C9F682191781F100CDAFBA /* Astronomy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Astronomy.h; path = Classes/Astronomy.h; sourceTree = "<group>"; };
+		11C9F683191781F100CDAFBA /* Astronomy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Astronomy.m; path = Classes/Astronomy.m; sourceTree = "<group>"; };
+		11C9F6851917821800CDAFBA /* TidesPredict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TidesPredict.h; path = Classes/TidesPredict.h; sourceTree = "<group>"; };
+		11C9F6861917821800CDAFBA /* TidesPredict.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TidesPredict.m; path = Classes/TidesPredict.m; sourceTree = "<group>"; };
+		11C9F6881917E52A00CDAFBA /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "Classes/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		11C9F6891917E52A00CDAFBA /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "Classes/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		11C9F6921917E5FF00CDAFBA /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		11C9F6931917E5FF00CDAFBA /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		11C9F6941917E5FF00CDAFBA /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		11C9F6951917E5FF00CDAFBA /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		11C9F6961917E5FF00CDAFBA /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		11C9F6971917E5FF00CDAFBA /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		11C9F6981917E5FF00CDAFBA /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		11C9F6991917E5FF00CDAFBA /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		11C9F69A1917E5FF00CDAFBA /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		11C9F69B1917E5FF00CDAFBA /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		11C9F69C1917E5FF00CDAFBA /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		11C9F69D1917E5FF00CDAFBA /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		11C9F69E1917E5FF00CDAFBA /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		11C9F69F1917E5FF00CDAFBA /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		11C9F6A01917E5FF00CDAFBA /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		11C9F6A11917E5FF00CDAFBA /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		11C9F6A21917E5FF00CDAFBA /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		11C9F6A31917E5FF00CDAFBA /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		11C9F6A41917E5FF00CDAFBA /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +400,19 @@
 		0411E2081910D0B6006045B0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				11C9F6911917E5FF00CDAFBA /* AFNetworking */,
+				11C9F6881917E52A00CDAFBA /* UIImageView+AFNetworking.h */,
+				11C9F6891917E52A00CDAFBA /* UIImageView+AFNetworking.m */,
+				11C9F6851917821800CDAFBA /* TidesPredict.h */,
+				11C9F6861917821800CDAFBA /* TidesPredict.m */,
+				11C9F682191781F100CDAFBA /* Astronomy.h */,
+				11C9F683191781F100CDAFBA /* Astronomy.m */,
+				11C9F67F1917818800CDAFBA /* HourlyWheather.h */,
+				11C9F6801917818800CDAFBA /* HourlyWheather.m */,
+				11C9F67C1917814600CDAFBA /* DayPredict.h */,
+				11C9F67D1917814600CDAFBA /* DayPredict.m */,
+				11C9F679191780DC00CDAFBA /* WheatherPredict.h */,
+				11C9F67A191780DC00CDAFBA /* WheatherPredict.m */,
 				043354BF1910EEB7003767D0 /* SearchingBuddy.h */,
 				113626821911239B004E5857 /* CurrentCondition.h */,
 				113626831911239B004E5857 /* CurrentCondition.m */,
@@ -382,16 +436,6 @@
 				043354891910E7C9003767D0 /* UserInfo.m */,
 			);
 			name = Classes;
-			sourceTree = "<group>";
-		};
-		0425C3A71911160E0097709E /* MapViewController */ = {
-			isa = PBXGroup;
-			children = (
-				0425C3A2191115DD0097709E /* MapViewController.h */,
-				0425C3A3191115DD0097709E /* MapViewController.m */,
-				0425C3A4191115DD0097709E /* MapViewController.xib */,
-			);
-			name = MapViewController;
 			sourceTree = "<group>";
 		};
 		043354931910ED7B003767D0 /* touch JSON */ = {
@@ -549,6 +593,33 @@
 			path = WeatherCell;
 			sourceTree = "<group>";
 		};
+		11C9F6911917E5FF00CDAFBA /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				11C9F6921917E5FF00CDAFBA /* AFHTTPRequestOperation.h */,
+				11C9F6931917E5FF00CDAFBA /* AFHTTPRequestOperation.m */,
+				11C9F6941917E5FF00CDAFBA /* AFHTTPRequestOperationManager.h */,
+				11C9F6951917E5FF00CDAFBA /* AFHTTPRequestOperationManager.m */,
+				11C9F6961917E5FF00CDAFBA /* AFHTTPSessionManager.h */,
+				11C9F6971917E5FF00CDAFBA /* AFHTTPSessionManager.m */,
+				11C9F6981917E5FF00CDAFBA /* AFNetworking.h */,
+				11C9F6991917E5FF00CDAFBA /* AFNetworkReachabilityManager.h */,
+				11C9F69A1917E5FF00CDAFBA /* AFNetworkReachabilityManager.m */,
+				11C9F69B1917E5FF00CDAFBA /* AFSecurityPolicy.h */,
+				11C9F69C1917E5FF00CDAFBA /* AFSecurityPolicy.m */,
+				11C9F69D1917E5FF00CDAFBA /* AFURLConnectionOperation.h */,
+				11C9F69E1917E5FF00CDAFBA /* AFURLConnectionOperation.m */,
+				11C9F69F1917E5FF00CDAFBA /* AFURLRequestSerialization.h */,
+				11C9F6A01917E5FF00CDAFBA /* AFURLRequestSerialization.m */,
+				11C9F6A11917E5FF00CDAFBA /* AFURLResponseSerialization.h */,
+				11C9F6A21917E5FF00CDAFBA /* AFURLResponseSerialization.m */,
+				11C9F6A31917E5FF00CDAFBA /* AFURLSessionManager.h */,
+				11C9F6A41917E5FF00CDAFBA /* AFURLSessionManager.m */,
+			);
+			name = AFNetworking;
+			path = Classes/AFNetworking;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -664,7 +735,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0433548F1910E7C9003767D0 /* UserInfo.m in Sources */,
+				11C9F6A91917E5FF00CDAFBA /* AFSecurityPolicy.m in Sources */,
 				04409406190F825F00C4A558 /* FlyoutMenuViewController.m in Sources */,
+				11C9F6811917818800CDAFBA /* HourlyWheather.m in Sources */,
 				040806A1190EA37D00E063C3 /* AppDelegate.m in Sources */,
 				046C6C0D190FECC400E3AC56 /* InviteFriendCell.m in Sources */,
 				043354921910E800003767D0 /* FBConnectClass.m in Sources */,
@@ -673,14 +746,18 @@
 				046C6C08190FECA700E3AC56 /* IncomingFriendCell.m in Sources */,
 				043354B01910ED9F003767D0 /* CJSONSerializedData.m in Sources */,
 				046C6C12190FECEE00E3AC56 /* Cell.m in Sources */,
+				11C9F68A1917E52A00CDAFBA /* UIImageView+AFNetworking.m in Sources */,
+				11C9F67B191780DC00CDAFBA /* WheatherPredict.m in Sources */,
 				0408069D190EA37D00E063C3 /* main.m in Sources */,
 				043354AA1910ED9F003767D0 /* CDataScanner.m in Sources */,
 				0433548E1910E7C9003767D0 /* NSString+HTML.m in Sources */,
 				043354AE1910ED9F003767D0 /* CJSONScanner.m in Sources */,
+				11C9F6871917821800CDAFBA /* TidesPredict.m in Sources */,
 				04409428190FA53900C4A558 /* ForgotPasswordViewController.m in Sources */,
 				1136268019112340004E5857 /* WeatherCell.m in Sources */,
 				043354C61910EF3E003767D0 /* BuddySearchViewController.m in Sources */,
 				0433548D1910E7C9003767D0 /* Location.m in Sources */,
+				11C9F684191781F100CDAFBA /* Astronomy.m in Sources */,
 				0433548B1910E7C9003767D0 /* DataLoader.m in Sources */,
 				043354B81910EE31003767D0 /* Buddy.m in Sources */,
 				04409423190F975E00C4A558 /* LoginViewController.m in Sources */,
@@ -688,14 +765,23 @@
 				043354B21910ED9F003767D0 /* NSDictionary_JSONExtensions.m in Sources */,
 				1136267919111CB7004E5857 /* WeatherViewController.m in Sources */,
 				043354C11910EEB7003767D0 /* SearchingBuddy.m in Sources */,
+				11C9F6AB1917E5FF00CDAFBA /* AFURLRequestSerialization.m in Sources */,
 				043354AF1910ED9F003767D0 /* CJSONSerialization.m in Sources */,
 				043354AB1910ED9F003767D0 /* CFilteringJSONSerializer.m in Sources */,
+				11C9F6A61917E5FF00CDAFBA /* AFHTTPRequestOperationManager.m in Sources */,
+				11C9F67E1917814600CDAFBA /* DayPredict.m in Sources */,
 				113626841911239B004E5857 /* CurrentCondition.m in Sources */,
+				11C9F6AA1917E5FF00CDAFBA /* AFURLConnectionOperation.m in Sources */,
+				11C9F6AD1917E5FF00CDAFBA /* AFURLSessionManager.m in Sources */,
+				11C9F6A51917E5FF00CDAFBA /* AFHTTPRequestOperation.m in Sources */,
 				043354AD1910ED9F003767D0 /* CJSONDeserializer.m in Sources */,
 				040706B4190FC1CE000D6660 /* BuddyListViewController.m in Sources */,
 				043354CD1910F0A7003767D0 /* BuddySearchCell.m in Sources */,
 				043354B11910ED9F003767D0 /* CJSONSerializer.m in Sources */,
+				11C9F6A71917E5FF00CDAFBA /* AFHTTPSessionManager.m in Sources */,
 				0433548A1910E7C9003767D0 /* ConstantsClass.m in Sources */,
+				11C9F6A81917E5FF00CDAFBA /* AFNetworkReachabilityManager.m in Sources */,
+				11C9F6AC1917E5FF00CDAFBA /* AFURLResponseSerialization.m in Sources */,
 				0433548C1910E7C9003767D0 /* GTMNSString+HTML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

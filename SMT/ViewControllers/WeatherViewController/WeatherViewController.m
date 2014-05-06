@@ -10,13 +10,14 @@
 #import "WeatherCell.h"
 //#import "WeatherDetailViewController.h"
 #import "AppDelegate.h"
+#import "DataLoader.h"
 
-//#import "DayPredict.h"
-//#import "HourlyWheather.h"
+#import "DayPredict.h"
+#import "HourlyWheather.h"
 //#import "FishHourlyPrediction.h"
 //#import "FishPredictionOfDay.h"
 #import "CurrentCondition.h"
-//#import "UIImageView+AFNetworking.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface WeatherViewController ()
 {
@@ -70,6 +71,11 @@
         self.heightConstr.constant -= 20;
     }
     
+    DataLoader *loader = [[DataLoader alloc]init];
+    [loader getLocationsAssociatedWithUser];
+    hpApp.defaultLocation = [hpApp.listLocations firstObject];
+    [loader getWeatherPredictionForCurrentLocation:2017];
+    
     [self setParamsOfView];
     //[self addListLocationsView];
 }
@@ -86,22 +92,22 @@
 }
 
 - (void)setUpdateParams{
-//    CurrentCondition * currentCondition = hpApp.fishPredictionForLocation.currentCondition;
-//    
-//    self.lblTempNow.text = [NSString stringWithFormat:@"%@°F", currentCondition.tempF];
-//    self.lblWindSpeed.text = [NSString stringWithFormat:@"%@ %@ mph",currentCondition.winddir16Point,currentCondition.windSpedMiles];
-//    self.imgIconWheather.image = [UIImage imageWithData:currentCondition.imgData];
-//    [self setWindDirection:currentCondition.winddir16Point];
-//    //self.imgIconWind
-//    
-//    self.lblCloudcover.text = [NSString stringWithFormat:@"%@%%", currentCondition.cloudcover];
-//    self.lblHumidity.text = [NSString stringWithFormat:@"%@%%",currentCondition.humidity];
-//    self.lblPressure.text = [NSString stringWithFormat:@"%@mb",currentCondition.pressure];
-//    
-//    self.moonrise.text = [hpApp deleteZeroFromTime:currentCondition.astronomyMoonrise];
-//    self.moonset.text = [hpApp deleteZeroFromTime:currentCondition.astronomyMoonset];
-//    self.sunrise.text = [hpApp deleteZeroFromTime:currentCondition.astronomySunrise];
-//    self.sunset.text = [hpApp deleteZeroFromTime:currentCondition.astronomySunset];
+    CurrentCondition * currentCondition = hpApp.wheatherPredictList.currentCondition;
+    
+    self.lblTempNow.text = [NSString stringWithFormat:@"%@°F", currentCondition.tempF];
+    self.lblWindSpeed.text = [NSString stringWithFormat:@"%@ %@ mph",currentCondition.winddir16Point,currentCondition.windSpedMiles];
+    self.imgIconWheather.image = [UIImage imageWithData:currentCondition.imgData];
+    [self setWindDirection:currentCondition.winddir16Point];
+    //self.imgIconWind
+    
+    self.lblCloudcover.text = [NSString stringWithFormat:@"%@%%", currentCondition.cloudcover];
+    self.lblHumidity.text = [NSString stringWithFormat:@"%@%%",currentCondition.humidity];
+    self.lblPressure.text = [NSString stringWithFormat:@"%@mb",currentCondition.pressure];
+    
+    self.moonrise.text = [hpApp deleteZeroFromTime:currentCondition.astronomyMoonrise];
+    self.moonset.text = [hpApp deleteZeroFromTime:currentCondition.astronomyMoonset];
+    self.sunrise.text = [hpApp deleteZeroFromTime:currentCondition.astronomySunrise];
+    self.sunset.text = [hpApp deleteZeroFromTime:currentCondition.astronomySunset];
 }
 
 - (void)setWindDirection:(NSString*)strWindDirection{
@@ -133,16 +139,16 @@
         }
         img = [UIImage imageNamed:[NSString stringWithFormat:@"%@_arrow_icon.png",strWindDirection]];
         self.imgIconWind.image = img;
-        //self.imgIconWind.transform = CGAffineTransformRotate(self.imgIconWind.transform, gradusReturn);
+        self.imgIconWind.transform = CGAffineTransformRotate(self.imgIconWind.transform, gradusReturn);
         [self chooseWindDirection:gradusReturn];
     }
 }
 
 - (void)chooseWindDirection:(float)_gradus{
     
-    //self.imgIconWind.transform = CGAffineTransformRotate(self.imgIconWind.transform, M_PI / 2);
+    self.imgIconWind.transform = CGAffineTransformRotate(self.imgIconWind.transform, M_PI / 2);
     
-   /* [UIView animateWithDuration:0.02f
+    [UIView animateWithDuration:0.02f
                           delay:0.0f
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
@@ -152,7 +158,7 @@
                          if (finished) {
                          }
                      }
-     ];*/
+     ];
 
     
     [UIView beginAnimations:nil context:nil];
@@ -163,17 +169,20 @@
     
 }
 
-//- (FishHourlyPrediction* )getHourlyWheatherForThisTime:(int)index{
-//    FishPredictionOfDay *day = (FishPredictionOfDay*)[hpApp.fishPredictionForLocation.lisFishPredictionOfDay objectAtIndex:index];
-//    NSDate * dateNow = [NSDate date];
-//    
-//    int hour = [self getHour:dateNow];
-//    if(hour == 24) hour = 0;
-//    hour = (int)(hour/3);
-//    
-//    FishHourlyPrediction * hourlyWheather = (FishHourlyPrediction* )[day.listHourlyFishPrediction objectAtIndex:hour];
-//    return hourlyWheather;
-//}
+- (HourlyWheather*) getHourlyWheatherForThisTime:(int)index
+{
+    DayPredict *day = (DayPredict*)[hpApp.wheatherPredictList.dayList objectAtIndex:index];
+    
+    NSDate * dateNow = [NSDate date];
+    
+    int hour = [self getHour:dateNow];
+    if(hour == 24) hour = 0;
+    hour = (int)(hour/3);
+
+    HourlyWheather *hourlyWeather = (HourlyWheather*)[day.listHourlyPrediction objectAtIndex:hour];
+    return hourlyWeather;
+}
+
 
 - (int)getHour:(NSDate*)_dateS{
     NSDateFormatter *dateString = [[NSDateFormatter alloc] init];
@@ -234,19 +243,18 @@
     }
     
     // * * * * Set data * * * *
-//    FishPredictionOfDay *day = (FishPredictionOfDay*)[hpApp.fishPredictionForLocation.lisFishPredictionOfDay objectAtIndex:(indexPath.row)];
-//    FishHourlyPrediction * hourlyWheather = [self getHourlyWheatherForThisTime:indexPath.row];
-//    
-//    NSDateFormatter *dateString = [[NSDateFormatter alloc] init];
-//    [dateString setDateFormat:@"   EEEE, MMMM dd"];
-//    cell.dateLabel.text = [dateString stringFromDate:day.timeDate];
-//    
-//    NSString *maxTemperature = day.tempMaxF;
-//    NSString *minTemperature = day.tempMinF;
-//    NSMutableAttributedString * attrStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@°F/%@°F", maxTemperature, minTemperature]];
-//    [attrStr addAttribute:NSFontAttributeName value:[UIFont fontWithName:cell.temperatureLabel.font.fontName size:20] range: NSMakeRange(0, maxTemperature.length+2)];
-//    cell.temperatureLabel.attributedText = attrStr;
-//    [cell.imgWeather setImageWithURL:[NSURL URLWithString:hourlyWheather.weatherIconURL] placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
+    DayPredict *day = (DayPredict*)[hpApp.wheatherPredictList.dayList objectAtIndex:(indexPath.row)];
+    HourlyWheather *hourlyWeather = [self getHourlyWheatherForThisTime:indexPath.row];
+    NSDateFormatter *dateString = [[NSDateFormatter alloc] init];
+    [dateString setDateFormat:@"   EEEE, MMMM dd"];
+    cell.dateLabel.text = [dateString stringFromDate:day.timeDate];
+    NSString *maxTemperature = day.tempMaxF;
+    NSString *minTemperature = day.tempMinF;
+    NSMutableAttributedString * attrStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@°F/%@°F", maxTemperature, minTemperature]];
+    [attrStr addAttribute:NSFontAttributeName value:[UIFont fontWithName:cell.temperatureLabel.font.fontName size:20] range: NSMakeRange(0, maxTemperature.length+2)];
+    cell.temperatureLabel.attributedText = attrStr;
+    cell.weatherDescription.text = hourlyWeather.weatherDesc;
+    [cell.imgWeather setImageWithURL:[NSURL URLWithString:hourlyWeather.weatherIconURL] placeholderImage:[UIImage imageNamed:@"profile-image-placeholder"]];
     
     return cell;
 }

@@ -10,6 +10,9 @@
 #import "LoginViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import "UserInfo.h"
+#import "WheatherPredict.h"
+#import "Location.h"
+#import "CurrentCondition.h"
 #import <GoogleMaps/GoogleMaps.h>
 
 @class UserInfo;
@@ -26,10 +29,13 @@ static NSString * const kGoogleBrouserAPIkey = @"AIzaSyAgYW3MOr37pwGSATMfWXWklbf
 
 @property (strong, nonatomic) FBSession *session;
 @property (strong, nonatomic) UserInfo * user;
+@property (strong, nonatomic) Location * defaultLocation;
 @property (strong, nonatomic) NSMutableArray * dailyPredict;
 @property (strong, nonatomic) NSMutableArray * listLocations;
 @property (strong, nonatomic) NSMutableArray * listUserBuddies;
 // TEST
+@property (strong, nonatomic) WheatherPredict * wheatherPredictList;
+@property (strong, nonatomic) CurrentCondition * currentCondition;
 @property (nonatomic) int predictionsCalls;
 @property (nonatomic) BOOL isUserSign;
 @property (assign,nonatomic) BOOL isApplicationInBackground;
@@ -52,5 +58,6 @@ static NSString * const kGoogleBrouserAPIkey = @"AIzaSyAgYW3MOr37pwGSATMfWXWklbf
 - (BOOL)isUserSignIn;
 - (void)saveStateOfUser:(BOOL)_isSign;
 - (void)startUpdateUserPosition;
+- (NSString*)deleteZeroFromTime:(NSString*)_time;
 
 @end

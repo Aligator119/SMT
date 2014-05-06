@@ -27,6 +27,7 @@
 #define APP_ID_KEY @"app_id=b63800ad&app_key=34eddb50efc407d00f3498dc1874526c"
 #define URL_USER_LOGIN @"user=%@&password=%@&%@"
 #define URL_USER_CREATE @"firstname=%@&lastname=%@&username=%@&password=%@&birthYear=%@&sex=%@&%@"
+#define URLSportsMaster @"http://api.sportsmantracker.com/v1/"
 
 #define SubstringLogin @"login"
 #define SubstringRegister @"user"
@@ -55,18 +56,15 @@
 + (DataLoader *)instance
 {
     static DataLoader *instance = nil;
-    
-    @synchronized(self)
-    {
-        if (instance == nil)
-        {
-            instance = [[DataLoader alloc] init];
-        }
-    }
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[DataLoader alloc] init];
+    });
     return instance;
 }
 
-- (void)setInitialData{
+- (void)setInitialData
+{
     keyUsername = @"Username";
     keyUserID = @"User ID";
     keyUserFirstName = @"First Name";
@@ -75,7 +73,8 @@
 }
 
 #pragma mark - Helpes methods
-- (NSString *) convertString:(NSString*)str{
+- (NSString *) convertString:(NSString*)str
+{
     NSString * result = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
             NULL,(CFStringRef)str, NULL,(CFStringRef)@"!*'();:@+$,/?%#[]",kCFStringEncodingUTF8));
     
@@ -102,25 +101,33 @@
     NSString * strUrlRequestData = [NSString stringWithFormat:URL_USER_CREATE,_firstName,_secondName,_userName,_userPassword,_birthYear,_userMale,APP_ID_KEY];
     
     enterPassword = userPassword;
-    typeOfServiceRequest = ApplicationServiceRequestCreateUser;
     
-    [self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestPost setHeaders:NO andTypeRequest:ApplicationServiceRequestCreateUser];
+    NSDictionary *info = [self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestPost setHeaders:NO andTypeRequest:ApplicationServiceRequestCreateUser];
+    
+    [appDel.user setUserInfoName:[info objectForKey:keyUsername] appID:[[info objectForKey:keyUserID] intValue]];
+    [appDel.user setUserInfoPassword:enterPassword];
+    [appDel.user setUserFirstName:[info objectForKey:keyUserFirstName] andSecondName:[info objectForKey:keyUserSecondName]];
+    appDel.user.avatarAdress = [info objectForKey:@"Avatar"];
+    
+    NSDictionary *retrievedDictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:FB_USER_SIGN];
+    if(retrievedDictionary == nil)
+        [appDel.user saveUser];
 }
 
--(void) sendInvitationEmailWithEmail: (NSString*) _email andName: (NSString*) _name{
+-(void) sendInvitationEmailWithEmail: (NSString*) _email andName: (NSString*) _name
+{
     NSString * email = [self convertString:_email];
     NSString * name = [self convertString:_name];
     
     NSString * strUrlRequestAddress = [NSString stringWithFormat:@"http://api.sportsmantracker.com/v1/sendBuddyTrackingInvite/?email=%@&app=fp&name=%@&%@", email, name, APP_ID_KEY ];
     NSString * strUrlRequestData = @"";
     
-    typeOfServiceRequest = ApplicationServiceRequestSendInvitation;
      [self startRequest:strUrlRequestAddress andData:strUrlRequestData typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestSendInvitation];
 }
 
--(void) createLocationWithName : (NSString*) name Latitude: (double) latitude Longitude: (double) longitude{
+-(void) createLocationWithName : (NSString*) name Latitude: (double) latitude Longitude: (double) longitude
+{
     
-    CFTimeInterval begin = CACurrentMediaTime();
     NSString * LocationName = [self convertString:name];
     NSString * lat = [self convertString:[NSString stringWithFormat:@"%f", latitude]];
     NSString * longit = [self convertString:[NSString stringWithFormat:@"%f", longitude]];
@@ -129,11 +136,10 @@
     
     NSString * strUrlRequestAddress = @"http://api.sportsmantracker.com/v1/location";
     NSString * strUrlRequestData = [NSString stringWithFormat: @"user_id=%@&type_id=2&name=%@&latitude=%@&longitude=%@&%@", userId, LocationName, lat, longit,APP_ID_KEY];
-    typeOfServiceRequest = ApplicationServiceRequestCreateLocation;
     
-    [self startRequest:strUrlRequestAddress andData:strUrlRequestData typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestCreateLocation];
-    CFTimeInterval end = CACurrentMediaTime();
-    NSLog(@" TIME : %f", end-begin);
+    Location * location = [Location new];
+    [location setValuesFromDict:[self startRequest:strUrlRequestAddress andData:strUrlRequestData typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestCreateLocation]];
+    [appDel.listLocations addObject:location];
 }
 
 - (void)avtorizeUser:(NSString*) userName password:(NSString*) userPassword
@@ -147,71 +153,84 @@
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@",strUrl,SubstringLogin];
     NSString * strUrlRequestData = [NSString stringWithFormat:URL_USER_LOGIN,_userName,_userPassword,APP_ID_KEY];
     
-    [self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestPost setHeaders:NO andTypeRequest:ApplicationServiceRequestAvtorizeUser];
+    NSDictionary *info = [self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestPost setHeaders:NO andTypeRequest:ApplicationServiceRequestAvtorizeUser];
+    
+    [appDel.user setUserInfoName:[info objectForKey:keyUsername] appID:[[info objectForKey:keyUserID] intValue]];
+    [appDel.user setUserInfoPassword:enterPassword];
+    [appDel.user setUserFirstName:[info objectForKey:keyUserFirstName] andSecondName:[info objectForKey:keyUserSecondName]];
+    appDel.user.avatarAdress = [info objectForKey:@"Avatar"];
 }
 
-- (void)getLocationsAssociatedWithUser{
+- (void)getLocationsAssociatedWithUser
+{
     typeOfServiceRequest = ApplicationServiceRequestLocationsAssociatedWithUser;
     NSString * strLocations = [NSString stringWithFormat:@"%i?%@",appDel.user.userID,APP_ID_KEY];
-    
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@%@",strUrl,SubstringLocations,strLocations];
-    NSLog(@"URL : %@",strUrlRequestAdress);
     [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestLocationsAssociatedWithUser];
 }
 
-- (void)deleteLocationWithID:(int) _locID{
-    typeOfServiceRequest = ApplicationServiceRequestDeleteLocation;
-    
+- (void)deleteLocationWithID:(int) _locID
+{
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@%@",strUrl,SubstringLocation,[NSString stringWithFormat:@"%i",_locID]];
-    NSLog(@"URL : %@",strUrlRequestAdress);
-    
     [self startRequest:strUrlRequestAdress andData:APP_ID_KEY typeRequest:RequestDelete setHeaders:YES andTypeRequest:ApplicationServiceRequestDeleteLocation];
 }
 
 - (void)updateChooseLocation:(int)_locID
                      newName:(NSString*)_newName
                      newLati:(NSString*)_lati
-                     newLong:(NSString*)_long {
-    typeOfServiceRequest = ApplicationServiceRequestUpdateLocation;
-    
-    //curl -v  -X PUT "http://api.sportsmantracker.com/v1/location/61" -d 'name=pole+1&latitude=32.3223&longitude=32.3223&app_id=eefffe70&app_key=99b043c0142398fcd928b4a4b62700e4'
+                     newLong:(NSString*)_long
+{
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@%i",strUrl,SubstringLocation,_locID];
-    NSLog(@"URL : %@",strUrlRequestAdress);
     NSString * strUrlRequestData = [NSString stringWithFormat:@"name=%@&latitude=%@&longitude=%@&%@",[self convertString:_newName],_lati,_long,APP_ID_KEY];
-    
-    [self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestPut setHeaders:YES andTypeRequest:ApplicationServiceRequestUpdateLocation];
+
+    Location * location = [Location new];
+    [location setValuesFromDict:[self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestPut setHeaders:YES andTypeRequest:ApplicationServiceRequestUpdateLocation]];
+    for(int i=0 ; i < appDel.listLocations.count; i++){
+        Location * loc = [[appDel listLocations] objectAtIndex:i];
+        if (location.locID == loc.locID){
+            [[appDel listLocations] replaceObjectAtIndex:i withObject:location];
+        }
+    }
+
 }
 
 #pragma mark - Work with Buddies request
 
-- (void) updateUserTrackingVisibility: (BOOL) _tracking_visibility{
+- (void) updateUserTrackingVisibility: (BOOL) _tracking_visibility
+{
     int tracking_visibility = _tracking_visibility ? 1 : 0;
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@privacy/%i",strUrl, appDel.user.userID];
     NSString * strUrlRequestData = [NSString stringWithFormat:@"tracking_visibility=%i&%@",tracking_visibility,APP_ID_KEY];
-    typeOfServiceRequest = ApplicationServiceRequestChangeTrackingVisibility;
     [self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestPut setHeaders:YES andTypeRequest:ApplicationServiceRequestChangeTrackingVisibility];
 }
 
-- (void) getUserTrackingVisibility{
-     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@privacy/%i?%@",strUrl, appDel.user.userID,APP_ID_KEY];
-    typeOfServiceRequest = ApplicationServiceRequestGetUserTrackingVisibility;
-    [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetUserTrackingVisibility];
+- (void) getUserTrackingVisibility
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@privacy/%i?%@",strUrl, appDel.user.userID,APP_ID_KEY];
+
+    for (NSDictionary * dic in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetUserTrackingVisibility])
+    {
+        appDel.userTrackingVisibility = [[dic objectForKey:@"tracking_visibility"] boolValue];
+    }
 }
 
-- (void) buddyGetListUsersBuddies{
-    //curl -v -H "X-Username:venko_132@ukr.net" -H "X-Password:1234++" -X GET "http://api.sportsmantracker.com/v1/buddies?app_id=eefffe70&app_key=99b043c0142398fcd928b4a4b62700e4"
-    
-    typeOfServiceRequest = ApplicationServiceRequestGetListOfBuddies;
-    
+- (void) buddyGetListUsersBuddies
+{
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@?%@",strUrl,SubstringBuddies,APP_ID_KEY];
-    NSLog(@"URL : %@",strUrlRequestAdress);
-    [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListOfBuddies];
+
+    NSMutableArray * buddiesList = [NSMutableArray new];
+    for(NSDictionary * dic in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListOfBuddies]){
+        Buddy * buddy = [Buddy new];
+        [buddy setData:dic];
+        [buddiesList addObject:buddy];
+    }
+    appDel.listUserBuddies = nil;
+    appDel.listUserBuddies = [[NSMutableArray alloc] initWithArray:buddiesList];
+
 }
 
-- (void)buddyAddWithName:(NSString *)buddyName{
-  //  curl -v -H "X-Username:venko_12@ukr.net" -H "X-Password:1234++" -X POST "http://api.sportsmantracker.com/v1/buddies" -d 'email=venko_132%40ukr.net&app_id=eefffe70&app_key=99b043c0142398fcd928b4a4b62700e4'
-    typeOfServiceRequest = ApplicationServiceRequestAddBuddy;
-    
+- (void)buddyAddWithName:(NSString *)buddyName
+{
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@",strUrl,SubstringBuddies];
     NSLog(@"URL : %@",strUrlRequestAdress);
     
@@ -221,63 +240,72 @@
     [self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestAddBuddy];
 }
 
-- (void)buddyGetUserBuddyWithId:(int)_idBuddy{
-    //curl -v -H "X-Username:venko_132@ukr.net" -H "X-Password:1234++" -X GET "http://api.sportsmantracker.com/v1/buddies/50?app_id=eefffe70&app_key=99b043c0142398fcd928b4a4b62700e4"
-    
-    typeOfServiceRequest = ApplicationServiceRequestGetInfoAboutBuddy;
+- (void)buddyGetUserBuddyWithId:(int)_idBuddy
+{
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i?%@",strUrl,SubstringBuddies,_idBuddy,APP_ID_KEY];
-    NSLog(@"URL : %@",strUrlRequestAdress);
-    [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetInfoAboutBuddy];
+
+    Buddy * buddy = [Buddy new];
+    [buddy setData:[self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetInfoAboutBuddy]];
+    
+    UINavigationController * controller = (UINavigationController*)appDel.window.rootViewController;
+    id obj = [controller.viewControllers objectAtIndex:(controller.viewControllers.count - 1)];
+    if([obj isKindOfClass:[BuddySearchViewController class]]){
+        BuddySearchViewController * viewC = (BuddySearchViewController*)[controller.viewControllers objectAtIndex:(controller.viewControllers.count - 1)];
+        [viewC addFindingUserToBuddies:buddy];
+        return;
+    }
+
 }
 
-- (void)buddyDeleteUserFromBuddies:(int)_idBuddy{
-    //curl -v -H "X-Username:venko_12@ukr.net" -H "X-Password:1234++" -X DELETE "http://api.sportsmantracker.com/v1/buddies/7" -d 'app_id=eefffe70&app_key=99b043c0142398fcd928b4a4b62700e4'
-    
-    typeOfServiceRequest = ApplicationServiceRequestDeleteFromBuddies;
-    
+- (void)buddyDeleteUserFromBuddies:(int)_idBuddy
+{
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i",strUrl,SubstringBuddies,_idBuddy];
-    NSLog(@"URL : %@",strUrlRequestAdress);
-
     NSString * strUrlRequestData = [NSString stringWithFormat:@"%@",APP_ID_KEY];
     
     [self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestDelete setHeaders:YES andTypeRequest:ApplicationServiceRequestDeleteFromBuddies];
 }
 
-- (void)buddyChangeUserBuddy:(int)_idBuddy status:(int)_statusBuddy andVisible:(int)_visible{
-    //curl -v -H "X-Username:venko_132@ukr.net" -H "X-Password:1234++" -X PUT "http://api.sportsmantracker.com/v1/buddies/50" -d 'status=1&app_id=eefffe70&app_key=99b043c0142398fcd928b4a4b62700e4'
-    
-    typeOfServiceRequest = ApplicationServiceRequestChangeTypeOfBuddyRequest;
-    
+- (void)buddyChangeUserBuddy:(int)_idBuddy status:(int)_statusBuddy andVisible:(int)_visible
+{
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i",strUrl,SubstringBuddies,_idBuddy];
-    NSLog(@"URL : %@",strUrlRequestAdress);
-    
     NSString * strUrlRequestData = [NSString stringWithFormat:@"status=%i&is_visible=%i&%@",_statusBuddy,_visible,APP_ID_KEY];
     
     [self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestPut setHeaders:YES andTypeRequest:ApplicationServiceRequestChangeTypeOfBuddyRequest];
 }
 
-- (void)buddySearchByLastName:(NSString *)_name{
-    //curl -v -H "X-Username:venko_132@ukr.net" -H "X-Password:1234++" -X GET "http://api.sportsmantracker.com/v1/users?name=as+as+as%40"
-    typeOfServiceRequest = ApplicationServiceRequestSearchBuddy;
+- (void)buddySearchByLastName:(NSString *)_name
+{
     NSString * strConvert = [self convertString:_name];
     NSString * strUrlRequestData = [NSString stringWithFormat:@"name=%@&%@",strConvert,APP_ID_KEY];
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@%@",strUrl,@"users?",strUrlRequestData];
-    NSLog(@"URL : %@",strUrlRequestAdress);
+
+    NSMutableArray * buddiesList = [NSMutableArray new];
+    for(NSDictionary * dic in  [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestSearchBuddy]){
+        SearchingBuddy * buddy = [SearchingBuddy new];
+        [buddy setData:dic];
+        if((appDel.user.userID == [buddy.userID intValue]) || ([self isUserInMyBuddies:buddy.userID]))
+        {
+            
+        } else
+            [buddiesList addObject:buddy];
+    }
     
-    [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestSearchBuddy];
+    UINavigationController * controller = (UINavigationController*)appDel.window.rootViewController;
+    id obj = [controller.viewControllers objectAtIndex:(controller.viewControllers.count - 1)];
+    if([obj isKindOfClass:[UITabBarController class]]){
+        
+        UITabBarController * tabBar = (UITabBarController*) obj;
+        BuddySearchViewController * buddySearchVC = (BuddySearchViewController*) [tabBar.viewControllers objectAtIndex:1];
+        [buddySearchVC addFindingUsers:buddiesList];
+    }
+
 }
 
 #pragma mark - Work with user Location 
 
-- (void)updateUserLocationLat:(NSString*)_latitude andLong:(NSString*)_longitude{
-    //update current location
-    //curl -X PUT -H "X-Username: {username}" -H "X-Password: {password}" http://localhost/v1/current_location/{user_id} -d latitude={latitude} -d longitude={longitude}
-    
-    typeOfServiceRequest = ApplicationServiceRequestUpdateUserCurrentLocation;
-    
+- (void)updateUserLocationLat:(NSString*)_latitude andLong:(NSString*)_longitude
+{
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i",strUrl,SubstringCurrentLocation,appDel.user.userID];
-    NSLog(@"URL : %@",strUrlRequestAdress);
-    
     NSString * strUrlRequestData1 = [NSString stringWithFormat:@"latitude=%@&longitude=%@&%@",_latitude,_longitude,APP_ID_KEY];
     
     [self startRequest:strUrlRequestAdress andData:strUrlRequestData1 typeRequest:RequestPut setHeaders:YES andTypeRequest:ApplicationServiceRequestUpdateUserCurrentLocation];
@@ -286,11 +314,12 @@
 
 #pragma mark - REQUEST
 
-- (void)startRequest:(NSString*) _url andData:(NSString*) _data typeRequest:(NSString*) _type setHeaders:(BOOL)_setHeaders andTypeRequest:(int)typeReust{
+- (NSDictionary *)startRequest:(NSString*) _url andData:(NSString*) _data typeRequest:(NSString*) _type setHeaders:(BOOL)_setHeaders andTypeRequest:(int)typeReust{
     /*if(![HPAppDelegate isActiveConnectedToInternet]){
         [HPAppDelegate OpenAlertwithTitle:@"Error" andContent:@"Problen in connection"];
         return;
     }*/
+    NSDictionary* info = [NSDictionary new];
     self.isCorrectRezult = NO;
     NSData * data = [_data dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
 
@@ -319,7 +348,6 @@
         if([_type isEqualToString: RequestDelete]){
             NSLog(@"receivedData %@",[[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding]);
             self.isCorrectRezult = YES;
-            [self connectionWasSuccesfull:typeReust];
         }
         else {
             NSError * jsonError = nil;
@@ -349,40 +377,10 @@
             }
             else {
             // NSLog(@"INFO : %@",info);
-                [self connectionWasSuccesfull:typeReust];
                 self.isCorrectRezult = YES;
             }
         }
-    /*if(reqError == nil){
-        if([_type isEqualToString: RequestDelete]){
-            NSLog(@"receivedData %@",[[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding]);
-            self.isCorrectRezult = YES;
-            [self connectionWasSuccesfull];
-        }
-        else {
-            NSError * jsonError = nil;
-            CJSONDeserializer *deserializer = [CJSONDeserializer deserializer];
-            info = [deserializer deserialize:receivedData error:&jsonError];
-            if(jsonError != nil) {
-                NSLog(@"Error JSON :%@", jsonError.description);
-                NSLog(@"receivedData %@",[[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding]);
-                
-                NSString * htmlString = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
-                NSString * as = [[[htmlString stringByStrippingTags] stringByRemovingNewLinesAndWhitespace] stringByDecodingHTMLEntities];
-                
-                dispatch_async(dispatch_get_main_queue(), ^(){
-                    [HPAppDelegate OpenAlertwithTitle:@"Error" andContent:as];
-                    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-                });
-            }
-            else {
-                // NSLog(@"INFO : %@",info);
-                [self connectionWasSuccesfull];
-                self.isCorrectRezult = YES;
-            }
-        }*/
-        
-    } else {
+        } else {
         NSString * received = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
         NSLog(@"receivedData %@",received);
         NSString * bodyExeption;
@@ -399,198 +397,16 @@
         NSLog(@"receivedData %@",received);
         
     }
+        return info;
 }
 
-#pragma  mark - Work with Server RESPONCE
+- (void)getWeatherPredictionForCurrentLocation:(int)_idLocation
+{
+    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@forecast/%i",URLSportsMaster,_idLocation];
 
-- (void)connectionWasSuccesfull:(int)_typeRequest{
-    switch (_typeRequest) {
-        case ApplicationServiceRequestAvtorizeUser:
-            [self processingDataAvtorizeUser];
-            break;
-        case ApplicationServiceRequestCreateUser:
-            [self processingDataCreateUser];
-            break;
-        case ApplicationServiceRequestLocationsAssociatedWithUser:
-            [self proccesingDataGetLocationsAssociatedWithUser];
-            break;
-        case ApplicationServiceRequestDeleteLocation:
-            [self processingPredictionDataDeleteLocation];
-            break;
-        case ApplicationServiceRequestUpdateLocation:
-            [self processingPredictionDataUpdateLocation];
-            break;
-        case ApplicationServiceRequestCreateLocation:
-            [self processingPredictionDataCreateLocation];
-            break;
-        case ApplicationServiceRequestAddBuddy:
-            [self processingPredictionDataAddBuddy];
-            break;
-        case ApplicationServiceRequestGetListOfBuddies:
-            [self processingPredictionDataGetListOfBuddies];
-            break;
-        case ApplicationServiceRequestGetInfoAboutBuddy:
-            [self processingPredictionDataGetInfoAboutBuddy];
-            break;
-        case ApplicationServiceRequestDeleteFromBuddies:
-            [self processingPredictionDataDeleteBuddy];
-            break;
-        case ApplicationServiceRequestChangeTypeOfBuddyRequest:
-            [self processingPredictionDataChangeTypeOfBuddyStatus];
-            break;
-        case ApplicationServiceRequestUpdateUserCurrentLocation:
-            [self processingPredictionDataUpdateUserCurrentLocation];
-            break;
-        case ApplicationServiceRequestSearchBuddy:
-            [self processingPredictionDataSearchBuddy];
-            break;
-        case ApplicationServiceRequestGetUserTrackingVisibility:
-            [self processingTrackingVisibilityInfo];
-            break;
-        default:
-            break;
-    }
-}
-// * * * Add user First Name and Second Name
-- (void)processingDataCreateUser{
-    [appDel.user setUserInfoName:[info objectForKey:keyUsername] appID:[[info objectForKey:keyUserID] intValue]];
-    [appDel.user setUserInfoPassword:enterPassword];
-    [appDel.user setUserFirstName:[info objectForKey:keyUserFirstName] andSecondName:[info objectForKey:keyUserSecondName]];
-    appDel.user.avatarAdress = [info objectForKey:@"Avatar"];
-    
-    NSDictionary *retrievedDictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:FB_USER_SIGN];
-    if(retrievedDictionary == nil)
-        [appDel.user saveUser];
-    info = nil;
-}
-
-- (void)processingDataAvtorizeUser{
-    NSLog(@"processingDataAvtorizeUser");
-    NSLog(@"INFO : %@",info);
-    [appDel.user setUserInfoName:[info objectForKey:keyUsername] appID:[[info objectForKey:keyUserID] intValue]];
-    [appDel.user setUserInfoPassword:enterPassword];
-    [appDel.user setUserFirstName:[info objectForKey:keyUserFirstName] andSecondName:[info objectForKey:keyUserSecondName]];
-    appDel.user.avatarAdress = [info objectForKey:@"Avatar"];
-    info = nil;
-}
-
-- (void)proccesingDataGetLocationsAssociatedWithUser{
-    NSLog(@"Get Locations");
-    // * * * *
-    NSMutableArray * listLocations = [NSMutableArray new];
-    @try {
-        //listLocationName = [[NSMutableArray alloc] initWithArray:info.allKeys];
-        for (NSDictionary * dicInfo in info) {
-            Location * location = [Location new];
-            [location setValuesFromDict:dicInfo];
-            if(![location isLocationDelete] && location.typeLocation == typeFishing)
-                [listLocations addObject:location];
-        }
-        self.isCorrectRezult = YES;
-    }
-    @catch (NSException *exception) {
-        self.isCorrectRezult = NO;
-        NSLog(@"ERROR !");
-    }
-    //if(self.isCorrectRezult)
-        appDel.listLocations = [[NSMutableArray alloc] initWithArray:listLocations];
-    //else appDel.listLocations = nil;
-    //NSLog(@"%@",info);
-}
-
-- (void)processingPredictionDataDeleteLocation{
-    NSLog(@"Location was deleted");
-}
-
-- (void)processingPredictionDataUpdateLocation{
-    NSLog(@"Location was update");
-    Location * location = [Location new];
-    [location setValuesFromDict:info];
-    for(int i=0 ; i < appDel.listLocations.count; i++){
-        Location * loc = [[appDel listLocations] objectAtIndex:i];
-        if (location.locID == loc.locID){
-            [[appDel listLocations] replaceObjectAtIndex:i withObject:location];
-        }
-    }
-}
-
-- (void)processingPredictionDataCreateLocation{
-    NSLog(@"Location was created");
-    Location * location = [Location new];
-    [location setValuesFromDict:info];
-    [appDel.listLocations addObject:location];
-}
-
-- (void)processingPredictionDataAddBuddy{
-    NSLog(@"Friend is add");
-    NSLog(@"LOCATION : %@",info);
-}
-
-- (void)processingPredictionDataGetListOfBuddies{
-    NSLog(@"Get list of buddies");
-    NSLog(@"LOCATION : %@",info);
-    
-    NSMutableArray * buddiesList = [NSMutableArray new];
-        for(NSDictionary * dic in info){
-            Buddy * buddy = [Buddy new];
-            [buddy setData:dic];
-            [buddiesList addObject:buddy];
-        }
-    appDel.listUserBuddies = nil;
-    appDel.listUserBuddies = [[NSMutableArray alloc] initWithArray:buddiesList];
-}
-
-- (void)processingPredictionDataGetInfoAboutBuddy{
-    NSLog(@"Get info about buddy");
-    NSLog(@"LOCATION : %@",info);
-    //*******
-    Buddy * buddy = [Buddy new];
-    [buddy setData:info];
-    
-    UINavigationController * controller = (UINavigationController*)appDel.window.rootViewController;
-    id obj = [controller.viewControllers objectAtIndex:(controller.viewControllers.count - 1)];
-    if([obj isKindOfClass:[BuddySearchViewController class]]){
-        BuddySearchViewController * viewC = (BuddySearchViewController*)[controller.viewControllers objectAtIndex:(controller.viewControllers.count - 1)];
-        [viewC addFindingUserToBuddies:buddy];
-        return;
-    }
-}
-
-- (void)processingPredictionDataDeleteBuddy{
-    NSLog(@"Get info about buddy");
-    NSLog(@"LOCATION : Buddy with ID <b>0</b> has been deleted");
-}
-
-- (void)processingPredictionDataChangeTypeOfBuddyStatus{
-    NSLog(@"ChangeTypeOfBuddyStatus");
-}
-
-- (void)processingPredictionDataUpdateUserCurrentLocation{
-    NSLog(@"UpdateUserCurrentLocation");
-}
-
-- (void)processingPredictionDataSearchBuddy{
-    NSLog(@"SearchBuddy");
-    
-    NSMutableArray * buddiesList = [NSMutableArray new];
-    for(NSDictionary * dic in info){
-        SearchingBuddy * buddy = [SearchingBuddy new];
-        [buddy setData:dic];
-        //***
-        if((appDel.user.userID == [buddy.userID intValue]) || ([self isUserInMyBuddies:buddy.userID])){
-            
-        } else
-            [buddiesList addObject:buddy];
-    }
-    
-    UINavigationController * controller = (UINavigationController*)appDel.window.rootViewController;
-    id obj = [controller.viewControllers objectAtIndex:(controller.viewControllers.count - 1)];
-    if([obj isKindOfClass:[UITabBarController class]]){
-        
-        UITabBarController * tabBar = (UITabBarController*) obj;
-        BuddySearchViewController * buddySearchVC = (BuddySearchViewController*) [tabBar.viewControllers objectAtIndex:1];
-        [buddySearchVC addFindingUsers:buddiesList];
-    }
+    WheatherPredict *weatherPredictionForLocation = [[WheatherPredict alloc]init];
+    [weatherPredictionForLocation setDataForWheather:[self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestGetWeatherForecast]];
+    appDel.wheatherPredictList = weatherPredictionForLocation;
 }
 
 - (BOOL)isUserInMyBuddies:(NSString*)_userID{
@@ -602,12 +418,6 @@
     }
     
     return isBuddy;
-}
-
--(void) processingTrackingVisibilityInfo{
-    for (NSDictionary * dic in info){
-        appDel.userTrackingVisibility = [[dic objectForKey:@"tracking_visibility"] boolValue];
-    }
 }
 
 @end
