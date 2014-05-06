@@ -501,6 +501,8 @@
 		044093F9190F7ABC00C4A558 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				84F3A6181917AEAB00D580F1 /* LocationSearch */,
+				84F3A60E19176DCF00D580F1 /* MapViewController */,
 				04CB4F5D1918E54C00FA3D64 /* Photos/VideoViewController */,
 				1136267419111CB7004E5857 /* WeatherViewController */,
 				043354C21910EF20003767D0 /* BuddySearchViewController */,
@@ -780,6 +782,7 @@
 				046C6C0D190FECC400E3AC56 /* InviteFriendCell.m in Sources */,
 				043354921910E800003767D0 /* FBConnectClass.m in Sources */,
 				043354AC1910ED9F003767D0 /* CJSONDeserializer_BlocksExtensions.m in Sources */,
+				84F3A6231917C5CF00D580F1 /* PlaceSearchResult.m in Sources */,
 				04CB4F611918E5B400FA3D64 /* PhotoVideoViewController.m in Sources */,
 				04409440190FA98B00C4A558 /* RegisterViewController.m in Sources */,
 				046C6C08190FECA700E3AC56 /* IncomingFriendCell.m in Sources */,
