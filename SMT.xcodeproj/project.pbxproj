@@ -103,6 +103,14 @@
 		11C9F6AB1917E5FF00CDAFBA /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F6A01917E5FF00CDAFBA /* AFURLRequestSerialization.m */; };
 		11C9F6AC1917E5FF00CDAFBA /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F6A21917E5FF00CDAFBA /* AFURLResponseSerialization.m */; };
 		11C9F6AD1917E5FF00CDAFBA /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F6A41917E5FF00CDAFBA /* AFURLSessionManager.m */; };
+		8425CDC71918FFFA00D948EB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425CDC51918FFFA00D948EB /* MapViewController.m */; };
+		8425CDC81918FFFA00D948EB /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8425CDC61918FFFA00D948EB /* MapViewController.xib */; };
+		8425CDCD1919001100D948EB /* LocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425CDCB1919001100D948EB /* LocationSearchViewController.m */; };
+		8425CDCE1919001100D948EB /* LocationSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8425CDCC1919001100D948EB /* LocationSearchViewController.xib */; };
+		8425CDD31919002300D948EB /* LocationSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425CDD01919002300D948EB /* LocationSearch.m */; };
+		8425CDD41919002300D948EB /* PlaceSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425CDD21919002300D948EB /* PlaceSearchResult.m */; };
+		8425CDD91919202700D948EB /* LocationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425CDD71919202700D948EB /* LocationListViewController.m */; };
+		8425CDDA1919202700D948EB /* LocationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8425CDD81919202700D948EB /* LocationListViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -268,6 +276,19 @@
 		11C9F6A21917E5FF00CDAFBA /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		11C9F6A31917E5FF00CDAFBA /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		11C9F6A41917E5FF00CDAFBA /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		8425CDC41918FFFA00D948EB /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		8425CDC51918FFFA00D948EB /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		8425CDC61918FFFA00D948EB /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		8425CDCA1919001100D948EB /* LocationSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationSearchViewController.h; sourceTree = "<group>"; };
+		8425CDCB1919001100D948EB /* LocationSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationSearchViewController.m; sourceTree = "<group>"; };
+		8425CDCC1919001100D948EB /* LocationSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationSearchViewController.xib; sourceTree = "<group>"; };
+		8425CDCF1919002300D948EB /* LocationSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationSearch.h; path = Classes/LocationSearch.h; sourceTree = "<group>"; };
+		8425CDD01919002300D948EB /* LocationSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationSearch.m; path = Classes/LocationSearch.m; sourceTree = "<group>"; };
+		8425CDD11919002300D948EB /* PlaceSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceSearchResult.h; path = Classes/PlaceSearchResult.h; sourceTree = "<group>"; };
+		8425CDD21919002300D948EB /* PlaceSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceSearchResult.m; path = Classes/PlaceSearchResult.m; sourceTree = "<group>"; };
+		8425CDD61919202700D948EB /* LocationListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationListViewController.h; sourceTree = "<group>"; };
+		8425CDD71919202700D948EB /* LocationListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationListViewController.m; sourceTree = "<group>"; };
+		8425CDD81919202700D948EB /* LocationListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationListViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,6 +431,10 @@
 		0411E2081910D0B6006045B0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8425CDCF1919002300D948EB /* LocationSearch.h */,
+				8425CDD01919002300D948EB /* LocationSearch.m */,
+				8425CDD11919002300D948EB /* PlaceSearchResult.h */,
+				8425CDD21919002300D948EB /* PlaceSearchResult.m */,
 				11C9F6911917E5FF00CDAFBA /* AFNetworking */,
 				11C9F6881917E52A00CDAFBA /* UIImageView+AFNetworking.h */,
 				11C9F6891917E52A00CDAFBA /* UIImageView+AFNetworking.m */,
@@ -562,7 +587,6 @@
 		046C6BEA190FDF0E00E3AC56 /* image */ = {
 			isa = PBXGroup;
 			children = (
-				84F3A6161917A29600D580F1 /* compass.png */,
 				046C6BEB190FDF1D00E3AC56 /* back_arrow.png */,
 			);
 			name = image;
@@ -655,6 +679,39 @@
 			path = Classes/AFNetworking;
 			sourceTree = "<group>";
 		};
+		8425CDC31918FFFA00D948EB /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8425CDC41918FFFA00D948EB /* MapViewController.h */,
+				8425CDC51918FFFA00D948EB /* MapViewController.m */,
+				8425CDC61918FFFA00D948EB /* MapViewController.xib */,
+			);
+			name = MapViewController;
+			path = ViewControllers/MapViewController;
+			sourceTree = "<group>";
+		};
+		8425CDC91919001100D948EB /* LocationSearch */ = {
+			isa = PBXGroup;
+			children = (
+				8425CDCA1919001100D948EB /* LocationSearchViewController.h */,
+				8425CDCB1919001100D948EB /* LocationSearchViewController.m */,
+				8425CDCC1919001100D948EB /* LocationSearchViewController.xib */,
+			);
+			name = LocationSearch;
+			path = ViewControllers/LocationSearch;
+			sourceTree = "<group>";
+		};
+		8425CDD5191914E200D948EB /* LocationListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8425CDD61919202700D948EB /* LocationListViewController.h */,
+				8425CDD71919202700D948EB /* LocationListViewController.m */,
+				8425CDD81919202700D948EB /* LocationListViewController.xib */,
+			);
+			name = LocationListViewController;
+			path = ViewControllers/LocationListViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -733,21 +790,20 @@
 				0425C3AF19111F020097709E /* GoogleMaps.bundle in Resources */,
 				04409407190F825F00C4A558 /* FlyoutMenuViewController.xib in Resources */,
 				046C6C13190FECEE00E3AC56 /* Cell.xib in Resources */,
+				8425CDDA1919202700D948EB /* LocationListViewController.xib in Resources */,
 				043354CE1910F0A7003767D0 /* BuddySearchCell.xib in Resources */,
 				0408069B190EA37D00E063C3 /* InfoPlist.strings in Resources */,
 				1136268119112340004E5857 /* WeatherCell.xib in Resources */,
-				84F3A61D1917AEE200D580F1 /* LocationSearchViewController.xib in Resources */,
 				04409429190FA53900C4A558 /* ForgotPasswordViewController.xib in Resources */,
 				04BD1FDA1918FBA400B13CCC /* ImageCell.xib in Resources */,
 				04409421190F975E00C4A558 /* LoginViewController_iPhone4.xib in Resources */,
 				043354C71910EF3E003767D0 /* BuddySearchViewController.xib in Resources */,
-				84F3A61319176DCF00D580F1 /* MapViewController.xib in Resources */,
+				8425CDC81918FFFA00D948EB /* MapViewController.xib in Resources */,
 				046C6C0E190FECC400E3AC56 /* InviteFriendCell.xib in Resources */,
 				046C6BEC190FDF1D00E3AC56 /* back_arrow.png in Resources */,
 				1136267B19111CB7004E5857 /* WeatherViewController~ipad.xib in Resources */,
 				04409422190F975E00C4A558 /* LoginViewController_iPhone5.xib in Resources */,
 				0440943F190FA98B00C4A558 /* RegisterViewController_iPhone5.xib in Resources */,
-				84F3A6171917A29600D580F1 /* compass.png in Resources */,
 				046C6C09190FECA700E3AC56 /* IncomingFriendCell.xib in Resources */,
 				04409424190F975E00C4A558 /* LoginViewController~ipad.xib in Resources */,
 				1136267A19111CB7004E5857 /* WeatherViewController.xib in Resources */,
@@ -756,6 +812,7 @@
 				04E0067219191D7D00A1190E /* PhotoVideoViewController.xib in Resources */,
 				040706B5190FC1CE000D6660 /* BuddyListViewController.xib in Resources */,
 				04409441190FA98B00C4A558 /* RegisterViewController~ipad.xib in Resources */,
+				8425CDCE1919001100D948EB /* LocationSearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -774,6 +831,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8425CDCD1919001100D948EB /* LocationSearchViewController.m in Sources */,
 				0433548F1910E7C9003767D0 /* UserInfo.m in Sources */,
 				11C9F6A91917E5FF00CDAFBA /* AFSecurityPolicy.m in Sources */,
 				04409406190F825F00C4A558 /* FlyoutMenuViewController.m in Sources */,
@@ -786,6 +844,7 @@
 				04CB4F611918E5B400FA3D64 /* PhotoVideoViewController.m in Sources */,
 				04409440190FA98B00C4A558 /* RegisterViewController.m in Sources */,
 				046C6C08190FECA700E3AC56 /* IncomingFriendCell.m in Sources */,
+				8425CDD91919202700D948EB /* LocationListViewController.m in Sources */,
 				043354B01910ED9F003767D0 /* CJSONSerializedData.m in Sources */,
 				046C6C12190FECEE00E3AC56 /* Cell.m in Sources */,
 				11C9F68A1917E52A00CDAFBA /* UIImageView+AFNetworking.m in Sources */,
@@ -796,12 +855,12 @@
 				043354AE1910ED9F003767D0 /* CJSONScanner.m in Sources */,
 				11C9F6871917821800CDAFBA /* TidesPredict.m in Sources */,
 				04409428190FA53900C4A558 /* ForgotPasswordViewController.m in Sources */,
-				84F3A61C1917AEE200D580F1 /* LocationSearchViewController.m in Sources */,
 				1136268019112340004E5857 /* WeatherCell.m in Sources */,
 				043354C61910EF3E003767D0 /* BuddySearchViewController.m in Sources */,
 				0433548D1910E7C9003767D0 /* Location.m in Sources */,
 				11C9F684191781F100CDAFBA /* Astronomy.m in Sources */,
 				0433548B1910E7C9003767D0 /* DataLoader.m in Sources */,
+				8425CDD31919002300D948EB /* LocationSearch.m in Sources */,
 				043354B81910EE31003767D0 /* Buddy.m in Sources */,
 				04409423190F975E00C4A558 /* LoginViewController.m in Sources */,
 				043354A91910ED9F003767D0 /* CDataScanner_Extensions.m in Sources */,
@@ -810,8 +869,8 @@
 				04BD1FD81918FB8000B13CCC /* ImageCell.m in Sources */,
 				043354C11910EEB7003767D0 /* SearchingBuddy.m in Sources */,
 				11C9F6AB1917E5FF00CDAFBA /* AFURLRequestSerialization.m in Sources */,
+				8425CDD41919002300D948EB /* PlaceSearchResult.m in Sources */,
 				043354AF1910ED9F003767D0 /* CJSONSerialization.m in Sources */,
-				84F3A6221917C5CF00D580F1 /* LocationSearch.m in Sources */,
 				043354AB1910ED9F003767D0 /* CFilteringJSONSerializer.m in Sources */,
 				11C9F6A61917E5FF00CDAFBA /* AFHTTPRequestOperationManager.m in Sources */,
 				11C9F67E1917814600CDAFBA /* DayPredict.m in Sources */,
@@ -826,6 +885,7 @@
 				11C9F6A71917E5FF00CDAFBA /* AFHTTPSessionManager.m in Sources */,
 				0433548A1910E7C9003767D0 /* ConstantsClass.m in Sources */,
 				11C9F6A81917E5FF00CDAFBA /* AFNetworkReachabilityManager.m in Sources */,
+				8425CDC71918FFFA00D948EB /* MapViewController.m in Sources */,
 				11C9F6AC1917E5FF00CDAFBA /* AFURLResponseSerialization.m in Sources */,
 				0433548C1910E7C9003767D0 /* GTMNSString+HTML.m in Sources */,
 			);
@@ -885,7 +945,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alexander Sokhanych (U5HL738569)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alexander Sokhanych (U5HL738569)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -903,6 +964,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "53277F0D-CCEE-4D75-8BF9-8468630F0F5C";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -923,7 +985,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alexander Sokhanych (U5HL738569)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alexander Sokhanych (U5HL738569)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -934,6 +997,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PROVISIONING_PROFILE = "53277F0D-CCEE-4D75-8BF9-8468630F0F5C";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -944,6 +1008,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alexander Sokhanych (U5HL738569)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/library/FacebookSDK",
@@ -956,6 +1021,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "53277F0D-CCEE-4D75-8BF9-8468630F0F5C";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -966,6 +1032,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Alexander Sokhanych (U5HL738569)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/library/FacebookSDK",
@@ -978,6 +1045,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "53277F0D-CCEE-4D75-8BF9-8468630F0F5C";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

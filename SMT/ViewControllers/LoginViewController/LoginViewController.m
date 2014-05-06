@@ -69,7 +69,7 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     
-    AppDelegate * appDel = [UIApplication sharedApplication].delegate;
+    AppDelegate * appDel = (AppDelegate*) [UIApplication sharedApplication].delegate;
     if(appDel.isUserSign && isFirstMoment) {
         [self.activityIndicat startAnimating];
         [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
@@ -110,7 +110,7 @@
     [self.activityIndicat startAnimating];
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     
-    AppDelegate * appDelegate = [UIApplication sharedApplication].delegate;
+    AppDelegate * appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
     
     appDelegate.user.userName = self.userNameTextField.text;
     appDelegate.user.userPassword = self.passwordTextField.text;
@@ -202,7 +202,7 @@
                 
             FlyoutMenuViewController * fmView = [[FlyoutMenuViewController alloc] initWithNibName:@"FlyoutMenuViewController" bundle:nil];
         
-            AppDelegate * appDelegate = [UIApplication sharedApplication].delegate;
+            AppDelegate * appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
             [appDelegate getPredictionsCalls];
         
             [self.navigationController pushViewController:fmView animated:YES];
@@ -225,7 +225,7 @@
         
     [self.activityIndicat stopAnimating];
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-    AppDelegate * appDelegate = [UIApplication sharedApplication].delegate;
+    AppDelegate * appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
     [appDelegate.user setInfoFID:_fbID];
     self.userNameTextField.text = _name != nil ? _name : @"";
         

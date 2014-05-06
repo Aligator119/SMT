@@ -42,7 +42,7 @@
         self.topViewVerticalConstr.constant -= 20;
     }
     
-    AppDelegate  *app = [[UIApplication sharedApplication] delegate];
+    AppDelegate  *app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
     self.lbName.text = app.user.userFirstName;
     self.lbLocation.text = app.user.userName;
     //self.lbLocation.text = app.user.userSecondName;
