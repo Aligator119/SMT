@@ -11,4 +11,6 @@
 
 @interface MapViewController : UIViewController <GMSMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate>
 
+- (void) moveToLocation: (CLLocationCoordinate2D) loc;
+
 @end

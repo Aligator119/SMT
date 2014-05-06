@@ -33,8 +33,6 @@
 		0425C39C1911146D0097709E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0425C39B1911146D0097709E /* OpenGLES.framework */; };
 		0425C39E191114760097709E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0425C39D191114760097709E /* QuartzCore.framework */; };
 		0425C3A0191114850097709E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0425C39F191114850097709E /* SystemConfiguration.framework */; };
-		0425C3A5191115DD0097709E /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425C3A3191115DD0097709E /* MapViewController.m */; };
-		0425C3A6191115DD0097709E /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0425C3A4191115DD0097709E /* MapViewController.xib */; };
 		0425C3AB19111ECA0097709E /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0425C3AA19111ECA0097709E /* GoogleMaps.framework */; };
 		0425C3AF19111F020097709E /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0425C3AE19111F020097709E /* GoogleMaps.bundle */; };
 		0433548A1910E7C9003767D0 /* ConstantsClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 0433547F1910E7C9003767D0 /* ConstantsClass.m */; };
@@ -86,6 +84,13 @@
 		1136268019112340004E5857 /* WeatherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1136267E19112340004E5857 /* WeatherCell.m */; };
 		1136268119112340004E5857 /* WeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1136267F19112340004E5857 /* WeatherCell.xib */; };
 		113626841911239B004E5857 /* CurrentCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 113626831911239B004E5857 /* CurrentCondition.m */; };
+		84F3A61219176DCF00D580F1 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3A61019176DCF00D580F1 /* MapViewController.m */; };
+		84F3A61319176DCF00D580F1 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F3A61119176DCF00D580F1 /* MapViewController.xib */; };
+		84F3A6171917A29600D580F1 /* compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F3A6161917A29600D580F1 /* compass.png */; };
+		84F3A61C1917AEE200D580F1 /* LocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3A61A1917AEE200D580F1 /* LocationSearchViewController.m */; };
+		84F3A61D1917AEE200D580F1 /* LocationSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F3A61B1917AEE200D580F1 /* LocationSearchViewController.xib */; };
+		84F3A6221917C5CF00D580F1 /* LocationSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3A61F1917C5CF00D580F1 /* LocationSearch.m */; };
+		84F3A6231917C5CF00D580F1 /* PlaceSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3A6211917C5CF00D580F1 /* PlaceSearchResult.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,9 +135,6 @@
 		0425C39B1911146D0097709E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		0425C39D191114760097709E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0425C39F191114850097709E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		0425C3A2191115DD0097709E /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = ViewControllers/MapViewController/MapViewController.h; sourceTree = "<group>"; };
-		0425C3A3191115DD0097709E /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = ViewControllers/MapViewController/MapViewController.m; sourceTree = "<group>"; };
-		0425C3A4191115DD0097709E /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapViewController.xib; path = ViewControllers/MapViewController/MapViewController.xib; sourceTree = "<group>"; };
 		0425C3AA19111ECA0097709E /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = library/GoogleMaps.framework; sourceTree = "<group>"; };
 		0425C3AE19111F020097709E /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = library/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		0433547E1910E7C9003767D0 /* ConstantsClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConstantsClass.h; path = Classes/ConstantsClass.h; sourceTree = "<group>"; };
@@ -217,6 +219,17 @@
 		1136267F19112340004E5857 /* WeatherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherCell.xib; sourceTree = "<group>"; };
 		113626821911239B004E5857 /* CurrentCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentCondition.h; path = Classes/CurrentCondition.h; sourceTree = "<group>"; };
 		113626831911239B004E5857 /* CurrentCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentCondition.m; path = Classes/CurrentCondition.m; sourceTree = "<group>"; };
+		84F3A60F19176DCF00D580F1 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		84F3A61019176DCF00D580F1 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		84F3A61119176DCF00D580F1 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		84F3A6161917A29600D580F1 /* compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = compass.png; path = Image/compass.png; sourceTree = "<group>"; };
+		84F3A6191917AEE200D580F1 /* LocationSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationSearchViewController.h; sourceTree = "<group>"; };
+		84F3A61A1917AEE200D580F1 /* LocationSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationSearchViewController.m; sourceTree = "<group>"; };
+		84F3A61B1917AEE200D580F1 /* LocationSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationSearchViewController.xib; sourceTree = "<group>"; };
+		84F3A61E1917C5CF00D580F1 /* LocationSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationSearch.h; path = Classes/LocationSearch.h; sourceTree = "<group>"; };
+		84F3A61F1917C5CF00D580F1 /* LocationSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationSearch.m; path = Classes/LocationSearch.m; sourceTree = "<group>"; };
+		84F3A6201917C5CF00D580F1 /* PlaceSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceSearchResult.h; path = Classes/PlaceSearchResult.h; sourceTree = "<group>"; };
+		84F3A6211917C5CF00D580F1 /* PlaceSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceSearchResult.m; path = Classes/PlaceSearchResult.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -359,6 +372,10 @@
 		0411E2081910D0B6006045B0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				84F3A61E1917C5CF00D580F1 /* LocationSearch.h */,
+				84F3A61F1917C5CF00D580F1 /* LocationSearch.m */,
+				84F3A6201917C5CF00D580F1 /* PlaceSearchResult.h */,
+				84F3A6211917C5CF00D580F1 /* PlaceSearchResult.m */,
 				043354BF1910EEB7003767D0 /* SearchingBuddy.h */,
 				113626821911239B004E5857 /* CurrentCondition.h */,
 				113626831911239B004E5857 /* CurrentCondition.m */,
@@ -382,16 +399,6 @@
 				043354891910E7C9003767D0 /* UserInfo.m */,
 			);
 			name = Classes;
-			sourceTree = "<group>";
-		};
-		0425C3A71911160E0097709E /* MapViewController */ = {
-			isa = PBXGroup;
-			children = (
-				0425C3A2191115DD0097709E /* MapViewController.h */,
-				0425C3A3191115DD0097709E /* MapViewController.m */,
-				0425C3A4191115DD0097709E /* MapViewController.xib */,
-			);
-			name = MapViewController;
 			sourceTree = "<group>";
 		};
 		043354931910ED7B003767D0 /* touch JSON */ = {
@@ -447,6 +454,8 @@
 		044093F9190F7ABC00C4A558 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				84F3A6181917AEAB00D580F1 /* LocationSearch */,
+				84F3A60E19176DCF00D580F1 /* MapViewController */,
 				1136267419111CB7004E5857 /* WeatherViewController */,
 				043354C21910EF20003767D0 /* BuddySearchViewController */,
 				044093FA190F7AD000C4A558 /* LoginViewController */,
@@ -505,6 +514,7 @@
 		046C6BEA190FDF0E00E3AC56 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				84F3A6161917A29600D580F1 /* compass.png */,
 				046C6BEB190FDF1D00E3AC56 /* back_arrow.png */,
 			);
 			name = image;
@@ -547,6 +557,28 @@
 				1136267F19112340004E5857 /* WeatherCell.xib */,
 			);
 			path = WeatherCell;
+			sourceTree = "<group>";
+		};
+		84F3A60E19176DCF00D580F1 /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84F3A60F19176DCF00D580F1 /* MapViewController.h */,
+				84F3A61019176DCF00D580F1 /* MapViewController.m */,
+				84F3A61119176DCF00D580F1 /* MapViewController.xib */,
+			);
+			name = MapViewController;
+			path = ViewControllers/MapViewController;
+			sourceTree = "<group>";
+		};
+		84F3A6181917AEAB00D580F1 /* LocationSearch */ = {
+			isa = PBXGroup;
+			children = (
+				84F3A6191917AEE200D580F1 /* LocationSearchViewController.h */,
+				84F3A61A1917AEE200D580F1 /* LocationSearchViewController.m */,
+				84F3A61B1917AEE200D580F1 /* LocationSearchViewController.xib */,
+			);
+			name = LocationSearch;
+			path = ViewControllers/LocationSearch;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -630,14 +662,17 @@
 				043354CE1910F0A7003767D0 /* BuddySearchCell.xib in Resources */,
 				0408069B190EA37D00E063C3 /* InfoPlist.strings in Resources */,
 				1136268119112340004E5857 /* WeatherCell.xib in Resources */,
+				84F3A61D1917AEE200D580F1 /* LocationSearchViewController.xib in Resources */,
 				04409429190FA53900C4A558 /* ForgotPasswordViewController.xib in Resources */,
 				04409421190F975E00C4A558 /* LoginViewController_iPhone4.xib in Resources */,
 				043354C71910EF3E003767D0 /* BuddySearchViewController.xib in Resources */,
+				84F3A61319176DCF00D580F1 /* MapViewController.xib in Resources */,
 				046C6C0E190FECC400E3AC56 /* InviteFriendCell.xib in Resources */,
 				046C6BEC190FDF1D00E3AC56 /* back_arrow.png in Resources */,
 				1136267B19111CB7004E5857 /* WeatherViewController~ipad.xib in Resources */,
 				04409422190F975E00C4A558 /* LoginViewController_iPhone5.xib in Resources */,
 				0440943F190FA98B00C4A558 /* RegisterViewController_iPhone5.xib in Resources */,
+				84F3A6171917A29600D580F1 /* compass.png in Resources */,
 				046C6C09190FECA700E3AC56 /* IncomingFriendCell.xib in Resources */,
 				04409424190F975E00C4A558 /* LoginViewController~ipad.xib in Resources */,
 				1136267A19111CB7004E5857 /* WeatherViewController.xib in Resources */,
@@ -669,6 +704,7 @@
 				046C6C0D190FECC400E3AC56 /* InviteFriendCell.m in Sources */,
 				043354921910E800003767D0 /* FBConnectClass.m in Sources */,
 				043354AC1910ED9F003767D0 /* CJSONDeserializer_BlocksExtensions.m in Sources */,
+				84F3A6231917C5CF00D580F1 /* PlaceSearchResult.m in Sources */,
 				04409440190FA98B00C4A558 /* RegisterViewController.m in Sources */,
 				046C6C08190FECA700E3AC56 /* IncomingFriendCell.m in Sources */,
 				043354B01910ED9F003767D0 /* CJSONSerializedData.m in Sources */,
@@ -678,6 +714,7 @@
 				0433548E1910E7C9003767D0 /* NSString+HTML.m in Sources */,
 				043354AE1910ED9F003767D0 /* CJSONScanner.m in Sources */,
 				04409428190FA53900C4A558 /* ForgotPasswordViewController.m in Sources */,
+				84F3A61C1917AEE200D580F1 /* LocationSearchViewController.m in Sources */,
 				1136268019112340004E5857 /* WeatherCell.m in Sources */,
 				043354C61910EF3E003767D0 /* BuddySearchViewController.m in Sources */,
 				0433548D1910E7C9003767D0 /* Location.m in Sources */,
@@ -689,7 +726,9 @@
 				1136267919111CB7004E5857 /* WeatherViewController.m in Sources */,
 				043354C11910EEB7003767D0 /* SearchingBuddy.m in Sources */,
 				043354AF1910ED9F003767D0 /* CJSONSerialization.m in Sources */,
+				84F3A6221917C5CF00D580F1 /* LocationSearch.m in Sources */,
 				043354AB1910ED9F003767D0 /* CFilteringJSONSerializer.m in Sources */,
+				84F3A61219176DCF00D580F1 /* MapViewController.m in Sources */,
 				113626841911239B004E5857 /* CurrentCondition.m in Sources */,
 				043354AD1910ED9F003767D0 /* CJSONDeserializer.m in Sources */,
 				040706B4190FC1CE000D6660 /* BuddyListViewController.m in Sources */,
@@ -822,8 +861,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SMT/SMT-Prefix.pch";
 				INFOPLIST_FILE = "SMT/SMT-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -842,8 +883,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SMT/SMT-Prefix.pch";
 				INFOPLIST_FILE = "SMT/SMT-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
