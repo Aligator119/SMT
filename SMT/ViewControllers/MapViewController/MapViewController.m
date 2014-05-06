@@ -14,6 +14,7 @@
 {
     GMSMapView *mapView_;
     CLLocationManager * locationManager;
+    BOOL firstLocationUpdate_;
 }
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * navigationBarHeightConstr;
@@ -44,22 +45,42 @@
     mapView_.frame = self.mapContainerView.bounds;
 }
 
+- (void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    CLLocation * location = mapView_.myLocation;
+    if (location){
+        [mapView_ animateToLocation:location.coordinate];
+    }
+
+}
+
 - (void) showMap{
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
                                                             longitude:151.20
                                                                  zoom:6];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    
+    [mapView_ addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context:NULL];
+    
     mapView_.myLocationEnabled = YES;
     [self.mapContainerView addSubview:mapView_];
-    if (mapView_.myLocation){
-        [mapView_ animateToLocation:mapView_.myLocation.coordinate];
-    }
-    
     
     // Show compass
     //[self showCompass];
-    
-    //
+
+}
+
+- (void) dealloc{
+    [mapView_ removeObserver:self forKeyPath:@"myLocation" context:NULL];
+}
+
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    if (!firstLocationUpdate_){
+        firstLocationUpdate_ = YES;
+        CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
+        mapView_.camera = [GMSCameraPosition cameraWithTarget:location.coordinate zoom:6];
+    }
 }
 
 - (void) showCompass{
