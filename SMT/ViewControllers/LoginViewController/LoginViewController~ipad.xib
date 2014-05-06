@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
@@ -57,6 +57,10 @@
                                     <rect key="frame" x="155" y="473" width="474" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="474" id="KWn-43-BRt"/>
+                                        <constraint firstAttribute="height" constant="44" id="YsY-6y-zgn"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     <connections>
@@ -67,6 +71,10 @@
                                     <rect key="frame" x="235" y="625" width="299" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="p9N-bm-IpW"/>
+                                        <constraint firstAttribute="width" constant="299" id="zwk-q5-8gl"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <state key="normal" title="Forgot password?">
@@ -81,6 +89,10 @@
                                     <rect key="frame" x="442" y="881" width="200" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.015686274509803921" green="0.20000000000000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="5jw-zP-JeC"/>
+                                        <constraint firstAttribute="width" constant="200" id="U5t-0L-8Ai"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <state key="normal" title="Register">
@@ -95,6 +107,10 @@
                                     <rect key="frame" x="235" y="551" width="299" height="46"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.015686274509803921" green="0.20000000000000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="46" id="XU8-cK-Vrv"/>
+                                        <constraint firstAttribute="width" constant="299" id="r2O-ha-yMl"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <state key="normal" title="Login">
@@ -119,35 +135,26 @@
                             </subviews>
                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="4IY-wf-C2c" firstAttribute="width" secondItem="Fl1-6U-mdZ" secondAttribute="width" id="2Lj-lA-hIL"/>
-                                <constraint firstItem="DyC-Nv-NH4" firstAttribute="top" secondItem="OG2-D0-9a7" secondAttribute="bottom" constant="226" id="2eF-65-oXI"/>
                                 <constraint firstAttribute="centerX" secondItem="QZ0-Uh-x90" secondAttribute="centerX" constant="-8" id="3CO-7L-zww"/>
                                 <constraint firstItem="QZ0-Uh-x90" firstAttribute="top" secondItem="1CA-Qw-MPT" secondAttribute="top" constant="102" id="4bc-an-F2H"/>
                                 <constraint firstItem="4IY-wf-C2c" firstAttribute="top" secondItem="Fl1-6U-mdZ" secondAttribute="bottom" constant="8" id="8Bk-Jk-7EU"/>
-                                <constraint firstItem="Fl1-6U-mdZ" firstAttribute="width" secondItem="NnM-wF-4rw" secondAttribute="width" constant="175" id="EF4-Op-8Qv"/>
                                 <constraint firstItem="Aic-zM-5P9" firstAttribute="top" relation="lessThanOrEqual" secondItem="OG2-D0-9a7" secondAttribute="bottom" constant="226" id="FLg-xp-7wf"/>
-                                <constraint firstItem="Fl1-6U-mdZ" firstAttribute="height" secondItem="NnM-wF-4rw" secondAttribute="height" constant="-2" id="KwD-Hm-dy0"/>
                                 <constraint firstAttribute="trailing" secondItem="o63-cs-KjF" secondAttribute="trailing" id="NCH-Lc-X9S"/>
                                 <constraint firstItem="4IY-wf-C2c" firstAttribute="centerX" secondItem="QZ0-Uh-x90" secondAttribute="centerX" id="NX9-X0-a13"/>
-                                <constraint firstItem="4IY-wf-C2c" firstAttribute="height" secondItem="Fl1-6U-mdZ" secondAttribute="height" id="O7b-rf-ylN"/>
-                                <constraint firstItem="Aic-zM-5P9" firstAttribute="centerX" secondItem="QZ0-Uh-x90" secondAttribute="centerX" constant="150" id="UCj-7m-NNe"/>
+                                <constraint firstItem="Aic-zM-5P9" firstAttribute="top" secondItem="OG2-D0-9a7" secondAttribute="bottom" priority="400" constant="15" id="VbN-Sb-MHZ"/>
                                 <constraint firstItem="QZ0-Uh-x90" firstAttribute="centerX" secondItem="OG2-D0-9a7" secondAttribute="centerX" constant="7.5" id="Wgc-lB-C41"/>
                                 <constraint firstItem="Aic-zM-5P9" firstAttribute="leading" secondItem="DyC-Nv-NH4" secondAttribute="trailing" constant="37" id="XMr-gH-EyU"/>
-                                <constraint firstItem="Fl1-6U-mdZ" firstAttribute="width" secondItem="OG2-D0-9a7" secondAttribute="width" constant="175" id="Yo4-YE-hy5"/>
-                                <constraint firstItem="DyC-Nv-NH4" firstAttribute="leading" secondItem="1CA-Qw-MPT" secondAttribute="leading" constant="155" id="arv-uP-QW9"/>
                                 <constraint firstItem="o63-cs-KjF" firstAttribute="leading" secondItem="1CA-Qw-MPT" secondAttribute="leading" id="azM-2b-hE9"/>
                                 <constraint firstItem="OG2-D0-9a7" firstAttribute="top" secondItem="NnM-wF-4rw" secondAttribute="bottom" constant="28" id="bmJ-Kv-LNZ"/>
-                                <constraint firstAttribute="bottom" secondItem="DyC-Nv-NH4" secondAttribute="bottom" constant="99" id="dW5-k4-vqb"/>
+                                <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="Aic-zM-5P9" secondAttribute="bottom" constant="99" id="e96-ol-qdx"/>
                                 <constraint firstItem="o63-cs-KjF" firstAttribute="top" secondItem="1CA-Qw-MPT" secondAttribute="top" id="fbi-rA-cCb"/>
                                 <constraint firstItem="Fl1-6U-mdZ" firstAttribute="top" secondItem="QZ0-Uh-x90" secondAttribute="bottom" constant="77" id="foI-xP-Inp"/>
                                 <constraint firstItem="NnM-wF-4rw" firstAttribute="centerX" secondItem="QZ0-Uh-x90" secondAttribute="centerX" constant="-7.5" id="gky-qP-5oQ"/>
-                                <constraint firstItem="Aic-zM-5P9" firstAttribute="width" secondItem="Fl1-6U-mdZ" secondAttribute="width" constant="-274" id="lLm-2e-6ha"/>
+                                <constraint firstAttribute="centerX" secondItem="DyC-Nv-NH4" secondAttribute="centerX" constant="104" id="knv-7Z-S3k"/>
+                                <constraint firstItem="Aic-zM-5P9" firstAttribute="centerY" secondItem="DyC-Nv-NH4" secondAttribute="centerY" id="mah-Pt-ngB"/>
                                 <constraint firstAttribute="bottom" secondItem="o63-cs-KjF" secondAttribute="bottom" id="nJa-U3-DgF"/>
-                                <constraint firstAttribute="bottom" secondItem="Aic-zM-5P9" secondAttribute="bottom" priority="500" constant="99" id="qoX-ke-NYd"/>
                                 <constraint firstItem="NnM-wF-4rw" firstAttribute="top" secondItem="4IY-wf-C2c" secondAttribute="bottom" constant="34" id="uLt-ab-Zhe"/>
                                 <constraint firstItem="Fl1-6U-mdZ" firstAttribute="centerX" secondItem="QZ0-Uh-x90" secondAttribute="centerX" id="vi4-OC-7Bg"/>
-                                <constraint firstItem="Aic-zM-5P9" firstAttribute="height" secondItem="Fl1-6U-mdZ" secondAttribute="height" id="wPj-vm-Qn6"/>
-                                <constraint firstItem="Fl1-6U-mdZ" firstAttribute="height" secondItem="OG2-D0-9a7" secondAttribute="height" constant="14" id="ylg-tl-dgX"/>
                             </constraints>
                         </view>
                     </subviews>

@@ -9,6 +9,7 @@
 #import "FlyoutMenuViewController.h"
 #import "WeatherViewController.h"
 #import "AppDelegate.h"
+#import "MapViewController.h"
 
 @interface FlyoutMenuViewController ()
 {
@@ -16,6 +17,8 @@
     NSDictionary *functionsDictionary;
 }
 @property (weak, nonatomic) IBOutlet UITableView *table;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * topViewHeightConstr;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * topViewVerticalConstr;
 
 @end
 
@@ -33,22 +36,36 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    AppDelegate * app = [[UIApplication sharedApplication] delegate];
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
+        self.topViewHeightConstr.constant -= 20;
+        self.topViewVerticalConstr.constant -= 20;
+    }
+    
+    AppDelegate  *app = [[UIApplication sharedApplication] delegate];
     self.lbName.text = app.user.userFirstName;
+    self.lbLocation.text = app.user.userName;
     //self.lbLocation.text = app.user.userSecondName;
+    self.imgUser.layer.masksToBounds = YES;
+    self.imgUser.layer.cornerRadius = self.imgUser.frame.size.width / 2;
     NSURL * imgURL = [[NSURL alloc]initWithString:app.user.avatarAdress];
     NSData * data = [[NSData alloc]initWithContentsOfURL:imgURL];
     self.imgUser.image = [UIImage imageWithData:data];
 //--------------------------------------------------------------------------------------------------------------------
     menuItems = [[NSArray alloc]initWithObjects:@"Log an Activity", @"Hunting Map", @"Fishing Map", @"Camera/Photos", @"Prediction", @"Reports", @"Weather", @"Buddies", @"Settings", @"Logout", nil];
+    
     NSArray *functionsArrayIdentifiers = [[NSArray alloc] initWithObjects:@"openLogAnActivity", @"openHuntingMap", @"openFishingMap", @"openCameraAndPhotos", @"openPrediction", @"openReports", @"openWeather", @"openBuddies", @"openSettings", @"logout", nil];
+    
     functionsDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:functionsArrayIdentifiers, @"identifiers", menuItems, @"strings", nil];
 }
 
 - (void)openWeather
 {
     [self.navigationController pushViewController:[[WeatherViewController alloc]init] animated:YES];
+}
+
+-(void)openHuntingMap{
+    [self.navigationController pushViewController:[MapViewController new] animated:YES];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -83,6 +100,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self performSelector:NSSelectorFromString([[functionsDictionary objectForKey:@"identifiers"] objectAtIndex:indexPath.row])];
 }
 
