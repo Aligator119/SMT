@@ -9,6 +9,7 @@
 #import "FlyoutMenuViewController.h"
 #import "WeatherViewController.h"
 #import "AppDelegate.h"
+#import "MapViewController.h"
 
 @interface FlyoutMenuViewController ()
 {
@@ -16,6 +17,8 @@
     NSDictionary *functionsDictionary;
 }
 @property (weak, nonatomic) IBOutlet UITableView *table;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * topViewHeightConstr;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * topViewVerticalConstr;
 
 @end
 
@@ -33,8 +36,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    AppDelegate * app = [[UIApplication sharedApplication] delegate];
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
+        self.topViewHeightConstr.constant -= 20;
+        self.topViewVerticalConstr.constant -= 20;
+    }
+    
+    AppDelegate  *app = [[UIApplication sharedApplication] delegate];
     self.lbName.text = app.user.userFirstName;
     self.lbLocation.text = app.user.userName;
     //self.lbLocation.text = app.user.userSecondName;
@@ -54,6 +62,10 @@
 - (void)openWeather
 {
     [self.navigationController pushViewController:[[WeatherViewController alloc]init] animated:YES];
+}
+
+-(void)openHuntingMap{
+    [self.navigationController pushViewController:[MapViewController new] animated:YES];
 }
 
 - (void) viewWillAppear:(BOOL)animated
