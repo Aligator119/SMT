@@ -16,7 +16,7 @@
 #import "AppDelegate.h"
 #import "UserInfo.h"
 
-#import "BuddyListViewController.h"
+#import "PhotoVideoViewController.h"
 
 
 
@@ -88,7 +88,7 @@
 }
 
 -(IBAction)goToHomeScreen:(id)sender{
-    
+    /*
     if(self.userNameTextField.text.length == 0) {
         [AppDelegate OpenAlertwithTitle:@"Error" andContent:@"Email field is empty"];
         return;
@@ -153,8 +153,9 @@
         }
     });
                         
-    });
-    
+    });*/
+    PhotoVideoViewController * pvvc = [[PhotoVideoViewController alloc]initWithNibName:@"PhotoVideoViewController" bundle:nil];
+    [self.navigationController pushViewController:pvvc animated:YES];
 }
 
 -(IBAction)signUpAct:(id)sender{

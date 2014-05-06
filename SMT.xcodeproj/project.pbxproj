@@ -33,8 +33,6 @@
 		0425C39C1911146D0097709E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0425C39B1911146D0097709E /* OpenGLES.framework */; };
 		0425C39E191114760097709E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0425C39D191114760097709E /* QuartzCore.framework */; };
 		0425C3A0191114850097709E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0425C39F191114850097709E /* SystemConfiguration.framework */; };
-		0425C3A5191115DD0097709E /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0425C3A3191115DD0097709E /* MapViewController.m */; };
-		0425C3A6191115DD0097709E /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0425C3A4191115DD0097709E /* MapViewController.xib */; };
 		0425C3AB19111ECA0097709E /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0425C3AA19111ECA0097709E /* GoogleMaps.framework */; };
 		0425C3AF19111F020097709E /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0425C3AE19111F020097709E /* GoogleMaps.bundle */; };
 		0433548A1910E7C9003767D0 /* ConstantsClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 0433547F1910E7C9003767D0 /* ConstantsClass.m */; };
@@ -80,6 +78,10 @@
 		046C6C0E190FECC400E3AC56 /* InviteFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C6C0C190FECC400E3AC56 /* InviteFriendCell.xib */; };
 		046C6C12190FECEE00E3AC56 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046C6C10190FECEE00E3AC56 /* Cell.m */; };
 		046C6C13190FECEE00E3AC56 /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C6C11190FECEE00E3AC56 /* Cell.xib */; };
+		04BD1FD81918FB8000B13CCC /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BD1FD71918FB8000B13CCC /* ImageCell.m */; };
+		04BD1FDA1918FBA400B13CCC /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04BD1FD91918FBA400B13CCC /* ImageCell.xib */; };
+		04CB4F611918E5B400FA3D64 /* PhotoVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CB4F5F1918E5B400FA3D64 /* PhotoVideoViewController.m */; };
+		04E0067219191D7D00A1190E /* PhotoVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0067119191D7D00A1190E /* PhotoVideoViewController.xib */; };
 		1136267919111CB7004E5857 /* WeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1136267619111CB7004E5857 /* WeatherViewController.m */; };
 		1136267A19111CB7004E5857 /* WeatherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1136267719111CB7004E5857 /* WeatherViewController.xib */; };
 		1136267B19111CB7004E5857 /* WeatherViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1136267819111CB7004E5857 /* WeatherViewController~ipad.xib */; };
@@ -130,9 +132,6 @@
 		0425C39B1911146D0097709E /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		0425C39D191114760097709E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0425C39F191114850097709E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		0425C3A2191115DD0097709E /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = ViewControllers/MapViewController/MapViewController.h; sourceTree = "<group>"; };
-		0425C3A3191115DD0097709E /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = ViewControllers/MapViewController/MapViewController.m; sourceTree = "<group>"; };
-		0425C3A4191115DD0097709E /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapViewController.xib; path = ViewControllers/MapViewController/MapViewController.xib; sourceTree = "<group>"; };
 		0425C3AA19111ECA0097709E /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = library/GoogleMaps.framework; sourceTree = "<group>"; };
 		0425C3AE19111F020097709E /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = library/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		0433547E1910E7C9003767D0 /* ConstantsClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConstantsClass.h; path = Classes/ConstantsClass.h; sourceTree = "<group>"; };
@@ -208,6 +207,12 @@
 		046C6C0F190FECEE00E3AC56 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cell.h; path = ViewControllers/BodyListViewController/CustomCell/Cell.h; sourceTree = "<group>"; };
 		046C6C10190FECEE00E3AC56 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Cell.m; path = ViewControllers/BodyListViewController/CustomCell/Cell.m; sourceTree = "<group>"; };
 		046C6C11190FECEE00E3AC56 /* Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Cell.xib; path = ViewControllers/BodyListViewController/CustomCell/Cell.xib; sourceTree = "<group>"; };
+		04BD1FD61918FB8000B13CCC /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCell.h; path = "ViewControllers/PhotoVideoViewController/Custom cell/ImageCell.h"; sourceTree = "<group>"; };
+		04BD1FD71918FB8000B13CCC /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageCell.m; path = "ViewControllers/PhotoVideoViewController/Custom cell/ImageCell.m"; sourceTree = "<group>"; };
+		04BD1FD91918FBA400B13CCC /* ImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImageCell.xib; path = "ViewControllers/PhotoVideoViewController/Custom cell/ImageCell.xib"; sourceTree = "<group>"; };
+		04CB4F5E1918E5B400FA3D64 /* PhotoVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoVideoViewController.h; path = ViewControllers/PhotoVideoViewController/PhotoVideoViewController.h; sourceTree = "<group>"; };
+		04CB4F5F1918E5B400FA3D64 /* PhotoVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoVideoViewController.m; path = ViewControllers/PhotoVideoViewController/PhotoVideoViewController.m; sourceTree = "<group>"; };
+		04E0067119191D7D00A1190E /* PhotoVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoVideoViewController.xib; path = ViewControllers/PhotoVideoViewController/PhotoVideoViewController.xib; sourceTree = "<group>"; };
 		1136267519111CB7004E5857 /* WeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherViewController.h; sourceTree = "<group>"; };
 		1136267619111CB7004E5857 /* WeatherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherViewController.m; sourceTree = "<group>"; };
 		1136267719111CB7004E5857 /* WeatherViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherViewController.xib; sourceTree = "<group>"; };
@@ -384,16 +389,6 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		0425C3A71911160E0097709E /* MapViewController */ = {
-			isa = PBXGroup;
-			children = (
-				0425C3A2191115DD0097709E /* MapViewController.h */,
-				0425C3A3191115DD0097709E /* MapViewController.m */,
-				0425C3A4191115DD0097709E /* MapViewController.xib */,
-			);
-			name = MapViewController;
-			sourceTree = "<group>";
-		};
 		043354931910ED7B003767D0 /* touch JSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,6 +442,7 @@
 		044093F9190F7ABC00C4A558 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				04CB4F5D1918E54C00FA3D64 /* Photos/VideoViewController */,
 				1136267419111CB7004E5857 /* WeatherViewController */,
 				043354C21910EF20003767D0 /* BuddySearchViewController */,
 				044093FA190F7AD000C4A558 /* LoginViewController */,
@@ -524,6 +520,27 @@
 				046C6C11190FECEE00E3AC56 /* Cell.xib */,
 			);
 			name = CustomCell;
+			sourceTree = "<group>";
+		};
+		04BD1FD51918FB2E00B13CCC /* Custom cell */ = {
+			isa = PBXGroup;
+			children = (
+				04BD1FD61918FB8000B13CCC /* ImageCell.h */,
+				04BD1FD71918FB8000B13CCC /* ImageCell.m */,
+				04BD1FD91918FBA400B13CCC /* ImageCell.xib */,
+			);
+			name = "Custom cell";
+			sourceTree = "<group>";
+		};
+		04CB4F5D1918E54C00FA3D64 /* Photos/VideoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04BD1FD51918FB2E00B13CCC /* Custom cell */,
+				04CB4F5E1918E5B400FA3D64 /* PhotoVideoViewController.h */,
+				04CB4F5F1918E5B400FA3D64 /* PhotoVideoViewController.m */,
+				04E0067119191D7D00A1190E /* PhotoVideoViewController.xib */,
+			);
+			name = Photos/VideoViewController;
 			sourceTree = "<group>";
 		};
 		1136267419111CB7004E5857 /* WeatherViewController */ = {
@@ -631,6 +648,7 @@
 				0408069B190EA37D00E063C3 /* InfoPlist.strings in Resources */,
 				1136268119112340004E5857 /* WeatherCell.xib in Resources */,
 				04409429190FA53900C4A558 /* ForgotPasswordViewController.xib in Resources */,
+				04BD1FDA1918FBA400B13CCC /* ImageCell.xib in Resources */,
 				04409421190F975E00C4A558 /* LoginViewController_iPhone4.xib in Resources */,
 				043354C71910EF3E003767D0 /* BuddySearchViewController.xib in Resources */,
 				046C6C0E190FECC400E3AC56 /* InviteFriendCell.xib in Resources */,
@@ -643,6 +661,7 @@
 				1136267A19111CB7004E5857 /* WeatherViewController.xib in Resources */,
 				0440943E190FA98B00C4A558 /* RegisterViewController_iPhone4.xib in Resources */,
 				040806A3190EA37D00E063C3 /* Images.xcassets in Resources */,
+				04E0067219191D7D00A1190E /* PhotoVideoViewController.xib in Resources */,
 				040706B5190FC1CE000D6660 /* BuddyListViewController.xib in Resources */,
 				04409441190FA98B00C4A558 /* RegisterViewController~ipad.xib in Resources */,
 			);
@@ -669,6 +688,7 @@
 				046C6C0D190FECC400E3AC56 /* InviteFriendCell.m in Sources */,
 				043354921910E800003767D0 /* FBConnectClass.m in Sources */,
 				043354AC1910ED9F003767D0 /* CJSONDeserializer_BlocksExtensions.m in Sources */,
+				04CB4F611918E5B400FA3D64 /* PhotoVideoViewController.m in Sources */,
 				04409440190FA98B00C4A558 /* RegisterViewController.m in Sources */,
 				046C6C08190FECA700E3AC56 /* IncomingFriendCell.m in Sources */,
 				043354B01910ED9F003767D0 /* CJSONSerializedData.m in Sources */,
@@ -687,6 +707,7 @@
 				043354A91910ED9F003767D0 /* CDataScanner_Extensions.m in Sources */,
 				043354B21910ED9F003767D0 /* NSDictionary_JSONExtensions.m in Sources */,
 				1136267919111CB7004E5857 /* WeatherViewController.m in Sources */,
+				04BD1FD81918FB8000B13CCC /* ImageCell.m in Sources */,
 				043354C11910EEB7003767D0 /* SearchingBuddy.m in Sources */,
 				043354AF1910ED9F003767D0 /* CJSONSerialization.m in Sources */,
 				043354AB1910ED9F003767D0 /* CFilteringJSONSerializer.m in Sources */,
