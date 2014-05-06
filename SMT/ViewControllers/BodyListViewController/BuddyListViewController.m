@@ -79,7 +79,7 @@
     self.navigationItem.rightBarButtonItem = add;
 //--------------------------------------------------------------------------------------------------------------------
     NSMutableArray * array = [[NSMutableArray alloc]init];
-    AppDelegate * app = [[UIApplication sharedApplication] delegate];
+    AppDelegate * app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
     NSMutableArray * buddies = [NSMutableArray new];
     NSMutableArray * pendingBuddies = [NSMutableArray new];
     NSMutableArray * buddiesReceived = [NSMutableArray new];

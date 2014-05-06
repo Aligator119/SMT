@@ -9,6 +9,8 @@
 #import "MapViewController.h"
 #import "LocationSearchViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "AppDelegate.h"
+#import "DataLoader.h"
 
 @interface MapViewController()
 {
@@ -58,7 +60,7 @@
     [self.mapContainerView addSubview:mapView_];
     
     // Show compass
-    [self showCompass];
+    //[self showCompass];
 
 }
 
@@ -109,10 +111,34 @@
     }
 }
 
-- (IBAction)goToLocationList:(id)sender{
+- (IBAction)goToLocationSearch:(id)sender{
     LocationSearchViewController * locationSearchVC = [LocationSearchViewController new];
     locationSearchVC.parent = self;
     [self.navigationController pushViewController:locationSearchVC animated:YES];
+}
+
+- (IBAction)goToLocationList:(id)sender{
+    AppDelegate * appDel = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    if(appDel.listLocations == nil || appDel.listLocations.count == 0){
+        
+        DataLoader * dataLoader = [DataLoader instance];
+        
+        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(newQueue, ^(){
+            [dataLoader getLocationsAssociatedWithUser];
+            
+            dispatch_async(dispatch_get_main_queue(),^(){
+                
+                if(dataLoader.isCorrectRezult){
+                    
+                }
+            });
+        });
+    } else {
+        
+       
+    }
+
 }
 
 -(void) locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading{

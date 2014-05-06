@@ -47,7 +47,7 @@
     if (self)
     {
         strUrl = @"http://api.sportsmantracker.com/v1/";
-        appDel = [UIApplication sharedApplication].delegate;
+        appDel = (AppDelegate*) [UIApplication sharedApplication].delegate;
         [self setInitialData];
     }
     return self;
