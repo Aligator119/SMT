@@ -39,20 +39,11 @@
     }
     
     [self showMap];
+    [self createLocationManager];
 }
 
 - (void) viewDidLayoutSubviews{
     mapView_.frame = self.mapContainerView.bounds;
-}
-
-- (void) viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
-    CLLocation * location = mapView_.myLocation;
-    if (location){
-        [mapView_ animateToLocation:location.coordinate];
-    }
-
 }
 
 - (void) showMap{
@@ -67,7 +58,7 @@
     [self.mapContainerView addSubview:mapView_];
     
     // Show compass
-    //[self showCompass];
+    [self showCompass];
 
 }
 
