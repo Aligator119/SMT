@@ -166,7 +166,23 @@
     typeOfServiceRequest = ApplicationServiceRequestLocationsAssociatedWithUser;
     NSString * strLocations = [NSString stringWithFormat:@"%i?%@",appDel.user.userID,APP_ID_KEY];
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@%@",strUrl,SubstringLocations,strLocations];
-    [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestLocationsAssociatedWithUser];
+    NSDictionary * info = [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestLocationsAssociatedWithUser];
+    
+    NSMutableArray * listLocations = [NSMutableArray new];
+    @try {
+        for (NSDictionary * dicInfo in info) {
+            Location * location = [Location new];
+            [location setValuesFromDict:dicInfo];
+            if(![location isLocationDelete] /*&& location.typeLocation == typeFishing*/)
+                [listLocations addObject:location];
+        }
+        self.isCorrectRezult = YES;
+    }
+    @catch (NSException *exception) {
+        self.isCorrectRezult = NO;
+        NSLog(@"ERROR !");
+    }
+    appDel.listLocations = [[NSMutableArray alloc] initWithArray:listLocations];
 }
 
 - (void)deleteLocationWithID:(int) _locID

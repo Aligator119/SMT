@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocationListViewController">
             <connections>
+                <outlet property="tableView" destination="NLk-DQ-Rr2" id="XWp-WJ-TEW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -66,7 +67,7 @@
                     <rect key="frame" x="0.0" y="60" width="320" height="46"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fTT-SD-RM8">
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fTT-SD-RM8">
                             <rect key="frame" x="20" y="9" width="280" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
@@ -77,17 +78,35 @@
                     </subviews>
                     <color key="backgroundColor" red="0.78039215689999997" green="0.69803921570000005" blue="0.59999999999999998" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstItem="fTT-SD-RM8" firstAttribute="top" secondItem="aPU-FT-i8P" secondAttribute="top" constant="9" id="9uV-3g-S0R"/>
+                        <constraint firstItem="fTT-SD-RM8" firstAttribute="leading" secondItem="aPU-FT-i8P" secondAttribute="leading" constant="20" id="KOG-Eh-WQE"/>
+                        <constraint firstAttribute="bottom" secondItem="fTT-SD-RM8" secondAttribute="bottom" constant="9" id="NZm-Pb-I7E"/>
+                        <constraint firstAttribute="trailing" secondItem="fTT-SD-RM8" secondAttribute="trailing" constant="20" id="cPV-h1-jaz"/>
                         <constraint firstAttribute="height" constant="46" id="thR-03-eSw"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NLk-DQ-Rr2">
+                    <rect key="frame" x="0.0" y="106" width="320" height="374"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="CLr-KT-zAq"/>
+                        <outlet property="delegate" destination="-1" id="RuY-aD-ZEL"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Fbw-Fa-j0E" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8Lp-CQ-WZR"/>
+                <constraint firstItem="NLk-DQ-Rr2" firstAttribute="top" secondItem="aPU-FT-i8P" secondAttribute="bottom" id="VST-QY-9iu"/>
+                <constraint firstAttribute="bottom" secondItem="NLk-DQ-Rr2" secondAttribute="bottom" id="XkA-gi-hda"/>
                 <constraint firstAttribute="trailing" secondItem="aPU-FT-i8P" secondAttribute="trailing" id="Zbv-SN-Blc"/>
+                <constraint firstAttribute="trailing" secondItem="NLk-DQ-Rr2" secondAttribute="trailing" id="cdh-it-gdS"/>
                 <constraint firstItem="aPU-FT-i8P" firstAttribute="top" secondItem="Fbw-Fa-j0E" secondAttribute="bottom" id="chX-oc-Td8"/>
                 <constraint firstAttribute="trailing" secondItem="Fbw-Fa-j0E" secondAttribute="trailing" id="j5O-Ta-p8x"/>
                 <constraint firstItem="Fbw-Fa-j0E" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="knb-HW-93J"/>
+                <constraint firstItem="NLk-DQ-Rr2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ko8-3o-f4k"/>
                 <constraint firstItem="aPU-FT-i8P" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="odb-mF-ODk"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

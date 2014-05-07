@@ -11,12 +11,16 @@
 #import <CoreLocation/CoreLocation.h>
 #import "AppDelegate.h"
 #import "DataLoader.h"
+#import "LocationListViewController.h"
+#import "SMTMarker.h"
+#import "Location.h"
 
 @interface MapViewController()
 {
     GMSMapView *mapView_;
     CLLocationManager * locationManager;
     BOOL firstLocationUpdate_;
+    AppDelegate * appDel;
 }
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * navigationBarHeightConstr;
@@ -40,6 +44,8 @@
         self.navigationBarVerticalConstr.constant -=20;
     }
     
+    appDel = (AppDelegate*) [UIApplication sharedApplication].delegate;
+    
     [self showMap];
     [self createLocationManager];
 }
@@ -61,6 +67,8 @@
     
     // Show compass
     //[self showCompass];
+    
+    [self setAllLocationMarkers];
 
 }
 
@@ -81,6 +89,18 @@
     self.compassView.image = [UIImage imageNamed:@"compass"];
     
     [mapView_ addSubview:self.compassView];
+}
+
+- (void) setAllLocationMarkers{
+    [mapView_ clear];
+    
+    for (Location* loc in appDel.listLocations){
+        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(loc.locLatitude, loc.locLongitude);
+        SMTMarker * marker = [SMTMarker markerWithPosition:coord];
+        marker.title = loc.locName;
+        marker.location = loc;
+        marker.map = mapView_;
+    }
 }
 
 - (void) createLocationManager{
@@ -118,7 +138,6 @@
 }
 
 - (IBAction)goToLocationList:(id)sender{
-    AppDelegate * appDel = (AppDelegate*)[UIApplication sharedApplication].delegate;
     if(appDel.listLocations == nil || appDel.listLocations.count == 0){
         
         DataLoader * dataLoader = [DataLoader instance];
@@ -130,12 +149,14 @@
             dispatch_async(dispatch_get_main_queue(),^(){
                 
                 if(dataLoader.isCorrectRezult){
-                    
+                    LocationListViewController * locationListVC = [LocationListViewController new];
+                    [self.navigationController pushViewController:locationListVC animated:YES];
                 }
             });
         });
     } else {
-        
+        LocationListViewController * locationListVC = [LocationListViewController new];
+        [self.navigationController pushViewController:locationListVC animated:YES];
        
     }
 
