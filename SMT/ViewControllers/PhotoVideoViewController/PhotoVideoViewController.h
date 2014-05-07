@@ -8,11 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "ImageCell.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "CustomHeader.h"
 
 @interface PhotoVideoViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
-{
-    NSMutableArray * list;
-}
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionTable;
 @property (strong, nonatomic) NSArray *list;

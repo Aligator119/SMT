@@ -8,11 +8,14 @@
 
 #import "PhotoVideoViewController.h"
 
-#define KEY_USERDEFAULT @"added Image"
+#define KEY_USERDEFAULT @"added_Image"
 
 @interface PhotoVideoViewController ()
 {
     NSUserDefaults * def;
+    NSMutableDictionary * dict;
+    NSDateFormatter * dateFormatter;
+    NSDateFormatter * sectionFormatter;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIView *overlayView;
@@ -21,6 +24,8 @@
 
 @property (nonatomic, weak) NSTimer *cameraTimer;
 @property (nonatomic) NSMutableArray *capturedImages;
+
+- (NSDictionary *) getImage;
 
 @end
 
@@ -40,16 +45,23 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    sectionFormatter = [[NSDateFormatter alloc]init];
+    [sectionFormatter setDateFormat:@"MMMM"];
     self.navigationController.navigationBar.hidden = NO;
     UINib *cellNib = [UINib nibWithNibName:@"ImageCell" bundle:[NSBundle mainBundle]];
     [self.collectionTable registerNib:cellNib forCellWithReuseIdentifier:@"imagecell"];
     
-    def = [[NSUserDefaults alloc]init];
-    NSArray * array = [def objectForKey:KEY_USERDEFAULT];
-    list = [[NSMutableArray alloc]init];
-    for (NSDictionary * dict in array) {
-        
-    }
+    UINib *headerNib = [UINib nibWithNibName:@"CustomHeader" bundle:[NSBundle mainBundle]];
+    [self.collectionTable registerClass:[CustomHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
+    [self.collectionTable registerNib:headerNib forCellWithReuseIdentifier:@"header"];
+    
+    def = [NSUserDefaults standardUserDefaults];
+    
+    dict = [[NSMutableDictionary alloc]initWithDictionary:[self getImage]];
+    self.list = [dict allKeys];
+    self.list = [self.list sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     
 }
 
@@ -60,25 +72,74 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSArray * items = [self.list objectAtIndex:section];
+    NSArray * items = [dict objectForKey:[self.list objectAtIndex:section]];
     return items.count;
 }
 
 - (UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ImageCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"imagecell" forIndexPath:indexPath];
+    NSArray * items = [dict objectForKey:[self.list objectAtIndex:indexPath.section]];
+    NSDictionary * data = [items objectAtIndex:indexPath.row];
     
-    [(ImageCell *)cell.image setBackgroundColor:[UIColor greenColor]];
+    typedef void (^ALAssetsLibraryAssetForURLResultBlock)(ALAsset *asset);
+    typedef void (^ALAssetsLibraryAccessFailureBlock)(NSError *error);
+    
+    ALAssetsLibraryAssetForURLResultBlock resultblock = ^(ALAsset *myasset)
+    {
+        ALAssetRepresentation *rep = [myasset defaultRepresentation];
+        CGImageRef iref = [rep fullResolutionImage];
+        UIImage *images;
+        if (iref)
+        {
+            
+            images = [UIImage imageWithCGImage:iref scale:[rep scale] orientation:(UIImageOrientation)[rep orientation]];
+            
+            cell.image.image = images;
+        }
+        
+    };
+    
+    ALAssetsLibraryAccessFailureBlock failureblock  = ^(NSError *myerror)
+    {
+        NSLog(@"can't get image");
+        
+    };
+    
+    NSURL *asseturl = [data objectForKey:@"path"];
+    
+    ALAssetsLibrary* assetslibrary = [[ALAssetsLibrary alloc] init];
+    [assetslibrary assetForURL:asseturl 
+                   resultBlock:resultblock   
+                  failureBlock:failureblock];
     
     return cell;
 }
 
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-    if (section) {
-        return CGSizeMake(0, 21);
-    }
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+////    if (section) {
+////        return CGSizeMake(320, 21);
+////    }
+//    
+//    //return CGSizeZero;
+//    return CGSizeMake(320, 35);
+//}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    CustomHeader * headerView = nil;
+    NSDate * mont = [dateFormatter dateFromString:[self.list objectAtIndex:indexPath.section]];
     
-    return CGSizeZero;
+    if (kind == UICollectionElementKindSectionHeader) {
+        headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
+        UILabel * lb = [[UILabel alloc]initWithFrame:headerView.frame];
+        lb.text = [@" " stringByAppendingString:[sectionFormatter stringFromDate:mont]];
+        lb.textColor = [UIColor colorWithRed:157.0/255.0 green:157.0/255.0 blue:159.0/255.0 alpha:1.0];
+        [headerView setBackgroundColor:[UIColor colorWithRed:239.0/255.0 green:239.0/255.0 blue:244.0/255.0 alpha:1.0]];
+        [headerView addSubview:lb];
+        return headerView;
+    }
+    return nil;
 }
 
 - (void)showImagePickerForSourceType:(UIImagePickerControllerSourceType)sourceType
@@ -100,14 +161,10 @@
     
     if (sourceType == UIImagePickerControllerSourceTypeCamera)
     {
-        /*
-         The user wants to use the camera interface. Set up our custom overlay view for the camera.
-         */
+       
         imagePickerController.showsCameraControls = NO;
         
-        /*
-         Load the overlay view from the OverlayView nib file. Self is the File's Owner for the nib file, so the overlayView outlet is set to the main view in the nib. Pass that view to the image picker controller to use as its overlay view, and set self's reference to the view to nil.
-         */
+       
         [[NSBundle mainBundle] loadNibNamed:@"OverlayView" owner:self options:nil];
         self.overlayView.frame = imagePickerController.cameraOverlayView.frame;
         imagePickerController.cameraOverlayView = self.overlayView;
@@ -118,6 +175,41 @@
     [self presentViewController:self.imagePickerController animated:YES completion:nil];
 }
 
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    NSString * path = [info objectForKey:@"UIImagePickerControllerReferenceURL"];
+    NSString * str = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:29320000.0]];
+    [self dismissViewControllerAnimated:YES completion:^{
+        BOOL flag = NO;
+        for (NSString * key in [dict allKeys]) {
+        if ([key isEqualToString:str]) {
+            NSMutableArray * buffer = [dict objectForKey:str];
+            NSDictionary * newImage = [[NSDictionary alloc]initWithObjectsAndKeys:path, @"path", nil];
+            [buffer addObject:newImage];
+            [dict setObject:buffer forKey:str];
+            flag = YES;
+            NSData * buf = [NSKeyedArchiver archivedDataWithRootObject:dict];
+            [def setObject:buf forKey:KEY_USERDEFAULT];
+            [def synchronize];
+            
+        }
+        }
+        if (!flag) {
+            NSMutableArray * buffer = [[NSMutableArray alloc]init];
+            NSDictionary * newImage = [[NSDictionary alloc]initWithObjectsAndKeys:path, @"path", nil];
+            [buffer addObject:newImage];
+            NSMutableDictionary * newDict = [[NSMutableDictionary alloc]initWithDictionary:dict];
+            [newDict addEntriesFromDictionary:@{str: buffer}];
+            NSData * buf = [NSKeyedArchiver archivedDataWithRootObject:newDict];
+            [def setObject:buf forKey:KEY_USERDEFAULT];
+            dict = [newDict mutableCopy];
+            [def synchronize];
+        }
+        self.list = [dict allKeys];
+        self.list = [self.list sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+        [self.collectionTable reloadData];
+    }];
+    
+}
 
 
 - (void)didReceiveMemoryWarning
@@ -133,4 +225,12 @@
 - (IBAction)actChooseExisting:(id)sender {
     [self showImagePickerForSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
 }
+
+- (NSDictionary *) getImage
+{
+    NSData * buf = [def objectForKey:KEY_USERDEFAULT];
+    NSMutableDictionary * ret = [[NSMutableDictionary alloc]initWithDictionary:[NSKeyedUnarchiver unarchiveObjectWithData:buf]];
+    return ret;
+}
+
 @end

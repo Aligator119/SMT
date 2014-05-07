@@ -78,6 +78,9 @@
 		046C6C0E190FECC400E3AC56 /* InviteFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C6C0C190FECC400E3AC56 /* InviteFriendCell.xib */; };
 		046C6C12190FECEE00E3AC56 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046C6C10190FECEE00E3AC56 /* Cell.m */; };
 		046C6C13190FECEE00E3AC56 /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C6C11190FECEE00E3AC56 /* Cell.xib */; };
+		04B312FA191A281C0055D460 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B312F9191A281C0055D460 /* AssetsLibrary.framework */; };
+		04B312FE191A32C70055D460 /* CustomHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B312FD191A32C70055D460 /* CustomHeader.m */; };
+		04B31300191A32DF0055D460 /* CustomHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B312FF191A32DF0055D460 /* CustomHeader.xib */; };
 		04BD1FD81918FB8000B13CCC /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BD1FD71918FB8000B13CCC /* ImageCell.m */; };
 		04BD1FDA1918FBA400B13CCC /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04BD1FD91918FBA400B13CCC /* ImageCell.xib */; };
 		04CB4F611918E5B400FA3D64 /* PhotoVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CB4F5F1918E5B400FA3D64 /* PhotoVideoViewController.m */; };
@@ -230,6 +233,10 @@
 		046C6C0F190FECEE00E3AC56 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cell.h; path = ViewControllers/BodyListViewController/CustomCell/Cell.h; sourceTree = "<group>"; };
 		046C6C10190FECEE00E3AC56 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Cell.m; path = ViewControllers/BodyListViewController/CustomCell/Cell.m; sourceTree = "<group>"; };
 		046C6C11190FECEE00E3AC56 /* Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Cell.xib; path = ViewControllers/BodyListViewController/CustomCell/Cell.xib; sourceTree = "<group>"; };
+		04B312F9191A281C0055D460 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		04B312FC191A32C70055D460 /* CustomHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomHeader.h; path = ViewControllers/PhotoVideoViewController/CustomHeader/CustomHeader.h; sourceTree = "<group>"; };
+		04B312FD191A32C70055D460 /* CustomHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomHeader.m; path = ViewControllers/PhotoVideoViewController/CustomHeader/CustomHeader.m; sourceTree = "<group>"; };
+		04B312FF191A32DF0055D460 /* CustomHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomHeader.xib; path = ViewControllers/PhotoVideoViewController/CustomHeader/CustomHeader.xib; sourceTree = "<group>"; };
 		04BD1FD61918FB8000B13CCC /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCell.h; path = "ViewControllers/PhotoVideoViewController/Custom cell/ImageCell.h"; sourceTree = "<group>"; };
 		04BD1FD71918FB8000B13CCC /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageCell.m; path = "ViewControllers/PhotoVideoViewController/Custom cell/ImageCell.m"; sourceTree = "<group>"; };
 		04BD1FD91918FBA400B13CCC /* ImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImageCell.xib; path = "ViewControllers/PhotoVideoViewController/Custom cell/ImageCell.xib"; sourceTree = "<group>"; };
@@ -296,6 +303,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04B312FA191A281C0055D460 /* AssetsLibrary.framework in Frameworks */,
 				0425C3AB19111ECA0097709E /* GoogleMaps.framework in Frameworks */,
 				0425C3A0191114850097709E /* SystemConfiguration.framework in Frameworks */,
 				0425C39E191114760097709E /* QuartzCore.framework in Frameworks */,
@@ -363,6 +371,7 @@
 		0408068F190EA37D00E063C3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04B312F9191A281C0055D460 /* AssetsLibrary.framework */,
 				0425C3AA19111ECA0097709E /* GoogleMaps.framework */,
 				0425C39F191114850097709E /* SystemConfiguration.framework */,
 				0425C39D191114760097709E /* QuartzCore.framework */,
@@ -526,8 +535,9 @@
 		044093F9190F7ABC00C4A558 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				84F3A6181917AEAB00D580F1 /* LocationSearch */,
-				84F3A60E19176DCF00D580F1 /* MapViewController */,
+				8425CDD5191914E200D948EB /* LocationListViewController */,
+				8425CDC91919001100D948EB /* LocationSearch */,
+				8425CDC31918FFFA00D948EB /* MapViewController */,
 				04CB4F5D1918E54C00FA3D64 /* Photos/VideoViewController */,
 				1136267419111CB7004E5857 /* WeatherViewController */,
 				043354C21910EF20003767D0 /* BuddySearchViewController */,
@@ -608,6 +618,16 @@
 			name = CustomCell;
 			sourceTree = "<group>";
 		};
+		04B312FB191A324D0055D460 /* CustomHeader */ = {
+			isa = PBXGroup;
+			children = (
+				04B312FC191A32C70055D460 /* CustomHeader.h */,
+				04B312FD191A32C70055D460 /* CustomHeader.m */,
+				04B312FF191A32DF0055D460 /* CustomHeader.xib */,
+			);
+			name = CustomHeader;
+			sourceTree = "<group>";
+		};
 		04BD1FD51918FB2E00B13CCC /* Custom cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -621,6 +641,7 @@
 		04CB4F5D1918E54C00FA3D64 /* Photos/VideoViewController */ = {
 			isa = PBXGroup;
 			children = (
+				04B312FB191A324D0055D460 /* CustomHeader */,
 				04BD1FD51918FB2E00B13CCC /* Custom cell */,
 				04CB4F5E1918E5B400FA3D64 /* PhotoVideoViewController.h */,
 				04CB4F5F1918E5B400FA3D64 /* PhotoVideoViewController.m */,
@@ -791,6 +812,7 @@
 				04409407190F825F00C4A558 /* FlyoutMenuViewController.xib in Resources */,
 				046C6C13190FECEE00E3AC56 /* Cell.xib in Resources */,
 				8425CDDA1919202700D948EB /* LocationListViewController.xib in Resources */,
+				04B31300191A32DF0055D460 /* CustomHeader.xib in Resources */,
 				043354CE1910F0A7003767D0 /* BuddySearchCell.xib in Resources */,
 				0408069B190EA37D00E063C3 /* InfoPlist.strings in Resources */,
 				1136268119112340004E5857 /* WeatherCell.xib in Resources */,
@@ -840,7 +862,6 @@
 				046C6C0D190FECC400E3AC56 /* InviteFriendCell.m in Sources */,
 				043354921910E800003767D0 /* FBConnectClass.m in Sources */,
 				043354AC1910ED9F003767D0 /* CJSONDeserializer_BlocksExtensions.m in Sources */,
-				84F3A6231917C5CF00D580F1 /* PlaceSearchResult.m in Sources */,
 				04CB4F611918E5B400FA3D64 /* PhotoVideoViewController.m in Sources */,
 				04409440190FA98B00C4A558 /* RegisterViewController.m in Sources */,
 				046C6C08190FECA700E3AC56 /* IncomingFriendCell.m in Sources */,
@@ -887,6 +908,7 @@
 				11C9F6A81917E5FF00CDAFBA /* AFNetworkReachabilityManager.m in Sources */,
 				8425CDC71918FFFA00D948EB /* MapViewController.m in Sources */,
 				11C9F6AC1917E5FF00CDAFBA /* AFURLResponseSerialization.m in Sources */,
+				04B312FE191A32C70055D460 /* CustomHeader.m in Sources */,
 				0433548C1910E7C9003767D0 /* GTMNSString+HTML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
