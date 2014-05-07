@@ -31,6 +31,9 @@
                         <state key="normal">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="infoButtonPressed:" destination="v3j-FB-XBC" eventType="touchUpInside" id="N8l-OF-Ugm"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -42,6 +45,9 @@
                     <constraint firstAttribute="bottom" secondItem="rsS-Rj-Xt6" secondAttribute="bottom" constant="11" id="tF0-a7-yyD"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="locationNameLabel" destination="rsS-Rj-Xt6" id="TdP-ut-CDV"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

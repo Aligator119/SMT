@@ -35,7 +35,6 @@
 
 -(void) moveToLocationDetails: (NSNotification*) notification{
     Location * loc = (Location*) [notification object];
-    NSLog(@"Selected Location Name: %@", loc.locName);
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

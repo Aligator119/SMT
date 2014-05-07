@@ -109,6 +109,7 @@
 		8425CDDA1919202700D948EB /* LocationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8425CDD81919202700D948EB /* LocationListViewController.xib */; };
 		84F19A14191A0CC8001B81F7 /* LocationListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F19A13191A0CC8001B81F7 /* LocationListCell.m */; };
 		84F19A16191A0CDE001B81F7 /* LocationListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F19A15191A0CDE001B81F7 /* LocationListCell.xib */; };
+		84F19A1C191A31AF001B81F7 /* SMTMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F19A1B191A31AF001B81F7 /* SMTMarker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -284,6 +285,8 @@
 		84F19A12191A0CC8001B81F7 /* LocationListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationListCell.h; sourceTree = "<group>"; };
 		84F19A13191A0CC8001B81F7 /* LocationListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationListCell.m; sourceTree = "<group>"; };
 		84F19A15191A0CDE001B81F7 /* LocationListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationListCell.xib; sourceTree = "<group>"; };
+		84F19A1A191A31AF001B81F7 /* SMTMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMTMarker.h; path = Classes/SMTMarker.h; sourceTree = "<group>"; };
+		84F19A1B191A31AF001B81F7 /* SMTMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMTMarker.m; path = Classes/SMTMarker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -464,6 +467,8 @@
 				043354871910E7C9003767D0 /* NSString+HTML.m */,
 				043354881910E7C9003767D0 /* UserInfo.h */,
 				043354891910E7C9003767D0 /* UserInfo.m */,
+				84F19A1A191A31AF001B81F7 /* SMTMarker.h */,
+				84F19A1B191A31AF001B81F7 /* SMTMarker.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -835,6 +840,7 @@
 				043354AA1910ED9F003767D0 /* CDataScanner.m in Sources */,
 				0433548E1910E7C9003767D0 /* NSString+HTML.m in Sources */,
 				043354AE1910ED9F003767D0 /* CJSONScanner.m in Sources */,
+				84F19A1C191A31AF001B81F7 /* SMTMarker.m in Sources */,
 				11C9F6871917821800CDAFBA /* TidesPredict.m in Sources */,
 				04409428190FA53900C4A558 /* ForgotPasswordViewController.m in Sources */,
 				1136268019112340004E5857 /* WeatherCell.m in Sources */,

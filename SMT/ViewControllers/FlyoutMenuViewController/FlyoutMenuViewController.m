@@ -10,6 +10,7 @@
 #import "WeatherViewController.h"
 #import "AppDelegate.h"
 #import "MapViewController.h"
+#import "DataLoader.h"
 
 @interface FlyoutMenuViewController ()
 {
@@ -65,7 +66,28 @@
 }
 
 -(void)openHuntingMap{
-    [self.navigationController pushViewController:[MapViewController new] animated:YES];
+    
+    AppDelegate * appDel = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    if(appDel.listLocations == nil || appDel.listLocations.count == 0){
+        
+        DataLoader * dataLoader = [DataLoader instance];
+        
+        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(newQueue, ^(){
+            [dataLoader getLocationsAssociatedWithUser];
+            
+            dispatch_async(dispatch_get_main_queue(),^(){
+                
+                if(dataLoader.isCorrectRezult){
+                    MapViewController * mapVC = [MapViewController new];
+                    [self.navigationController pushViewController:mapVC animated:YES];
+                }
+            });
+        });
+    } else {
+         MapViewController * mapVC = [MapViewController new];
+        [self.navigationController pushViewController:mapVC animated:YES];
+    }
 }
 
 - (void) viewWillAppear:(BOOL)animated
