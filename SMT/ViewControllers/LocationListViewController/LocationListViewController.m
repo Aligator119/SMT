@@ -7,32 +7,48 @@
 //
 
 #import "LocationListViewController.h"
+#import "Location.h"
+#import "LocationListCell.h"
+#import "AppDelegate.h"
 
-@interface LocationListViewController ()
+@interface LocationListViewController (){
+    AppDelegate * appDel;
+}
+
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 
 @end
 
 @implementation LocationListViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToLocationDetails:) name:@"LocationListInfoButtonPressed" object:nil];
+    [self.tableView registerNib:[UINib nibWithNibName:@"LocationListCell" bundle:nil] forCellReuseIdentifier:@"LocationListCell"];
+    appDel = (AppDelegate*) [UIApplication sharedApplication].delegate;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void) dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+-(void) moveToLocationDetails: (NSNotification*) notification{
+    Location * loc = (Location*) [notification object];
+    NSLog(@"Selected Location Name: %@", loc.locName);
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return appDel.listLocations.count;
+}
+
+- (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    LocationListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"LocationListCell" forIndexPath:indexPath];
+    [cell processCellInfo:[appDel.listLocations objectAtIndex:indexPath.row]];
+    return cell;
+}
+
+
+
 
 @end
