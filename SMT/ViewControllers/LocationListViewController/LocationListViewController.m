@@ -10,6 +10,7 @@
 #import "Location.h"
 #import "LocationListCell.h"
 #import "AppDelegate.h"
+#import "UpdateLocationViewController.h"
 
 @interface LocationListViewController (){
     AppDelegate * appDel;
@@ -29,12 +30,20 @@
     appDel = (AppDelegate*) [UIApplication sharedApplication].delegate;
 }
 
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
 - (void) dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 -(void) moveToLocationDetails: (NSNotification*) notification{
     Location * loc = (Location*) [notification object];
+    UpdateLocationViewController *updateLocationVC = [UpdateLocationViewController new];
+    updateLocationVC.location = loc;
+    [self.navigationController pushViewController:updateLocationVC animated:YES];
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
