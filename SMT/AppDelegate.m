@@ -50,7 +50,13 @@
     self.navigationController = [[UINavigationController alloc]initWithRootViewController:self.viewController];
     self.window.rootViewController = self.navigationController;
     self.window.backgroundColor = [UIColor whiteColor];
-    self.defaultLocation = [[Location alloc]init];
+    self.speciesList = [NSMutableArray new];
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"default_location"]!= nil) {
+        self.defaultLocation = [NSKeyedUnarchiver unarchiveObjectWithData:[[NSUserDefaults standardUserDefaults] objectForKey:@"default_location"]];
+    }
+    
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -211,5 +217,7 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
 
 @end

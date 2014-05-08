@@ -18,6 +18,7 @@
 #import "Buddy.h"
 #import "SearchingBuddy.h"
 #import "BuddySearchViewController.h"
+#import "Species.h"
 
 #define RequestPost @"POST"
 #define RequestGet @"GET"
@@ -166,14 +167,16 @@
     typeOfServiceRequest = ApplicationServiceRequestLocationsAssociatedWithUser;
     NSString * strLocations = [NSString stringWithFormat:@"%i?%@",appDel.user.userID,APP_ID_KEY];
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@%@",strUrl,SubstringLocations,strLocations];
-    NSDictionary * info = [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestLocationsAssociatedWithUser];
-    
+
+    NSLog(@"Get Locations");
+    // * * * *
     NSMutableArray * listLocations = [NSMutableArray new];
     @try {
-        for (NSDictionary * dicInfo in info) {
+        //listLocationName = [[NSMutableArray alloc] initWithArray:info.allKeys];
+        for (NSDictionary * dicInfo in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestLocationsAssociatedWithUser]) {
             Location * location = [Location new];
             [location setValuesFromDict:dicInfo];
-            if(![location isLocationDelete] /*&& location.typeLocation == typeFishing*/)
+            if(![location isLocationDelete] && location.typeLocation == typeFishing)
                 [listLocations addObject:location];
         }
         self.isCorrectRezult = YES;
@@ -182,7 +185,11 @@
         self.isCorrectRezult = NO;
         NSLog(@"ERROR !");
     }
+    //if(self.isCorrectRezult)
     appDel.listLocations = [[NSMutableArray alloc] initWithArray:listLocations];
+    //else appDel.listLocations = nil;
+    //NSLog(@"%@",info);
+
 }
 
 - (void)deleteLocationWithID:(int) _locID
@@ -423,6 +430,19 @@
     WheatherPredict *weatherPredictionForLocation = [[WheatherPredict alloc]init];
     [weatherPredictionForLocation setDataForWheather:[self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestGetWeatherForecast]];
     appDel.wheatherPredictList = weatherPredictionForLocation;
+}
+
+- (void)getAllSpecies
+{
+    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@species?%@",URLSportsMaster, APP_ID_KEY];
+    NSDictionary *info = [NSDictionary new];
+    info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestAddBuddy];
+    appDel.speciesList = [NSMutableArray new];
+    for(NSDictionary * dic in info){
+        Species *spec = [Species new];
+        [spec initSpeciesWithData:dic];
+        [appDel.speciesList addObject:spec];
+    }
 }
 
 - (BOOL)isUserInMyBuddies:(NSString*)_userID{

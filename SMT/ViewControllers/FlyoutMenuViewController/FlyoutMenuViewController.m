@@ -10,9 +10,7 @@
 #import "WeatherViewController.h"
 #import "AppDelegate.h"
 #import "MapViewController.h"
-#import "DataLoader.h"
-#import "LogAnActivityViewController.h"
-#import "PhotoVideoViewController.h"
+#import "SettingsViewController.h"
 
 @interface FlyoutMenuViewController ()
 {
@@ -100,6 +98,11 @@
          MapViewController * mapVC = [MapViewController new];
         [self.navigationController pushViewController:mapVC animated:YES];
     }
+}
+
+-(void)openSettings
+{
+    [self.navigationController pushViewController:[SettingsViewController new] animated:YES];
 }
 
 - (void) viewWillAppear:(BOOL)animated

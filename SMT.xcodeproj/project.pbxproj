@@ -105,28 +105,33 @@
 		11C9F684191781F100CDAFBA /* Astronomy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F683191781F100CDAFBA /* Astronomy.m */; };
 		11C9F6871917821800CDAFBA /* TidesPredict.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F6861917821800CDAFBA /* TidesPredict.m */; };
 		11C9F68A1917E52A00CDAFBA /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F6891917E52A00CDAFBA /* UIImageView+AFNetworking.m */; };
-		11C9F6A51917E5FF00CDAFBA /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F6931917E5FF00CDAFBA /* AFHTTPRequestOperation.m */; };
-		11C9F6A61917E5FF00CDAFBA /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F6951917E5FF00CDAFBA /* AFHTTPRequestOperationManager.m */; };
-		11C9F6A71917E5FF00CDAFBA /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F6971917E5FF00CDAFBA /* AFHTTPSessionManager.m */; };
-		11C9F6A81917E5FF00CDAFBA /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F69A1917E5FF00CDAFBA /* AFNetworkReachabilityManager.m */; };
-		11C9F6A91917E5FF00CDAFBA /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F69C1917E5FF00CDAFBA /* AFSecurityPolicy.m */; };
-		11C9F6AA1917E5FF00CDAFBA /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F69E1917E5FF00CDAFBA /* AFURLConnectionOperation.m */; };
-		11C9F6AB1917E5FF00CDAFBA /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F6A01917E5FF00CDAFBA /* AFURLRequestSerialization.m */; };
-		11C9F6AC1917E5FF00CDAFBA /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F6A21917E5FF00CDAFBA /* AFURLResponseSerialization.m */; };
-		11C9F6AD1917E5FF00CDAFBA /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F6A41917E5FF00CDAFBA /* AFURLSessionManager.m */; };
-		8425CDC71918FFFA00D948EB /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425CDC51918FFFA00D948EB /* MapViewController.m */; };
-		8425CDC81918FFFA00D948EB /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8425CDC61918FFFA00D948EB /* MapViewController.xib */; };
-		8425CDCD1919001100D948EB /* LocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425CDCB1919001100D948EB /* LocationSearchViewController.m */; };
-		8425CDCE1919001100D948EB /* LocationSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8425CDCC1919001100D948EB /* LocationSearchViewController.xib */; };
-		8425CDD31919002300D948EB /* LocationSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425CDD01919002300D948EB /* LocationSearch.m */; };
-		8425CDD41919002300D948EB /* PlaceSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425CDD21919002300D948EB /* PlaceSearchResult.m */; };
-		8425CDD91919202700D948EB /* LocationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8425CDD71919202700D948EB /* LocationListViewController.m */; };
-		8425CDDA1919202700D948EB /* LocationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8425CDD81919202700D948EB /* LocationListViewController.xib */; };
-		84F19A14191A0CC8001B81F7 /* LocationListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F19A13191A0CC8001B81F7 /* LocationListCell.m */; };
-		84F19A16191A0CDE001B81F7 /* LocationListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F19A15191A0CDE001B81F7 /* LocationListCell.xib */; };
-		84F19A1C191A31AF001B81F7 /* SMTMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F19A1B191A31AF001B81F7 /* SMTMarker.m */; };
-		84F19A27191A3524001B81F7 /* UpdateLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F19A25191A3524001B81F7 /* UpdateLocationViewController.m */; };
-		84F19A28191A3524001B81F7 /* UpdateLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F19A26191A3524001B81F7 /* UpdateLocationViewController.xib */; };
+		11D48DE01918E32700A9787E /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D48DCE1918E32700A9787E /* AFHTTPRequestOperation.m */; };
+		11D48DE11918E32700A9787E /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D48DD01918E32700A9787E /* AFHTTPRequestOperationManager.m */; };
+		11D48DE21918E32700A9787E /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D48DD21918E32700A9787E /* AFHTTPSessionManager.m */; };
+		11D48DE31918E32700A9787E /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D48DD51918E32700A9787E /* AFNetworkReachabilityManager.m */; };
+		11D48DE41918E32700A9787E /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D48DD71918E32700A9787E /* AFSecurityPolicy.m */; };
+		11D48DE51918E32700A9787E /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D48DD91918E32700A9787E /* AFURLConnectionOperation.m */; };
+		11D48DE61918E32700A9787E /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D48DDB1918E32700A9787E /* AFURLRequestSerialization.m */; };
+		11D48DE71918E32700A9787E /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D48DDD1918E32700A9787E /* AFURLResponseSerialization.m */; };
+		11D48DE81918E32700A9787E /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D48DDF1918E32700A9787E /* AFURLSessionManager.m */; };
+		11D48DED1918F20300A9787E /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D48DEB1918F20300A9787E /* SettingsViewController.m */; };
+		11D48DEE1918F20300A9787E /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11D48DEC1918F20300A9787E /* SettingsViewController.xib */; };
+		11D48DF31919005E00A9787E /* SpeciesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D48DF11919005E00A9787E /* SpeciesViewController.m */; };
+		11D48DF41919005E00A9787E /* SpeciesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11D48DF21919005E00A9787E /* SpeciesViewController.xib */; };
+		11D48DF71919079800A9787E /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D48DF61919079800A9787E /* Species.m */; };
+		11D48E08191A8C8900A9787E /* UIViewController+LoaderCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D48E07191A8C8900A9787E /* UIViewController+LoaderCategory.m */; };
+		11D48E0E191A908F00A9787E /* WeatherDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D48E0B191A908F00A9787E /* WeatherDetailViewController.m */; };
+		11D48E0F191A908F00A9787E /* WeatherDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11D48E0C191A908F00A9787E /* WeatherDetailViewController.xib */; };
+		11D48E10191A908F00A9787E /* WeatherDetailViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11D48E0D191A908F00A9787E /* WeatherDetailViewController~ipad.xib */; };
+		11D48E15191A90E800A9787E /* WeatherDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D48E13191A90E800A9787E /* WeatherDetailCell.m */; };
+		11D48E16191A90E800A9787E /* WeatherDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11D48E14191A90E800A9787E /* WeatherDetailCell.xib */; };
+		84F3A61219176DCF00D580F1 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3A61019176DCF00D580F1 /* MapViewController.m */; };
+		84F3A61319176DCF00D580F1 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F3A61119176DCF00D580F1 /* MapViewController.xib */; };
+		84F3A6171917A29600D580F1 /* compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F3A6161917A29600D580F1 /* compass.png */; };
+		84F3A61C1917AEE200D580F1 /* LocationSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3A61A1917AEE200D580F1 /* LocationSearchViewController.m */; };
+		84F3A61D1917AEE200D580F1 /* LocationSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F3A61B1917AEE200D580F1 /* LocationSearchViewController.xib */; };
+		84F3A6221917C5CF00D580F1 /* LocationSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3A61F1917C5CF00D580F1 /* LocationSearch.m */; };
+		84F3A6231917C5CF00D580F1 /* PlaceSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F3A6211917C5CF00D580F1 /* PlaceSearchResult.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -289,46 +294,53 @@
 		11C9F6861917821800CDAFBA /* TidesPredict.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TidesPredict.m; path = Classes/TidesPredict.m; sourceTree = "<group>"; };
 		11C9F6881917E52A00CDAFBA /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "Classes/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		11C9F6891917E52A00CDAFBA /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "Classes/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		11C9F6921917E5FF00CDAFBA /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
-		11C9F6931917E5FF00CDAFBA /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
-		11C9F6941917E5FF00CDAFBA /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
-		11C9F6951917E5FF00CDAFBA /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
-		11C9F6961917E5FF00CDAFBA /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
-		11C9F6971917E5FF00CDAFBA /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
-		11C9F6981917E5FF00CDAFBA /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
-		11C9F6991917E5FF00CDAFBA /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
-		11C9F69A1917E5FF00CDAFBA /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
-		11C9F69B1917E5FF00CDAFBA /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
-		11C9F69C1917E5FF00CDAFBA /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
-		11C9F69D1917E5FF00CDAFBA /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
-		11C9F69E1917E5FF00CDAFBA /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
-		11C9F69F1917E5FF00CDAFBA /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
-		11C9F6A01917E5FF00CDAFBA /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
-		11C9F6A11917E5FF00CDAFBA /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
-		11C9F6A21917E5FF00CDAFBA /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
-		11C9F6A31917E5FF00CDAFBA /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
-		11C9F6A41917E5FF00CDAFBA /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
-		8425CDC41918FFFA00D948EB /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		8425CDC51918FFFA00D948EB /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		8425CDC61918FFFA00D948EB /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
-		8425CDCA1919001100D948EB /* LocationSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationSearchViewController.h; sourceTree = "<group>"; };
-		8425CDCB1919001100D948EB /* LocationSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationSearchViewController.m; sourceTree = "<group>"; };
-		8425CDCC1919001100D948EB /* LocationSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationSearchViewController.xib; sourceTree = "<group>"; };
-		8425CDCF1919002300D948EB /* LocationSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationSearch.h; path = Classes/LocationSearch.h; sourceTree = "<group>"; };
-		8425CDD01919002300D948EB /* LocationSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationSearch.m; path = Classes/LocationSearch.m; sourceTree = "<group>"; };
-		8425CDD11919002300D948EB /* PlaceSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceSearchResult.h; path = Classes/PlaceSearchResult.h; sourceTree = "<group>"; };
-		8425CDD21919002300D948EB /* PlaceSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceSearchResult.m; path = Classes/PlaceSearchResult.m; sourceTree = "<group>"; };
-		8425CDD61919202700D948EB /* LocationListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationListViewController.h; sourceTree = "<group>"; };
-		8425CDD71919202700D948EB /* LocationListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationListViewController.m; sourceTree = "<group>"; };
-		8425CDD81919202700D948EB /* LocationListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationListViewController.xib; sourceTree = "<group>"; };
-		84F19A12191A0CC8001B81F7 /* LocationListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationListCell.h; sourceTree = "<group>"; };
-		84F19A13191A0CC8001B81F7 /* LocationListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationListCell.m; sourceTree = "<group>"; };
-		84F19A15191A0CDE001B81F7 /* LocationListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationListCell.xib; sourceTree = "<group>"; };
-		84F19A1A191A31AF001B81F7 /* SMTMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMTMarker.h; path = Classes/SMTMarker.h; sourceTree = "<group>"; };
-		84F19A1B191A31AF001B81F7 /* SMTMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMTMarker.m; path = Classes/SMTMarker.m; sourceTree = "<group>"; };
-		84F19A24191A3524001B81F7 /* UpdateLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateLocationViewController.h; sourceTree = "<group>"; };
-		84F19A25191A3524001B81F7 /* UpdateLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateLocationViewController.m; sourceTree = "<group>"; };
-		84F19A26191A3524001B81F7 /* UpdateLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateLocationViewController.xib; sourceTree = "<group>"; };
+		11D48DCD1918E32700A9787E /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		11D48DCE1918E32700A9787E /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		11D48DCF1918E32700A9787E /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		11D48DD01918E32700A9787E /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		11D48DD11918E32700A9787E /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		11D48DD21918E32700A9787E /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		11D48DD31918E32700A9787E /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		11D48DD41918E32700A9787E /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		11D48DD51918E32700A9787E /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		11D48DD61918E32700A9787E /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		11D48DD71918E32700A9787E /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		11D48DD81918E32700A9787E /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		11D48DD91918E32700A9787E /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		11D48DDA1918E32700A9787E /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		11D48DDB1918E32700A9787E /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		11D48DDC1918E32700A9787E /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		11D48DDD1918E32700A9787E /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		11D48DDE1918E32700A9787E /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		11D48DDF1918E32700A9787E /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		11D48DEA1918F20300A9787E /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		11D48DEB1918F20300A9787E /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		11D48DEC1918F20300A9787E /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		11D48DF01919005E00A9787E /* SpeciesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpeciesViewController.h; sourceTree = "<group>"; };
+		11D48DF11919005E00A9787E /* SpeciesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpeciesViewController.m; sourceTree = "<group>"; };
+		11D48DF21919005E00A9787E /* SpeciesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpeciesViewController.xib; sourceTree = "<group>"; };
+		11D48DF51919079800A9787E /* Species.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Species.h; path = Classes/Species.h; sourceTree = "<group>"; };
+		11D48DF61919079800A9787E /* Species.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Species.m; path = Classes/Species.m; sourceTree = "<group>"; };
+		11D48E06191A8C8900A9787E /* UIViewController+LoaderCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+LoaderCategory.h"; path = "Classes/UIViewController+LoaderCategory.h"; sourceTree = "<group>"; };
+		11D48E07191A8C8900A9787E /* UIViewController+LoaderCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+LoaderCategory.m"; path = "Classes/UIViewController+LoaderCategory.m"; sourceTree = "<group>"; };
+		11D48E0A191A908F00A9787E /* WeatherDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherDetailViewController.h; sourceTree = "<group>"; };
+		11D48E0B191A908F00A9787E /* WeatherDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherDetailViewController.m; sourceTree = "<group>"; };
+		11D48E0C191A908F00A9787E /* WeatherDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherDetailViewController.xib; sourceTree = "<group>"; };
+		11D48E0D191A908F00A9787E /* WeatherDetailViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "WeatherDetailViewController~ipad.xib"; sourceTree = "<group>"; };
+		11D48E12191A90E800A9787E /* WeatherDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherDetailCell.h; sourceTree = "<group>"; };
+		11D48E13191A90E800A9787E /* WeatherDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherDetailCell.m; sourceTree = "<group>"; };
+		11D48E14191A90E800A9787E /* WeatherDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherDetailCell.xib; sourceTree = "<group>"; };
+		84F3A60F19176DCF00D580F1 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		84F3A61019176DCF00D580F1 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		84F3A61119176DCF00D580F1 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		84F3A6161917A29600D580F1 /* compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = compass.png; path = Image/compass.png; sourceTree = "<group>"; };
+		84F3A6191917AEE200D580F1 /* LocationSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationSearchViewController.h; sourceTree = "<group>"; };
+		84F3A61A1917AEE200D580F1 /* LocationSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationSearchViewController.m; sourceTree = "<group>"; };
+		84F3A61B1917AEE200D580F1 /* LocationSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationSearchViewController.xib; sourceTree = "<group>"; };
+		84F3A61E1917C5CF00D580F1 /* LocationSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationSearch.h; path = Classes/LocationSearch.h; sourceTree = "<group>"; };
+		84F3A61F1917C5CF00D580F1 /* LocationSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationSearch.m; path = Classes/LocationSearch.m; sourceTree = "<group>"; };
+		84F3A6201917C5CF00D580F1 /* PlaceSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceSearchResult.h; path = Classes/PlaceSearchResult.h; sourceTree = "<group>"; };
+		84F3A6211917C5CF00D580F1 /* PlaceSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceSearchResult.m; path = Classes/PlaceSearchResult.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -473,11 +485,9 @@
 		0411E2081910D0B6006045B0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8425CDCF1919002300D948EB /* LocationSearch.h */,
-				8425CDD01919002300D948EB /* LocationSearch.m */,
-				8425CDD11919002300D948EB /* PlaceSearchResult.h */,
-				8425CDD21919002300D948EB /* PlaceSearchResult.m */,
-				11C9F6911917E5FF00CDAFBA /* AFNetworking */,
+				11D48E06191A8C8900A9787E /* UIViewController+LoaderCategory.h */,
+				11D48E07191A8C8900A9787E /* UIViewController+LoaderCategory.m */,
+				11D48DCC1918E32700A9787E /* AFNetworking */,
 				11C9F6881917E52A00CDAFBA /* UIImageView+AFNetworking.h */,
 				11C9F6891917E52A00CDAFBA /* UIImageView+AFNetworking.m */,
 				11C9F6851917821800CDAFBA /* TidesPredict.h */,
@@ -490,6 +500,10 @@
 				11C9F67D1917814600CDAFBA /* DayPredict.m */,
 				11C9F679191780DC00CDAFBA /* WheatherPredict.h */,
 				11C9F67A191780DC00CDAFBA /* WheatherPredict.m */,
+				84F3A61E1917C5CF00D580F1 /* LocationSearch.h */,
+				84F3A61F1917C5CF00D580F1 /* LocationSearch.m */,
+				84F3A6201917C5CF00D580F1 /* PlaceSearchResult.h */,
+				84F3A6211917C5CF00D580F1 /* PlaceSearchResult.m */,
 				043354BF1910EEB7003767D0 /* SearchingBuddy.h */,
 				113626821911239B004E5857 /* CurrentCondition.h */,
 				113626831911239B004E5857 /* CurrentCondition.m */,
@@ -511,8 +525,8 @@
 				043354871910E7C9003767D0 /* NSString+HTML.m */,
 				043354881910E7C9003767D0 /* UserInfo.h */,
 				043354891910E7C9003767D0 /* UserInfo.m */,
-				84F19A1A191A31AF001B81F7 /* SMTMarker.h */,
-				84F19A1B191A31AF001B81F7 /* SMTMarker.m */,
+				11D48DF51919079800A9787E /* Species.h */,
+				11D48DF61919079800A9787E /* Species.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -671,63 +685,12 @@
 		04B312FB191A324D0055D460 /* CustomHeader */ = {
 			isa = PBXGroup;
 			children = (
-				04B312FC191A32C70055D460 /* CustomHeader.h */,
-				04B312FD191A32C70055D460 /* CustomHeader.m */,
-				04B312FF191A32DF0055D460 /* CustomHeader.xib */,
+				1126C275191B715300345311 /* SelectLocationViewController.h */,
+				1126C276191B715300345311 /* SelectLocationViewController.m */,
+				1126C277191B715300345311 /* SelectLocationViewController.xib */,
 			);
-			name = CustomHeader;
-			sourceTree = "<group>";
-		};
-		04BD1FD51918FB2E00B13CCC /* Custom cell */ = {
-			isa = PBXGroup;
-			children = (
-				04BD1FD61918FB8000B13CCC /* ImageCell.h */,
-				04BD1FD71918FB8000B13CCC /* ImageCell.m */,
-				04BD1FD91918FBA400B13CCC /* ImageCell.xib */,
-			);
-			name = "Custom cell";
-			sourceTree = "<group>";
-		};
-		04CB4F5D1918E54C00FA3D64 /* Photos/VideoViewController */ = {
-			isa = PBXGroup;
-			children = (
-				04B312FB191A324D0055D460 /* CustomHeader */,
-				04BD1FD51918FB2E00B13CCC /* Custom cell */,
-				04CB4F5E1918E5B400FA3D64 /* PhotoVideoViewController.h */,
-				04CB4F5F1918E5B400FA3D64 /* PhotoVideoViewController.m */,
-				04E0067119191D7D00A1190E /* PhotoVideoViewController.xib */,
-			);
-			name = Photos/VideoViewController;
-			sourceTree = "<group>";
-		};
-		04DDF02D191B5C52006AC844 /* NewLog1ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				04DDF02E191B5C95006AC844 /* NewLog1ViewController.h */,
-				04DDF02F191B5C95006AC844 /* NewLog1ViewController.m */,
-				04DDF030191B5C95006AC844 /* NewLog1ViewController.xib */,
-			);
-			name = NewLog1ViewController;
-			sourceTree = "<group>";
-		};
-		04E82ED8191A839100AAF982 /* LogAnActivityViewController */ = {
-			isa = PBXGroup;
-			children = (
-				04E82ED9191A83F300AAF982 /* LogAnActivityViewController.h */,
-				04E82EDA191A83F300AAF982 /* LogAnActivityViewController.m */,
-				04E82EDB191A83F300AAF982 /* LogAnActivityViewController.xib */,
-			);
-			name = LogAnActivityViewController;
-			sourceTree = "<group>";
-		};
-		04F9A410191B6495006E112C /* LogHistoryViewController */ = {
-			isa = PBXGroup;
-			children = (
-				04F9A411191B64CD006E112C /* LogHistoryViewController.h */,
-				04F9A412191B64CD006E112C /* LogHistoryViewController.m */,
-				04F9A413191B64CD006E112C /* LogHistoryViewController.xib */,
-			);
-			name = LogHistoryViewController;
+			name = SelectLocationViewController;
+			path = ViewControllers/SelectLocationViewController;
 			sourceTree = "<group>";
 		};
 		1136267419111CB7004E5857 /* WeatherViewController */ = {
@@ -753,86 +716,98 @@
 			path = WeatherCell;
 			sourceTree = "<group>";
 		};
-		11C9F6911917E5FF00CDAFBA /* AFNetworking */ = {
+		11D48DCC1918E32700A9787E /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
-				11C9F6921917E5FF00CDAFBA /* AFHTTPRequestOperation.h */,
-				11C9F6931917E5FF00CDAFBA /* AFHTTPRequestOperation.m */,
-				11C9F6941917E5FF00CDAFBA /* AFHTTPRequestOperationManager.h */,
-				11C9F6951917E5FF00CDAFBA /* AFHTTPRequestOperationManager.m */,
-				11C9F6961917E5FF00CDAFBA /* AFHTTPSessionManager.h */,
-				11C9F6971917E5FF00CDAFBA /* AFHTTPSessionManager.m */,
-				11C9F6981917E5FF00CDAFBA /* AFNetworking.h */,
-				11C9F6991917E5FF00CDAFBA /* AFNetworkReachabilityManager.h */,
-				11C9F69A1917E5FF00CDAFBA /* AFNetworkReachabilityManager.m */,
-				11C9F69B1917E5FF00CDAFBA /* AFSecurityPolicy.h */,
-				11C9F69C1917E5FF00CDAFBA /* AFSecurityPolicy.m */,
-				11C9F69D1917E5FF00CDAFBA /* AFURLConnectionOperation.h */,
-				11C9F69E1917E5FF00CDAFBA /* AFURLConnectionOperation.m */,
-				11C9F69F1917E5FF00CDAFBA /* AFURLRequestSerialization.h */,
-				11C9F6A01917E5FF00CDAFBA /* AFURLRequestSerialization.m */,
-				11C9F6A11917E5FF00CDAFBA /* AFURLResponseSerialization.h */,
-				11C9F6A21917E5FF00CDAFBA /* AFURLResponseSerialization.m */,
-				11C9F6A31917E5FF00CDAFBA /* AFURLSessionManager.h */,
-				11C9F6A41917E5FF00CDAFBA /* AFURLSessionManager.m */,
+				11D48DCD1918E32700A9787E /* AFHTTPRequestOperation.h */,
+				11D48DCE1918E32700A9787E /* AFHTTPRequestOperation.m */,
+				11D48DCF1918E32700A9787E /* AFHTTPRequestOperationManager.h */,
+				11D48DD01918E32700A9787E /* AFHTTPRequestOperationManager.m */,
+				11D48DD11918E32700A9787E /* AFHTTPSessionManager.h */,
+				11D48DD21918E32700A9787E /* AFHTTPSessionManager.m */,
+				11D48DD31918E32700A9787E /* AFNetworking.h */,
+				11D48DD41918E32700A9787E /* AFNetworkReachabilityManager.h */,
+				11D48DD51918E32700A9787E /* AFNetworkReachabilityManager.m */,
+				11D48DD61918E32700A9787E /* AFSecurityPolicy.h */,
+				11D48DD71918E32700A9787E /* AFSecurityPolicy.m */,
+				11D48DD81918E32700A9787E /* AFURLConnectionOperation.h */,
+				11D48DD91918E32700A9787E /* AFURLConnectionOperation.m */,
+				11D48DDA1918E32700A9787E /* AFURLRequestSerialization.h */,
+				11D48DDB1918E32700A9787E /* AFURLRequestSerialization.m */,
+				11D48DDC1918E32700A9787E /* AFURLResponseSerialization.h */,
+				11D48DDD1918E32700A9787E /* AFURLResponseSerialization.m */,
+				11D48DDE1918E32700A9787E /* AFURLSessionManager.h */,
+				11D48DDF1918E32700A9787E /* AFURLSessionManager.m */,
 			);
 			name = AFNetworking;
 			path = Classes/AFNetworking;
 			sourceTree = "<group>";
 		};
-		8425CDC31918FFFA00D948EB /* MapViewController */ = {
+		11D48DE91918F1E200A9787E /* SettingsViewController */ = {
 			isa = PBXGroup;
 			children = (
-				8425CDC41918FFFA00D948EB /* MapViewController.h */,
-				8425CDC51918FFFA00D948EB /* MapViewController.m */,
-				8425CDC61918FFFA00D948EB /* MapViewController.xib */,
+				11D48DEA1918F20300A9787E /* SettingsViewController.h */,
+				11D48DEB1918F20300A9787E /* SettingsViewController.m */,
+				11D48DEC1918F20300A9787E /* SettingsViewController.xib */,
+			);
+			name = SettingsViewController;
+			path = ViewControllers/SettingsViewController;
+			sourceTree = "<group>";
+		};
+		11D48DEF1919004800A9787E /* SpeciesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				11D48DF01919005E00A9787E /* SpeciesViewController.h */,
+				11D48DF11919005E00A9787E /* SpeciesViewController.m */,
+				11D48DF21919005E00A9787E /* SpeciesViewController.xib */,
+			);
+			name = SpeciesViewController;
+			path = ViewControllers/SpeciesViewController;
+			sourceTree = "<group>";
+		};
+		11D48E09191A908F00A9787E /* WeatherDetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				11D48E11191A90E800A9787E /* WeatherDetailsCell */,
+				11D48E0A191A908F00A9787E /* WeatherDetailViewController.h */,
+				11D48E0B191A908F00A9787E /* WeatherDetailViewController.m */,
+				11D48E0C191A908F00A9787E /* WeatherDetailViewController.xib */,
+				11D48E0D191A908F00A9787E /* WeatherDetailViewController~ipad.xib */,
+			);
+			name = WeatherDetailsViewController;
+			path = ViewControllers/WeatherDetailsViewController;
+			sourceTree = "<group>";
+		};
+		11D48E11191A90E800A9787E /* WeatherDetailsCell */ = {
+			isa = PBXGroup;
+			children = (
+				11D48E12191A90E800A9787E /* WeatherDetailCell.h */,
+				11D48E13191A90E800A9787E /* WeatherDetailCell.m */,
+				11D48E14191A90E800A9787E /* WeatherDetailCell.xib */,
+			);
+			path = WeatherDetailsCell;
+			sourceTree = "<group>";
+		};
+		84F3A60E19176DCF00D580F1 /* MapViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84F3A60F19176DCF00D580F1 /* MapViewController.h */,
+				84F3A61019176DCF00D580F1 /* MapViewController.m */,
+				84F3A61119176DCF00D580F1 /* MapViewController.xib */,
 			);
 			name = MapViewController;
 			path = ViewControllers/MapViewController;
 			sourceTree = "<group>";
 		};
-		8425CDC91919001100D948EB /* LocationSearch */ = {
+		84F3A6181917AEAB00D580F1 /* LocationSearch */ = {
 			isa = PBXGroup;
 			children = (
-				8425CDCA1919001100D948EB /* LocationSearchViewController.h */,
-				8425CDCB1919001100D948EB /* LocationSearchViewController.m */,
-				8425CDCC1919001100D948EB /* LocationSearchViewController.xib */,
+				84F3A6191917AEE200D580F1 /* LocationSearchViewController.h */,
+				84F3A61A1917AEE200D580F1 /* LocationSearchViewController.m */,
+				84F3A61B1917AEE200D580F1 /* LocationSearchViewController.xib */,
 			);
 			name = LocationSearch;
 			path = ViewControllers/LocationSearch;
-			sourceTree = "<group>";
-		};
-		8425CDD5191914E200D948EB /* LocationListViewController */ = {
-			isa = PBXGroup;
-			children = (
-				84F19A11191A0CA1001B81F7 /* LocationCell */,
-				8425CDD61919202700D948EB /* LocationListViewController.h */,
-				8425CDD71919202700D948EB /* LocationListViewController.m */,
-				8425CDD81919202700D948EB /* LocationListViewController.xib */,
-			);
-			name = LocationListViewController;
-			path = ViewControllers/LocationListViewController;
-			sourceTree = "<group>";
-		};
-		84F19A11191A0CA1001B81F7 /* LocationCell */ = {
-			isa = PBXGroup;
-			children = (
-				84F19A12191A0CC8001B81F7 /* LocationListCell.h */,
-				84F19A13191A0CC8001B81F7 /* LocationListCell.m */,
-				84F19A15191A0CDE001B81F7 /* LocationListCell.xib */,
-			);
-			path = LocationCell;
-			sourceTree = "<group>";
-		};
-		84F19A23191A3524001B81F7 /* UpdateLocationViewController */ = {
-			isa = PBXGroup;
-			children = (
-				84F19A24191A3524001B81F7 /* UpdateLocationViewController.h */,
-				84F19A25191A3524001B81F7 /* UpdateLocationViewController.m */,
-				84F19A26191A3524001B81F7 /* UpdateLocationViewController.xib */,
-			);
-			name = UpdateLocationViewController;
-			path = ViewControllers/UpdateLocationViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -912,6 +887,7 @@
 			files = (
 				0425C3AF19111F020097709E /* GoogleMaps.bundle in Resources */,
 				04409407190F825F00C4A558 /* FlyoutMenuViewController.xib in Resources */,
+				1126C279191B715300345311 /* SelectLocationViewController.xib in Resources */,
 				046C6C13190FECEE00E3AC56 /* Cell.xib in Resources */,
 				8425CDDA1919202700D948EB /* LocationListViewController.xib in Resources */,
 				04B31300191A32DF0055D460 /* CustomHeader.xib in Resources */,
@@ -921,11 +897,16 @@
 				04409429190FA53900C4A558 /* ForgotPasswordViewController.xib in Resources */,
 				04BD1FDA1918FBA400B13CCC /* ImageCell.xib in Resources */,
 				04409421190F975E00C4A558 /* LoginViewController_iPhone4.xib in Resources */,
+				11D48DF41919005E00A9787E /* SpeciesViewController.xib in Resources */,
+				11D48DEE1918F20300A9787E /* SettingsViewController.xib in Resources */,
 				043354C71910EF3E003767D0 /* BuddySearchViewController.xib in Resources */,
 				84F19A28191A3524001B81F7 /* UpdateLocationViewController.xib in Resources */,
 				8425CDC81918FFFA00D948EB /* MapViewController.xib in Resources */,
 				046C6C0E190FECC400E3AC56 /* InviteFriendCell.xib in Resources */,
+				11D48E0F191A908F00A9787E /* WeatherDetailViewController.xib in Resources */,
+				11D48E16191A90E800A9787E /* WeatherDetailCell.xib in Resources */,
 				046C6BEC190FDF1D00E3AC56 /* back_arrow.png in Resources */,
+				11D48E10191A908F00A9787E /* WeatherDetailViewController~ipad.xib in Resources */,
 				1136267B19111CB7004E5857 /* WeatherViewController~ipad.xib in Resources */,
 				04409422190F975E00C4A558 /* LoginViewController_iPhone5.xib in Resources */,
 				0440943F190FA98B00C4A558 /* RegisterViewController_iPhone5.xib in Resources */,
@@ -961,18 +942,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8425CDCD1919001100D948EB /* LocationSearchViewController.m in Sources */,
-				04E82EDC191A83F300AAF982 /* LogAnActivityViewController.m in Sources */,
+				11D48DE01918E32700A9787E /* AFHTTPRequestOperation.m in Sources */,
 				0433548F1910E7C9003767D0 /* UserInfo.m in Sources */,
-				11C9F6A91917E5FF00CDAFBA /* AFSecurityPolicy.m in Sources */,
 				04409406190F825F00C4A558 /* FlyoutMenuViewController.m in Sources */,
+				11D48DED1918F20300A9787E /* SettingsViewController.m in Sources */,
 				11C9F6811917818800CDAFBA /* HourlyWheather.m in Sources */,
 				040806A1190EA37D00E063C3 /* AppDelegate.m in Sources */,
 				046C6C0D190FECC400E3AC56 /* InviteFriendCell.m in Sources */,
+				11D48DE71918E32700A9787E /* AFURLResponseSerialization.m in Sources */,
 				043354921910E800003767D0 /* FBConnectClass.m in Sources */,
+				1126C278191B715300345311 /* SelectLocationViewController.m in Sources */,
 				043354AC1910ED9F003767D0 /* CJSONDeserializer_BlocksExtensions.m in Sources */,
 				04CB4F611918E5B400FA3D64 /* PhotoVideoViewController.m in Sources */,
 				04409440190FA98B00C4A558 /* RegisterViewController.m in Sources */,
+				11D48DE51918E32700A9787E /* AFURLConnectionOperation.m in Sources */,
+				11D48DE81918E32700A9787E /* AFURLSessionManager.m in Sources */,
 				046C6C08190FECA700E3AC56 /* IncomingFriendCell.m in Sources */,
 				8425CDD91919202700D948EB /* LocationListViewController.m in Sources */,
 				043354B01910ED9F003767D0 /* CJSONSerializedData.m in Sources */,
@@ -986,43 +970,43 @@
 				043354AE1910ED9F003767D0 /* CJSONScanner.m in Sources */,
 				84F19A1C191A31AF001B81F7 /* SMTMarker.m in Sources */,
 				11C9F6871917821800CDAFBA /* TidesPredict.m in Sources */,
+				11D48DF71919079800A9787E /* Species.m in Sources */,
 				04409428190FA53900C4A558 /* ForgotPasswordViewController.m in Sources */,
 				1136268019112340004E5857 /* WeatherCell.m in Sources */,
 				043354C61910EF3E003767D0 /* BuddySearchViewController.m in Sources */,
 				0433548D1910E7C9003767D0 /* Location.m in Sources */,
+				11D48DE61918E32700A9787E /* AFURLRequestSerialization.m in Sources */,
 				11C9F684191781F100CDAFBA /* Astronomy.m in Sources */,
+				11D48E15191A90E800A9787E /* WeatherDetailCell.m in Sources */,
+				11D48DE11918E32700A9787E /* AFHTTPRequestOperationManager.m in Sources */,
 				0433548B1910E7C9003767D0 /* DataLoader.m in Sources */,
 				8425CDD31919002300D948EB /* LocationSearch.m in Sources */,
 				043354B81910EE31003767D0 /* Buddy.m in Sources */,
+				11D48E0E191A908F00A9787E /* WeatherDetailViewController.m in Sources */,
+				11D48DF31919005E00A9787E /* SpeciesViewController.m in Sources */,
 				04409423190F975E00C4A558 /* LoginViewController.m in Sources */,
 				043354A91910ED9F003767D0 /* CDataScanner_Extensions.m in Sources */,
+				11D48E08191A8C8900A9787E /* UIViewController+LoaderCategory.m in Sources */,
 				043354B21910ED9F003767D0 /* NSDictionary_JSONExtensions.m in Sources */,
 				1136267919111CB7004E5857 /* WeatherViewController.m in Sources */,
 				04BD1FD81918FB8000B13CCC /* ImageCell.m in Sources */,
 				043354C11910EEB7003767D0 /* SearchingBuddy.m in Sources */,
-				11C9F6AB1917E5FF00CDAFBA /* AFURLRequestSerialization.m in Sources */,
-				04DDF031191B5C95006AC844 /* NewLog1ViewController.m in Sources */,
-				8425CDD41919002300D948EB /* PlaceSearchResult.m in Sources */,
 				043354AF1910ED9F003767D0 /* CJSONSerialization.m in Sources */,
 				043354AB1910ED9F003767D0 /* CFilteringJSONSerializer.m in Sources */,
-				11C9F6A61917E5FF00CDAFBA /* AFHTTPRequestOperationManager.m in Sources */,
 				11C9F67E1917814600CDAFBA /* DayPredict.m in Sources */,
+				84F3A61219176DCF00D580F1 /* MapViewController.m in Sources */,
 				113626841911239B004E5857 /* CurrentCondition.m in Sources */,
 				04B015B6191B6FD3002F6FA9 /* NewLog2ViewController.m in Sources */,
 				11C9F6AA1917E5FF00CDAFBA /* AFURLConnectionOperation.m in Sources */,
 				11C9F6AD1917E5FF00CDAFBA /* AFURLSessionManager.m in Sources */,
 				11C9F6A51917E5FF00CDAFBA /* AFHTTPRequestOperation.m in Sources */,
 				043354AD1910ED9F003767D0 /* CJSONDeserializer.m in Sources */,
+				11D48DE21918E32700A9787E /* AFHTTPSessionManager.m in Sources */,
 				040706B4190FC1CE000D6660 /* BuddyListViewController.m in Sources */,
+				11D48DE41918E32700A9787E /* AFSecurityPolicy.m in Sources */,
 				043354CD1910F0A7003767D0 /* BuddySearchCell.m in Sources */,
 				043354B11910ED9F003767D0 /* CJSONSerializer.m in Sources */,
-				11C9F6A71917E5FF00CDAFBA /* AFHTTPSessionManager.m in Sources */,
-				84F19A14191A0CC8001B81F7 /* LocationListCell.m in Sources */,
 				0433548A1910E7C9003767D0 /* ConstantsClass.m in Sources */,
-				11C9F6A81917E5FF00CDAFBA /* AFNetworkReachabilityManager.m in Sources */,
-				8425CDC71918FFFA00D948EB /* MapViewController.m in Sources */,
-				11C9F6AC1917E5FF00CDAFBA /* AFURLResponseSerialization.m in Sources */,
-				04B312FE191A32C70055D460 /* CustomHeader.m in Sources */,
 				0433548C1910E7C9003767D0 /* GTMNSString+HTML.m in Sources */,
 				84F19A27191A3524001B81F7 /* UpdateLocationViewController.m in Sources */,
 			);
