@@ -9,8 +9,8 @@
 #import "RegisterViewController.h"
 #import "LoginViewController.h"
 //#import "HPHomeViewController.h"
-//#import "DataLoader.h"
-//#import "UserInfo.h"
+#import "DataLoader.h"
+#import "UserInfo.h"
 #import "AppDelegate.h"
 
 @interface RegisterViewController (){
@@ -184,30 +184,30 @@
     }
     
     //[self startInternatIndicator];
-    /*
+    
         dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(newQueue, ^(){
             
-        //DataLoader * dataLoader = [DataLoader instance];
-        //[dataLoader createUserWithFirstName:firstName secondName:lastName userName:email password:password birthYear:[birthYear intValue] sex:sex];
+        DataLoader * dataLoader = [DataLoader instance];
+        [dataLoader createUserWithFirstName:firstName secondName:lastName userName:email password:password birthYear:[birthYear intValue] sex:sex];
         
         dispatch_async(dispatch_get_main_queue(), ^(){
             
-            [self stopInternatIndicator];
+            //[self stopInternatIndicator];
             if (dataLoader.isCorrectRezult){
             
-                AppDelegate * appDelegate = [UIApplication sharedApplication].delegate;
+                AppDelegate * appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
                 NSLog(@"userFid : %@",userFid);
                 [appDelegate.user redwriteUserFbID:appDelegate.user.userName andFID:userFid];
                  
             //*****
-                HomeViewController * homeVC = [[HPHomeViewController alloc] initWithNibName:@"HPHomeViewController" bundle:nil];
-                [self.navigationController pushViewController:homeVC animated:YES];
+                //HomeViewController * homeVC = [[HPHomeViewController alloc] initWithNibName:@"HPHomeViewController" bundle:nil];
+               // [self.navigationController pushViewController:homeVC animated:YES];
             
             }
         });
     });
-*/
+
    
 }
 

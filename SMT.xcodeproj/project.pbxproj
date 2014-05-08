@@ -123,6 +123,8 @@
 		84F19A14191A0CC8001B81F7 /* LocationListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F19A13191A0CC8001B81F7 /* LocationListCell.m */; };
 		84F19A16191A0CDE001B81F7 /* LocationListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F19A15191A0CDE001B81F7 /* LocationListCell.xib */; };
 		84F19A1C191A31AF001B81F7 /* SMTMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F19A1B191A31AF001B81F7 /* SMTMarker.m */; };
+		84F19A27191A3524001B81F7 /* UpdateLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F19A25191A3524001B81F7 /* UpdateLocationViewController.m */; };
+		84F19A28191A3524001B81F7 /* UpdateLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84F19A26191A3524001B81F7 /* UpdateLocationViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -319,6 +321,9 @@
 		84F19A15191A0CDE001B81F7 /* LocationListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationListCell.xib; sourceTree = "<group>"; };
 		84F19A1A191A31AF001B81F7 /* SMTMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMTMarker.h; path = Classes/SMTMarker.h; sourceTree = "<group>"; };
 		84F19A1B191A31AF001B81F7 /* SMTMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMTMarker.m; path = Classes/SMTMarker.m; sourceTree = "<group>"; };
+		84F19A24191A3524001B81F7 /* UpdateLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateLocationViewController.h; sourceTree = "<group>"; };
+		84F19A25191A3524001B81F7 /* UpdateLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateLocationViewController.m; sourceTree = "<group>"; };
+		84F19A26191A3524001B81F7 /* UpdateLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateLocationViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -802,6 +807,17 @@
 			path = LocationCell;
 			sourceTree = "<group>";
 		};
+		84F19A23191A3524001B81F7 /* UpdateLocationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				84F19A24191A3524001B81F7 /* UpdateLocationViewController.h */,
+				84F19A25191A3524001B81F7 /* UpdateLocationViewController.m */,
+				84F19A26191A3524001B81F7 /* UpdateLocationViewController.xib */,
+			);
+			name = UpdateLocationViewController;
+			path = ViewControllers/UpdateLocationViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -889,6 +905,7 @@
 				04BD1FDA1918FBA400B13CCC /* ImageCell.xib in Resources */,
 				04409421190F975E00C4A558 /* LoginViewController_iPhone4.xib in Resources */,
 				043354C71910EF3E003767D0 /* BuddySearchViewController.xib in Resources */,
+				84F19A28191A3524001B81F7 /* UpdateLocationViewController.xib in Resources */,
 				8425CDC81918FFFA00D948EB /* MapViewController.xib in Resources */,
 				046C6C0E190FECC400E3AC56 /* InviteFriendCell.xib in Resources */,
 				046C6BEC190FDF1D00E3AC56 /* back_arrow.png in Resources */,
@@ -988,6 +1005,7 @@
 				11C9F6AC1917E5FF00CDAFBA /* AFURLResponseSerialization.m in Sources */,
 				04B312FE191A32C70055D460 /* CustomHeader.m in Sources */,
 				0433548C1910E7C9003767D0 /* GTMNSString+HTML.m in Sources */,
+				84F19A27191A3524001B81F7 /* UpdateLocationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
