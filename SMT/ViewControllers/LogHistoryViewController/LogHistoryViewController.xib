@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5023" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogHistoryViewController">
             <connections>
+                <outlet property="navigationBarHeightConstr" destination="loF-li-CPL" id="frS-C2-Jb0"/>
+                <outlet property="navigationBarVerticalConstr" destination="hOl-AA-3T1" id="HGz-JZ-doC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,7 +16,64 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iWT-If-P9L">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TzR-Q7-DCf">
+                            <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02e-IT-v9d">
+                                    <rect key="frame" x="5" y="7" width="55" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="55" id="Q42-MR-lCh"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" title="Back">
+                                        <color key="titleColor" red="0.0" green="0.56862745100000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="actButtonBack:" destination="-1" eventType="touchUpInside" id="KNc-Ke-iDN"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDE-cr-NaA">
+                                    <rect key="frame" x="70" y="7" width="185" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="02e-IT-v9d" firstAttribute="leading" secondItem="TzR-Q7-DCf" secondAttribute="leading" constant="5" id="0ku-Rq-obG"/>
+                                <constraint firstAttribute="trailing" secondItem="mDE-cr-NaA" secondAttribute="trailing" constant="65" id="2pN-0g-OXX"/>
+                                <constraint firstAttribute="bottom" secondItem="mDE-cr-NaA" secondAttribute="bottom" constant="7" id="A9l-17-mGe"/>
+                                <constraint firstAttribute="height" constant="44" id="HDd-eD-GM9"/>
+                                <constraint firstItem="mDE-cr-NaA" firstAttribute="top" secondItem="TzR-Q7-DCf" secondAttribute="top" constant="7" id="UT3-31-kAb"/>
+                                <constraint firstItem="mDE-cr-NaA" firstAttribute="leading" secondItem="02e-IT-v9d" secondAttribute="trailing" constant="10" id="VKQ-RB-iCM"/>
+                                <constraint firstItem="02e-IT-v9d" firstAttribute="top" secondItem="TzR-Q7-DCf" secondAttribute="top" constant="7" id="WEh-3m-Vcb"/>
+                                <constraint firstAttribute="bottom" secondItem="02e-IT-v9d" secondAttribute="bottom" constant="7" id="eZn-Y0-NF9"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="TzR-Q7-DCf" firstAttribute="leading" secondItem="iWT-If-P9L" secondAttribute="leading" id="NmK-6k-VN4"/>
+                        <constraint firstAttribute="trailing" secondItem="TzR-Q7-DCf" secondAttribute="trailing" id="Zh7-tZ-Jwc"/>
+                        <constraint firstItem="TzR-Q7-DCf" firstAttribute="top" secondItem="iWT-If-P9L" secondAttribute="top" constant="20" id="hOl-AA-3T1"/>
+                        <constraint firstAttribute="height" constant="64" id="loF-li-CPL"/>
+                    </constraints>
+                </view>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="iWT-If-P9L" secondAttribute="trailing" id="GHd-dF-QSZ"/>
+                <constraint firstItem="iWT-If-P9L" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WAn-Gw-yKK"/>
+                <constraint firstItem="iWT-If-P9L" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ki2-HO-y7j"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

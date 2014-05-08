@@ -32,8 +32,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
-- (void)actButtonBack:(UIButton *)sender;
-- (void)actButtonAdd:(UIButton *)sender;
+- (IBAction)actButtonBack:(UIButton *)sender;
+- (IBAction)actButtonAdd:(UIButton *)sender;
 - (void)actDone:(UIButton *)sender;
 - (void)actAccept:(UIButton *)sender;
 - (void)actHidden:(UIButton *)sender;
@@ -57,26 +57,11 @@
     dataLoader = [DataLoader instance];
     
     [dataLoader buddyGetListUsersBuddies];
-    
-    UIButton * btnBack = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnBack.frame = CGRectMake(0, 0, 60, 40);
-    UIImage * btnBackImage = [UIImage imageNamed:@"back_arrow.png"];
-    [btnBack setImage:btnBackImage forState:UIControlStateNormal];
-    [btnBack setImage:btnBackImage forState:UIControlStateSelected];
-    [btnBack addTarget:self action:@selector(actButtonBack:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem * back = [[UIBarButtonItem alloc]initWithCustomView:btnBack];
-    self.navigationItem.leftBarButtonItem = back;
-//--------------------------------------------------------------------------------------------------------------------
-    UIButton * btnAdd = [UIButton buttonWithType:UIButtonTypeCustom];
-    btnAdd.frame = CGRectMake(280, 0, 40, 40);
-    [btnAdd setTitle:@"Add" forState:UIControlStateNormal];
-    [btnAdd setTitle:@"Add" forState:UIControlStateSelected];
-    [btnAdd setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [btnAdd addTarget:self action:@selector(actButtonAdd:) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem * add = [[UIBarButtonItem alloc]initWithCustomView:btnAdd];
-    self.navigationItem.rightBarButtonItem = add;
+
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
+        self.navigationBarHeightConstr.constant -= 20;
+        self.navigationBarVerticalConstr.constant -=20;
+    }
 //--------------------------------------------------------------------------------------------------------------------
     NSMutableArray * array = [[NSMutableArray alloc]init];
     AppDelegate * app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
@@ -210,11 +195,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)actButtonBack:(UIButton *)sender {
+- (IBAction)actButtonBack:(UIButton *)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)actButtonAdd:(UIButton *)sender
+- (IBAction)actButtonAdd:(UIButton *)sender
 {
     NSLog(@"Add");
 }

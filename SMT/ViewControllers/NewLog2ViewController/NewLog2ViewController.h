@@ -1,17 +1,14 @@
 //
-//  BodyListViewController.h
+//  NewLog2ViewController.h
 //  SMT
 //
-//  Created by Mac on 4/29/14.
+//  Created by Mac on 5/8/14.
 //  Copyright (c) 2014 Mac. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "Cell.h"
-#import "IncomingFriendCell.h"
-#import "InviteFriendCell.h"
 
-@interface BuddyListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface NewLog2ViewController : UIViewController
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;
 

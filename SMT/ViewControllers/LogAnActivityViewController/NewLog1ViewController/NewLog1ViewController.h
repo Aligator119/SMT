@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewLog1ViewController : UIViewController
+@interface NewLog1ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;

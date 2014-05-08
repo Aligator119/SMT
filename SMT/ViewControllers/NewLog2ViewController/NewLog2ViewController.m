@@ -1,19 +1,19 @@
 //
-//  LogHistoryViewController.m
+//  NewLog2ViewController.m
 //  SMT
 //
 //  Created by Mac on 5/8/14.
 //  Copyright (c) 2014 Mac. All rights reserved.
 //
 
-#import "LogHistoryViewController.h"
+#import "NewLog2ViewController.h"
 
-@interface LogHistoryViewController ()
+@interface NewLog2ViewController ()
 
 - (IBAction)actButtonBack:(id)sender;
 @end
 
-@implementation LogHistoryViewController
+@implementation NewLog2ViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,7 +33,6 @@
         self.navigationBarHeightConstr.constant -= 20;
         self.navigationBarVerticalConstr.constant -=20;
     }
-
 }
 
 - (void)didReceiveMemoryWarning

@@ -78,6 +78,8 @@
 		046C6C0E190FECC400E3AC56 /* InviteFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C6C0C190FECC400E3AC56 /* InviteFriendCell.xib */; };
 		046C6C12190FECEE00E3AC56 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046C6C10190FECEE00E3AC56 /* Cell.m */; };
 		046C6C13190FECEE00E3AC56 /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C6C11190FECEE00E3AC56 /* Cell.xib */; };
+		04B015B6191B6FD3002F6FA9 /* NewLog2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B015B4191B6FD3002F6FA9 /* NewLog2ViewController.m */; };
+		04B015B7191B6FD3002F6FA9 /* NewLog2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B015B5191B6FD3002F6FA9 /* NewLog2ViewController.xib */; };
 		04B312FA191A281C0055D460 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B312F9191A281C0055D460 /* AssetsLibrary.framework */; };
 		04B312FE191A32C70055D460 /* CustomHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B312FD191A32C70055D460 /* CustomHeader.m */; };
 		04B31300191A32DF0055D460 /* CustomHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B312FF191A32DF0055D460 /* CustomHeader.xib */; };
@@ -244,6 +246,9 @@
 		046C6C0F190FECEE00E3AC56 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cell.h; path = ViewControllers/BodyListViewController/CustomCell/Cell.h; sourceTree = "<group>"; };
 		046C6C10190FECEE00E3AC56 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Cell.m; path = ViewControllers/BodyListViewController/CustomCell/Cell.m; sourceTree = "<group>"; };
 		046C6C11190FECEE00E3AC56 /* Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Cell.xib; path = ViewControllers/BodyListViewController/CustomCell/Cell.xib; sourceTree = "<group>"; };
+		04B015B3191B6FD3002F6FA9 /* NewLog2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewLog2ViewController.h; path = ViewControllers/NewLog2ViewController/NewLog2ViewController.h; sourceTree = "<group>"; };
+		04B015B4191B6FD3002F6FA9 /* NewLog2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewLog2ViewController.m; path = ViewControllers/NewLog2ViewController/NewLog2ViewController.m; sourceTree = "<group>"; };
+		04B015B5191B6FD3002F6FA9 /* NewLog2ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewLog2ViewController.xib; path = ViewControllers/NewLog2ViewController/NewLog2ViewController.xib; sourceTree = "<group>"; };
 		04B312F9191A281C0055D460 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		04B312FC191A32C70055D460 /* CustomHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomHeader.h; path = ViewControllers/PhotoVideoViewController/CustomHeader/CustomHeader.h; sourceTree = "<group>"; };
 		04B312FD191A32C70055D460 /* CustomHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomHeader.m; path = ViewControllers/PhotoVideoViewController/CustomHeader/CustomHeader.m; sourceTree = "<group>"; };
@@ -565,6 +570,8 @@
 		044093F9190F7ABC00C4A558 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				04B015B2191B6FAD002F6FA9 /* NewLog2ViewController */,
+				84F19A23191A3524001B81F7 /* UpdateLocationViewController */,
 				04F9A410191B6495006E112C /* LogHistoryViewController */,
 				04DDF02D191B5C52006AC844 /* NewLog1ViewController */,
 				04E82ED8191A839100AAF982 /* LogAnActivityViewController */,
@@ -649,6 +656,16 @@
 				046C6C11190FECEE00E3AC56 /* Cell.xib */,
 			);
 			name = CustomCell;
+			sourceTree = "<group>";
+		};
+		04B015B2191B6FAD002F6FA9 /* NewLog2ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04B015B3191B6FD3002F6FA9 /* NewLog2ViewController.h */,
+				04B015B4191B6FD3002F6FA9 /* NewLog2ViewController.m */,
+				04B015B5191B6FD3002F6FA9 /* NewLog2ViewController.xib */,
+			);
+			name = NewLog2ViewController;
 			sourceTree = "<group>";
 		};
 		04B312FB191A324D0055D460 /* CustomHeader */ = {
@@ -915,6 +932,7 @@
 				046C6C09190FECA700E3AC56 /* IncomingFriendCell.xib in Resources */,
 				04409424190F975E00C4A558 /* LoginViewController~ipad.xib in Resources */,
 				04E82EDD191A83F300AAF982 /* LogAnActivityViewController.xib in Resources */,
+				04B015B7191B6FD3002F6FA9 /* NewLog2ViewController.xib in Resources */,
 				1136267A19111CB7004E5857 /* WeatherViewController.xib in Resources */,
 				0440943E190FA98B00C4A558 /* RegisterViewController_iPhone4.xib in Resources */,
 				84F19A16191A0CDE001B81F7 /* LocationListCell.xib in Resources */,
@@ -990,6 +1008,7 @@
 				11C9F6A61917E5FF00CDAFBA /* AFHTTPRequestOperationManager.m in Sources */,
 				11C9F67E1917814600CDAFBA /* DayPredict.m in Sources */,
 				113626841911239B004E5857 /* CurrentCondition.m in Sources */,
+				04B015B6191B6FD3002F6FA9 /* NewLog2ViewController.m in Sources */,
 				11C9F6AA1917E5FF00CDAFBA /* AFURLConnectionOperation.m in Sources */,
 				11C9F6AD1917E5FF00CDAFBA /* AFURLSessionManager.m in Sources */,
 				11C9F6A51917E5FF00CDAFBA /* AFHTTPRequestOperation.m in Sources */,

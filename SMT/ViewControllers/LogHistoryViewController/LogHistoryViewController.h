@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LogHistoryViewController : UIViewController
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;
 
 @end
