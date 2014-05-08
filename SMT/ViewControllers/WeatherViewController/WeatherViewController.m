@@ -209,7 +209,7 @@
 
 - (void)setParamsOfView{
     self.currentDetailsView.hidden = YES;
-    hpApp = [UIApplication sharedApplication].delegate;
+    hpApp = (AppDelegate*) [UIApplication sharedApplication].delegate;
     
     self.lblTitle.text = self.currentLocation.locName;
 }

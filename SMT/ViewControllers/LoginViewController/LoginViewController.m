@@ -16,7 +16,7 @@
 #import "AppDelegate.h"
 #import "UserInfo.h"
 
-#import "BuddyListViewController.h"
+
 
 
 
@@ -69,7 +69,7 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     
-    AppDelegate * appDel = [UIApplication sharedApplication].delegate;
+    AppDelegate * appDel = (AppDelegate*) [UIApplication sharedApplication].delegate;
     if(appDel.isUserSign && isFirstMoment) {
         [self.activityIndicat startAnimating];
         [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
@@ -88,10 +88,8 @@
 }
 
 -(IBAction)goToHomeScreen:(id)sender{
-    if (self.userNameTextField.text.length == 0 && self.passwordTextField.text.length == 0) {
-        [self.userNameTextField setText:@"boloonka1@bigmir.net"];
-        [self.passwordTextField setText:@"19921992q"];
-    }
+    self.userNameTextField.text = @"boloonka1@bigmir.net";
+    self.passwordTextField.text = @"19921992q";
     
     if(self.userNameTextField.text.length == 0) {
         [AppDelegate OpenAlertwithTitle:@"Error" andContent:@"Email field is empty"];
@@ -114,7 +112,7 @@
     [self.activityIndicat startAnimating];
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     
-    AppDelegate * appDelegate = [UIApplication sharedApplication].delegate;
+    AppDelegate * appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
     
     appDelegate.user.userName = self.userNameTextField.text;
     appDelegate.user.userPassword = self.passwordTextField.text;
@@ -158,7 +156,6 @@
     });
                         
     });
-    
 }
 
 -(IBAction)signUpAct:(id)sender{
@@ -205,7 +202,7 @@
                 
             FlyoutMenuViewController * fmView = [[FlyoutMenuViewController alloc] initWithNibName:@"FlyoutMenuViewController" bundle:nil];
         
-            AppDelegate * appDelegate = [UIApplication sharedApplication].delegate;
+            AppDelegate * appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
             [appDelegate getPredictionsCalls];
         
             [self.navigationController pushViewController:fmView animated:YES];
@@ -228,7 +225,7 @@
         
     [self.activityIndicat stopAnimating];
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-    AppDelegate * appDelegate = [UIApplication sharedApplication].delegate;
+    AppDelegate * appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
     [appDelegate.user setInfoFID:_fbID];
     self.userNameTextField.text = _name != nil ? _name : @"";
         

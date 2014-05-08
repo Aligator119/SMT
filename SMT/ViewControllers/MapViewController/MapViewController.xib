@@ -62,7 +62,7 @@
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
-                                        <action selector="goToLocationList:" destination="-1" eventType="touchUpInside" id="rz0-rM-1f8"/>
+                                        <action selector="goToLocationList:" destination="-1" eventType="touchUpInside" id="8dg-ha-DSC"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxH-eV-3Gm">
@@ -72,6 +72,9 @@
                                     <state key="normal">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="goToLocationSearch:" destination="-1" eventType="touchUpInside" id="lAW-9w-Qz9"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

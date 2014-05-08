@@ -211,7 +211,7 @@
 }
 
 - (IBAction)returnToPreView:(id)sender {
-    AppDelegate * appDel = [UIApplication sharedApplication].delegate;
+    AppDelegate * appDel = (AppDelegate*) [UIApplication sharedApplication].delegate;
     
     UINavigationController * controller = (UINavigationController*)appDel.window.rootViewController;
     id obj = [controller.viewControllers objectAtIndex:(controller.viewControllers.count - 2)];

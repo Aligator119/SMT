@@ -9,12 +9,18 @@
 #import "MapViewController.h"
 #import "LocationSearchViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import "AppDelegate.h"
+#import "DataLoader.h"
+#import "LocationListViewController.h"
+#import "SMTMarker.h"
+#import "Location.h"
 
 @interface MapViewController()
 {
     GMSMapView *mapView_;
     CLLocationManager * locationManager;
     BOOL firstLocationUpdate_;
+    AppDelegate * appDel;
 }
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * navigationBarHeightConstr;
@@ -38,21 +44,14 @@
         self.navigationBarVerticalConstr.constant -=20;
     }
     
+    appDel = (AppDelegate*) [UIApplication sharedApplication].delegate;
+    
     [self showMap];
+    [self createLocationManager];
 }
 
 - (void) viewDidLayoutSubviews{
     mapView_.frame = self.mapContainerView.bounds;
-}
-
-- (void) viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
-    CLLocation * location = mapView_.myLocation;
-    if (location){
-        [mapView_ animateToLocation:location.coordinate];
-    }
-
 }
 
 - (void) showMap{
@@ -68,6 +67,8 @@
     
     // Show compass
     //[self showCompass];
+    
+    [self setAllLocationMarkers];
 
 }
 
@@ -88,6 +89,18 @@
     self.compassView.image = [UIImage imageNamed:@"compass"];
     
     [mapView_ addSubview:self.compassView];
+}
+
+- (void) setAllLocationMarkers{
+    [mapView_ clear];
+    
+    for (Location* loc in appDel.listLocations){
+        CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(loc.locLatitude, loc.locLongitude);
+        SMTMarker * marker = [SMTMarker markerWithPosition:coord];
+        marker.title = loc.locName;
+        marker.location = loc;
+        marker.map = mapView_;
+    }
 }
 
 - (void) createLocationManager{
@@ -118,10 +131,35 @@
     }
 }
 
-- (IBAction)goToLocationList:(id)sender{
+- (IBAction)goToLocationSearch:(id)sender{
     LocationSearchViewController * locationSearchVC = [LocationSearchViewController new];
     locationSearchVC.parent = self;
     [self.navigationController pushViewController:locationSearchVC animated:YES];
+}
+
+- (IBAction)goToLocationList:(id)sender{
+    if(appDel.listLocations == nil || appDel.listLocations.count == 0){
+        
+        DataLoader * dataLoader = [DataLoader instance];
+        
+        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(newQueue, ^(){
+            [dataLoader getLocationsAssociatedWithUser];
+            
+            dispatch_async(dispatch_get_main_queue(),^(){
+                
+                if(dataLoader.isCorrectRezult){
+                    LocationListViewController * locationListVC = [LocationListViewController new];
+                    [self.navigationController pushViewController:locationListVC animated:YES];
+                }
+            });
+        });
+    } else {
+        LocationListViewController * locationListVC = [LocationListViewController new];
+        [self.navigationController pushViewController:locationListVC animated:YES];
+       
+    }
+
 }
 
 -(void) locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading{

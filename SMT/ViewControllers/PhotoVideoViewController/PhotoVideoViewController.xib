@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoVideoViewController">
+            <connections>
+                <outlet property="collectionTable" destination="wbH-A4-oKL" id="DUs-Gj-h69"/>
+                <outlet property="overlayView" destination="i5M-Pr-FkT" id="qcz-oh-D1P"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcK-YT-eE9">
+                    <rect key="frame" x="0.0" y="64" width="320" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9U6-H2-PEo">
+                            <rect key="frame" x="10" y="5" width="145" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="SAk-yy-4b7"/>
+                                <constraint firstAttribute="width" constant="145" id="uLi-p0-3dU"/>
+                            </constraints>
+                            <state key="normal" title="Choose Existing">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actChooseExisting:" destination="-1" eventType="touchUpInside" id="K9D-jc-wFK"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9a-C1-2QT">
+                            <rect key="frame" x="165" y="5" width="145" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="145" id="ETG-Ih-Dwf"/>
+                                <constraint firstAttribute="height" constant="40" id="rYu-mD-xDL"/>
+                            </constraints>
+                            <state key="normal" title="Take photo">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actTakePhoto:" destination="-1" eventType="touchUpInside" id="7WF-qK-uoB"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.83529411764705885" green="0.83529411764705885" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="b9a-C1-2QT" secondAttribute="trailing" constant="10" id="CQG-kh-R2e"/>
+                        <constraint firstAttribute="height" constant="50" id="KFC-rc-qyY"/>
+                        <constraint firstAttribute="width" constant="320" id="UWK-Vz-2H9"/>
+                        <constraint firstItem="9U6-H2-PEo" firstAttribute="leading" secondItem="gcK-YT-eE9" secondAttribute="leading" constant="10" id="Wdw-On-Jpz"/>
+                        <constraint firstItem="9U6-H2-PEo" firstAttribute="top" secondItem="gcK-YT-eE9" secondAttribute="top" constant="5" id="prS-hJ-Gb8"/>
+                        <constraint firstItem="b9a-C1-2QT" firstAttribute="top" secondItem="gcK-YT-eE9" secondAttribute="top" constant="5" id="yv4-DQ-wLs"/>
+                    </constraints>
+                </view>
+                <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wbH-A4-oKL">
+                    <rect key="frame" x="0.0" y="114" width="320" height="454"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WXp-OH-e7a">
+                        <size key="itemSize" width="90" height="90"/>
+                        <size key="headerReferenceSize" width="320" height="21"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <cells/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Jsu-jN-jem"/>
+                        <outlet property="delegate" destination="-1" id="VsT-Dh-dqA"/>
+                    </connections>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="gcK-YT-eE9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="Fcf-jP-r4g"/>
+                <constraint firstAttribute="trailing" secondItem="gcK-YT-eE9" secondAttribute="trailing" id="IY5-xt-34F"/>
+                <constraint firstItem="gcK-YT-eE9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="X6j-vz-cdK"/>
+            </constraints>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+</document>

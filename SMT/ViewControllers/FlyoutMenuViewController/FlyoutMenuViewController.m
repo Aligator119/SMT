@@ -43,7 +43,7 @@
         self.topViewVerticalConstr.constant -= 20;
     }
     
-    AppDelegate  *app = [[UIApplication sharedApplication] delegate];
+    AppDelegate  *app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
     self.lbName.text = app.user.userFirstName;
     self.lbLocation.text = app.user.userName;
     //self.lbLocation.text = app.user.userSecondName;
@@ -65,8 +65,39 @@
     [self.navigationController pushViewController:[[WeatherViewController alloc]init] animated:YES];
 }
 
+- (void)openLogAnActivity
+{
+    [self.navigationController pushViewController:[[LogAnActivityViewController alloc]init] animated:YES];
+}
+
+- (void)openCameraAndPhotos
+{
+    [self.navigationController pushViewController:[[PhotoVideoViewController alloc]init] animated:YES];
+}
+
 -(void)openHuntingMap{
-    [self.navigationController pushViewController:[MapViewController new] animated:YES];
+    
+    AppDelegate * appDel = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    if(appDel.listLocations == nil || appDel.listLocations.count == 0){
+        
+        DataLoader * dataLoader = [DataLoader instance];
+        
+        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(newQueue, ^(){
+            [dataLoader getLocationsAssociatedWithUser];
+            
+            dispatch_async(dispatch_get_main_queue(),^(){
+                
+                if(dataLoader.isCorrectRezult){
+                    MapViewController * mapVC = [MapViewController new];
+                    [self.navigationController pushViewController:mapVC animated:YES];
+                }
+            });
+        });
+    } else {
+         MapViewController * mapVC = [MapViewController new];
+        [self.navigationController pushViewController:mapVC animated:YES];
+    }
 }
 
 -(void)openSettings
