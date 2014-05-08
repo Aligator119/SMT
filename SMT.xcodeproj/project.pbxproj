@@ -84,7 +84,13 @@
 		04BD1FD81918FB8000B13CCC /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BD1FD71918FB8000B13CCC /* ImageCell.m */; };
 		04BD1FDA1918FBA400B13CCC /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04BD1FD91918FBA400B13CCC /* ImageCell.xib */; };
 		04CB4F611918E5B400FA3D64 /* PhotoVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CB4F5F1918E5B400FA3D64 /* PhotoVideoViewController.m */; };
+		04DDF031191B5C95006AC844 /* NewLog1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DDF02F191B5C95006AC844 /* NewLog1ViewController.m */; };
+		04DDF032191B5C95006AC844 /* NewLog1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DDF030191B5C95006AC844 /* NewLog1ViewController.xib */; };
 		04E0067219191D7D00A1190E /* PhotoVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0067119191D7D00A1190E /* PhotoVideoViewController.xib */; };
+		04E82EDC191A83F300AAF982 /* LogAnActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E82EDA191A83F300AAF982 /* LogAnActivityViewController.m */; };
+		04E82EDD191A83F300AAF982 /* LogAnActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E82EDB191A83F300AAF982 /* LogAnActivityViewController.xib */; };
+		04F9A414191B64CD006E112C /* LogHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F9A412191B64CD006E112C /* LogHistoryViewController.m */; };
+		04F9A415191B64CD006E112C /* LogHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F9A413191B64CD006E112C /* LogHistoryViewController.xib */; };
 		1136267919111CB7004E5857 /* WeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1136267619111CB7004E5857 /* WeatherViewController.m */; };
 		1136267A19111CB7004E5857 /* WeatherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1136267719111CB7004E5857 /* WeatherViewController.xib */; };
 		1136267B19111CB7004E5857 /* WeatherViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1136267819111CB7004E5857 /* WeatherViewController~ipad.xib */; };
@@ -245,7 +251,16 @@
 		04BD1FD91918FBA400B13CCC /* ImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ImageCell.xib; path = "ViewControllers/PhotoVideoViewController/Custom cell/ImageCell.xib"; sourceTree = "<group>"; };
 		04CB4F5E1918E5B400FA3D64 /* PhotoVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoVideoViewController.h; path = ViewControllers/PhotoVideoViewController/PhotoVideoViewController.h; sourceTree = "<group>"; };
 		04CB4F5F1918E5B400FA3D64 /* PhotoVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoVideoViewController.m; path = ViewControllers/PhotoVideoViewController/PhotoVideoViewController.m; sourceTree = "<group>"; };
+		04DDF02E191B5C95006AC844 /* NewLog1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewLog1ViewController.h; path = ViewControllers/LogAnActivityViewController/NewLog1ViewController/NewLog1ViewController.h; sourceTree = "<group>"; };
+		04DDF02F191B5C95006AC844 /* NewLog1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewLog1ViewController.m; path = ViewControllers/LogAnActivityViewController/NewLog1ViewController/NewLog1ViewController.m; sourceTree = "<group>"; };
+		04DDF030191B5C95006AC844 /* NewLog1ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewLog1ViewController.xib; path = ViewControllers/LogAnActivityViewController/NewLog1ViewController/NewLog1ViewController.xib; sourceTree = "<group>"; };
 		04E0067119191D7D00A1190E /* PhotoVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PhotoVideoViewController.xib; path = ViewControllers/PhotoVideoViewController/PhotoVideoViewController.xib; sourceTree = "<group>"; };
+		04E82ED9191A83F300AAF982 /* LogAnActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogAnActivityViewController.h; path = ViewControllers/LogAnActivityViewController/LogAnActivityViewController.h; sourceTree = "<group>"; };
+		04E82EDA191A83F300AAF982 /* LogAnActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogAnActivityViewController.m; path = ViewControllers/LogAnActivityViewController/LogAnActivityViewController.m; sourceTree = "<group>"; };
+		04E82EDB191A83F300AAF982 /* LogAnActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LogAnActivityViewController.xib; path = ViewControllers/LogAnActivityViewController/LogAnActivityViewController.xib; sourceTree = "<group>"; };
+		04F9A411191B64CD006E112C /* LogHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogHistoryViewController.h; path = ViewControllers/LogHistoryViewController/LogHistoryViewController.h; sourceTree = "<group>"; };
+		04F9A412191B64CD006E112C /* LogHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogHistoryViewController.m; path = ViewControllers/LogHistoryViewController/LogHistoryViewController.m; sourceTree = "<group>"; };
+		04F9A413191B64CD006E112C /* LogHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LogHistoryViewController.xib; path = ViewControllers/LogHistoryViewController/LogHistoryViewController.xib; sourceTree = "<group>"; };
 		1136267519111CB7004E5857 /* WeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherViewController.h; sourceTree = "<group>"; };
 		1136267619111CB7004E5857 /* WeatherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherViewController.m; sourceTree = "<group>"; };
 		1136267719111CB7004E5857 /* WeatherViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherViewController.xib; sourceTree = "<group>"; };
@@ -545,6 +560,9 @@
 		044093F9190F7ABC00C4A558 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				04F9A410191B6495006E112C /* LogHistoryViewController */,
+				04DDF02D191B5C52006AC844 /* NewLog1ViewController */,
+				04E82ED8191A839100AAF982 /* LogAnActivityViewController */,
 				8425CDD5191914E200D948EB /* LocationListViewController */,
 				8425CDC91919001100D948EB /* LocationSearch */,
 				8425CDC31918FFFA00D948EB /* MapViewController */,
@@ -658,6 +676,36 @@
 				04E0067119191D7D00A1190E /* PhotoVideoViewController.xib */,
 			);
 			name = Photos/VideoViewController;
+			sourceTree = "<group>";
+		};
+		04DDF02D191B5C52006AC844 /* NewLog1ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04DDF02E191B5C95006AC844 /* NewLog1ViewController.h */,
+				04DDF02F191B5C95006AC844 /* NewLog1ViewController.m */,
+				04DDF030191B5C95006AC844 /* NewLog1ViewController.xib */,
+			);
+			name = NewLog1ViewController;
+			sourceTree = "<group>";
+		};
+		04E82ED8191A839100AAF982 /* LogAnActivityViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04E82ED9191A83F300AAF982 /* LogAnActivityViewController.h */,
+				04E82EDA191A83F300AAF982 /* LogAnActivityViewController.m */,
+				04E82EDB191A83F300AAF982 /* LogAnActivityViewController.xib */,
+			);
+			name = LogAnActivityViewController;
+			sourceTree = "<group>";
+		};
+		04F9A410191B6495006E112C /* LogHistoryViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04F9A411191B64CD006E112C /* LogHistoryViewController.h */,
+				04F9A412191B64CD006E112C /* LogHistoryViewController.m */,
+				04F9A413191B64CD006E112C /* LogHistoryViewController.xib */,
+			);
+			name = LogHistoryViewController;
 			sourceTree = "<group>";
 		};
 		1136267419111CB7004E5857 /* WeatherViewController */ = {
@@ -849,13 +897,16 @@
 				0440943F190FA98B00C4A558 /* RegisterViewController_iPhone5.xib in Resources */,
 				046C6C09190FECA700E3AC56 /* IncomingFriendCell.xib in Resources */,
 				04409424190F975E00C4A558 /* LoginViewController~ipad.xib in Resources */,
+				04E82EDD191A83F300AAF982 /* LogAnActivityViewController.xib in Resources */,
 				1136267A19111CB7004E5857 /* WeatherViewController.xib in Resources */,
 				0440943E190FA98B00C4A558 /* RegisterViewController_iPhone4.xib in Resources */,
 				84F19A16191A0CDE001B81F7 /* LocationListCell.xib in Resources */,
 				040806A3190EA37D00E063C3 /* Images.xcassets in Resources */,
+				04F9A415191B64CD006E112C /* LogHistoryViewController.xib in Resources */,
 				04E0067219191D7D00A1190E /* PhotoVideoViewController.xib in Resources */,
 				040706B5190FC1CE000D6660 /* BuddyListViewController.xib in Resources */,
 				04409441190FA98B00C4A558 /* RegisterViewController~ipad.xib in Resources */,
+				04DDF032191B5C95006AC844 /* NewLog1ViewController.xib in Resources */,
 				8425CDCE1919001100D948EB /* LocationSearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -876,6 +927,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8425CDCD1919001100D948EB /* LocationSearchViewController.m in Sources */,
+				04E82EDC191A83F300AAF982 /* LogAnActivityViewController.m in Sources */,
 				0433548F1910E7C9003767D0 /* UserInfo.m in Sources */,
 				11C9F6A91917E5FF00CDAFBA /* AFSecurityPolicy.m in Sources */,
 				04409406190F825F00C4A558 /* FlyoutMenuViewController.m in Sources */,
@@ -890,6 +942,7 @@
 				8425CDD91919202700D948EB /* LocationListViewController.m in Sources */,
 				043354B01910ED9F003767D0 /* CJSONSerializedData.m in Sources */,
 				046C6C12190FECEE00E3AC56 /* Cell.m in Sources */,
+				04F9A414191B64CD006E112C /* LogHistoryViewController.m in Sources */,
 				11C9F68A1917E52A00CDAFBA /* UIImageView+AFNetworking.m in Sources */,
 				11C9F67B191780DC00CDAFBA /* WheatherPredict.m in Sources */,
 				0408069D190EA37D00E063C3 /* main.m in Sources */,
@@ -913,6 +966,7 @@
 				04BD1FD81918FB8000B13CCC /* ImageCell.m in Sources */,
 				043354C11910EEB7003767D0 /* SearchingBuddy.m in Sources */,
 				11C9F6AB1917E5FF00CDAFBA /* AFURLRequestSerialization.m in Sources */,
+				04DDF031191B5C95006AC844 /* NewLog1ViewController.m in Sources */,
 				8425CDD41919002300D948EB /* PlaceSearchResult.m in Sources */,
 				043354AF1910ED9F003767D0 /* CJSONSerialization.m in Sources */,
 				043354AB1910ED9F003767D0 /* CFilteringJSONSerializer.m in Sources */,

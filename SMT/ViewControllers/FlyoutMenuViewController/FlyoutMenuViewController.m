@@ -11,6 +11,8 @@
 #import "AppDelegate.h"
 #import "MapViewController.h"
 #import "DataLoader.h"
+#import "LogAnActivityViewController.h"
+#import "PhotoVideoViewController.h"
 
 @interface FlyoutMenuViewController ()
 {
@@ -63,6 +65,16 @@
 - (void)openWeather
 {
     [self.navigationController pushViewController:[[WeatherViewController alloc]init] animated:YES];
+}
+
+- (void)openLogAnActivity
+{
+    [self.navigationController pushViewController:[[LogAnActivityViewController alloc]init] animated:YES];
+}
+
+- (void)openCameraAndPhotos
+{
+    [self.navigationController pushViewController:[[PhotoVideoViewController alloc]init] animated:YES];
 }
 
 -(void)openHuntingMap{
