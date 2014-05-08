@@ -8,21 +8,18 @@
 
 #import "WeatherViewController.h"
 #import "WeatherCell.h"
-//#import "WeatherDetailViewController.h"
+#import "WeatherDetailViewController.h"
 #import "AppDelegate.h"
 #import "DataLoader.h"
 
 #import "DayPredict.h"
 #import "HourlyWheather.h"
-//#import "FishHourlyPrediction.h"
-//#import "FishPredictionOfDay.h"
 #import "CurrentCondition.h"
 #import "UIImageView+AFNetworking.h"
 
 @interface WeatherViewController ()
 {
     AppDelegate *hpApp;
-    //FishPredictionForLocation * predictionForLocation;
 }
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * vericalConstr;
@@ -36,7 +33,7 @@
 @property (nonatomic, weak) IBOutlet UIButton * currentDetailsButton;
 
 @property (strong, nonatomic) IBOutlet UILabel * lblTitle;
-//Weather
+
 @property (strong, nonatomic) IBOutlet UILabel * lblTempNow;
 @property (strong, nonatomic) IBOutlet UILabel * lblCloudcover;
 @property (strong, nonatomic) IBOutlet UIImageView * imgIconWheather;
@@ -51,44 +48,52 @@
 
 @implementation WeatherViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    hpApp = [UIApplication sharedApplication].delegate;
+
     self.screenName = @"Weather";
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) {
         self.vericalConstr.constant -= 20;
         self.heightConstr.constant -= 20;
     }
-    
-    DataLoader *loader = [[DataLoader alloc]init];
-    [loader getLocationsAssociatedWithUser];
-    hpApp.defaultLocation = [hpApp.listLocations firstObject];
-    [loader getWeatherPredictionForCurrentLocation:2017];
-    
-    [self setParamsOfView];
-    //[self addListLocationsView];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self getLocation];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    [self setUpdateParams];
-    [self.weatherTableView reloadData];
+    if (self.currentLocation!=nil) {
+        [self setUpdateParams];
+        [self.weatherTableView reloadData];
+    }
+}
+
+- (void)getLocation
+{
+    DataLoader *loader = [[DataLoader alloc]init];
+    
+    if (hpApp.defaultLocation == nil) {
+        if (hpApp.listLocations == nil) {
+            [loader getLocationsAssociatedWithUser];
+        }
+        if ([hpApp.listLocations firstObject]!=nil) {
+            self.currentLocation = (Location*)[hpApp.listLocations firstObject];
+            [loader getWeatherPredictionForCurrentLocation:self.currentLocation.locID];
+            [self setParamsOfView];
+        }
+        else
+        {
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Please, add new location" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Add new location", nil];
+            [alertView show];
+        }
+    }
+    else{
+        self.currentLocation = hpApp.defaultLocation;
+        [loader getWeatherPredictionForCurrentLocation:self.currentLocation.locID];
+        [self setParamsOfView];
+    }
 }
 
 - (void)setUpdateParams{
@@ -98,7 +103,6 @@
     self.lblWindSpeed.text = [NSString stringWithFormat:@"%@ %@ mph",currentCondition.winddir16Point,currentCondition.windSpedMiles];
     self.imgIconWheather.image = [UIImage imageWithData:currentCondition.imgData];
     [self setWindDirection:currentCondition.winddir16Point];
-    //self.imgIconWind
     
     self.lblCloudcover.text = [NSString stringWithFormat:@"%@%%", currentCondition.cloudcover];
     self.lblHumidity.text = [NSString stringWithFormat:@"%@%%",currentCondition.humidity];
@@ -210,16 +214,6 @@
     self.lblTitle.text = self.currentLocation.locName;
 }
 
-- (void)addListLocationsView{
-//    self.vwListLocations = [[PopUpListLocationViewController alloc] initWithNibName:@"PopUpListLocationViewController" bundle:nil];
-//    [self addChildViewController:self.vwListLocations];
-//    [self.vwListLocations viewWillAppear:YES];
-//    [self.vwListLocations addThisListOnView:self.view];
-//    self.vwListLocations.delegate = self;
-//    [self.view addSubview:self.vwListLocations.view];
-//    self.vwListLocations.view.hidden = YES;
-//    self.vwListLocations.bgView.hidden = YES;
-}
 
 #pragma  mark - Work with Table
 
@@ -230,7 +224,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;//(hpApp.fishPredictionForLocation.lisFishPredictionOfDay.count);
+    return 5;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -242,7 +236,6 @@
         cell = [nib objectAtIndex:0];
     }
     
-    // * * * * Set data * * * *
     DayPredict *day = (DayPredict*)[hpApp.wheatherPredictList.dayList objectAtIndex:(indexPath.row)];
     HourlyWheather *hourlyWeather = [self getHourlyWheatherForThisTime:indexPath.row];
     NSDateFormatter *dateString = [[NSDateFormatter alloc] init];
@@ -261,11 +254,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    WeatherDetailViewController * weatherDetailController = [[WeatherDetailViewController alloc] initWithIndexPathRow:indexPath.row];
-//    //weatherDetailController.locationName = self.currentLocation.locName;
-//    weatherDetailController.currentLocation = self.currentLocation;
-//    [self.navigationController pushViewController:weatherDetailController animated:YES];
+    WeatherDetailViewController * weatherDetailController = [[WeatherDetailViewController alloc] initWithIndexPathRow:indexPath.row];
+    weatherDetailController.currentLocation = self.currentLocation;
+    [self.navigationController pushViewController:weatherDetailController animated:YES];
 }
+
 
 - (IBAction)backButtonClick:(id)sender
 {
@@ -273,22 +266,38 @@
 }
 
 - (IBAction)changeLocation{
-    [self addListLocationsView];
-//    
-//    self.vwListLocations.view.hidden = NO;
-//    self.vwListLocations.bgView.hidden = NO;
+    SelectLocationViewController *locationSelector = [[SelectLocationViewController alloc]init];
+    locationSelector.delegate = self;
+    [self.navigationController pushViewController:locationSelector animated:YES];
 }
 
 - (void)openWeatherPredictionForLocation:(Location *)_location{
     self.currentLocation = _location;
+    DataLoader *loader = [[DataLoader alloc]init];
+    [loader getWeatherPredictionForCurrentLocation:self.currentLocation.locID];
     self.lblTitle.text = _location.locName;
     [self setUpdateParams];
     [self.weatherTableView reloadData];
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else
+    {
+        //present map
+    }
+}
 //- (void)setPrediction:(FishPredictionForLocation*) _fishPredictionForLocation{
 //    predictionForLocation = _fishPredictionForLocation;
 //}
 
+- (void)selectLocation:(Location *)location
+{
+    [self openWeatherPredictionForLocation:location];
+    
+}
 
 @end

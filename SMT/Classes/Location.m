@@ -28,6 +28,30 @@
     return self;
 }
 
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeInteger:locID forKey:LOCATION_ID];
+    [encoder encodeBool:locIsDeleted forKey:LOCATION_DELETE];
+    [encoder encodeFloat:locLatitude forKey:LOCATION_LATITUDE];
+    [encoder encodeFloat:locLongitude forKey:LOCATION_LONGITUDE];
+    [encoder encodeObject:locName forKey:LOCATION_NAME];
+    [encoder encodeInteger:typeLocation forKey:LOCATION_TYPE];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    if((self = [super init])) {
+        locID = [decoder decodeIntForKey:LOCATION_ID];
+        locIsDeleted = [decoder decodeBoolForKey:LOCATION_DELETE];
+        locLatitude = [decoder decodeFloatForKey:LOCATION_LATITUDE];
+        locLongitude = [decoder decodeFloatForKey:LOCATION_LONGITUDE];
+        locName = [decoder decodeObjectForKey:LOCATION_NAME];
+        typeLocation = [decoder decodeIntForKey:LOCATION_TYPE];
+    }
+    return self;
+}
+
+
+
 - (void)setValuesID:(int)_id isDeleted:(BOOL)_deleted lati:(float)_latitude longi:(float)_long name:(NSString*) _name{
     locID = _id;
     locIsDeleted = _deleted;
@@ -43,8 +67,7 @@
                  longi:[[_info objectForKey:LOCATION_LONGITUDE] floatValue]
                  name: [_info objectForKey:LOCATION_NAME]];
     typeLocation = [[_info objectForKey:LOCATION_TYPE] intValue];
-   // NSLog(@"Location : %@",_info);
-}//_info	__NSCFString *	@"updatedtime"	0x0aa5d8b0
+}
 
 - (NSString*)getLocationNames{
     return locName;

@@ -10,6 +10,7 @@
 #import "WeatherViewController.h"
 #import "AppDelegate.h"
 #import "MapViewController.h"
+#import "SettingsViewController.h"
 
 @interface FlyoutMenuViewController ()
 {
@@ -66,6 +67,11 @@
 
 -(void)openHuntingMap{
     [self.navigationController pushViewController:[MapViewController new] animated:YES];
+}
+
+-(void)openSettings
+{
+    [self.navigationController pushViewController:[SettingsViewController new] animated:YES];
 }
 
 - (void) viewWillAppear:(BOOL)animated

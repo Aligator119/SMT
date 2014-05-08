@@ -83,5 +83,6 @@ enum ApplicationServiceRequest
 - (void) updateUserTrackingVisibility: (BOOL) _tracking_visibility;
 - (void) getUserTrackingVisibility;
 - (void)getWeatherPredictionForCurrentLocation:(int)_idLocation;
+- (void)getAllSpecies;
 
 @end

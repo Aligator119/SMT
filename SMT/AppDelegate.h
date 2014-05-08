@@ -33,6 +33,7 @@ static NSString * const kGoogleBrouserAPIkey = @"AIzaSyAgYW3MOr37pwGSATMfWXWklbf
 @property (strong, nonatomic) NSMutableArray * dailyPredict;
 @property (strong, nonatomic) NSMutableArray * listLocations;
 @property (strong, nonatomic) NSMutableArray * listUserBuddies;
+@property (strong, nonatomic) NSMutableArray * speciesList;
 // TEST
 @property (strong, nonatomic) WheatherPredict * wheatherPredictList;
 @property (strong, nonatomic) CurrentCondition * currentCondition;

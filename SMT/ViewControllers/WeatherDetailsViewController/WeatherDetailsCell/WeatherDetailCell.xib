@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="tSx-d7-NtA" customClass="WeatherDetailCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tSx-d7-NtA" id="hzS-C2-7HX">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="95"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5am" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkX-yJ-JX1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="tvu-bM-xQ7"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="H5R-nj-DcO">
+                        <rect key="frame" x="10" y="26" width="60" height="60"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="PrI-V3-KRX"/>
+                            <constraint firstAttribute="height" constant="60" id="eWG-w6-mVJ"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="46" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WC2-Gb-mee">
+                        <rect key="frame" x="80" y="26" width="80" height="35"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="1jY-yy-Qf3"/>
+                            <constraint firstAttribute="height" constant="35" id="hfW-Av-WTB"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="33"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunny" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Dlb-Cs-o9c">
+                        <rect key="frame" x="80" y="71" width="102" height="15"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="102" id="C30-4E-1cZ"/>
+                            <constraint firstAttribute="height" constant="15" id="sat-fP-jJb"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NEE 5mph" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kT9-ST-ibp">
+                        <rect key="frame" x="220" y="28" width="100" height="15"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="Wlq-rT-DF1"/>
+                            <constraint firstAttribute="height" constant="15" id="hz7-dd-PDe"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity: 8%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gTN-VD-lVp">
+                        <rect key="frame" x="190" y="51" width="130" height="15"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="299-QO-S94"/>
+                            <constraint firstAttribute="width" constant="130" id="58K-aF-34g"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pressure: 1013mb" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fy6-hw-IQg">
+                        <rect key="frame" x="190" y="71" width="130" height="15"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="130" id="Zqc-G1-anG"/>
+                            <constraint firstAttribute="height" constant="15" id="btv-Zv-HYH"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="on4-NY-6A7">
+                        <rect key="frame" x="190" y="26" width="20" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="RUQ-5p-FZp"/>
+                            <constraint firstAttribute="height" constant="20" id="ypM-fP-eEo"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Dlb-Cs-o9c" firstAttribute="leading" secondItem="H5R-nj-DcO" secondAttribute="trailing" constant="10" id="37f-mp-HI6"/>
+                    <constraint firstAttribute="trailing" secondItem="Fy6-hw-IQg" secondAttribute="trailing" id="3wu-wz-YLa"/>
+                    <constraint firstItem="on4-NY-6A7" firstAttribute="top" secondItem="nkX-yJ-JX1" secondAttribute="bottom" constant="8" id="5Xj-Zt-aZl"/>
+                    <constraint firstItem="gTN-VD-lVp" firstAttribute="top" secondItem="on4-NY-6A7" secondAttribute="bottom" constant="5" id="677-5G-Fvu"/>
+                    <constraint firstItem="kT9-ST-ibp" firstAttribute="top" secondItem="nkX-yJ-JX1" secondAttribute="bottom" constant="10" id="GbJ-oB-6U7"/>
+                    <constraint firstItem="Fy6-hw-IQg" firstAttribute="top" secondItem="gTN-VD-lVp" secondAttribute="bottom" constant="5" id="Gba-5f-5gl"/>
+                    <constraint firstAttribute="trailing" secondItem="nkX-yJ-JX1" secondAttribute="trailing" id="OVp-UX-5JS"/>
+                    <constraint firstAttribute="trailing" secondItem="gTN-VD-lVp" secondAttribute="trailing" id="S1o-r3-5Wf"/>
+                    <constraint firstAttribute="bottom" secondItem="Dlb-Cs-o9c" secondAttribute="bottom" constant="9" id="VY2-Jz-zUK"/>
+                    <constraint firstItem="nkX-yJ-JX1" firstAttribute="leading" secondItem="hzS-C2-7HX" secondAttribute="leading" id="W6X-dY-V5K"/>
+                    <constraint firstItem="WC2-Gb-mee" firstAttribute="top" secondItem="nkX-yJ-JX1" secondAttribute="bottom" constant="8" id="cgX-WZ-e9d"/>
+                    <constraint firstItem="H5R-nj-DcO" firstAttribute="top" secondItem="nkX-yJ-JX1" secondAttribute="bottom" constant="8" id="faY-d7-sEH"/>
+                    <constraint firstItem="nkX-yJ-JX1" firstAttribute="top" secondItem="hzS-C2-7HX" secondAttribute="top" id="m1U-fO-4Wk"/>
+                    <constraint firstItem="H5R-nj-DcO" firstAttribute="leading" secondItem="hzS-C2-7HX" secondAttribute="leading" constant="10" id="qbt-pq-ERM"/>
+                    <constraint firstAttribute="trailing" secondItem="kT9-ST-ibp" secondAttribute="trailing" id="sIJ-gJ-i35"/>
+                    <constraint firstItem="WC2-Gb-mee" firstAttribute="leading" secondItem="H5R-nj-DcO" secondAttribute="trailing" constant="10" id="wrt-aC-n0c"/>
+                    <constraint firstItem="kT9-ST-ibp" firstAttribute="leading" secondItem="on4-NY-6A7" secondAttribute="trailing" constant="10" id="z0l-k9-IsB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="humidity" destination="gTN-VD-lVp" id="Evw-h4-uLr"/>
+                <outlet property="pressure" destination="Fy6-hw-IQg" id="hXn-Gq-uQe"/>
+                <outlet property="tepmerature" destination="WC2-Gb-mee" id="Vh9-A8-PXH"/>
+                <outlet property="time" destination="nkX-yJ-JX1" id="HkZ-nq-AWa"/>
+                <outlet property="weatherDescription" destination="Dlb-Cs-o9c" id="Sv9-1k-mfE"/>
+                <outlet property="weatherIcon" destination="H5R-nj-DcO" id="KGf-UX-uYN"/>
+                <outlet property="wind" destination="kT9-ST-ibp" id="Xgm-KJ-5sQ"/>
+                <outlet property="windDirectionIcon" destination="on4-NY-6A7" id="iih-1v-gEL"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

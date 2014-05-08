@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Location.h"
-//#import "PopUpListLocationViewController.h"
-//#import "FishPredictionForLocation.h"
+#import "SelectLocationViewController.h"
 
-@interface WeatherViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface WeatherViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate, LocationListViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *sunrise;
 @property (strong, nonatomic) IBOutlet UILabel *sunset;
 @property (strong, nonatomic) IBOutlet UILabel *moonrise;
@@ -21,8 +20,5 @@
 @property (nonatomic, copy) NSString * screenName;
 
 @property (strong, nonatomic) Location * currentLocation;
-//@property (strong, nonatomic) PopUpListLocationViewController * vwListLocations;
-
-//- (void)setPrediction:(FishPredictionForLocation*) _fishPredictionForLocation;
 
 @end
