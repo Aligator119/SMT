@@ -35,7 +35,7 @@
     appDelegate = [UIApplication sharedApplication].delegate;
     
     DataLoader *loader = [[DataLoader alloc]init];
-    if (appDelegate.speciesList == nil) {
+    if ([appDelegate.speciesList firstObject] == nil) {
         [loader getAllSpecies];
     }
 }

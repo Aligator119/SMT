@@ -11,6 +11,10 @@
 #import "AppDelegate.h"
 #import "MapViewController.h"
 #import "SettingsViewController.h"
+#import "LogAnActivityViewController.h"
+#import "DataLoader.h"
+#import "PhotoVideoViewController.h"
+#import "BuddyListViewController.h"
 
 @interface FlyoutMenuViewController ()
 {
@@ -65,6 +69,11 @@
     [self.navigationController pushViewController:[[WeatherViewController alloc]init] animated:YES];
 }
 
+- (void)openBuddies
+{
+    [self.navigationController pushViewController:[[BuddyListViewController alloc]init] animated:YES];
+}
+
 - (void)openLogAnActivity
 {
     [self.navigationController pushViewController:[[LogAnActivityViewController alloc]init] animated:YES];
@@ -72,7 +81,8 @@
 
 - (void)openCameraAndPhotos
 {
-    [self.navigationController pushViewController:[[PhotoVideoViewController alloc]init] animated:YES];
+    PhotoVideoViewController * pvvc = [[PhotoVideoViewController alloc]initWithNibName:@"PhotoVideoViewController" bundle:nil];
+    [self.navigationController pushViewController:pvvc animated:YES];
 }
 
 -(void)openHuntingMap{

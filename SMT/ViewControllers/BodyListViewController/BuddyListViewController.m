@@ -106,7 +106,7 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.navigationBar.hidden = YES;
 }
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
