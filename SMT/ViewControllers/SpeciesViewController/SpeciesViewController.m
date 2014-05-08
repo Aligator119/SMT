@@ -40,11 +40,6 @@
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [self endLoader];
-    [self startLoader];
-}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

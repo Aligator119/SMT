@@ -96,8 +96,6 @@
 		04A2A3A5191B7FC00006677E /* LocationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A2A3A1191B7FC00006677E /* LocationListViewController.xib */; };
 		04A2A3AE191B7FD30006677E /* LogAnActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A3A8191B7FD30006677E /* LogAnActivityViewController.m */; };
 		04A2A3AF191B7FD30006677E /* LogAnActivityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A2A3A9191B7FD30006677E /* LogAnActivityViewController.xib */; };
-		04A2A3B0191B7FD30006677E /* NewLog1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A3AC191B7FD30006677E /* NewLog1ViewController.m */; };
-		04A2A3B1191B7FD30006677E /* NewLog1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A2A3AD191B7FD30006677E /* NewLog1ViewController.xib */; };
 		04A2A3BE191B7FDC0006677E /* ImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A3B5191B7FDC0006677E /* ImageCell.m */; };
 		04A2A3BF191B7FDC0006677E /* ImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A2A3B6191B7FDC0006677E /* ImageCell.xib */; };
 		04A2A3C0191B7FDC0006677E /* CustomHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A3B9191B7FDC0006677E /* CustomHeader.m */; };
@@ -123,6 +121,8 @@
 		04CEC047191B860C00BF784D /* LocationSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC046191B860C00BF784D /* LocationSearch.m */; };
 		04CEC04A191B861B00BF784D /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC049191B861B00BF784D /* AFNetworkReachabilityManager.m */; };
 		04CEC04D191B865C00BF784D /* PlaceSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC04C191B865C00BF784D /* PlaceSearchResult.m */; };
+		04E88FC1191BA07B00DEF977 /* NewLog1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E88FBF191BA07B00DEF977 /* NewLog1ViewController.m */; };
+		04E88FC2191BA07B00DEF977 /* NewLog1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E88FC0191BA07B00DEF977 /* NewLog1ViewController.xib */; };
 		113626841911239B004E5857 /* CurrentCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 113626831911239B004E5857 /* CurrentCondition.m */; };
 		11C9F67B191780DC00CDAFBA /* WheatherPredict.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F67A191780DC00CDAFBA /* WheatherPredict.m */; };
 		11C9F67E1917814600CDAFBA /* DayPredict.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F67D1917814600CDAFBA /* DayPredict.m */; };
@@ -287,9 +287,6 @@
 		04A2A3A7191B7FD30006677E /* LogAnActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogAnActivityViewController.h; sourceTree = "<group>"; };
 		04A2A3A8191B7FD30006677E /* LogAnActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogAnActivityViewController.m; sourceTree = "<group>"; };
 		04A2A3A9191B7FD30006677E /* LogAnActivityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogAnActivityViewController.xib; sourceTree = "<group>"; };
-		04A2A3AB191B7FD30006677E /* NewLog1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewLog1ViewController.h; sourceTree = "<group>"; };
-		04A2A3AC191B7FD30006677E /* NewLog1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewLog1ViewController.m; sourceTree = "<group>"; };
-		04A2A3AD191B7FD30006677E /* NewLog1ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewLog1ViewController.xib; sourceTree = "<group>"; };
 		04A2A3B4191B7FDC0006677E /* ImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCell.h; sourceTree = "<group>"; };
 		04A2A3B5191B7FDC0006677E /* ImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageCell.m; sourceTree = "<group>"; };
 		04A2A3B6191B7FDC0006677E /* ImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCell.xib; sourceTree = "<group>"; };
@@ -327,6 +324,9 @@
 		04CEC049191B861B00BF784D /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
 		04CEC04B191B865C00BF784D /* PlaceSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceSearchResult.h; path = Classes/PlaceSearchResult.h; sourceTree = "<group>"; };
 		04CEC04C191B865C00BF784D /* PlaceSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceSearchResult.m; path = Classes/PlaceSearchResult.m; sourceTree = "<group>"; };
+		04E88FBE191BA07B00DEF977 /* NewLog1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewLog1ViewController.h; sourceTree = "<group>"; };
+		04E88FBF191BA07B00DEF977 /* NewLog1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewLog1ViewController.m; sourceTree = "<group>"; };
+		04E88FC0191BA07B00DEF977 /* NewLog1ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewLog1ViewController.xib; sourceTree = "<group>"; };
 		113626821911239B004E5857 /* CurrentCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentCondition.h; path = Classes/CurrentCondition.h; sourceTree = "<group>"; };
 		113626831911239B004E5857 /* CurrentCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentCondition.m; path = Classes/CurrentCondition.m; sourceTree = "<group>"; };
 		11C9F679191780DC00CDAFBA /* WheatherPredict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WheatherPredict.h; path = Classes/WheatherPredict.h; sourceTree = "<group>"; };
@@ -616,6 +616,7 @@
 				04CEC036191B81EF00BF784D /* LogHistoryViewController */,
 				044093FA190F7AD000C4A558 /* LoginViewController */,
 				04B015C4191B7EE7002F6FA9 /* MapViewController */,
+				04E88FBD191BA07B00DEF977 /* NewLog1ViewController */,
 				04B015B2191B6FAD002F6FA9 /* NewLog2ViewController */,
 				04A2A3B2191B7FDC0006677E /* PhotoVideoViewController */,
 				0440942A190FA66600C4A558 /* RegisterViewController */,
@@ -794,20 +795,9 @@
 				04A2A3A7191B7FD30006677E /* LogAnActivityViewController.h */,
 				04A2A3A8191B7FD30006677E /* LogAnActivityViewController.m */,
 				04A2A3A9191B7FD30006677E /* LogAnActivityViewController.xib */,
-				04A2A3AA191B7FD30006677E /* NewLog1ViewController */,
 			);
 			name = LogAnActivityViewController;
 			path = ViewControllers/LogAnActivityViewController;
-			sourceTree = "<group>";
-		};
-		04A2A3AA191B7FD30006677E /* NewLog1ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				04A2A3AB191B7FD30006677E /* NewLog1ViewController.h */,
-				04A2A3AC191B7FD30006677E /* NewLog1ViewController.m */,
-				04A2A3AD191B7FD30006677E /* NewLog1ViewController.xib */,
-			);
-			path = NewLog1ViewController;
 			sourceTree = "<group>";
 		};
 		04A2A3B2191B7FDC0006677E /* PhotoVideoViewController */ = {
@@ -906,6 +896,17 @@
 			);
 			name = LocationSearch;
 			path = ViewControllers/LocationSearch;
+			sourceTree = "<group>";
+		};
+		04E88FBD191BA07B00DEF977 /* NewLog1ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04E88FBE191BA07B00DEF977 /* NewLog1ViewController.h */,
+				04E88FBF191BA07B00DEF977 /* NewLog1ViewController.m */,
+				04E88FC0191BA07B00DEF977 /* NewLog1ViewController.xib */,
+			);
+			name = NewLog1ViewController;
+			path = ViewControllers/NewLog1ViewController;
 			sourceTree = "<group>";
 		};
 		11D48DCC1918E32700A9787E /* AFNetworking */ = {
@@ -1026,6 +1027,7 @@
 				04A2A393191B7F8D0006677E /* WeatherDetailViewController~ipad.xib in Resources */,
 				04A2A390191B7F8D0006677E /* WeatherDetailCell.xib in Resources */,
 				046C6BEC190FDF1D00E3AC56 /* back_arrow.png in Resources */,
+				04E88FC2191BA07B00DEF977 /* NewLog1ViewController.xib in Resources */,
 				04409422190F975E00C4A558 /* LoginViewController_iPhone5.xib in Resources */,
 				0440943F190FA98B00C4A558 /* RegisterViewController_iPhone5.xib in Resources */,
 				046C6C09190FECA700E3AC56 /* IncomingFriendCell.xib in Resources */,
@@ -1035,7 +1037,6 @@
 				04CEC03B191B81EF00BF784D /* LogHistoryViewController.xib in Resources */,
 				04B015B7191B6FD3002F6FA9 /* NewLog2ViewController.xib in Resources */,
 				04CEC03E191B82EE00BF784D /* GoogleMaps.bundle in Resources */,
-				04A2A3B1191B7FD30006677E /* NewLog1ViewController.xib in Resources */,
 				04B015BD191B7EB6002F6FA9 /* SelectLocationViewController.xib in Resources */,
 				04A2A3C3191B7FDC0006677E /* PhotoVideoViewController.xib in Resources */,
 				04A2A3A3191B7FC00006677E /* LocationListCell.xib in Resources */,
@@ -1069,6 +1070,7 @@
 			files = (
 				11D48DE01918E32700A9787E /* AFHTTPRequestOperation.m in Sources */,
 				0433548F1910E7C9003767D0 /* UserInfo.m in Sources */,
+				04E88FC1191BA07B00DEF977 /* NewLog1ViewController.m in Sources */,
 				04409406190F825F00C4A558 /* FlyoutMenuViewController.m in Sources */,
 				11C9F6811917818800CDAFBA /* HourlyWheather.m in Sources */,
 				040806A1190EA37D00E063C3 /* AppDelegate.m in Sources */,
@@ -1132,7 +1134,6 @@
 				11D48DE41918E32700A9787E /* AFSecurityPolicy.m in Sources */,
 				043354CD1910F0A7003767D0 /* BuddySearchCell.m in Sources */,
 				043354B11910ED9F003767D0 /* CJSONSerializer.m in Sources */,
-				04A2A3B0191B7FD30006677E /* NewLog1ViewController.m in Sources */,
 				04A2A370191B7F530006677E /* SettingsViewController.m in Sources */,
 				0433548A1910E7C9003767D0 /* ConstantsClass.m in Sources */,
 				0433548C1910E7C9003767D0 /* GTMNSString+HTML.m in Sources */,

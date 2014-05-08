@@ -62,6 +62,16 @@
     NSArray *functionsArrayIdentifiers = [[NSArray alloc] initWithObjects:@"openLogAnActivity", @"openHuntingMap", @"openFishingMap", @"openCameraAndPhotos", @"openPrediction", @"openReports", @"openWeather", @"openBuddies", @"openSettings", @"logout", nil];
     
     functionsDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:functionsArrayIdentifiers, @"identifiers", menuItems, @"strings", nil];
+//--------------------------------------------------------------------------------------------------------------------
+    if ([app.speciesList firstObject] == nil) {
+        DataLoader * dataLoader = [DataLoader instance];
+        
+        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(newQueue, ^(){
+             [dataLoader getAllSpecies];
+        });
+       
+    }
 }
 
 - (void)openWeather

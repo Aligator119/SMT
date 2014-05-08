@@ -8,9 +8,15 @@
 
 #import "NewLog1ViewController.h"
 #import "LogHistoryViewController.h"
+#import "DataLoader.h"
+#import "AppDelegate.h"
+#import "Species.h"
+#import "NewLog2ViewController.h"
 
 @interface NewLog1ViewController ()
-
+{
+    AppDelegate * appDelegate;
+}
 - (IBAction)actButtonBack:(UIButton *)sender;
 - (IBAction)actButtonHistory:(UIButton *)sender;
 @end
@@ -35,11 +41,18 @@
         self.navigationBarVerticalConstr.constant -=20;
     }
 
+    
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBar.hidden = YES;
+    appDelegate = [UIApplication sharedApplication].delegate;
+    
+    DataLoader *loader = [[DataLoader alloc]init];
+    if ([appDelegate.speciesList firstObject] == nil) {
+        [loader getAllSpecies];
+    }
 }
 
 
@@ -50,7 +63,7 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return appDelegate.speciesList.count;
 }
 
 
@@ -61,16 +74,26 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
     
+    Species * spec = [appDelegate.speciesList objectAtIndex:indexPath.row];
+    cell.imageView.image = spec.thumbnail;
+    cell.textLabel.text = spec.name;
     return cell;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-        return @"111";
+        return @"Select Species";
     }
     return @"";
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NewLog2ViewController * nlvc = [[NewLog2ViewController alloc]initWithNibName:@"NewLog2ViewController" bundle:nil andSpecies: [appDelegate.speciesList objectAtIndex:indexPath.row]];
+    [self.navigationController pushViewController:nlvc animated:YES];
+}
+
 
 - (IBAction)actButtonHistory:(UIButton *)sender
 {
