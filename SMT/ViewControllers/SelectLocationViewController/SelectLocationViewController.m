@@ -30,7 +30,7 @@
 {
     DataLoader *loader = [[DataLoader alloc]init];
     appDelegate = [UIApplication sharedApplication].delegate;
-    if (appDelegate.listLocations==nil) {
+    if ([appDelegate.listLocations firstObject]==nil) {
         [loader getLocationsAssociatedWithUser];
     }
     
