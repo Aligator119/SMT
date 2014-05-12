@@ -19,6 +19,8 @@
 
 @property (strong, nonatomic) Location * location;
 @property (strong, nonatomic) NSDate * huntDate;
+@property (strong, nonatomic) NSDate * huntStartTime;
+@property (strong, nonatomic) NSDate * huntEndTime;
 @property (strong, nonatomic) NSString  * huntType;
 @property (strong, nonatomic) NSString * weapon;
 @property (strong, nonatomic) NSString * northernPike;
@@ -27,8 +29,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andSpecies:(Species *)species;
-
+@property (weak, nonatomic) IBOutlet UIButton *btnLocation;
 @property (weak, nonatomic) IBOutlet UIButton *btnDate;
+
 @property (weak, nonatomic) IBOutlet UIButton *btnStartTime;
 @property (weak, nonatomic) IBOutlet UIButton *btnEndTime;
 @property (weak, nonatomic) IBOutlet UIButton *btnHuntType;

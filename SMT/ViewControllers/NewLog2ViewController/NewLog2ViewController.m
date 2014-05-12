@@ -155,9 +155,6 @@
     } else if (pickerType == 3) {
         num = self.northernPikeList.count;
     }
-//    else if (pickerType == 4) {
-//        num = self.locationList.count;
-//    }
     return num;
 }
 
@@ -171,9 +168,7 @@
     } else if (pickerType == 3) {
         str = [self.northernPikeList objectAtIndex:row];
     }
-//    else if (pickerType == 4) {
-//        str = ((Location *)[self.locationList objectAtIndex:row]).locName;
-//    }
+
     return str;
 }
 
@@ -186,9 +181,6 @@
     } else if (pickerType == 3) {
         self.northernPike = [self.northernPikeList objectAtIndex:row];
     }
-//    else if (pickerType == 4) {
-//        self.location = [self.locationList objectAtIndex:row];
-//    }
 
 }
 //----------------------------------------------------------
@@ -202,38 +194,66 @@
 
 - (void) pressedDatePickerView:(id)sender
 {
+    switch (self.datePicker.tag) {
+        case 1:
+            self.huntDate = self.datePicker.date;
+            [self.btnDate setTitle:[dateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
+            break;
+            
+        case 2:
+            self.huntStartTime = self.datePicker.date;
+            [self.btnStartTime setTitle:[timeFormatter stringFromDate:self.huntStartTime] forState:UIControlStateNormal];
+            break;
+            
+        case 3:
+            self.huntEndTime = self.datePicker.date;
+            [self.btnEndTime setTitle:[timeFormatter stringFromDate:self.huntEndTime] forState:UIControlStateNormal];
+            break;
+    }
     [self.datePickerView removeFromSuperview];
 }
 
 - (void) pressedPickerView:(id)sender
 {
     [self.pickerView removeFromSuperview];
+    if (pickerType == 1) {
+        self.btnHuntType.titleLabel.text = self.huntType;
+    } else if (pickerType == 2) {
+        self.btnWeapon.titleLabel.text = self.weapon;
+    } else if (pickerType == 3) {
+        self.btnNorthernPike.titleLabel.text = self.northernPike ;
+    }
 }
 
 - (IBAction)actDoneDatePicker:(id)sender {
     switch (self.datePicker.tag) {
         case 1:
             self.huntDate = self.datePicker.date;
-            NSLog(@"%@",[dateFormatter stringFromDate:self.huntDate]);
+            [self.btnDate setTitle:[dateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
             break;
             
         case 2:
-            NSLog(@"%@",[timeFormatter stringFromDate:self.datePicker.date]);
+            self.huntStartTime = self.datePicker.date;
+            [self.btnStartTime setTitle:[timeFormatter stringFromDate:self.huntStartTime] forState:UIControlStateNormal];
             break;
             
         case 3:
-            NSLog(@"%@",[timeFormatter stringFromDate:self.datePicker.date]);
+            self.huntEndTime = self.datePicker.date;
+            [self.btnEndTime setTitle:[timeFormatter stringFromDate:self.huntEndTime] forState:UIControlStateNormal];
             break;
     }
-    self.huntDate = self.datePicker.date;
     [self.datePickerView removeFromSuperview];
 }
 
 - (IBAction)actDonePicker:(id)sender {
     [self.pickerView removeFromSuperview];
-    NSLog(@"%@",self.huntType);
-    NSLog(@"%@",self.weapon);
-    NSLog(@"%@",self.northernPike);
+    if (pickerType == 1) {
+        self.btnHuntType.titleLabel.text = self.huntType;
+    } else if (pickerType == 2) {
+        self.btnWeapon.titleLabel.text = self.weapon;
+    } else if (pickerType == 3) {
+        self.btnNorthernPike.titleLabel.text = self.northernPike ;
+    }
 }
 
 
@@ -245,10 +265,6 @@
 }
 
 - (IBAction)actLocation:(id)sender {
-//    pickerType = 4;
-//    [self.view addSubview:self.pickerView];
-//    [self.picker reloadAllComponents];
-//    self.location = [self.locationList firstObject];
     SelectLocationViewController * slvc = [[SelectLocationViewController alloc]initWithNibName:@"SelectLocationViewController" bundle:nil];
     slvc.delegate = self;
     [self.navigationController pushViewController:slvc animated:YES];
@@ -308,7 +324,7 @@
 - (void)selectLocation:(Location*)location
 {
     self.location = location;
-    NSLog(@"%@",self.location);
+    [self.btnLocation setTitle:self.location.locName forState:UIControlStateNormal];
 }
 
 

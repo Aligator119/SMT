@@ -8,10 +8,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewLog2ViewController">
             <connections>
                 <outlet property="btnAdd" destination="lYi-UZ-xbQ" id="Jz4-Ve-PUd"/>
-                <outlet property="btnDate" destination="SRy-xi-GbC" id="fF6-Un-QvX"/>
+                <outlet property="btnDate" destination="SRy-xi-GbC" id="kyd-rM-FdA"/>
                 <outlet property="btnEndTime" destination="hf6-MP-8dO" id="UEy-VQ-qFO"/>
                 <outlet property="btnFinalizeLog" destination="zJU-Rr-dMc" id="60V-ga-aQk"/>
                 <outlet property="btnHuntType" destination="Sx8-0a-KbF" id="54r-Iy-T8v"/>
+                <outlet property="btnLocation" destination="2Bw-cq-S4j" id="jRL-yx-mfy"/>
                 <outlet property="btnNorthernPike" destination="zOn-ib-lAw" id="f8A-Gb-JII"/>
                 <outlet property="btnStartTime" destination="XIq-WU-SvA" id="0bK-XQ-K2K"/>
                 <outlet property="btnWeapon" destination="1VB-Z1-f2P" id="KBh-kq-hIQ"/>
