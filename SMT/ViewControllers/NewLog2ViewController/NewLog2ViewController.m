@@ -7,18 +7,37 @@
 //
 
 #import "NewLog2ViewController.h"
+#import "DataLoader.h"
+#import "AppDelegate.h"
 
+
+#define TAG 12345
+
+#define COMPLETE_DATE_UNITS   NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond
 
 @interface NewLog2ViewController ()
 {
     NSMutableArray * listOfSpecies;
-}
+    int pickerType;
+    NSDateFormatter * dateFormatter;
+    NSDateFormatter * timeFormatter;
+    AppDelegate * appDelegate;
+   }
 @property (weak, nonatomic) IBOutlet UITableView *table;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UIPickerView *picker;
+@property (strong, nonatomic) IBOutlet UIView *datePickerView;
+@property (strong, nonatomic) IBOutlet UIView *pickerView;
 
 @property (strong, nonatomic) IBOutlet UIView *headerView;
 @property (strong, nonatomic) IBOutlet UIView *footer;
 @property (strong, nonatomic) Species * species;
+
+- (void) pressedDatePickerView:(id)sender;
+- (void) pressedPickerView:(id)sender;
 - (IBAction)actButtonBack:(id)sender;
+- (IBAction)actDoneDatePicker:(id)sender;
+- (IBAction)actDonePicker:(id)sender;
 @end
 
 @implementation NewLog2ViewController
@@ -46,9 +65,43 @@
     listOfSpecies = [[NSMutableArray alloc]init];
     [listOfSpecies addObject:@"header"];
     [listOfSpecies addObject:@"footer"];
+//------------------------------------------------------------------------------
+    self.huntType =     @"";
+    self.weapon =       @"";
+    self.northernPike = @"";
+    
+    self.huntTypeList = [[NSArray alloc]initWithObjects:@"Drive", @"Stalking", nil];
+    self.weaponList = [[NSArray alloc]initWithObjects:@"Rifle", nil];
+    self.northernPikeList = [[NSArray alloc]initWithObjects:@"pike list1",@"Pike list2", nil];
+    
+    self.picker.delegate = self;
+    
+    dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"MMMM dd yyyy"];
+    timeFormatter = [[NSDateFormatter alloc]init];
+    [timeFormatter setDateFormat:@"h:mm:a"];
+
+    
+    UITapGestureRecognizer *datePickerViewRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pressedDatePickerView:)];
+    [datePickerViewRecognizer setNumberOfTapsRequired:1];
+    [datePickerViewRecognizer setDelegate:self];
+    
+    [self.datePickerView addGestureRecognizer:datePickerViewRecognizer];
+    
+    UITapGestureRecognizer * pickerViewRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pressedPickerView:)];
+    [pickerViewRecognizer setNumberOfTapsRequired:1];
+    [pickerViewRecognizer setDelegate:self];
+
+    [self.pickerView addGestureRecognizer:pickerViewRecognizer];
+    
+    [self.datePickerView setBackgroundColor:[UIColor colorWithRed:0.99 green:0.99 blue:0.99 alpha:0.7]];
+    [self.pickerView setBackgroundColor:[UIColor colorWithRed:0.99 green:0.99 blue:0.99 alpha:0.7]];
 }
 
 
+
+#pragma mark Table delegate metods
+//------------------------------------------------
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -83,7 +136,62 @@
     }
     return 44;
 }
+//---------------------------------------------------------------------------------------------------------------
 
+#pragma mark Picker delegate metods
+//------------------------------------------------------
+- (NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    int num = 5;
+    if (pickerType == 1) {
+        num = self.huntTypeList.count;
+    } else if (pickerType == 2) {
+        num = self.weaponList.count;
+    } else if (pickerType == 3) {
+        num = self.northernPikeList.count;
+    }
+//    else if (pickerType == 4) {
+//        num = self.locationList.count;
+//    }
+    return num;
+}
+
+- (NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    NSString * str = @"asdfghjkl;";
+    if (pickerType == 1) {
+        str = [self.huntTypeList objectAtIndex:row];
+    } else if (pickerType == 2) {
+        str = [self.weaponList objectAtIndex:row];
+    } else if (pickerType == 3) {
+        str = [self.northernPikeList objectAtIndex:row];
+    }
+//    else if (pickerType == 4) {
+//        str = ((Location *)[self.locationList objectAtIndex:row]).locName;
+//    }
+    return str;
+}
+
+- (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    if (pickerType == 1) {
+        self.huntType = [self.huntTypeList objectAtIndex:row];
+    } else if (pickerType == 2) {
+        self.weapon = [self.weaponList objectAtIndex:row];
+    } else if (pickerType == 3) {
+        self.northernPike = [self.northernPikeList objectAtIndex:row];
+    }
+//    else if (pickerType == 4) {
+//        self.location = [self.locationList objectAtIndex:row];
+//    }
+
+}
+//----------------------------------------------------------
 
 
 - (void)didReceiveMemoryWarning
@@ -92,8 +200,41 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) pressedDatePickerView:(id)sender
+{
+    [self.datePickerView removeFromSuperview];
+}
 
+- (void) pressedPickerView:(id)sender
+{
+    [self.pickerView removeFromSuperview];
+}
 
+- (IBAction)actDoneDatePicker:(id)sender {
+    switch (self.datePicker.tag) {
+        case 1:
+            self.huntDate = self.datePicker.date;
+            NSLog(@"%@",[dateFormatter stringFromDate:self.huntDate]);
+            break;
+            
+        case 2:
+            NSLog(@"%@",[timeFormatter stringFromDate:self.datePicker.date]);
+            break;
+            
+        case 3:
+            NSLog(@"%@",[timeFormatter stringFromDate:self.datePicker.date]);
+            break;
+    }
+    self.huntDate = self.datePicker.date;
+    [self.datePickerView removeFromSuperview];
+}
+
+- (IBAction)actDonePicker:(id)sender {
+    [self.pickerView removeFromSuperview];
+    NSLog(@"%@",self.huntType);
+    NSLog(@"%@",self.weapon);
+    NSLog(@"%@",self.northernPike);
+}
 
 
 - (IBAction)actFinalizeLog:(id)sender {
@@ -102,31 +243,73 @@
 - (IBAction)actButtonBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 - (IBAction)actLocation:(id)sender {
+//    pickerType = 4;
+//    [self.view addSubview:self.pickerView];
+//    [self.picker reloadAllComponents];
+//    self.location = [self.locationList firstObject];
+    SelectLocationViewController * slvc = [[SelectLocationViewController alloc]initWithNibName:@"SelectLocationViewController" bundle:nil];
+    slvc.delegate = self;
+    [self.navigationController pushViewController:slvc animated:YES];
 }
 
 - (IBAction)actDate:(id)sender {
-}
-
-- (IBAction)actEndTime:(id)sender {
+    self.datePicker.tag = 1;
+    self.datePicker.datePickerMode = UIDatePickerModeDate;
+    self.datePicker.date = [NSDate date];
+    [self.view addSubview:self.datePickerView];
 }
 
 - (IBAction)actStartTime:(id)sender {
+    self.datePicker.tag = 2;
+    self.datePicker.datePickerMode = UIDatePickerModeTime;
+    self.datePicker.date = [NSDate date];
+    [self.view addSubview:self.datePickerView];
+}
+
+- (IBAction)actEndTime:(id)sender {
+    self.datePicker.tag = 3;
+    self.datePicker.datePickerMode = UIDatePickerModeTime;
+    self.datePicker.date = [NSDate date];
+    [self.view addSubview:self.datePickerView];
 }
 
 - (IBAction)actHuntType:(id)sender {
+    pickerType = 1;
+    [self.view addSubview:self.pickerView];
+    [self.picker reloadAllComponents];
+    self.huntType = [self.huntTypeList firstObject];
 }
 
 - (IBAction)actWeapon:(id)sender {
+    pickerType = 2;
+    [self.view addSubview:self.pickerView];
+    [self.picker reloadAllComponents];
+    self.weapon = [self.weaponList firstObject];
 }
 
 - (IBAction)actNorthernPike:(id)sender {
+    pickerType = 3;
+    [self.view addSubview:self.pickerView];
+    [self.picker reloadAllComponents];
+    self.northernPike = [self.northernPikeList firstObject];
 }
 
 - (IBAction)actAdd:(id)sender {
     [listOfSpecies removeObject:@"footer"];
-    [listOfSpecies addObject:@"add"];
+    [listOfSpecies addObject:self.northernPike];
     [listOfSpecies addObject:@"footer"];
     [self.table reloadData];
 }
+
+#pragma mark metods location delegate
+
+- (void)selectLocation:(Location*)location
+{
+    self.location = location;
+    NSLog(@"%@",self.location);
+}
+
+
 @end
