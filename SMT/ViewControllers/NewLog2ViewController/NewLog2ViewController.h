@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) NSArray * huntTypeList;
 @property (strong, nonatomic) NSArray * weaponList;
-@property (strong, nonatomic) NSArray * northernPikeList;
+@property (strong, nonatomic) NSMutableArray * northernPikeList;
 
 @property (strong, nonatomic) Location * location;
 @property (strong, nonatomic) NSDate * huntDate;
@@ -23,7 +23,7 @@
 @property (strong, nonatomic) NSDate * huntEndTime;
 @property (strong, nonatomic) NSString  * huntType;
 @property (strong, nonatomic) NSString * weapon;
-@property (strong, nonatomic) NSString * northernPike;
+@property (strong, nonatomic) Species * northernPike;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;

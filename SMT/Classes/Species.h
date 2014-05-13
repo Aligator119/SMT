@@ -17,6 +17,8 @@
 @property (strong, nonatomic) NSString *description;
 @property (strong, nonatomic) UIImage *thumbnail;
 @property (strong, nonatomic) UIImage *photo;
+@property (nonatomic) int seen;
+@property (nonatomic) int harvested;
 
 -(void)initSpeciesWithData:(NSDictionary*) infoDict;
 

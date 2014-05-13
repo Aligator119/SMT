@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LogDetailCell.h"
 
 @interface LogDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
@@ -18,5 +19,5 @@
 
 - (IBAction)actClose:(id)sender;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andspeciesList:(NSArray *)list;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andProperty:(NSDictionary *)dict;
 @end

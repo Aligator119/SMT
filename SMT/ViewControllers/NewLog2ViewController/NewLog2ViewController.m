@@ -69,11 +69,17 @@
 //------------------------------------------------------------------------------
     self.huntType =     @"";
     self.weapon =       @"";
-    self.northernPike = @"";
     
     self.huntTypeList = [[NSArray alloc]initWithObjects:@"Drive", @"Stalking", nil];
     self.weaponList = [[NSArray alloc]initWithObjects:@"Rifle", nil];
-    self.northernPikeList = [[NSArray alloc]initWithObjects:@"pike list1",@"Pike list2", nil];
+    self.northernPikeList = [[NSMutableArray alloc]init];
+    for (int i = 0; i<10; i++) {
+        Species * buf = [[Species alloc]init];
+        buf.name = [@"Nothern list" stringByAppendingString:[NSString stringWithFormat:@"%d",i]];
+        [self.northernPikeList addObject:buf];
+    }
+    
+    
     
     self.picker.delegate = self;
     
@@ -116,24 +122,29 @@
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell * cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-    if ([[listOfSpecies objectAtIndex:indexPath.row] isEqualToString:@"header"]) {
-        [cell.contentView addSubview:self.headerView];
-    } else if ([[listOfSpecies objectAtIndex:indexPath.row] isEqualToString:@"footer"])
-    {
-        [cell.contentView addSubview:self.footer];
+    if ([[listOfSpecies objectAtIndex:indexPath.row] isKindOfClass:[NSString class]]) {
+        
+        if ([[listOfSpecies objectAtIndex:indexPath.row] isEqualToString:@"header"]) {
+            [cell.contentView addSubview:self.headerView];
+        } else if ([[listOfSpecies objectAtIndex:indexPath.row] isEqualToString:@"footer"])
+        {
+            [cell.contentView addSubview:self.footer];
+        }
     } else {
-    cell.textLabel.text = [listOfSpecies objectAtIndex:indexPath.row];
+    cell.textLabel.text = ((Species *)[listOfSpecies objectAtIndex:indexPath.row]).name;
     }
     return cell;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([[listOfSpecies objectAtIndex:indexPath.row] isEqualToString:@"header"]) {
-        return self.headerView.frame.size.height;
-    } else if ([[listOfSpecies objectAtIndex:indexPath.row] isEqualToString:@"footer"])
-    {
-        return self.footer.frame.size.height;
+    if ([[listOfSpecies objectAtIndex:indexPath.row] isKindOfClass:[NSString class]]) {
+        if ([[listOfSpecies objectAtIndex:indexPath.row] isEqualToString:@"header"]) {
+            return self.headerView.frame.size.height;
+        } else if ([[listOfSpecies objectAtIndex:indexPath.row] isEqualToString:@"footer"])
+       {
+           return self.footer.frame.size.height;
+       }
     }
     return 44;
 }
@@ -167,7 +178,7 @@
     } else if (pickerType == 2) {
         str = [self.weaponList objectAtIndex:row];
     } else if (pickerType == 3) {
-        str = [self.northernPikeList objectAtIndex:row];
+        str = ((Species *)[self.northernPikeList objectAtIndex:row]).name;
     }
 
     return str;
@@ -197,7 +208,7 @@
 {
     switch (self.datePicker.tag) {
         case 1:
-            if (![[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
+            if ([[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
                 self.huntDate = self.datePicker.date;
                 [self.btnDate setTitle:[dateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
             } else {
@@ -207,14 +218,14 @@
             break;
             
         case 2:
-            if (![[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
+            if ([[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
                 self.huntStartTime = self.datePicker.date;
                 [self.btnStartTime setTitle:[timeFormatter stringFromDate:self.huntStartTime] forState:UIControlStateNormal];
             }
             break;
             
         case 3:
-            if (![[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date] && [[self.huntStartTime laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
+            if ([[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date] && [[self.huntStartTime laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
                 self.huntEndTime = self.datePicker.date;
                 [self.btnEndTime setTitle:[timeFormatter stringFromDate:self.huntEndTime] forState:UIControlStateNormal];
             }
@@ -231,14 +242,14 @@
     } else if (pickerType == 2) {
         self.btnWeapon.titleLabel.text = self.weapon;
     } else if (pickerType == 3) {
-        self.btnNorthernPike.titleLabel.text = self.northernPike ;
+        self.btnNorthernPike.titleLabel.text = self.northernPike.name ;
     }
 }
 
 - (IBAction)actDoneDatePicker:(id)sender {
     switch (self.datePicker.tag) {
         case 1:
-            if (![[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
+            if ([[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
             self.huntDate = self.datePicker.date;
             [self.btnDate setTitle:[dateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
             } else {
@@ -248,14 +259,14 @@
             break;
             
         case 2:
-            if (![[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
+            if ([[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
             self.huntStartTime = self.datePicker.date;
             [self.btnStartTime setTitle:[timeFormatter stringFromDate:self.huntStartTime] forState:UIControlStateNormal];
             }
             break;
             
         case 3:
-            if (![[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date] && [[self.huntStartTime laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
+            if ([[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date] && [[self.huntStartTime laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
             self.huntEndTime = self.datePicker.date;
             [self.btnEndTime setTitle:[timeFormatter stringFromDate:self.huntEndTime] forState:UIControlStateNormal];
             }
@@ -271,7 +282,7 @@
     } else if (pickerType == 2) {
         self.btnWeapon.titleLabel.text = self.weapon;
     } else if (pickerType == 3) {
-        self.btnNorthernPike.titleLabel.text = self.northernPike ;
+        self.btnNorthernPike.titleLabel.text = self.northernPike.name ;
     }
 }
 
@@ -280,7 +291,8 @@
     NSMutableArray * array = listOfSpecies.mutableCopy;
     [array removeObjectAtIndex:0];
     [array removeLastObject];
-    LogDetailViewController * ldvc = [[LogDetailViewController alloc]initWithNibName:@"LogDetailViewController" bundle:nil andspeciesList:array];
+    NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:array, @"specie", self.huntStartTime, @"startTime", self.huntEndTime, @"endTime", nil];
+    LogDetailViewController * ldvc = [[LogDetailViewController alloc]initWithNibName:@"LogDetailViewController" bundle:nil andProperty:dict];
     [self.navigationController pushViewController:ldvc animated:YES];
 }
 
@@ -337,10 +349,19 @@
 }
 
 - (IBAction)actAdd:(id)sender {
-    [listOfSpecies removeObject:@"footer"];
-    [listOfSpecies addObject:self.northernPike];
-    [listOfSpecies addObject:@"footer"];
-    [self.table reloadData];
+    if (self.northernPike) {
+        [listOfSpecies removeObject:@"footer"];
+        [self.northernPikeList removeObject:self.northernPike];
+        self.btnNorthernPike.enabled = NO;
+        [self.btnNorthernPike setTitle:@"Nothern Pike" forState:UIControlStateNormal];
+        self.btnNorthernPike.enabled = YES;
+        self.northernPike.seen = 1;
+        self.northernPike.harvested = 3;
+        [listOfSpecies addObject:self.northernPike];
+        self.northernPike = nil;
+        [listOfSpecies addObject:@"footer"];
+        [self.table reloadData];
+    }
 }
 
 #pragma mark metods location delegate
