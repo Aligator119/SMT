@@ -15,11 +15,12 @@
 
 @implementation LogDetailViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andspeciesList:(NSArray *)list
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.list = list;
     }
     return self;
 }
@@ -32,6 +33,33 @@
         self.navigationBarHeightConstr.constant -= 20;
         self.navigationBarVerticalConstr.constant -=20;
     }
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return self.list.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    }
+    
+    
+    return cell;
+}
+
+- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [self.list objectAtIndex:section];
 }
 
 - (void)didReceiveMemoryWarning

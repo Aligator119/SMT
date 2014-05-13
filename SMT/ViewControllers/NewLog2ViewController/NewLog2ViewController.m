@@ -9,6 +9,7 @@
 #import "NewLog2ViewController.h"
 #import "DataLoader.h"
 #import "AppDelegate.h"
+#import "LogDetailViewController.h"
 
 
 #define TAG 12345
@@ -196,19 +197,28 @@
 {
     switch (self.datePicker.tag) {
         case 1:
-            self.huntDate = self.datePicker.date;
-            [self.btnDate setTitle:[dateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
+            if (![[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
+                self.huntDate = self.datePicker.date;
+                [self.btnDate setTitle:[dateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
+            } else {
+                self.huntDate = [NSDate date];
+                [self.btnDate setTitle:[dateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
+            }
             break;
             
         case 2:
-            self.huntStartTime = self.datePicker.date;
-            [self.btnStartTime setTitle:[timeFormatter stringFromDate:self.huntStartTime] forState:UIControlStateNormal];
+            if (![[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
+                self.huntStartTime = self.datePicker.date;
+                [self.btnStartTime setTitle:[timeFormatter stringFromDate:self.huntStartTime] forState:UIControlStateNormal];
+            }
             break;
             
         case 3:
-            self.huntEndTime = self.datePicker.date;
-            [self.btnEndTime setTitle:[timeFormatter stringFromDate:self.huntEndTime] forState:UIControlStateNormal];
-            break;
+            if (![[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date] && [[self.huntStartTime laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
+                self.huntEndTime = self.datePicker.date;
+                [self.btnEndTime setTitle:[timeFormatter stringFromDate:self.huntEndTime] forState:UIControlStateNormal];
+            }
+                break;
     }
     [self.datePickerView removeFromSuperview];
 }
@@ -228,18 +238,27 @@
 - (IBAction)actDoneDatePicker:(id)sender {
     switch (self.datePicker.tag) {
         case 1:
+            if (![[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
             self.huntDate = self.datePicker.date;
             [self.btnDate setTitle:[dateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
+            } else {
+                self.huntDate = [NSDate date];
+                [self.btnDate setTitle:[dateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
+            }
             break;
             
         case 2:
+            if (![[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
             self.huntStartTime = self.datePicker.date;
             [self.btnStartTime setTitle:[timeFormatter stringFromDate:self.huntStartTime] forState:UIControlStateNormal];
+            }
             break;
             
         case 3:
+            if (![[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date] && [[self.huntStartTime laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
             self.huntEndTime = self.datePicker.date;
             [self.btnEndTime setTitle:[timeFormatter stringFromDate:self.huntEndTime] forState:UIControlStateNormal];
+            }
             break;
     }
     [self.datePickerView removeFromSuperview];
@@ -258,6 +277,11 @@
 
 
 - (IBAction)actFinalizeLog:(id)sender {
+    NSMutableArray * array = listOfSpecies.mutableCopy;
+    [array removeObjectAtIndex:0];
+    [array removeLastObject];
+    LogDetailViewController * ldvc = [[LogDetailViewController alloc]initWithNibName:@"LogDetailViewController" bundle:nil andspeciesList:array];
+    [self.navigationController pushViewController:ldvc animated:YES];
 }
 
 - (IBAction)actButtonBack:(id)sender {
