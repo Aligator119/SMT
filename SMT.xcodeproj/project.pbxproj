@@ -123,6 +123,8 @@
 		04CEC04D191B865C00BF784D /* PlaceSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC04C191B865C00BF784D /* PlaceSearchResult.m */; };
 		04DF99631921FDB600D66BEC /* LogDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DF99611921FDB600D66BEC /* LogDetailViewController.m */; };
 		04DF99641921FDB600D66BEC /* LogDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DF99621921FDB600D66BEC /* LogDetailViewController.xib */; };
+		04DF9969192200AA00D66BEC /* LogDetail2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DF9967192200AA00D66BEC /* LogDetail2ViewController.m */; };
+		04DF996A192200AA00D66BEC /* LogDetail2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DF9968192200AA00D66BEC /* LogDetail2ViewController.xib */; };
 		04E88FC1191BA07B00DEF977 /* NewLog1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E88FBF191BA07B00DEF977 /* NewLog1ViewController.m */; };
 		04E88FC2191BA07B00DEF977 /* NewLog1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E88FC0191BA07B00DEF977 /* NewLog1ViewController.xib */; };
 		04F342F01921118E0054294C /* BuddyPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F342EE1921118E0054294C /* BuddyPageViewController.m */; };
@@ -331,6 +333,9 @@
 		04DF99601921FDB600D66BEC /* LogDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogDetailViewController.h; path = ViewControllers/LogDetailViewController/LogDetailViewController.h; sourceTree = "<group>"; };
 		04DF99611921FDB600D66BEC /* LogDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogDetailViewController.m; path = ViewControllers/LogDetailViewController/LogDetailViewController.m; sourceTree = "<group>"; };
 		04DF99621921FDB600D66BEC /* LogDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LogDetailViewController.xib; path = ViewControllers/LogDetailViewController/LogDetailViewController.xib; sourceTree = "<group>"; };
+		04DF9966192200AA00D66BEC /* LogDetail2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogDetail2ViewController.h; path = ViewControllers/LogDetail2ViewController/LogDetail2ViewController.h; sourceTree = "<group>"; };
+		04DF9967192200AA00D66BEC /* LogDetail2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogDetail2ViewController.m; path = ViewControllers/LogDetail2ViewController/LogDetail2ViewController.m; sourceTree = "<group>"; };
+		04DF9968192200AA00D66BEC /* LogDetail2ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LogDetail2ViewController.xib; path = ViewControllers/LogDetail2ViewController/LogDetail2ViewController.xib; sourceTree = "<group>"; };
 		04E88FBE191BA07B00DEF977 /* NewLog1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewLog1ViewController.h; sourceTree = "<group>"; };
 		04E88FBF191BA07B00DEF977 /* NewLog1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewLog1ViewController.m; sourceTree = "<group>"; };
 		04E88FC0191BA07B00DEF977 /* NewLog1ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewLog1ViewController.xib; sourceTree = "<group>"; };
@@ -617,14 +622,15 @@
 		044093F9190F7ABC00C4A558 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				04DF995F1921FD7E00D66BEC /* LogDetailViewController */,
-				04F342EC192110E40054294C /* BuddyPageViewController */,
 				040706B0190FC190000D6660 /* BuddyListViewController */,
+				04F342EC192110E40054294C /* BuddyPageViewController */,
 				043354C21910EF20003767D0 /* BuddySearchViewController */,
 				04409402190F820100C4A558 /* FlyoutMenuViewController */,
 				04A2A39A191B7FC00006677E /* LocationListViewController */,
 				04CEC03F191B83C600BF784D /* LocationSearch */,
 				04A2A3A6191B7FD30006677E /* LogAnActivityViewController */,
+				04DF99651922007200D66BEC /* LogDetail2ViewController */,
+				04DF995F1921FD7E00D66BEC /* LogDetailViewController */,
 				04CEC036191B81EF00BF784D /* LogHistoryViewController */,
 				044093FA190F7AD000C4A558 /* LoginViewController */,
 				04B015C4191B7EE7002F6FA9 /* MapViewController */,
@@ -920,6 +926,16 @@
 			name = LogDetailViewController;
 			sourceTree = "<group>";
 		};
+		04DF99651922007200D66BEC /* LogDetail2ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04DF9966192200AA00D66BEC /* LogDetail2ViewController.h */,
+				04DF9967192200AA00D66BEC /* LogDetail2ViewController.m */,
+				04DF9968192200AA00D66BEC /* LogDetail2ViewController.xib */,
+			);
+			name = LogDetail2ViewController;
+			sourceTree = "<group>";
+		};
 		04E88FBD191BA07B00DEF977 /* NewLog1ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1046,6 +1062,7 @@
 				04409407190F825F00C4A558 /* FlyoutMenuViewController.xib in Resources */,
 				046C6C13190FECEE00E3AC56 /* Cell.xib in Resources */,
 				043354CE1910F0A7003767D0 /* BuddySearchCell.xib in Resources */,
+				04DF996A192200AA00D66BEC /* LogDetail2ViewController.xib in Resources */,
 				04A2A3C1191B7FDC0006677E /* CustomHeader.xib in Resources */,
 				0408069B190EA37D00E063C3 /* InfoPlist.strings in Resources */,
 				04409429190FA53900C4A558 /* ForgotPasswordViewController.xib in Resources */,
@@ -1117,6 +1134,7 @@
 				11D48DE51918E32700A9787E /* AFURLConnectionOperation.m in Sources */,
 				04A2A3C0191B7FDC0006677E /* CustomHeader.m in Sources */,
 				11D48DE81918E32700A9787E /* AFURLSessionManager.m in Sources */,
+				04DF9969192200AA00D66BEC /* LogDetail2ViewController.m in Sources */,
 				04A2A3BE191B7FDC0006677E /* ImageCell.m in Sources */,
 				046C6C08190FECA700E3AC56 /* IncomingFriendCell.m in Sources */,
 				043354B01910ED9F003767D0 /* CJSONSerializedData.m in Sources */,
