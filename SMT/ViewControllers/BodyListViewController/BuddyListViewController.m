@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "Buddy.h"
 #import "ConstantsClass.h"
+#import "BuddyPageViewController.h"
 
 
 #define FRIEND_LIST    @"   My buddies"
@@ -187,6 +188,14 @@
             heigth = CELL_HEIGTH;
     }
     return heigth;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray * buffer = [allBuddyList objectAtIndex:indexPath.section];
+    Buddy * buddy = [buffer objectAtIndex:indexPath.row];
+    BuddyPageViewController * bpvc = [[BuddyPageViewController alloc]initWithNibName:@"BuddyPageViewController" bundle:nil withBuddy:buddy];
+    [self.navigationController pushViewController:bpvc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

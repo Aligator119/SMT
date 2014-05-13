@@ -1,20 +1,19 @@
 //
-//  LogHistoryViewController.m
+//  LogDetailViewController.m
 //  SMT
 //
-//  Created by Mac on 5/8/14.
+//  Created by Mac on 5/13/14.
 //  Copyright (c) 2014 Mac. All rights reserved.
 //
 
-#import "LogHistoryViewController.h"
-#import "FlyoutMenuViewController.h"
+#import "LogDetailViewController.h"
+#import "NewLog1ViewController.h"
 
-@interface LogHistoryViewController ()
+@interface LogDetailViewController ()
 
-- (IBAction)actButtonBack:(id)sender;
 @end
 
-@implementation LogHistoryViewController
+@implementation LogDetailViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,12 +28,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
         self.navigationBarHeightConstr.constant -= 20;
         self.navigationBarVerticalConstr.constant -=20;
     }
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,8 +40,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)actButtonBack:(id)sender {
-    FlyoutMenuViewController * fmvc = [[FlyoutMenuViewController alloc]initWithNibName:@"FlyoutMenuViewController" bundle:nil];
-    [self.navigationController pushViewController:fmvc animated:YES];
+- (IBAction)actClose:(id)sender {
+    NewLog1ViewController * nlvc = [[NewLog1ViewController alloc] initWithNibName:@"NewLog1ViewController" bundle:nil];
+    [self.navigationController pushViewController:nlvc animated:YES];
 }
 @end
