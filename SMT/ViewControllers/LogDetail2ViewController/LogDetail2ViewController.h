@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LogDetail2ViewController : UIViewController 
+@interface LogDetail2ViewController : UIViewController <UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;
 @property (weak, nonatomic) IBOutlet UILabel *lbName;

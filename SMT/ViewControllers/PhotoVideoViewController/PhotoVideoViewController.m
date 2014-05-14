@@ -7,6 +7,7 @@
 //
 
 #import "PhotoVideoViewController.h"
+#import "LogDetail2ViewController.h"
 
 #define KEY_USERDEFAULT @"added_Image"
 
@@ -140,6 +141,16 @@
         return headerView;
     }
     return nil;
+}
+
+- (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    for (id object in self.navigationController.viewControllers) {
+        if ([object isKindOfClass:[LogDetail2ViewController class]]) {
+            ((LogDetail2ViewController *)object).imgUser.image = ((ImageCell *)[collectionView cellForItemAtIndexPath:indexPath]).image.image;
+        }
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)showImagePickerForSourceType:(UIImagePickerControllerSourceType)sourceType

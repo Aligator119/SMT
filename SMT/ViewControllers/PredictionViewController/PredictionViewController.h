@@ -1,0 +1,18 @@
+//
+//  PredictionViewController.h
+//  SMT
+//
+//  Created by Mac on 5/14/14.
+//  Copyright (c) 2014 Mac. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface PredictionViewController : UIViewController <UIGestureRecognizerDelegate>
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;
+@property (weak, nonatomic) IBOutlet UIImageView *huntPredictor;
+@property (weak, nonatomic) IBOutlet UIImageView *fishPredictor;
+
+- (IBAction)actBack:(id)sender;
+@end

@@ -131,6 +131,8 @@
 		04E88FC2191BA07B00DEF977 /* NewLog1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E88FC0191BA07B00DEF977 /* NewLog1ViewController.xib */; };
 		04F342F01921118E0054294C /* BuddyPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F342EE1921118E0054294C /* BuddyPageViewController.m */; };
 		04F342F11921118E0054294C /* BuddyPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F342EF1921118E0054294C /* BuddyPageViewController.xib */; };
+		04F7F42819235F2A007E39B5 /* PredictionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7F42619235F2A007E39B5 /* PredictionViewController.m */; };
+		04F7F42919235F2A007E39B5 /* PredictionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F7F42719235F2A007E39B5 /* PredictionViewController.xib */; };
 		113626841911239B004E5857 /* CurrentCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 113626831911239B004E5857 /* CurrentCondition.m */; };
 		11C9F67B191780DC00CDAFBA /* WheatherPredict.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F67A191780DC00CDAFBA /* WheatherPredict.m */; };
 		11C9F67E1917814600CDAFBA /* DayPredict.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F67D1917814600CDAFBA /* DayPredict.m */; };
@@ -347,6 +349,9 @@
 		04F342ED1921118D0054294C /* BuddyPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuddyPageViewController.h; path = ViewControllers/BuddyPageViewController/BuddyPageViewController.h; sourceTree = "<group>"; };
 		04F342EE1921118E0054294C /* BuddyPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuddyPageViewController.m; path = ViewControllers/BuddyPageViewController/BuddyPageViewController.m; sourceTree = "<group>"; };
 		04F342EF1921118E0054294C /* BuddyPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BuddyPageViewController.xib; path = ViewControllers/BuddyPageViewController/BuddyPageViewController.xib; sourceTree = "<group>"; };
+		04F7F42519235F2A007E39B5 /* PredictionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PredictionViewController.h; path = ViewControllers/PredictionViewController/PredictionViewController.h; sourceTree = "<group>"; };
+		04F7F42619235F2A007E39B5 /* PredictionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PredictionViewController.m; path = ViewControllers/PredictionViewController/PredictionViewController.m; sourceTree = "<group>"; };
+		04F7F42719235F2A007E39B5 /* PredictionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PredictionViewController.xib; path = ViewControllers/PredictionViewController/PredictionViewController.xib; sourceTree = "<group>"; };
 		113626821911239B004E5857 /* CurrentCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentCondition.h; path = Classes/CurrentCondition.h; sourceTree = "<group>"; };
 		113626831911239B004E5857 /* CurrentCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentCondition.m; path = Classes/CurrentCondition.m; sourceTree = "<group>"; };
 		11C9F679191780DC00CDAFBA /* WheatherPredict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WheatherPredict.h; path = Classes/WheatherPredict.h; sourceTree = "<group>"; };
@@ -642,6 +647,7 @@
 				04E88FBD191BA07B00DEF977 /* NewLog1ViewController */,
 				04B015B2191B6FAD002F6FA9 /* NewLog2ViewController */,
 				04A2A3B2191B7FDC0006677E /* PhotoVideoViewController */,
+				04F7F42419235EC7007E39B5 /* PredictionViewController */,
 				0440942A190FA66600C4A558 /* RegisterViewController */,
 				04B015B8191B7EB6002F6FA9 /* SelectLocationViewController */,
 				04A2A36C191B7F530006677E /* SettingsViewController */,
@@ -973,6 +979,16 @@
 			name = BuddyPageViewController;
 			sourceTree = "<group>";
 		};
+		04F7F42419235EC7007E39B5 /* PredictionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04F7F42519235F2A007E39B5 /* PredictionViewController.h */,
+				04F7F42619235F2A007E39B5 /* PredictionViewController.m */,
+				04F7F42719235F2A007E39B5 /* PredictionViewController.xib */,
+			);
+			name = PredictionViewController;
+			sourceTree = "<group>";
+		};
 		11D48DCC1918E32700A9787E /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -1108,6 +1124,7 @@
 				04B015BD191B7EB6002F6FA9 /* SelectLocationViewController.xib in Resources */,
 				04A2A3C3191B7FDC0006677E /* PhotoVideoViewController.xib in Resources */,
 				04A2A3A3191B7FC00006677E /* LocationListCell.xib in Resources */,
+				04F7F42919235F2A007E39B5 /* PredictionViewController.xib in Resources */,
 				04A2A392191B7F8D0006677E /* WeatherDetailViewController.xib in Resources */,
 				04A2A382191B7F820006677E /* WeatherCell.xib in Resources */,
 				0440943E190FA98B00C4A558 /* RegisterViewController_iPhone4.xib in Resources */,
@@ -1153,6 +1170,7 @@
 				11D48DE81918E32700A9787E /* AFURLSessionManager.m in Sources */,
 				04DF9969192200AA00D66BEC /* LogDetail2ViewController.m in Sources */,
 				04A2A3BE191B7FDC0006677E /* ImageCell.m in Sources */,
+				04F7F42819235F2A007E39B5 /* PredictionViewController.m in Sources */,
 				046C6C08190FECA700E3AC56 /* IncomingFriendCell.m in Sources */,
 				043354B01910ED9F003767D0 /* CJSONSerializedData.m in Sources */,
 				046C6C12190FECEE00E3AC56 /* Cell.m in Sources */,

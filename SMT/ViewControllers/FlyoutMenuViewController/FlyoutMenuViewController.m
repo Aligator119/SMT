@@ -15,6 +15,7 @@
 #import "DataLoader.h"
 #import "PhotoVideoViewController.h"
 #import "BuddyListViewController.h"
+#import "PredictionViewController.h"
 
 @interface FlyoutMenuViewController ()
 {
@@ -78,6 +79,12 @@
 {
     [self.navigationController pushViewController:[[WeatherViewController alloc]init] animated:YES];
 }
+
+- (void)openPrediction
+{
+    [self.navigationController pushViewController:[[PredictionViewController alloc]init] animated:YES];
+}
+
 
 - (void)openBuddies
 {

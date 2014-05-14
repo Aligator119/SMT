@@ -1,19 +1,12 @@
-//
-//  LogDetail2ViewController.m
-//  SMT
-//
-//  Created by Mac on 5/13/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import "LogDetail2ViewController.h"
+#import "PhotoVideoViewController.h"
 
 @interface LogDetail2ViewController ()
 {
     NSDictionary * dictionary;
     NSDateFormatter * dateFormatter;
 }
-
+- (void) setImageView:(id)sender;
 @end
 
 @implementation LogDetail2ViewController
@@ -43,7 +36,14 @@
     [dateFormatter setDateFormat:@"h:mm a"];
     
     self.btnSelectTime.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    self.imgUser.backgroundColor = [UIColor greenColor];
+    //self.imgUser.backgroundColor = [UIColor greenColor];
+    
+    UITapGestureRecognizer * imageRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(setImageView:)];
+    [imageRecognizer setNumberOfTapsRequired:1];
+    [imageRecognizer setDelegate:self];
+    
+    [self.imgUser addGestureRecognizer:imageRecognizer];
+
 
 }
 
@@ -78,4 +78,11 @@
     [self.btnSelectTime setTitle:[dateFormatter stringFromDate:self.picker.date] forState:UIControlStateNormal];
     //[self.btnSelectTime setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 }
+
+- (void) setImageView:(id)sender
+{
+    PhotoVideoViewController * pvvc = [[PhotoVideoViewController alloc]initWithNibName:@"PhotoVideoViewController" bundle:nil];
+    [self.navigationController pushViewController:pvvc animated:YES];
+}
+
 @end

@@ -310,6 +310,7 @@
     self.datePicker.tag = 1;
     self.datePicker.datePickerMode = UIDatePickerModeDate;
     self.datePicker.date = [NSDate date];
+    self.datePicker.minimumDate = [NSDate date];
     [self.view addSubview:self.datePickerView];
 }
 
@@ -317,6 +318,7 @@
     self.datePicker.tag = 2;
     self.datePicker.datePickerMode = UIDatePickerModeTime;
     self.datePicker.date = [NSDate date];
+    self.datePicker.minimumDate = [NSDate date];
     [self.view addSubview:self.datePickerView];
 }
 
@@ -324,6 +326,7 @@
     self.datePicker.tag = 3;
     self.datePicker.datePickerMode = UIDatePickerModeTime;
     self.datePicker.date = [NSDate date];
+    self.datePicker.minimumDate = self.huntStartTime;
     [self.view addSubview:self.datePickerView];
 }
 
