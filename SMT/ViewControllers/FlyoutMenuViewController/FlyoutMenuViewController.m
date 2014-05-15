@@ -73,6 +73,9 @@
         });
        
     }
+    
+    
+    self.table.backgroundView = nil;
 }
 
 - (void)openWeather
@@ -155,10 +158,11 @@
     }
     
     cell.textLabel.text = [menuItems objectAtIndex:indexPath.row];
-    cell.textLabel.textColor = [UIColor whiteColor];
+    cell.textLabel.textColor = [UIColor blackColor];
     
-    [cell.contentView setBackgroundColor:[UIColor colorWithRed:56/255.0 green:84/255.0 blue:135/255.0 alpha:1.0]];
-    
+    cell.backgroundColor = [UIColor clearColor];
+    cell.backgroundView = nil;
+    //cell.contentView.backgroundColor =  [UIColor colorWithWhite:1 alpha:0.7];
     return cell;
 }
 
