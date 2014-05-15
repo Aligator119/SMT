@@ -103,11 +103,14 @@
     UINib *cellNib3 = [UINib nibWithNibName:@"IncomingFriendCell" bundle:[NSBundle mainBundle]];
     [self.table registerNib:cellNib3 forCellReuseIdentifier:@"IncomingFriendCell"];
     
+    
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBar.hidden = YES;
+    //UIEdgeInsets e = UIEdgeInsetsMake(0, self.navigationBarHeightConstr.constant, self.view.frame, 0);
+    
 }
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView

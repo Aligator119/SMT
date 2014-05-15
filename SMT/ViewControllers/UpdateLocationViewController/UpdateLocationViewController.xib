@@ -51,7 +51,7 @@
                             </connections>
                         </textField>
                     </subviews>
-                    <color key="backgroundColor" red="0.78039215689999997" green="0.69803921570000005" blue="0.59999999999999998" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="ZBQ-8Y-BgL" secondAttribute="trailing" constant="9" id="0qg-1c-BwB"/>
                         <constraint firstAttribute="trailing" secondItem="2Gh-gA-aRX" secondAttribute="trailing" constant="7" id="1ol-YM-dvr"/>
@@ -76,7 +76,6 @@
                             </constraints>
                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
                             <state key="normal" title="Back">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="highlighted" image="back_icon_press.png">
@@ -96,7 +95,6 @@
                             </constraints>
                             <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="13"/>
                             <state key="normal" title="Save">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="highlighted">
@@ -107,7 +105,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.78039215689999997" green="0.69803921570000005" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="8IV-NO-4TA" firstAttribute="top" secondItem="XEu-EA-xgP" secondAttribute="top" constant="26" id="Kve-Id-6nc"/>
                         <constraint firstAttribute="trailing" secondItem="tRM-eQ-ciD" secondAttribute="trailing" constant="10" id="Wdq-lq-Xeq"/>

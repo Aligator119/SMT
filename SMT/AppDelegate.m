@@ -49,6 +49,7 @@
     self.viewController = [[LoginViewController alloc]initWithNibName:nibName bundle:nil];
     self.navigationController = [[UINavigationController alloc]initWithRootViewController:self.viewController];
     self.window.rootViewController = self.navigationController;
+    self.navigationController.navigationBar.hidden = YES;
     self.window.backgroundColor = [UIColor whiteColor];
     self.speciesList = [NSMutableArray new];
     

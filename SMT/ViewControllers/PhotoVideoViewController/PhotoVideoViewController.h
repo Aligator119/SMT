@@ -14,9 +14,14 @@
 @interface PhotoVideoViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionTable;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;
 @property (strong, nonatomic) NSArray *list;
 
 - (IBAction)actTakePhoto:(id)sender;
 - (IBAction)actChooseExisting:(id)sender;
+
+- (IBAction)actBack:(id)sender;
+- (IBAction)actRefresh:(id)sender;
 
 @end
