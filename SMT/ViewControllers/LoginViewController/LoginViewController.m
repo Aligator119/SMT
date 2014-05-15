@@ -35,6 +35,8 @@
 @property (nonatomic, strong) UITextField * activeTextField;
 @property (strong, nonatomic) UIActivityIndicatorView  * activityIndicat;
 
+- (UIImage *)createImageWithCollor:(UIColor *)color;
+
 @end
 
 @implementation LoginViewController
@@ -51,7 +53,17 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     
+    self.logoView.layer.masksToBounds = YES;
+    self.logoView.layer.cornerRadius = 5;
+    
     isFirstMoment = YES;
+    UIColor * normal = [UIColor colorWithRed:0.0 green:153/255.0 blue:204/255.0 alpha:1.0];
+    UIColor * pressed = [UIColor colorWithRed:51/255.0 green:129/255.0 blue:155/255.0 alpha:1.0];
+    [self.btnLogin setBackgroundImage:[self createImageWithCollor:normal] forState:UIControlStateNormal];
+    [self.btnLogin setBackgroundImage:[self createImageWithCollor:pressed] forState:UIControlStateHighlighted];
+    [self.btnRegister setBackgroundImage:[self createImageWithCollor:normal] forState:UIControlStateNormal];
+    [self.btnRegister setBackgroundImage:[self createImageWithCollor:pressed] forState:UIControlStateHighlighted];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -310,5 +322,16 @@
     
 }
 
+- (UIImage *)createImageWithCollor:(UIColor *)color
+{
+    CGSize imageSize = CGSizeMake(64, 64);
+    UIGraphicsBeginImageContextWithOptions(imageSize, YES, 0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [color setFill];
+    CGContextFillRect(context, CGRectMake(0, 0, imageSize.width, imageSize.height));
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
 
 @end

@@ -21,6 +21,9 @@
 }
 
 @property (nonatomic) BOOL isSignWithFacebook;
+@property (strong, nonatomic) IBOutlet UIView *logoView;
+@property (strong, nonatomic) IBOutlet UIButton *btnLogin;
+@property (strong, nonatomic) IBOutlet UIButton *btnRegister;
 
 -(void) fillRegistrationInfo: (NSString*) firstName :(NSString*) lastName :(NSString*) email :(int) birthYear : (NSString*) sex andUserFid:(NSString*)userFID;
 

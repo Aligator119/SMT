@@ -69,7 +69,6 @@
 		0440943F190FA98B00C4A558 /* RegisterViewController_iPhone5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0440943A190FA98B00C4A558 /* RegisterViewController_iPhone5.xib */; };
 		04409440190FA98B00C4A558 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0440943C190FA98B00C4A558 /* RegisterViewController.m */; };
 		04409441190FA98B00C4A558 /* RegisterViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0440943D190FA98B00C4A558 /* RegisterViewController~ipad.xib */; };
-		046C6BEC190FDF1D00E3AC56 /* back_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 046C6BEB190FDF1D00E3AC56 /* back_arrow.png */; };
 		046C6C08190FECA700E3AC56 /* IncomingFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046C6C06190FECA700E3AC56 /* IncomingFriendCell.m */; };
 		046C6C09190FECA700E3AC56 /* IncomingFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C6C07190FECA700E3AC56 /* IncomingFriendCell.xib */; };
 		046C6C0D190FECC400E3AC56 /* InviteFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046C6C0B190FECC400E3AC56 /* InviteFriendCell.m */; };
@@ -129,6 +128,10 @@
 		04DF997019222A2400D66BEC /* LogDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DF996E19222A2400D66BEC /* LogDetailCell.xib */; };
 		04E88FC1191BA07B00DEF977 /* NewLog1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E88FBF191BA07B00DEF977 /* NewLog1ViewController.m */; };
 		04E88FC2191BA07B00DEF977 /* NewLog1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E88FC0191BA07B00DEF977 /* NewLog1ViewController.xib */; };
+		04EFC31F19249890008A59D7 /* logo-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EFC31B19249890008A59D7 /* logo-1.png */; };
+		04EFC32019249890008A59D7 /* logo@2x-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EFC31C19249890008A59D7 /* logo@2x-1.png */; };
+		04EFC32119249890008A59D7 /* sportsman_tracker_BG-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EFC31D19249890008A59D7 /* sportsman_tracker_BG-1.png */; };
+		04EFC32219249890008A59D7 /* sportsman_tracker_BG@2x-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EFC31E19249890008A59D7 /* sportsman_tracker_BG@2x-1.png */; };
 		04F342F01921118E0054294C /* BuddyPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F342EE1921118E0054294C /* BuddyPageViewController.m */; };
 		04F342F11921118E0054294C /* BuddyPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F342EF1921118E0054294C /* BuddyPageViewController.xib */; };
 		04F7F42819235F2A007E39B5 /* PredictionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7F42619235F2A007E39B5 /* PredictionViewController.m */; };
@@ -258,7 +261,6 @@
 		0440943B190FA98B00C4A558 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterViewController.h; path = ViewControllers/RegisterViewController/RegisterViewController.h; sourceTree = "<group>"; };
 		0440943C190FA98B00C4A558 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterViewController.m; path = ViewControllers/RegisterViewController/RegisterViewController.m; sourceTree = "<group>"; };
 		0440943D190FA98B00C4A558 /* RegisterViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "RegisterViewController~ipad.xib"; path = "ViewControllers/RegisterViewController/RegisterViewController~ipad.xib"; sourceTree = "<group>"; };
-		046C6BEB190FDF1D00E3AC56 /* back_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back_arrow.png; path = Image/back_arrow.png; sourceTree = "<group>"; };
 		046C6C05190FECA700E3AC56 /* IncomingFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IncomingFriendCell.h; path = ViewControllers/BodyListViewController/CustomCell/IncomingFriendCell.h; sourceTree = "<group>"; };
 		046C6C06190FECA700E3AC56 /* IncomingFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IncomingFriendCell.m; path = ViewControllers/BodyListViewController/CustomCell/IncomingFriendCell.m; sourceTree = "<group>"; };
 		046C6C07190FECA700E3AC56 /* IncomingFriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IncomingFriendCell.xib; path = ViewControllers/BodyListViewController/CustomCell/IncomingFriendCell.xib; sourceTree = "<group>"; };
@@ -346,6 +348,10 @@
 		04E88FBE191BA07B00DEF977 /* NewLog1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewLog1ViewController.h; sourceTree = "<group>"; };
 		04E88FBF191BA07B00DEF977 /* NewLog1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewLog1ViewController.m; sourceTree = "<group>"; };
 		04E88FC0191BA07B00DEF977 /* NewLog1ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewLog1ViewController.xib; sourceTree = "<group>"; };
+		04EFC31B19249890008A59D7 /* logo-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo-1.png"; path = "Image/logo-1.png"; sourceTree = "<group>"; };
+		04EFC31C19249890008A59D7 /* logo@2x-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo@2x-1.png"; path = "Image/logo@2x-1.png"; sourceTree = "<group>"; };
+		04EFC31D19249890008A59D7 /* sportsman_tracker_BG-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sportsman_tracker_BG-1.png"; path = "Image/sportsman_tracker_BG-1.png"; sourceTree = "<group>"; };
+		04EFC31E19249890008A59D7 /* sportsman_tracker_BG@2x-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sportsman_tracker_BG@2x-1.png"; path = "Image/sportsman_tracker_BG@2x-1.png"; sourceTree = "<group>"; };
 		04F342ED1921118D0054294C /* BuddyPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuddyPageViewController.h; path = ViewControllers/BuddyPageViewController/BuddyPageViewController.h; sourceTree = "<group>"; };
 		04F342EE1921118E0054294C /* BuddyPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuddyPageViewController.m; path = ViewControllers/BuddyPageViewController/BuddyPageViewController.m; sourceTree = "<group>"; };
 		04F342EF1921118E0054294C /* BuddyPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BuddyPageViewController.xib; path = ViewControllers/BuddyPageViewController/BuddyPageViewController.xib; sourceTree = "<group>"; };
@@ -707,7 +713,10 @@
 		046C6BEA190FDF0E00E3AC56 /* image */ = {
 			isa = PBXGroup;
 			children = (
-				046C6BEB190FDF1D00E3AC56 /* back_arrow.png */,
+				04EFC31B19249890008A59D7 /* logo-1.png */,
+				04EFC31C19249890008A59D7 /* logo@2x-1.png */,
+				04EFC31D19249890008A59D7 /* sportsman_tracker_BG-1.png */,
+				04EFC31E19249890008A59D7 /* sportsman_tracker_BG@2x-1.png */,
 			);
 			name = image;
 			sourceTree = "<group>";
@@ -1091,6 +1100,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04EFC31F19249890008A59D7 /* logo-1.png in Resources */,
 				04409407190F825F00C4A558 /* FlyoutMenuViewController.xib in Resources */,
 				046C6C13190FECEE00E3AC56 /* Cell.xib in Resources */,
 				043354CE1910F0A7003767D0 /* BuddySearchCell.xib in Resources */,
@@ -1101,13 +1111,13 @@
 				04409421190F975E00C4A558 /* LoginViewController_iPhone4.xib in Resources */,
 				04A2A399191B7F9F0006677E /* SpeciesViewController.xib in Resources */,
 				04A2A3BF191B7FDC0006677E /* ImageCell.xib in Resources */,
+				04EFC32219249890008A59D7 /* sportsman_tracker_BG@2x-1.png in Resources */,
 				04A2A3AF191B7FD30006677E /* LogAnActivityViewController.xib in Resources */,
 				04A2A385191B7F820006677E /* WeatherViewController~ipad.xib in Resources */,
 				043354C71910EF3E003767D0 /* BuddySearchViewController.xib in Resources */,
 				046C6C0E190FECC400E3AC56 /* InviteFriendCell.xib in Resources */,
 				04A2A393191B7F8D0006677E /* WeatherDetailViewController~ipad.xib in Resources */,
 				04A2A390191B7F8D0006677E /* WeatherDetailCell.xib in Resources */,
-				046C6BEC190FDF1D00E3AC56 /* back_arrow.png in Resources */,
 				04E88FC2191BA07B00DEF977 /* NewLog1ViewController.xib in Resources */,
 				04409422190F975E00C4A558 /* LoginViewController_iPhone5.xib in Resources */,
 				0440943F190FA98B00C4A558 /* RegisterViewController_iPhone5.xib in Resources */,
@@ -1128,7 +1138,9 @@
 				04A2A392191B7F8D0006677E /* WeatherDetailViewController.xib in Resources */,
 				04A2A382191B7F820006677E /* WeatherCell.xib in Resources */,
 				0440943E190FA98B00C4A558 /* RegisterViewController_iPhone4.xib in Resources */,
+				04EFC32019249890008A59D7 /* logo@2x-1.png in Resources */,
 				040806A3190EA37D00E063C3 /* Images.xcassets in Resources */,
+				04EFC32119249890008A59D7 /* sportsman_tracker_BG-1.png in Resources */,
 				04A2A3CC191B80350006677E /* UpdateLocationViewController.xib in Resources */,
 				04B015C9191B7EE7002F6FA9 /* MapViewController.xib in Resources */,
 				04A2A3A5191B7FC00006677E /* LocationListViewController.xib in Resources */,

@@ -54,9 +54,9 @@
     //self.lbLocation.text = app.user.userSecondName;
     self.imgUser.layer.masksToBounds = YES;
     self.imgUser.layer.cornerRadius = self.imgUser.frame.size.width / 2;
-    NSURL * imgURL = [[NSURL alloc]initWithString:app.user.avatarAdress];
-    NSData * data = [[NSData alloc]initWithContentsOfURL:imgURL];
-    self.imgUser.image = [UIImage imageWithData:data];
+    //NSURL * imgURL = [[NSURL alloc]initWithString:app.user.avatarAdress];
+    //NSData * data = [[NSData alloc]initWithContentsOfURL:imgURL];
+    //self.imgUser.image = [UIImage imageWithData:data];
 //--------------------------------------------------------------------------------------------------------------------
     menuItems = [[NSArray alloc]initWithObjects:@"Log an Activity", @"Hunting Map", @"Fishing Map", @"Camera/Photos", @"Prediction", @"Reports", @"Weather", @"Buddies", @"Settings", @"Logout", nil];
     
