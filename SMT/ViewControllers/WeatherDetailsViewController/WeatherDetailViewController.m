@@ -55,7 +55,7 @@
         self.vericalConstr.constant -= 20;
         self.heightConstr.constant -= 20;
     }
-    hpApp = [UIApplication sharedApplication].delegate;
+    hpApp = (AppDelegate *)[UIApplication sharedApplication].delegate;
     countListOfDay = hpApp.wheatherPredictList.dayList.count;
     [self setParamsOfContents];
 }

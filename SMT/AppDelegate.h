@@ -14,6 +14,7 @@
 #import "Location.h"
 #import "CurrentCondition.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "ConstantsClass.h"
 
 @class UserInfo;
 @class UserLocationInThisMoment;
@@ -54,11 +55,11 @@ static NSString * const kGoogleBrouserAPIkey = @"AIzaSyAgYW3MOr37pwGSATMfWXWklbf
 
 + (BOOL)removeGapsWithString:(NSString*)_str;
 
-- (void)getSignUser;
-- (void)saveSignUser:(UserInfo*)_userInfo;
-- (BOOL)isUserSignIn;
+//- (void)getSignUser;
+//- (void)saveSignUser:(UserInfo*)_userInfo;
+//- (BOOL)isUserSignIn;
 - (void)saveStateOfUser:(BOOL)_isSign;
-- (void)startUpdateUserPosition;
+//- (void)startUpdateUserPosition;
 - (NSString*)deleteZeroFromTime:(NSString*)_time;
 
 @end

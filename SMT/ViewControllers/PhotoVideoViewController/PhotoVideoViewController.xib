@@ -154,9 +154,9 @@
             <constraints>
                 <constraint firstItem="GQ7-6k-gSf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1yg-wS-XV0"/>
                 <constraint firstAttribute="trailing" secondItem="GQ7-6k-gSf" secondAttribute="trailing" id="9DZ-t4-Nxz"/>
-                <constraint firstItem="gcK-YT-eE9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="Fcf-jP-r4g"/>
                 <constraint firstAttribute="trailing" secondItem="gcK-YT-eE9" secondAttribute="trailing" id="IY5-xt-34F"/>
                 <constraint firstItem="gcK-YT-eE9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="X6j-vz-cdK"/>
+                <constraint firstItem="gcK-YT-eE9" firstAttribute="top" secondItem="GQ7-6k-gSf" secondAttribute="bottom" id="vBS-TS-cVn"/>
                 <constraint firstItem="GQ7-6k-gSf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xyK-fP-JT0"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

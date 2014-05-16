@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BuddyListViewController">
             <connections>
                 <outlet property="navigationBarHeightConstr" destination="fjk-Qc-zea" id="3O0-63-p7p"/>
-                <outlet property="navigationBarVerticalConstr" destination="9Yf-8D-zuu" id="jut-Wo-Bgb"/>
+                <outlet property="navigationBarVerticalConstr" destination="fgT-74-whf" id="j2u-8r-CmJ"/>
                 <outlet property="table" destination="Eol-FX-yzp" id="ZGm-SJ-oX8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

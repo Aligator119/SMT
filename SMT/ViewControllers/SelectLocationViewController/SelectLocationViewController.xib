@@ -5,8 +5,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocationsListViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectLocationViewController">
             <connections>
+                <outlet property="navigationBarHeightConstr" destination="v8G-1M-gD2" id="Uqz-O3-rFb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,53 +16,52 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q5v-Ym-sIr">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Zy-Ox-ETz">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8N-pl-YC2">
-                            <rect key="frame" x="20" y="15" width="70" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hn3-K3-K0p">
+                            <rect key="frame" x="5" y="27" width="55" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="70" id="5Cb-cn-8AQ"/>
-                                <constraint firstAttribute="height" constant="30" id="HUK-Wx-aBS"/>
+                                <constraint firstAttribute="width" constant="55" id="PlL-yg-uXJ"/>
+                                <constraint firstAttribute="height" constant="30" id="daA-9c-Yhr"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="Cancel">
+                            <state key="normal" title="Back">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="cancelButtonTap:" destination="-1" eventType="touchUpInside" id="gdh-bX-U9g"/>
+                                <action selector="cancelButtonTap:" destination="-1" eventType="touchUpInside" id="MZs-E9-8xA"/>
                             </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="Z8N-pl-YC2" firstAttribute="leading" secondItem="Q5v-Ym-sIr" secondAttribute="leading" constant="20" id="2Vg-T1-ciU"/>
-                        <constraint firstItem="Z8N-pl-YC2" firstAttribute="top" secondItem="Q5v-Ym-sIr" secondAttribute="top" constant="15" id="Gm6-I9-Fkt"/>
-                        <constraint firstAttribute="height" constant="60" id="sfL-D1-l6j"/>
+                        <constraint firstItem="Hn3-K3-K0p" firstAttribute="leading" secondItem="4Zy-Ox-ETz" secondAttribute="leading" constant="5" id="8de-ei-uPU"/>
+                        <constraint firstAttribute="bottom" secondItem="Hn3-K3-K0p" secondAttribute="bottom" constant="7" id="Nlm-ES-QZJ"/>
+                        <constraint firstAttribute="height" constant="64" id="v8G-1M-gD2"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="sAp-Zk-S75">
-                    <rect key="frame" x="0.0" y="60" width="320" height="508"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="J8c-n5-N2L">
+                    <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <color key="separatorColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="C9N-Bi-Q8S"/>
-                        <outlet property="delegate" destination="-1" id="PdE-hd-ESU"/>
+                        <outlet property="dataSource" destination="-1" id="nRH-6l-CnH"/>
+                        <outlet property="delegate" destination="-1" id="CTd-O2-eBk"/>
                     </connections>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="sAp-Zk-S75" secondAttribute="trailing" id="4cJ-Ck-LWV"/>
-                <constraint firstItem="Q5v-Ym-sIr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="BGQ-xM-76x"/>
-                <constraint firstItem="Q5v-Ym-sIr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Lgr-qj-n63"/>
-                <constraint firstAttribute="trailing" secondItem="Q5v-Ym-sIr" secondAttribute="trailing" id="b8c-Ab-LfU"/>
-                <constraint firstItem="sAp-Zk-S75" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hfH-KY-Ahx"/>
-                <constraint firstItem="sAp-Zk-S75" firstAttribute="top" secondItem="Q5v-Ym-sIr" secondAttribute="bottom" id="kCr-VR-0Ld"/>
-                <constraint firstAttribute="bottom" secondItem="sAp-Zk-S75" secondAttribute="bottom" id="mwa-M6-eIC"/>
+                <constraint firstAttribute="bottom" secondItem="J8c-n5-N2L" secondAttribute="bottom" id="7cU-NF-XSD"/>
+                <constraint firstItem="4Zy-Ox-ETz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="O6j-aR-bZU"/>
+                <constraint firstItem="J8c-n5-N2L" firstAttribute="top" secondItem="4Zy-Ox-ETz" secondAttribute="bottom" id="Osr-fU-zUy"/>
+                <constraint firstAttribute="trailing" secondItem="4Zy-Ox-ETz" secondAttribute="trailing" id="Q1K-PF-p0S"/>
+                <constraint firstItem="4Zy-Ox-ETz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="XTb-Zy-fPB"/>
+                <constraint firstAttribute="trailing" secondItem="J8c-n5-N2L" secondAttribute="trailing" id="j5o-hy-jpW"/>
+                <constraint firstItem="J8c-n5-N2L" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yLd-C2-0mc"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

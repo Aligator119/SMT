@@ -14,16 +14,18 @@
 #define LOCATION_LONGITUDE @"longitude"
 #define LOCATION_NAME @"name"
 #define LOCATION_TYPE @"type_id"
+#define LOCATION_GROUP @"group"
+#define LOCATION_ADRESS @"adress"
 
 @implementation Location
-@synthesize locID,locIsDeleted,locLatitude,locLongitude,locName,typeLocation;
+@synthesize locID,locIsDeleted,locLatitude,locLongitude,locName,typeLocation, locationGroup, addres;
 
 - (id)init
 {
     self = [super init];
     if (self)
     {
-        [self setValuesID:-1 isDeleted:NO lati:0.0f longi:0.0f name:@""];
+        [self setValuesID:-1 isDeleted:NO lati:0.0f longi:0.0f name:@"" group:@"" adress:@""];
     }
     return self;
 }
@@ -35,6 +37,8 @@
     [encoder encodeFloat:locLongitude forKey:LOCATION_LONGITUDE];
     [encoder encodeObject:locName forKey:LOCATION_NAME];
     [encoder encodeInteger:typeLocation forKey:LOCATION_TYPE];
+    [encoder encodeObject:locationGroup forKey:LOCATION_GROUP];
+    [encoder encodeObject:addres forKey:LOCATION_ADRESS];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder
@@ -46,18 +50,22 @@
         locLongitude = [decoder decodeFloatForKey:LOCATION_LONGITUDE];
         locName = [decoder decodeObjectForKey:LOCATION_NAME];
         typeLocation = [decoder decodeIntForKey:LOCATION_TYPE];
+        locationGroup = [decoder decodeObjectForKey:LOCATION_GROUP];
+        addres = [decoder decodeObjectForKey:LOCATION_ADRESS];
     }
     return self;
 }
 
 
 
-- (void)setValuesID:(int)_id isDeleted:(BOOL)_deleted lati:(float)_latitude longi:(float)_long name:(NSString*) _name{
+- (void)setValuesID:(int)_id isDeleted:(BOOL)_deleted lati:(float)_latitude longi:(float)_long name:(NSString*) _name group:(NSString *)_group adress:(NSString *)_adress{
     locID = _id;
     locIsDeleted = _deleted;
     locLongitude = _long;
     locLatitude = _latitude;
     locName = _name;
+    locationGroup = _group;
+    addres = _adress;
 }
 
 - (void)setValuesFromDict:(NSDictionary*) _info{
@@ -65,7 +73,9 @@
             isDeleted: [[_info objectForKey:LOCATION_DELETE] boolValue]
                   lati:[[_info objectForKey:LOCATION_LATITUDE] floatValue]
                  longi:[[_info objectForKey:LOCATION_LONGITUDE] floatValue]
-                 name: [_info objectForKey:LOCATION_NAME]];
+                 name: [_info objectForKey:LOCATION_NAME]
+                group: [_info objectForKey:LOCATION_GROUP]
+               adress: [_info objectForKey:LOCATION_ADRESS]];
     typeLocation = [[_info objectForKey:LOCATION_TYPE] intValue];
 }
 

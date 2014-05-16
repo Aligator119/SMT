@@ -187,8 +187,8 @@
 - (void)saveStateOfUser:(BOOL)_isSign{
     NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithBool:_isSign],@"isSign", nil];
     
-    //[[NSUserDefaults standardUserDefaults] setObject:dic forKey:IS_USER_SIGN_KEY];
-    //[[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSUserDefaults standardUserDefaults] setObject:dic forKey:IS_USER_SIGN_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 //--------------------------------------------------------------------------------------------------------------------
 

@@ -78,6 +78,21 @@
     self.table.backgroundView = nil;
 }
 
+- (void)openFishingMap
+{
+    
+}
+
+- (void)logout
+{
+    
+}
+
+- (void)openReports
+{
+    
+}
+
 - (void)openWeather
 {
     [self.navigationController pushViewController:[[WeatherViewController alloc]init] animated:YES];

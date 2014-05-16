@@ -39,7 +39,7 @@
         self.navigationBarHeightConstr.constant -= 20;
         self.navigationBarVerticalConstr.constant -=20;
     }
-    appDelegate = [UIApplication sharedApplication].delegate;
+    appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     settings = [NSUserDefaults standardUserDefaults];
     

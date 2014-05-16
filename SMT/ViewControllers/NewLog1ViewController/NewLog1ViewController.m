@@ -47,7 +47,7 @@
 -(void) viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBar.hidden = YES;
-    appDelegate = [UIApplication sharedApplication].delegate;
+    appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     DataLoader *loader = [[DataLoader alloc]init];
     if ([appDelegate.speciesList firstObject] == nil) {

@@ -1,8 +1,8 @@
 //
-//  LocationsListViewController.h
+//  SelectLocationViewController.h
 //  SMT
 //
-//  Created by Alexander on 06.05.14.
+//  Created by Mac on 5/16/14.
 //  Copyright (c) 2014 Mac. All rights reserved.
 //
 
@@ -22,5 +22,9 @@
 @interface SelectLocationViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) id<LocationListViewControllerDelegate> delegate;
+
+- (IBAction)cancelButtonTap:(id)sender;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
+
 
 @end

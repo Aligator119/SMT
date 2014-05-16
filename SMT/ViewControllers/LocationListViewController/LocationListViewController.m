@@ -10,7 +10,7 @@
 #import "Location.h"
 #import "LocationListCell.h"
 #import "AppDelegate.h"
-#import "UpdateLocationViewController.h"
+#import "BaseLocationViewController.h"
 
 @interface LocationListViewController (){
     AppDelegate * appDel;
@@ -28,6 +28,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToLocationDetails:) name:@"LocationListInfoButtonPressed" object:nil];
     [self.tableView registerNib:[UINib nibWithNibName:@"LocationListCell" bundle:nil] forCellReuseIdentifier:@"LocationListCell"];
     appDel = (AppDelegate*) [UIApplication sharedApplication].delegate;
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
+        self.navigationBarHeightConstr.constant -= 20;
+        self.navigationBarVerticalConstr.constant -=20;
+    }
+
 }
 
 - (void) viewWillAppear:(BOOL)animated{
@@ -41,7 +47,7 @@
 
 -(void) moveToLocationDetails: (NSNotification*) notification{
     Location * loc = (Location*) [notification object];
-    UpdateLocationViewController *updateLocationVC = [UpdateLocationViewController new];
+    BaseLocationViewController *updateLocationVC = [BaseLocationViewController new];
     updateLocationVC.location = loc;
     [self.navigationController pushViewController:updateLocationVC animated:YES];
 }
@@ -59,4 +65,10 @@
 
 
 
+- (IBAction)actBack:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)actGroups:(id)sender {
+}
 @end

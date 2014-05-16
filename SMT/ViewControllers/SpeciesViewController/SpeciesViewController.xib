@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SpeciesViewController">
             <connections>
+                <outlet property="navigationBarHeightConstr" destination="lVf-Ey-Sie" id="Z0d-BJ-xdl"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,14 +27,14 @@
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1js-eQ-aAZ">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWC-F4-YJj">
-                            <rect key="frame" x="10" y="14" width="56" height="30"/>
+                            <rect key="frame" x="10" y="27" width="55" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="56" id="QN8-JE-Taj"/>
+                                <constraint firstAttribute="width" constant="55" id="QN8-JE-Taj"/>
                                 <constraint firstAttribute="height" constant="30" id="uG3-Bl-Dm2"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -47,15 +48,15 @@
                     </subviews>
                     <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="YWC-F4-YJj" firstAttribute="top" secondItem="1js-eQ-aAZ" secondAttribute="top" constant="14" id="CIv-Q0-5n0"/>
-                        <constraint firstAttribute="height" constant="60" id="lVf-Ey-Sie"/>
+                        <constraint firstAttribute="bottom" secondItem="YWC-F4-YJj" secondAttribute="bottom" constant="7" id="GCe-dD-RG9"/>
+                        <constraint firstAttribute="height" constant="64" id="lVf-Ey-Sie"/>
                         <constraint firstItem="YWC-F4-YJj" firstAttribute="leading" secondItem="1js-eQ-aAZ" secondAttribute="leading" constant="10" id="nfH-Mb-sBZ"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Xh8-nM-Vm2" firstAttribute="top" secondItem="1js-eQ-aAZ" secondAttribute="bottom" id="axS-NX-Kj5"/>
+                <constraint firstItem="Xh8-nM-Vm2" firstAttribute="top" secondItem="1js-eQ-aAZ" secondAttribute="bottom" constant="-4" id="axS-NX-Kj5"/>
                 <constraint firstItem="Xh8-nM-Vm2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bf9-7f-Nga"/>
                 <constraint firstAttribute="trailing" secondItem="1js-eQ-aAZ" secondAttribute="trailing" id="cce-bw-cb6"/>
                 <constraint firstAttribute="bottom" secondItem="Xh8-nM-Vm2" secondAttribute="bottom" id="eVt-wF-a5o"/>

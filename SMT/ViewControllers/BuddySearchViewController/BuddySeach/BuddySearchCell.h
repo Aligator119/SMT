@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "AddBuddyProtocol.h"
-@class HPBuddySearchViewController;
+@class BuddySearchViewController;
 
 @interface BuddySearchCell : UITableViewCell <HPAddBuddyProtocol>
 
@@ -18,6 +18,6 @@
 @property (strong, nonatomic) UIViewController * delegateController;
 
 - (void)setSizeToFit;
-- (void)addDelegate:(HPBuddySearchViewController*)delegate;
+- (void)addDelegate:(BuddySearchViewController*)delegate;
 
 @end

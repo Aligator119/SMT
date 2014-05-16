@@ -21,13 +21,18 @@ enum TypeOfLocation{
 @property (assign, nonatomic, readonly) float locLongitude;
 @property (strong, nonatomic, readonly) NSString * locName;
 @property (assign, nonatomic, readonly) int typeLocation;
+@property (assign, nonatomic, readonly) NSString * locationGroup;
+@property (assign, nonatomic, readonly) NSString * addres;
 
 - (id)init;
 - (void)setValuesID:(int)_id
           isDeleted:(BOOL)_deleted
                 lati:(float)_latitude
                longi:(float)_long
-               name:(NSString*) _name;
+               name:(NSString*) _name
+              group:(NSString *) _group
+             adress:(NSString *) _adress;
+
 - (void)setValuesFromDict:(NSDictionary*) _info;
 - (NSString*) getLocationNames;
 - (BOOL)isLocationDelete;
