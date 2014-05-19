@@ -1,8 +1,8 @@
 //
-//  LocationsListViewController.m
+//  SelectLocationViewController.m
 //  SMT
 //
-//  Created by Alexander on 06.05.14.
+//  Created by Mac on 5/16/14.
 //  Copyright (c) 2014 Mac. All rights reserved.
 //
 
@@ -20,16 +20,29 @@
 
 @implementation SelectLocationViewController
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
+        self.navigationBarHeightConstr.constant -= 20;
+    }
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     DataLoader *loader = [[DataLoader alloc]init];
-    appDelegate = [UIApplication sharedApplication].delegate;
+    appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     if ([appDelegate.listLocations firstObject]==nil) {
         [loader getLocationsAssociatedWithUser];
     }
@@ -65,6 +78,5 @@
 - (IBAction)cancelButtonTap:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
-
 
 @end

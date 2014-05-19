@@ -33,7 +33,7 @@
                                     <rect key="frame" x="65" y="7" width="190" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3D-57-wkY">
@@ -44,7 +44,7 @@
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal" title="List">
-                                        <color key="titleColor" red="0.0" green="0.56862745100000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
@@ -52,7 +52,6 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="p3D-57-wkY" firstAttribute="top" secondItem="nO3-0Q-6zo" secondAttribute="top" constant="7" id="9Zc-M8-Kfx"/>
                                 <constraint firstAttribute="height" constant="44" id="BQ9-R7-ef5"/>
@@ -65,7 +64,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="nO3-0Q-6zo" secondAttribute="trailing" id="3ha-YS-dD9"/>
                         <constraint firstItem="nO3-0Q-6zo" firstAttribute="top" secondItem="L7h-Ug-VGJ" secondAttribute="top" constant="20" id="DRx-Cm-i1N"/>
@@ -97,6 +96,7 @@
                     <rect key="frame" x="0.0" y="242" width="320" height="328"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="separatorColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="F0A-K7-t5U"/>
                         <outlet property="delegate" destination="-1" id="cOZ-Ha-ee3"/>

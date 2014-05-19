@@ -50,9 +50,13 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     sectionFormatter = [[NSDateFormatter alloc]init];
     [sectionFormatter setDateFormat:@"MMMM"];
-    self.navigationController.navigationBar.hidden = NO;
     UINib *cellNib = [UINib nibWithNibName:@"ImageCell" bundle:[NSBundle mainBundle]];
     [self.collectionTable registerNib:cellNib forCellWithReuseIdentifier:@"imagecell"];
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
+        self.navigationBarHeightConstr.constant -= 20;
+        self.navigationBarVerticalConstr.constant -=20;
+    }
     
     UINib *headerNib = [UINib nibWithNibName:@"CustomHeader" bundle:[NSBundle mainBundle]];
     [self.collectionTable registerClass:[CustomHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
@@ -244,4 +248,10 @@
     return ret;
 }
 
+- (IBAction)actBack:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)actRefresh:(id)sender {
+}
 @end

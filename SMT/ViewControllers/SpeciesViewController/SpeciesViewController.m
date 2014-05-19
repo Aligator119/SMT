@@ -18,6 +18,7 @@
 {
     AppDelegate *appDelegate;
 }
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
 
 @end
 
@@ -28,11 +29,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
+        self.navigationBarHeightConstr.constant -= 20;
+        //self.navigationBarVerticalConstr.constant -=20;
+    }
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    appDelegate = [UIApplication sharedApplication].delegate;
+    appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     DataLoader *loader = [[DataLoader alloc]init];
     if ([appDelegate.speciesList firstObject] == nil) {

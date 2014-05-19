@@ -37,7 +37,7 @@
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal" title="Back">
-                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
@@ -55,7 +55,6 @@
                                     </connections>
                                 </searchBar>
                             </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="wE1-UQ-z0v" firstAttribute="leading" secondItem="zTI-pp-her" secondAttribute="leading" constant="9" id="5H1-sS-iIz"/>
                                 <constraint firstItem="lgH-Ej-3ph" firstAttribute="leading" secondItem="wE1-UQ-z0v" secondAttribute="trailing" constant="5" id="I8m-CZ-zDz"/>
@@ -66,7 +65,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.78039215689999997" green="0.69803921570000005" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="zTI-pp-her" firstAttribute="leading" secondItem="vbZ-oQ-otv" secondAttribute="leading" id="6s8-2L-7EJ"/>
                         <constraint firstItem="zTI-pp-her" firstAttribute="top" secondItem="vbZ-oQ-otv" secondAttribute="top" constant="20" id="C2L-Q8-TbH"/>
@@ -79,6 +78,7 @@
                     <rect key="frame" x="0.0" y="60" width="320" height="420"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="separatorColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="eSh-59-eTb"/>
                         <outlet property="delegate" destination="-1" id="vBT-to-OZB"/>

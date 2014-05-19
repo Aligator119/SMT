@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface LocationListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;
+- (IBAction)actBack:(id)sender;
+
+- (IBAction)actGroups:(id)sender;
 
 @end

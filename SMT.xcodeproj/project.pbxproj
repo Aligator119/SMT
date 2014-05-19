@@ -69,6 +69,8 @@
 		0440943F190FA98B00C4A558 /* RegisterViewController_iPhone5.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0440943A190FA98B00C4A558 /* RegisterViewController_iPhone5.xib */; };
 		04409440190FA98B00C4A558 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0440943C190FA98B00C4A558 /* RegisterViewController.m */; };
 		04409441190FA98B00C4A558 /* RegisterViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0440943D190FA98B00C4A558 /* RegisterViewController~ipad.xib */; };
+		04657AC4192614580018CB70 /* SelectLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04657AC2192614580018CB70 /* SelectLocationViewController.m */; };
+		04657AC5192614580018CB70 /* SelectLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04657AC3192614580018CB70 /* SelectLocationViewController.xib */; };
 		046C6C08190FECA700E3AC56 /* IncomingFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046C6C06190FECA700E3AC56 /* IncomingFriendCell.m */; };
 		046C6C09190FECA700E3AC56 /* IncomingFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C6C07190FECA700E3AC56 /* IncomingFriendCell.xib */; };
 		046C6C0D190FECC400E3AC56 /* InviteFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046C6C0B190FECC400E3AC56 /* InviteFriendCell.m */; };
@@ -102,12 +104,10 @@
 		04A2A3C2191B7FDC0006677E /* PhotoVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A3BC191B7FDC0006677E /* PhotoVideoViewController.m */; };
 		04A2A3C3191B7FDC0006677E /* PhotoVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A2A3BD191B7FDC0006677E /* PhotoVideoViewController.xib */; };
 		04A2A3C6191B80150006677E /* SMTMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A3C5191B80150006677E /* SMTMarker.m */; };
-		04A2A3CB191B80350006677E /* UpdateLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A3C9191B80350006677E /* UpdateLocationViewController.m */; };
-		04A2A3CC191B80350006677E /* UpdateLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A2A3CA191B80350006677E /* UpdateLocationViewController.xib */; };
+		04A2A3CB191B80350006677E /* BaseLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A3C9191B80350006677E /* BaseLocationViewController.m */; };
+		04A2A3CC191B80350006677E /* BaseLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A2A3CA191B80350006677E /* BaseLocationViewController.xib */; };
 		04B015B6191B6FD3002F6FA9 /* NewLog2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B015B4191B6FD3002F6FA9 /* NewLog2ViewController.m */; };
 		04B015B7191B6FD3002F6FA9 /* NewLog2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B015B5191B6FD3002F6FA9 /* NewLog2ViewController.xib */; };
-		04B015BC191B7EB6002F6FA9 /* SelectLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B015BA191B7EB6002F6FA9 /* SelectLocationViewController.m */; };
-		04B015BD191B7EB6002F6FA9 /* SelectLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B015BB191B7EB6002F6FA9 /* SelectLocationViewController.xib */; };
 		04B015C8191B7EE7002F6FA9 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B015C6191B7EE7002F6FA9 /* MapViewController.m */; };
 		04B015C9191B7EE7002F6FA9 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B015C7191B7EE7002F6FA9 /* MapViewController.xib */; };
 		04B312FA191A281C0055D460 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B312F9191A281C0055D460 /* AssetsLibrary.framework */; };
@@ -261,6 +261,9 @@
 		0440943B190FA98B00C4A558 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegisterViewController.h; path = ViewControllers/RegisterViewController/RegisterViewController.h; sourceTree = "<group>"; };
 		0440943C190FA98B00C4A558 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegisterViewController.m; path = ViewControllers/RegisterViewController/RegisterViewController.m; sourceTree = "<group>"; };
 		0440943D190FA98B00C4A558 /* RegisterViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "RegisterViewController~ipad.xib"; path = "ViewControllers/RegisterViewController/RegisterViewController~ipad.xib"; sourceTree = "<group>"; };
+		04657AC1192614580018CB70 /* SelectLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectLocationViewController.h; sourceTree = "<group>"; };
+		04657AC2192614580018CB70 /* SelectLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLocationViewController.m; sourceTree = "<group>"; };
+		04657AC3192614580018CB70 /* SelectLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectLocationViewController.xib; sourceTree = "<group>"; };
 		046C6C05190FECA700E3AC56 /* IncomingFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IncomingFriendCell.h; path = ViewControllers/BodyListViewController/CustomCell/IncomingFriendCell.h; sourceTree = "<group>"; };
 		046C6C06190FECA700E3AC56 /* IncomingFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IncomingFriendCell.m; path = ViewControllers/BodyListViewController/CustomCell/IncomingFriendCell.m; sourceTree = "<group>"; };
 		046C6C07190FECA700E3AC56 /* IncomingFriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = IncomingFriendCell.xib; path = ViewControllers/BodyListViewController/CustomCell/IncomingFriendCell.xib; sourceTree = "<group>"; };
@@ -310,15 +313,12 @@
 		04A2A3BD191B7FDC0006677E /* PhotoVideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoVideoViewController.xib; sourceTree = "<group>"; };
 		04A2A3C4191B80150006677E /* SMTMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMTMarker.h; path = Classes/SMTMarker.h; sourceTree = "<group>"; };
 		04A2A3C5191B80150006677E /* SMTMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMTMarker.m; path = Classes/SMTMarker.m; sourceTree = "<group>"; };
-		04A2A3C8191B80350006677E /* UpdateLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateLocationViewController.h; sourceTree = "<group>"; };
-		04A2A3C9191B80350006677E /* UpdateLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateLocationViewController.m; sourceTree = "<group>"; };
-		04A2A3CA191B80350006677E /* UpdateLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateLocationViewController.xib; sourceTree = "<group>"; };
+		04A2A3C8191B80350006677E /* BaseLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLocationViewController.h; sourceTree = "<group>"; };
+		04A2A3C9191B80350006677E /* BaseLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLocationViewController.m; sourceTree = "<group>"; };
+		04A2A3CA191B80350006677E /* BaseLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseLocationViewController.xib; sourceTree = "<group>"; };
 		04B015B3191B6FD3002F6FA9 /* NewLog2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewLog2ViewController.h; path = ViewControllers/NewLog2ViewController/NewLog2ViewController.h; sourceTree = "<group>"; };
 		04B015B4191B6FD3002F6FA9 /* NewLog2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewLog2ViewController.m; path = ViewControllers/NewLog2ViewController/NewLog2ViewController.m; sourceTree = "<group>"; };
 		04B015B5191B6FD3002F6FA9 /* NewLog2ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewLog2ViewController.xib; path = ViewControllers/NewLog2ViewController/NewLog2ViewController.xib; sourceTree = "<group>"; };
-		04B015B9191B7EB6002F6FA9 /* SelectLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectLocationViewController.h; sourceTree = "<group>"; };
-		04B015BA191B7EB6002F6FA9 /* SelectLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLocationViewController.m; sourceTree = "<group>"; };
-		04B015BB191B7EB6002F6FA9 /* SelectLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectLocationViewController.xib; sourceTree = "<group>"; };
 		04B015C5191B7EE7002F6FA9 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		04B015C6191B7EE7002F6FA9 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		04B015C7191B7EE7002F6FA9 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
@@ -874,9 +874,9 @@
 		04A2A3C7191B80350006677E /* UpdateLocationViewController */ = {
 			isa = PBXGroup;
 			children = (
-				04A2A3C8191B80350006677E /* UpdateLocationViewController.h */,
-				04A2A3C9191B80350006677E /* UpdateLocationViewController.m */,
-				04A2A3CA191B80350006677E /* UpdateLocationViewController.xib */,
+				04A2A3C8191B80350006677E /* BaseLocationViewController.h */,
+				04A2A3C9191B80350006677E /* BaseLocationViewController.m */,
+				04A2A3CA191B80350006677E /* BaseLocationViewController.xib */,
 			);
 			name = UpdateLocationViewController;
 			path = ViewControllers/UpdateLocationViewController;
@@ -895,9 +895,9 @@
 		04B015B8191B7EB6002F6FA9 /* SelectLocationViewController */ = {
 			isa = PBXGroup;
 			children = (
-				04B015B9191B7EB6002F6FA9 /* SelectLocationViewController.h */,
-				04B015BA191B7EB6002F6FA9 /* SelectLocationViewController.m */,
-				04B015BB191B7EB6002F6FA9 /* SelectLocationViewController.xib */,
+				04657AC1192614580018CB70 /* SelectLocationViewController.h */,
+				04657AC2192614580018CB70 /* SelectLocationViewController.m */,
+				04657AC3192614580018CB70 /* SelectLocationViewController.xib */,
 			);
 			name = SelectLocationViewController;
 			path = ViewControllers/SelectLocationViewController;
@@ -1103,6 +1103,7 @@
 				04EFC31F19249890008A59D7 /* logo-1.png in Resources */,
 				04409407190F825F00C4A558 /* FlyoutMenuViewController.xib in Resources */,
 				046C6C13190FECEE00E3AC56 /* Cell.xib in Resources */,
+				04657AC5192614580018CB70 /* SelectLocationViewController.xib in Resources */,
 				043354CE1910F0A7003767D0 /* BuddySearchCell.xib in Resources */,
 				04DF996A192200AA00D66BEC /* LogDetail2ViewController.xib in Resources */,
 				04A2A3C1191B7FDC0006677E /* CustomHeader.xib in Resources */,
@@ -1131,7 +1132,6 @@
 				04B015B7191B6FD3002F6FA9 /* NewLog2ViewController.xib in Resources */,
 				04DF997019222A2400D66BEC /* LogDetailCell.xib in Resources */,
 				04CEC03E191B82EE00BF784D /* GoogleMaps.bundle in Resources */,
-				04B015BD191B7EB6002F6FA9 /* SelectLocationViewController.xib in Resources */,
 				04A2A3C3191B7FDC0006677E /* PhotoVideoViewController.xib in Resources */,
 				04A2A3A3191B7FC00006677E /* LocationListCell.xib in Resources */,
 				04F7F42919235F2A007E39B5 /* PredictionViewController.xib in Resources */,
@@ -1141,7 +1141,7 @@
 				04EFC32019249890008A59D7 /* logo@2x-1.png in Resources */,
 				040806A3190EA37D00E063C3 /* Images.xcassets in Resources */,
 				04EFC32119249890008A59D7 /* sportsman_tracker_BG-1.png in Resources */,
-				04A2A3CC191B80350006677E /* UpdateLocationViewController.xib in Resources */,
+				04A2A3CC191B80350006677E /* BaseLocationViewController.xib in Resources */,
 				04B015C9191B7EE7002F6FA9 /* MapViewController.xib in Resources */,
 				04A2A3A5191B7FC00006677E /* LocationListViewController.xib in Resources */,
 				040706B5190FC1CE000D6660 /* BuddyListViewController.xib in Resources */,
@@ -1215,7 +1215,7 @@
 				043354B81910EE31003767D0 /* Buddy.m in Sources */,
 				04409423190F975E00C4A558 /* LoginViewController.m in Sources */,
 				043354A91910ED9F003767D0 /* CDataScanner_Extensions.m in Sources */,
-				04A2A3CB191B80350006677E /* UpdateLocationViewController.m in Sources */,
+				04A2A3CB191B80350006677E /* BaseLocationViewController.m in Sources */,
 				11D48E08191A8C8900A9787E /* UIViewController+LoaderCategory.m in Sources */,
 				043354B21910ED9F003767D0 /* NSDictionary_JSONExtensions.m in Sources */,
 				043354C11910EEB7003767D0 /* SearchingBuddy.m in Sources */,
@@ -1226,7 +1226,6 @@
 				04A2A38F191B7F8D0006677E /* WeatherDetailCell.m in Sources */,
 				04CEC04A191B861B00BF784D /* AFNetworkReachabilityManager.m in Sources */,
 				04A2A3A4191B7FC00006677E /* LocationListViewController.m in Sources */,
-				04B015BC191B7EB6002F6FA9 /* SelectLocationViewController.m in Sources */,
 				113626841911239B004E5857 /* CurrentCondition.m in Sources */,
 				04CEC043191B83C600BF784D /* LocationSearchViewController.m in Sources */,
 				04B015B6191B6FD3002F6FA9 /* NewLog2ViewController.m in Sources */,
@@ -1239,6 +1238,7 @@
 				04A2A370191B7F530006677E /* SettingsViewController.m in Sources */,
 				0433548A1910E7C9003767D0 /* ConstantsClass.m in Sources */,
 				0433548C1910E7C9003767D0 /* GTMNSString+HTML.m in Sources */,
+				04657AC4192614580018CB70 /* SelectLocationViewController.m in Sources */,
 				04A2A3A2191B7FC00006677E /* LocationListCell.m in Sources */,
 				04A2A383191B7F820006677E /* WeatherViewController.m in Sources */,
 			);

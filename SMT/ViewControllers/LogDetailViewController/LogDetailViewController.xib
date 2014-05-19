@@ -34,7 +34,7 @@
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal" title="Close">
-                                        <color key="titleColor" red="0.0" green="0.56862745100000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
@@ -45,11 +45,10 @@
                                     <rect key="frame" x="65" y="7" width="190" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="8jB-YN-X1h" firstAttribute="top" secondItem="5Ph-vF-6lh" secondAttribute="top" constant="7" id="JZj-a3-SKh"/>
                                 <constraint firstAttribute="height" constant="44" id="PH0-vP-DpZ"/>
@@ -62,7 +61,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="5Ph-vF-6lh" secondAttribute="trailing" id="1mm-o1-Dv3"/>
                         <constraint firstAttribute="height" constant="64" id="RXC-ke-R2K"/>
@@ -74,6 +73,7 @@
                     <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="separatorColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="ykt-zE-9Rj"/>
                         <outlet property="delegate" destination="-1" id="zth-r3-COr"/>

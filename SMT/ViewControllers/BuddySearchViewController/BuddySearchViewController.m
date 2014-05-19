@@ -1,11 +1,3 @@
-//
-//  HPBuddySearchViewController.m
-//  HunterPredictor
-//
-//  Created by Vasya on 06.02.14.
-//  Copyright (c) 2014 mobilesoft365. All rights reserved.
-//
-
 #import "BuddySearchViewController.h"
 #import "BuddySearchCell.h"
 #import "DataLoader.h"
@@ -216,7 +208,7 @@
     UINavigationController * controller = (UINavigationController*)appDel.window.rootViewController;
     id obj = [controller.viewControllers objectAtIndex:(controller.viewControllers.count - 2)];
     if([obj isKindOfClass:[BuddyListViewController class]]){
-        BuddyListViewController * viewC = (BuddyListViewController*)[controller.viewControllers objectAtIndex:(controller.viewControllers.count - 2)];
+        //BuddyListViewController * viewC = (BuddyListViewController*)[controller.viewControllers objectAtIndex:(controller.viewControllers.count - 2)];
         //[viewC setInitValueOfProperties];
     }
     

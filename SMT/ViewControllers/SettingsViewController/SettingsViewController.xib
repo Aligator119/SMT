@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController">
             <connections>
                 <outlet property="locationButton" destination="slr-ua-jrM" id="G5x-Mv-KtU"/>
+                <outlet property="navigationBarHeightConstr" destination="tr9-lU-XlL" id="q9q-B9-O3T"/>
                 <outlet property="speciesButton" destination="9CO-rZ-gsm" id="iIE-fJ-3B7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -83,25 +84,28 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1DG-w0-yvp">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKF-hW-lWp">
-                            <rect key="frame" x="20" y="25" width="46" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKF-hW-lWp">
+                            <rect key="frame" x="5" y="27" width="55" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="55" id="lUW-II-VN3"/>
+                                <constraint firstAttribute="height" constant="30" id="qNL-VO-RWz"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="Menu">
-                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
+                            <state key="normal" title="Menu"/>
                             <connections>
                                 <action selector="backTomenuButtonTap:" destination="-1" eventType="touchUpInside" id="bNE-4T-hQO"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="60" id="tr9-lU-XlL"/>
+                        <constraint firstAttribute="bottom" secondItem="aKF-hW-lWp" secondAttribute="bottom" constant="7" id="Jjp-Hv-MOd"/>
+                        <constraint firstItem="aKF-hW-lWp" firstAttribute="leading" secondItem="1DG-w0-yvp" secondAttribute="leading" constant="5" id="p1e-1p-GxH"/>
+                        <constraint firstAttribute="height" constant="64" id="tr9-lU-XlL"/>
                     </constraints>
                 </view>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Old Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="daY-9v-nYl">
@@ -208,7 +212,7 @@
                 <constraint firstItem="1DG-w0-yvp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jK7-ml-cg0"/>
                 <constraint firstItem="9CO-rZ-gsm" firstAttribute="top" secondItem="HAI-T2-YwX" secondAttribute="bottom" constant="8" id="q8l-eI-9A0"/>
                 <constraint firstItem="fJd-YM-iay" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="qFJ-Sk-14K"/>
-                <constraint firstItem="4iz-JO-jAF" firstAttribute="top" secondItem="1DG-w0-yvp" secondAttribute="bottom" constant="8" id="v2u-oA-vjP"/>
+                <constraint firstItem="4iz-JO-jAF" firstAttribute="top" secondItem="1DG-w0-yvp" secondAttribute="bottom" constant="4" id="v2u-oA-vjP"/>
                 <constraint firstItem="VUC-VD-SU5" firstAttribute="top" secondItem="9CO-rZ-gsm" secondAttribute="bottom" constant="8" id="y8I-gx-qlz"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

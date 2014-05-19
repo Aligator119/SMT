@@ -49,6 +49,7 @@
     self.viewController = [[LoginViewController alloc]initWithNibName:nibName bundle:nil];
     self.navigationController = [[UINavigationController alloc]initWithRootViewController:self.viewController];
     self.window.rootViewController = self.navigationController;
+    self.navigationController.navigationBar.hidden = YES;
     self.window.backgroundColor = [UIColor whiteColor];
     self.speciesList = [NSMutableArray new];
     
@@ -186,8 +187,8 @@
 - (void)saveStateOfUser:(BOOL)_isSign{
     NSDictionary *dic = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithBool:_isSign],@"isSign", nil];
     
-    //[[NSUserDefaults standardUserDefaults] setObject:dic forKey:IS_USER_SIGN_KEY];
-    //[[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSUserDefaults standardUserDefaults] setObject:dic forKey:IS_USER_SIGN_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 //--------------------------------------------------------------------------------------------------------------------
 

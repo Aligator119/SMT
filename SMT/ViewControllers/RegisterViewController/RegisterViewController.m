@@ -168,8 +168,8 @@
     
     NSString * sex =  (self.sexSegment.selectedSegmentIndex == 0) ? @"male" : @"female";
     
-    NSString * strFirstName = self.firstNameTextField.text;
-    NSString * strLastName = self.lastNameTextField.text;
+    //NSString * strFirstName = self.firstNameTextField.text;
+    //NSString * strLastName = self.lastNameTextField.text;
      
     /*
     if(![self removeGaps:strFirstName] || ![self removeGaps:strLastName]){

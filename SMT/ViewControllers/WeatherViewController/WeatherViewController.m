@@ -52,7 +52,7 @@
 {
     [super viewDidLoad];
     
-    hpApp = [UIApplication sharedApplication].delegate;
+    hpApp = (AppDelegate *)[UIApplication sharedApplication].delegate;
 
     self.screenName = @"Weather";
     
