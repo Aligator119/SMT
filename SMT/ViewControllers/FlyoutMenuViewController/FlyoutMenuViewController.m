@@ -17,6 +17,9 @@
 #import "BuddyListViewController.h"
 #import "PredictionViewController.h"
 
+
+#define USER_DATA @"userdata"
+
 @interface FlyoutMenuViewController ()
 {
     NSArray * menuItems;
@@ -85,7 +88,9 @@
 
 - (void)logout
 {
-    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DATA];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)openReports

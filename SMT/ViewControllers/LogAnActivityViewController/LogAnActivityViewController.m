@@ -9,6 +9,7 @@
 #import "LogAnActivityViewController.h"
 #import "NewLog1ViewController.h"
 #import "LogHistoryViewController.h"
+#import "FlyoutMenuViewController.h"
 
 @interface LogAnActivityViewController ()
 

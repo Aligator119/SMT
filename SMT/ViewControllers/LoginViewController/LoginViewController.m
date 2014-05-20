@@ -17,14 +17,14 @@
 #import "UserInfo.h"
 
 
-
-
+#define USER_DATA @"userdata"
 
 
 @interface LoginViewController (){
     DataLoader * dataLoader;
     BOOL wasFacebookClick;
     BOOL isFirstMoment; // for save user - automaticaly login
+    NSUserDefaults * userDefault;
 }
 
 @property (nonatomic, weak) IBOutlet UIScrollView * scrollView;
@@ -56,6 +56,8 @@
     self.logoView.layer.masksToBounds = YES;
     self.logoView.layer.cornerRadius = 5;
     
+    userDefault = [NSUserDefaults standardUserDefaults];
+    
     isFirstMoment = YES;
     UIColor * normal = [UIColor colorWithRed:0.0 green:153/255.0 blue:204/255.0 alpha:1.0];
     UIColor * pressed = [UIColor colorWithRed:51/255.0 green:129/255.0 blue:155/255.0 alpha:1.0];
@@ -81,13 +83,68 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     
-    AppDelegate * appDel = (AppDelegate*) [UIApplication sharedApplication].delegate;
-    if(appDel.isUserSign && isFirstMoment) {
+//    AppDelegate * appDel = (AppDelegate*) [UIApplication sharedApplication].delegate;
+//    if(appDel.isUserSign && isFirstMoment) {
+//        [self.activityIndicat startAnimating];
+//        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+//        [self fbUserLogin:appDel.user.userName password:appDel.user.userPassword];
+//    }
+    
+    
+    NSData * userData = [userDefault objectForKey:USER_DATA];
+    if (userData) {
+        UserInfo * user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+        // enter to home screen
         [self.activityIndicat startAnimating];
         [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-        [self fbUserLogin:appDel.user.userName password:appDel.user.userPassword];
+        
+        AppDelegate * appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
+        
+        appDelegate.user.userName = user.userName;
+        appDelegate.user.userPassword = user.userPassword;
+        // * * Avtorize * *
+        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(newQueue, ^(){
+            
+            [dataLoader avtorizeUser:appDelegate.user.userName password:appDelegate.user.userPassword];
+            // * * * *
+            
+            dispatch_async(dispatch_get_main_queue(), ^(){
+                
+                if(dataLoader.isCorrectRezult){
+                    dataLoader.isCorrectRezult = NO;
+                    
+                    if(!wasFacebookClick){
+                        if([UserInfo itsFirstMomentWhenUserLogin:appDelegate.user.userName]){
+                            [appDelegate.user saveUser];
+                        }
+                    } else {
+                        switch ([UserInfo itsFirstMomentWhenUserLoginAndIsWithFacebook:appDelegate.user.userName]) {
+                            case fbUserMissing:
+                                [appDelegate.user saveUser];
+                                break;
+                            case fbUserCreate:
+                                [appDelegate.user redwriteUserFbID:appDelegate.user.userName andFID:appDelegate.user.userFID];
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    [self.activityIndicat stopAnimating];
+                    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+                    
+                    FlyoutMenuViewController * fmVC = [[FlyoutMenuViewController alloc] initWithNibName:@"FlyoutMenuViewController" bundle:nil];
+                    [self.navigationController pushViewController:fmVC animated:YES];
+                } else {
+                    [self.activityIndicat stopAnimating];
+                    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+                }
+            });
+            
+        });
+
     }
-     
+    
 }
 
 -(BOOL) checkEmail: (NSString*) email{
@@ -165,6 +222,9 @@
             [self.activityIndicat stopAnimating];
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         }
+        NSData * data = [NSKeyedArchiver archivedDataWithRootObject:appDelegate.user];
+        [userDefault setObject:data forKey:USER_DATA];
+        [userDefault synchronize];
     });
                         
     });
