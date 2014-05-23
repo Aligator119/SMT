@@ -35,6 +35,7 @@
     [self setPropertiesOfSerchBar];
     [self setPropertiesOfTable];
     
+    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor whiteColor]];
 }
 
 -(void)viewWillAppear:(BOOL)animated{

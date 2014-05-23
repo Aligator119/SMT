@@ -27,10 +27,10 @@
 @interface BuddyListViewController ()
 {
     int numberOfSection;
-    NSArray * friendList;
-    NSArray * incomingQwery;
-    NSArray * inviteFriend;
-    NSArray * allBuddyList;
+    NSMutableArray * friendList;
+    NSMutableArray * incomingQwery;
+    NSMutableArray * inviteFriend;
+    NSMutableArray * allBuddyList;
     DataLoader * dataLoader;
     AppDelegate * app;
 }
@@ -102,20 +102,20 @@
         }
     }
     
-    friendList = [[NSArray alloc]initWithArray:buddies];
+    friendList = [[NSMutableArray alloc]initWithArray:buddies];
     if (friendList.count) {
         [array addObject:friendList];
     }
-    incomingQwery = [[NSArray alloc]initWithArray:buddiesReceived];
+    incomingQwery = [[NSMutableArray alloc]initWithArray:buddiesReceived];
     if (incomingQwery.count) {
         [array addObject:incomingQwery];
     }
-    inviteFriend = [[NSArray alloc]initWithArray:pendingBuddies];
+    inviteFriend = [[NSMutableArray alloc]initWithArray:pendingBuddies];
     if (inviteFriend.count) {
         [array addObject:inviteFriend];
     }
     
-    allBuddyList = [[NSArray alloc]initWithArray:array];
+    allBuddyList = [[NSMutableArray alloc]initWithArray:array];
 //--------------------------------------------------------------------------------------------------------------------
     [self stopInternatIndicator];
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
@@ -167,6 +167,7 @@
             }
             ((InviteFriendCell *)cell).lbFriendName.text = [NSString stringWithFormat:@"%@ %@",buddy.userFirstName ,buddy.userSecondName];
             [((InviteFriendCell *)cell).btnHidde addTarget:self action:@selector(actHidden:) forControlEvents:UIControlEventTouchUpInside];
+            ((InviteFriendCell *)cell).btnHidde.tag = [buddy.userID intValue];
         }
     
     
@@ -219,10 +220,6 @@
 
 - (IBAction)actButtonAdd:(UIButton *)sender
 {
-    //BuddySearchViewController * abvc = [BuddySearchViewController new];
-    //[self.navigationController pushViewController:abvc animated:YES];
-    //InviteFriendViewController * ifvc = [InviteFriendViewController new];
-    //[self.navigationController pushViewController:ifvc animated:YES];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
         
@@ -268,7 +265,31 @@
 
 - (void)actHidden:(UIButton *)sender
 {
-    NSLog(@"Hidde");
+    NSMutableArray * array = [[NSMutableArray alloc]initWithArray:inviteFriend];
+    //int numObject = [allBuddyList indexOfObject:inviteFriend];
+    [allBuddyList removeObject:inviteFriend];
+    for (id obj in array) {
+        Buddy * bud = obj;
+        if ([bud.userID intValue] == sender.tag) {
+            dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            dispatch_async(newQueue, ^(){
+                
+                [dataLoader buddyDeleteUserFromBuddies:sender.tag];
+                
+                dispatch_async(dispatch_get_main_queue(), ^(){
+                    
+                    if(!dataLoader.isCorrectRezult) {
+                        NSLog(@"Error when delete buddy");
+                    } else {
+                        [array removeObject:bud];
+                        inviteFriend = [[NSMutableArray alloc]initWithArray:array];
+                        [allBuddyList addObject:inviteFriend];
+                    }
+                    [self.table reloadData];
+                });
+            });
+        }
+    }
 }
 
 
