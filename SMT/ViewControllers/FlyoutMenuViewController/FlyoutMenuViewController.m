@@ -138,10 +138,8 @@
             
             dispatch_async(dispatch_get_main_queue(),^(){
                 
-                if(dataLoader.isCorrectRezult){
                     MapViewController * mapVC = [MapViewController new];
                     [self.navigationController pushViewController:mapVC animated:YES];
-                }
             });
         });
     } else {
