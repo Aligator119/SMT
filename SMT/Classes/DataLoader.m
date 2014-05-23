@@ -502,7 +502,8 @@
     
     for (int i = 0; i < appDel.listUserBuddies.count; i++) {
         Buddy * _buddy = (Buddy* )[appDel.listUserBuddies objectAtIndex:i];
-        if([_buddy.userID isEqualToString:_userID]) return YES;
+        NSString * str = [NSString stringWithFormat:@"%@", _buddy.userID];
+        if([str isEqualToString:_userID]) return YES;
     }
     
     return isBuddy;

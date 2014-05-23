@@ -33,13 +33,15 @@
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
         self.navigationBarHeightConstr.constant -= 20;
         self.navigationBarVerticalConstr.constant -=20;
-        self.lbNavigationBarTitle.text = self.buddy.userName;
+        self.lbNavigationBarTitle.text = [NSString stringWithFormat:@"%@ %@", self.buddy.userFirstName, self.buddy.userSecondName];
     }
     
-    self.lbNavigationBarTitle.text = self.buddy.userFirstName;
+    self.lbNavigationBarTitle.text = [NSString stringWithFormat:@"%@ %@", self.buddy.userFirstName, self.buddy.userSecondName];
     
     
     [self.segmentControl addTarget:self action:@selector(actChangeSelect:) forControlEvents:UIControlEventValueChanged];
+    
+    //NSURL * imgURL = [NSURL URLWithString:self.buddy.]
     
     [self.image setBackgroundColor:[UIColor greenColor]];
 }
@@ -65,7 +67,7 @@
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return self.buddy.userFirstName;
+    return [NSString stringWithFormat:@"%@ %@", self.buddy.userFirstName, self.buddy.userSecondName];
 }
 
 - (void)didReceiveMemoryWarning

@@ -15,21 +15,12 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hbt-hm-NsO">
-                        <rect key="frame" x="10" y="4" width="220" height="21"/>
+                        <rect key="frame" x="10" y="11" width="220" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="g47-Ww-QHD"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mk3-9N-Rdn">
-                        <rect key="frame" x="10" y="22" width="220" height="20"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="2HZ-PU-DwP"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xl3-KT-Tmb">
@@ -45,19 +36,15 @@
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="mk3-9N-Rdn" secondAttribute="bottom" constant="1" id="9MM-qL-Nf2"/>
                     <constraint firstItem="Xl3-KT-Tmb" firstAttribute="leading" secondItem="Hbt-hm-NsO" secondAttribute="trailing" constant="10" id="P10-7R-zwB"/>
-                    <constraint firstItem="mk3-9N-Rdn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="TrE-Ql-KQi"/>
-                    <constraint firstItem="Hbt-hm-NsO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="V67-J6-Xcy"/>
+                    <constraint firstItem="Hbt-hm-NsO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="V67-J6-Xcy"/>
                     <constraint firstAttribute="trailing" secondItem="Xl3-KT-Tmb" secondAttribute="trailing" constant="10" id="Yuw-PC-tvu"/>
-                    <constraint firstItem="Xl3-KT-Tmb" firstAttribute="leading" secondItem="mk3-9N-Rdn" secondAttribute="trailing" constant="10" id="dG1-A4-nMs"/>
                     <constraint firstItem="Xl3-KT-Tmb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="fPj-eC-DKq"/>
                     <constraint firstItem="Hbt-hm-NsO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="lHI-dd-YAc"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="btnHidde" destination="Xl3-KT-Tmb" id="D1w-uE-Eg5"/>
-                <outlet property="lbDetailText" destination="mk3-9N-Rdn" id="zFO-yl-ycd"/>
                 <outlet property="lbFriendName" destination="Hbt-hm-NsO" id="5N2-a0-kEe"/>
             </connections>
         </tableViewCell>

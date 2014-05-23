@@ -12,6 +12,9 @@
 #import "Buddy.h"
 #import "ConstantsClass.h"
 #import "BuddyPageViewController.h"
+#import "UIViewController+LoaderCategory.h"
+#import "BuddySearchViewController.h"
+#include "InviteFriendViewController.h"
 
 
 #define FRIEND_LIST    @"   My buddies"
@@ -29,6 +32,7 @@
     NSArray * inviteFriend;
     NSArray * allBuddyList;
     DataLoader * dataLoader;
+    AppDelegate * app;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
@@ -57,15 +61,33 @@
     // Do any additional setup after loading the view from its nib.
     dataLoader = [DataLoader instance];
     
-    [dataLoader buddyGetListUsersBuddies];
 
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
         self.navigationBarHeightConstr.constant -= 20;
         self.navigationBarVerticalConstr.constant -=20;
     }
+
+    
+    UINib *cellNib1 = [UINib nibWithNibName:@"Cell" bundle:[NSBundle mainBundle]];
+    [self.table registerNib:cellNib1 forCellReuseIdentifier:@"Cell"];
+    UINib *cellNib2 = [UINib nibWithNibName:@"InviteFriendCell" bundle:[NSBundle mainBundle]];
+    [self.table registerNib:cellNib2 forCellReuseIdentifier:@"InviteFriendCell"];
+    UINib *cellNib3 = [UINib nibWithNibName:@"IncomingFriendCell" bundle:[NSBundle mainBundle]];
+    [self.table registerNib:cellNib3 forCellReuseIdentifier:@"IncomingFriendCell"];
+    
+    
+}
+
+-(void) viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBar.hidden = YES;
+    
+    app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
+    [self startInternatIndicator];
+    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+    [dataLoader buddyGetListUsersBuddies];
 //--------------------------------------------------------------------------------------------------------------------
     NSMutableArray * array = [[NSMutableArray alloc]init];
-    AppDelegate * app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
     NSMutableArray * buddies = [NSMutableArray new];
     NSMutableArray * pendingBuddies = [NSMutableArray new];
     NSMutableArray * buddiesReceived = [NSMutableArray new];
@@ -79,7 +101,7 @@
             [buddiesReceived addObject:buddy];
         }
     }
-   
+    
     friendList = [[NSArray alloc]initWithArray:buddies];
     if (friendList.count) {
         [array addObject:friendList];
@@ -95,22 +117,8 @@
     
     allBuddyList = [[NSArray alloc]initWithArray:array];
 //--------------------------------------------------------------------------------------------------------------------
-    
-    UINib *cellNib1 = [UINib nibWithNibName:@"Cell" bundle:[NSBundle mainBundle]];
-    [self.table registerNib:cellNib1 forCellReuseIdentifier:@"Cell"];
-    UINib *cellNib2 = [UINib nibWithNibName:@"InviteFriendCell" bundle:[NSBundle mainBundle]];
-    [self.table registerNib:cellNib2 forCellReuseIdentifier:@"InviteFriendCell"];
-    UINib *cellNib3 = [UINib nibWithNibName:@"IncomingFriendCell" bundle:[NSBundle mainBundle]];
-    [self.table registerNib:cellNib3 forCellReuseIdentifier:@"IncomingFriendCell"];
-    
-    
-}
-
--(void) viewWillAppear:(BOOL)animated
-{
-    self.navigationController.navigationBar.hidden = YES;
-    //UIEdgeInsets e = UIEdgeInsetsMake(0, self.navigationBarHeightConstr.constant, self.view.frame, 0);
-    
+    [self stopInternatIndicator];
+    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
 }
 
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
@@ -135,7 +143,7 @@
             if (!cell) {
                 cell = [[IncomingFriendCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"IncomingFriendCell"];
             }
-            ((IncomingFriendCell *)cell).lbFriendName.text = buddy.userFirstName;
+            ((IncomingFriendCell *)cell).lbFriendName.text = [NSString stringWithFormat:@"%@ %@",buddy.userFirstName ,buddy.userSecondName];
             [((IncomingFriendCell *)cell).btnDone addTarget:self action:@selector(actDone:) forControlEvents:UIControlEventTouchUpInside];
             [((IncomingFriendCell *)cell).btnAccept addTarget:self action:@selector(actAccept:) forControlEvents:UIControlEventTouchUpInside];
         }
@@ -147,8 +155,7 @@
             if (!cell) {
                 cell = [[Cell alloc]initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"Cell"];
             }
-            ((Cell *)cell).lbFriendName.text = buddy.userFirstName;
-            ((Cell *)cell).detailTextLabel.text = buddy.userSecondName;
+            ((Cell *)cell).lbFriendName.text = [NSString stringWithFormat:@"%@ %@",buddy.userFirstName ,buddy.userSecondName];
         }
     
             
@@ -158,8 +165,7 @@
             if (!cell) {
                 cell = [[InviteFriendCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"InviteFriendCell"];
             }
-            ((InviteFriendCell *)cell).lbFriendName.text = buddy.userFirstName;
-            ((Cell *)cell).detailTextLabel.text = buddy.userSecondName;
+            ((InviteFriendCell *)cell).lbFriendName.text = [NSString stringWithFormat:@"%@ %@",buddy.userFirstName ,buddy.userSecondName];
             [((InviteFriendCell *)cell).btnHidde addTarget:self action:@selector(actHidden:) forControlEvents:UIControlEventTouchUpInside];
         }
     
@@ -213,7 +219,41 @@
 
 - (IBAction)actButtonAdd:(UIButton *)sender
 {
-    NSLog(@"Add");
+    //BuddySearchViewController * abvc = [BuddySearchViewController new];
+    //[self.navigationController pushViewController:abvc animated:YES];
+    //InviteFriendViewController * ifvc = [InviteFriendViewController new];
+    //[self.navigationController pushViewController:ifvc animated:YES];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        
+        //[loaderLocation.getBuddiesLocation buddyGetListUsersBuddies];
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            
+            ///[self endLoader];
+            //spiner_bg.hidden = YES;
+//            if(!loaderLocation.getBuddiesLocation.isCorrectRezult) {
+//                [AppDelegate OpenAlertwithTitle:@"Error" andContent:@"Cann't get buddies"];
+//            } else {
+                UITabBarController * tabBar = [UITabBarController new];
+                
+                if ([tabBar respondsToSelector:@selector(edgesForExtendedLayout)]){
+                    tabBar.edgesForExtendedLayout = UIRectEdgeNone;
+                }
+                
+                BuddySearchViewController * buddySearchViewController = [BuddySearchViewController new];
+                InviteFriendViewController * inviteVC = [InviteFriendViewController new];
+                
+                tabBar.viewControllers = @[inviteVC, buddySearchViewController];
+                inviteVC.tabBarItem.title = @"Invite Contacts";
+                [inviteVC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142/255.f green:142/255.f blue:142/255.f alpha:1], UITextAttributeTextColor , nil] forState:UIControlStateSelected];
+                inviteVC.tabBarItem.image = [UIImage imageNamed:@"bookmarks"];
+                buddySearchViewController.tabBarItem.title = @"Search Current Users";
+                buddySearchViewController.tabBarItem.image = [UIImage imageNamed:@"search"];
+                [buddySearchViewController.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142/255.f green:142/255.f blue:142/255.f alpha:1], UITextAttributeTextColor , nil] forState:UIControlStateSelected];
+                [self.navigationController pushViewController:tabBar animated:YES];
+            //}
+        });
+    });
 }
 
 - (void)actDone:(UIButton *)sender

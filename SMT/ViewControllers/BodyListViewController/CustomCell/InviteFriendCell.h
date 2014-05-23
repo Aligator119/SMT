@@ -10,7 +10,6 @@
 
 @interface InviteFriendCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lbFriendName;
-@property (weak, nonatomic) IBOutlet UILabel *lbDetailText;
 @property (weak, nonatomic) IBOutlet UIButton *btnHidde;
 
 @end

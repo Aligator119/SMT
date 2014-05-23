@@ -29,7 +29,7 @@
         self.verticalConstr.constant -= 20;
     }
     
-    listFindedUsers = [NSMutableArray new];
+    //listFindedUsers = [NSMutableArray new];
     dataLoader = [DataLoader instance];
     
     [self setPropertiesOfSerchBar];
@@ -76,7 +76,7 @@
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
         
-        [dataLoader buddySearchByLastName:self.searchBuddy.text];
+        listFindedUsers = [[NSMutableArray alloc]initWithArray:[dataLoader buddySearchByLastName:self.searchBuddy.text]];
         
         dispatch_async(dispatch_get_main_queue(), ^(){
             //[self endLoader];
@@ -125,7 +125,8 @@
     
     SearchingBuddy * buddy = (SearchingBuddy*)[listFindedUsers objectAtIndex:indexPath.row];
     //****
-    costumCell.lblBuddySecondName.text = [NSString stringWithFormat:@"%@ %@",buddy.userFirstName,buddy.userSecondName];
+    NSString * str = [NSString stringWithFormat:@"%@ %@",[buddy.userProfile objectForKey:@"firstname"], [buddy.userProfile objectForKey:@"lastname"]];
+    costumCell.lblBuddySecondName.text = str;
     costumCell.lblBuddyUserName.text = buddy.userName;
     //*****
     

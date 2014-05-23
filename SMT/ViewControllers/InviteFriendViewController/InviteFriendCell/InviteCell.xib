@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InviteFriendCell" id="fSz-0s-XML" customClass="InviteCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fSz-0s-XML" id="PPt-ff-H7Y">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buddies_search_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="c7d-Fw-HvL">
+                        <rect key="frame" x="12" y="10" width="30" height="30"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="HCB-vi-lGG"/>
+                            <constraint firstAttribute="width" constant="30" id="Z8F-jm-3kl"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wel-CB-SSX">
+                        <rect key="frame" x="55" y="4" width="255" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L5T-tU-mj3">
+                        <rect key="frame" x="55" y="28" width="255" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ovq-Oc-W5q">
+                        <rect key="frame" x="264" y="10" width="46" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="46" id="VJt-UT-N8u"/>
+                            <constraint firstAttribute="height" constant="30" id="yo7-H1-hDN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <state key="normal" title="Invite">
+                            <color key="titleColor" red="0.043137256059999997" green="0.40392160420000001" blue="0.40000003579999999" alpha="1" colorSpace="deviceRGB"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="selected">
+                            <color key="titleColor" red="0.68627450980000004" green="0.86274509799999999" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <state key="highlighted">
+                            <color key="titleColor" red="0.68627450980000004" green="0.86274509799999999" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="inviteAction:" destination="fSz-0s-XML" eventType="touchUpInside" id="hyK-e2-C4Q"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Ovq-Oc-W5q" firstAttribute="top" secondItem="PPt-ff-H7Y" secondAttribute="top" constant="10" id="2Ie-SF-6pJ"/>
+                    <constraint firstItem="L5T-tU-mj3" firstAttribute="top" secondItem="Wel-CB-SSX" secondAttribute="bottom" constant="3" id="95M-T2-BYb"/>
+                    <constraint firstItem="Wel-CB-SSX" firstAttribute="top" secondItem="PPt-ff-H7Y" secondAttribute="top" constant="4" id="Fh7-4g-1EV"/>
+                    <constraint firstItem="Wel-CB-SSX" firstAttribute="leading" secondItem="c7d-Fw-HvL" secondAttribute="trailing" constant="13" id="PEB-TK-dhw"/>
+                    <constraint firstAttribute="trailing" secondItem="Wel-CB-SSX" secondAttribute="trailing" constant="10" id="ae5-l8-LxK"/>
+                    <constraint firstAttribute="trailing" secondItem="L5T-tU-mj3" secondAttribute="trailing" constant="10" id="b06-6h-luR"/>
+                    <constraint firstAttribute="bottom" secondItem="L5T-tU-mj3" secondAttribute="bottom" constant="4" id="eLm-9z-uOq"/>
+                    <constraint firstItem="c7d-Fw-HvL" firstAttribute="leading" secondItem="PPt-ff-H7Y" secondAttribute="leading" constant="12" id="eYY-kb-Cmq"/>
+                    <constraint firstItem="c7d-Fw-HvL" firstAttribute="top" secondItem="PPt-ff-H7Y" secondAttribute="top" constant="10" id="n9r-Pt-1s1"/>
+                    <constraint firstAttribute="trailing" secondItem="Ovq-Oc-W5q" secondAttribute="trailing" constant="10" id="p2k-ul-ktJ"/>
+                    <constraint firstItem="L5T-tU-mj3" firstAttribute="leading" secondItem="c7d-Fw-HvL" secondAttribute="trailing" constant="13" id="seE-QB-PXf"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="emailLabel" destination="L5T-tU-mj3" id="vw1-wF-bMr"/>
+                <outlet property="nameLabel" destination="Wel-CB-SSX" id="0hc-Mz-c98"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="buddies_search_icon.png" width="50" height="50"/>
+    </resources>
+</document>
