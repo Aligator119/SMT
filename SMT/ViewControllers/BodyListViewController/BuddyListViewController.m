@@ -307,8 +307,8 @@
                     } else {
                         [array removeObject:bud];
                         NSMutableArray *  budArray = [[NSMutableArray alloc]initWithArray:friendList];
-                        [budArray addObject:bud];
                         [allBuddyList removeObject:friendList];
+                        [budArray addObject:bud];
                         friendList = [[NSMutableArray alloc]initWithArray:budArray];
                         [allBuddyList addObject:friendList];
                         if ([array count]) {

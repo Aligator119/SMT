@@ -329,7 +329,7 @@
     
     NSLog(@"%@", error);
     
-    [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequestPut setHeaders:YES andTypeRequest:ApplicationServiceRequestChangeTypeOfBuddyRequest];
+    [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequesPatch setHeaders:YES andTypeRequest:ApplicationServiceRequestChangeTypeOfBuddyRequest];
 }
 
 
