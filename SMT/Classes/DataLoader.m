@@ -270,14 +270,18 @@
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@?app_id=%@&app_key=%@",strUrl,SubstringBuddies ,@"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
     
     NSMutableArray * buddiesList = [NSMutableArray new];
-    for(NSDictionary * dic in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListOfBuddies]){
-        Buddy * buddy = [Buddy new];
-        [buddy setData:dic];
-        [buddiesList addObject:buddy];
+    @try {
+        for(NSDictionary * dic in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListOfBuddies]){
+            Buddy * buddy = [Buddy new];
+            [buddy setData:dic];
+            [buddiesList addObject:buddy];
+        }
+        appDel.listUserBuddies = nil;
+        appDel.listUserBuddies = [[NSMutableArray alloc] initWithArray:buddiesList];
     }
-    appDel.listUserBuddies = nil;
-    appDel.listUserBuddies = [[NSMutableArray alloc] initWithArray:buddiesList];
-    
+    @catch (NSException *exception) {
+        NSLog(@"Error with getting buddies");
+    }
 }
 
 - (void)buddyAddWithName:(NSString *)buddyName
@@ -339,14 +343,19 @@
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@?name=%@&app_id=%@&app_key=%@",strUrl,@"user", _name, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
     
     NSMutableArray * buddiesList = [NSMutableArray new];
-    for(NSDictionary * dic in  [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestSearchBuddy]){
-        SearchingBuddy * buddy = [SearchingBuddy new];
-        [buddy setData:dic];
-        if((appDel.user.userID == [buddy.userID intValue]) || ([self isUserInMyBuddies:buddy.userID]))
-        {
-            
-        } else
-            [buddiesList addObject:buddy];
+    @try {
+        for(NSDictionary * dic in  [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestSearchBuddy]){
+            SearchingBuddy * buddy = [SearchingBuddy new];
+            [buddy setData:dic];
+            if((appDel.user.userID == [buddy.userID intValue]) || ([self isUserInMyBuddies:buddy.userID]))
+            {
+                
+            } else
+                [buddiesList addObject:buddy];
+        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Error while getting search result");
     }
     
     return buddiesList;
