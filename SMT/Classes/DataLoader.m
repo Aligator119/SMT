@@ -25,10 +25,13 @@
 #define RequestDelete @"DELETE"
 #define RequestPut @"PUT"
 
+#define App_id @"b63800ad"
+#define App_key @"34eddb50efc407d00f3498dc1874526c"
+
 #define APP_ID_KEY @"app_id=b63800ad&app_key=34eddb50efc407d00f3498dc1874526c"
 #define URL_USER_LOGIN @"user=%@&password=%@&%@"
 #define URL_USER_CREATE @"firstname=%@&lastname=%@&username=%@&password=%@&birthYear=%@&sex=%@&%@"
-#define URLSportsMaster @"http://api.sportsmantracker.com/v1/"
+#define URLSportsMaster @"http://devapi.sportsmantracker.com/v2/"
 
 #define SubstringLogin @"login"
 #define SubstringRegister @"user"
@@ -47,7 +50,7 @@
     
     if (self)
     {
-        strUrl = @"http://api.sportsmantracker.com/v1/";
+        strUrl = @"http://devapi.sportsmantracker.com/v2/";
         appDel = (AppDelegate*) [UIApplication sharedApplication].delegate;
         [self setInitialData];
     }
@@ -99,12 +102,18 @@
     NSString * _userMale = userMale;
     
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@",strUrl,SubstringRegister];
-    NSString * strUrlRequestData = [NSString stringWithFormat:URL_USER_CREATE,_firstName,_secondName,_userName,_userPassword,_birthYear,_userMale,APP_ID_KEY];
+   // NSString * strUrlRequestData = [NSString stringWithFormat:URL_USER_CREATE,_firstName,_secondName,_userName,_userPassword,_birthYear,_userMale,APP_ID_KEY];
+    
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[firstName, secondName, userName, userPassword, _birthYear, userMale, @"b63800ad", @"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"firstname", @"lastname", @"username", @"password", @"birthYear", @"sex", @"app_id", @"app_key"]];
     
     enterPassword = userPassword;
     
-    NSDictionary *info = [self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestPost setHeaders:NO andTypeRequest:ApplicationServiceRequestCreateUser];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
     
+    NSDictionary *info = [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequestPost setHeaders:NO andTypeRequest:ApplicationServiceRequestCreateUser];
+    
+    if (self.isCorrectRezult){
     [appDel.user setUserInfoName:[info objectForKey:keyUsername] appID:[[info objectForKey:keyUserID] intValue]];
     [appDel.user setUserInfoPassword:enterPassword];
     [appDel.user setUserFirstName:[info objectForKey:keyUserFirstName] andSecondName:[info objectForKey:keyUserSecondName]];
@@ -113,6 +122,7 @@
     NSDictionary *retrievedDictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:FB_USER_SIGN];
     if(retrievedDictionary == nil)
         [appDel.user saveUser];
+    }
 }
 
 -(void) sendInvitationEmailWithEmail: (NSString*) _email andName: (NSString*) _name
@@ -120,7 +130,7 @@
     NSString * email = [self convertString:_email];
     NSString * name = [self convertString:_name];
     
-    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"http://api.sportsmantracker.com/v1/sendBuddyTrackingInvite/?email=%@&app=fp&name=%@&%@", email, name, APP_ID_KEY ];
+    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"http://devapi.sportsmantracker.com/v2/sendBuddyTrackingInvite/?email=%@&app=fp&name=%@&%@", email, name, APP_ID_KEY ];
     NSString * strUrlRequestData = @"";
     
      [self startRequest:strUrlRequestAddress andData:strUrlRequestData typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestSendInvitation];
@@ -135,7 +145,7 @@
     
     NSString *userId = [NSString stringWithFormat:@"%d", appDel.user.userID];
     
-    NSString * strUrlRequestAddress = @"http://api.sportsmantracker.com/v1/location";
+    NSString * strUrlRequestAddress = @"http://devapi.sportsmantracker.com/v2/location";
     NSString * strUrlRequestData = [NSString stringWithFormat: @"user_id=%@&type_id=2&name=%@&latitude=%@&longitude=%@&%@", userId, LocationName, lat, longit,APP_ID_KEY];
     
     Location * location = [Location new];
@@ -145,28 +155,38 @@
 
 - (void)avtorizeUser:(NSString*) userName password:(NSString*) userPassword
 {
-    NSString * _userName = [self convertString:userName];
-    NSString * _userPassword = [self convertString:userPassword];
+    //NSString * _userName = [self convertString:userName];
+    //NSString * _userPassword = [self convertString:userPassword];
     
     enterPassword = userPassword;
     typeOfServiceRequest = ApplicationServiceRequestAvtorizeUser;
     
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@",strUrl,SubstringLogin];
-    NSString * strUrlRequestData = [NSString stringWithFormat:URL_USER_LOGIN,_userName,_userPassword,APP_ID_KEY];
+   // NSString * strUrlRequestData = [NSString stringWithFormat:URL_USER_LOGIN,_userName,_userPassword,APP_ID_KEY];
     
-    NSDictionary *info = [self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestPost setHeaders:NO andTypeRequest:ApplicationServiceRequestAvtorizeUser];
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[userName,userPassword,@"b63800ad",@"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"username", @"password", @"app_id", @"app_key"]];
+    
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    
+   /// NSString * jsonRequest = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+   // NSString * bodyRequest = [NSString stringWithFormat:@"data=%@", jsonRequest];
+    
+    NSLog(@"%@", error);
+    
+    NSDictionary *info = [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequestPost setHeaders:NO andTypeRequest:ApplicationServiceRequestAvtorizeUser];
     
     [appDel.user setUserInfoName:[info objectForKey:keyUsername] appID:[[info objectForKey:keyUserID] intValue]];
     [appDel.user setUserInfoPassword:enterPassword];
     [appDel.user setUserFirstName:[info objectForKey:keyUserFirstName] andSecondName:[info objectForKey:keyUserSecondName]];
     appDel.user.avatarAdress = [info objectForKey:@"Avatar"];
 }
-
 - (void)getLocationsAssociatedWithUser
 {
     typeOfServiceRequest = ApplicationServiceRequestLocationsAssociatedWithUser;
     NSString * strLocations = [NSString stringWithFormat:@"%i?%@",appDel.user.userID,APP_ID_KEY];
-    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@%@",strUrl,SubstringLocations,strLocations];
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@location?app_id=%@&app_key=%@",strUrl, App_id, App_key];
 
     NSLog(@"Get Locations");
     // * * * *
@@ -337,22 +357,23 @@
 
 #pragma mark - REQUEST
 
-- (NSDictionary *)startRequest:(NSString*) _url andData:(NSString*) _data typeRequest:(NSString*) _type setHeaders:(BOOL)_setHeaders andTypeRequest:(int)typeReust{
+- (NSDictionary *)startRequest:(NSString*) _url andData:(NSData*) _data typeRequest:(NSString*) _type setHeaders:(BOOL)_setHeaders andTypeRequest:(int)typeReust{
     /*if(![HPAppDelegate isActiveConnectedToInternet]){
         [HPAppDelegate OpenAlertwithTitle:@"Error" andContent:@"Problen in connection"];
         return;
     }*/
+    
     NSDictionary* info = [NSDictionary new];
     self.isCorrectRezult = NO;
-    NSData * data = [_data dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+   // NSData * data = [_data dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
 
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     
     [request setURL:[NSURL URLWithString:_url]];
     [request setHTTPMethod:_type];
-    if(([_type isEqualToString: RequestPost] || [_type isEqualToString: RequestDelete] || [_type isEqualToString: RequestPut]) && (data != nil))
-        [request setHTTPBody: data];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    if(([_type isEqualToString: RequestPost] || [_type isEqualToString: RequestDelete] || [_type isEqualToString: RequestPut]) && (_data != nil))
+        [request setHTTPBody: _data];
+    [request setValue:/*@"application/x-www-form-urlencoded"*/@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"must-revalidate" forHTTPHeaderField:@"Cashe-Control"];
     [request setTimeoutInterval:30.0f];
     [request setCachePolicy:NSURLRequestUseProtocolCachePolicy];

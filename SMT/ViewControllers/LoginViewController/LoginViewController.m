@@ -157,8 +157,10 @@
 }
 
 -(IBAction)goToHomeScreen:(id)sender{
-    self.userNameTextField.text = @"boloonka1@bigmir.net";
-    self.passwordTextField.text = @"19921992q";
+    if (self.userNameTextField.text.length == 0 || self.passwordTextField.text.length == 0){
+        self.userNameTextField.text = @"testr@mail.ru";
+        self.passwordTextField.text = @"123456";
+    }
     
     if(self.userNameTextField.text.length == 0) {
         [AppDelegate OpenAlertwithTitle:@"Error" andContent:@"Email field is empty"];
