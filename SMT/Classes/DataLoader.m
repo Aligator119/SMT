@@ -136,7 +136,7 @@
     NSString * lat = [self convertString:[NSString stringWithFormat:@"%f", latitude]];
     NSString * longit = [self convertString:[NSString stringWithFormat:@"%f", longitude]];
     
-    NSString *userId = [NSString stringWithFormat:@"%d", appDel.user.userID];
+   // NSString *userId = [NSString stringWithFormat:@"%d", appDel.user.userID];
     NSString *typeID = [NSString stringWithFormat: @"%d", 2];
     
     NSString * strUrlRequestAddress = @"http://devapi.sportsmantracker.com/v2/location";
@@ -184,7 +184,7 @@
 - (void)getLocationsAssociatedWithUser
 {
     typeOfServiceRequest = ApplicationServiceRequestLocationsAssociatedWithUser;
-    NSString * strLocations = [NSString stringWithFormat:@"%i?%@",appDel.user.userID,APP_ID_KEY];
+    //NSString * strLocations = [NSString stringWithFormat:@"%i?%@",appDel.user.userID,APP_ID_KEY];
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@location?app_id=%@&app_key=%@",strUrl, App_id, App_key];
 
     NSLog(@"Get Locations");
@@ -214,7 +214,12 @@
 - (void)deleteLocationWithID:(int) _locID
 {
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@%@",strUrl,SubstringLocation,[NSString stringWithFormat:@"%i",_locID]];
-    [self startRequest:strUrlRequestAdress andData:APP_ID_KEY typeRequest:RequestDelete setHeaders:YES andTypeRequest:ApplicationServiceRequestDeleteLocation];
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:@[App_id, App_key] forKeys:@[@"app_id", @"app_key"]];
+    
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequestDelete setHeaders:YES andTypeRequest:ApplicationServiceRequestDeleteLocation];
 }
 
 - (void)updateChooseLocation:(int)_locID
