@@ -10,6 +10,6 @@
 
 @interface Cell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lbFriendName;
-@property (weak, nonatomic) IBOutlet UILabel *lbDetailText;
+
 
 @end

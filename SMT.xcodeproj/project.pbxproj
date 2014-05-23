@@ -77,6 +77,10 @@
 		046C6C0E190FECC400E3AC56 /* InviteFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C6C0C190FECC400E3AC56 /* InviteFriendCell.xib */; };
 		046C6C12190FECEE00E3AC56 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046C6C10190FECEE00E3AC56 /* Cell.m */; };
 		046C6C13190FECEE00E3AC56 /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C6C11190FECEE00E3AC56 /* Cell.xib */; };
+		047EE597192F47D700FD17FC /* InviteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 047EE592192F47D700FD17FC /* InviteCell.m */; };
+		047EE598192F47D700FD17FC /* InviteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047EE593192F47D700FD17FC /* InviteCell.xib */; };
+		047EE599192F47D700FD17FC /* InviteFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047EE595192F47D700FD17FC /* InviteFriendViewController.m */; };
+		047EE59A192F47D700FD17FC /* InviteFriendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047EE596192F47D700FD17FC /* InviteFriendViewController.xib */; };
 		04A2A370191B7F530006677E /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A36E191B7F530006677E /* SettingsViewController.m */; };
 		04A2A371191B7F530006677E /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A2A36F191B7F530006677E /* SettingsViewController.xib */; };
 		04A2A381191B7F820006677E /* WeatherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A37B191B7F820006677E /* WeatherCell.m */; };
@@ -273,6 +277,12 @@
 		046C6C0F190FECEE00E3AC56 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cell.h; path = ViewControllers/BodyListViewController/CustomCell/Cell.h; sourceTree = "<group>"; };
 		046C6C10190FECEE00E3AC56 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Cell.m; path = ViewControllers/BodyListViewController/CustomCell/Cell.m; sourceTree = "<group>"; };
 		046C6C11190FECEE00E3AC56 /* Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Cell.xib; path = ViewControllers/BodyListViewController/CustomCell/Cell.xib; sourceTree = "<group>"; };
+		047EE591192F47D700FD17FC /* InviteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteCell.h; sourceTree = "<group>"; };
+		047EE592192F47D700FD17FC /* InviteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteCell.m; sourceTree = "<group>"; };
+		047EE593192F47D700FD17FC /* InviteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteCell.xib; sourceTree = "<group>"; };
+		047EE594192F47D700FD17FC /* InviteFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteFriendViewController.h; sourceTree = "<group>"; };
+		047EE595192F47D700FD17FC /* InviteFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteFriendViewController.m; sourceTree = "<group>"; };
+		047EE596192F47D700FD17FC /* InviteFriendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteFriendViewController.xib; sourceTree = "<group>"; };
 		04A2A36D191B7F530006677E /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		04A2A36E191B7F530006677E /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		04A2A36F191B7F530006677E /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
@@ -638,6 +648,7 @@
 		044093F9190F7ABC00C4A558 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				047EE58F192F47D700FD17FC /* InviteFriendViewController */,
 				040706B0190FC190000D6660 /* BuddyListViewController */,
 				04F342EC192110E40054294C /* BuddyPageViewController */,
 				043354C21910EF20003767D0 /* BuddySearchViewController */,
@@ -735,6 +746,28 @@
 				046C6C11190FECEE00E3AC56 /* Cell.xib */,
 			);
 			name = CustomCell;
+			sourceTree = "<group>";
+		};
+		047EE58F192F47D700FD17FC /* InviteFriendViewController */ = {
+			isa = PBXGroup;
+			children = (
+				047EE590192F47D700FD17FC /* InviteFriendCell */,
+				047EE594192F47D700FD17FC /* InviteFriendViewController.h */,
+				047EE595192F47D700FD17FC /* InviteFriendViewController.m */,
+				047EE596192F47D700FD17FC /* InviteFriendViewController.xib */,
+			);
+			name = InviteFriendViewController;
+			path = ViewControllers/InviteFriendViewController;
+			sourceTree = "<group>";
+		};
+		047EE590192F47D700FD17FC /* InviteFriendCell */ = {
+			isa = PBXGroup;
+			children = (
+				047EE591192F47D700FD17FC /* InviteCell.h */,
+				047EE592192F47D700FD17FC /* InviteCell.m */,
+				047EE593192F47D700FD17FC /* InviteCell.xib */,
+			);
+			path = InviteFriendCell;
 			sourceTree = "<group>";
 		};
 		04A2A36C191B7F530006677E /* SettingsViewController */ = {
@@ -1130,11 +1163,13 @@
 				04CEC03B191B81EF00BF784D /* LogHistoryViewController.xib in Resources */,
 				04F342F11921118E0054294C /* BuddyPageViewController.xib in Resources */,
 				04B015B7191B6FD3002F6FA9 /* NewLog2ViewController.xib in Resources */,
+				047EE598192F47D700FD17FC /* InviteCell.xib in Resources */,
 				04DF997019222A2400D66BEC /* LogDetailCell.xib in Resources */,
 				04CEC03E191B82EE00BF784D /* GoogleMaps.bundle in Resources */,
 				04A2A3C3191B7FDC0006677E /* PhotoVideoViewController.xib in Resources */,
 				04A2A3A3191B7FC00006677E /* LocationListCell.xib in Resources */,
 				04F7F42919235F2A007E39B5 /* PredictionViewController.xib in Resources */,
+				047EE59A192F47D700FD17FC /* InviteFriendViewController.xib in Resources */,
 				04A2A392191B7F8D0006677E /* WeatherDetailViewController.xib in Resources */,
 				04A2A382191B7F820006677E /* WeatherCell.xib in Resources */,
 				0440943E190FA98B00C4A558 /* RegisterViewController_iPhone4.xib in Resources */,
@@ -1168,8 +1203,10 @@
 				11D48DE01918E32700A9787E /* AFHTTPRequestOperation.m in Sources */,
 				0433548F1910E7C9003767D0 /* UserInfo.m in Sources */,
 				04E88FC1191BA07B00DEF977 /* NewLog1ViewController.m in Sources */,
+				047EE599192F47D700FD17FC /* InviteFriendViewController.m in Sources */,
 				04409406190F825F00C4A558 /* FlyoutMenuViewController.m in Sources */,
 				11C9F6811917818800CDAFBA /* HourlyWheather.m in Sources */,
+				047EE597192F47D700FD17FC /* InviteCell.m in Sources */,
 				040806A1190EA37D00E063C3 /* AppDelegate.m in Sources */,
 				046C6C0D190FECC400E3AC56 /* InviteFriendCell.m in Sources */,
 				04A2A391191B7F8D0006677E /* WeatherDetailViewController.m in Sources */,

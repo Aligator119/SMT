@@ -36,13 +36,13 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eri-vP-MlQ">
                         <rect key="frame" x="225" y="17" width="69" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="IZP-JQ-Avl"/>
                             <constraint firstAttribute="width" constant="69" id="SU0-iH-LYX"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="12"/>
-                        <state key="normal" title="+1 Buddy" backgroundImage="buddy_BTN.png">
+                        <state key="normal" title="+1 Buddy">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -68,7 +68,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="buddy_BTN.png" width="69" height="20"/>
         <image name="buddy_BTN_press.png" width="69" height="20"/>
     </resources>
 </document>

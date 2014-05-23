@@ -15,21 +15,12 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzR-6u-H3a">
-                        <rect key="frame" x="10" y="2" width="290" height="21"/>
+                        <rect key="frame" x="10" y="11" width="290" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="73Z-og-qts"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozi-bN-zgr">
-                        <rect key="frame" x="10" y="22" width="290" height="20"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="Tym-is-Jwz"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tDA-6n-m1p">
@@ -46,15 +37,11 @@
                     <constraint firstAttribute="trailing" secondItem="tDA-6n-m1p" secondAttribute="trailing" id="0qF-0x-Phg"/>
                     <constraint firstItem="tDA-6n-m1p" firstAttribute="leading" secondItem="lzR-6u-H3a" secondAttribute="trailing" constant="10" id="9C3-Xl-Qjw"/>
                     <constraint firstItem="tDA-6n-m1p" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="EjG-sq-lxs"/>
-                    <constraint firstItem="tDA-6n-m1p" firstAttribute="leading" secondItem="ozi-bN-zgr" secondAttribute="trailing" constant="10" id="bYF-nM-2EM"/>
-                    <constraint firstAttribute="bottom" secondItem="ozi-bN-zgr" secondAttribute="bottom" constant="1" id="dbQ-5l-R2V"/>
-                    <constraint firstItem="ozi-bN-zgr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="tGr-1q-r47"/>
-                    <constraint firstItem="lzR-6u-H3a" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="yjR-cO-weG"/>
+                    <constraint firstItem="lzR-6u-H3a" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="yjR-cO-weG"/>
                     <constraint firstItem="lzR-6u-H3a" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="zox-PM-Obk"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="lbDetailText" destination="ozi-bN-zgr" id="8S1-rP-ea3"/>
                 <outlet property="lbFriendName" destination="lzR-6u-H3a" id="HLA-Zl-oLf"/>
             </connections>
         </tableViewCell>
