@@ -14,6 +14,7 @@
 #define RequestGet @"GET"
 #define RequestDelete @"DELETE"
 #define RequestPut @"PUT"
+#define RequesPatch @"PATCH"
 
 #define App_id @"b63800ad"
 #define App_key @"34eddb50efc407d00f3498dc1874526c"
@@ -136,12 +137,18 @@
     NSString * longit = [self convertString:[NSString stringWithFormat:@"%f", longitude]];
     
     NSString *userId = [NSString stringWithFormat:@"%d", appDel.user.userID];
+    NSString *typeID = [NSString stringWithFormat: @"%d", 2];
     
     NSString * strUrlRequestAddress = @"http://devapi.sportsmantracker.com/v2/location";
-    NSString * strUrlRequestData = [NSString stringWithFormat: @"user_id=%@&type_id=2&name=%@&latitude=%@&longitude=%@&%@", userId, LocationName, lat, longit,APP_ID_KEY];
+  //NSString * strUrlRequestData = [NSString stringWithFormat: @"user_id=%@&type_id=2&name=%@&latitude=%@&longitude=%@&%@", userId, LocationName, lat, longit,APP_ID_KEY];
+    
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[typeID, LocationName, lat, longit, App_id, App_key] forKeys:@[@"type_id", @"name", @"latitude", @"longitude", @"app_id", @"app_key"]];
+    
+    NSError * error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
     
     Location * location = [Location new];
-    [location setValuesFromDict:[self startRequest:strUrlRequestAddress andData:strUrlRequestData typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestCreateLocation]];
+    [location setValuesFromDict:[self startRequest:strUrlRequestAddress andData:jsonData typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestCreateLocation]];
     [appDel.listLocations addObject:location];
 }
 
@@ -216,10 +223,14 @@
                      newLong:(NSString*)_long
 {
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@%i",strUrl,SubstringLocation,_locID];
-    NSString * strUrlRequestData = [NSString stringWithFormat:@"name=%@&latitude=%@&longitude=%@&%@",[self convertString:_newName],_lati,_long,APP_ID_KEY];
+    //NSString * strUrlRequestData = [NSString stringWithFormat:@"name=%@&latitude=%@&longitude=%@&%@",[self convertString:_newName],_lati,_long,APP_ID_KEY];
+    
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[_newName, _lati, _long, App_id, App_key] forKeys:@[@"name", @"latitude", @"longitude", @"app_id", @"app_key"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
 
     Location * location = [Location new];
-    [location setValuesFromDict:[self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestPut setHeaders:YES andTypeRequest:ApplicationServiceRequestUpdateLocation]];
+    [location setValuesFromDict:[self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequesPatch setHeaders:YES andTypeRequest:ApplicationServiceRequestUpdateLocation]];
     for(int i=0 ; i < appDel.listLocations.count; i++){
         Location * loc = [[appDel listLocations] objectAtIndex:i];
         if (location.locID == loc.locID){
@@ -364,12 +375,16 @@
     
     [request setURL:[NSURL URLWithString:_url]];
     [request setHTTPMethod:_type];
-    if(([_type isEqualToString: RequestPost] || [_type isEqualToString: RequestDelete] || [_type isEqualToString: RequestPut]) && (_data != nil))
+    if(([_type isEqualToString: RequestPost] || [_type isEqualToString: RequestDelete] || [_type isEqualToString: RequestPut] || [_type isEqualToString:RequesPatch]) && (_data != nil))
         [request setHTTPBody: _data];
     [request setValue:/*@"application/x-www-form-urlencoded"*/@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"must-revalidate" forHTTPHeaderField:@"Cashe-Control"];
     [request setTimeoutInterval:30.0f];
     [request setCachePolicy:NSURLRequestUseProtocolCachePolicy];
+    
+    if ([_type isEqualToString:RequesPatch]){
+        [request setValue:@"PATCH" forHTTPHeaderField:@"X-HTTP-Method-Override"];
+    }
     
     if(_setHeaders){
         [request setValue:appDel.user.userName forHTTPHeaderField:@"X-Username"];

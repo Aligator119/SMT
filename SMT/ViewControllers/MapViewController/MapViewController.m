@@ -14,6 +14,8 @@
 #import "LocationListViewController.h"
 #import "SMTMarker.h"
 #import "Location.h"
+#import "UIViewController+LoaderCategory.h"
+#import "BaseLocationViewController.h"
 
 @interface MapViewController()
 {
@@ -21,6 +23,7 @@
     CLLocationManager * locationManager;
     BOOL firstLocationUpdate_;
     AppDelegate * appDel;
+    DataLoader *loader;
 }
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * navigationBarHeightConstr;
@@ -29,6 +32,7 @@
 @property (nonatomic, weak) IBOutlet UIView * mapContainerView;
 
 @property (nonatomic, strong) UIImageView * compassView;
+@property (nonatomic, strong) CLGeocoder *geocoder;
 
 @end
 
@@ -39,12 +43,15 @@
 {
     [super viewDidLoad];
     
+    [self AddActivityIndicator:[UIColor whiteColor] forView:self.view];
+    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
         self.navigationBarHeightConstr.constant -= 20;
         self.navigationBarVerticalConstr.constant -=20;
     }
     
     appDel = (AppDelegate*) [UIApplication sharedApplication].delegate;
+    loader = [DataLoader instance];
     
     [self showMap];
     [self createLocationManager];
@@ -52,6 +59,11 @@
 
 - (void) viewDidLayoutSubviews{
     mapView_.frame = self.mapContainerView.bounds;
+}
+
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self setAllLocationMarkers];
 }
 
 - (void) showMap{
@@ -63,12 +75,13 @@
     [mapView_ addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context:NULL];
     
     mapView_.myLocationEnabled = YES;
+    mapView_.delegate = self;
     [self.mapContainerView addSubview:mapView_];
     
     // Show compass
     //[self showCompass];
     
-    [self setAllLocationMarkers];
+    
 
 }
 
@@ -171,6 +184,118 @@
 - (void) moveToLocation: (CLLocationCoordinate2D) loc{
     [mapView_ animateToLocation:loc];
 }
+
+-(void) mapView:(GMSMapView *)mapView didLongPressAtCoordinate:(CLLocationCoordinate2D)coordinate{
+    if (CLLocationCoordinate2DIsValid(coordinate)){
+        SMTMarker * marker = [SMTMarker markerWithPosition:coordinate];
+        
+        if (! self.geocoder)
+            self.geocoder = [[CLGeocoder alloc] init];
+        
+        
+        CLLocation * locForGeocoder = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+        [self.geocoder reverseGeocodeLocation:locForGeocoder completionHandler:^(NSArray* placemarks, NSError* error){
+            if (placemarks.count > 0 ){
+                CLPlacemark * placemark = [placemarks objectAtIndex:0];
+                marker.title = placemark.name;
+            }
+            else{
+                marker.title = @"Unknown Location";
+            }
+            [self startLoader];
+            dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            dispatch_async(newQueue, ^(){
+                [loader createLocationWithName:marker.title Latitude:coordinate.latitude Longitude:coordinate.longitude];
+                
+                
+                dispatch_async(dispatch_get_main_queue(), ^(){
+                    [self endLoader];
+                    if(loader.isCorrectRezult){
+                        Location * loc = [appDel.listLocations lastObject];
+                        marker.location = loc;
+                        marker.icon = [UIImage imageNamed:@"map_marker"];
+                        marker.map = mapView_;
+                        [self beginMarkerAnimation:marker];
+                        
+                    }
+                });
+                
+            });
+        }];
+    }
+}
+
+-(void) beginMarkerAnimation: (GMSMarker *) marker{
+    CGPoint point1 = [mapView_.projection pointForCoordinate:marker.position];
+    CGPoint point2 = CGPointMake(point1.x, 0);
+    CLLocationCoordinate2D bounceCoord = [mapView_.projection coordinateForPoint:CGPointMake(point1.x, point1.y - 20)];
+    CLLocationCoordinate2D coord = [mapView_.projection coordinateForPoint: point2 ];
+    
+    [CATransaction begin];{
+        [CATransaction setCompletionBlock:^{
+            [CATransaction setCompletionBlock:^{
+                CABasicAnimation * animation3lat = [CABasicAnimation animationWithKeyPath:@"latitude"];
+                animation3lat.fromValue = @(bounceCoord.latitude);
+                animation3lat.toValue = @(marker.layer.latitude);
+                
+                CABasicAnimation * animation3Long = [CABasicAnimation animationWithKeyPath:@"longitude"];
+                animation3Long.fromValue = @(bounceCoord.longitude);
+                animation3Long.toValue = @(marker.layer.longitude);
+                
+                CAAnimationGroup * group3 = [CAAnimationGroup animation];
+                group3.duration = 0.1f;
+                group3.timingFunction =[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+                group3.animations = [NSArray arrayWithObjects:animation3lat, animation3Long, nil];
+                
+                [marker.layer addAnimation:group3 forKey:@"MyAnimationGroup3"];
+                
+            }];
+            CABasicAnimation *animation2lat = [CABasicAnimation animationWithKeyPath:@"latitude"];
+            animation2lat.fromValue = @(marker.layer.latitude);
+            animation2lat.toValue = @(bounceCoord.latitude);
+            
+            CABasicAnimation * animation2Long = [CABasicAnimation animationWithKeyPath:@"longitude"];
+            animation2Long.fromValue = @(marker.layer.longitude);
+            animation2Long.toValue = @(bounceCoord.longitude);
+            
+            CAAnimationGroup * group2 = [CAAnimationGroup animation];
+            group2.duration = 0.1;
+            group2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+            group2.animations = [NSArray arrayWithObjects:animation2lat, animation2Long, nil];
+            
+            [marker.layer addAnimation:group2 forKey:@"MyAnimationGroup2"];
+            
+        }];
+        CABasicAnimation *animationLat = [CABasicAnimation animationWithKeyPath:@"latitude"];
+        animationLat.fromValue = @(coord.latitude);
+        animationLat.toValue = @(marker.layer.latitude);
+        
+        CABasicAnimation * animationLong = [CABasicAnimation animationWithKeyPath:@"longitude"];
+        animationLong.fromValue = @(coord.longitude);
+        animationLong.toValue = @(marker.layer.longitude);
+        
+        
+        CAAnimationGroup *group = [CAAnimationGroup animation];
+        group.duration = 0.1f;
+        group.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+        group.animations = [NSArray arrayWithObjects:animationLat, animationLong, nil];
+        
+        [marker.layer addAnimation:group forKey:@"MyAnimationGroup"];
+        
+    }
+    [CATransaction commit];
+    
+    [mapView_ setSelectedMarker:marker];
+}
+
+- (void) mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker{
+    if (![marker isKindOfClass:[SMTMarker class]]) return;
+    BaseLocationViewController * locUpdateVC = [BaseLocationViewController new];
+    locUpdateVC.location = ((SMTMarker*) marker).location;
+    [self.navigationController pushViewController:locUpdateVC animated:YES];
+    return;
+}
+
 
 
 
