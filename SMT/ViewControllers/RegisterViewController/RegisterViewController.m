@@ -12,6 +12,7 @@
 #import "DataLoader.h"
 #import "UserInfo.h"
 #import "AppDelegate.h"
+#import "FlyoutMenuViewController.h"
 
 @interface RegisterViewController (){
     AppDelegate * appDel;
@@ -210,10 +211,9 @@
                 AppDelegate * appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
                 NSLog(@"userFid : %@",userFid);
                 [appDelegate.user redwriteUserFbID:appDelegate.user.userName andFID:userFid];
-                 
-            //*****
-                //HomeViewController * homeVC = [[HPHomeViewController alloc] initWithNibName:@"HPHomeViewController" bundle:nil];
-               // [self.navigationController pushViewController:homeVC animated:YES];
+                
+                FlyoutMenuViewController * flyOutVC = [[FlyoutMenuViewController alloc] init];
+                [self.navigationController pushViewController:flyOutVC animated:YES];
             
             }
         });
