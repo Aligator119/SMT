@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Species.h"
+#import "Buddy.h"
+
 @class AppDelegate;
 
 enum ApplicationServiceRequest
@@ -73,16 +76,19 @@ enum ApplicationServiceRequest
 
 - (void)buddyAddWithName:(NSString*)buddyName;
 - (void)buddyGetListUsersBuddies;
-- (void)buddyGetUserBuddyWithId:(int)_idBuddy;
+- (Buddy *)buddyGetUserBuddyWithId:(int)_idBuddy;
 - (void)buddyChangeUserBuddy:(int)_idBuddy status:(int)_statusBuddy andVisible:(int)_visible;
 - (void)buddyDeleteUserFromBuddies:(int)_idBuddy;
 - (void)updateUserLocationLat:(NSString*)_latitude andLong:(NSString*)_longitude;
 
-- (void)buddySearchByLastName:(NSString*)_name;
+- (NSArray *)buddySearchByLastName:(NSString*)_name;
 - (void) sendInvitationEmailWithEmail: (NSString*) _email andName: (NSString*) _name;
-- (void) updateUserTrackingVisibility: (BOOL) _tracking_visibility;
-- (void) getUserTrackingVisibility;
+//- (void) updateUserTrackingVisibility: (BOOL) _tracking_visibility;
+//- (void) getUserTrackingVisibility;
 - (void)getWeatherPredictionForCurrentLocation:(int)_idLocation;
-- (void)getAllSpecies;
+- (NSArray *)getAllSpecies;
+- (Species *)getSpecieWithId:(int) specieID;
+- (NSArray *)getSubSpecies:(int) subSpeciesID;
+- (Species *)getSubSpecieWithId:(int) subSpecieID;
 
 @end

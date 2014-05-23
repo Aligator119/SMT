@@ -1,11 +1,3 @@
-//
-//  DataLoader.m
-//  testCaAnimation
-//
-//  Created by Vasya on 01.01.14.
-//  Copyright (c) 2014 Vasya. All rights reserved.
-//
-
 #import "DataLoader.h"
 #import "CJSONDeserializer.h"
 #import "CJSONSerializer.h"
@@ -15,10 +7,8 @@
 #import "FBConnectClass.h"
 #import "ConstantsClass.h"
 #import "NSString+HTML.h"
-#import "Buddy.h"
 #import "SearchingBuddy.h"
 #import "BuddySearchViewController.h"
-#import "Species.h"
 
 #define RequestPost @"POST"
 #define RequestGet @"GET"
@@ -37,7 +27,9 @@
 #define SubstringRegister @"user"
 #define SubstringLocations @"locations/"
 #define SubstringLocation @"location/"
-#define SubstringBuddies @"buddies"
+#define SubstringBuddies @"buddy"
+#define SubstringSpecies @"species"
+#define SubstringSubSpecies @"subspecies"
 #define SubstringCurrentLocation @"current_location"
 
 @implementation DataLoader
@@ -94,12 +86,12 @@
                       birthYear:(int) birthYear
                             sex:(NSString*) userMale
 {
-    NSString * _firstName = [self convertString:firstName];
-    NSString * _secondName = [self convertString:secondName];
-    NSString * _userName = [self convertString:userName];
-    NSString * _userPassword = [self convertString:userPassword];
+//    NSString * _firstName = [self convertString:firstName];
+//    NSString * _secondName = [self convertString:secondName];
+//    NSString * _userName = [self convertString:userName];
+//    NSString * _userPassword = [self convertString:userPassword];
     NSString * _birthYear = [NSString stringWithFormat:@"%i",birthYear];
-    NSString * _userMale = userMale;
+//    NSString * _userMale = userMale;
     
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@",strUrl,SubstringRegister];
    // NSString * strUrlRequestData = [NSString stringWithFormat:URL_USER_CREATE,_firstName,_secondName,_userName,_userPassword,_birthYear,_userMale,APP_ID_KEY];
@@ -239,28 +231,28 @@
 
 #pragma mark - Work with Buddies request
 
-- (void) updateUserTrackingVisibility: (BOOL) _tracking_visibility
-{
-    int tracking_visibility = _tracking_visibility ? 1 : 0;
-    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@privacy/%i",strUrl, appDel.user.userID];
-    NSString * strUrlRequestData = [NSString stringWithFormat:@"tracking_visibility=%i&%@",tracking_visibility,APP_ID_KEY];
-    [self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestPut setHeaders:YES andTypeRequest:ApplicationServiceRequestChangeTrackingVisibility];
-}
-
-- (void) getUserTrackingVisibility
-{
-    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@privacy/%i?%@",strUrl, appDel.user.userID,APP_ID_KEY];
-
-    for (NSDictionary * dic in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetUserTrackingVisibility])
-    {
-        appDel.userTrackingVisibility = [[dic objectForKey:@"tracking_visibility"] boolValue];
-    }
-}
+//- (void) updateUserTrackingVisibility: (BOOL) _tracking_visibility
+//{
+//    int tracking_visibility = _tracking_visibility ? 1 : 0;
+//    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@privacy/%i",strUrl, appDel.user.userID];
+//    NSString * strUrlRequestData = [NSString stringWithFormat:@"tracking_visibility=%i&%@",tracking_visibility,APP_ID_KEY];
+//    [self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestPut setHeaders:YES andTypeRequest:ApplicationServiceRequestChangeTrackingVisibility];
+//}
+//
+//- (void) getUserTrackingVisibility
+//{
+//    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@privacy/%i?%@",strUrl, appDel.user.userID,APP_ID_KEY];
+//
+//    for (NSDictionary * dic in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetUserTrackingVisibility])
+//    {
+//        appDel.userTrackingVisibility = [[dic objectForKey:@"tracking_visibility"] boolValue];
+//    }
+//}
 
 - (void) buddyGetListUsersBuddies
 {
-    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@?%@",strUrl,SubstringBuddies,APP_ID_KEY];
-
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@?app_id=%@&app_key=%@",strUrl,SubstringBuddies ,@"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
+    
     NSMutableArray * buddiesList = [NSMutableArray new];
     for(NSDictionary * dic in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListOfBuddies]){
         Buddy * buddy = [Buddy new];
@@ -269,59 +261,67 @@
     }
     appDel.listUserBuddies = nil;
     appDel.listUserBuddies = [[NSMutableArray alloc] initWithArray:buddiesList];
-
+    
 }
 
 - (void)buddyAddWithName:(NSString *)buddyName
 {
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@",strUrl,SubstringBuddies];
     NSLog(@"URL : %@",strUrlRequestAdress);
+
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[buddyName, @(1), @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"email", @"is_visible", @"app_id", @"app_key"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
     
-    NSString * _userName = [self convertString:buddyName];
-    NSString * strUrlRequestData = [NSString stringWithFormat:@"email=%@&is_visible=1&%@",_userName,APP_ID_KEY];
+    NSLog(@"%@", error);
     
-    [self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestAddBuddy];
+    [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestAddBuddy];
 }
 
-- (void)buddyGetUserBuddyWithId:(int)_idBuddy
+- (Buddy *)buddyGetUserBuddyWithId:(int)_idBuddy
 {
-    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i?%@",strUrl,SubstringBuddies,_idBuddy,APP_ID_KEY];
-
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%@?app_id=%@&app_key=%@",strUrl,SubstringBuddies,[NSString stringWithFormat:@"%i",_idBuddy], @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
+    
     Buddy * buddy = [Buddy new];
     [buddy setData:[self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetInfoAboutBuddy]];
     
-    UINavigationController * controller = (UINavigationController*)appDel.window.rootViewController;
-    id obj = [controller.viewControllers objectAtIndex:(controller.viewControllers.count - 1)];
-    if([obj isKindOfClass:[BuddySearchViewController class]]){
-        BuddySearchViewController * viewC = (BuddySearchViewController*)[controller.viewControllers objectAtIndex:(controller.viewControllers.count - 1)];
-        [viewC addFindingUserToBuddies:buddy];
-        return;
-    }
-
+    return buddy;
 }
-
+//----------------------------------
 - (void)buddyDeleteUserFromBuddies:(int)_idBuddy
 {
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i",strUrl,SubstringBuddies,_idBuddy];
-    NSString * strUrlRequestData = [NSString stringWithFormat:@"%@",APP_ID_KEY];
     
-    [self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestDelete setHeaders:YES andTypeRequest:ApplicationServiceRequestDeleteFromBuddies];
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[@"b63800ad",@"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"app_id", @"app_key"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    
+    NSLog(@"%@", error);
+    
+    
+    [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequestDelete setHeaders:YES andTypeRequest:ApplicationServiceRequestDeleteFromBuddies];
 }
 
 - (void)buddyChangeUserBuddy:(int)_idBuddy status:(int)_statusBuddy andVisible:(int)_visible
 {
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i",strUrl,SubstringBuddies,_idBuddy];
-    NSString * strUrlRequestData = [NSString stringWithFormat:@"status=%i&is_visible=%i&%@",_statusBuddy,_visible,APP_ID_KEY];
+    //NSString * strUrlRequestData = [NSString stringWithFormat:@"status=%i&is_visible=%i&%@",_statusBuddy,_visible,APP_ID_KEY];
     
-    [self startRequest:strUrlRequestAdress andData:strUrlRequestData typeRequest:RequestPut setHeaders:YES andTypeRequest:ApplicationServiceRequestChangeTypeOfBuddyRequest];
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[@(_statusBuddy), @(_visible), @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"status", @"is_visible", @"app_id", @"app_key"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    
+    NSLog(@"%@", error);
+    
+    [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequestPut setHeaders:YES andTypeRequest:ApplicationServiceRequestChangeTypeOfBuddyRequest];
 }
 
-- (void)buddySearchByLastName:(NSString *)_name
-{
-    NSString * strConvert = [self convertString:_name];
-    NSString * strUrlRequestData = [NSString stringWithFormat:@"name=%@&%@",strConvert,APP_ID_KEY];
-    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@%@",strUrl,@"users?",strUrlRequestData];
 
+
+- (NSArray *)buddySearchByLastName:(NSString *)_name
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@?name=%@&app_id=%@&app_key=%@",strUrl,@"user", _name, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
+    
     NSMutableArray * buddiesList = [NSMutableArray new];
     for(NSDictionary * dic in  [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestSearchBuddy]){
         SearchingBuddy * buddy = [SearchingBuddy new];
@@ -333,16 +333,9 @@
             [buddiesList addObject:buddy];
     }
     
-    UINavigationController * controller = (UINavigationController*)appDel.window.rootViewController;
-    id obj = [controller.viewControllers objectAtIndex:(controller.viewControllers.count - 1)];
-    if([obj isKindOfClass:[UITabBarController class]]){
-        
-        UITabBarController * tabBar = (UITabBarController*) obj;
-        BuddySearchViewController * buddySearchVC = (BuddySearchViewController*) [tabBar.viewControllers objectAtIndex:1];
-        [buddySearchVC addFindingUsers:buddiesList];
-    }
-
+    return buddiesList;
 }
+
 
 #pragma mark - Work with user Location 
 
@@ -453,9 +446,13 @@
     appDel.wheatherPredictList = weatherPredictionForLocation;
 }
 
-- (void)getAllSpecies
+
+
+#pragma mark Species
+//-------------------------------------------------------------------------------------------------------------------
+- (NSArray *)getAllSpecies
 {
-    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@species?%@",URLSportsMaster, APP_ID_KEY];
+    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@%@?app_id=%@&app_key=%@",strUrl,SubstringSpecies, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
     NSDictionary *info = [NSDictionary new];
     info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestAddBuddy];
     appDel.speciesList = [NSMutableArray new];
@@ -464,7 +461,41 @@
         [spec initSpeciesWithData:dic];
         [appDel.speciesList addObject:spec];
     }
+    return appDel.speciesList;
 }
+
+- (Species *)getSpecieWithId:(int) specieID
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i?app_id=%@&app_key=%@",strUrl,SubstringSpecies ,specieID, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
+    
+    Species * species = [Species new];
+    [species initSpeciesWithData:[self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListOfBuddies]];
+    return species;
+}
+
+- (NSArray *)getSubSpecies:(int) subSpeciesID
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i/%@?app_id=%@&app_key=%@",strUrl,SubstringSpecies ,subSpeciesID, SubstringSubSpecies, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
+    
+    NSMutableArray * speciesList = [NSMutableArray new];
+    for(NSDictionary * dic in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListOfBuddies]){
+        Species * species = [Species new];
+        [species initSpeciesWithData:dic];
+        [speciesList addObject:species];
+    }
+    return speciesList;
+}
+
+- (Species *)getSubSpecieWithId:(int) subSpecieID
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i?app_id=%@&app_key=%@",strUrl,SubstringSubSpecies ,subSpecieID, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
+    
+    Species * species = [Species new];
+    [species initSpeciesWithData:[self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListOfBuddies]];
+    return species;
+}
+//--------------------------------------------------------------------------------------------------------------------
+
 
 - (BOOL)isUserInMyBuddies:(NSString*)_userID{
     BOOL isBuddy = NO;
