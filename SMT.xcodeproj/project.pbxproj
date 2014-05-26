@@ -130,6 +130,8 @@
 		04DF996A192200AA00D66BEC /* LogDetail2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DF9968192200AA00D66BEC /* LogDetail2ViewController.xib */; };
 		04DF996F19222A2400D66BEC /* LogDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DF996D19222A2400D66BEC /* LogDetailCell.m */; };
 		04DF997019222A2400D66BEC /* LogDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DF996E19222A2400D66BEC /* LogDetailCell.xib */; };
+		04E84190193340640064C03C /* NorthernPikeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E8418E193340640064C03C /* NorthernPikeCell.m */; };
+		04E84191193340640064C03C /* NorthernPikeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E8418F193340640064C03C /* NorthernPikeCell.xib */; };
 		04E88FC1191BA07B00DEF977 /* NewLog1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E88FBF191BA07B00DEF977 /* NewLog1ViewController.m */; };
 		04E88FC2191BA07B00DEF977 /* NewLog1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E88FC0191BA07B00DEF977 /* NewLog1ViewController.xib */; };
 		04EFC31F19249890008A59D7 /* logo-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EFC31B19249890008A59D7 /* logo-1.png */; };
@@ -355,6 +357,9 @@
 		04DF996C19222A2400D66BEC /* LogDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogDetailCell.h; path = ViewControllers/LogDetailViewController/LogDetailCell.h; sourceTree = "<group>"; };
 		04DF996D19222A2400D66BEC /* LogDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogDetailCell.m; path = ViewControllers/LogDetailViewController/LogDetailCell.m; sourceTree = "<group>"; };
 		04DF996E19222A2400D66BEC /* LogDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LogDetailCell.xib; path = ViewControllers/LogDetailViewController/LogDetailCell.xib; sourceTree = "<group>"; };
+		04E8418D193340640064C03C /* NorthernPikeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NorthernPikeCell.h; path = ViewControllers/NewLog2ViewController/NorthernPikeCell/NorthernPikeCell.h; sourceTree = "<group>"; };
+		04E8418E193340640064C03C /* NorthernPikeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NorthernPikeCell.m; path = ViewControllers/NewLog2ViewController/NorthernPikeCell/NorthernPikeCell.m; sourceTree = "<group>"; };
+		04E8418F193340640064C03C /* NorthernPikeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NorthernPikeCell.xib; path = ViewControllers/NewLog2ViewController/NorthernPikeCell/NorthernPikeCell.xib; sourceTree = "<group>"; };
 		04E88FBE191BA07B00DEF977 /* NewLog1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewLog1ViewController.h; sourceTree = "<group>"; };
 		04E88FBF191BA07B00DEF977 /* NewLog1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewLog1ViewController.m; sourceTree = "<group>"; };
 		04E88FC0191BA07B00DEF977 /* NewLog1ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewLog1ViewController.xib; sourceTree = "<group>"; };
@@ -918,6 +923,7 @@
 		04B015B2191B6FAD002F6FA9 /* NewLog2ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				04E8418C193340330064C03C /* NorthernPikeCell */,
 				04B015B3191B6FD3002F6FA9 /* NewLog2ViewController.h */,
 				04B015B4191B6FD3002F6FA9 /* NewLog2ViewController.m */,
 				04B015B5191B6FD3002F6FA9 /* NewLog2ViewController.xib */,
@@ -998,6 +1004,16 @@
 				04DF996E19222A2400D66BEC /* LogDetailCell.xib */,
 			);
 			name = LogDetailCell;
+			sourceTree = "<group>";
+		};
+		04E8418C193340330064C03C /* NorthernPikeCell */ = {
+			isa = PBXGroup;
+			children = (
+				04E8418D193340640064C03C /* NorthernPikeCell.h */,
+				04E8418E193340640064C03C /* NorthernPikeCell.m */,
+				04E8418F193340640064C03C /* NorthernPikeCell.xib */,
+			);
+			name = NorthernPikeCell;
 			sourceTree = "<group>";
 		};
 		04E88FBD191BA07B00DEF977 /* NewLog1ViewController */ = {
@@ -1139,6 +1155,7 @@
 				04657AC5192614580018CB70 /* SelectLocationViewController.xib in Resources */,
 				043354CE1910F0A7003767D0 /* BuddySearchCell.xib in Resources */,
 				04DF996A192200AA00D66BEC /* LogDetail2ViewController.xib in Resources */,
+				04E84191193340640064C03C /* NorthernPikeCell.xib in Resources */,
 				04A2A3C1191B7FDC0006677E /* CustomHeader.xib in Resources */,
 				0408069B190EA37D00E063C3 /* InfoPlist.strings in Resources */,
 				04409429190FA53900C4A558 /* ForgotPasswordViewController.xib in Resources */,
@@ -1240,6 +1257,7 @@
 				04F342F01921118E0054294C /* BuddyPageViewController.m in Sources */,
 				04A2A398191B7F9F0006677E /* SpeciesViewController.m in Sources */,
 				043354C61910EF3E003767D0 /* BuddySearchViewController.m in Sources */,
+				04E84190193340640064C03C /* NorthernPikeCell.m in Sources */,
 				0433548D1910E7C9003767D0 /* Location.m in Sources */,
 				04CEC03A191B81EF00BF784D /* LogHistoryViewController.m in Sources */,
 				11D48DE61918E32700A9787E /* AFURLRequestSerialization.m in Sources */,

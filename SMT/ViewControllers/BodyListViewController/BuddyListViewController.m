@@ -45,6 +45,7 @@
 - (void)actDone:(UIButton *)sender;
 - (void)actAccept:(UIButton *)sender;
 - (void)actHidden:(UIButton *)sender;
+- (void)actDownloadBuddy;
 @end
 
 @implementation BuddyListViewController
@@ -88,37 +89,9 @@
     app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
     [self startInternatIndicator];
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-    [dataLoader buddyGetListUsersBuddies];
+    
 //--------------------------------------------------------------------------------------------------------------------
-    NSMutableArray * array = [[NSMutableArray alloc]init];
-    NSMutableArray * buddies = [NSMutableArray new];
-    NSMutableArray * pendingBuddies = [NSMutableArray new];
-    NSMutableArray * buddiesReceived = [NSMutableArray new];
-    
-    for (Buddy * buddy in app.listUserBuddies) {
-        if([buddy.userRelation isEqualToString:StatusAccepted]){
-            [buddies addObject:buddy];
-        } else if([buddy.userRelation isEqualToString:StatusSent]){  //@"REQUEST_SENT"
-            [pendingBuddies addObject:buddy];
-        } else if([buddy.userRelation isEqualToString:StatusReceived]){
-            [buddiesReceived addObject:buddy];
-        }
-    }
-    
-    friendList = [[NSMutableArray alloc]initWithArray:buddies];
-    if (friendList.count) {
-        [array addObject:friendList];
-    }
-    incomingQwery = [[NSMutableArray alloc]initWithArray:buddiesReceived];
-    if (incomingQwery.count) {
-        [array addObject:incomingQwery];
-    }
-    inviteFriend = [[NSMutableArray alloc]initWithArray:pendingBuddies];
-    if (inviteFriend.count) {
-        [array addObject:inviteFriend];
-    }
-    
-    allBuddyList = [[NSMutableArray alloc]initWithArray:array];
+    [self actDownloadBuddy];
 //--------------------------------------------------------------------------------------------------------------------
     [self stopInternatIndicator];
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
@@ -207,6 +180,7 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSArray * buffer = [allBuddyList objectAtIndex:indexPath.section];
     Buddy * buddy = [buffer objectAtIndex:indexPath.row];
     BuddyPageViewController * bpvc = [[BuddyPageViewController alloc]initWithNibName:@"BuddyPageViewController" bundle:nil withBuddy:buddy];
@@ -305,19 +279,20 @@
                     if(!dataLoader.isCorrectRezult) {
                         NSLog(@"Error when delete buddy");
                     } else {
-                        [array removeObject:bud];
-                        NSMutableArray *  budArray = [[NSMutableArray alloc]initWithArray:friendList];
-                        [allBuddyList removeObject:friendList];
-                        [budArray addObject:bud];
-                        friendList = [[NSMutableArray alloc]initWithArray:budArray];
-                        [allBuddyList addObject:friendList];
-                        if ([array count]) {
-                            incomingQwery = [[NSMutableArray alloc]initWithArray:array];
-                            [allBuddyList addObject:incomingQwery];
-                        }
+//                        [array removeObject:bud];
+//                        [allBuddyList removeObject:friendList];
+//                        [friendList addObject:bud];
+//                        [allBuddyList addObject:friendList];
+//                        if ([array count]) {
+//                            incomingQwery = [[NSMutableArray alloc]initWithArray:array];
+//                            [allBuddyList addObject:incomingQwery];
+//                        }
+                        [self actDownloadBuddy];
+                        [self.table reloadData];
                     }
-                    [self.table reloadData];
+                    
                 });
+                
             });
         }
     }
@@ -350,6 +325,43 @@
                 });
             });
         }
+    }
+}
+
+- (void) actDownloadBuddy
+{
+    [dataLoader buddyGetListUsersBuddies];
+    if (dataLoader.isCorrectRezult) {
+
+    NSMutableArray * array = [[NSMutableArray alloc]init];
+    NSMutableArray * buddies = [NSMutableArray new];
+    NSMutableArray * pendingBuddies = [NSMutableArray new];
+    NSMutableArray * buddiesReceived = [NSMutableArray new];
+    
+    for (Buddy * buddy in app.listUserBuddies) {
+        if([buddy.userRelation isEqualToString:StatusAccepted]){
+            [buddies addObject:buddy];
+        } else if([buddy.userRelation isEqualToString:StatusSent]){  //@"REQUEST_SENT"
+            [pendingBuddies addObject:buddy];
+        } else if([buddy.userRelation isEqualToString:StatusReceived]){
+            [buddiesReceived addObject:buddy];
+        }
+    }
+    
+    friendList = [[NSMutableArray alloc]initWithArray:buddies];
+    if (friendList.count) {
+        [array addObject:friendList];
+    }
+    incomingQwery = [[NSMutableArray alloc]initWithArray:buddiesReceived];
+    if (incomingQwery.count) {
+        [array addObject:incomingQwery];
+    }
+    inviteFriend = [[NSMutableArray alloc]initWithArray:pendingBuddies];
+    if (inviteFriend.count) {
+        [array addObject:inviteFriend];
+    }
+    
+    allBuddyList = [[NSMutableArray alloc]initWithArray:array];
     }
 }
 
