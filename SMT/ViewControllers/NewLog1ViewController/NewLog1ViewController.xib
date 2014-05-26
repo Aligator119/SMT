@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="navigationBarHeightConstr" destination="QB4-Wz-raZ" id="Q98-wH-975"/>
                 <outlet property="navigationBarVerticalConstr" destination="wYc-gj-y61" id="63B-pS-ROx"/>
+                <outlet property="table" destination="0Uu-lE-FY7" id="3Z7-0V-dJr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

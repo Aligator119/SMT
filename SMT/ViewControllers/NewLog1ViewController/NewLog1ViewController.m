@@ -12,13 +12,16 @@
 #import "AppDelegate.h"
 #import "Species.h"
 #import "NewLog2ViewController.h"
+#import "UIViewController+LoaderCategory.h"
 
 @interface NewLog1ViewController ()
 {
     AppDelegate * appDelegate;
+    DataLoader *loader;
 }
 - (IBAction)actButtonBack:(UIButton *)sender;
 - (IBAction)actButtonHistory:(UIButton *)sender;
+- (void)actDownloadData;
 @end
 
 @implementation NewLog1ViewController
@@ -41,18 +44,18 @@
         self.navigationBarVerticalConstr.constant -=20;
     }
 
+    self.navigationController.navigationBar.hidden = YES;
+    appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    loader = [[DataLoader alloc]init];
+    [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
     
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    self.navigationController.navigationBar.hidden = YES;
-    appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
-    DataLoader *loader = [[DataLoader alloc]init];
-    if ([appDelegate.speciesList firstObject] == nil) {
-        [loader getAllSpecies];
-    }
+    [self actDownloadData];
 }
 
 
@@ -110,5 +113,33 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void) actDownloadData
+{
+    if ([appDelegate.speciesList firstObject] == nil) {
+    [self startLoader];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        
+       [loader getAllSpecies];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            
+            if(!loader.isCorrectRezult) {
+                NSLog(@"Error download sybSpecie");
+                [self endLoader];
+            } else {
+                [self.table reloadData];
+                [self endLoader];
+            }
+            if ([[UIApplication sharedApplication] isIgnoringInteractionEvents])
+            {
+                [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            }
+        });
+    });
+    }
+}
+
 
 @end

@@ -67,15 +67,15 @@
     
     functionsDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:functionsArrayIdentifiers, @"identifiers", menuItems, @"strings", nil];
 //--------------------------------------------------------------------------------------------------------------------
-    if ([app.speciesList firstObject] == nil) {
-        DataLoader * dataLoader = [DataLoader instance];
-        
-        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        dispatch_async(newQueue, ^(){
-             [dataLoader getAllSpecies];
-        });
-       
-    }
+//    if ([app.speciesList firstObject] == nil) {
+//        DataLoader * dataLoader = [DataLoader instance];
+//        
+//        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//        dispatch_async(newQueue, ^(){
+//             [dataLoader getAllSpecies];
+//        });
+//       
+//    }
     
     
     self.table.backgroundView = nil;

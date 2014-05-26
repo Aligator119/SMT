@@ -24,6 +24,9 @@
 #define CELL_HEIGTH           44
 #define INCOMING_CELL_HEIGTTH 80
 
+#define status_accepted  2
+#define status_denied    3
+
 @interface BuddyListViewController ()
 {
     int numberOfSection;
@@ -42,6 +45,7 @@
 - (void)actDone:(UIButton *)sender;
 - (void)actAccept:(UIButton *)sender;
 - (void)actHidden:(UIButton *)sender;
+- (void)actDownloadBuddy;
 @end
 
 @implementation BuddyListViewController
@@ -85,37 +89,9 @@
     app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
     [self startInternatIndicator];
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-    [dataLoader buddyGetListUsersBuddies];
+    
 //--------------------------------------------------------------------------------------------------------------------
-    NSMutableArray * array = [[NSMutableArray alloc]init];
-    NSMutableArray * buddies = [NSMutableArray new];
-    NSMutableArray * pendingBuddies = [NSMutableArray new];
-    NSMutableArray * buddiesReceived = [NSMutableArray new];
-    
-    for (Buddy * buddy in app.listUserBuddies) {
-        if([buddy.userRelation isEqualToString:StatusAccepted]){
-            [buddies addObject:buddy];
-        } else if([buddy.userRelation isEqualToString:StatusSent]){  //@"REQUEST_SENT"
-            [pendingBuddies addObject:buddy];
-        } else if([buddy.userRelation isEqualToString:StatusReceived]){
-            [buddiesReceived addObject:buddy];
-        }
-    }
-    
-    friendList = [[NSMutableArray alloc]initWithArray:buddies];
-    if (friendList.count) {
-        [array addObject:friendList];
-    }
-    incomingQwery = [[NSMutableArray alloc]initWithArray:buddiesReceived];
-    if (incomingQwery.count) {
-        [array addObject:incomingQwery];
-    }
-    inviteFriend = [[NSMutableArray alloc]initWithArray:pendingBuddies];
-    if (inviteFriend.count) {
-        [array addObject:inviteFriend];
-    }
-    
-    allBuddyList = [[NSMutableArray alloc]initWithArray:array];
+    [self actDownloadBuddy];
 //--------------------------------------------------------------------------------------------------------------------
     [self stopInternatIndicator];
     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
@@ -146,6 +122,8 @@
             ((IncomingFriendCell *)cell).lbFriendName.text = [NSString stringWithFormat:@"%@ %@",buddy.userFirstName ,buddy.userSecondName];
             [((IncomingFriendCell *)cell).btnDone addTarget:self action:@selector(actDone:) forControlEvents:UIControlEventTouchUpInside];
             [((IncomingFriendCell *)cell).btnAccept addTarget:self action:@selector(actAccept:) forControlEvents:UIControlEventTouchUpInside];
+            ((IncomingFriendCell *)cell).btnDone.tag = [buddy.userID intValue];
+            ((IncomingFriendCell *)cell).btnAccept.tag = [buddy.userID intValue];
         }
     
             
@@ -202,6 +180,7 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSArray * buffer = [allBuddyList objectAtIndex:indexPath.section];
     Buddy * buddy = [buffer objectAtIndex:indexPath.row];
     BuddyPageViewController * bpvc = [[BuddyPageViewController alloc]initWithNibName:@"BuddyPageViewController" bundle:nil withBuddy:buddy];
@@ -255,18 +234,73 @@
 
 - (void)actDone:(UIButton *)sender
 {
-    NSLog(@"Done");
+    NSMutableArray * array = [[NSMutableArray alloc]initWithArray:incomingQwery];
+    [allBuddyList removeObject:incomingQwery];
+    for (id obj in array) {
+        Buddy * bud = obj;
+        if ([bud.userID intValue] == sender.tag) {
+            dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            dispatch_async(newQueue, ^(){
+                
+                [dataLoader buddyChangeUserBuddy:sender.tag status:status_denied andVisible:1];
+                
+                dispatch_async(dispatch_get_main_queue(), ^(){
+                    
+                    if(!dataLoader.isCorrectRezult) {
+                        NSLog(@"Error when delete buddy");
+                    } else {
+                        [array removeObject:bud];
+                        if ([array count]) {
+                            incomingQwery = [[NSMutableArray alloc]initWithArray:array];
+                            [allBuddyList addObject:incomingQwery];
+                        }
+                    }
+                    [self.table reloadData];
+                });
+            });
+        }
+    }
 }
 
 - (void)actAccept:(UIButton *)sender
 {
-    NSLog(@"Accept");
+    NSMutableArray * array = [[NSMutableArray alloc]initWithArray:incomingQwery];
+    [allBuddyList removeObject:incomingQwery];
+    for (id obj in array) {
+        Buddy * bud = obj;
+        if ([bud.userID intValue] == sender.tag) {
+            dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            dispatch_async(newQueue, ^(){
+                
+                [dataLoader buddyChangeUserBuddy:sender.tag status:status_accepted andVisible:1];
+                
+                dispatch_async(dispatch_get_main_queue(), ^(){
+                    
+                    if(!dataLoader.isCorrectRezult) {
+                        NSLog(@"Error when delete buddy");
+                    } else {
+//                        [array removeObject:bud];
+//                        [allBuddyList removeObject:friendList];
+//                        [friendList addObject:bud];
+//                        [allBuddyList addObject:friendList];
+//                        if ([array count]) {
+//                            incomingQwery = [[NSMutableArray alloc]initWithArray:array];
+//                            [allBuddyList addObject:incomingQwery];
+//                        }
+                        [self actDownloadBuddy];
+                        [self.table reloadData];
+                    }
+                    
+                });
+                
+            });
+        }
+    }
 }
 
 - (void)actHidden:(UIButton *)sender
 {
     NSMutableArray * array = [[NSMutableArray alloc]initWithArray:inviteFriend];
-    //int numObject = [allBuddyList indexOfObject:inviteFriend];
     [allBuddyList removeObject:inviteFriend];
     for (id obj in array) {
         Buddy * bud = obj;
@@ -282,13 +316,52 @@
                         NSLog(@"Error when delete buddy");
                     } else {
                         [array removeObject:bud];
+                        if ([array count]) {
                         inviteFriend = [[NSMutableArray alloc]initWithArray:array];
                         [allBuddyList addObject:inviteFriend];
+                        }
                     }
                     [self.table reloadData];
                 });
             });
         }
+    }
+}
+
+- (void) actDownloadBuddy
+{
+    [dataLoader buddyGetListUsersBuddies];
+    if (dataLoader.isCorrectRezult) {
+
+    NSMutableArray * array = [[NSMutableArray alloc]init];
+    NSMutableArray * buddies = [NSMutableArray new];
+    NSMutableArray * pendingBuddies = [NSMutableArray new];
+    NSMutableArray * buddiesReceived = [NSMutableArray new];
+    
+    for (Buddy * buddy in app.listUserBuddies) {
+        if([buddy.userRelation isEqualToString:StatusAccepted]){
+            [buddies addObject:buddy];
+        } else if([buddy.userRelation isEqualToString:StatusSent]){  //@"REQUEST_SENT"
+            [pendingBuddies addObject:buddy];
+        } else if([buddy.userRelation isEqualToString:StatusReceived]){
+            [buddiesReceived addObject:buddy];
+        }
+    }
+    
+    friendList = [[NSMutableArray alloc]initWithArray:buddies];
+    if (friendList.count) {
+        [array addObject:friendList];
+    }
+    incomingQwery = [[NSMutableArray alloc]initWithArray:buddiesReceived];
+    if (incomingQwery.count) {
+        [array addObject:incomingQwery];
+    }
+    inviteFriend = [[NSMutableArray alloc]initWithArray:pendingBuddies];
+    if (inviteFriend.count) {
+        [array addObject:inviteFriend];
+    }
+    
+    allBuddyList = [[NSMutableArray alloc]initWithArray:array];
     }
 }
 
