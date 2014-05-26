@@ -27,6 +27,10 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;
+@property (strong, nonatomic) IBOutlet UIView *viewStars;
+
+- (IBAction)actNumberSelectStar:(UIButton *)sender;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andSpecies:(Species *)species;
 @property (weak, nonatomic) IBOutlet UIButton *btnLocation;

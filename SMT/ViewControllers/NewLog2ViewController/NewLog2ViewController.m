@@ -44,10 +44,13 @@
 - (IBAction)actDonePicker:(id)sender;
 - (void)actDidOnToExitSeen:(id)sender;
 - (void)actDidOnToExitHarvested:(id)sender;
-- (void)actSelectStar:(id)sender;
+- (void)actSelectStar:(UIButton *)sender;
 @end
 
 @implementation NewLog2ViewController
+
+- (IBAction)actStarSelect:(id)sender {
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andSpecies:(Species *)species
 {
@@ -426,9 +429,26 @@
     [self resignFirstResponder];
 }
 
-- (void)actSelectStar:(id)sender
+- (void)actSelectStar:(UIButton *)sender
 {
+    CGRect  bounds = self.viewStars.frame;
+    bounds.origin.y = self.view.center.y;
+    self.viewStars.frame = bounds;
+    [self.view addSubview:self.viewStars];
     
+}
+
+- (IBAction)actNumberSelectStar:(UIButton *)sender
+{
+    //int i  = sender.tag;
+    for (int i = 1; i<=sender.tag; i++) {
+        [(UIButton *) [self.viewStars viewWithTag:i] setBackgroundColor:[UIColor yellowColor]];
+    }
+    [UIView animateWithDuration:1.0f animations:^{
+        self.viewStars.alpha = 0.0f;
+    } completion:^(BOOL finished) {
+        [self.viewStars removeFromSuperview];
+    }];
 }
 
 @end
