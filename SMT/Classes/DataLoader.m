@@ -361,6 +361,18 @@
     return buddiesList;
 }
 
+#pragma mark Log Activity
+
+- (void) getActivityList{
+    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log?app_id=%@&app_key=%@", strUrl, App_id, App_key];
+    [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListActivities];
+}
+
+- (void) getActivityWithId: (NSInteger) _id{
+    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log/%i?app_id=%@&app_key=%@", strUrl, _id, App_id, App_key];
+    [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetActivityWithId];
+}
+
 
 #pragma mark - Work with user Location 
 
