@@ -159,6 +159,8 @@
 		11D48DE81918E32700A9787E /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D48DDF1918E32700A9787E /* AFURLSessionManager.m */; };
 		11D48DF71919079800A9787E /* Species.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D48DF61919079800A9787E /* Species.m */; };
 		11D48E08191A8C8900A9787E /* UIViewController+LoaderCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D48E07191A8C8900A9787E /* UIViewController+LoaderCategory.m */; };
+		843CD56219333D3400EF7E46 /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 843CD56119333D3400EF7E46 /* Activity.m */; };
+		843CD56519333E0E00EF7E46 /* ActivityDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 843CD56419333E0E00EF7E46 /* ActivityDetails.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -408,6 +410,10 @@
 		11D48DF61919079800A9787E /* Species.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Species.m; path = Classes/Species.m; sourceTree = "<group>"; };
 		11D48E06191A8C8900A9787E /* UIViewController+LoaderCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIViewController+LoaderCategory.h"; path = "Classes/UIViewController+LoaderCategory.h"; sourceTree = "<group>"; };
 		11D48E07191A8C8900A9787E /* UIViewController+LoaderCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIViewController+LoaderCategory.m"; path = "Classes/UIViewController+LoaderCategory.m"; sourceTree = "<group>"; };
+		843CD56019333D3300EF7E46 /* Activity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Activity.h; path = Classes/Activity.h; sourceTree = "<group>"; };
+		843CD56119333D3400EF7E46 /* Activity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Activity.m; path = Classes/Activity.m; sourceTree = "<group>"; };
+		843CD56319333E0E00EF7E46 /* ActivityDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityDetails.h; path = Classes/ActivityDetails.h; sourceTree = "<group>"; };
+		843CD56419333E0E00EF7E46 /* ActivityDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityDetails.m; path = Classes/ActivityDetails.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -596,6 +602,10 @@
 				043354891910E7C9003767D0 /* UserInfo.m */,
 				11C9F679191780DC00CDAFBA /* WheatherPredict.h */,
 				11C9F67A191780DC00CDAFBA /* WheatherPredict.m */,
+				843CD56019333D3300EF7E46 /* Activity.h */,
+				843CD56119333D3400EF7E46 /* Activity.m */,
+				843CD56319333E0E00EF7E46 /* ActivityDetails.h */,
+				843CD56419333E0E00EF7E46 /* ActivityDetails.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1232,6 +1242,7 @@
 				043354AC1910ED9F003767D0 /* CJSONDeserializer_BlocksExtensions.m in Sources */,
 				04409440190FA98B00C4A558 /* RegisterViewController.m in Sources */,
 				11D48DE51918E32700A9787E /* AFURLConnectionOperation.m in Sources */,
+				843CD56519333E0E00EF7E46 /* ActivityDetails.m in Sources */,
 				04A2A3C0191B7FDC0006677E /* CustomHeader.m in Sources */,
 				11D48DE81918E32700A9787E /* AFURLSessionManager.m in Sources */,
 				04DF9969192200AA00D66BEC /* LogDetail2ViewController.m in Sources */,
@@ -1240,6 +1251,7 @@
 				046C6C08190FECA700E3AC56 /* IncomingFriendCell.m in Sources */,
 				043354B01910ED9F003767D0 /* CJSONSerializedData.m in Sources */,
 				046C6C12190FECEE00E3AC56 /* Cell.m in Sources */,
+				843CD56219333D3400EF7E46 /* Activity.m in Sources */,
 				04CEC047191B860C00BF784D /* LocationSearch.m in Sources */,
 				11C9F68A1917E52A00CDAFBA /* UIImageView+AFNetworking.m in Sources */,
 				11C9F67B191780DC00CDAFBA /* WheatherPredict.m in Sources */,
