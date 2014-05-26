@@ -90,6 +90,12 @@
 {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DATA];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    [((AppDelegate *)[UIApplication sharedApplication].delegate).listLocations removeAllObjects];
+    [((AppDelegate *)[UIApplication sharedApplication].delegate).speciesList removeAllObjects];
+    ((AppDelegate *)[UIApplication sharedApplication].delegate).defaultLocation = nil;
+    [((AppDelegate *)[UIApplication sharedApplication].delegate).listUserBuddies removeAllObjects];
+    ((AppDelegate *)[UIApplication sharedApplication].delegate).wheatherPredictList = nil;
+    [((AppDelegate *)[UIApplication sharedApplication].delegate).pred removeAllObjects];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

@@ -12,6 +12,9 @@
 #import "LogDetailViewController.h"
 #import "UIViewController+LoaderCategory.h"
 #import "NorthernPikeCell.h"
+#import "Activity.h"
+#import "ActivityDetails.h"
+#import "Location.h"
 
 
 #define TAG 12345
@@ -26,7 +29,9 @@
     NSDateFormatter * timeFormatter;
     AppDelegate * appDelegate;
     DataLoader * dataLoader;
-   }
+    NSMutableArray * activityDetails;
+    Activity * activity;
+    }
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIPickerView *picker;
@@ -42,8 +47,8 @@
 - (IBAction)actButtonBack:(id)sender;
 - (IBAction)actDoneDatePicker:(id)sender;
 - (IBAction)actDonePicker:(id)sender;
-- (void)actDidOnToExitSeen:(id)sender;
-- (void)actDidOnToExitHarvested:(id)sender;
+- (void)actDidOnToExitSeen:(UITextField *)sender;
+- (void)actDidOnToExitHarvested:(UITextField *)sender;
 - (void)actSelectStar:(UIButton *)sender;
 @end
 
@@ -92,7 +97,7 @@
     dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"MMMM dd yyyy"];
     timeFormatter = [[NSDateFormatter alloc]init];
-    [timeFormatter setDateFormat:@"h:mm:a"];
+    [timeFormatter setDateFormat:@"hh:mm:ss"];
     
     
     UITapGestureRecognizer *datePickerViewRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pressedDatePickerView:)];
@@ -112,6 +117,9 @@
     
     [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
     dataLoader = [DataLoader instance];
+    
+    activityDetails = [[NSMutableArray alloc]init];
+    activity = [[Activity alloc]init];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -160,12 +168,12 @@
         }
     } else {
         [cell.tfSeen addTarget:self action:@selector(actDidOnToExitSeen:) forControlEvents:UIControlEventEditingDidEndOnExit];
-        cell.tfSeen.tag = indexPath.row;
+        cell.tfSeen.tag = indexPath.row-1;
         [cell.tfHarvested addTarget:self action:@selector(actDidOnToExitHarvested:) forControlEvents:UIControlEventEditingDidEndOnExit];
-        cell.tfHarvested.tag = indexPath.row;
+        cell.tfHarvested.tag = indexPath.row-1;
         cell.img.image = ((Species *)[listOfSpecies objectAtIndex:indexPath.row]).photo;
         [cell.btnLevel addTarget:self action:@selector(actSelectStar:) forControlEvents:UIControlEventTouchUpInside];
-        cell.btnLevel.tag = indexPath.row;
+        cell.btnLevel.tag = indexPath.row-1;
     }
     return cell;
 }
@@ -333,6 +341,10 @@
     NSMutableArray * array = listOfSpecies.mutableCopy;
     [array removeObjectAtIndex:0];
     [array removeLastObject];
+    activity.startTime = [timeFormatter stringFromDate:self.huntStartTime];
+    activity.endTime = [timeFormatter stringFromDate:self.huntEndTime];
+    activity.date = [dateFormatter stringFromDate:self.huntDate];
+    activity.location_id = self.location.locID;
     NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:array, @"specie", self.huntStartTime, @"startTime", self.huntEndTime, @"endTime", nil];
     LogDetailViewController * ldvc = [[LogDetailViewController alloc]initWithNibName:@"LogDetailViewController" bundle:nil andProperty:dict];
     [self.navigationController pushViewController:ldvc animated:YES];
@@ -408,6 +420,9 @@
         self.northernPike = nil;
         [listOfSpecies addObject:@"footer"];
         [self.table reloadData];
+        ActivityDetails * details = [[ActivityDetails alloc]init];
+        details.subspecies_id = [self.northernPike.specId intValue];
+        [activityDetails addObject:details];
     }
 }
 
@@ -419,14 +434,16 @@
     [self.btnLocation setTitle:self.location.locName forState:UIControlStateNormal];
 }
 
-- (void)actDidOnToExitSeen:(id)sender
+- (void)actDidOnToExitSeen:(UITextField *)sender
 {
     [self resignFirstResponder];
+    ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).seen = [sender.text intValue];
 }
 
-- (void)actDidOnToExitHarvested:(id)sender
+- (void)actDidOnToExitHarvested:(UITextField *)sender
 {
     [self resignFirstResponder];
+    ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).harvested = [sender.text intValue];
 }
 
 - (void)actSelectStar:(UIButton *)sender
@@ -434,21 +451,34 @@
     CGRect  bounds = self.viewStars.frame;
     bounds.origin.y = self.view.center.y;
     self.viewStars.frame = bounds;
+    self.viewStars.tag = sender.tag;
+    if (((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).activitylevel) {
+        for (UIButton * btn in self.viewStars.subviews) {
+            if (btn.tag <= ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).activitylevel) {
+                btn.backgroundColor = [UIColor yellowColor];
+            } else {
+                btn.backgroundColor = [UIColor clearColor];
+            }
+        }
+    }
+    self.viewStars.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.viewStars];
+    
     
 }
 
 - (IBAction)actNumberSelectStar:(UIButton *)sender
 {
-    //int i  = sender.tag;
+    ((ActivityDetails *)[activityDetails objectAtIndex:self.viewStars.tag]).activitylevel = sender.tag;
     for (int i = 1; i<=sender.tag; i++) {
-        [(UIButton *) [self.viewStars viewWithTag:i] setBackgroundColor:[UIColor yellowColor]];
+        ((UIButton *)[self.viewStars viewWithTag:i]).backgroundColor = [UIColor yellowColor];
     }
     [UIView animateWithDuration:1.0f animations:^{
         self.viewStars.alpha = 0.0f;
     } completion:^(BOOL finished) {
         [self.viewStars removeFromSuperview];
     }];
+    self.viewStars.alpha = 1.0f;
 }
 
 @end
