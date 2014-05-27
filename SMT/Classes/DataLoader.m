@@ -378,6 +378,9 @@
 - (void) createActivityWithActivityObject: (Activity*) _activity andActivityDetails: (NSArray*) _activityDetails andSpeciesId: (NSInteger) _speciesId{
     NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log", strUrl];
     NSString *speciesId = [NSString stringWithFormat:@"%d",_speciesId];
+    
+    NSMutableDictionary *activityDict = [NSMutableDictionary dictionaryWithObjects:@[] forKeys:@[]];
+    
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:@[speciesId, _activity, _activityDetails, App_id, App_key] forKeys:@[@"species_id", @"activity", @"harvestrows", @"app_id", @"app_key" ]];
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
