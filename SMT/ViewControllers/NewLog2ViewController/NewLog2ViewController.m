@@ -135,7 +135,7 @@
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
         
-        self.northernPikeList = [[NSMutableArray alloc]initWithArray:[dataLoader getSubSpecies:[self.species.specId integerValue]]];
+        self.northernPikeList = [[NSMutableArray alloc]initWithArray:[dataLoader getSubSpecies:[self.species.specId intValue]]];
         
         dispatch_async(dispatch_get_main_queue(), ^(){
             
@@ -247,7 +247,7 @@
 
 - (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    int num = 5;
+    NSInteger num = 5;
     if (pickerType == 1) {
         num = self.huntTypeList.count;
     } else if (pickerType == 2) {
@@ -386,10 +386,27 @@
     activity.endTime = [timeFormatter stringFromDate:self.huntEndTime];
     activity.date = [dateFormatter stringFromDate:self.huntDate];
     activity.location_id = self.location.locID;
-    NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:array, @"specie", self.huntStartTime, @"startTime", self.huntEndTime, @"endTime", nil];
-    LogDetailViewController * ldvc = [[LogDetailViewController alloc]initWithNibName:@"LogDetailViewController" bundle:nil andProperty:dict];
-    [self.navigationController pushViewController:ldvc animated:YES];
-    }
+//----------------------------------------------------------------------------------------------------
+        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(newQueue, ^(){
+            
+            [dataLoader createActivityWithActivityObject:activity andActivityDetails:activityDetails andSpeciesId:[self.species.specId integerValue]];
+            
+            dispatch_async(dispatch_get_main_queue(), ^(){
+                
+                if(!dataLoader.isCorrectRezult) {
+                    NSLog(@"Error download sybSpecie");
+                } else {
+                    
+                    NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:array, @"specie", self.huntStartTime, @"startTime", self.huntEndTime, @"endTime", nil];
+                    LogDetailViewController * ldvc = [[LogDetailViewController alloc]initWithNibName:@"LogDetailViewController" bundle:nil andProperty:dict];
+                    [self.navigationController pushViewController:ldvc animated:YES];
+
+                }
+            });
+        });
+//---------------------------------------------------------------------------------------
+        }
 }
 
 - (IBAction)actButtonBack:(id)sender {

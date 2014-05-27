@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Species.h"
 #import "Buddy.h"
+#import "Activity.h"
 
 @class AppDelegate;
 
@@ -95,5 +96,7 @@ enum ApplicationServiceRequest
 - (Species *)getSpecieWithId:(int) specieID;
 - (NSArray *)getSubSpecies:(int) subSpeciesID;
 - (Species *)getSubSpecieWithId:(int) subSpecieID;
+
+- (void) createActivityWithActivityObject: (Activity*) _activity andActivityDetails: (NSArray*) _activityDetails andSpeciesId: (NSInteger) _speciesId;
 
 @end
