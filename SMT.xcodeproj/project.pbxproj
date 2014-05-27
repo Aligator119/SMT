@@ -933,7 +933,7 @@
 		04B015B2191B6FAD002F6FA9 /* NewLog2ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				04E8418C193340330064C03C /* NorthernPikeCell */,
+				04D76FCC1934C5E600E1F59B /* CustomCell */,
 				04B015B3191B6FD3002F6FA9 /* NewLog2ViewController.h */,
 				04B015B4191B6FD3002F6FA9 /* NewLog2ViewController.m */,
 				04B015B5191B6FD3002F6FA9 /* NewLog2ViewController.xib */,
@@ -983,6 +983,30 @@
 			);
 			name = LocationSearch;
 			path = ViewControllers/LocationSearch;
+			sourceTree = "<group>";
+		};
+		04D76FCC1934C5E600E1F59B /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				04D76FCE1934C62B00E1F59B /* FooterCell */,
+				04D76FCD1934C61E00E1F59B /* HeaderCell */,
+				04E8418C193340330064C03C /* NorthernPikeCell */,
+			);
+			name = CustomCell;
+			sourceTree = "<group>";
+		};
+		04D76FCD1934C61E00E1F59B /* HeaderCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = HeaderCell;
+			sourceTree = "<group>";
+		};
+		04D76FCE1934C62B00E1F59B /* FooterCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = FooterCell;
 			sourceTree = "<group>";
 		};
 		04DF995F1921FD7E00D66BEC /* LogDetailViewController */ = {

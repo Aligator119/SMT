@@ -25,8 +25,6 @@
 @interface NewLog2ViewController ()
 {
     NSMutableArray * listOfSpecies;
-    NSArray * header;
-    NSArray * footer;
     int pickerType;
     NSDateFormatter * dateFormatter;
     NSDateFormatter * myDateFormatter;
@@ -83,8 +81,6 @@
     }
     
     listOfSpecies = [[NSMutableArray alloc]init];
-    header = [[NSArray alloc]initWithObjects:@"header", nil];
-    footer = [[NSArray alloc]initWithObjects:@"footer", nil];
 
     //------------------------------------------------------------------------------
     self.huntType =     @"";
@@ -158,35 +154,18 @@
 //------------------------------------------------
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3;
+    return 1;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int count = 0;
-    switch (section) {
-        case 0:
-            count = 1;
-            break;
-        case 1:
-            count = [listOfSpecies count];
-            break;
-        case 2:
-            count = 1;
-            break;
-    }
-    return count;
+    return [listOfSpecies count];
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NorthernPikeCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NorthernPikeCell"];
-    if (indexPath.section == 0 && indexPath.row == 0) {
-            [cell.contentView addSubview:self.headerView];
-        } else if (indexPath.section == 2 && indexPath.row == 0)
-        {
-            [cell.contentView addSubview:self.footer];
-        } else if (indexPath.section == INDEX_SPECIES_LIST) {
+    
         [cell.tfSeen addTarget:self action:@selector(actDidOnToExit:) forControlEvents:UIControlEventEditingDidEndOnExit];
         [cell.tfSeen addTarget:self action:@selector(actDidOnToExitSeen:) forControlEvents:UIControlEventEditingChanged];
         cell.tfSeen.tag = indexPath.row;
@@ -196,20 +175,12 @@
         cell.img.image = ((Species *)[listOfSpecies objectAtIndex:indexPath.row]).photo;
         [cell.btnLevel addTarget:self action:@selector(actSelectStar:) forControlEvents:UIControlEventTouchUpInside];
         cell.btnLevel.tag = indexPath.row;
-    }
+    
     return cell;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-        if (indexPath.section == 0) {
-            return self.headerView.frame.size.height;
-        } else if (indexPath.section == 2)
-            {
-                return self.footer.frame.size.height;
-            }
-    
     return 70;
 }
 
@@ -236,7 +207,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if (section == 1 && [listOfSpecies firstObject] != nil) {
+    if (section == 0 && [listOfSpecies firstObject] != nil) {
         return self.infoView;
     }
     return nil;
@@ -244,7 +215,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (section == 1 && [listOfSpecies firstObject] != nil) {
+    if (section == 0 && [listOfSpecies firstObject] != nil) {
         return self.infoView.frame.size.height;
     }
     return 0.0f;
@@ -451,7 +422,7 @@
     [self.datePicker setLocale:locale];
     self.datePicker.datePickerMode = UIDatePickerModeTime;
     self.datePicker.date = [NSDate date];
-    self.datePicker.minimumDate = self.huntStartTime;
+    //self.datePicker.minimumDate = self.huntStartTime;
     [self.view addSubview:self.datePickerView];
 }
 
@@ -519,9 +490,7 @@
 
 - (void)actSelectStar:(UIButton *)sender
 {
-    CGRect  bounds = self.viewStars.frame;
-    bounds.origin.y = self.view.center.y;
-    self.viewStars.frame = bounds;
+    
     self.viewStars.tag = sender.tag;
     for (UIButton * btn in self.viewStars.subviews) {
         if (btn.tag <= ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).activitylevel) {
@@ -531,9 +500,17 @@
         }
     }
     self.viewStars.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:self.viewStars];
-    
-    
+    float  width = [sender superview].frame.size.width;
+    [[sender superview] addSubview:self.viewStars];
+    CGRect bounds = self.viewStars.frame;
+    bounds.origin.x = width;
+    self.viewStars.frame = bounds;
+    self.viewStars.backgroundColor = [UIColor lightGrayColor];
+    [UIView animateWithDuration:0.5f animations:^{
+        CGRect bounds = self.viewStars.frame;
+        bounds.origin.x -= width;
+        self.viewStars.frame = bounds;
+    }];
 }
 
 - (IBAction)actNumberSelectStar:(UIButton *)sender
@@ -546,12 +523,15 @@
             btn.backgroundColor = [UIColor clearColor];
         }
     }
-    [UIView animateWithDuration:1.0f animations:^{
-        self.viewStars.alpha = 0.0f;
+    [UIView animateWithDuration:0.5f animations:^{
+        float  width = self.viewStars.frame.size.width;
+        CGRect bounds = self.viewStars.frame;
+        bounds.origin.x += width;
+        self.viewStars.frame = bounds;
     } completion:^(BOOL finished) {
         [self.viewStars removeFromSuperview];
     }];
-    self.viewStars.alpha = 1.0f;
+   
 }
 
 @end
