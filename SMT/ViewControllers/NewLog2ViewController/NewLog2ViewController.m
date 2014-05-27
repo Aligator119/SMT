@@ -25,7 +25,6 @@
 @interface NewLog2ViewController ()
 {
     NSMutableArray * listOfSpecies;
-    NSMutableArray * forTable;
     NSArray * header;
     NSArray * footer;
     int pickerType;
@@ -82,12 +81,9 @@
     }
     
     listOfSpecies = [[NSMutableArray alloc]init];
-    forTable = [[NSMutableArray alloc]init];
     header = [[NSArray alloc]initWithObjects:@"header", nil];
     footer = [[NSArray alloc]initWithObjects:@"footer", nil];
-    [forTable addObject:header];
-    [forTable addObject:listOfSpecies];
-    [forTable addObject:footer];
+
     //------------------------------------------------------------------------------
     self.huntType =     @"";
     self.weapon =       @"";
@@ -158,12 +154,24 @@
 //------------------------------------------------
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [forTable count];
+    return 3;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[forTable objectAtIndex:section] count];
+    int count = 0;
+    switch (section) {
+        case 0:
+            count = 1;
+            break;
+        case 1:
+            count = [listOfSpecies count];
+            break;
+        case 2:
+            count = 1;
+            break;
+    }
+    return count;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -192,9 +200,9 @@
         if (indexPath.section == 0) {
             return self.headerView.frame.size.height;
         } else if (indexPath.section == 2)
-        {
-            return self.footer.frame.size.height;
-        }
+            {
+                return self.footer.frame.size.height;
+            }
     
     return 70;
 }
@@ -296,24 +304,21 @@
 {
     switch (self.datePicker.tag) {
         case 1:
-            if ([[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
+        {
                 self.huntDate = self.datePicker.date;
-                [self.btnDate setTitle:[dateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
-            } else {
-                self.huntDate = [NSDate date];
                 [self.btnDate setTitle:[dateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
             }
             break;
             
         case 2:
-            if ([[dates laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
+             {
                 self.huntStartTime = self.datePicker.date;
                 [self.btnStartTime setTitle:[timeFormatter stringFromDate:self.huntStartTime] forState:UIControlStateNormal];
             }
             break;
             
         case 3:
-            if ([[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date] && [[self.huntStartTime laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
+            if ([[self.huntStartTime laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
                 self.huntEndTime = self.datePicker.date;
                 [self.btnEndTime setTitle:[timeFormatter stringFromDate:self.huntEndTime] forState:UIControlStateNormal];
             }
