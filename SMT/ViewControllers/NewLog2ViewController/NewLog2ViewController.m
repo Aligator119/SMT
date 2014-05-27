@@ -29,6 +29,7 @@
     NSArray * footer;
     int pickerType;
     NSDateFormatter * dateFormatter;
+    NSDateFormatter * myDateFormatter;
     NSDateFormatter * timeFormatter;
     AppDelegate * appDelegate;
     DataLoader * dataLoader;
@@ -51,6 +52,7 @@
 - (IBAction)actButtonBack:(id)sender;
 - (IBAction)actDoneDatePicker:(id)sender;
 - (IBAction)actDonePicker:(id)sender;
+- (void)actDidOnToExit:(UITextField *)sender;
 - (void)actDidOnToExitSeen:(UITextField *)sender;
 - (void)actDidOnToExitHarvested:(UITextField *)sender;
 - (void)actSelectStar:(UIButton *)sender;
@@ -100,6 +102,8 @@
     
     dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"yyyyMMdd"];
+    myDateFormatter = [[NSDateFormatter alloc]init];
+    [myDateFormatter setDateFormat:@"MMMM dd yyyy"];
     timeFormatter = [[NSDateFormatter alloc]init];
     [timeFormatter setDateFormat:@"hh:mm:ss"];
     
@@ -183,9 +187,11 @@
         {
             [cell.contentView addSubview:self.footer];
         } else if (indexPath.section == INDEX_SPECIES_LIST) {
-        [cell.tfSeen addTarget:self action:@selector(actDidOnToExitSeen:) forControlEvents:UIControlEventEditingDidEndOnExit];
+        [cell.tfSeen addTarget:self action:@selector(actDidOnToExit:) forControlEvents:UIControlEventEditingDidEndOnExit];
+        [cell.tfSeen addTarget:self action:@selector(actDidOnToExitSeen:) forControlEvents:UIControlEventEditingChanged];
         cell.tfSeen.tag = indexPath.row;
-        [cell.tfHarvested addTarget:self action:@selector(actDidOnToExitHarvested:) forControlEvents:UIControlEventEditingDidEndOnExit];
+        [cell.tfHarvested addTarget:self action:@selector(actDidOnToExitHarvested:) forControlEvents:UIControlEventEditingChanged];
+        [cell.tfHarvested addTarget:self action:@selector(actDidOnToExit:) forControlEvents:UIControlEventEditingDidEndOnExit];
         cell.tfHarvested.tag = indexPath.row;
         cell.img.image = ((Species *)[listOfSpecies objectAtIndex:indexPath.row]).photo;
         [cell.btnLevel addTarget:self action:@selector(actSelectStar:) forControlEvents:UIControlEventTouchUpInside];
@@ -306,7 +312,7 @@
         case 1:
         {
                 self.huntDate = self.datePicker.date;
-                [self.btnDate setTitle:[dateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
+                [self.btnDate setTitle:[myDateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
             }
             break;
             
@@ -345,7 +351,7 @@
         case 1:
             {
                 self.huntDate = self.datePicker.date;
-                [self.btnDate setTitle:[dateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
+                [self.btnDate setTitle:[myDateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
             }
             break;
             
@@ -496,15 +502,18 @@
     [self.btnLocation setTitle:self.location.locName forState:UIControlStateNormal];
 }
 
-- (void)actDidOnToExitSeen:(UITextField *)sender
+- (void)actDidOnToExit:(UITextField *)sender
 {
     [self resignFirstResponder];
+}
+
+- (void)actDidOnToExitSeen:(UITextField *)sender
+{
     ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).seen = [sender.text intValue];
 }
 
 - (void)actDidOnToExitHarvested:(UITextField *)sender
 {
-    [self resignFirstResponder];
     ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).harvested = [sender.text intValue];
 }
 
