@@ -9,6 +9,8 @@
 #import "NSString+HTML.h"
 #import "SearchingBuddy.h"
 #import "BuddySearchViewController.h"
+#import "Activity.h"
+#import "ActivityDetails.h"
 
 #define RequestPost @"POST"
 #define RequestGet @"GET"
@@ -371,6 +373,31 @@
 - (void) getActivityWithId: (NSInteger) _id{
     NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log/%i?app_id=%@&app_key=%@", strUrl, _id, App_id, App_key];
     [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetActivityWithId];
+}
+
+- (void) createActivityWithActivityObject: (Activity*) _activity andActivityDetails: (NSArray*) _activityDetails andSpeciesId: (NSInteger) _speciesId{
+    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log", strUrl];
+    NSString *speciesId = [NSString stringWithFormat:@"%d",_speciesId];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:@[speciesId, _activity, _activityDetails, App_id, App_key] forKeys:@[@"species_id", @"activity", @"harvestrows", @"app_id", @"app_key" ]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    [self startRequest:strUrlRequestAddress andData:jsonData typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestCreateActivity];
+}
+
+- (void) upadateActivityWithId: (NSString*) _activityId speciesId: (NSString*) _speciesId startTime: (NSString*) _startTime endTime: (NSString*) _endTime locationId: (NSString*) _locationId date: (NSString*) _date{
+    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log/%@", strUrl, _activityId];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:@[_speciesId, _startTime, _endTime, _locationId, _date] forKeys:@[@"species_id", @"startTime", @"endTime", @"location_id", @"date"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    [self startRequest:strUrlRequestAddress andData:jsonData typeRequest:RequesPatch setHeaders:YES andTypeRequest:ApplicationServiceRequestUpdateActivity];
+}
+
+- (void) deleteActivityWithId: (NSInteger) _activityId{
+    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@log/%d",strUrl, _activityId];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:@[App_id, App_key] forKeys:@[@"app_id", @"app_key"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    [self startRequest:strUrlRequestAddress andData:jsonData typeRequest:RequestDelete setHeaders:YES andTypeRequest:ApplicationServiceRequestDeleteActivity];
 }
 
 

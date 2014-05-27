@@ -34,7 +34,10 @@ enum ApplicationServiceRequest
     ApplicationServiceRequestGetUserTrackingVisibility = 17,
     ApplicationServiceRequestGetWeatherForecast = 18,
     ApplicationServiceRequestGetListActivities = 19,
-    ApplicationServiceRequestGetActivityWithId = 20
+    ApplicationServiceRequestGetActivityWithId = 20,
+    ApplicationServiceRequestCreateActivity = 21,
+    ApplicationServiceRequestUpdateActivity = 22,
+    ApplicationServiceRequestDeleteActivity = 23
 };
 
 @interface DataLoader : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>

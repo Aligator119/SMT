@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ActivityDetails : NSObject
+@interface ActivityDetails : NSObject <NSCoding>
 
 @property (nonatomic) NSInteger subspecies_id;
 @property (nonatomic) NSInteger activitylevel;
