@@ -8,13 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Activity : NSObject
+@interface Activity : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSString * startTime;
 @property (nonatomic, strong) NSString * date;
 @property (nonatomic, strong) NSString * endTime;
 @property (nonatomic) NSInteger location_id;
-@property (nonatomic) BOOL predict;
 @property (nonatomic, strong) NSString * notes;
 
 @end
