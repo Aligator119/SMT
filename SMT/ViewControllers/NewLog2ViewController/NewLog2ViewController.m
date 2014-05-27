@@ -346,21 +346,18 @@
             {
                 self.huntDate = self.datePicker.date;
                 [self.btnDate setTitle:[dateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
-            } else {
-                self.huntDate = [NSDate date];
-                [self.btnDate setTitle:[dateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
             }
             break;
             
         case 2:
-            if ([[dates laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
+             {
                 self.huntStartTime = self.datePicker.date;
                 [self.btnStartTime setTitle:[timeFormatter stringFromDate:self.huntStartTime] forState:UIControlStateNormal];
             }
             break;
             
         case 3:
-            if ([[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date] && [[self.huntStartTime laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
+            if ([[self.huntStartTime laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
                 self.huntEndTime = self.datePicker.date;
                 [self.btnEndTime setTitle:[timeFormatter stringFromDate:self.huntEndTime] forState:UIControlStateNormal];
             }
@@ -428,7 +425,7 @@
     self.datePicker.tag = 1;
     self.datePicker.datePickerMode = UIDatePickerModeDate;
     self.datePicker.date = [NSDate date];
-    self.datePicker.minimumDate = [NSDate date];
+    //self.datePicker.minimumDate = [NSDate date];
     [self.view addSubview:self.datePickerView];
 }
 
@@ -436,7 +433,7 @@
     self.datePicker.tag = 2;
     self.datePicker.datePickerMode = UIDatePickerModeTime;
     self.datePicker.date = [NSDate date];
-    self.datePicker.minimumDate = [NSDate date];
+    //self.datePicker.minimumDate = [NSDate date];
     [self.view addSubview:self.datePickerView];
 }
 
