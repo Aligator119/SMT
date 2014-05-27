@@ -431,6 +431,8 @@
 
 - (IBAction)actStartTime:(id)sender {
     self.datePicker.tag = 2;
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"NL"];
+    [self.datePicker setLocale:locale];
     self.datePicker.datePickerMode = UIDatePickerModeTime;
     self.datePicker.date = [NSDate date];
     //self.datePicker.minimumDate = [NSDate date];
@@ -439,6 +441,8 @@
 
 - (IBAction)actEndTime:(id)sender {
     self.datePicker.tag = 3;
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"NL"];
+    [self.datePicker setLocale:locale];
     self.datePicker.datePickerMode = UIDatePickerModeTime;
     self.datePicker.date = [NSDate date];
     self.datePicker.minimumDate = self.huntStartTime;
@@ -475,11 +479,12 @@
         [self.btnNorthernPike setTitle:@"Nothern Pike" forState:UIControlStateNormal];
         self.btnNorthernPike.enabled = YES;
         [listOfSpecies addObject:self.northernPike];
-        self.northernPike = nil;
-        [self.table reloadData];
         ActivityDetails * details = [[ActivityDetails alloc]init];
         details.subspecies_id = [self.northernPike.specId intValue];
         [activityDetails addObject:details];
+        self.northernPike = nil;
+        [self.table reloadData];
+        
     }
 }
 
