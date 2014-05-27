@@ -99,7 +99,7 @@
     self.picker.delegate = self;
     
     dateFormatter = [[NSDateFormatter alloc]init];
-    [dateFormatter setDateFormat:@"MMMM dd yyyy"];
+    [dateFormatter setDateFormat:@"yyyyMMdd"];
     timeFormatter = [[NSDateFormatter alloc]init];
     [timeFormatter setDateFormat:@"hh:mm:ss"];
     
@@ -343,7 +343,7 @@
 - (IBAction)actDoneDatePicker:(id)sender {
     switch (self.datePicker.tag) {
         case 1:
-            if ([[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
+            {
                 self.huntDate = self.datePicker.date;
                 [self.btnDate setTitle:[dateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
             } else {
