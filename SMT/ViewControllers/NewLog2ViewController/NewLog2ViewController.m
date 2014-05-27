@@ -18,12 +18,16 @@
 
 
 #define TAG 12345
+#define INDEX_SPECIES_LIST 1
 
 #define COMPLETE_DATE_UNITS   NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond
 
 @interface NewLog2ViewController ()
 {
     NSMutableArray * listOfSpecies;
+    NSMutableArray * forTable;
+    NSArray * header;
+    NSArray * footer;
     int pickerType;
     NSDateFormatter * dateFormatter;
     NSDateFormatter * timeFormatter;
@@ -31,6 +35,7 @@
     DataLoader * dataLoader;
     NSMutableArray * activityDetails;
     Activity * activity;
+    NSDate * dates;
     }
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
@@ -53,9 +58,8 @@
 @end
 
 @implementation NewLog2ViewController
+@synthesize footer = _footer;
 
-- (IBAction)actStarSelect:(id)sender {
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andSpecies:(Species *)species
 {
@@ -78,8 +82,12 @@
     }
     
     listOfSpecies = [[NSMutableArray alloc]init];
-    [listOfSpecies addObject:@"header"];
-    [listOfSpecies addObject:@"footer"];
+    forTable = [[NSMutableArray alloc]init];
+    header = [[NSArray alloc]initWithObjects:@"header", nil];
+    footer = [[NSArray alloc]initWithObjects:@"footer", nil];
+    [forTable addObject:header];
+    [forTable addObject:listOfSpecies];
+    [forTable addObject:footer];
     //------------------------------------------------------------------------------
     self.huntType =     @"";
     self.weapon =       @"";
@@ -118,12 +126,11 @@
     [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
     dataLoader = [DataLoader instance];
     
-    activityDetails = [[NSMutableArray alloc]init];
-    activity = [[Activity alloc]init];
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated
-{
+{   if ([self.northernPikeList firstObject] == nil) {
     [self startLoader];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
@@ -141,59 +148,92 @@
         });
     });
 }
+    activityDetails = [[NSMutableArray alloc]init];
+    activity = [[Activity alloc]init];
+    dates = [NSDate date];
+}
 
 
 #pragma mark Table delegate metods
 //------------------------------------------------
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return [forTable count];
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return listOfSpecies.count;
+    return [[forTable objectAtIndex:section] count];
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NorthernPikeCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NorthernPikeCell"];
-    if ([[listOfSpecies objectAtIndex:indexPath.row] isKindOfClass:[NSString class]]) {
-        
-        if ([[listOfSpecies objectAtIndex:indexPath.row] isEqualToString:@"header"]) {
+    if (indexPath.section == 0 && indexPath.row == 0) {
             [cell.contentView addSubview:self.headerView];
-        } else if ([[listOfSpecies objectAtIndex:indexPath.row] isEqualToString:@"footer"])
+        } else if (indexPath.section == 2 && indexPath.row == 0)
         {
             [cell.contentView addSubview:self.footer];
-        }
-    } else {
+        } else if (indexPath.section == INDEX_SPECIES_LIST) {
         [cell.tfSeen addTarget:self action:@selector(actDidOnToExitSeen:) forControlEvents:UIControlEventEditingDidEndOnExit];
-        cell.tfSeen.tag = indexPath.row-1;
+        cell.tfSeen.tag = indexPath.row;
         [cell.tfHarvested addTarget:self action:@selector(actDidOnToExitHarvested:) forControlEvents:UIControlEventEditingDidEndOnExit];
-        cell.tfHarvested.tag = indexPath.row-1;
+        cell.tfHarvested.tag = indexPath.row;
         cell.img.image = ((Species *)[listOfSpecies objectAtIndex:indexPath.row]).photo;
         [cell.btnLevel addTarget:self action:@selector(actSelectStar:) forControlEvents:UIControlEventTouchUpInside];
-        cell.btnLevel.tag = indexPath.row-1;
+        cell.btnLevel.tag = indexPath.row;
     }
     return cell;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([[listOfSpecies objectAtIndex:indexPath.row] isKindOfClass:[NSString class]]) {
-        if ([[listOfSpecies objectAtIndex:indexPath.row] isEqualToString:@"header"]) {
+    
+        if (indexPath.section == 0) {
             return self.headerView.frame.size.height;
-        } else if ([[listOfSpecies objectAtIndex:indexPath.row] isEqualToString:@"footer"])
+        } else if (indexPath.section == 2)
         {
             return self.footer.frame.size.height;
         }
-    }
+    
     return 70;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == INDEX_SPECIES_LIST)  {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        Species * buf = [listOfSpecies objectAtIndex:indexPath.row];
+        [self.northernPikeList addObject:buf];
+        [activityDetails removeObjectAtIndex:indexPath.row];
+        [listOfSpecies removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
+        }
+        if (![listOfSpecies count]) {
+            [tableView reloadData];
+        }
+    }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (section == 1 && [listOfSpecies firstObject] != nil) {
+        return self.infoView;
+    }
+    return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 1 && [listOfSpecies firstObject] != nil) {
+        return self.infoView.frame.size.height;
+    }
+    return 0.0f;
 }
 //---------------------------------------------------------------------------------------------------------------
 
@@ -266,7 +306,7 @@
             break;
             
         case 2:
-            if ([[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
+            if ([[dates laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
                 self.huntStartTime = self.datePicker.date;
                 [self.btnStartTime setTitle:[timeFormatter stringFromDate:self.huntStartTime] forState:UIControlStateNormal];
             }
@@ -308,7 +348,7 @@
             break;
             
         case 2:
-            if ([[[NSDate date] laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
+            if ([[dates laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
                 self.huntStartTime = self.datePicker.date;
                 [self.btnStartTime setTitle:[timeFormatter stringFromDate:self.huntStartTime] forState:UIControlStateNormal];
             }
@@ -338,6 +378,7 @@
 
 
 - (IBAction)actFinalizeLog:(id)sender {
+    if (self.location && self.huntDate && self.huntEndTime && self.huntStartTime) {
     NSMutableArray * array = listOfSpecies.mutableCopy;
     [array removeObjectAtIndex:0];
     [array removeLastObject];
@@ -348,6 +389,7 @@
     NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:array, @"specie", self.huntStartTime, @"startTime", self.huntEndTime, @"endTime", nil];
     LogDetailViewController * ldvc = [[LogDetailViewController alloc]initWithNibName:@"LogDetailViewController" bundle:nil andProperty:dict];
     [self.navigationController pushViewController:ldvc animated:YES];
+    }
 }
 
 - (IBAction)actButtonBack:(id)sender {
@@ -409,16 +451,12 @@
 
 - (IBAction)actAdd:(id)sender {
     if (self.northernPike) {
-        [listOfSpecies removeObject:@"footer"];
         [self.northernPikeList removeObject:self.northernPike];
         self.btnNorthernPike.enabled = NO;
         [self.btnNorthernPike setTitle:@"Nothern Pike" forState:UIControlStateNormal];
         self.btnNorthernPike.enabled = YES;
-        self.northernPike.seen = 1;
-        self.northernPike.harvested = 3;
         [listOfSpecies addObject:self.northernPike];
         self.northernPike = nil;
-        [listOfSpecies addObject:@"footer"];
         [self.table reloadData];
         ActivityDetails * details = [[ActivityDetails alloc]init];
         details.subspecies_id = [self.northernPike.specId intValue];
@@ -452,13 +490,11 @@
     bounds.origin.y = self.view.center.y;
     self.viewStars.frame = bounds;
     self.viewStars.tag = sender.tag;
-    if (((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).activitylevel) {
-        for (UIButton * btn in self.viewStars.subviews) {
-            if (btn.tag <= ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).activitylevel) {
-                btn.backgroundColor = [UIColor yellowColor];
-            } else {
-                btn.backgroundColor = [UIColor clearColor];
-            }
+    for (UIButton * btn in self.viewStars.subviews) {
+        if (btn.tag <= ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).activitylevel) {
+            btn.backgroundColor = [UIColor yellowColor];
+        } else {
+            btn.backgroundColor = [UIColor clearColor];
         }
     }
     self.viewStars.backgroundColor = [UIColor whiteColor];
@@ -470,8 +506,12 @@
 - (IBAction)actNumberSelectStar:(UIButton *)sender
 {
     ((ActivityDetails *)[activityDetails objectAtIndex:self.viewStars.tag]).activitylevel = sender.tag;
-    for (int i = 1; i<=sender.tag; i++) {
-        ((UIButton *)[self.viewStars viewWithTag:i]).backgroundColor = [UIColor yellowColor];
+    for (UIButton * btn in self.viewStars.subviews) {
+        if (btn.tag<=sender.tag) {
+            btn.backgroundColor = [UIColor yellowColor];
+        } else {
+            btn.backgroundColor = [UIColor clearColor];
+        }
     }
     [UIView animateWithDuration:1.0f animations:^{
         self.viewStars.alpha = 0.0f;

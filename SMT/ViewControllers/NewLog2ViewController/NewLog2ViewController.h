@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSString * weapon;
 @property (strong, nonatomic) Species * northernPike;
 
+@property (strong, nonatomic) IBOutlet UIView *infoView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;
 @property (strong, nonatomic) IBOutlet UIView *viewStars;
