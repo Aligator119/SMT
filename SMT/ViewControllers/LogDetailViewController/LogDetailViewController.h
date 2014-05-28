@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "LogDetailCell.h"
+#import "Activity.h"
+#import "ActivityDetails.h"
+#import "AddCell.h"
 
 @interface LogDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 

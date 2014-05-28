@@ -35,6 +35,7 @@
     NSMutableArray * activityDetails;
     Activity * activity;
     NSDate * dates;
+    NSIndexPath * path;
     }
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
@@ -49,11 +50,12 @@
 - (IBAction)actButtonBack:(id)sender;
 - (IBAction)actDoneDatePicker:(id)sender;
 - (IBAction)actDonePicker:(id)sender;
-- (void)actDidOnToExit:(UITextField *)sender;
+//- (void)actDidOnToExit:(UITextField *)sender;
 - (void)actDidOnToExitSeen:(UITextField *)sender;
 - (void)actDidOnToExitHarvested:(UITextField *)sender;
 - (void)actSelectStar:(UIButton *)sender;
-- (void)actchangedValue:(id) sender;
+- (void)keyboardDidShow: (NSNotification *) notif;
+- (void)keyboardDidHide: (NSNotification *) notif;
 @end
 
 @implementation NewLog2ViewController
@@ -123,7 +125,17 @@
     [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
     dataLoader = [DataLoader instance];
     
-    [self.datePicker addTarget:self action:@selector(actchangedValue:) forControlEvents:UIControlEventValueChanged];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHide:)
+                                                 name:UIKeyboardDidHideNotification
+                                               object:nil];
+    
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -167,16 +179,16 @@
 {
     NorthernPikeCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NorthernPikeCell"];
     
-        [cell.tfSeen addTarget:self action:@selector(actDidOnToExit:) forControlEvents:UIControlEventEditingDidEndOnExit];
         [cell.tfSeen addTarget:self action:@selector(actDidOnToExitSeen:) forControlEvents:UIControlEventEditingChanged];
+    cell.tfSeen.delegate = self;
         cell.tfSeen.tag = indexPath.row;
         [cell.tfHarvested addTarget:self action:@selector(actDidOnToExitHarvested:) forControlEvents:UIControlEventEditingChanged];
-        [cell.tfHarvested addTarget:self action:@selector(actDidOnToExit:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    cell.tfHarvested.delegate = self;
         cell.tfHarvested.tag = indexPath.row;
         [cell setImageForCell:((Species *)[listOfSpecies objectAtIndex:indexPath.row]).photo];
         [cell.btnLevel addTarget:self action:@selector(actSelectStar:) forControlEvents:UIControlEventTouchUpInside];
         cell.btnLevel.tag = indexPath.row;
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -192,7 +204,7 @@
 
 - (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == INDEX_SPECIES_LIST)  {
+    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         Species * buf = [listOfSpecies objectAtIndex:indexPath.row];
         [self.northernPikeList addObject:buf];
@@ -202,7 +214,6 @@
         }
         if (![listOfSpecies count]) {
             [tableView reloadData];
-        }
     }
 }
 
@@ -360,34 +371,34 @@
 
 - (IBAction)actFinalizeLog:(id)sender {
     if (self.location && self.huntDate && self.huntEndTime && self.huntStartTime) {
-    NSMutableArray * array = listOfSpecies.mutableCopy;
-    [array removeObjectAtIndex:0];
-    [array removeLastObject];
     activity.startTime = [timeFormatter stringFromDate:self.huntStartTime];
     activity.endTime = [timeFormatter stringFromDate:self.huntEndTime];
     activity.date = [dateFormatter stringFromDate:self.huntDate];
     activity.location_id = self.location.locID;
 //----------------------------------------------------------------------------------------------------
-        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        dispatch_async(newQueue, ^(){
-            
-            [dataLoader createActivityWithActivityObject:activity andActivityDetails:activityDetails andSpeciesId:[self.species.specId integerValue]];
-            
-            dispatch_async(dispatch_get_main_queue(), ^(){
-                
-                if(!dataLoader.isCorrectRezult) {
-                    NSLog(@"Error download sybSpecie");
-                } else {
-                    
-                    NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:array, @"specie", self.huntStartTime, @"startTime", self.huntEndTime, @"endTime", nil];
+//        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//        dispatch_async(newQueue, ^(){
+//            
+//            [dataLoader createActivityWithActivityObject:activity andActivityDetails:activityDetails andSpeciesId:[self.species.specId integerValue]];
+//            
+//            dispatch_async(dispatch_get_main_queue(), ^(){
+//                
+//                if(!dataLoader.isCorrectRezult) {
+//                    NSLog(@"Error download sybSpecie");
+//                } else {
+        
+                    NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:listOfSpecies, @"specie", activity, @"activity", activityDetails, @"activityDetails", nil];
                     LogDetailViewController * ldvc = [[LogDetailViewController alloc]initWithNibName:@"LogDetailViewController" bundle:nil andProperty:dict];
                     [self.navigationController pushViewController:ldvc animated:YES];
 
-                }
-            });
-        });
+//                }
+//            });
+//        });
 //---------------------------------------------------------------------------------------
-        }
+    } else {
+        UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Selected date or time or location" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
 
 - (IBAction)actCancel:(id)sender {
@@ -431,34 +442,6 @@
     [self.view addSubview:self.datePickerView];
 }
 
-- (void)actchangedValue:(id)sender
-{
-    for (UIView *view in self.datePicker.subviews) {
-        for (UIView *subView in view.subviews) {
-            for (UIView *subSubView in subView.subviews) {
-                for (UIView *thirdSubView in subSubView.subviews) {
-                    for (UIView *subView_2 in thirdSubView.subviews) {
-                        for (UIView * subView_3 in subView_2.subviews) {
-                            for (UIView * subView_4 in subView_3.subviews) {
-                                for (UIView * subView_5 in subView_4.subviews) {
-                                    for (UIView * subView_6 in subView_5.subviews) {
-                                        for (UILabel *label in subView_6.subviews) {
-                                            if ([label isKindOfClass:[UILabel class]]) {
-                                                label.textColor = [UIColor redColor];
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        
-                    }
-                }
-            }
-        }
-    }
-
-}
 
 - (IBAction)actHuntType:(id)sender {
     pickerType = 1;
@@ -507,9 +490,10 @@
     [self.btnLocation setTitle:self.location.locName forState:UIControlStateNormal];
 }
 
-- (void)actDidOnToExit:(UITextField *)sender
+- (BOOL) textFieldShouldReturn:(UITextField *)textField
 {
-    [self resignFirstResponder];
+    [self.view endEditing:YES];
+    return YES;
 }
 
 - (void)actDidOnToExitSeen:(UITextField *)sender
@@ -519,7 +503,12 @@
 
 - (void)actDidOnToExitHarvested:(UITextField *)sender
 {
+    if ([sender.text integerValue] <= ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).seen) {
     ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).harvested = [sender.text intValue];
+    } else {
+        ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).harvested = ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).seen;
+        sender.text = [NSString stringWithFormat:@"%d", ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).seen];
+    }
 }
 
 - (void)actSelectStar:(UIButton *)sender
@@ -564,6 +553,23 @@
         [self.viewStars removeFromSuperview];
     }];
    
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    
+    path = [NSIndexPath indexPathForItem:textField.tag inSection:0];
+}
+
+- (void)keyboardDidShow: (NSNotification *) notif{
+    NSDictionary * info = [notif userInfo];
+    CGSize keyboardSize = [self.view convertRect:[[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue] fromView:self.view.window].size;
+    self.table.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0);
+    [self.table scrollRectToVisible:[self.table rectForRowAtIndexPath:path] animated:YES];
+}
+
+- (void)keyboardDidHide: (NSNotification *) notif{
+    self.table.contentInset = UIEdgeInsetsZero;
 }
 
 @end

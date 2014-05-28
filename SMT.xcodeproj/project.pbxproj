@@ -150,6 +150,8 @@
 		04F342F11921118E0054294C /* BuddyPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F342EF1921118E0054294C /* BuddyPageViewController.xib */; };
 		04F4A5081935E3A200A29912 /* SpeciesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F4A5061935E3A200A29912 /* SpeciesCell.m */; };
 		04F4A5091935E3A300A29912 /* SpeciesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F4A5071935E3A200A29912 /* SpeciesCell.xib */; };
+		04F4A50D1936143E00A29912 /* AddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F4A50B1936143E00A29912 /* AddCell.m */; };
+		04F4A50E1936143E00A29912 /* AddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F4A50C1936143E00A29912 /* AddCell.xib */; };
 		04F7F42819235F2A007E39B5 /* PredictionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7F42619235F2A007E39B5 /* PredictionViewController.m */; };
 		04F7F42919235F2A007E39B5 /* PredictionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F7F42719235F2A007E39B5 /* PredictionViewController.xib */; };
 		113626841911239B004E5857 /* CurrentCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 113626831911239B004E5857 /* CurrentCondition.m */; };
@@ -393,6 +395,9 @@
 		04F4A5051935E3A200A29912 /* SpeciesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeciesCell.h; path = SpeciesCell/SpeciesCell.h; sourceTree = "<group>"; };
 		04F4A5061935E3A200A29912 /* SpeciesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeciesCell.m; path = SpeciesCell/SpeciesCell.m; sourceTree = "<group>"; };
 		04F4A5071935E3A200A29912 /* SpeciesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SpeciesCell.xib; path = SpeciesCell/SpeciesCell.xib; sourceTree = "<group>"; };
+		04F4A50A1936143E00A29912 /* AddCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddCell.h; path = ViewControllers/LogDetailViewController/AddCell/AddCell.h; sourceTree = "<group>"; };
+		04F4A50B1936143E00A29912 /* AddCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddCell.m; path = ViewControllers/LogDetailViewController/AddCell/AddCell.m; sourceTree = "<group>"; };
+		04F4A50C1936143E00A29912 /* AddCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddCell.xib; path = ViewControllers/LogDetailViewController/AddCell/AddCell.xib; sourceTree = "<group>"; };
 		04F7F42519235F2A007E39B5 /* PredictionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PredictionViewController.h; path = ViewControllers/PredictionViewController/PredictionViewController.h; sourceTree = "<group>"; };
 		04F7F42619235F2A007E39B5 /* PredictionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PredictionViewController.m; path = ViewControllers/PredictionViewController/PredictionViewController.m; sourceTree = "<group>"; };
 		04F7F42719235F2A007E39B5 /* PredictionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PredictionViewController.xib; path = ViewControllers/PredictionViewController/PredictionViewController.xib; sourceTree = "<group>"; };
@@ -1025,6 +1030,7 @@
 		04DF995F1921FD7E00D66BEC /* LogDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
+				04F4A50F193614A200A29912 /* AddCell */,
 				04DF996B192229FE00D66BEC /* LogDetailCell */,
 				04DF99601921FDB600D66BEC /* LogDetailViewController.h */,
 				04DF99611921FDB600D66BEC /* LogDetailViewController.m */,
@@ -1093,6 +1099,16 @@
 				04F4A5071935E3A200A29912 /* SpeciesCell.xib */,
 			);
 			name = CustomCell;
+			sourceTree = "<group>";
+		};
+		04F4A50F193614A200A29912 /* AddCell */ = {
+			isa = PBXGroup;
+			children = (
+				04F4A50A1936143E00A29912 /* AddCell.h */,
+				04F4A50B1936143E00A29912 /* AddCell.m */,
+				04F4A50C1936143E00A29912 /* AddCell.xib */,
+			);
+			name = AddCell;
 			sourceTree = "<group>";
 		};
 		04F7F42419235EC7007E39B5 /* PredictionViewController */ = {
@@ -1220,6 +1236,7 @@
 				04A2A3C1191B7FDC0006677E /* CustomHeader.xib in Resources */,
 				04D76FDE1934D14E00E1F59B /* star_orange@2x.png in Resources */,
 				0408069B190EA37D00E063C3 /* InfoPlist.strings in Resources */,
+				04F4A50E1936143E00A29912 /* AddCell.xib in Resources */,
 				04409429190FA53900C4A558 /* ForgotPasswordViewController.xib in Resources */,
 				04409421190F975E00C4A558 /* LoginViewController_iPhone4.xib in Resources */,
 				04A2A399191B7F9F0006677E /* SpeciesViewController.xib in Resources */,
@@ -1324,6 +1341,7 @@
 				11D48DF71919079800A9787E /* Species.m in Sources */,
 				04409428190FA53900C4A558 /* ForgotPasswordViewController.m in Sources */,
 				04F342F01921118E0054294C /* BuddyPageViewController.m in Sources */,
+				04F4A50D1936143E00A29912 /* AddCell.m in Sources */,
 				04A2A398191B7F9F0006677E /* SpeciesViewController.m in Sources */,
 				043354C61910EF3E003767D0 /* BuddySearchViewController.m in Sources */,
 				04E84190193340640064C03C /* NorthernPikeCell.m in Sources */,
