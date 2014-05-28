@@ -14,4 +14,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *tfHarvested;
 @property (strong, nonatomic) IBOutlet UIButton *btnLevel;
 
+- (void) setImageForCell:(NSString *)str;
+
 @end

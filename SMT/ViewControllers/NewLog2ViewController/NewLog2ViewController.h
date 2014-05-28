@@ -54,6 +54,7 @@
 - (IBAction)actNorthernPike:(id)sender;
 - (IBAction)actAdd:(id)sender;
 - (IBAction)actFinalizeLog:(id)sender;
+- (IBAction)actCancel:(id)sender;
 
 
 @end

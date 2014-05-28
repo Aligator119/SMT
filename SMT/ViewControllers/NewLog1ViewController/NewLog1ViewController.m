@@ -50,6 +50,9 @@
     loader = [[DataLoader alloc]init];
     [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
     
+    UINib *cellNib = [UINib nibWithNibName:@"SpeciesCell" bundle:[NSBundle mainBundle]];
+    [self.table registerNib:cellNib forCellReuseIdentifier:@"SpeciesCell"];
+    
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -72,14 +75,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-    }
+    SpeciesCell * cell = [tableView dequeueReusableCellWithIdentifier:@"SpeciesCell"];
+        
+    [cell setSpecie:[appDelegate.speciesList objectAtIndex:indexPath.row]];
     
-    Species * spec = [appDelegate.speciesList objectAtIndex:indexPath.row];
-    cell.imageView.image = spec.thumbnail;
-    cell.textLabel.text = spec.name;
     return cell;
 }
 
@@ -91,8 +90,10 @@
     return @"";
 }
 
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NewLog2ViewController * nlvc = [[NewLog2ViewController alloc]initWithNibName:@"NewLog2ViewController" bundle:nil andSpecies: [appDelegate.speciesList objectAtIndex:indexPath.row]];
     [self.navigationController pushViewController:nlvc animated:YES];
 }

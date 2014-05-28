@@ -27,8 +27,9 @@
     NSMutableArray * listOfSpecies;
     int pickerType;
     NSDateFormatter * dateFormatter;
-    NSDateFormatter * myDateFormatter;
+    NSDateFormatter * btnDateFormatter;
     NSDateFormatter * timeFormatter;
+    NSDateFormatter * btnTimeFormatter;
     AppDelegate * appDelegate;
     DataLoader * dataLoader;
     NSMutableArray * activityDetails;
@@ -41,8 +42,6 @@
 @property (strong, nonatomic) IBOutlet UIView *datePickerView;
 @property (strong, nonatomic) IBOutlet UIView *pickerView;
 
-@property (strong, nonatomic) IBOutlet UIView *headerView;
-@property (strong, nonatomic) IBOutlet UIView *footer;
 @property (strong, nonatomic) Species * species;
 
 - (void) pressedDatePickerView:(id)sender;
@@ -54,10 +53,11 @@
 - (void)actDidOnToExitSeen:(UITextField *)sender;
 - (void)actDidOnToExitHarvested:(UITextField *)sender;
 - (void)actSelectStar:(UIButton *)sender;
+- (void)actchangedValue:(id) sender;
 @end
 
 @implementation NewLog2ViewController
-@synthesize footer = _footer;
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andSpecies:(Species *)species
@@ -93,15 +93,16 @@
     [self.table registerNib:cellNib forCellReuseIdentifier:@"NorthernPikeCell"];
     
     
-    
     self.picker.delegate = self;
     
     dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"yyyyMMdd"];
-    myDateFormatter = [[NSDateFormatter alloc]init];
-    [myDateFormatter setDateFormat:@"MMMM dd yyyy"];
+    btnDateFormatter = [[NSDateFormatter alloc]init];
+    [btnDateFormatter setDateFormat:@"MMMM dd yyyy"];
     timeFormatter = [[NSDateFormatter alloc]init];
     [timeFormatter setDateFormat:@"hh:mm:ss"];
+    btnTimeFormatter = [[NSDateFormatter alloc]init];
+    [btnTimeFormatter setDateFormat:@"h:mm a"];
     
     
     UITapGestureRecognizer *datePickerViewRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pressedDatePickerView:)];
@@ -122,7 +123,7 @@
     [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
     dataLoader = [DataLoader instance];
     
-    
+    [self.datePicker addTarget:self action:@selector(actchangedValue:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -172,7 +173,7 @@
         [cell.tfHarvested addTarget:self action:@selector(actDidOnToExitHarvested:) forControlEvents:UIControlEventEditingChanged];
         [cell.tfHarvested addTarget:self action:@selector(actDidOnToExit:) forControlEvents:UIControlEventEditingDidEndOnExit];
         cell.tfHarvested.tag = indexPath.row;
-        cell.img.image = ((Species *)[listOfSpecies objectAtIndex:indexPath.row]).photo;
+        [cell setImageForCell:((Species *)[listOfSpecies objectAtIndex:indexPath.row]).photo];
         [cell.btnLevel addTarget:self action:@selector(actSelectStar:) forControlEvents:UIControlEventTouchUpInside];
         cell.btnLevel.tag = indexPath.row;
     
@@ -253,7 +254,8 @@
     } else if (pickerType == 3) {
         str = ((Species *)[self.northernPikeList objectAtIndex:row]).name;
     }
-    
+    NSMutableAttributedString * aStr = [[NSMutableAttributedString alloc]initWithString:str];
+    [aStr addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, str.length)];
     return str;
 }
 
@@ -283,21 +285,21 @@
         case 1:
         {
                 self.huntDate = self.datePicker.date;
-                [self.btnDate setTitle:[myDateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
+                [self.btnDate setTitle:[btnDateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
             }
             break;
             
         case 2:
              {
                 self.huntStartTime = self.datePicker.date;
-                [self.btnStartTime setTitle:[timeFormatter stringFromDate:self.huntStartTime] forState:UIControlStateNormal];
+                [self.btnStartTime setTitle:[btnTimeFormatter stringFromDate:self.huntStartTime] forState:UIControlStateNormal];
             }
             break;
             
         case 3:
             if ([[self.huntStartTime laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
                 self.huntEndTime = self.datePicker.date;
-                [self.btnEndTime setTitle:[timeFormatter stringFromDate:self.huntEndTime] forState:UIControlStateNormal];
+                [self.btnEndTime setTitle:[btnTimeFormatter stringFromDate:self.huntEndTime] forState:UIControlStateNormal];
             }
             break;
     }
@@ -322,21 +324,21 @@
         case 1:
             {
                 self.huntDate = self.datePicker.date;
-                [self.btnDate setTitle:[myDateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
+                [self.btnDate setTitle:[btnDateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
             }
             break;
             
         case 2:
              {
                 self.huntStartTime = self.datePicker.date;
-                [self.btnStartTime setTitle:[timeFormatter stringFromDate:self.huntStartTime] forState:UIControlStateNormal];
+                [self.btnStartTime setTitle:[btnTimeFormatter stringFromDate:self.huntStartTime] forState:UIControlStateNormal];
             }
             break;
             
         case 3:
             if ([[self.huntStartTime laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
                 self.huntEndTime = self.datePicker.date;
-                [self.btnEndTime setTitle:[timeFormatter stringFromDate:self.huntEndTime] forState:UIControlStateNormal];
+                [self.btnEndTime setTitle:[btnTimeFormatter stringFromDate:self.huntEndTime] forState:UIControlStateNormal];
             }
             break;
     }
@@ -388,6 +390,10 @@
         }
 }
 
+- (IBAction)actCancel:(id)sender {
+    [[((UIButton *) sender) superview] removeFromSuperview];
+}
+
 - (IBAction)actButtonBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -408,8 +414,8 @@
 
 - (IBAction)actStartTime:(id)sender {
     self.datePicker.tag = 2;
-    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"NL"];
-    [self.datePicker setLocale:locale];
+    //NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"NL"];
+    //[self.datePicker setLocale:locale];
     self.datePicker.datePickerMode = UIDatePickerModeTime;
     self.datePicker.date = [NSDate date];
     //self.datePicker.minimumDate = [NSDate date];
@@ -418,12 +424,40 @@
 
 - (IBAction)actEndTime:(id)sender {
     self.datePicker.tag = 3;
-    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"NL"];
-    [self.datePicker setLocale:locale];
     self.datePicker.datePickerMode = UIDatePickerModeTime;
     self.datePicker.date = [NSDate date];
-    //self.datePicker.minimumDate = self.huntStartTime;
+    
+    
     [self.view addSubview:self.datePickerView];
+}
+
+- (void)actchangedValue:(id)sender
+{
+    for (UIView *view in self.datePicker.subviews) {
+        for (UIView *subView in view.subviews) {
+            for (UIView *subSubView in subView.subviews) {
+                for (UIView *thirdSubView in subSubView.subviews) {
+                    for (UIView *subView_2 in thirdSubView.subviews) {
+                        for (UIView * subView_3 in subView_2.subviews) {
+                            for (UIView * subView_4 in subView_3.subviews) {
+                                for (UIView * subView_5 in subView_4.subviews) {
+                                    for (UIView * subView_6 in subView_5.subviews) {
+                                        for (UILabel *label in subView_6.subviews) {
+                                            if ([label isKindOfClass:[UILabel class]]) {
+                                                label.textColor = [UIColor redColor];
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 - (IBAction)actHuntType:(id)sender {
@@ -490,13 +524,12 @@
 
 - (void)actSelectStar:(UIButton *)sender
 {
-    
     self.viewStars.tag = sender.tag;
     for (UIButton * btn in self.viewStars.subviews) {
         if (btn.tag <= ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).activitylevel) {
-            btn.backgroundColor = [UIColor yellowColor];
+            [btn setBackgroundImage:[UIImage imageNamed:@"star_orange.png"] forState:UIControlStateNormal];
         } else {
-            btn.backgroundColor = [UIColor clearColor];
+            [btn setBackgroundImage:[UIImage imageNamed:@"star_opasity_orange.png"] forState:UIControlStateNormal];
         }
     }
     self.viewStars.backgroundColor = [UIColor whiteColor];
@@ -505,7 +538,6 @@
     CGRect bounds = self.viewStars.frame;
     bounds.origin.x = width;
     self.viewStars.frame = bounds;
-    self.viewStars.backgroundColor = [UIColor lightGrayColor];
     [UIView animateWithDuration:0.5f animations:^{
         CGRect bounds = self.viewStars.frame;
         bounds.origin.x -= width;
@@ -518,9 +550,9 @@
     ((ActivityDetails *)[activityDetails objectAtIndex:self.viewStars.tag]).activitylevel = sender.tag;
     for (UIButton * btn in self.viewStars.subviews) {
         if (btn.tag<=sender.tag) {
-            btn.backgroundColor = [UIColor yellowColor];
+            [btn setBackgroundImage:[UIImage imageNamed:@"star_orange.png"] forState:UIControlStateNormal];
         } else {
-            btn.backgroundColor = [UIColor clearColor];
+            [btn setBackgroundImage:[UIImage imageNamed:@"star_opasity_orange.png"] forState:UIControlStateNormal];
         }
     }
     [UIView animateWithDuration:0.5f animations:^{

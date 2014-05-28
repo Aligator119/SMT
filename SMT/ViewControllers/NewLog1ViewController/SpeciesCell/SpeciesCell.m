@@ -1,14 +1,21 @@
 //
-//  NorthernPikeCell.m
+//  SpeciesCell.m
 //  SMT
 //
-//  Created by Mac on 5/26/14.
+//  Created by Mac on 5/28/14.
 //  Copyright (c) 2014 Mac. All rights reserved.
 //
 
-#import "NorthernPikeCell.h"
+#import "SpeciesCell.h"
 
-@implementation NorthernPikeCell
+
+@interface SpeciesCell ()
+@property (strong, nonatomic) IBOutlet UIImageView *img;
+@property (strong, nonatomic) IBOutlet UILabel *name;
+
+@end
+
+@implementation SpeciesCell
 
 - (void)awakeFromNib
 {
@@ -22,11 +29,13 @@
     // Configure the view for the selected state
 }
 
-- (void) setImageForCell:(NSString *)str
+- (void) setSpecie:(Species *)specie
 {
+    self.name.text = specie.name;
+    
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_async(queue, ^{
-        NSData * imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:str]];
+        NSData * imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:specie.thumbnail]];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.img.image = [UIImage imageWithData:imageData];
         });
