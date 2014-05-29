@@ -15,8 +15,8 @@
 @property (strong, nonatomic) NSString *specId;
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *description;
-@property (strong, nonatomic) UIImage *thumbnail;
-@property (strong, nonatomic) UIImage *photo;
+@property (strong, nonatomic) NSString *thumbnail;
+@property (strong, nonatomic) NSString *photo;
 @property (nonatomic) int seen;
 @property (nonatomic) int harvested;
 

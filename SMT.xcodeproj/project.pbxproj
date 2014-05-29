@@ -124,6 +124,14 @@
 		04CEC047191B860C00BF784D /* LocationSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC046191B860C00BF784D /* LocationSearch.m */; };
 		04CEC04A191B861B00BF784D /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC049191B861B00BF784D /* AFNetworkReachabilityManager.m */; };
 		04CEC04D191B865C00BF784D /* PlaceSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC04C191B865C00BF784D /* PlaceSearchResult.m */; };
+		04D76FD71934D14E00E1F59B /* star_BTN_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D76FCF1934D14E00E1F59B /* star_BTN_press.png */; };
+		04D76FD81934D14E00E1F59B /* star_BTN_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D76FD01934D14E00E1F59B /* star_BTN_press@2x.png */; };
+		04D76FD91934D14E00E1F59B /* star_BTN.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D76FD11934D14E00E1F59B /* star_BTN.png */; };
+		04D76FDA1934D14E00E1F59B /* star_BTN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D76FD21934D14E00E1F59B /* star_BTN@2x.png */; };
+		04D76FDB1934D14E00E1F59B /* star_opasity_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D76FD31934D14E00E1F59B /* star_opasity_orange.png */; };
+		04D76FDC1934D14E00E1F59B /* star_opasity_orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D76FD41934D14E00E1F59B /* star_opasity_orange@2x.png */; };
+		04D76FDD1934D14E00E1F59B /* star_orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D76FD51934D14E00E1F59B /* star_orange.png */; };
+		04D76FDE1934D14E00E1F59B /* star_orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04D76FD61934D14E00E1F59B /* star_orange@2x.png */; };
 		04DF99631921FDB600D66BEC /* LogDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DF99611921FDB600D66BEC /* LogDetailViewController.m */; };
 		04DF99641921FDB600D66BEC /* LogDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DF99621921FDB600D66BEC /* LogDetailViewController.xib */; };
 		04DF9969192200AA00D66BEC /* LogDetail2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DF9967192200AA00D66BEC /* LogDetail2ViewController.m */; };
@@ -140,6 +148,10 @@
 		04EFC32219249890008A59D7 /* sportsman_tracker_BG@2x-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EFC31E19249890008A59D7 /* sportsman_tracker_BG@2x-1.png */; };
 		04F342F01921118E0054294C /* BuddyPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F342EE1921118E0054294C /* BuddyPageViewController.m */; };
 		04F342F11921118E0054294C /* BuddyPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F342EF1921118E0054294C /* BuddyPageViewController.xib */; };
+		04F4A5081935E3A200A29912 /* SpeciesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F4A5061935E3A200A29912 /* SpeciesCell.m */; };
+		04F4A5091935E3A300A29912 /* SpeciesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F4A5071935E3A200A29912 /* SpeciesCell.xib */; };
+		04F4A50D1936143E00A29912 /* AddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F4A50B1936143E00A29912 /* AddCell.m */; };
+		04F4A50E1936143E00A29912 /* AddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F4A50C1936143E00A29912 /* AddCell.xib */; };
 		04F7F42819235F2A007E39B5 /* PredictionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7F42619235F2A007E39B5 /* PredictionViewController.m */; };
 		04F7F42919235F2A007E39B5 /* PredictionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F7F42719235F2A007E39B5 /* PredictionViewController.xib */; };
 		113626841911239B004E5857 /* CurrentCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 113626831911239B004E5857 /* CurrentCondition.m */; };
@@ -350,6 +362,14 @@
 		04CEC049191B861B00BF784D /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
 		04CEC04B191B865C00BF784D /* PlaceSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlaceSearchResult.h; path = Classes/PlaceSearchResult.h; sourceTree = "<group>"; };
 		04CEC04C191B865C00BF784D /* PlaceSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlaceSearchResult.m; path = Classes/PlaceSearchResult.m; sourceTree = "<group>"; };
+		04D76FCF1934D14E00E1F59B /* star_BTN_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_BTN_press.png; path = Image/star_BTN_press.png; sourceTree = "<group>"; };
+		04D76FD01934D14E00E1F59B /* star_BTN_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star_BTN_press@2x.png"; path = "Image/star_BTN_press@2x.png"; sourceTree = "<group>"; };
+		04D76FD11934D14E00E1F59B /* star_BTN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_BTN.png; path = Image/star_BTN.png; sourceTree = "<group>"; };
+		04D76FD21934D14E00E1F59B /* star_BTN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star_BTN@2x.png"; path = "Image/star_BTN@2x.png"; sourceTree = "<group>"; };
+		04D76FD31934D14E00E1F59B /* star_opasity_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_opasity_orange.png; path = Image/star_opasity_orange.png; sourceTree = "<group>"; };
+		04D76FD41934D14E00E1F59B /* star_opasity_orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star_opasity_orange@2x.png"; path = "Image/star_opasity_orange@2x.png"; sourceTree = "<group>"; };
+		04D76FD51934D14E00E1F59B /* star_orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_orange.png; path = Image/star_orange.png; sourceTree = "<group>"; };
+		04D76FD61934D14E00E1F59B /* star_orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "star_orange@2x.png"; path = "Image/star_orange@2x.png"; sourceTree = "<group>"; };
 		04DF99601921FDB600D66BEC /* LogDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogDetailViewController.h; path = ViewControllers/LogDetailViewController/LogDetailViewController.h; sourceTree = "<group>"; };
 		04DF99611921FDB600D66BEC /* LogDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogDetailViewController.m; path = ViewControllers/LogDetailViewController/LogDetailViewController.m; sourceTree = "<group>"; };
 		04DF99621921FDB600D66BEC /* LogDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LogDetailViewController.xib; path = ViewControllers/LogDetailViewController/LogDetailViewController.xib; sourceTree = "<group>"; };
@@ -372,6 +392,12 @@
 		04F342ED1921118D0054294C /* BuddyPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuddyPageViewController.h; path = ViewControllers/BuddyPageViewController/BuddyPageViewController.h; sourceTree = "<group>"; };
 		04F342EE1921118E0054294C /* BuddyPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuddyPageViewController.m; path = ViewControllers/BuddyPageViewController/BuddyPageViewController.m; sourceTree = "<group>"; };
 		04F342EF1921118E0054294C /* BuddyPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BuddyPageViewController.xib; path = ViewControllers/BuddyPageViewController/BuddyPageViewController.xib; sourceTree = "<group>"; };
+		04F4A5051935E3A200A29912 /* SpeciesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpeciesCell.h; path = SpeciesCell/SpeciesCell.h; sourceTree = "<group>"; };
+		04F4A5061935E3A200A29912 /* SpeciesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpeciesCell.m; path = SpeciesCell/SpeciesCell.m; sourceTree = "<group>"; };
+		04F4A5071935E3A200A29912 /* SpeciesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SpeciesCell.xib; path = SpeciesCell/SpeciesCell.xib; sourceTree = "<group>"; };
+		04F4A50A1936143E00A29912 /* AddCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddCell.h; path = ViewControllers/LogDetailViewController/AddCell/AddCell.h; sourceTree = "<group>"; };
+		04F4A50B1936143E00A29912 /* AddCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddCell.m; path = ViewControllers/LogDetailViewController/AddCell/AddCell.m; sourceTree = "<group>"; };
+		04F4A50C1936143E00A29912 /* AddCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddCell.xib; path = ViewControllers/LogDetailViewController/AddCell/AddCell.xib; sourceTree = "<group>"; };
 		04F7F42519235F2A007E39B5 /* PredictionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PredictionViewController.h; path = ViewControllers/PredictionViewController/PredictionViewController.h; sourceTree = "<group>"; };
 		04F7F42619235F2A007E39B5 /* PredictionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PredictionViewController.m; path = ViewControllers/PredictionViewController/PredictionViewController.m; sourceTree = "<group>"; };
 		04F7F42719235F2A007E39B5 /* PredictionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PredictionViewController.xib; path = ViewControllers/PredictionViewController/PredictionViewController.xib; sourceTree = "<group>"; };
@@ -739,6 +765,14 @@
 		046C6BEA190FDF0E00E3AC56 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				04D76FCF1934D14E00E1F59B /* star_BTN_press.png */,
+				04D76FD01934D14E00E1F59B /* star_BTN_press@2x.png */,
+				04D76FD11934D14E00E1F59B /* star_BTN.png */,
+				04D76FD21934D14E00E1F59B /* star_BTN@2x.png */,
+				04D76FD31934D14E00E1F59B /* star_opasity_orange.png */,
+				04D76FD41934D14E00E1F59B /* star_opasity_orange@2x.png */,
+				04D76FD51934D14E00E1F59B /* star_orange.png */,
+				04D76FD61934D14E00E1F59B /* star_orange@2x.png */,
 				04EFC31B19249890008A59D7 /* logo-1.png */,
 				04EFC31C19249890008A59D7 /* logo@2x-1.png */,
 				04EFC31D19249890008A59D7 /* sportsman_tracker_BG-1.png */,
@@ -933,7 +967,7 @@
 		04B015B2191B6FAD002F6FA9 /* NewLog2ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				04E8418C193340330064C03C /* NorthernPikeCell */,
+				04D76FCC1934C5E600E1F59B /* CustomCell */,
 				04B015B3191B6FD3002F6FA9 /* NewLog2ViewController.h */,
 				04B015B4191B6FD3002F6FA9 /* NewLog2ViewController.m */,
 				04B015B5191B6FD3002F6FA9 /* NewLog2ViewController.xib */,
@@ -985,9 +1019,18 @@
 			path = ViewControllers/LocationSearch;
 			sourceTree = "<group>";
 		};
+		04D76FCC1934C5E600E1F59B /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				04E8418C193340330064C03C /* NorthernPikeCell */,
+			);
+			name = CustomCell;
+			sourceTree = "<group>";
+		};
 		04DF995F1921FD7E00D66BEC /* LogDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
+				04F4A50F193614A200A29912 /* AddCell */,
 				04DF996B192229FE00D66BEC /* LogDetailCell */,
 				04DF99601921FDB600D66BEC /* LogDetailViewController.h */,
 				04DF99611921FDB600D66BEC /* LogDetailViewController.m */,
@@ -1029,6 +1072,7 @@
 		04E88FBD191BA07B00DEF977 /* NewLog1ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				04F4A5041935E35F00A29912 /* CustomCell */,
 				04E88FBE191BA07B00DEF977 /* NewLog1ViewController.h */,
 				04E88FBF191BA07B00DEF977 /* NewLog1ViewController.m */,
 				04E88FC0191BA07B00DEF977 /* NewLog1ViewController.xib */,
@@ -1045,6 +1089,26 @@
 				04F342EF1921118E0054294C /* BuddyPageViewController.xib */,
 			);
 			name = BuddyPageViewController;
+			sourceTree = "<group>";
+		};
+		04F4A5041935E35F00A29912 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				04F4A5051935E3A200A29912 /* SpeciesCell.h */,
+				04F4A5061935E3A200A29912 /* SpeciesCell.m */,
+				04F4A5071935E3A200A29912 /* SpeciesCell.xib */,
+			);
+			name = CustomCell;
+			sourceTree = "<group>";
+		};
+		04F4A50F193614A200A29912 /* AddCell */ = {
+			isa = PBXGroup;
+			children = (
+				04F4A50A1936143E00A29912 /* AddCell.h */,
+				04F4A50B1936143E00A29912 /* AddCell.m */,
+				04F4A50C1936143E00A29912 /* AddCell.xib */,
+			);
+			name = AddCell;
 			sourceTree = "<group>";
 		};
 		04F7F42419235EC7007E39B5 /* PredictionViewController */ = {
@@ -1159,6 +1223,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F4A5091935E3A300A29912 /* SpeciesCell.xib in Resources */,
 				04EFC31F19249890008A59D7 /* logo-1.png in Resources */,
 				04409407190F825F00C4A558 /* FlyoutMenuViewController.xib in Resources */,
 				046C6C13190FECEE00E3AC56 /* Cell.xib in Resources */,
@@ -1166,8 +1231,12 @@
 				043354CE1910F0A7003767D0 /* BuddySearchCell.xib in Resources */,
 				04DF996A192200AA00D66BEC /* LogDetail2ViewController.xib in Resources */,
 				04E84191193340640064C03C /* NorthernPikeCell.xib in Resources */,
+				04D76FDA1934D14E00E1F59B /* star_BTN@2x.png in Resources */,
+				04D76FD71934D14E00E1F59B /* star_BTN_press.png in Resources */,
 				04A2A3C1191B7FDC0006677E /* CustomHeader.xib in Resources */,
+				04D76FDE1934D14E00E1F59B /* star_orange@2x.png in Resources */,
 				0408069B190EA37D00E063C3 /* InfoPlist.strings in Resources */,
+				04F4A50E1936143E00A29912 /* AddCell.xib in Resources */,
 				04409429190FA53900C4A558 /* ForgotPasswordViewController.xib in Resources */,
 				04409421190F975E00C4A558 /* LoginViewController_iPhone4.xib in Resources */,
 				04A2A399191B7F9F0006677E /* SpeciesViewController.xib in Resources */,
@@ -1179,12 +1248,15 @@
 				046C6C0E190FECC400E3AC56 /* InviteFriendCell.xib in Resources */,
 				04A2A393191B7F8D0006677E /* WeatherDetailViewController~ipad.xib in Resources */,
 				04A2A390191B7F8D0006677E /* WeatherDetailCell.xib in Resources */,
+				04D76FD91934D14E00E1F59B /* star_BTN.png in Resources */,
 				04E88FC2191BA07B00DEF977 /* NewLog1ViewController.xib in Resources */,
 				04409422190F975E00C4A558 /* LoginViewController_iPhone5.xib in Resources */,
 				0440943F190FA98B00C4A558 /* RegisterViewController_iPhone5.xib in Resources */,
 				046C6C09190FECA700E3AC56 /* IncomingFriendCell.xib in Resources */,
 				04409424190F975E00C4A558 /* LoginViewController~ipad.xib in Resources */,
+				04D76FDC1934D14E00E1F59B /* star_opasity_orange@2x.png in Resources */,
 				04A2A371191B7F530006677E /* SettingsViewController.xib in Resources */,
+				04D76FDD1934D14E00E1F59B /* star_orange.png in Resources */,
 				04DF99641921FDB600D66BEC /* LogDetailViewController.xib in Resources */,
 				04A2A384191B7F820006677E /* WeatherViewController.xib in Resources */,
 				04CEC03B191B81EF00BF784D /* LogHistoryViewController.xib in Resources */,
@@ -1192,7 +1264,9 @@
 				04B015B7191B6FD3002F6FA9 /* NewLog2ViewController.xib in Resources */,
 				047EE598192F47D700FD17FC /* InviteCell.xib in Resources */,
 				04DF997019222A2400D66BEC /* LogDetailCell.xib in Resources */,
+				04D76FDB1934D14E00E1F59B /* star_opasity_orange.png in Resources */,
 				04CEC03E191B82EE00BF784D /* GoogleMaps.bundle in Resources */,
+				04D76FD81934D14E00E1F59B /* star_BTN_press@2x.png in Resources */,
 				04A2A3C3191B7FDC0006677E /* PhotoVideoViewController.xib in Resources */,
 				04A2A3A3191B7FC00006677E /* LocationListCell.xib in Resources */,
 				04F7F42919235F2A007E39B5 /* PredictionViewController.xib in Resources */,
@@ -1267,6 +1341,7 @@
 				11D48DF71919079800A9787E /* Species.m in Sources */,
 				04409428190FA53900C4A558 /* ForgotPasswordViewController.m in Sources */,
 				04F342F01921118E0054294C /* BuddyPageViewController.m in Sources */,
+				04F4A50D1936143E00A29912 /* AddCell.m in Sources */,
 				04A2A398191B7F9F0006677E /* SpeciesViewController.m in Sources */,
 				043354C61910EF3E003767D0 /* BuddySearchViewController.m in Sources */,
 				04E84190193340640064C03C /* NorthernPikeCell.m in Sources */,
@@ -1275,6 +1350,7 @@
 				11D48DE61918E32700A9787E /* AFURLRequestSerialization.m in Sources */,
 				04DF99631921FDB600D66BEC /* LogDetailViewController.m in Sources */,
 				04A2A3C6191B80150006677E /* SMTMarker.m in Sources */,
+				04F4A5081935E3A200A29912 /* SpeciesCell.m in Sources */,
 				11C9F684191781F100CDAFBA /* Astronomy.m in Sources */,
 				11D48DE11918E32700A9787E /* AFHTTPRequestOperationManager.m in Sources */,
 				0433548B1910E7C9003767D0 /* DataLoader.m in Sources */,

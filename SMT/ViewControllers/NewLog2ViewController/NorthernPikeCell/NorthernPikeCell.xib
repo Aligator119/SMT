@@ -41,19 +41,20 @@
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                     </textField>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxM-lU-9i8">
-                        <rect key="frame" x="250" y="15" width="40" height="42"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxM-lU-9i8">
+                        <rect key="frame" x="250" y="15" width="40" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="IZ7-aJ-0SS"/>
                         </constraints>
-                        <state key="normal" title="Button">
+                        <state key="normal" backgroundImage="star_BTN.png">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <state key="highlighted" backgroundImage="star_BTN_press.png"/>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="dxM-lU-9i8" secondAttribute="bottom" constant="14" id="2bD-EI-zlA"/>
+                    <constraint firstAttribute="bottom" secondItem="dxM-lU-9i8" secondAttribute="bottom" constant="16" id="2bD-EI-zlA"/>
                     <constraint firstItem="hPp-Zu-tqa" firstAttribute="leading" secondItem="aRO-cE-80b" secondAttribute="trailing" constant="30" id="7oD-8B-qpm"/>
                     <constraint firstItem="hPp-Zu-tqa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="GpC-8d-ul6"/>
                     <constraint firstItem="kqt-oZ-LIM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="JIN-jq-0e5"/>
@@ -73,4 +74,8 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="star_BTN.png" width="40" height="40"/>
+        <image name="star_BTN_press.png" width="40" height="40"/>
+    </resources>
 </document>

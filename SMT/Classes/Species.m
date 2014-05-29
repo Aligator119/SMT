@@ -20,13 +20,11 @@
 
 -(void)initSpeciesWithData:(NSDictionary *)infoDict
 {
-    NSString *photoURL = [NSString stringWithFormat:@"%@%@",URLSportsMaster,[infoDict objectForKey:PHOTO]];
-    NSString *thumbnailURL = [NSString stringWithFormat:@"%@%@",URLSportsMaster,[infoDict objectForKey:THUMBNAIL]];
     specId = [infoDict objectForKey:SPEC_ID];
     name = [infoDict objectForKey:NAME];
     description = [infoDict objectForKey:DESCRIPTION];
-    thumbnail =  [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:thumbnailURL]]];
-    photo = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photoURL]]];
+    thumbnail = [NSString stringWithFormat:@"%@%@",URLSportsMaster,[infoDict objectForKey:THUMBNAIL]];
+    photo = [NSString stringWithFormat:@"%@%@",URLSportsMaster,[infoDict objectForKey:PHOTO]];
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder {

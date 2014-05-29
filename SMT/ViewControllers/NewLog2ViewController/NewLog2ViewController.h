@@ -11,7 +11,7 @@
 #import "Location.h"
 #import "SelectLocationViewController.h"
 
-@interface NewLog2ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UIGestureRecognizerDelegate, LocationListViewControllerDelegate>
+@interface NewLog2ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UIGestureRecognizerDelegate, LocationListViewControllerDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) NSArray * huntTypeList;
 @property (strong, nonatomic) NSArray * weaponList;
@@ -54,6 +54,7 @@
 - (IBAction)actNorthernPike:(id)sender;
 - (IBAction)actAdd:(id)sender;
 - (IBAction)actFinalizeLog:(id)sender;
+- (IBAction)actCancel:(id)sender;
 
 
 @end

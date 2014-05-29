@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SpeciesCell.h"
 
 @interface NewLog1ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
