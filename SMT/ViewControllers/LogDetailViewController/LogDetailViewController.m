@@ -104,7 +104,7 @@
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return ((Species *)[self.list objectAtIndex:section]).name;
+    return [@"    " stringByAppendingString:((Species *)[self.list objectAtIndex:section]).name];
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
