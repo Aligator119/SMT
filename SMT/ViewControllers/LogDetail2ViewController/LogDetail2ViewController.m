@@ -83,7 +83,7 @@
            dispatch_async(dispatch_get_main_queue(), ^(){
 
                 if(!dataLoader.isCorrectRezult) {
-                    NSLog(@"Error download sybSpecie");
+                    NSLog(@"Error saved detail log");
                 } else {
                     
     for (id controller in self.navigationController.viewControllers) {

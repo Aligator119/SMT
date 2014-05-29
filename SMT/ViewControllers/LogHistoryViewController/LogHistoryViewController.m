@@ -49,7 +49,7 @@
         dispatch_async(dispatch_get_main_queue(), ^(){
             
             if(!dataLoader.isCorrectRezult) {
-                NSLog(@"Error download sybSpecie");
+                NSLog(@"Error download log history");
             } else {
                 [self.table reloadData];
             }
