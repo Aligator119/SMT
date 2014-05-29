@@ -57,7 +57,7 @@
                                         <constraint firstAttribute="width" constant="22" id="ejY-FQ-31K"/>
                                         <constraint firstAttribute="height" constant="22" id="nun-mw-QC0"/>
                                     </constraints>
-                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <state key="normal">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>

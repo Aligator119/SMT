@@ -205,7 +205,7 @@
             [self startLoader];
             dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             dispatch_async(newQueue, ^(){
-                [loader createLocationWithName:marker.title Latitude:coordinate.latitude Longitude:coordinate.longitude];
+                [loader createLocationWithName:marker.title Latitude:coordinate.latitude Longitude:coordinate.longitude locationType:self.mapType];
                 
                 
                 dispatch_async(dispatch_get_main_queue(), ^(){

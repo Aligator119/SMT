@@ -131,7 +131,7 @@
      [self startRequest:strUrlRequestAddress andData:strUrlRequestData typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestSendInvitation];
 }
 
--(void) createLocationWithName : (NSString*) name Latitude: (double) latitude Longitude: (double) longitude
+-(void) createLocationWithName : (NSString*) name Latitude: (double) latitude Longitude: (double) longitude locationType:(NSInteger) _type
 {
     
     NSString * LocationName = [self convertString:name];
@@ -192,13 +192,22 @@
     NSLog(@"Get Locations");
     // * * * *
     NSMutableArray * listLocations = [NSMutableArray new];
+    NSMutableArray * listFishLocations = [NSMutableArray new];
+    NSMutableArray * listHuntLocations = [NSMutableArray new];
     @try {
         //listLocationName = [[NSMutableArray alloc] initWithArray:info.allKeys];
         for (NSDictionary * dicInfo in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestLocationsAssociatedWithUser]) {
             Location * location = [Location new];
             [location setValuesFromDict:dicInfo];
-            if(![location isLocationDelete] && location.typeLocation == typeFishing)
+            if(![location isLocationDelete]){
                 [listLocations addObject:location];
+                if (location.typeLocation == typeFishing){
+                    [listFishLocations addObject:location];
+                }
+                else if (location.typeLocation == typeHunting){
+                    [listHuntLocations addObject:location];
+                }
+            }
         }
         self.isCorrectRezult = YES;
     }
@@ -208,6 +217,8 @@
     }
     //if(self.isCorrectRezult)
     appDel.listLocations = [[NSMutableArray alloc] initWithArray:listLocations];
+    appDel.listFishLocations = [[NSMutableArray alloc] initWithArray:listFishLocations];
+    appDel.listHuntLocations = [[NSMutableArray alloc] initWithArray:listHuntLocations];
     //else appDel.listLocations = nil;
     //NSLog(@"%@",info);
 
