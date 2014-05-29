@@ -8,6 +8,7 @@
 
 #import "LogHistoryViewController.h"
 #import "FlyoutMenuViewController.h"
+#import "Species.h"
 
 @interface LogHistoryViewController ()
 {
@@ -46,7 +47,7 @@
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
         
-        [dataLoader getActivityList];
+        logHistory = [dataLoader getActivityList];
         
         dispatch_async(dispatch_get_main_queue(), ^(){
             
@@ -77,7 +78,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [logHistory count];
+    return [speciesHistory count];
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -87,6 +88,8 @@
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
+    Species * specie = [speciesHistory objectAtIndex:indexPath.row];
+    cell.textLabel.text = specie.name;
     
     
     return cell;
