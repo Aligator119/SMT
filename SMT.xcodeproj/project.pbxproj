@@ -138,6 +138,8 @@
 		04DF996A192200AA00D66BEC /* LogDetail2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DF9968192200AA00D66BEC /* LogDetail2ViewController.xib */; };
 		04DF996F19222A2400D66BEC /* LogDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DF996D19222A2400D66BEC /* LogDetailCell.m */; };
 		04DF997019222A2400D66BEC /* LogDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DF996E19222A2400D66BEC /* LogDetailCell.xib */; };
+		04E5B8BC1937777E00E1C824 /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E5B8BA1937777E00E1C824 /* HistoryCell.m */; };
+		04E5B8BD1937777E00E1C824 /* HistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E5B8BB1937777E00E1C824 /* HistoryCell.xib */; };
 		04E84190193340640064C03C /* NorthernPikeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E8418E193340640064C03C /* NorthernPikeCell.m */; };
 		04E84191193340640064C03C /* NorthernPikeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E8418F193340640064C03C /* NorthernPikeCell.xib */; };
 		04E88FC1191BA07B00DEF977 /* NewLog1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E88FBF191BA07B00DEF977 /* NewLog1ViewController.m */; };
@@ -379,6 +381,9 @@
 		04DF996C19222A2400D66BEC /* LogDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogDetailCell.h; path = ViewControllers/LogDetailViewController/LogDetailCell.h; sourceTree = "<group>"; };
 		04DF996D19222A2400D66BEC /* LogDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogDetailCell.m; path = ViewControllers/LogDetailViewController/LogDetailCell.m; sourceTree = "<group>"; };
 		04DF996E19222A2400D66BEC /* LogDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LogDetailCell.xib; path = ViewControllers/LogDetailViewController/LogDetailCell.xib; sourceTree = "<group>"; };
+		04E5B8B91937777E00E1C824 /* HistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HistoryCell.h; path = HistoryCell/HistoryCell.h; sourceTree = "<group>"; };
+		04E5B8BA1937777E00E1C824 /* HistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HistoryCell.m; path = HistoryCell/HistoryCell.m; sourceTree = "<group>"; };
+		04E5B8BB1937777E00E1C824 /* HistoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HistoryCell.xib; path = HistoryCell/HistoryCell.xib; sourceTree = "<group>"; };
 		04E8418D193340640064C03C /* NorthernPikeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NorthernPikeCell.h; path = ViewControllers/NewLog2ViewController/NorthernPikeCell/NorthernPikeCell.h; sourceTree = "<group>"; };
 		04E8418E193340640064C03C /* NorthernPikeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NorthernPikeCell.m; path = ViewControllers/NewLog2ViewController/NorthernPikeCell/NorthernPikeCell.m; sourceTree = "<group>"; };
 		04E8418F193340640064C03C /* NorthernPikeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NorthernPikeCell.xib; path = ViewControllers/NewLog2ViewController/NorthernPikeCell/NorthernPikeCell.xib; sourceTree = "<group>"; };
@@ -1000,6 +1005,7 @@
 		04CEC036191B81EF00BF784D /* LogHistoryViewController */ = {
 			isa = PBXGroup;
 			children = (
+				04E5B8B3193775E300E1C824 /* CustomCell */,
 				04CEC037191B81EF00BF784D /* LogHistoryViewController.h */,
 				04CEC038191B81EF00BF784D /* LogHistoryViewController.m */,
 				04CEC039191B81EF00BF784D /* LogHistoryViewController.xib */,
@@ -1057,6 +1063,16 @@
 				04DF996E19222A2400D66BEC /* LogDetailCell.xib */,
 			);
 			name = LogDetailCell;
+			sourceTree = "<group>";
+		};
+		04E5B8B3193775E300E1C824 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				04E5B8B91937777E00E1C824 /* HistoryCell.h */,
+				04E5B8BA1937777E00E1C824 /* HistoryCell.m */,
+				04E5B8BB1937777E00E1C824 /* HistoryCell.xib */,
+			);
+			name = CustomCell;
 			sourceTree = "<group>";
 		};
 		04E8418C193340330064C03C /* NorthernPikeCell */ = {
@@ -1249,6 +1265,7 @@
 				04A2A393191B7F8D0006677E /* WeatherDetailViewController~ipad.xib in Resources */,
 				04A2A390191B7F8D0006677E /* WeatherDetailCell.xib in Resources */,
 				04D76FD91934D14E00E1F59B /* star_BTN.png in Resources */,
+				04E5B8BD1937777E00E1C824 /* HistoryCell.xib in Resources */,
 				04E88FC2191BA07B00DEF977 /* NewLog1ViewController.xib in Resources */,
 				04409422190F975E00C4A558 /* LoginViewController_iPhone5.xib in Resources */,
 				0440943F190FA98B00C4A558 /* RegisterViewController_iPhone5.xib in Resources */,
@@ -1379,6 +1396,7 @@
 				043354CD1910F0A7003767D0 /* BuddySearchCell.m in Sources */,
 				043354B11910ED9F003767D0 /* CJSONSerializer.m in Sources */,
 				04A2A370191B7F530006677E /* SettingsViewController.m in Sources */,
+				04E5B8BC1937777E00E1C824 /* HistoryCell.m in Sources */,
 				0433548A1910E7C9003767D0 /* ConstantsClass.m in Sources */,
 				0433548C1910E7C9003767D0 /* GTMNSString+HTML.m in Sources */,
 				04657AC4192614580018CB70 /* SelectLocationViewController.m in Sources */,

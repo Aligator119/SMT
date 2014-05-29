@@ -14,11 +14,12 @@
 {
     DataLoader * dataLoader;
     NSArray * logHistory;
-    NSMutableArray * speciesHistory;
+    NSArray * allKey;
+    
+    NSMutableDictionary * dict;
     NSDateFormatter * dateFormatter;
     NSDateFormatter * compareFormatter;
-    NSDateComponents * components;
-    NSDateComponents * components2;
+    NSDateFormatter * displayFormatter;
     NSCalendar * calendar;
 }
 @property (strong, nonatomic) IBOutlet UITableView *table;
@@ -46,6 +47,11 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     compareFormatter = [[NSDateFormatter alloc]init];
     [compareFormatter setDateFormat:@"yyyy-MM"];
+    displayFormatter = [[NSDateFormatter alloc]init];
+    [displayFormatter setDateFormat:@"MMMM yyyy"];
+    
+    UINib *cellNib = [UINib nibWithNibName:@"HistoryCell" bundle:[NSBundle mainBundle]];
+    [self.table registerNib:cellNib forCellReuseIdentifier:@"HistoryCell"];
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
         self.navigationBarHeightConstr.constant -= 20;
@@ -53,8 +59,7 @@
     }
     calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     dataLoader = [DataLoader instance];
-    speciesHistory = [[NSMutableArray alloc]init];
-
+    dict = [[NSMutableDictionary alloc]init];
 //----------------------------------------------------------------------------------------------------
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
@@ -66,57 +71,53 @@
             if(!dataLoader.isCorrectRezult) {
                 NSLog(@"Error download log history");
             } else {
-                NSMutableArray * buffer = [[NSMutableArray alloc]init];
-                components2 = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit
-                                         fromDate:[dateFormatter dateFromString:[[logHistory firstObject] objectForKey:@"date"]]];
-                for (id ID in logHistory) {
-                    components = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit
-                                             fromDate:[dateFormatter dateFromString:[ID objectForKey:@"date"]]];
-                    if (components.year != components2.year || components.month != components2.month) {
-                        components2 = components;
-                        [speciesHistory addObject:buffer];
-                        buffer = [NSMutableArray new];
+
+                for (id obj in logHistory) {
+
+                    if ([[dict allKeys] containsObject:[compareFormatter stringFromDate:[dateFormatter dateFromString:[obj objectForKey:@"date"]]]]) {
+                        NSMutableArray * buf = [[NSMutableArray alloc]initWithArray:[dict objectForKey:[compareFormatter stringFromDate:[dateFormatter dateFromString:[obj objectForKey:@"date"]]]]];
+                        [buf addObject:[obj objectForKey:@"species_id"]];
+                        [dict setValue:buf forKey:[compareFormatter stringFromDate:[dateFormatter dateFromString:[obj objectForKey:@"date"]]]];
+                    } else {
+                        NSMutableArray * b = [[NSMutableArray alloc]initWithObjects:[obj objectForKey:@"species_id"], nil];
+                        [dict setValue:b forKey:[compareFormatter stringFromDate:[dateFormatter dateFromString:[obj objectForKey:@"date"]]]];
                     }
-                dispatch_queue_t nQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-                 dispatch_async(nQueue, ^(){
-                    
-                    [buffer addObject:[dataLoader getSpecieWithId:[[ID objectForKey:@"species_id"] intValue]]];
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^(){
-                        
-                        if(!dataLoader.isCorrectRezult) {
-                            NSLog(@"Error download log history");
-                        } else {
-                            [self.table reloadData];
-                        }
-                    });
-                });
                 }
+                allKey = [dict allKeys];
+                [self.table reloadData];
             }
         });
     });
+    
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [allKey count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [speciesHistory count];
+    NSArray * item = [[NSArray alloc]initWithArray:[dict objectForKey:[allKey objectAtIndex:section]]];
+    return item.count;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    HistoryCell * cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryCell"];
     
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-    }
-    Species * specie = [speciesHistory objectAtIndex:indexPath.row];
-    cell.textLabel.text = specie.name;
+    NSArray * item = [[NSArray alloc]initWithArray:[dict objectForKey:[allKey objectAtIndex:indexPath.section]]];
+    
+    [cell setCellFromSpecies:[item objectAtIndex:indexPath.row]];
     
     
     return cell;
 }
 
-
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [displayFormatter stringFromDate:[compareFormatter dateFromString:[allKey objectAtIndex:section]]];
+}
 
 
 - (void)didReceiveMemoryWarning
