@@ -15,6 +15,7 @@
     DataLoader * dataLoader;
     NSArray * logHistory;
     NSMutableArray * speciesHistory;
+    NSDateFormatter * dateFormatter;
 }
 @property (strong, nonatomic) IBOutlet UITableView *table;
 
@@ -37,10 +38,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"dd mm yyyy"];
+    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
         self.navigationBarHeightConstr.constant -= 20;
         self.navigationBarVerticalConstr.constant -=20;
     }
+    dataLoader = [DataLoader instance];
     speciesHistory = [[NSMutableArray alloc]init];
 
 //----------------------------------------------------------------------------------------------------
