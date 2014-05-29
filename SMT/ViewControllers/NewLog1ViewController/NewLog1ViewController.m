@@ -13,6 +13,7 @@
 #import "Species.h"
 #import "NewLog2ViewController.h"
 #import "UIViewController+LoaderCategory.h"
+#import "LogAnActivityViewController.h"
 
 @interface NewLog1ViewController ()
 {
@@ -106,7 +107,12 @@
 }
 
 - (IBAction)actButtonBack:(UIButton *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    for (id obj in self.navigationController.viewControllers) {
+        if ([obj isKindOfClass:[LogAnActivityViewController class]]) {
+            [self.navigationController popToViewController:obj animated:YES];
+        }
+    }
+    //[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
