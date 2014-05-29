@@ -10,6 +10,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 
 @interface MapViewController : UIViewController <GMSMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate>
+@property (nonatomic) NSInteger mapType;
 
 - (void) moveToLocation: (CLLocationCoordinate2D) loc;
 

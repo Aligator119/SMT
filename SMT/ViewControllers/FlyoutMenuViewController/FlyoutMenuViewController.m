@@ -144,8 +144,9 @@
             
             dispatch_async(dispatch_get_main_queue(),^(){
                 
-                    MapViewController * mapVC = [MapViewController new];
-                    [self.navigationController pushViewController:mapVC animated:YES];
+                MapViewController * mapVC = [MapViewController new];
+                mapVC.mapType = 1;
+                [self.navigationController pushViewController:mapVC animated:YES];
             });
         });
     } else {

@@ -73,7 +73,7 @@ enum ApplicationServiceRequest
                       birthYear:(int) birthYear
                             sex:(NSString*) userMale;
 - (void)getLocationsAssociatedWithUser;
-- (void) createLocationWithName : (NSString*) name Latitude: (double) latitude Longitude: (double) longitude;
+- (void) createLocationWithName : (NSString*) name Latitude: (double) latitude Longitude: (double) longitude locationType:(NSInteger) _type;
 - (void)deleteLocationWithID:(int) _locID;
 - (void)updateChooseLocation:(int)_locID
                      newName:(NSString*)_newName

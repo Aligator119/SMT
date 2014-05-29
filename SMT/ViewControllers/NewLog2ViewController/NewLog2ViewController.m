@@ -376,24 +376,24 @@
     activity.date = [dateFormatter stringFromDate:self.huntDate];
     activity.location_id = self.location.locID;
 //----------------------------------------------------------------------------------------------------
-//        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//        dispatch_async(newQueue, ^(){
-//            
-//            [dataLoader createActivityWithActivityObject:activity andActivityDetails:activityDetails andSpeciesId:[self.species.specId integerValue]];
-//            
-//            dispatch_async(dispatch_get_main_queue(), ^(){
-//                
-//                if(!dataLoader.isCorrectRezult) {
-//                    NSLog(@"Error download sybSpecie");
-//                } else {
+        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(newQueue, ^(){
+            
+            [dataLoader createActivityWithActivityObject:activity andActivityDetails:activityDetails andSpeciesId:[self.species.specId integerValue]];
+            
+            dispatch_async(dispatch_get_main_queue(), ^(){
+                
+                if(!dataLoader.isCorrectRezult) {
+                    NSLog(@"Error download sybSpecie");
+                } else {
         
                     NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:listOfSpecies, @"specie", activity, @"activity", activityDetails, @"activityDetails", nil];
                     LogDetailViewController * ldvc = [[LogDetailViewController alloc]initWithNibName:@"LogDetailViewController" bundle:nil andProperty:dict];
                     [self.navigationController pushViewController:ldvc animated:YES];
 
-//                }
-//            });
-//        });
+                }
+            });
+        });
 //---------------------------------------------------------------------------------------
     } else {
         UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Selected date or time or location" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];

@@ -131,7 +131,7 @@
      [self startRequest:strUrlRequestAddress andData:strUrlRequestData typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestSendInvitation];
 }
 
--(void) createLocationWithName : (NSString*) name Latitude: (double) latitude Longitude: (double) longitude
+-(void) createLocationWithName : (NSString*) name Latitude: (double) latitude Longitude: (double) longitude locationType:(NSInteger) _type
 {
     
     NSString * LocationName = [self convertString:name];
@@ -192,13 +192,22 @@
     NSLog(@"Get Locations");
     // * * * *
     NSMutableArray * listLocations = [NSMutableArray new];
+    NSMutableArray * listFishLocations = [NSMutableArray new];
+    NSMutableArray * listHuntLocations = [NSMutableArray new];
     @try {
         //listLocationName = [[NSMutableArray alloc] initWithArray:info.allKeys];
         for (NSDictionary * dicInfo in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestLocationsAssociatedWithUser]) {
             Location * location = [Location new];
             [location setValuesFromDict:dicInfo];
-            if(![location isLocationDelete] && location.typeLocation == typeFishing)
+            if(![location isLocationDelete]){
                 [listLocations addObject:location];
+                if (location.typeLocation == typeFishing){
+                    [listFishLocations addObject:location];
+                }
+                else if (location.typeLocation == typeHunting){
+                    [listHuntLocations addObject:location];
+                }
+            }
         }
         self.isCorrectRezult = YES;
     }
@@ -208,6 +217,8 @@
     }
     //if(self.isCorrectRezult)
     appDel.listLocations = [[NSMutableArray alloc] initWithArray:listLocations];
+    appDel.listFishLocations = [[NSMutableArray alloc] initWithArray:listFishLocations];
+    appDel.listHuntLocations = [[NSMutableArray alloc] initWithArray:listHuntLocations];
     //else appDel.listLocations = nil;
     //NSLog(@"%@",info);
 
@@ -378,7 +389,20 @@
 - (void) createActivityWithActivityObject: (Activity*) _activity andActivityDetails: (NSArray*) _activityDetails andSpeciesId: (NSInteger) _speciesId{
     NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log", strUrl];
     NSString *speciesId = [NSString stringWithFormat:@"%d",_speciesId];
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:@[speciesId, _activity, _activityDetails, App_id, App_key] forKeys:@[@"species_id", @"activity", @"harvestrows", @"app_id", @"app_key" ]];
+    
+    NSMutableDictionary *activityDict = [NSMutableDictionary dictionaryWithObjects:@[_activity.startTime, _activity.date, _activity.endTime, [NSString stringWithFormat:@"%i", _activity.location_id]] forKeys:@[@"startTime", @"date", @"endTime", @"location_id"]];
+    
+    NSMutableArray *detailsArray = [NSMutableArray new];
+    for (ActivityDetails * detail in _activityDetails){
+        NSString *subspecies_id = [NSString stringWithFormat:@"%d", detail.subspecies_id];
+        NSString *activitylevel = [NSString stringWithFormat:@"%d", detail.activitylevel];
+        NSString *harvested = [NSString stringWithFormat:@"%d", detail.harvested];
+        NSString *seen = [NSString stringWithFormat:@"%d", detail.seen];
+        NSMutableDictionary *dictDetail = [NSMutableDictionary dictionaryWithObjects:@[subspecies_id, activitylevel, harvested, seen] forKeys:@[@"subspecies_id", @"activitylevel", @"harvested", @"seen"]];
+        [detailsArray addObject:dictDetail];
+    }
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:@[@(_speciesId), activityDict, detailsArray, App_id, App_key] forKeys:@[@"species_id", @"activity", @"harvestrows", @"app_id", @"app_key" ]];
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
     [self startRequest:strUrlRequestAddress andData:jsonData typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestCreateActivity];
