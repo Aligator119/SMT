@@ -64,7 +64,7 @@
                 dispatch_queue_t nQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
                  dispatch_async(nQueue, ^(){
                     
-                    [speciesHistory addObject:[dataLoader getSpecieWithId:[ID integerValue]]];
+                    [speciesHistory addObject:[dataLoader getSpecieWithId:[[ID objectForKey:@"species_id"] intValue]]];
                     
                     dispatch_async(dispatch_get_main_queue(), ^(){
                         
