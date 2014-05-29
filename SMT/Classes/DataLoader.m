@@ -383,7 +383,7 @@
         NSMutableDictionary *actDict = [NSMutableDictionary new];
         NSNumber * spec = [NSNumber numberWithInteger:[[act objectForKey: @"species_id"]integerValue]];
         NSString *date = [act objectForKey:@"date"];
-        [actDict setObject:spec forKey:@"species"];
+        [actDict setObject:spec forKey:@"species_id"];
         [actDict setObject:date forKey:@"date"];
         [speciesIdArray addObject:actDict];
     }
