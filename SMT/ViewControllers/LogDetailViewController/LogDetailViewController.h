@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;
 @property (weak, nonatomic) IBOutlet UITableView *table;
 
+@property (strong, nonatomic) NSIndexPath * index;
+
 - (IBAction)actClose:(id)sender;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andProperty:(NSDictionary *)dict;

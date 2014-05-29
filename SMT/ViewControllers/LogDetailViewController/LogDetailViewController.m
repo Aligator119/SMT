@@ -1,11 +1,3 @@
-//
-//  LogDetailViewController.m
-//  SMT
-//
-//  Created by Mac on 5/13/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import "LogDetailViewController.h"
 #import "NewLog1ViewController.h"
 #import "LogDetail2ViewController.h"
@@ -18,6 +10,7 @@
     NSArray * activityDetails;
     NSMutableArray * displayedCell;
 }
+
 
 
 - (void) addNewCell:(UIButton *) sender;
@@ -42,8 +35,12 @@
     activity = [enteredData objectForKey:@"activity"];
     activityDetails = [enteredData objectForKey:@"activityDetails"];
     displayedCell = [[NSMutableArray alloc]init];
-    for (int i=0;i<=[self.list count];i++) {
-        [displayedCell addObject:@(1)];
+    for (int i=0;i<[self.list count];i++) {
+        if (((ActivityDetails *)[activityDetails objectAtIndex:i]).seen >=3) {
+        [displayedCell addObject:@(4)];
+        } else {
+           [displayedCell addObject:@(((ActivityDetails *)[activityDetails objectAtIndex:i]).seen +1)];
+        }
     }
     // Do any additional setup after loading the view from its nib.
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
@@ -54,6 +51,14 @@
     [self.table registerNib:cellNib1 forCellReuseIdentifier:@"LogDetailCell"];
     UINib *cellNib2 = [UINib nibWithNibName:@"AddCell" bundle:[NSBundle mainBundle]];
     [self.table registerNib:cellNib2 forCellReuseIdentifier:@"AddCell"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (self.index) {
+        ((LogDetailCell *)[self.table cellForRowAtIndexPath:self.index]).cellState = 1;
+        [self.table reloadData];
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -78,19 +83,19 @@
         [((AddCell *)cell).btnAdd addTarget:self action:@selector(addNewCell:) forControlEvents:UIControlEventTouchUpInside];
     } else {
         
+        if (numberOfCell > details.harvested && indexPath.row >= details.harvested)   {
             cell = [tableView dequeueReusableCellWithIdentifier:@"LogDetailCell"];
-        
-            NSString * str = [[@"Harvested(" stringByAppendingString:[NSString stringWithFormat:@"%d",indexPath.row + 1]] stringByAppendingString:@")"];
-            ((LogDetailCell *)cell).lbText.text = str;
-            ((LogDetailCell *)cell).lbDetailText.text = @"Add Detail";
-        
-     if (numberOfCell > details.harvested && indexPath.row >= details.harvested)   {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"LogDetailCell"];
-        
+            
             NSString * str = [[@"Seen(" stringByAppendingString:[NSString stringWithFormat:@"%d",indexPath.row + 1]] stringByAppendingString:@")"];
             ((LogDetailCell *)cell).lbText.text = str;
-            ((LogDetailCell *)cell).lbDetailText.text = @"Add Detail";
-            }
+            ((LogDetailCell *)cell).lbDetailText.text = ((LogDetailCell *)cell).cellState == 0 ? @"Add Detail" : @"Detail Saved";
+        } else {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"LogDetailCell"];
+        
+        NSString * str = [[@"Harvested(" stringByAppendingString:[NSString stringWithFormat:@"%d",indexPath.row + 1]] stringByAppendingString:@")"];
+            ((LogDetailCell *)cell).lbText.text = str;
+        ((LogDetailCell *)cell).lbDetailText.text = ((LogDetailCell *)cell).cellState == 0 ? @"Add Detail" : @"Detail Saved";
+        }
     }
     
     
@@ -99,15 +104,18 @@
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return ((Species *)[self.list objectAtIndex:section]).name;
+    return [@"    " stringByAppendingString:((Species *)[self.list objectAtIndex:section]).name];
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString * str = [[@"Harvested(" stringByAppendingString:[NSString stringWithFormat:@"%d",indexPath.row + 1]] stringByAppendingString:@")"];
-    NSDictionary * buf = [[NSDictionary alloc]initWithObjectsAndKeys:str, @"name", [enteredData objectForKey:@"startTime"], @"startTime", [enteredData objectForKey:@"endTime"], @"endTime", nil];
+    [self.table deselectRowAtIndexPath:indexPath animated:YES];
+    if ([[self.table cellForRowAtIndexPath:indexPath] isKindOfClass:[LogDetailCell class]]) {
+    NSString * str = ((LogDetailCell *)[self.table cellForRowAtIndexPath:indexPath]).lbText.text;
+    NSDictionary * buf = [[NSDictionary alloc]initWithObjectsAndKeys:str, @"name", indexPath, @"index", nil];
     LogDetail2ViewController * ld2vc = [[LogDetail2ViewController alloc]initWithNibName:@"LogDetail2ViewController" bundle:nil andData:buf];
     [self.navigationController pushViewController:ld2vc animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning

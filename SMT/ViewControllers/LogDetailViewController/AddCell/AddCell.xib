@@ -15,22 +15,21 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sGL-fj-unl">
-                        <rect key="frame" x="280" y="4" width="30" height="30"/>
+                        <rect key="frame" x="30" y="1" width="260" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.58823529409999997" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="XDy-Kc-iCz"/>
+                            <constraint firstAttribute="width" constant="260" id="XDy-Kc-iCz"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                        <state key="normal" title="+">
-                            <color key="titleColor" red="0.015686274510000001" green="0.20000000000000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <state key="normal" title="Add">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="sGL-fj-unl" secondAttribute="bottom" constant="9" id="ACC-oV-b2P"/>
-                    <constraint firstItem="sGL-fj-unl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="FGC-qB-s4j"/>
-                    <constraint firstAttribute="trailing" secondItem="sGL-fj-unl" secondAttribute="trailing" constant="10" id="cpo-gF-auW"/>
+                    <constraint firstAttribute="bottom" secondItem="sGL-fj-unl" secondAttribute="bottom" constant="2" id="ACC-oV-b2P"/>
+                    <constraint firstItem="sGL-fj-unl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="FGC-qB-s4j"/>
+                    <constraint firstAttribute="trailing" secondItem="sGL-fj-unl" secondAttribute="trailing" constant="30" id="cpo-gF-auW"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

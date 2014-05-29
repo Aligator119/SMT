@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LogDetailCell.h"
+#import "LogDetailViewController.h"
+#import "DataLoader.h"
 
 @interface LogDetail2ViewController : UIViewController <UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
@@ -27,6 +30,8 @@
 - (IBAction)actSaveDetail:(id)sender;
 - (IBAction)actCancel:(id)sender;
 - (IBAction)actDonePicker:(id)sender;
+- (IBAction)actCancelPicker:(id)sender;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andData:(NSDictionary *)dict;
 
