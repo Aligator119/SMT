@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="navigationBarHeightConstr" destination="loF-li-CPL" id="frS-C2-Jb0"/>
                 <outlet property="navigationBarVerticalConstr" destination="hOl-AA-3T1" id="HGz-JZ-doC"/>
+                <outlet property="table" destination="2lw-ea-2Hq" id="23j-G4-4UM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -67,6 +68,15 @@
                         <constraint firstAttribute="height" constant="64" id="loF-li-CPL"/>
                     </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2lw-ea-2Hq">
+                    <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="rgI-3n-HZx"/>
+                        <outlet property="delegate" destination="-1" id="a42-Ug-knl"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>

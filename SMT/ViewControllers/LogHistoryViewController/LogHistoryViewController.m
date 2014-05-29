@@ -10,6 +10,11 @@
 #import "FlyoutMenuViewController.h"
 
 @interface LogHistoryViewController ()
+{
+    DataLoader * dataLoader;
+    NSArray * logHistory;
+}
+@property (strong, nonatomic) IBOutlet UITableView *table;
 
 - (IBAction)actButtonBack:(id)sender;
 @end
@@ -35,7 +40,42 @@
         self.navigationBarVerticalConstr.constant -=20;
     }
 
+//----------------------------------------------------------------------------------------------------
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        
+        //[dataLoader get
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            
+            if(!dataLoader.isCorrectRezult) {
+                NSLog(@"Error download sybSpecie");
+            } else {
+                [self.table reloadData];
+            }
+        });
+    });
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [logHistory count];
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+    
+    
+    return cell;
+}
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
