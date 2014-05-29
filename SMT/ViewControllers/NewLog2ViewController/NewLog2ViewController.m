@@ -106,6 +106,10 @@
     btnTimeFormatter = [[NSDateFormatter alloc]init];
     [btnTimeFormatter setDateFormat:@"h:mm a"];
     
+    activityDetails = [[NSMutableArray alloc]init];
+    activity = [[Activity alloc]init];
+    dates = [NSDate date];
+    
     
     UITapGestureRecognizer *datePickerViewRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pressedDatePickerView:)];
     [datePickerViewRecognizer setNumberOfTapsRequired:1];
@@ -157,9 +161,7 @@
         });
     });
 }
-    activityDetails = [[NSMutableArray alloc]init];
-    activity = [[Activity alloc]init];
-    dates = [NSDate date];
+    
 }
 
 
