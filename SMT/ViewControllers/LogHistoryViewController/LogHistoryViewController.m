@@ -39,6 +39,7 @@
         self.navigationBarHeightConstr.constant -= 20;
         self.navigationBarVerticalConstr.constant -=20;
     }
+    dataLoader = [DataLoader instance];
 
 //----------------------------------------------------------------------------------------------------
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);

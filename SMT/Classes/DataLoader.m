@@ -376,9 +376,15 @@
 
 #pragma mark Log Activity
 
-- (void) getActivityList{
+- (NSMutableArray*) getActivityList{
     NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log?app_id=%@&app_key=%@", strUrl, App_id, App_key];
-    [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListActivities];
+    NSMutableArray * speciesIdArray = [NSMutableArray new];
+    for (NSDictionary *act in [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListActivities]){
+        NSNumber * spec = [NSNumber numberWithInteger:[[act objectForKey: @"species_id"]integerValue]];
+        [speciesIdArray addObject:spec];
+    }
+    
+    return speciesIdArray;
 }
 
 - (void) getActivityWithId: (NSInteger) _id{
