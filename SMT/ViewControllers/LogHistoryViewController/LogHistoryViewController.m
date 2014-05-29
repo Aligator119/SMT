@@ -13,6 +13,7 @@
 {
     DataLoader * dataLoader;
     NSArray * logHistory;
+    NSMutableArray * speciesHistory;
 }
 @property (strong, nonatomic) IBOutlet UITableView *table;
 
@@ -39,6 +40,7 @@
         self.navigationBarHeightConstr.constant -= 20;
         self.navigationBarVerticalConstr.constant -=20;
     }
+    speciesHistory = [[NSMutableArray alloc]init];
 
 //----------------------------------------------------------------------------------------------------
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -51,7 +53,23 @@
             if(!dataLoader.isCorrectRezult) {
                 NSLog(@"Error download log history");
             } else {
-                [self.table reloadData];
+                for (id ID in logHistory) {
+                    
+                dispatch_queue_t nQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                 dispatch_async(nQueue, ^(){
+                    
+                    [speciesHistory addObject:[dataLoader getSpecieWithId:[ID integerValue]]];
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^(){
+                        
+                        if(!dataLoader.isCorrectRezult) {
+                            NSLog(@"Error download log history");
+                        } else {
+                            [self.table reloadData];
+                        }
+                    });
+                });
+                }
             }
         });
     });
