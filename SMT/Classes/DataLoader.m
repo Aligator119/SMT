@@ -379,9 +379,19 @@
     NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log", strUrl];
     NSString *speciesId = [NSString stringWithFormat:@"%d",_speciesId];
     
-    NSMutableDictionary *activityDict = [NSMutableDictionary dictionaryWithObjects:@[] forKeys:@[]];
+    NSMutableDictionary *activityDict = [NSMutableDictionary dictionaryWithObjects:@[_activity.startTime, _activity.date, _activity.endTime, [NSString stringWithFormat:@"%i", _activity.location_id]] forKeys:@[@"startTime", @"date", @"endTime", @"location_id"]];
     
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:@[speciesId, _activity, _activityDetails, App_id, App_key] forKeys:@[@"species_id", @"activity", @"harvestrows", @"app_id", @"app_key" ]];
+    NSMutableArray *detailsArray = [NSMutableArray new];
+    for (ActivityDetails * detail in _activityDetails){
+        NSString *subspecies_id = [NSString stringWithFormat:@"%d", detail.subspecies_id];
+        NSString *activitylevel = [NSString stringWithFormat:@"%d", detail.activitylevel];
+        NSString *harvested = [NSString stringWithFormat:@"%d", detail.harvested];
+        NSString *seen = [NSString stringWithFormat:@"%d", detail.seen];
+        NSMutableDictionary *dictDetail = [NSMutableDictionary dictionaryWithObjects:@[subspecies_id, activitylevel, harvested, seen] forKeys:@[@"subspecies_id", @"activitylevel", @"harvested", @"seen"]];
+        [detailsArray addObject:dictDetail];
+    }
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:@[@(_speciesId), activityDict, detailsArray, App_id, App_key] forKeys:@[@"species_id", @"activity", @"harvestrows", @"app_id", @"app_key" ]];
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
     [self startRequest:strUrlRequestAddress andData:jsonData typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestCreateActivity];
