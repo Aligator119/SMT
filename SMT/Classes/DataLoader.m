@@ -380,8 +380,12 @@
     NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log?app_id=%@&app_key=%@", strUrl, App_id, App_key];
     NSMutableArray * speciesIdArray = [NSMutableArray new];
     for (NSDictionary *act in [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListActivities]){
+        NSMutableDictionary *actDict = [NSMutableDictionary new];
         NSNumber * spec = [NSNumber numberWithInteger:[[act objectForKey: @"species_id"]integerValue]];
-        [speciesIdArray addObject:spec];
+        NSString *date = [act objectForKey:@"date"];
+        [actDict setObject:spec forKey:@"species"];
+        [actDict setObject:date forKey:@"date"];
+        [speciesIdArray addObject:actDict];
     }
     
     return speciesIdArray;
