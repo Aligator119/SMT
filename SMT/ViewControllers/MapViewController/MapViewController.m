@@ -24,6 +24,7 @@
     BOOL firstLocationUpdate_;
     AppDelegate * appDel;
     DataLoader *loader;
+    NSArray * listLocations;
 }
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * navigationBarHeightConstr;
@@ -63,6 +64,11 @@
 
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    if (self.mapType == typeFishing){
+        listLocations = [NSArray arrayWithArray:appDel.listFishLocations];
+    } else if (self.mapType == typeHunting){
+        listLocations = [NSArray arrayWithArray:appDel.listHuntLocations];
+    }
     [self setAllLocationMarkers];
 }
 
@@ -107,7 +113,7 @@
 - (void) setAllLocationMarkers{
     [mapView_ clear];
     
-    for (Location* loc in appDel.listLocations){
+    for (Location* loc in listLocations){
         CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(loc.locLatitude, loc.locLongitude);
         SMTMarker * marker = [SMTMarker markerWithPosition:coord];
         marker.title = loc.locName;
@@ -163,12 +169,14 @@
                 
                 if(dataLoader.isCorrectRezult){
                     LocationListViewController * locationListVC = [LocationListViewController new];
+                    locationListVC.mapType = self.mapType;
                     [self.navigationController pushViewController:locationListVC animated:YES];
                 }
             });
         });
     } else {
         LocationListViewController * locationListVC = [LocationListViewController new];
+        locationListVC.mapType = self.mapType;
         [self.navigationController pushViewController:locationListVC animated:YES];
        
     }
@@ -211,7 +219,7 @@
                 dispatch_async(dispatch_get_main_queue(), ^(){
                     [self endLoader];
                     if(loader.isCorrectRezult){
-                        Location * loc = [appDel.listLocations lastObject];
+                        Location * loc = [listLocations lastObject];
                         marker.location = loc;
                         marker.icon = [UIImage imageNamed:@"map_marker"];
                         marker.map = mapView_;

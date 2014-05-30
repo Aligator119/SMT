@@ -83,7 +83,19 @@
 
 - (void)openFishingMap
 {
+    DataLoader * dataLoader = [DataLoader instance];
     
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        [dataLoader getLocationsAssociatedWithUser];
+        
+        dispatch_async(dispatch_get_main_queue(),^(){
+            
+            MapViewController * mapVC = [MapViewController new];
+            mapVC.mapType = typeFishing;
+            [self.navigationController pushViewController:mapVC animated:YES];
+        });
+    });
 }
 
 - (void)logout
@@ -141,7 +153,7 @@
             dispatch_async(dispatch_get_main_queue(),^(){
                 
                 MapViewController * mapVC = [MapViewController new];
-                mapVC.mapType = 1;
+                mapVC.mapType = typeHunting;
                 [self.navigationController pushViewController:mapVC animated:YES];
             });
         });

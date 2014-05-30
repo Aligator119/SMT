@@ -78,6 +78,11 @@
     [loader deleteLocationWithID:self.location.locID];
     if (loader.isCorrectRezult){
         [appDel.listLocations removeObject:self.location];
+        if (self.location.typeLocation == typeHunting){
+            [appDel.listHuntLocations removeObject:self.location];
+        }else if (self.location.typeLocation == typeFishing){
+            [appDel.listFishLocations removeObject:self.location];
+        }
         [self.navigationController popViewControllerAnimated:YES];
     }
 }

@@ -249,10 +249,17 @@
 
     Location * location = [Location new];
     [location setValuesFromDict:[self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequesPatch setHeaders:YES andTypeRequest:ApplicationServiceRequestUpdateLocation]];
+    appDel.listFishLocations = [NSMutableArray new];
+    appDel.listHuntLocations = [NSMutableArray new];
     for(int i=0 ; i < appDel.listLocations.count; i++){
         Location * loc = [[appDel listLocations] objectAtIndex:i];
         if (location.locID == loc.locID){
             [[appDel listLocations] replaceObjectAtIndex:i withObject:location];
+        }
+        if (location.typeLocation == typeFishing){
+            [appDel.listFishLocations addObject:location];
+        } else if (location.typeLocation == typeHunting){
+            [appDel.listHuntLocations addObject:location];
         }
     }
 
@@ -443,6 +450,34 @@
     NSString * strUrlRequestData1 = [NSString stringWithFormat:@"latitude=%@&longitude=%@&%@",_latitude,_longitude,APP_ID_KEY];
     
     [self startRequest:strUrlRequestAdress andData:strUrlRequestData1 typeRequest:RequestPut setHeaders:YES andTypeRequest:ApplicationServiceRequestUpdateUserCurrentLocation];
+}
+
+#pragma mark Shared locations
+
+- (void) getAllSharedLocation{
+    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@sharedlocation?app_id=%@&app_key=%@", strUrl, App_id, App_key];
+    [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetAllSharedLocations];
+}
+
+- (void) getSharedLocationsWithBuddyId: (NSInteger) buddy_id{
+    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@sharedlocation?user_id=%@&app_id=%@&app_key=%@", strUrl, @(buddy_id), App_id, App_key];
+    [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetSharedLocationsFromBuddy];
+}
+
+- (void) shareLocation: (NSInteger) location_id toBuddy: (NSInteger) buddy_id{
+    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@sharedlocation", strUrl];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:@[@(location_id), @(buddy_id), App_id, App_key] forKeys:@[@"id", @"user_id", @"app_id", @"app_key"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    [self startRequest:strUrlRequestAddress andData:jsonData typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestShareLocationWithBuddy];
+}
+
+- (void) unshareLocation: (NSInteger) location_id fromBuddy: (NSInteger) buddy_id{
+    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@sharedlocation", strUrl];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:@[@(location_id), @(buddy_id), App_id, App_key] forKeys:@[@"id", @"user_id", @"app_id", @"app_key"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    [self startRequest:strUrlRequestAddress andData:jsonData typeRequest:RequestDelete setHeaders:YES andTypeRequest:ApplicationServiceRequestUnshareLocation];
 }
 
 
