@@ -16,6 +16,7 @@
 #import "PhotoVideoViewController.h"
 #import "BuddyListViewController.h"
 #import "PredictionViewController.h"
+#import "ReportsViewController.h"
 
 
 #define USER_DATA @"userdata"
@@ -113,7 +114,7 @@
 
 - (void)openReports
 {
-    
+    [self.navigationController pushViewController:[[ReportsViewController alloc]init] animated:YES];
 }
 
 - (void)openWeather

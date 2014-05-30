@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DataLoader.h"
+#import "HistoryCell.h"
 
 @interface LogHistoryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;

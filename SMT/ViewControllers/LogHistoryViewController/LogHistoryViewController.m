@@ -14,7 +14,13 @@
 {
     DataLoader * dataLoader;
     NSArray * logHistory;
-    NSMutableArray * speciesHistory;
+    NSArray * allKey;
+    
+    NSMutableDictionary * dict;
+    NSDateFormatter * dateFormatter;
+    NSDateFormatter * compareFormatter;
+    NSDateFormatter * displayFormatter;
+    NSCalendar * calendar;
 }
 @property (strong, nonatomic) IBOutlet UITableView *table;
 
@@ -37,12 +43,23 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    compareFormatter = [[NSDateFormatter alloc]init];
+    [compareFormatter setDateFormat:@"yyyy-MM"];
+    displayFormatter = [[NSDateFormatter alloc]init];
+    [displayFormatter setDateFormat:@"MMMM yyyy"];
+    
+    UINib *cellNib = [UINib nibWithNibName:@"HistoryCell" bundle:[NSBundle mainBundle]];
+    [self.table registerNib:cellNib forCellReuseIdentifier:@"HistoryCell"];
+    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
         self.navigationBarHeightConstr.constant -= 20;
         self.navigationBarVerticalConstr.constant -=20;
     }
-    speciesHistory = [[NSMutableArray alloc]init];
-
+    calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    dataLoader = [DataLoader instance];
+    dict = [[NSMutableDictionary alloc]init];
 //----------------------------------------------------------------------------------------------------
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
@@ -54,48 +71,53 @@
             if(!dataLoader.isCorrectRezult) {
                 NSLog(@"Error download log history");
             } else {
-                for (id ID in logHistory) {
-                    
-                dispatch_queue_t nQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-                 dispatch_async(nQueue, ^(){
-                    
-                    [speciesHistory addObject:[dataLoader getSpecieWithId:[ID integerValue]]];
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^(){
-                        
-                        if(!dataLoader.isCorrectRezult) {
-                            NSLog(@"Error download log history");
-                        } else {
-                            [self.table reloadData];
-                        }
-                    });
-                });
+
+                for (id obj in logHistory) {
+
+                    if ([[dict allKeys] containsObject:[compareFormatter stringFromDate:[dateFormatter dateFromString:[obj objectForKey:@"date"]]]]) {
+                        NSMutableArray * buf = [[NSMutableArray alloc]initWithArray:[dict objectForKey:[compareFormatter stringFromDate:[dateFormatter dateFromString:[obj objectForKey:@"date"]]]]];
+                        [buf addObject:[obj objectForKey:@"species_id"]];
+                        [dict setValue:buf forKey:[compareFormatter stringFromDate:[dateFormatter dateFromString:[obj objectForKey:@"date"]]]];
+                    } else {
+                        NSMutableArray * b = [[NSMutableArray alloc]initWithObjects:[obj objectForKey:@"species_id"], nil];
+                        [dict setValue:b forKey:[compareFormatter stringFromDate:[dateFormatter dateFromString:[obj objectForKey:@"date"]]]];
+                    }
                 }
+                allKey = [dict allKeys];
+                [self.table reloadData];
             }
         });
     });
+    
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [allKey count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [speciesHistory count];
+    NSArray * item = [[NSArray alloc]initWithArray:[dict objectForKey:[allKey objectAtIndex:section]]];
+    return item.count;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    HistoryCell * cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryCell"];
     
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-    }
-    Species * specie = [speciesHistory objectAtIndex:indexPath.row];
-    cell.textLabel.text = specie.name;
+    NSArray * item = [[NSArray alloc]initWithArray:[dict objectForKey:[allKey objectAtIndex:indexPath.section]]];
+    
+    [cell setCellFromSpecies:[item objectAtIndex:indexPath.row]];
     
     
     return cell;
 }
 
-
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [displayFormatter stringFromDate:[compareFormatter dateFromString:[allKey objectAtIndex:section]]];
+}
 
 
 - (void)didReceiveMemoryWarning
