@@ -47,7 +47,7 @@
     [self initPlot];
 }
 
-- (IBAction)day:(id)sender {
+- (void)day {
     [self.hostView removeFromSuperview];
     self.hostView=nil;
     graphRange = RANGE_FOR_DAY;
@@ -55,7 +55,7 @@
     [self getStartData];
     [self initPlot];
 }
-- (IBAction)week:(id)sender {
+- (void)week {
     [self.hostView removeFromSuperview];
     self.hostView=nil;
     graphRange = RANGE_FOR_WEEK;
@@ -64,7 +64,7 @@
     [self getDictionaryWithDataForWeek];
     [self initPlot];
 }
-- (IBAction)month:(id)sender {
+- (void)month {
     [self.hostView removeFromSuperview];
     self.hostView=nil;
     graphRange = RANGE_FOR_MONTH;
@@ -219,7 +219,7 @@
 
 - (void)configureHost
 {
-    self.hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:self.frame];
+    self.hostView = [(CPTGraphHostingView *) [CPTGraphHostingView alloc] initWithFrame:self.bounds];
     self.hostView.allowPinchScaling = NO;
     [self addSubview:self.hostView];
 }

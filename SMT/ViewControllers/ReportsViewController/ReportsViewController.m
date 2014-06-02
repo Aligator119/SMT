@@ -12,6 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet SMTGraphView *graphView;
 @property (strong, nonatomic) NSMutableDictionary *valuesDict;
+@property (nonatomic, weak) IBOutlet UISegmentedControl * dateSegmentControl;
+@property (nonatomic, weak) IBOutlet UISegmentedControl *dataSourceSegmentControl;
 
 @end
 
@@ -43,6 +45,31 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)back:(id)sender{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)DateSegmentDidChangeState:(id)sender{
+    NSInteger selectedIndex = self.dateSegmentControl.selectedSegmentIndex;
+    
+    switch (selectedIndex) {
+        case 0:
+            [self.graphView day];
+            break;
+            
+        case 1:
+            [self.graphView week];
+            break;
+            
+        case 2:
+            [self.graphView month];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end

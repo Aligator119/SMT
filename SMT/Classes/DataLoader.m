@@ -178,10 +178,13 @@
     
     NSDictionary *info = [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequestPost setHeaders:NO andTypeRequest:ApplicationServiceRequestAvtorizeUser];
     
+    if (self.isCorrectRezult){
+    
     [appDel.user setUserInfoName:[info objectForKey:keyUsername] appID:[[info objectForKey:keyUserID] intValue]];
     [appDel.user setUserInfoPassword:enterPassword];
     [appDel.user setUserFirstName:[info objectForKey:keyUserFirstName] andSecondName:[info objectForKey:keyUserSecondName]];
     appDel.user.avatarAdress = [info objectForKey:@"Avatar"];
+    }
 }
 - (void)getLocationsAssociatedWithUser
 {
