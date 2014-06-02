@@ -11,12 +11,24 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "CustomHeader.h"
 
+@protocol PhotoViewControllerDelegate <NSObject>
+
+@required
+
+- (void)selectPhoto:(UIImage *)image;
+
+@end
+
+
 @interface PhotoVideoViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
+
+@property (weak, nonatomic) id<PhotoViewControllerDelegate> delegate;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionTable;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;
 @property (strong, nonatomic) NSArray *list;
+@property (strong, nonatomic) id controller;
 
 - (IBAction)actTakePhoto:(id)sender;
 - (IBAction)actChooseExisting:(id)sender;

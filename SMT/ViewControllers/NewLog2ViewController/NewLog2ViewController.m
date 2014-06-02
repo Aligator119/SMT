@@ -36,6 +36,7 @@
     Activity * activity;
     NSDate * dates;
     NSIndexPath * path;
+    NSString * logID;
     }
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
@@ -381,7 +382,7 @@
         dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(newQueue, ^(){
             
-            [dataLoader createActivityWithActivityObject:activity andActivityDetails:activityDetails andSpeciesId:[self.species.specId integerValue]];
+            logID = [dataLoader createActivityWithActivityObject:activity andActivityDetails:activityDetails andSpeciesId:[self.species.specId integerValue]];
             
             dispatch_async(dispatch_get_main_queue(), ^(){
                 
@@ -389,7 +390,7 @@
                     NSLog(@"Error download sybSpecie");
                 } else {
         
-                    NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:listOfSpecies, @"specie", activity, @"activity", activityDetails, @"activityDetails", nil];
+                    NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:listOfSpecies, @"specie", activity, @"activity", activityDetails, @"activityDetails", logID, @"id", nil];
                     LogDetailViewController * ldvc = [[LogDetailViewController alloc]initWithNibName:@"LogDetailViewController" bundle:nil andProperty:dict];
                     [self.navigationController pushViewController:ldvc animated:YES];
 

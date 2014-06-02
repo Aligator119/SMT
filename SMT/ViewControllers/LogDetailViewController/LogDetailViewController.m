@@ -9,6 +9,7 @@
     Activity * activity;
     NSArray * activityDetails;
     NSMutableArray * displayedCell;
+    NSString * logID;
 }
 
 
@@ -34,6 +35,7 @@
     self.list = [enteredData objectForKey:@"specie"];
     activity = [enteredData objectForKey:@"activity"];
     activityDetails = [enteredData objectForKey:@"activityDetails"];
+    logID = [enteredData objectForKey:@"id"];
     displayedCell = [[NSMutableArray alloc]init];
     for (int i=0;i<[self.list count];i++) {
         if (((ActivityDetails *)[activityDetails objectAtIndex:i]).seen >=3) {
@@ -112,7 +114,7 @@
     [self.table deselectRowAtIndexPath:indexPath animated:YES];
     if ([[self.table cellForRowAtIndexPath:indexPath] isKindOfClass:[LogDetailCell class]]) {
     NSString * str = ((LogDetailCell *)[self.table cellForRowAtIndexPath:indexPath]).lbText.text;
-    NSDictionary * buf = [[NSDictionary alloc]initWithObjectsAndKeys:str, @"name", indexPath, @"index", nil];
+    NSDictionary * buf = [[NSDictionary alloc]initWithObjectsAndKeys:str, @"name", indexPath, @"index", logID, @"id", nil];
     LogDetail2ViewController * ld2vc = [[LogDetail2ViewController alloc]initWithNibName:@"LogDetail2ViewController" bundle:nil andData:buf];
     [self.navigationController pushViewController:ld2vc animated:YES];
     }

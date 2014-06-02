@@ -101,12 +101,22 @@ enum ApplicationServiceRequest
 - (NSArray *)getSubSpecies:(int) subSpeciesID;
 - (Species *)getSubSpecieWithId:(int) subSpecieID;
 
-- (void) createActivityWithActivityObject: (Activity*) _activity andActivityDetails: (NSArray*) _activityDetails andSpeciesId: (NSInteger) _speciesId;
+- (NSString *) createActivityWithActivityObject: (Activity*) _activity andActivityDetails: (NSArray*) _activityDetails andSpeciesId: (NSInteger) _speciesId;
 
 - (NSMutableArray*) getActivityList;
-- (void) getActivityWithId: (NSInteger) _id;
+- (NSDictionary *) getActivityWithId: (NSInteger) _id;
 - (void) upadateActivityWithId: (NSString*) _activityId speciesId: (NSString*) _speciesId startTime: (NSString*) _startTime endTime: (NSString*) _endTime locationId: (NSString*) _locationId date: (NSString*) _date;
 - (void) deleteActivityWithId: (NSInteger) _activityId;
 
+//------- Photo metods -----------------------------------------
+- (void)getPhoto;
+- (void)getPhotoWithId:(int)photo_id;
+- (void)uploadPhoto:(UIImage *)photo;
+- (void)updatePhotoWithId:(int) photo_id andActivity:(int)activity_id andSighting:(int)sighting_id andType:(int)type_id andDescription:(NSString *)description andCaption:(NSString *)caption;
+- (void)deletePhotoWithId:(int)photo_id;
+//------- Log Detail -----------------------------------------------
+- (void) getLogDetail;
+- (void) updateLogDetailWithId:(NSString *) logId andSighting:(NSDictionary *)sighting;
+- (void) deleteLogDetailWithId:(int)logId;
 
 @end

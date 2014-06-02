@@ -10,8 +10,9 @@
 #import "LogDetailCell.h"
 #import "LogDetailViewController.h"
 #import "DataLoader.h"
+#import "PhotoVideoViewController.h"
 
-@interface LogDetail2ViewController : UIViewController <UIGestureRecognizerDelegate>
+@interface LogDetail2ViewController : UIViewController <UIGestureRecognizerDelegate, PhotoViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;
 @property (weak, nonatomic) IBOutlet UILabel *lbName;

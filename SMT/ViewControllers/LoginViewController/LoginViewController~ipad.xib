@@ -106,12 +106,12 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NnM-wF-4rw">
-                                    <rect key="frame" x="235" y="551" width="299" height="46"/>
+                                    <rect key="frame" x="155" y="551" width="474" height="46"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.015686274509803921" green="0.20000000000000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="46" id="XU8-cK-Vrv"/>
-                                        <constraint firstAttribute="width" constant="299" id="r2O-ha-yMl"/>
+                                        <constraint firstAttribute="width" constant="474" id="r2O-ha-yMl"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -151,7 +151,7 @@
                                 <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="Aic-zM-5P9" secondAttribute="bottom" constant="99" id="e96-ol-qdx"/>
                                 <constraint firstItem="o63-cs-KjF" firstAttribute="top" secondItem="1CA-Qw-MPT" secondAttribute="top" id="fbi-rA-cCb"/>
                                 <constraint firstItem="Fl1-6U-mdZ" firstAttribute="top" secondItem="QZ0-Uh-x90" secondAttribute="bottom" constant="77" id="foI-xP-Inp"/>
-                                <constraint firstItem="NnM-wF-4rw" firstAttribute="centerX" secondItem="QZ0-Uh-x90" secondAttribute="centerX" constant="-7.5" id="gky-qP-5oQ"/>
+                                <constraint firstItem="NnM-wF-4rw" firstAttribute="centerX" secondItem="QZ0-Uh-x90" secondAttribute="centerX" id="gky-qP-5oQ"/>
                                 <constraint firstAttribute="centerX" secondItem="DyC-Nv-NH4" secondAttribute="centerX" constant="104" id="knv-7Z-S3k"/>
                                 <constraint firstItem="Aic-zM-5P9" firstAttribute="centerY" secondItem="DyC-Nv-NH4" secondAttribute="centerY" id="mah-Pt-ngB"/>
                                 <constraint firstAttribute="bottom" secondItem="o63-cs-KjF" secondAttribute="bottom" id="nJa-U3-DgF"/>

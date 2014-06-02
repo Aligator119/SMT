@@ -8,6 +8,7 @@
 
 #import "PhotoVideoViewController.h"
 #import "LogDetail2ViewController.h"
+#import "DataLoader.h"
 
 #define KEY_USERDEFAULT @"added_Image"
 
@@ -17,6 +18,7 @@
     NSMutableDictionary * dict;
     NSDateFormatter * dateFormatter;
     NSDateFormatter * sectionFormatter;
+    DataLoader * dataLoader;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIView *overlayView;
@@ -58,11 +60,15 @@
         self.navigationBarVerticalConstr.constant -=20;
     }
     
+    dataLoader = [DataLoader instance];
+    
     UINib *headerNib = [UINib nibWithNibName:@"CustomHeader" bundle:[NSBundle mainBundle]];
     [self.collectionTable registerClass:[CustomHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     [self.collectionTable registerNib:headerNib forCellWithReuseIdentifier:@"header"];
     
     def = [NSUserDefaults standardUserDefaults];
+    
+    //[def removeObjectForKey:KEY_USERDEFAULT];
     
     dict = [[NSMutableDictionary alloc]initWithDictionary:[self getImage]];
     self.list = [dict allKeys];
@@ -99,8 +105,8 @@
         {
             
             images = [UIImage imageWithCGImage:iref scale:[rep scale] orientation:(UIImageOrientation)[rep orientation]];
-            
             cell.image.image = images;
+            
         }
         
     };
@@ -149,11 +155,11 @@
 
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    for (id object in self.navigationController.viewControllers) {
-        if ([object isKindOfClass:[LogDetail2ViewController class]]) {
-            ((LogDetail2ViewController *)object).imgUser.image = ((ImageCell *)[collectionView cellForItemAtIndexPath:indexPath]).image.image;
-        }
+    id<PhotoViewControllerDelegate> delegate = self.delegate;
+    if ([delegate respondsToSelector:@selector(selectPhoto:)]) {
+        [delegate selectPhoto:((ImageCell *)[collectionView cellForItemAtIndexPath:indexPath]).image.image];
     }
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -205,7 +211,49 @@
             NSData * buf = [NSKeyedArchiver archivedDataWithRootObject:dict];
             [def setObject:buf forKey:KEY_USERDEFAULT];
             [def synchronize];
-            
+            //----------------------------------------------------------------------------------------------------
+            dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            dispatch_async(newQueue, ^(){
+                typedef void (^ALAssetsLibraryAssetForURLResultBlock)(ALAsset *asset);
+                typedef void (^ALAssetsLibraryAccessFailureBlock)(NSError *error);
+                
+                ALAssetsLibraryAssetForURLResultBlock resultblock = ^(ALAsset *myasset)
+                {
+                    ALAssetRepresentation *rep = [myasset defaultRepresentation];
+                    CGImageRef iref = [rep fullResolutionImage];
+                    UIImage *images;
+                    if (iref)
+                    {
+                        
+                        images = [UIImage imageWithCGImage:iref scale:[rep scale] orientation:(UIImageOrientation)[rep orientation]];
+                        [dataLoader uploadPhoto:images];
+                        
+                    }
+                    
+                };
+                
+                ALAssetsLibraryAccessFailureBlock failureblock  = ^(NSError *myerror)
+                {
+                    NSLog(@"can't get image");
+                    
+                };
+                
+                NSURL *asseturl = [newImage objectForKey:@"path"];
+                
+                ALAssetsLibrary* assetslibrary = [[ALAssetsLibrary alloc] init];
+                [assetslibrary assetForURL:asseturl 
+                               resultBlock:resultblock   
+                              failureBlock:failureblock];
+                
+                dispatch_async(dispatch_get_main_queue(), ^(){
+                    
+                    if(!dataLoader.isCorrectRezult) {
+                        NSLog(@"Error saved detail log");
+                    } else {
+                        
+                    }
+                });
+            });
         }
         }
         if (!flag) {
@@ -225,6 +273,22 @@
     }];
     
 }
+
+////----------------------------------------------------------------------------------------------------
+//dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//dispatch_async(newQueue, ^(){
+//    
+//    [dataLoader uploadPhoto:images];
+//    
+//    dispatch_async(dispatch_get_main_queue(), ^(){
+//        
+//        if(!dataLoader.isCorrectRezult) {
+//            NSLog(@"Error saved detail log");
+//        } else {
+//            
+//        }
+//    });
+//});
 
 
 - (void)didReceiveMemoryWarning
