@@ -16,7 +16,6 @@
 @property (strong, nonatomic) NSArray * huntTypeList;
 @property (strong, nonatomic) NSArray * weaponList;
 @property (strong, nonatomic) NSMutableArray * northernPikeList;
-
 @property (strong, nonatomic) Location * location;
 @property (strong, nonatomic) NSDate * huntDate;
 @property (strong, nonatomic) NSDate * huntStartTime;

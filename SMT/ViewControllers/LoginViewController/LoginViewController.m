@@ -83,14 +83,6 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     
-//    AppDelegate * appDel = (AppDelegate*) [UIApplication sharedApplication].delegate;
-//    if(appDel.isUserSign && isFirstMoment) {
-//        [self.activityIndicat startAnimating];
-//        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-//        [self fbUserLogin:appDel.user.userName password:appDel.user.userPassword];
-//    }
-    
-    
     NSData * userData = [userDefault objectForKey:USER_DATA];
     if (userData) {
         UserInfo * user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];

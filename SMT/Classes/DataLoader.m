@@ -34,6 +34,8 @@
 #define SubstringSpecies @"species"
 #define SubstringSubSpecies @"subspecies"
 #define SubstringCurrentLocation @"current_location"
+#define SubstringPhoto @"photo"
+#define SubstringLogdetail @"logdetail"
 
 @implementation DataLoader
 
@@ -391,14 +393,21 @@
     return speciesIdArray;
 }
 
-- (void) getActivityWithId: (NSInteger) _id{
+- (NSDictionary *) getActivityWithId: (NSInteger) _id{
     NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log/%i?app_id=%@&app_key=%@", strUrl, _id, App_id, App_key];
-    [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetActivityWithId];
+   
+    NSDictionary * newDict = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetActivityWithId];
+    
+    NSArray * harvestrowsArray = [newDict objectForKey:@"harvestrows"];
+    NSArray * sightingsArray   = [newDict objectForKey:@"sightings"];
+    NSDictionary * dict = [[NSDictionary  alloc]initWithObjectsAndKeys:harvestrowsArray, @"harvestrows", sightingsArray, @"sightings", nil];
+    
+    return dict;
 }
 
-- (void) createActivityWithActivityObject: (Activity*) _activity andActivityDetails: (NSArray*) _activityDetails andSpeciesId: (NSInteger) _speciesId{
+- (NSString *) createActivityWithActivityObject: (Activity*) _activity andActivityDetails: (NSArray*) _activityDetails andSpeciesId: (NSInteger) _speciesId{
     NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log", strUrl];
-    NSString *speciesId = [NSString stringWithFormat:@"%d",_speciesId];
+    //NSString *speciesId = [NSString stringWithFormat:@"%d",_speciesId];
     
     NSMutableDictionary *activityDict = [NSMutableDictionary dictionaryWithObjects:@[_activity.startTime, _activity.date, _activity.endTime, [NSString stringWithFormat:@"%i", _activity.location_id]] forKeys:@[@"startTime", @"date", @"endTime", @"location_id"]];
     
@@ -415,7 +424,8 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:@[@(_speciesId), activityDict, detailsArray, App_id, App_key] forKeys:@[@"species_id", @"activity", @"harvestrows", @"app_id", @"app_key" ]];
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
-    [self startRequest:strUrlRequestAddress andData:jsonData typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestCreateActivity];
+    NSDictionary * inf = [self startRequest:strUrlRequestAddress andData:jsonData typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestCreateActivity];
+    return [inf objectForKey:@"id"];
 }
 
 - (void) upadateActivityWithId: (NSString*) _activityId speciesId: (NSString*) _speciesId startTime: (NSString*) _startTime endTime: (NSString*) _endTime locationId: (NSString*) _locationId date: (NSString*) _date{
@@ -446,6 +456,110 @@
 }
 
 
+#pragma mark - Photo
+
+- (void) getPhoto
+{
+    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@%@?app_id=%@&app_key=%@", strUrl, SubstringPhoto, App_id, App_key];
+    NSMutableArray * photoList = [NSMutableArray new];
+    for (NSDictionary *act in [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto]){
+        [photoList addObject:[act objectForKey:@"url"]];
+    }
+
+}
+
+- (void) getPhotoWithId:(int)photo_id
+{
+    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@%@/%d?app_id=%@&app_key=%@", strUrl, SubstringPhoto, photo_id, App_id, App_key];
+    NSString * photo = [NSString new];
+    for (NSDictionary *act in [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto]){
+        photo = [act objectForKey:@"url"];
+    }
+
+}
+
+- (void) uploadPhoto:(UIImage *)photo
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@",strUrl,SubstringPhoto];
+    NSLog(@"URL : %@",strUrlRequestAdress);
+    
+    NSString * imgData = [UIImageJPEGRepresentation(photo, 0.9) base64Encoding];
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[imgData, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"photo", @"app_id", @"app_key"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    
+    NSLog(@"%@", error);
+    
+    [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto];
+}
+
+- ( void) updatePhotoWithId:(int)photo_id andActivity:(int)activity_id andSighting:(int)sighting_id andType:(int)type_id andDescription:(NSString *)description andCaption:(NSString *)caption
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i",strUrl,SubstringPhoto,photo_id];
+    
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[@(activity_id), @(sighting_id), @(type_id), description, caption, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"activity_id", @"sighting_id", @"type_id", @"description", @"caption", @"app_id", @"app_key"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    
+    NSLog(@"%@", error);
+    
+    [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequesPatch setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto];
+}
+
+- (void) deletePhotoWithId:(int)photo_id
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i",strUrl,SubstringPhoto,photo_id];
+    
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[@"b63800ad",@"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"app_id", @"app_key"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    
+    NSLog(@"%@", error);
+    
+    
+    [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequestDelete setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto];
+}
+
+#pragma mark - Log Detail
+
+- (void) getLogDetail
+{
+    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@%@?app_id=%@&app_key=%@", strUrl, SubstringLogdetail, App_id, App_key];
+    NSMutableArray * logDetail = [NSMutableArray new];
+    for (NSDictionary *act in [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestLogDetail]){
+        [logDetail addObject:[act objectForKey:@"url"]];
+    }
+
+}
+
+- (void) updateLogDetailWithId:(NSString *)logId andSighting:(NSDictionary *)sighting
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%@",strUrl,SubstringLogdetail,logId];
+    
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[sighting, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"sighting", @"app_id", @"app_key"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    
+    NSLog(@"%@", error);
+    
+    [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequesPatch setHeaders:YES andTypeRequest:ApplicationServiceRequestLogDetail];
+}
+
+- (void) deleteLogDetailWithId:(int)logId
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i",strUrl,SubstringLogdetail,logId];
+    
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[@"b63800ad",@"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"app_id", @"app_key"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    
+    NSLog(@"%@", error);
+    
+    [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequestDelete setHeaders:YES andTypeRequest:ApplicationServiceRequestLogDetail];
+}
+
+
+
 #pragma mark - REQUEST
 
 - (NSDictionary *)startRequest:(NSString*) _url andData:(NSData*) _data typeRequest:(NSString*) _type setHeaders:(BOOL)_setHeaders andTypeRequest:(int)typeReust{
@@ -464,7 +578,8 @@
     [request setHTTPMethod:_type];
     if(([_type isEqualToString: RequestPost] || [_type isEqualToString: RequestDelete] || [_type isEqualToString: RequestPut] || [_type isEqualToString:RequesPatch]) && (_data != nil))
         [request setHTTPBody: _data];
-    [request setValue:/*@"application/x-www-form-urlencoded"*/@"application/json" forHTTPHeaderField:@"Content-Type"];
+    //[request setValue:/*@"application/x-www-form-urlencoded"*/@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"must-revalidate" forHTTPHeaderField:@"Cashe-Control"];
     [request setTimeoutInterval:30.0f];
     [request setCachePolicy:NSURLRequestUseProtocolCachePolicy];

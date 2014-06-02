@@ -1,12 +1,21 @@
 #import "LogDetail2ViewController.h"
-#import "PhotoVideoViewController.h"
+
 
 @interface LogDetail2ViewController ()
 {
     NSDictionary * dictionary;
     NSDateFormatter * dateFormatter;
+    NSDateFormatter * displayFormatter;
     NSIndexPath * index;
     DataLoader * dataLoader;
+    NSString * logID;
+    BOOL addTrophy;
+    NSString * photo_id;
+    NSString * details;
+    NSString * hurvester;
+    NSDictionary * harvestrows;
+    NSDictionary * sightings;
+    NSDictionary * settingsDict;
 }
 - (void) setImageView:(id)sender;
 @end
@@ -26,11 +35,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    photo_id = nil;
+    details = @"";
     //self.picker.minimumDate = [dictionary objectForKey:@"startTime"];
     //self.picker.maximumDate = [dictionary objectForKey:@"endTime"];
     self.lbName.text = [dictionary objectForKey:@"name"];
     index = [[NSIndexPath alloc]init];
     index = [dictionary objectForKey:@"index"];
+    logID = [dictionary objectForKey:@"id"];
     // Do any additional setup after loading the view from its nib.
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
         self.navigationBarHeightConstr.constant -= 20;
@@ -38,6 +50,8 @@
     }
     dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"h:mm a"];
+    displayFormatter = [[NSDateFormatter alloc]init];
+    [displayFormatter setDateFormat:@"hh:mm"];
     
     //self.btnSelectTime.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     //self.imgUser.backgroundColor = [UIColor greenColor];
@@ -49,6 +63,33 @@
     [self.imgUser addGestureRecognizer:imageRecognizer];
     
     dataLoader = [DataLoader instance];
+    addTrophy = NO;
+    
+    
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        
+        settingsDict = [dataLoader getActivityWithId:[logID intValue]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            
+            if(!dataLoader.isCorrectRezult) {
+                NSLog(@"Error download harvester");
+            } else {
+                int numSightings = 0;
+                harvestrows = [[settingsDict objectForKey:@"harvestrows"] objectAtIndex:index.section];
+                for (int i = 0; i<=index.section; i++) {
+                    if (i == index.section) {
+                        numSightings += index.row;
+                    } else {
+                        numSightings += [[((NSDictionary *)[[settingsDict objectForKey:@"harvestrows"] objectAtIndex:i]) objectForKey:@"seen"] intValue];
+                    }
+                }
+                
+                sightings   = [[settingsDict objectForKey:@"sightings"] objectAtIndex:numSightings];
+            }
+        });
+    });
 
 }
 
@@ -73,12 +114,13 @@
 }
 
 - (IBAction)actSaveDetail:(id)sender {
-    
+    NSString * trophy = [NSString stringWithFormat:@"%i",addTrophy];
+    NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:[sightings objectForKey:@"id"], @"id",[displayFormatter stringFromDate:self.picker.date], @"time", trophy, @"trophy", nil, @"harvested", photo_id, @"photo_id", details, @"details", nil];
 //----------------------------------------------------------------------------------------------------
         dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(newQueue, ^(){
 
-            //[dataLoader createActivityWithActivityObject:activity andActivityDetails:activityDetails andSpeciesId:[self.species.specId integerValue]];
+            [dataLoader updateLogDetailWithId:[NSString stringWithFormat:@"%@",[harvestrows objectForKey:@"id"]] andSighting:dict];
 
            dispatch_async(dispatch_get_main_queue(), ^(){
 
@@ -119,7 +161,13 @@
 - (void) setImageView:(id)sender
 {
     PhotoVideoViewController * pvvc = [[PhotoVideoViewController alloc]initWithNibName:@"PhotoVideoViewController" bundle:nil];
+    pvvc.delegate = self;
     [self.navigationController pushViewController:pvvc animated:YES];
+}
+
+- (void)selectPhoto:(UIImage *)image
+{
+    self.imgUser.image = image;
 }
 
 @end
