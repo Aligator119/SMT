@@ -578,8 +578,7 @@
     [request setHTTPMethod:_type];
     if(([_type isEqualToString: RequestPost] || [_type isEqualToString: RequestDelete] || [_type isEqualToString: RequestPut] || [_type isEqualToString:RequesPatch]) && (_data != nil))
         [request setHTTPBody: _data];
-    //[request setValue:/*@"application/x-www-form-urlencoded"*/@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setValue:/*@"application/x-www-form-urlencoded"*/@"application/json" forHTTPHeaderField:@"Content-Type"];
     [request setValue:@"must-revalidate" forHTTPHeaderField:@"Cashe-Control"];
     [request setTimeoutInterval:30.0f];
     [request setCachePolicy:NSURLRequestUseProtocolCachePolicy];
