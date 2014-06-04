@@ -480,7 +480,7 @@
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
 {
-    NSLog(@"%@",[((CustomTextField *)textField) getText]);
+    //NSLog(@"%@",[((CustomTextField *)textField) getText]);
     [self.view endEditing:YES];
     return YES;
 }
