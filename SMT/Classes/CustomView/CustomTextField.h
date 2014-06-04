@@ -2,6 +2,8 @@
 
 @interface CustomTextField : UITextField <UITextFieldDelegate>
 
+- (void) setWithInputDictionary:(NSDictionary *)dict;
 - (NSString *) getText;
+- (NSString *) getQuestionID;
 
 @end

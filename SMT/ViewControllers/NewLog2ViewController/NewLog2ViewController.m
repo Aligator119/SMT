@@ -1,11 +1,3 @@
-//
-//  NewLog2ViewController.m
-//  SMT
-//
-//  Created by Mac on 5/8/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import "NewLog2ViewController.h"
 #import "DataLoader.h"
 #import "AppDelegate.h"
@@ -144,8 +136,8 @@
                                                object:nil];
     
 //-------------------------------------------------------------
-    int btn_tag = 1;
-    int tf_tag  = 1;
+    int btn_tag = 1000;
+    int tf_tag  = 10000;
     for (NSDictionary * dict in questionsList) {
         if ([[dict objectForKey:@"inputType"] isEqualToString:@"menu"]) {
             CGPoint point = self.header.frame.origin;
@@ -167,6 +159,7 @@
             point.x += self.header.frame.size.width;
             CustomTextField * tf = [[CustomTextField alloc]initWithFrame:CGRectMake(30.0, point.y, 260.0, 30.0)];
             tf.backgroundColor= [UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:235.0/255.0 alpha:1.0];
+            [tf setWithInputDictionary:dict];
             tf.delegate = self;
             tf.tag = tf_tag;
             tf_tag++;
@@ -376,8 +369,10 @@
     [self.pickerView removeFromSuperview];
     if (self.picker.tag == 55) {
         [self.btnNorthempike setSelectedSpecies:self.northernPike];
-    } else  {
-        [((CustomButton *)[self.header viewWithTag:self.picker.tag]) setSelectedIthem:self.selectedIthem];
+    } else {
+        if ([[self.header viewWithTag:self.picker.tag] isKindOfClass:[CustomButton class]]) {
+            [((CustomButton *)[self.header viewWithTag:self.picker.tag]) setSelectedIthem:self.selectedIthem];
+        }
     }
 }
 
@@ -389,6 +384,16 @@
     activity.endTime = [timeFormatter stringFromDate:self.huntEndTime];
     activity.date = [dateFormatter stringFromDate:self.huntDate];
     activity.location_id = self.location.locID;
+        NSMutableArray * speciesanswers = [[NSMutableArray alloc]init];
+        for (id obj in self.header.subviews) {
+            if ([obj isKindOfClass:[CustomButton class]]) {
+                [speciesanswers addObject:@{@"￼speciesquestio n_id" : [((CustomButton *)obj) getQuestion],
+                                            @"answer"              : [((CustomButton *)obj) getSelectedIthem]}];
+            } else if ([obj isKindOfClass:[CustomTextField class]]) {
+                [speciesanswers addObject:@{@"￼speciesquestio n_id" : [((CustomTextField *)obj) getQuestionID],
+                                            @"answer"              : [((CustomTextField *)obj) getText]}];
+            }
+        }
 //----------------------------------------------------------------------------------------------------
         dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(newQueue, ^(){
@@ -401,7 +406,7 @@
                     NSLog(@"Error download sybSpecie");
                 } else {
         
-                    NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:listOfSpecies, @"specie", activity, @"activity", activityDetails, @"activityDetails", logID, @"id", nil];
+                    NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:listOfSpecies, @"specie", activity, @"activity", activityDetails, @"activityDetails", logID, @"id", speciesanswers, @"speciesanswers", nil];
                     LogDetailViewController * ldvc = [[LogDetailViewController alloc]initWithNibName:@"LogDetailViewController" bundle:nil andProperty:dict];
                     [self.navigationController pushViewController:ldvc animated:YES];
 
@@ -460,6 +465,7 @@
 - (IBAction)actAdd:(id)sender {
     if (self.northernPike) {
         [self.btnNorthempike removeSelectIthem];
+        [self.btnNorthempike setTitle:@"Northern Pike" forState:UIControlStateNormal];
         [listOfSpecies addObject:self.northernPike];
         ActivityDetails * details = [[ActivityDetails alloc]init];
         details.subspecies_id = [self.northernPike.specId intValue];
@@ -480,7 +486,6 @@
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
 {
-    //NSLog(@"%@",[((CustomTextField *)textField) getText]);
     [self.view endEditing:YES];
     return YES;
 }
@@ -579,6 +584,7 @@
         self.selectedIthem = [array firstObject];
     }
     self.picker.tag = tag;
+    [self.picker selectedRowInComponent:0];
     [self.picker reloadAllComponents];
     [self.view addSubview:self.pickerView];
 }

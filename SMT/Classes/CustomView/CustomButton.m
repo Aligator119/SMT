@@ -5,6 +5,7 @@
     NSMutableArray * inputArray;
     NSString * selectItem;
     Species * selectSpecie;
+    NSString * questionID;
 }
 
 - (void)click:(id)sender;
@@ -20,6 +21,8 @@
         // Initialization code
         [self addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
         [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        self.titleLabel.font = [UIFont systemFontOfSize:15.0f];
+        selectItem = @"";
     }
     return self;
 }
@@ -30,6 +33,8 @@
     if (self) {
         [self addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
         [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        self.titleLabel.font = [UIFont systemFontOfSize:15.0f];
+        selectItem = @"";
     }
     return self;
 }
@@ -53,11 +58,18 @@
 }
 - (void) setWithInputDictionary:(NSDictionary *)dict
 {
+    questionID = [dict objectForKey:@"id"];
     [self setTitle:[dict objectForKey:@"question"] forState:UIControlStateNormal];
     inputArray = [[NSMutableArray alloc]init];
     for (NSDictionary * obj in [dict objectForKey:@"options"]) {
         [inputArray addObject:[obj objectForKey:@"myoption"]];
     }
+}
+
+
+- (NSString *)getQuestion
+{
+    return questionID;
 }
 
 - (NSString *) getSelectedIthem
@@ -72,12 +84,14 @@
 
 - (void) setSelectedIthem:(NSString *)str
 {
+    if (str) {
     for (NSString * obj in inputArray) {
         if ([obj isEqualToString:str]) {
             selectItem = str;
+            [self setTitle:str forState:UIControlStateNormal];
         }
     }
-    
+    }
 }
 
 - (void) setSelectedSpecies:(Species *)spec
@@ -85,6 +99,7 @@
     for (Species * obj in inputArray) {
         if ([obj isEqual:spec]) {
             selectSpecie = obj;
+            [self setTitle:spec.name forState:UIControlStateNormal];
         }
     }
 }

@@ -22,6 +22,7 @@
 - (void) addSpecie:(Species *)spec;
 - (void) setSelectedIthem:(NSString *)str;
 - (void) setSelectedSpecies:(Species *)spec;
+- (NSString *) getQuestion;
 
 
 @end
