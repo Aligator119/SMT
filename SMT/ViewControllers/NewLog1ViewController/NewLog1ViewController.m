@@ -19,6 +19,8 @@
 {
     AppDelegate * appDelegate;
     DataLoader *loader;
+    NSArray * array;
+    Species * spec;
 }
 - (IBAction)actButtonBack:(UIButton *)sender;
 - (IBAction)actButtonHistory:(UIButton *)sender;
@@ -94,9 +96,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NewLog2ViewController * nlvc = [[NewLog2ViewController alloc]initWithNibName:@"NewLog2ViewController" bundle:nil andSpecies: [appDelegate.speciesList objectAtIndex:indexPath.row]];
-    [self.navigationController pushViewController:nlvc animated:YES];
+    
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        spec = [appDelegate.speciesList objectAtIndex:indexPath.row];
+        array = [[NSArray alloc]initWithArray:[loader getQuestionsWithSubSpecieId:[spec.specId intValue]]] ;
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            
+            if(!loader.isCorrectRezult) {
+                NSLog(@"Error download sybSpecie");
+            } else {
+                NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:spec, @"species", array, @"questions", nil];
+                NewLog2ViewController * nlvc = [[NewLog2ViewController alloc]initWithNibName:@"NewLog2ViewController" bundle:nil andData:dict];
+                [self.navigationController pushViewController:nlvc animated:YES];
+            }
+        });
+    });
 }
 
 

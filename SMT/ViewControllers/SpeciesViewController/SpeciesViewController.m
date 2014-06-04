@@ -58,7 +58,8 @@
     UITableViewCell *cell = [[UITableViewCell alloc]init];
     Species *species = (Species*)[appDelegate.speciesList objectAtIndex:indexPath.row];
     [cell.imageView setFrame:CGRectMake(0.0f, 0.0f, 30.0f, 30.0f)];
-    cell.imageView.image = species.thumbnail;
+    NSURL * url = [NSURL URLWithString:species.thumbnail];
+    cell.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
     
     cell.textLabel.text = species.name;
     

@@ -18,7 +18,8 @@
 
 
 #define TAG 12345
-#define INDEX_SPECIES_LIST 1
+#define HiegthView 130
+
 
 #define COMPLETE_DATE_UNITS   NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond
 
@@ -37,12 +38,16 @@
     NSDate * dates;
     NSIndexPath * path;
     NSString * logID;
+    NSArray * questionsList;
+    UITextField * callKeyBoard;
     }
+@property (strong, nonatomic) IBOutlet UIView *pickerView;
+@property (strong, nonatomic) IBOutlet UIPickerView *picker;
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
-@property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (strong, nonatomic) IBOutlet UIView *datePickerView;
-@property (strong, nonatomic) IBOutlet UIView *pickerView;
+@property (strong, nonatomic) IBOutlet CustomButton *btnNorthempike;
+@property (strong, nonatomic) IBOutlet UIView *header;
 
 @property (strong, nonatomic) Species * species;
 
@@ -50,8 +55,7 @@
 - (void) pressedPickerView:(id)sender;
 - (IBAction)actButtonBack:(id)sender;
 - (IBAction)actDoneDatePicker:(id)sender;
-- (IBAction)actDonePicker:(id)sender;
-//- (void)actDidOnToExit:(UITextField *)sender;
+- (IBAction)actSavePicker:(id)sender;
 - (void)actDidOnToExitSeen:(UITextField *)sender;
 - (void)actDidOnToExitHarvested:(UITextField *)sender;
 - (void)actSelectStar:(UIButton *)sender;
@@ -63,12 +67,13 @@
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andSpecies:(Species *)species
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andData:(NSDictionary *)dictionary
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        self.species = species;
+        self.species = [dictionary objectForKey:@"species"];
+        questionsList = [dictionary objectForKey:@"questions"];
     }
     return self;
 }
@@ -86,17 +91,15 @@
     listOfSpecies = [[NSMutableArray alloc]init];
 
     //------------------------------------------------------------------------------
-    self.huntType =     @"";
-    self.weapon =       @"";
     
-    self.huntTypeList = [[NSArray alloc]initWithObjects:@"Drive", @"Stalking", nil];
-    self.weaponList = [[NSArray alloc]initWithObjects:@"Rifle", nil];
+    self.selectedIthem = @"";
+    self.btnNorthempike.delegate = self;
     
     UINib *cellNib = [UINib nibWithNibName:@"NorthernPikeCell" bundle:[NSBundle mainBundle]];
     [self.table registerNib:cellNib forCellReuseIdentifier:@"NorthernPikeCell"];
     
     
-    self.picker.delegate = self;
+    
     
     dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"yyyyMMdd"];
@@ -125,7 +128,7 @@
     [self.pickerView addGestureRecognizer:pickerViewRecognizer];
     
     [self.datePickerView setBackgroundColor:[UIColor colorWithRed:0.99 green:0.99 blue:0.99 alpha:0.7]];
-    [self.pickerView setBackgroundColor:[UIColor colorWithRed:0.99 green:0.99 blue:0.99 alpha:0.7]];
+    
     
     [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
     dataLoader = [DataLoader instance];
@@ -140,6 +143,41 @@
                                                  name:UIKeyboardDidHideNotification
                                                object:nil];
     
+//-------------------------------------------------------------
+    int btn_tag = 1;
+    int tf_tag  = 1;
+    for (NSDictionary * dict in questionsList) {
+        if ([[dict objectForKey:@"inputType"] isEqualToString:@"menu"]) {
+            CGPoint point = self.header.frame.origin;
+            point.y += self.header.frame.size.height;
+            point.x += self.header.frame.size.width;
+            CustomButton * btn = [[CustomButton alloc]initWithFrame:CGRectMake(30.0, point.y, 260.0, 30.0)];
+            btn.backgroundColor= [UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:235.0/255.0 alpha:1.0];
+            btn.delegate = self;
+            btn.tag = btn_tag;
+            btn_tag++;
+            [self.header addSubview:btn];
+            [btn setWithInputDictionary:dict];
+            //CGRect bounds = self.header.frame;
+            //bounds.size.height += 45.0;
+            [self.header setFrame:CGRectMake(self.header.frame.origin.x, self.header.frame.origin.y, self.header.frame.size.width, self.header.frame.size.height + 40.0)];
+        } else {
+            CGPoint point = self.header.frame.origin;
+            point.y += self.header.frame.size.height;
+            point.x += self.header.frame.size.width;
+            CustomTextField * tf = [[CustomTextField alloc]initWithFrame:CGRectMake(30.0, point.y, 260.0, 30.0)];
+            tf.backgroundColor= [UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:235.0/255.0 alpha:1.0];
+            tf.delegate = self;
+            tf.tag = tf_tag;
+            tf_tag++;
+            [self.header addSubview:tf];
+            CGRect bounds = self.header.frame;
+            bounds.size.height += 40.0;
+            self.header.frame = bounds;
+        }
+    }
+
+//--------------------------------------------------------------------------------
     
 }
 
@@ -156,12 +194,14 @@
             if(!dataLoader.isCorrectRezult) {
                 NSLog(@"Error download sybSpecie");
             } else {
+                [self.btnNorthempike setInputArray:self.northernPikeList];
                 [self.table reloadData];
                 [self endLoader];
             }
         });
     });
 }
+
     
 }
 
@@ -211,6 +251,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         Species * buf = [listOfSpecies objectAtIndex:indexPath.row];
         [self.northernPikeList addObject:buf];
+        [self.btnNorthempike addSpecie:buf];
         [activityDetails removeObjectAtIndex:indexPath.row];
         [listOfSpecies removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
@@ -235,11 +276,10 @@
     }
     return 0.0f;
 }
-//---------------------------------------------------------------------------------------------------------------
 
-#pragma mark Picker delegate metods
 
-//------------------------------------------------------
+#pragma mark picker metods delegate
+
 - (NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
     return 1;
@@ -247,51 +287,27 @@
 
 - (NSInteger) pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    NSInteger num = 5;
-    if (pickerType == 1) {
-        num = self.huntTypeList.count;
-    } else if (pickerType == 2) {
-        num = self.weaponList.count;
-    } else if (pickerType == 3) {
-        num = self.northernPikeList.count;
-    }
-    return num;
+    return questionsList.count;
 }
 
 - (NSString *) pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     NSString * str = @"";
-    if (pickerType == 1) {
-        str = [self.huntTypeList objectAtIndex:row];
-    } else if (pickerType == 2) {
-        str = [self.weaponList objectAtIndex:row];
-    } else if (pickerType == 3) {
-        str = ((Species *)[self.northernPikeList objectAtIndex:row]).name;
+    if ([[questionsList objectAtIndex:row] isKindOfClass:[Species class]]) {
+        Species * spec = [questionsList objectAtIndex:row];
+        str = spec.name;
+    } else {
+        str = [questionsList objectAtIndex:row];
     }
-    NSMutableAttributedString * aStr = [[NSMutableAttributedString alloc]initWithString:str];
-    [aStr addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, str.length)];
     return str;
 }
 
 - (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    if (pickerType == 1) {
-        self.huntType = [self.huntTypeList objectAtIndex:row];
-    } else if (pickerType == 2) {
-        self.weapon = [self.weaponList objectAtIndex:row];
-    } else if (pickerType == 3) {
-        self.northernPike = [self.northernPikeList objectAtIndex:row];
-    }
-    
+    self.selectedIthem = [questionsList objectAtIndex:row];
 }
-//----------------------------------------------------------
 
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+//---------------------------------------------------------------------------------------------------------------
 
 - (void) pressedDatePickerView:(id)sender
 {
@@ -323,13 +339,10 @@
 - (void) pressedPickerView:(id)sender
 {
     [self.pickerView removeFromSuperview];
-    if (pickerType == 1) {
-        self.btnHuntType.titleLabel.text = self.huntType;
-    } else if (pickerType == 2) {
-        self.btnWeapon.titleLabel.text = self.weapon;
-    } else if (pickerType == 3) {
-        self.btnNorthernPike.titleLabel.text = self.northernPike.name ;
-        //[self.btnNorthernPike.titleLabel sizeToFit];
+    if (self.picker.tag == 55) {
+        [self.btnNorthempike setSelectedSpecies:self.northernPike];
+    } else  {
+        [((CustomButton *)[self.header viewWithTag:self.picker.tag]) setSelectedIthem:self.selectedIthem];
     }
 }
 
@@ -359,17 +372,15 @@
     [self.datePickerView removeFromSuperview];
 }
 
-- (IBAction)actDonePicker:(id)sender {
+- (IBAction)actSavePicker:(id)sender {
     [self.pickerView removeFromSuperview];
-    if (pickerType == 1) {
-        self.btnHuntType.titleLabel.text = self.huntType;
-    } else if (pickerType == 2) {
-        self.btnWeapon.titleLabel.text = self.weapon;
-    } else if (pickerType == 3) {
-        self.btnNorthernPike.titleLabel.text = self.northernPike.name ;
-        //[self.btnNorthernPike.titleLabel sizeToFit];
+    if (self.picker.tag == 55) {
+        [self.btnNorthempike setSelectedSpecies:self.northernPike];
+    } else  {
+        [((CustomButton *)[self.header viewWithTag:self.picker.tag]) setSelectedIthem:self.selectedIthem];
     }
 }
+
 
 
 - (IBAction)actFinalizeLog:(id)sender {
@@ -446,35 +457,9 @@
 }
 
 
-- (IBAction)actHuntType:(id)sender {
-    pickerType = 1;
-    [self.view addSubview:self.pickerView];
-    [self.picker reloadAllComponents];
-    self.huntType = [self.huntTypeList firstObject];
-}
-
-- (IBAction)actWeapon:(id)sender {
-    pickerType = 2;
-    [self.view addSubview:self.pickerView];
-    [self.picker reloadAllComponents];
-    self.weapon = [self.weaponList firstObject];
-}
-
-- (IBAction)actNorthernPike:(id)sender {
-    if ([self.northernPikeList count]) {
-        pickerType = 3;
-        [self.view addSubview:self.pickerView];
-        [self.picker reloadAllComponents];
-        self.northernPike = [self.northernPikeList firstObject];
-    }
-}
-
 - (IBAction)actAdd:(id)sender {
     if (self.northernPike) {
-        [self.northernPikeList removeObject:self.northernPike];
-        self.btnNorthernPike.enabled = NO;
-        [self.btnNorthernPike setTitle:@"Nothern Pike" forState:UIControlStateNormal];
-        self.btnNorthernPike.enabled = YES;
+        [self.btnNorthempike removeSelectIthem];
         [listOfSpecies addObject:self.northernPike];
         ActivityDetails * details = [[ActivityDetails alloc]init];
         details.subspecies_id = [self.northernPike.specId intValue];
@@ -495,22 +480,27 @@
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
 {
+    NSLog(@"%@",[((CustomTextField *)textField) getText]);
     [self.view endEditing:YES];
     return YES;
 }
 
 - (void)actDidOnToExitSeen:(UITextField *)sender
 {
+    if (![sender isKindOfClass:[CustomTextField class]]) {
     ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).seen = [sender.text intValue];
+    }
 }
 
 - (void)actDidOnToExitHarvested:(UITextField *)sender
 {
+    if (![sender isKindOfClass:[CustomTextField class]]){
     if ([sender.text integerValue] <= ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).seen) {
     ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).harvested = [sender.text intValue];
     } else {
         ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).harvested = ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).seen;
         sender.text = [NSString stringWithFormat:@"%d", ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).seen];
+    }
     }
 }
 
@@ -560,19 +550,37 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    
     path = [NSIndexPath indexPathForItem:textField.tag inSection:0];
+    callKeyBoard = textField;
 }
 
 - (void)keyboardDidShow: (NSNotification *) notif{
     NSDictionary * info = [notif userInfo];
     CGSize keyboardSize = [self.view convertRect:[[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue] fromView:self.view.window].size;
-    self.table.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0);
-    [self.table scrollRectToVisible:[self.table rectForRowAtIndexPath:path] animated:YES];
+    if (![callKeyBoard isKindOfClass:[CustomTextField class]]) {
+        self.table.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0);
+        [self.table scrollRectToVisible:[self.table rectForRowAtIndexPath:path] animated:YES];
+    } else {
+        self.table.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0);
+        [self.table scrollRectToVisible:self.header.frame  animated:YES];
+    }
 }
 
 - (void)keyboardDidHide: (NSNotification *) notif{
     self.table.contentInset = UIEdgeInsetsZero;
+}
+
+- (void) openPickerWithData:(NSArray *)array andTag:(int)tag
+{
+    questionsList = [NSArray arrayWithArray:array];
+    if ([[array firstObject] isKindOfClass:[Species class]]) {
+        self.northernPike = [array firstObject];
+    } else {
+        self.selectedIthem = [array firstObject];
+    }
+    self.picker.tag = tag;
+    [self.picker reloadAllComponents];
+    [self.view addSubview:self.pickerView];
 }
 
 @end

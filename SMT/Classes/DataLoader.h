@@ -40,7 +40,8 @@ enum ApplicationServiceRequest
     ApplicationServiceRequestUpdateActivity = 22,
     ApplicationServiceRequestDeleteActivity = 23,
     ApplicationServiceRequestPhoto = 24,
-    ApplicationServiceRequestLogDetail = 25
+    ApplicationServiceRequestLogDetail = 25,
+    ApplicationServiceRequestSpecies = 26
 };
 
 @interface DataLoader : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
@@ -94,11 +95,14 @@ enum ApplicationServiceRequest
 //- (void) updateUserTrackingVisibility: (BOOL) _tracking_visibility;
 //- (void) getUserTrackingVisibility;
 - (void)getWeatherPredictionForCurrentLocation:(int)_idLocation;
+//----------- Species ---------------------------------------------
 - (NSArray *)getAllSpecies;
 - (Species *)getSpecieWithId:(int) specieID;
 - (NSArray *)getSubSpecies:(int) subSpeciesID;
 - (Species *)getSubSpecieWithId:(int) subSpecieID;
+- (NSArray *)getQuestionsWithSubSpecieId:(int) subSpecieId;
 
+//------------- Activity ---------------------------------------------
 - (NSString *) createActivityWithActivityObject: (Activity*) _activity andActivityDetails: (NSArray*) _activityDetails andSpeciesId: (NSInteger) _speciesId;
 
 - (NSMutableArray*) getActivityList;
