@@ -11,18 +11,17 @@
                 <outlet property="btnDate" destination="SRy-xi-GbC" id="kyd-rM-FdA"/>
                 <outlet property="btnEndTime" destination="hf6-MP-8dO" id="UEy-VQ-qFO"/>
                 <outlet property="btnFinalizeLog" destination="zJU-Rr-dMc" id="60V-ga-aQk"/>
-                <outlet property="btnHuntType" destination="Sx8-0a-KbF" id="54r-Iy-T8v"/>
                 <outlet property="btnLocation" destination="2Bw-cq-S4j" id="jRL-yx-mfy"/>
-                <outlet property="btnNorthernPike" destination="zOn-ib-lAw" id="f8A-Gb-JII"/>
+                <outlet property="btnNorthempike" destination="zOn-ib-lAw" id="hhr-cJ-xKa"/>
                 <outlet property="btnStartTime" destination="XIq-WU-SvA" id="0bK-XQ-K2K"/>
-                <outlet property="btnWeapon" destination="1VB-Z1-f2P" id="KBh-kq-hIQ"/>
                 <outlet property="datePicker" destination="2nW-CQ-D7F" id="2Kt-mq-5JC"/>
                 <outlet property="datePickerView" destination="zct-yI-2jz" id="t1G-Se-cQk"/>
+                <outlet property="header" destination="zQB-Fd-II3" id="7zO-fc-8Ia"/>
                 <outlet property="infoView" destination="4rd-xy-s9N" id="Dc1-ol-p32"/>
                 <outlet property="navigationBarHeightConstr" destination="rsr-l4-QbC" id="vK9-Sn-kIt"/>
                 <outlet property="navigationBarVerticalConstr" destination="CDb-Kz-a35" id="znG-ry-hvd"/>
-                <outlet property="picker" destination="xW5-W3-fhQ" id="zoc-p7-Ijb"/>
-                <outlet property="pickerView" destination="Xca-wT-5fb" id="7ly-Mf-mKh"/>
+                <outlet property="picker" destination="5fY-uo-gvj" id="5I2-lQ-T4V"/>
+                <outlet property="pickerView" destination="Myb-c7-ebK" id="PlE-EB-Xzw"/>
                 <outlet property="table" destination="iFd-KG-lkl" id="YkB-QD-OX0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="viewStars" destination="icz-SN-wM9" id="RQr-ZI-olC"/>
@@ -33,10 +32,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sportsman_tracker_BG-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="A1s-Ee-kH4">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="349"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MeH-RM-ry4">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -95,39 +90,20 @@
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <view key="tableHeaderView" contentMode="scaleToFill" id="zQB-Fd-II3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="211"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1VB-Z1-f2P">
-                                <rect key="frame" x="30" y="170" width="260" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sportsman_tracker_BG-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="A1s-Ee-kH4">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hf6-MP-8dO">
+                                <rect key="frame" x="165" y="90" width="125" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Weapon">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="actWeapon:" destination="-1" eventType="touchUpInside" id="hZD-pN-ZNC"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sx8-0a-KbF">
-                                <rect key="frame" x="30" y="130" width="260" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Hunt Type">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="actHuntType:" destination="-1" eventType="touchUpInside" id="p7E-Mg-u73"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hf6-MP-8dO">
-                                <rect key="frame" x="165" y="90" width="127" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="PfH-Zc-oLB"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="End Time">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -137,10 +113,13 @@
                                     <action selector="actEndTime:" destination="-1" eventType="touchUpInside" id="Tac-md-UCK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XIq-WU-SvA">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XIq-WU-SvA">
                                 <rect key="frame" x="30" y="90" width="125" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="tDS-hl-9LS"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Start Time">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -150,10 +129,13 @@
                                     <action selector="actStartTime:" destination="-1" eventType="touchUpInside" id="YwQ-3T-5tX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRy-xi-GbC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRy-xi-GbC">
                                 <rect key="frame" x="30" y="50" width="260" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="aSd-6R-yqH"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Date">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -163,10 +145,13 @@
                                     <action selector="actDate:" destination="-1" eventType="touchUpInside" id="pzm-EJ-Ams"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bw-cq-S4j">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bw-cq-S4j">
                                 <rect key="frame" x="30" y="10" width="260" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="tZg-Vt-FrB"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Select location">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -177,12 +162,31 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="A1s-Ee-kH4" secondAttribute="trailing" id="2LW-xX-oxD"/>
+                            <constraint firstItem="SRy-xi-GbC" firstAttribute="leading" secondItem="zQB-Fd-II3" secondAttribute="leading" constant="30" id="3e0-Py-uzQ"/>
+                            <constraint firstItem="hf6-MP-8dO" firstAttribute="top" secondItem="SRy-xi-GbC" secondAttribute="bottom" constant="10" id="50E-15-k0T"/>
+                            <constraint firstItem="SRy-xi-GbC" firstAttribute="top" secondItem="2Bw-cq-S4j" secondAttribute="bottom" constant="10" id="76m-wN-Pkx"/>
+                            <constraint firstAttribute="bottom" secondItem="A1s-Ee-kH4" secondAttribute="bottom" id="EFR-BS-WLs"/>
+                            <constraint firstAttribute="trailing" secondItem="2Bw-cq-S4j" secondAttribute="trailing" constant="30" id="F5n-aV-1eA"/>
+                            <constraint firstItem="A1s-Ee-kH4" firstAttribute="top" secondItem="zQB-Fd-II3" secondAttribute="top" id="M3B-r5-7dW"/>
+                            <constraint firstItem="2Bw-cq-S4j" firstAttribute="leading" secondItem="zQB-Fd-II3" secondAttribute="leading" constant="30" id="NLb-tU-8qr"/>
+                            <constraint firstItem="XIq-WU-SvA" firstAttribute="leading" secondItem="zQB-Fd-II3" secondAttribute="leading" constant="30" id="Pte-eu-hDx"/>
+                            <constraint firstAttribute="trailing" secondItem="hf6-MP-8dO" secondAttribute="trailing" constant="30" id="Si2-n2-lmx"/>
+                            <constraint firstItem="XIq-WU-SvA" firstAttribute="top" secondItem="SRy-xi-GbC" secondAttribute="bottom" constant="10" id="UU9-EK-K76"/>
+                            <constraint firstItem="2Bw-cq-S4j" firstAttribute="top" secondItem="zQB-Fd-II3" secondAttribute="top" constant="10" id="WWK-0Z-uxp"/>
+                            <constraint firstItem="hf6-MP-8dO" firstAttribute="leading" secondItem="XIq-WU-SvA" secondAttribute="trailing" constant="10" id="YfI-Dz-zED"/>
+                            <constraint firstItem="XIq-WU-SvA" firstAttribute="width" secondItem="hf6-MP-8dO" secondAttribute="width" id="egp-R1-rta"/>
+                            <constraint firstItem="A1s-Ee-kH4" firstAttribute="leading" secondItem="zQB-Fd-II3" secondAttribute="leading" id="etK-83-lE5"/>
+                            <constraint firstAttribute="trailing" secondItem="SRy-xi-GbC" secondAttribute="trailing" constant="30" id="mvY-ed-GZX"/>
+                            <constraint firstItem="XIq-WU-SvA" firstAttribute="top" secondItem="SRy-xi-GbC" secondAttribute="bottom" constant="10" id="x7T-cx-CCs"/>
+                        </constraints>
                     </view>
                     <view key="tableFooterView" contentMode="scaleToFill" id="bbG-gQ-FDo">
                         <rect key="frame" x="0.0" y="404" width="320" height="100"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOn-ib-lAw">
+                            <button opaque="NO" tag="55" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOn-ib-lAw" customClass="CustomButton">
                                 <rect key="frame" x="30" y="10" width="175" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -191,9 +195,6 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="actNorthernPike:" destination="-1" eventType="touchUpInside" id="Qv2-cZ-jXO"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYi-UZ-xbQ">
                                 <rect key="frame" x="210" y="10" width="80" height="35"/>
@@ -254,7 +255,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2nW-CQ-D7F">
-                    <rect key="frame" x="0.0" y="149" width="320" height="162"/>
+                    <rect key="frame" x="0.0" y="148" width="320" height="162"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <date key="date" timeIntervalSinceReferenceDate="421578939.86336899">
                         <!--2014-05-12 09:15:39 +0000-->
@@ -304,44 +305,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </state>
                     <connections>
                         <action selector="actCancel:" destination="-1" eventType="touchUpInside" id="t73-jZ-WXg"/>
-                    </connections>
-                </button>
-            </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-        </view>
-        <view contentMode="scaleToFill" id="Xca-wT-5fb">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sportsman_tracker_BG-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="Azi-AA-mmx">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xW5-W3-fhQ">
-                    <rect key="frame" x="0.0" y="148" width="320" height="162"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                </pickerView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ENu-xM-36G">
-                    <rect key="frame" x="30" y="397" width="110" height="35"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.37254901959999998" green="0.74117647060000003" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Save"/>
-                    <connections>
-                        <action selector="actDonePicker:" destination="-1" eventType="touchUpInside" id="mPU-z2-c4f"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aO9-EE-pfL">
-                    <rect key="frame" x="180" y="397" width="110" height="35"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.0039215686269999999" green="0.53725490200000003" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Cancel">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="actCancel:" destination="-1" eventType="touchUpInside" id="Er4-OR-Rod"/>
                     </connections>
                 </button>
             </subviews>
@@ -482,6 +445,48 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </label>
             </subviews>
             <color key="backgroundColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+        </view>
+        <view contentMode="scaleToFill" id="Myb-c7-ebK">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sportsman_tracker_BG-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="eky-Io-5HM">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5fY-uo-gvj">
+                    <rect key="frame" x="0.0" y="148" width="320" height="162"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="zPo-Ja-abL"/>
+                        <outlet property="delegate" destination="-1" id="Etm-Yq-5Ea"/>
+                    </connections>
+                </pickerView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfU-Ci-yCM">
+                    <rect key="frame" x="30" y="397" width="110" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.37254901959999998" green="0.74117647060000003" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="Save"/>
+                    <connections>
+                        <action selector="actSavePicker:" destination="-1" eventType="touchUpInside" id="lsV-3R-0Gk"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDL-24-Bob">
+                    <rect key="frame" x="180" y="397" width="110" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.0039215686269999999" green="0.53725490200000003" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="Cancel">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="actCancel:" destination="-1" eventType="touchUpInside" id="nTS-ov-dNx"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
     <resources>

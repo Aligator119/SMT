@@ -10,18 +10,17 @@
 #import "Species.h"
 #import "Location.h"
 #import "SelectLocationViewController.h"
+#import "CustomButton.h"
+#import "CustomTextField.h"
 
-@interface NewLog2ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate, UIGestureRecognizerDelegate, LocationListViewControllerDelegate, UITextFieldDelegate>
+@interface NewLog2ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, LocationListViewControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, ButtonControllerDelegate>
 
-@property (strong, nonatomic) NSArray * huntTypeList;
-@property (strong, nonatomic) NSArray * weaponList;
 @property (strong, nonatomic) NSMutableArray * northernPikeList;
 @property (strong, nonatomic) Location * location;
 @property (strong, nonatomic) NSDate * huntDate;
 @property (strong, nonatomic) NSDate * huntStartTime;
 @property (strong, nonatomic) NSDate * huntEndTime;
-@property (strong, nonatomic) NSString  * huntType;
-@property (strong, nonatomic) NSString * weapon;
+@property (strong, nonatomic) NSString * selectedIthem;
 @property (strong, nonatomic) Species * northernPike;
 
 @property (strong, nonatomic) IBOutlet UIView *infoView;
@@ -32,15 +31,14 @@
 - (IBAction)actNumberSelectStar:(UIButton *)sender;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andSpecies:(Species *)species;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andData:(NSDictionary *)dictionary;
 @property (weak, nonatomic) IBOutlet UIButton *btnLocation;
 @property (weak, nonatomic) IBOutlet UIButton *btnDate;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnStartTime;
 @property (weak, nonatomic) IBOutlet UIButton *btnEndTime;
-@property (weak, nonatomic) IBOutlet UIButton *btnHuntType;
-@property (weak, nonatomic) IBOutlet UIButton *btnWeapon;
-@property (weak, nonatomic) IBOutlet UIButton *btnNorthernPike;
+
+
 @property (weak, nonatomic) IBOutlet UIButton *btnAdd;
 @property (weak, nonatomic) IBOutlet UIButton *btnFinalizeLog;
 
@@ -48,12 +46,9 @@
 - (IBAction)actDate:(id)sender;
 - (IBAction)actEndTime:(id)sender;
 - (IBAction)actStartTime:(id)sender;
-- (IBAction)actHuntType:(id)sender;
-- (IBAction)actWeapon:(id)sender;
-- (IBAction)actNorthernPike:(id)sender;
 - (IBAction)actAdd:(id)sender;
 - (IBAction)actFinalizeLog:(id)sender;
-- (IBAction)actCancel:(id)sender;
+
 
 
 @end

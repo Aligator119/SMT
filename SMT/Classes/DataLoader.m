@@ -37,6 +37,7 @@
 #define SubstringCurrentLocation @"current_location"
 #define SubstringPhoto @"photo"
 #define SubstringLogdetail @"logdetail"
+#define SubstringQuestions @"questions"
 
 @implementation DataLoader
 {
@@ -762,7 +763,7 @@
 {
     NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@%@?app_id=%@&app_key=%@",strUrl,SubstringSpecies, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
     NSDictionary *info = [NSDictionary new];
-    info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestAddBuddy];
+    info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestSpecies];
     appDel.speciesList = [NSMutableArray new];
     for(NSDictionary * dic in info){
         Species *spec = [Species new];
@@ -777,7 +778,7 @@
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i?app_id=%@&app_key=%@",strUrl,SubstringSpecies ,specieID, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
     
     Species * species = [Species new];
-    [species initSpeciesWithData:[self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListOfBuddies]];
+    [species initSpeciesWithData:[self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestSpecies]];
     return species;
 }
 
@@ -786,7 +787,7 @@
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i/%@?app_id=%@&app_key=%@",strUrl,SubstringSpecies ,subSpeciesID, SubstringSubSpecies, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
     
     NSMutableArray * speciesList = [NSMutableArray new];
-    for(NSDictionary * dic in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListOfBuddies]){
+    for(NSDictionary * dic in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestSpecies]){
         Species * species = [Species new];
         [species initSpeciesWithData:dic];
         [speciesList addObject:species];
@@ -799,12 +800,23 @@
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i?app_id=%@&app_key=%@",strUrl,SubstringSubSpecies ,subSpecieID, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
     
     Species * species = [Species new];
-    [species initSpeciesWithData:[self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListOfBuddies]];
+    [species initSpeciesWithData:[self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestSpecies]];
     return species;
+}
+
+- (NSArray *) getQuestionsWithSubSpecieId:(int)subSpecieId
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i/%@?app_id=%@&app_key=%@",strUrl,SubstringSpecies ,subSpecieId, SubstringQuestions, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
+    
+    NSMutableArray * questions = [NSMutableArray new];
+    for (id obj in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestSpecies]) {
+        [questions addObject:obj];
+    }
+    return questions;
 }
 //--------------------------------------------------------------------------------------------------------------------
 
-
+#pragma  mark Is my baddy
 - (BOOL)isUserInMyBuddies:(NSString*)_userID{
     BOOL isBuddy = NO;
     

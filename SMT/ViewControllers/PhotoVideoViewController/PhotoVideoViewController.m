@@ -16,8 +16,9 @@
 {
     NSUserDefaults * def;
     NSMutableDictionary * dict;
-    NSDateFormatter * dateFormatter;
+    //NSDateFormatter * dateFormatter;
     NSDateFormatter * sectionFormatter;
+    NSDateFormatter * selectedFormatter;
     DataLoader * dataLoader;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -48,10 +49,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    dateFormatter = [[NSDateFormatter alloc]init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    //dateFormatter = [[NSDateFormatter alloc]init];
+    //[dateFormatter setDateFormat:@"yyyy-MM-dd"];
     sectionFormatter = [[NSDateFormatter alloc]init];
     [sectionFormatter setDateFormat:@"MMMM"];
+    selectedFormatter = [[NSDateFormatter alloc]init];
+    [selectedFormatter setDateFormat:@"yyyy-MM"];
+
     UINib *cellNib = [UINib nibWithNibName:@"ImageCell" bundle:[NSBundle mainBundle]];
     [self.collectionTable registerNib:cellNib forCellWithReuseIdentifier:@"imagecell"];
     
@@ -139,7 +143,7 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     CustomHeader * headerView = nil;
-    NSDate * mont = [dateFormatter dateFromString:[self.list objectAtIndex:indexPath.section]];
+    NSDate * mont = [selectedFormatter dateFromString:[self.list objectAtIndex:indexPath.section]];
     
     if (kind == UICollectionElementKindSectionHeader) {
         headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
@@ -198,7 +202,7 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     NSString * path = [info objectForKey:@"UIImagePickerControllerReferenceURL"];
-    NSString * str = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceNow:29320000.0]];
+    NSString * str = [selectedFormatter stringFromDate:[NSDate date]];//WithTimeIntervalSinceNow:29320000.0]];
     [self dismissViewControllerAnimated:YES completion:^{
         BOOL flag = NO;
         for (NSString * key in [dict allKeys]) {
@@ -211,49 +215,6 @@
             NSData * buf = [NSKeyedArchiver archivedDataWithRootObject:dict];
             [def setObject:buf forKey:KEY_USERDEFAULT];
             [def synchronize];
-            //----------------------------------------------------------------------------------------------------
-            dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-            dispatch_async(newQueue, ^(){
-                typedef void (^ALAssetsLibraryAssetForURLResultBlock)(ALAsset *asset);
-                typedef void (^ALAssetsLibraryAccessFailureBlock)(NSError *error);
-                
-                ALAssetsLibraryAssetForURLResultBlock resultblock = ^(ALAsset *myasset)
-                {
-                    ALAssetRepresentation *rep = [myasset defaultRepresentation];
-                    CGImageRef iref = [rep fullResolutionImage];
-                    UIImage *images;
-                    if (iref)
-                    {
-                        
-                        images = [UIImage imageWithCGImage:iref scale:[rep scale] orientation:(UIImageOrientation)[rep orientation]];
-                        [dataLoader uploadPhoto:images];
-                        
-                    }
-                    
-                };
-                
-                ALAssetsLibraryAccessFailureBlock failureblock  = ^(NSError *myerror)
-                {
-                    NSLog(@"can't get image");
-                    
-                };
-                
-                NSURL *asseturl = [newImage objectForKey:@"path"];
-                
-                ALAssetsLibrary* assetslibrary = [[ALAssetsLibrary alloc] init];
-                [assetslibrary assetForURL:asseturl 
-                               resultBlock:resultblock   
-                              failureBlock:failureblock];
-                
-                dispatch_async(dispatch_get_main_queue(), ^(){
-                    
-                    if(!dataLoader.isCorrectRezult) {
-                        NSLog(@"Error saved detail log");
-                    } else {
-                        
-                    }
-                });
-            });
         }
         }
         if (!flag) {
@@ -270,6 +231,49 @@
         self.list = [dict allKeys];
         self.list = [self.list sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
         [self.collectionTable reloadData];
+        //----------------------------------------------------------------------------------------------------
+        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(newQueue, ^(){
+            typedef void (^ALAssetsLibraryAssetForURLResultBlock)(ALAsset *asset);
+            typedef void (^ALAssetsLibraryAccessFailureBlock)(NSError *error);
+            
+            ALAssetsLibraryAssetForURLResultBlock resultblock = ^(ALAsset *myasset)
+            {
+                ALAssetRepresentation *rep = [myasset defaultRepresentation];
+                CGImageRef iref = [rep fullResolutionImage];
+                UIImage *images;
+                if (iref)
+                {
+                    
+                    images = [UIImage imageWithCGImage:iref scale:[rep scale] orientation:(UIImageOrientation)[rep orientation]];
+                    [dataLoader uploadPhoto:images];
+                    
+                }
+                
+            };
+            
+            ALAssetsLibraryAccessFailureBlock failureblock  = ^(NSError *myerror)
+            {
+                NSLog(@"can't get image");
+                
+            };
+            
+            NSURL *asseturl = [info objectForKey:@"UIImagePickerControllerReferenceURL"];
+            
+            ALAssetsLibrary* assetslibrary = [[ALAssetsLibrary alloc] init];
+            [assetslibrary assetForURL:asseturl
+                           resultBlock:resultblock
+                          failureBlock:failureblock];
+            
+            dispatch_async(dispatch_get_main_queue(), ^(){
+                
+                if(!dataLoader.isCorrectRezult) {
+                    NSLog(@"Error saved detail log");
+                } else {
+                    
+                }
+            });
+        });
     }];
     
 }

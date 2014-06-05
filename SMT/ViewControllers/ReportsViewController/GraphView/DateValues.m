@@ -17,7 +17,7 @@
 - (void)initWithDate: (NSDate*) date andValue:(NSString *)dateValue
 {
     self.date = date;
-    self.valueForDate = [dateValue integerValue];
+    self.valueForDate = [dateValue intValue];
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *dateComponents = [calendar components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSWeekCalendarUnit | NSDayCalendarUnit) fromDate:date];
