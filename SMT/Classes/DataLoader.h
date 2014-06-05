@@ -40,12 +40,13 @@ enum ApplicationServiceRequest
     ApplicationServiceRequestCreateActivity = 21,
     ApplicationServiceRequestUpdateActivity = 22,
     ApplicationServiceRequestDeleteActivity = 23,
-    ApplicationServiceRequestGetAllSharedLocations = 24,
-    ApplicationServiceRequestGetSharedLocationsFromBuddy = 25,
-    ApplicationServiceRequestShareLocationWithBuddy = 26,
-    ApplicationServiceRequestUnshareLocation = 27,
-    ApplicationServiceRequestPhoto = 28,
-    ApplicationServiceRequestLogDetail = 29
+    ApplicationServiceRequestPhoto = 24,
+    ApplicationServiceRequestLogDetail = 25,
+    ApplicationServiceRequestSpecies = 26,
+    ApplicationServiceRequestGetAllSharedLocations = 27,
+    ApplicationServiceRequestGetSharedLocationsFromBuddy = 28,
+    ApplicationServiceRequestShareLocationWithBuddy = 29,
+    ApplicationServiceRequestUnshareLocation = 30,
 };
 
 @interface DataLoader : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
