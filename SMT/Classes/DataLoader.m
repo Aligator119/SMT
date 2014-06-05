@@ -11,6 +11,7 @@
 #import "BuddySearchViewController.h"
 #import "Activity.h"
 #import "ActivityDetails.h"
+#import "AFNetworking.h"
 
 #define RequestPost @"POST"
 #define RequestGet @"GET"
@@ -38,6 +39,9 @@
 #define SubstringLogdetail @"logdetail"
 
 @implementation DataLoader
+{
+    BOOL bbb;
+}
 
 @synthesize typeOfServiceRequest;
 
@@ -493,7 +497,6 @@
     [self startRequest:strUrlRequestAddress andData:jsonData typeRequest:RequestDelete setHeaders:YES andTypeRequest:ApplicationServiceRequestUnshareLocation];
 }
 
-
 #pragma mark - Photo
 
 - (void) getPhoto
@@ -518,17 +521,50 @@
 
 - (void) uploadPhoto:(UIImage *)photo
 {
-    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@",strUrl,SubstringPhoto];
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@?app_id=%@&app_key=%@",strUrl,SubstringPhoto, App_id, App_key];
     NSLog(@"URL : %@",strUrlRequestAdress);
     
-    NSString * imgData = [UIImageJPEGRepresentation(photo, 0.9) base64Encoding];
+    //NSString * imgStr = [UIImageJPEGRepresentation(photo,1.0) base64Encoding];
+    NSData * data = UIImagePNGRepresentation(photo);
+    
+    bbb = YES;
+    
+    /*AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    NSData * imageData = UIImagePNGRepresentation(photo);
+    
+    if (imageData){
+        NSDictionary *params = [NSDictionary dictionaryWithObjects:@[App_id, App_key] forKeys:@[@"app_id", @"app_key"]];
+    
+        NSError *error;
+        manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+        manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
+        NSMutableURLRequest *request = [manager.requestSerializer multipartFormRequestWithMethod:@"POST" URLString:strUrlRequestAdress parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData){
+            [formData appendPartWithFileData:imageData name:@"photo" fileName:@"bbb" mimeType:@"image/png"];
+        }error:&error];
+        
+        
+        [manager.requestSerializer setValue:@"19921992q" forHTTPHeaderField:@"X-password"];
+        [manager.requestSerializer setValue:@"pola1@bigmir.net" forHTTPHeaderField:@"X-username"];
+        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        [manager.requestSerializer setValue:@"must-revalidate" forHTTPHeaderField:@"Cashe-Control"];
+        
+        
+        AFHTTPRequestOperation *op = [manager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"response:%@", responseObject);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"error:%@", error);
+        }];
+        [op start];
+    }*/
+    /*NSString * imgData = [UIImageJPEGRepresentation(photo, 0.9) base64Encoding];
     NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[imgData, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"photo", @"app_id", @"app_key"]];
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
     
-    NSLog(@"%@", error);
+    NSLog(@"%@", error);*/
     
-    [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto];
+    [self startRequest:strUrlRequestAdress andData:data typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto];
 }
 
 - ( void) updatePhotoWithId:(int)photo_id andActivity:(int)activity_id andSighting:(int)sighting_id andType:(int)type_id andDescription:(NSString *)description andCaption:(NSString *)caption
@@ -617,7 +653,24 @@
     if(([_type isEqualToString: RequestPost] || [_type isEqualToString: RequestDelete] || [_type isEqualToString: RequestPut] || [_type isEqualToString:RequesPatch]) && (_data != nil))
         [request setHTTPBody: _data];
     //[request setValue:/*@"application/x-www-form-urlencoded"*/@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    if (bbb){
+        
+        NSString *boundary = @"--------------1Oirud485KJdi84843911123";
+        NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
+        
+        [request setValue:contentType forHTTPHeaderField:@"Content-Type"];
+        
+        NSMutableData *body = [NSMutableData data];
+        [body appendData:[[NSString stringWithFormat:@"--%@",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+                           [body appendData:[@"Content-Disposition: form-data; name=\"photo\"" dataUsingEncoding:NSUTF8StringEncoding]];
+                                              [body appendData:[@"Content-Type: application/octet-stream" dataUsingEncoding:NSUTF8StringEncoding]];
+                                                                 [body appendData:[NSData dataWithData:_data]];
+                                                                 [body appendData:[[NSString stringWithFormat:@"--%@--",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
+        [request setHTTPBody:body];
+        bbb = NO;
+    }else{
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    }
     [request setValue:@"must-revalidate" forHTTPHeaderField:@"Cashe-Control"];
     [request setTimeoutInterval:30.0f];
     [request setCachePolicy:NSURLRequestUseProtocolCachePolicy];

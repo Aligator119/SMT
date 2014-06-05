@@ -10,6 +10,7 @@
 #import "Species.h"
 #import "Buddy.h"
 #import "Activity.h"
+#import "AFNetworking.h"
 
 @class AppDelegate;
 
@@ -42,7 +43,9 @@ enum ApplicationServiceRequest
     ApplicationServiceRequestGetAllSharedLocations = 24,
     ApplicationServiceRequestGetSharedLocationsFromBuddy = 25,
     ApplicationServiceRequestShareLocationWithBuddy = 26,
-    ApplicationServiceRequestUnshareLocation = 27
+    ApplicationServiceRequestUnshareLocation = 27,
+    ApplicationServiceRequestPhoto = 28,
+    ApplicationServiceRequestLogDetail = 29
 };
 
 @interface DataLoader : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
