@@ -17,6 +17,7 @@
     NSMutableDictionary * data;
     int subSpecieID;
     NSArray * killingQuestion;
+    NSMutableDictionary * selectedCell;
 }
 
 
@@ -52,6 +53,14 @@
            [displayedCell addObject:@(((ActivityDetails *)[activityDetails objectAtIndex:i]).seen +1)];
         }
     }
+    selectedCell = [[NSMutableDictionary alloc]init];
+    for (int i = 0; i< self.list.count; i++) {
+        NSMutableArray * buf = [[NSMutableArray alloc]init];
+        for (int k=0; k<((ActivityDetails *)[activityDetails objectAtIndex:i]).seen; k++) {
+            [buf addObject:@"Add Detail"];
+        }
+        [selectedCell setValue:buf forKey:[NSString stringWithFormat:@"%d",i]];
+    }
     // Do any additional setup after loading the view from its nib.
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
         self.navigationBarHeightConstr.constant -= 20;
@@ -68,7 +77,17 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     if (self.index) {
-        ((LogDetailCell *)[self.table cellForRowAtIndexPath:self.index]).cellState = 1;
+        NSMutableArray * array = [[NSMutableArray alloc]init];
+        NSArray * buf = [selectedCell objectForKey:[NSString stringWithFormat:@"%d",self.index.section]];
+        for (int i = 0; i<buf.count; i++) {
+            if (i == self.index.row) {
+                [array addObject:@"Detail Saved"];
+            } else {
+                [array addObject:[buf objectAtIndex:i]];
+            }
+        }
+        [selectedCell removeObjectForKey:[NSString stringWithFormat:@"%d",self.index.section]];
+        [selectedCell setValue:array forKey:[NSString stringWithFormat:@"%d",self.index.section]];
         [self.table reloadData];
     }
 }
@@ -88,7 +107,7 @@
     UITableViewCell * cell;
     NSInteger numberOfCell = [[displayedCell objectAtIndex:indexPath.section] integerValue];
     ActivityDetails * details = [activityDetails objectAtIndex:indexPath.section];
-    
+    NSArray * save = [selectedCell objectForKey:[NSString stringWithFormat:@"%d",indexPath.section]];
     if (numberOfCell <= details.seen && numberOfCell-1 == indexPath.row) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"AddCell"];
         ((AddCell *)cell).btnAdd.tag = indexPath.section;
@@ -100,13 +119,13 @@
             
             NSString * str = [[@"Seen(" stringByAppendingString:[NSString stringWithFormat:@"%d",indexPath.row + 1]] stringByAppendingString:@")"];
             ((LogDetailCell *)cell).lbText.text = str;
-            ((LogDetailCell *)cell).lbDetailText.text = ((LogDetailCell *)cell).cellState == 0 ? @"Add Detail" : @"Detail Saved";
+            ((LogDetailCell *)cell).lbDetailText.text = [save objectAtIndex:indexPath.row];
         } else {
             cell = [tableView dequeueReusableCellWithIdentifier:@"LogDetailCell"];
         
         NSString * str = [[@"Harvested(" stringByAppendingString:[NSString stringWithFormat:@"%d",indexPath.row + 1]] stringByAppendingString:@")"];
             ((LogDetailCell *)cell).lbText.text = str;
-        ((LogDetailCell *)cell).lbDetailText.text = ((LogDetailCell *)cell).cellState == 0 ? @"Add Detail" : @"Detail Saved";
+        ((LogDetailCell *)cell).lbDetailText.text = [save objectAtIndex:indexPath.row];
         }
     }
     
