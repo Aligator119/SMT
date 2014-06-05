@@ -26,6 +26,7 @@
     if (self) {
         // Initialization code
         self.font = [UIFont systemFontOfSize:15.0f];
+        self.typeTF = nil;
     }
     return self;
 }
@@ -46,6 +47,11 @@
     return self.text;
 }
 
+
+- (void) setWithKillingDictionary:(NSDictionary *)dict
+{
+    self.placeholder = [dict objectForKey:@"killingquestion"];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -38,6 +38,7 @@
 #define SubstringPhoto @"photo"
 #define SubstringLogdetail @"logdetail"
 #define SubstringQuestions @"questions"
+#define SubstringKilling @"killing"
 
 @implementation DataLoader
 {
@@ -813,6 +814,18 @@
         [questions addObject:obj];
     }
     return questions;
+}
+
+
+- (NSArray *)getSubSpecieKillingQuestionsWithId:(int) subSpecieID
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i/%@?app_id=%@&app_key=%@",strUrl,SubstringSubSpecies ,subSpecieID, SubstringKilling, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
+    
+    NSMutableArray * array = [NSMutableArray new];
+    for (id obj in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestSpecies]) {
+        [array addObject:obj];
+    }
+    return array;
 }
 //--------------------------------------------------------------------------------------------------------------------
 
