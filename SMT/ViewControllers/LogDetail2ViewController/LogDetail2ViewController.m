@@ -195,7 +195,7 @@
         }
         numberKilling++;
     }
-    NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:[sightings objectForKey:@"id"], @"id", details, @"details", killObject, @"killing", trophy, @"trophy", photo_id, @"photo_id", 0, @"harvested", nil];
+    NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:[sightings objectForKey:@"id"], @"id", details, @"details", killObject, @"killing", trophy, @"trophy", 0, @"harvested", photo_id, @"photo_id", nil];
 //----------------------------------------------------------------------------------------------------
         dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(newQueue, ^(){
