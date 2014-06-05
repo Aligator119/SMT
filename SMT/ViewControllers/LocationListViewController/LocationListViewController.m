@@ -18,6 +18,7 @@
 }
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UISegmentedControl *locationChangeSegmentControl;
 
 @end
 
@@ -76,5 +77,31 @@
 }
 
 - (IBAction)actGroups:(id)sender {
+}
+
+-(IBAction) locationTypeChange:(id)sender{
+    int selected = self.locationChangeSegmentControl.selectedSegmentIndex;
+    switch (selected) {
+        case 0:
+            if (self.mapType == typeFishing){
+                listLocations = [NSArray arrayWithArray:appDel.listFishLocations];
+            } else if (self.mapType == typeHunting){
+                listLocations = [NSArray arrayWithArray:appDel.listHuntLocations];
+            }
+            [self.tableView reloadData];
+            break;
+            
+        case 1:
+            if (self.mapType == typeFishing){
+                listLocations = [NSArray arrayWithArray:appDel.listSharedFishLocations];
+            } else if (self.mapType == typeHunting){
+                listLocations = [NSArray arrayWithArray:appDel.listSharedHuntLocations];
+            }
+            [self.tableView reloadData];
+            break;
+            
+        default:
+            break;
+    }
 }
 @end

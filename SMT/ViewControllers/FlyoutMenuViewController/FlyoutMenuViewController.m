@@ -114,7 +114,15 @@
 
 - (void)openReports
 {
-    [self.navigationController pushViewController:[[ReportsViewController alloc]init] animated:YES];
+    DataLoader *loader = [DataLoader instance];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        [loader getActivityList];
+        
+        dispatch_async(dispatch_get_main_queue(),^(){
+            [self.navigationController pushViewController:[[ReportsViewController alloc]init] animated:YES];
+        });
+    });
 }
 
 - (void)openWeather

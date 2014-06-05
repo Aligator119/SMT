@@ -183,6 +183,7 @@
 		11D48E08191A8C8900A9787E /* UIViewController+LoaderCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D48E07191A8C8900A9787E /* UIViewController+LoaderCategory.m */; };
 		843CD56219333D3400EF7E46 /* Activity.m in Sources */ = {isa = PBXBuildFile; fileRef = 843CD56119333D3400EF7E46 /* Activity.m */; };
 		843CD56519333E0E00EF7E46 /* ActivityDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 843CD56419333E0E00EF7E46 /* ActivityDetails.m */; };
+		84F2893119407D2B00D61E4C /* ReportsActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F2893019407D2B00D61E4C /* ReportsActivity.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -544,6 +545,8 @@
 		843CD56119333D3400EF7E46 /* Activity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Activity.m; path = Classes/Activity.m; sourceTree = "<group>"; };
 		843CD56319333E0E00EF7E46 /* ActivityDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityDetails.h; path = Classes/ActivityDetails.h; sourceTree = "<group>"; };
 		843CD56419333E0E00EF7E46 /* ActivityDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityDetails.m; path = Classes/ActivityDetails.m; sourceTree = "<group>"; };
+		84F2892F19407D2B00D61E4C /* ReportsActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportsActivity.h; path = Classes/ReportsActivity.h; sourceTree = "<group>"; };
+		84F2893019407D2B00D61E4C /* ReportsActivity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReportsActivity.m; path = Classes/ReportsActivity.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -690,6 +693,8 @@
 		0411E2081910D0B6006045B0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				84F2892F19407D2B00D61E4C /* ReportsActivity.h */,
+				84F2893019407D2B00D61E4C /* ReportsActivity.m */,
 				843CD56019333D3300EF7E46 /* Activity.h */,
 				843CD56119333D3400EF7E46 /* Activity.m */,
 				843CD56319333E0E00EF7E46 /* ActivityDetails.h */,
@@ -1591,6 +1596,7 @@
 				04A2A3BE191B7FDC0006677E /* ImageCell.m in Sources */,
 				04F7F42819235F2A007E39B5 /* PredictionViewController.m in Sources */,
 				046C6C08190FECA700E3AC56 /* IncomingFriendCell.m in Sources */,
+				84F2893119407D2B00D61E4C /* ReportsActivity.m in Sources */,
 				043354B01910ED9F003767D0 /* CJSONSerializedData.m in Sources */,
 				046C6C12190FECEE00E3AC56 /* Cell.m in Sources */,
 				04F7CBC1193DC4AF000AB881 /* CustomTextField.m in Sources */,

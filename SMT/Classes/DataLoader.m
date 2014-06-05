@@ -204,18 +204,30 @@
     NSMutableArray * listLocations = [NSMutableArray new];
     NSMutableArray * listFishLocations = [NSMutableArray new];
     NSMutableArray * listHuntLocations = [NSMutableArray new];
+    NSMutableArray * listSharedHuntLocations = [NSMutableArray new];
+    NSMutableArray * listSharedFishLocations = [NSMutableArray new];
     @try {
         //listLocationName = [[NSMutableArray alloc] initWithArray:info.allKeys];
         for (NSDictionary * dicInfo in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestLocationsAssociatedWithUser]) {
             Location * location = [Location new];
             [location setValuesFromDict:dicInfo];
             if(![location isLocationDelete]){
-                [listLocations addObject:location];
-                if (location.typeLocation == typeFishing){
-                    [listFishLocations addObject:location];
+                if (location.locUserId == appDel.user.userID){
+                        [listLocations addObject:location];
+                    if (location.typeLocation == typeFishing){
+                        [listFishLocations addObject:location];
+                    }
+                    else if (location.typeLocation == typeHunting){
+                        [listHuntLocations addObject:location];
+                    }
                 }
-                else if (location.typeLocation == typeHunting){
-                    [listHuntLocations addObject:location];
+                else{
+                    if (location.typeLocation == typeFishing){
+                        [listSharedFishLocations addObject:location];
+                    }
+                    else if (location.typeLocation == typeHunting){
+                        [listSharedHuntLocations addObject:location];
+                    }
                 }
             }
         }
@@ -229,6 +241,8 @@
     appDel.listLocations = [[NSMutableArray alloc] initWithArray:listLocations];
     appDel.listFishLocations = [[NSMutableArray alloc] initWithArray:listFishLocations];
     appDel.listHuntLocations = [[NSMutableArray alloc] initWithArray:listHuntLocations];
+    appDel.listSharedFishLocations = [[NSMutableArray alloc] initWithArray:listSharedFishLocations];
+    appDel.listSharedHuntLocations = [[NSMutableArray alloc] initWithArray:listSharedHuntLocations];
     //else appDel.listLocations = nil;
     //NSLog(@"%@",info);
 
@@ -261,15 +275,26 @@
     [location setValuesFromDict:[self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequesPatch setHeaders:YES andTypeRequest:ApplicationServiceRequestUpdateLocation]];
     appDel.listFishLocations = [NSMutableArray new];
     appDel.listHuntLocations = [NSMutableArray new];
+    appDel.listSharedHuntLocations = [NSMutableArray new];
+    appDel.listSharedFishLocations = [NSMutableArray new];
     for(int i=0 ; i < appDel.listLocations.count; i++){
-        Location * loc = [[appDel listLocations] objectAtIndex:i];
-        if (location.locID == loc.locID){
-            [[appDel listLocations] replaceObjectAtIndex:i withObject:location];
-        }
-        if (location.typeLocation == typeFishing){
-            [appDel.listFishLocations addObject:location];
-        } else if (location.typeLocation == typeHunting){
-            [appDel.listHuntLocations addObject:location];
+        if (location.locUserId == appDel.user.userID){
+            Location * loc = [[appDel listLocations] objectAtIndex:i];
+            if (location.locID == loc.locID){
+                [[appDel listLocations] replaceObjectAtIndex:i withObject:location];
+            }
+            if (location.typeLocation == typeFishing){
+                [appDel.listFishLocations addObject:location];
+            } else if (location.typeLocation == typeHunting){
+                [appDel.listHuntLocations addObject:location];
+            }
+        } else{
+           /* if (location.typeLocation == typeFishing){
+                [appDel.listSharedFishLocations addObject:location];
+            } else if (location.typeLocation == typeHunting){
+                [appDel.listSharedHuntLocations addObject:location];
+            }*/
+
         }
     }
 
@@ -394,7 +419,7 @@
 #pragma mark Log Activity
 
 - (NSMutableArray*) getActivityList{
-    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log?app_id=%@&app_key=%@", strUrl, App_id, App_key];
+    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log?app_id=%@&app_key=%@&last=-1", strUrl, App_id, App_key];
     NSMutableArray * speciesIdArray = [NSMutableArray new];
     for (NSDictionary *act in [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListActivities]){
         NSMutableDictionary *actDict = [NSMutableDictionary new];

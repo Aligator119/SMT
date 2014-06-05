@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocationListViewController">
             <connections>
+                <outlet property="locationChangeSegmentControl" destination="fTT-SD-RM8" id="J2t-Gl-tNX"/>
                 <outlet property="navigationBarHeightConstr" destination="CLH-S1-ReD" id="iLZ-om-qJK"/>
                 <outlet property="navigationBarVerticalConstr" destination="Avf-fl-6hp" id="BZw-cd-qZR"/>
                 <outlet property="tableView" destination="NLk-DQ-Rr2" id="XWp-WJ-TEW"/>
@@ -82,6 +83,9 @@
                                 <segment title="First"/>
                                 <segment title="Second"/>
                             </segments>
+                            <connections>
+                                <action selector="locationTypeChange:" destination="-1" eventType="valueChanged" id="tSi-b1-jmL"/>
+                            </connections>
                         </segmentedControl>
                     </subviews>
                     <color key="backgroundColor" red="0.78039215689999997" green="0.69803921570000005" blue="0.59999999999999998" alpha="0.41999999999999998" colorSpace="calibratedRGB"/>

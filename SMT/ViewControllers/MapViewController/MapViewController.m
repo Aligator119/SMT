@@ -35,6 +35,8 @@
 @property (nonatomic, strong) UIImageView * compassView;
 @property (nonatomic, strong) CLGeocoder *geocoder;
 
+
+
 @end
 
 
@@ -303,6 +305,8 @@
     [self.navigationController pushViewController:locUpdateVC animated:YES];
     return;
 }
+
+
 
 
 
