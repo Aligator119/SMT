@@ -66,6 +66,16 @@
     }
 }
 
+- (void) setButtonWithKillingDictionary:(NSDictionary *) dict
+{
+    [self setTitle:[dict objectForKey:@"killingquestion"] forState:UIControlStateNormal];
+    inputArray = [[NSMutableArray alloc]init];
+    for (NSDictionary * obj in [dict objectForKey:@"killingOptions"]) {
+        [inputArray addObject:[obj objectForKey:@"optionText"]];
+    }
+
+}
+
 
 - (NSString *)getQuestion
 {

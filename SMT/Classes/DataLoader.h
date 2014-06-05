@@ -105,6 +105,7 @@ enum ApplicationServiceRequest
 - (Species *)getSpecieWithId:(int) specieID;
 - (NSArray *)getSubSpecies:(int) subSpeciesID;
 - (Species *)getSubSpecieWithId:(int) subSpecieID;
+- (NSArray *)getSubSpecieKillingQuestionsWithId:(int) subSpecieID;
 - (NSArray *)getQuestionsWithSubSpecieId:(int) subSpecieId;
 
 //------------- Activity ---------------------------------------------

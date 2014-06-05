@@ -11,7 +11,6 @@
 
 @interface CustomButton : UIButton 
 
-
 @property (weak, nonatomic) id<ButtonControllerDelegate> delegate;
 
 - (void) setInputArray:(NSArray *)array;
@@ -23,6 +22,6 @@
 - (void) setSelectedIthem:(NSString *)str;
 - (void) setSelectedSpecies:(Species *)spec;
 - (NSString *) getQuestion;
-
+- (void) setButtonWithKillingDictionary:(NSDictionary *) dict;
 
 @end

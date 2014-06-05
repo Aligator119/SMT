@@ -1,33 +1,22 @@
-//
-//  LogDetail2ViewController.h
-//  SMT
-//
-//  Created by Mac on 5/13/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import "LogDetailCell.h"
 #import "LogDetailViewController.h"
 #import "DataLoader.h"
 #import "PhotoVideoViewController.h"
+#import "CustomButton.h"
+#import "CustomTextField.h"
 
-@interface LogDetail2ViewController : UIViewController <UIGestureRecognizerDelegate, PhotoViewControllerDelegate>
+@interface LogDetail2ViewController : UIViewController <UIGestureRecognizerDelegate, PhotoViewControllerDelegate, ButtonControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;
 @property (weak, nonatomic) IBOutlet UILabel *lbName;
 @property (weak, nonatomic) IBOutlet UIImageView *imgUser;
-@property (weak, nonatomic) IBOutlet UIButton *btnSelectTime;
-@property (weak, nonatomic) IBOutlet UITextField *tfLeftSide;
-@property (weak, nonatomic) IBOutlet UITextField *tfRigthSide;
-@property (weak, nonatomic) IBOutlet UITextField *tfWeigth;
+@property (strong, nonatomic) IBOutlet UIPickerView *picker;
 @property (weak, nonatomic) IBOutlet UIButton *btnTrophy;
 @property (strong, nonatomic) IBOutlet UIView *pickerView;
-@property (weak, nonatomic) IBOutlet UIDatePicker *picker;
+
 
 - (IBAction)actBack:(id)sender;
-- (IBAction)actSelectTime:(id)sender;
-- (IBAction)actDidEndOnExit:(id)sender;
 - (IBAction)actSaveDetail:(id)sender;
 - (IBAction)actCancel:(id)sender;
 - (IBAction)actDonePicker:(id)sender;

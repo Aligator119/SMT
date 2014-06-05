@@ -10,11 +10,19 @@
     NSArray * activityDetails;
     NSMutableArray * displayedCell;
     NSString * logID;
+    DataLoader * dataLoader;
+    NSDictionary * harvestrows;
+    NSDictionary * sightings;
+    NSDictionary * settingsDict;
+    NSMutableDictionary * data;
+    int subSpecieID;
+    NSArray * killingQuestion;
 }
 
 
 
 - (void) addNewCell:(UIButton *) sender;
+- (void) addKillingQuestions;
 @end
 
 @implementation LogDetailViewController
@@ -53,6 +61,8 @@
     [self.table registerNib:cellNib1 forCellReuseIdentifier:@"LogDetailCell"];
     UINib *cellNib2 = [UINib nibWithNibName:@"AddCell" bundle:[NSBundle mainBundle]];
     [self.table registerNib:cellNib2 forCellReuseIdentifier:@"AddCell"];
+    
+    dataLoader = [DataLoader instance];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -114,11 +124,57 @@
     [self.table deselectRowAtIndexPath:indexPath animated:YES];
     if ([[self.table cellForRowAtIndexPath:indexPath] isKindOfClass:[LogDetailCell class]]) {
     NSString * str = ((LogDetailCell *)[self.table cellForRowAtIndexPath:indexPath]).lbText.text;
-    NSDictionary * buf = [[NSDictionary alloc]initWithObjectsAndKeys:str, @"name", indexPath, @"index", logID, @"id", nil];
-    LogDetail2ViewController * ld2vc = [[LogDetail2ViewController alloc]initWithNibName:@"LogDetail2ViewController" bundle:nil andData:buf];
-    [self.navigationController pushViewController:ld2vc animated:YES];
+        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(newQueue, ^(){
+            
+            settingsDict = [dataLoader getActivityWithId:[logID intValue]];
+            
+            dispatch_async(dispatch_get_main_queue(), ^(){
+                
+                if(!dataLoader.isCorrectRezult) {
+                    NSLog(@"Error download harvester");
+                } else {
+                    int numSightings = 0;
+                    harvestrows = [[settingsDict objectForKey:@"harvestrows"] objectAtIndex:indexPath.section];
+                    for (int i = 0; i<=indexPath.section; i++) {
+                        if (i == indexPath.section) {
+                            numSightings += indexPath.row;
+                        } else {
+                            numSightings += [[((NSDictionary *)[[settingsDict objectForKey:@"harvestrows"] objectAtIndex:i]) objectForKey:@"seen"] intValue];
+                        }
+                    }
+                    
+                    sightings   = [[settingsDict objectForKey:@"sightings"] objectAtIndex:numSightings];
+                    data = [[NSMutableDictionary alloc]initWithObjectsAndKeys:str, @"name", indexPath, @"index", harvestrows, @"harvestrows", sightings, @"sightings", nil];
+                    [self addKillingQuestions];
+                }
+            });
+        });
     }
 }
+
+
+- (void) addKillingQuestions
+{
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        int sid = [[[data objectForKey:@"harvestrows"] objectForKey:@"subspecies_id"] intValue];
+        killingQuestion = [dataLoader getSubSpecieKillingQuestionsWithId:sid];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            
+            if(!dataLoader.isCorrectRezult) {
+                NSLog(@"Error download harvester");
+            } else {
+                [data setValue:killingQuestion forKey:@"killingQuestion"];
+                LogDetail2ViewController * ld2vc = [[LogDetail2ViewController alloc]initWithNibName:@"LogDetail2ViewController" bundle:nil andData:data];
+                [self.navigationController pushViewController:ld2vc animated:YES];
+            }
+        });
+    });
+
+}
+
 
 - (void)didReceiveMemoryWarning
 {
