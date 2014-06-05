@@ -2,11 +2,13 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="5056"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReportsViewController">
             <connections>
+                <outlet property="dataSourceSegmentControl" destination="IT8-cx-avh" id="jyW-38-2EY"/>
+                <outlet property="dateSegmentControl" destination="IPP-4d-oJQ" id="fnp-nb-cQy"/>
                 <outlet property="graphView" destination="etC-lj-WOF" id="T6h-ib-aPp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -17,17 +19,73 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etC-lj-WOF" customClass="SMTGraphView">
-                    <rect key="frame" x="0.0" y="64" width="320" height="320"/>
+                    <rect key="frame" x="0.0" y="100" width="320" height="426"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UQB-Kq-rdy">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EsS-JM-5TT">
+                            <rect key="frame" x="7" y="25" width="46" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="46" id="2ao-i8-Fhj"/>
+                                <constraint firstAttribute="height" constant="30" id="WyR-Mq-yYX"/>
+                            </constraints>
+                            <state key="normal" title="Back">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="back:" destination="-1" eventType="touchUpInside" id="vZt-ks-2dp"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.34509803919999998" green="0.36862745099999999" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="EsS-JM-5TT" firstAttribute="top" secondItem="UQB-Kq-rdy" secondAttribute="top" constant="25" id="b9T-eU-OPZ"/>
+                        <constraint firstAttribute="height" constant="60" id="vZv-Aw-DtE"/>
+                        <constraint firstItem="EsS-JM-5TT" firstAttribute="leading" secondItem="UQB-Kq-rdy" secondAttribute="leading" constant="7" id="zsk-Sv-XI3"/>
+                    </constraints>
+                </view>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IPP-4d-oJQ">
+                    <rect key="frame" x="0.0" y="64" width="320" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <segments>
+                        <segment title="Day"/>
+                        <segment title="Week"/>
+                        <segment title="Month"/>
+                    </segments>
+                    <connections>
+                        <action selector="DateSegmentDidChangeState:" destination="-1" eventType="valueChanged" id="7sY-lZ-qlb"/>
+                    </connections>
+                </segmentedControl>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IT8-cx-avh">
+                    <rect key="frame" x="0.0" y="534" width="320" height="29"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <segments>
+                        <segment title="Seen"/>
+                        <segment title="Harvested"/>
+                        <segment title="Activity Level"/>
+                    </segments>
+                </segmentedControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="IT8-cx-avh" secondAttribute="trailing" id="4ph-5j-2Ez"/>
+                <constraint firstItem="etC-lj-WOF" firstAttribute="top" secondItem="IPP-4d-oJQ" secondAttribute="bottom" constant="8" id="5ey-mw-5W8"/>
+                <constraint firstItem="UQB-Kq-rdy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8tD-NX-TPC"/>
                 <constraint firstItem="etC-lj-WOF" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="J6K-71-ioC"/>
+                <constraint firstItem="UQB-Kq-rdy" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QkW-rX-Bza"/>
+                <constraint firstAttribute="trailing" secondItem="IPP-4d-oJQ" secondAttribute="trailing" id="Qph-ZY-YPY"/>
+                <constraint firstAttribute="bottom" secondItem="IT8-cx-avh" secondAttribute="bottom" constant="6" id="USc-Tz-QZo"/>
+                <constraint firstItem="IT8-cx-avh" firstAttribute="top" secondItem="etC-lj-WOF" secondAttribute="bottom" constant="8" id="VUd-6m-zan"/>
                 <constraint firstAttribute="trailing" secondItem="etC-lj-WOF" secondAttribute="trailing" id="W6o-8l-miY"/>
-                <constraint firstItem="etC-lj-WOF" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="hxv-fh-0Ci"/>
-                <constraint firstAttribute="bottom" secondItem="etC-lj-WOF" secondAttribute="bottom" constant="184" id="iVi-Hl-mnu"/>
+                <constraint firstItem="IPP-4d-oJQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cQz-jZ-hN3"/>
+                <constraint firstItem="IPP-4d-oJQ" firstAttribute="top" secondItem="UQB-Kq-rdy" secondAttribute="bottom" constant="4" id="hjZ-lB-Scw"/>
+                <constraint firstItem="IT8-cx-avh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mb7-SM-xRB"/>
+                <constraint firstAttribute="trailing" secondItem="UQB-Kq-rdy" secondAttribute="trailing" id="zgC-g9-9jO"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

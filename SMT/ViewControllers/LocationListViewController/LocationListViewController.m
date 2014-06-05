@@ -14,6 +14,7 @@
 
 @interface LocationListViewController (){
     AppDelegate * appDel;
+    NSArray *listLocations;
 }
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
@@ -38,6 +39,11 @@
 
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    if (self.mapType == typeFishing){
+        listLocations = [NSArray arrayWithArray:appDel.listFishLocations];
+    } else if (self.mapType == typeHunting){
+        listLocations = [NSArray arrayWithArray:appDel.listHuntLocations];
+    }
     [self.tableView reloadData];
 }
 
@@ -53,12 +59,12 @@
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return appDel.listLocations.count;
+    return listLocations.count;
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     LocationListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"LocationListCell" forIndexPath:indexPath];
-    [cell processCellInfo:[appDel.listLocations objectAtIndex:indexPath.row]];
+    [cell processCellInfo:[listLocations objectAtIndex:indexPath.row]];
     return cell;
 }
 

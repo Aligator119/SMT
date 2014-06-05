@@ -14,4 +14,8 @@
 - (void)buildGraphWithDataFromDictionary: (NSMutableDictionary *)dictionary;
 - (void)initPlot;
 
+- (void)day;
+- (void)week;
+- (void)month;
+
 @end

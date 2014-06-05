@@ -11,6 +11,7 @@
 @interface LocationListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;
+@property (nonatomic) NSInteger mapType;
 - (IBAction)actBack:(id)sender;
 
 - (IBAction)actGroups:(id)sender;
