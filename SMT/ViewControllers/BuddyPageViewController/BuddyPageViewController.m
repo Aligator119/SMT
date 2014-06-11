@@ -9,6 +9,12 @@
 #import "BuddyPageViewController.h"
 
 @interface BuddyPageViewController ()
+{
+    NSArray * activityList;
+    NSArray * locationsList;
+    NSArray * trophyList;
+    NSArray * photosList;
+}
 
 - (void) actChangeSelect:(id)sender;
 
@@ -50,7 +56,34 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    int row = 0;
+    switch (self.segmentControl.selectedSegmentIndex) {
+        case 0:
+        {
+            row = activityList.count;
+        }
+            break;
+            
+        case 1:
+        {
+            row = locationsList.count;
+        }
+            break;
+            
+        case 2:
+        {
+            row = trophyList.count;
+        }
+            break;
+            
+        case 3:
+        {
+            row = photosList.count;
+        }
+            break;
+    }
+    
+    return row;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
