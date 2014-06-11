@@ -119,7 +119,7 @@ enum ApplicationServiceRequest
 
 //------- Photo metods -----------------------------------------
 - (NSArray *)getPhoto;
-- (void)getPhotoWithId:(int)photo_id;
+- (Photo *)getPhotoWithId:(int)photo_id;
 - (NSString *)uploadPhoto:(UIImage *)photo;
 - (void)updatePhotoWithId:(int) photo_id andActivity:(int)activity_id andSighting:(int)sighting_id andType:(int)type_id andDescription:(NSString *)description andCaption:(NSString *)caption;
 - (void)deletePhotoWithId:(int)photo_id;

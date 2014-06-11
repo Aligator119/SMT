@@ -10,6 +10,7 @@
 #import "LogDetail2ViewController.h"
 #import "DataLoader.h"
 #import "Photo.h"
+#import "UIViewController+LoaderCategory.h"
 
 #define KEY_USERDEFAULT @"added_Image"
 
@@ -32,6 +33,8 @@
 @property (nonatomic) NSMutableArray *capturedImages;
 
 - (NSDictionary *) getImage;
+
+- (void) cashedImage:(Photo *)photo;
 
 @end
 
@@ -83,7 +86,7 @@
     
     
 //----------------------------------------------------------------------------------------------------
-    
+    //[self startLoader];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -111,24 +114,13 @@
     {
         cell.foneImage.image = [photoDict objectForKey:photo.photoID];
     } else {
-        NSURL * url = [NSURL URLWithString:photo.thumbnail];
-        NSData * imgData = [NSData dataWithContentsOfURL:url];
-        UIImage * img = [UIImage imageWithData:imgData];
-        [photoDict setValue:img forKey:photo.photoID];
-        cell.foneImage.image = img;
+        [self cashedImage:photo];
+        [cell setImage:photo.thumbnail];
     }
-    
+    //[self endLoader];
     return cell;
 }
 
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
-////    if (section) {
-////        return CGSizeMake(320, 21);
-////    }
-//    
-//    //return CGSizeZero;
-//    return CGSizeMake(320, 35);
-//}
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
@@ -149,9 +141,11 @@
 
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSArray * items = [dict objectForKey:[self.list objectAtIndex:indexPath.section]];
+    Photo * photo = [items objectAtIndex:indexPath.row];
     id<PhotoViewControllerDelegate> delegate = self.delegate;
     if ([delegate respondsToSelector:@selector(selectPhoto:)]) {
-        [delegate selectPhoto:((ImageCell *)[collectionView cellForItemAtIndexPath:indexPath]).foneImage.image];
+        [delegate selectPhoto:photo];
     }
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -320,6 +314,14 @@
     });
 
     return nil;
+}
+
+- (void) cashedImage:(Photo *)photo
+{
+    NSURL * url = [NSURL URLWithString:photo.thumbnail];
+    NSData * imgData = [NSData dataWithContentsOfURL:url];
+    UIImage * img = [UIImage imageWithData:imgData];
+    [photoDict setValue:img forKey:photo.photoID];
 }
 
 - (IBAction)actBack:(id)sender {
