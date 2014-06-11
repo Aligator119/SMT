@@ -12,6 +12,7 @@
 #import "Activity.h"
 #import "ActivityDetails.h"
 #import "AFNetworking.h"
+#import "ReportsActivity.h"
 
 #define RequestPost @"POST"
 #define RequestGet @"GET"
@@ -274,28 +275,30 @@
 
     Location * location = [Location new];
     [location setValuesFromDict:[self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequesPatch setHeaders:YES andTypeRequest:ApplicationServiceRequestUpdateLocation]];
+    
     appDel.listFishLocations = [NSMutableArray new];
     appDel.listHuntLocations = [NSMutableArray new];
-    appDel.listSharedHuntLocations = [NSMutableArray new];
-    appDel.listSharedFishLocations = [NSMutableArray new];
-    for(int i=0 ; i < appDel.listLocations.count; i++){
-        if (location.locUserId == appDel.user.userID){
-            Location * loc = [[appDel listLocations] objectAtIndex:i];
-            if (location.locID == loc.locID){
-                [[appDel listLocations] replaceObjectAtIndex:i withObject:location];
+    
+    if (location.locUserId == appDel.user.userID){
+        // own location
+        for (int i = 0; i < appDel.listLocations.count; i++ ){
+            Location *loc = (Location*) [appDel.listLocations objectAtIndex:i];
+            if (loc.locID == location.locID){
+                // updated Location
+                [appDel.listLocations replaceObjectAtIndex:i withObject:location];
+                if (location.typeLocation == typeFishing){
+                    [appDel.listFishLocations addObject:location];
+                } else if (location.typeLocation == typeHunting){
+                    [appDel.listHuntLocations addObject:location];
+                }
+            } else{
+                // old Location
+                if (location.typeLocation == typeFishing){
+                    [appDel.listFishLocations addObject:loc];
+                } else if (location.typeLocation == typeHunting){
+                    [appDel.listHuntLocations addObject:loc];
+                }
             }
-            if (location.typeLocation == typeFishing){
-                [appDel.listFishLocations addObject:location];
-            } else if (location.typeLocation == typeHunting){
-                [appDel.listHuntLocations addObject:location];
-            }
-        } else{
-           /* if (location.typeLocation == typeFishing){
-                [appDel.listSharedFishLocations addObject:location];
-            } else if (location.typeLocation == typeHunting){
-                [appDel.listSharedHuntLocations addObject:location];
-            }*/
-
         }
     }
 
@@ -419,8 +422,19 @@
 
 #pragma mark Log Activity
 
-- (NSMutableArray*) getActivityList{
+- (NSMutableArray*) getAllActivities{
     NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log?app_id=%@&app_key=%@&last=-1", strUrl, App_id, App_key];
+    NSMutableArray * reportData = [NSMutableArray new];
+    for (NSDictionary *act in [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListActivities]){
+        ReportsActivity * rep = [[ReportsActivity alloc] initWithData:act];
+        [reportData addObject:rep];
+    }
+    
+    return reportData;
+}
+
+- (NSMutableArray*) getActivityListFrom: (NSInteger) first to: (NSInteger) last{
+    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log?app_id=%@&app_key=%@&first=%i&last=%i", strUrl, App_id, App_key, first, last];
     NSMutableArray * speciesIdArray = [NSMutableArray new];
     for (NSDictionary *act in [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListActivities]){
         NSMutableDictionary *actDict = [NSMutableDictionary new];

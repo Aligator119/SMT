@@ -117,10 +117,12 @@
     DataLoader *loader = [DataLoader instance];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
-        [loader getActivityList];
+        NSMutableArray *result = [NSMutableArray arrayWithArray:[loader getAllActivities]];
         
         dispatch_async(dispatch_get_main_queue(),^(){
-            [self.navigationController pushViewController:[[ReportsViewController alloc]init] animated:YES];
+            ReportsViewController *reportsVC = [ReportsViewController new];
+            reportsVC.activitiesArray = [NSMutableArray arrayWithArray:result];
+            [self.navigationController pushViewController:reportsVC animated:YES];
         });
     });
 }

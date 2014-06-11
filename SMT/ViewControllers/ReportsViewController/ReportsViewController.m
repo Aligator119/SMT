@@ -7,6 +7,8 @@
 //
 
 #import "ReportsViewController.h"
+#import "ReportsActivity.h"
+#import "ReportsHarvestrow.h"
 
 @interface ReportsViewController ()
 
@@ -41,11 +43,6 @@
     [self.graphView buildGraphWithDataFromDictionary:self.valuesDict];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (IBAction)back:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];

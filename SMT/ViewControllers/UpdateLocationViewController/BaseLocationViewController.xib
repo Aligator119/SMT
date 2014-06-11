@@ -16,6 +16,7 @@
                 <outlet property="lbGroup" destination="hMv-yC-g2Z" id="fne-SB-Kg9"/>
                 <outlet property="lbType" destination="XaV-ed-9AC" id="wtl-bl-zjd"/>
                 <outlet property="locNameTextField" destination="2Gh-gA-aRX" id="OFj-wz-Ezv"/>
+                <outlet property="saveButton" destination="tRM-eQ-ciD" id="Adv-fl-vwP"/>
                 <outlet property="updateNameView" destination="kzg-as-OrO" id="OA2-0L-tud"/>
                 <outlet property="verticalConstr" destination="Kve-Id-6nc" id="p8z-ni-VIw"/>
                 <outlet property="view" destination="1" id="3"/>

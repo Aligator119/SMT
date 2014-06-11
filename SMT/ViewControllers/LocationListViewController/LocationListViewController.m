@@ -40,12 +40,28 @@
 
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    if (self.mapType == typeFishing){
-        listLocations = [NSArray arrayWithArray:appDel.listFishLocations];
-    } else if (self.mapType == typeHunting){
-        listLocations = [NSArray arrayWithArray:appDel.listHuntLocations];
+    switch (self.locationChangeSegmentControl.selectedSegmentIndex) {
+        case 0:
+            if (self.mapType == typeFishing){
+                listLocations = [NSArray arrayWithArray:appDel.listFishLocations];
+            } else if (self.mapType == typeHunting){
+                listLocations = [NSArray arrayWithArray:appDel.listHuntLocations];
+            }
+            [self.tableView reloadData];
+            break;
+        case 1:
+            if (self.mapType == typeFishing){
+                listLocations = [NSArray arrayWithArray:appDel.listSharedFishLocations];
+            } else if (self.mapType == typeHunting){
+                listLocations = [NSArray arrayWithArray:appDel.listSharedHuntLocations];
+            }
+            [self.tableView reloadData];
+            break;
+            
+        default:
+            break;
     }
-    [self.tableView reloadData];
+    
 }
 
 - (void) dealloc{

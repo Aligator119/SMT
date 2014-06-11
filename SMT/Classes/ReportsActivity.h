@@ -10,7 +10,13 @@
 
 @interface ReportsActivity : NSObject
 
-@property (nonatomic, strong) NSString *activityDate;
-@property (nonatomic, strong) NSString *endTime;
+@property (nonatomic, strong) NSString *date;
+@property (nonatomic) NSInteger activity_id;
+@property (nonatomic) NSInteger location_id;
+@property (nonatomic, strong) NSMutableArray * harvestrows;
+@property (nonatomic) float tempetature;
+@property (nonatomic) float moonIllumination;
+
+- (id) initWithData: (NSDictionary*) dict;
 
 @end

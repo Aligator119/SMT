@@ -7,10 +7,15 @@
 //
 
 #import "BuddyPageViewController.h"
+#import "AppDelegate.h"
+#import "LocationListCell.h"
+#import "BaseLocationViewController.h"
 
 @interface BuddyPageViewController ()
-
-- (void) actChangeSelect:(id)sender;
+{
+    NSMutableArray *buddySharedLocations;
+    NSMutableArray *globalDataArray;
+}
 
 @end
 
@@ -38,31 +43,71 @@
     
     self.lbNavigationBarTitle.text = [NSString stringWithFormat:@"%@ %@", self.buddy.userFirstName, self.buddy.userSecondName];
     
-    
-    [self.segmentControl addTarget:self action:@selector(actChangeSelect:) forControlEvents:UIControlEventValueChanged];
-    
     //NSURL * imgURL = [NSURL URLWithString:self.buddy.]
     
     [self.image setBackgroundColor:[UIColor greenColor]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToLocationDetails:) name:@"LocationListInfoButtonPressed" object:nil];
+    
+    [self registerCells];
+    [self findSharedLocationsList];
+    
+    globalDataArray = [NSMutableArray new];
+}
+
+-(void) findSharedLocationsList{
+    AppDelegate *appDel = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    
+    NSMutableArray *sharedLocations = [NSMutableArray arrayWithArray: appDel.listSharedFishLocations];
+    [sharedLocations addObjectsFromArray:appDel.listSharedHuntLocations];
+    buddySharedLocations = [NSMutableArray new];
+    for (Location* loc in sharedLocations){
+        if (loc.locUserId == [self.buddy.userID intValue]){
+            [buddySharedLocations addObject:loc];
+        }
+    }  
+}
+
+- (void) registerCells{
+    [self.table registerNib:[UINib nibWithNibName:@"LocationListCell" bundle:nil] forCellReuseIdentifier:@"LocationListCell"];
+}
+
+- (void) dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark table delegate metods
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return globalDataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
+    switch (self.segmentControl.selectedSegmentIndex) {
+        case 1:{
+            LocationListCell *cell = (LocationListCell*) [tableView dequeueReusableCellWithIdentifier:@"LocationListCell" forIndexPath:indexPath];
+            [cell processCellInfo:[globalDataArray objectAtIndex:indexPath.row]];
+            return cell;
+            break;
+        }
+            
+        default:{
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+            if (!cell) {
+                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
+            }
+            
+            cell.textLabel.text = [NSString stringWithFormat:@"%d",indexPath.row];
+            return cell;
+            break;
+        }
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%d",indexPath.row];
     
-    return cell;
+    return nil;
+    
 }
 
 - (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
@@ -70,19 +115,28 @@
     return [NSString stringWithFormat:@"%@ %@", self.buddy.userFirstName, self.buddy.userSecondName];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (IBAction)actBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void) actChangeSelect:(id)sender
-{
-    NSLog(@"%d",self.segmentControl.selectedSegmentIndex);
+-(IBAction)segmentControlStateChanged:(id)sender{
+    int selected = self.segmentControl.selectedSegmentIndex;
+    switch (selected) {
+        case 1:
+            globalDataArray = [NSMutableArray arrayWithArray:buddySharedLocations];
+            [self.table reloadData];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+-(void) moveToLocationDetails: (NSNotification*) notification{
+    Location * loc = (Location*) [notification object];
+    BaseLocationViewController *updateLocationVC = [BaseLocationViewController new];
+    updateLocationVC.location = loc;
+    [self.navigationController pushViewController:updateLocationVC animated:YES];
 }
 
 @end
