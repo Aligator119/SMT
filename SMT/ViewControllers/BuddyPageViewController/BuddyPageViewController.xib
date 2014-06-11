@@ -91,6 +91,9 @@
                         <segment title="Trophies"/>
                         <segment title="Photos"/>
                     </segments>
+                    <connections>
+                        <action selector="segmentControlStateChanged:" destination="-1" eventType="valueChanged" id="mkW-t2-P0K"/>
+                    </connections>
                 </segmentedControl>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="7Yl-Ux-mQq">
                     <rect key="frame" x="0.0" y="242" width="320" height="328"/>

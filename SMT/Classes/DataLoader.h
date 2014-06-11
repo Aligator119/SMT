@@ -111,8 +111,8 @@ enum ApplicationServiceRequest
 
 //------------- Activity ---------------------------------------------
 - (NSString *) createActivityWithActivityObject: (Activity*) _activity andActivityDetails: (NSArray*) _activityDetails andSpeciesId: (NSInteger) _speciesId;
-
-- (NSMutableArray*) getActivityList;
+- (NSMutableArray*) getAllActivities;
+- (NSMutableArray*) getActivityListFrom: (NSInteger) first to: (NSInteger) last;
 - (NSDictionary *) getActivityWithId: (NSInteger) _id;
 - (void) upadateActivityWithId: (NSString*) _activityId speciesId: (NSString*) _speciesId startTime: (NSString*) _startTime endTime: (NSString*) _endTime locationId: (NSString*) _locationId date: (NSString*) _date;
 - (void) deleteActivityWithId: (NSInteger) _activityId;

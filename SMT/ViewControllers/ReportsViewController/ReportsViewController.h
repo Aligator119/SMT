@@ -11,4 +11,6 @@
 
 @interface ReportsViewController : UIViewController
 
+@property (nonatomic, strong) NSMutableArray * activitiesArray;
+
 @end

@@ -250,6 +250,8 @@
     plotSpace.xRange = xRange;
     CPTMutablePlotRange *yRange = [plotSpace.yRange mutableCopy];
     yRange.location = CPTDecimalFromCGFloat(-1.0f);
+
+    [plotSpace setGlobalXRange:[CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble([self.startDay timeIntervalSinceDate:self.startDay]) length:CPTDecimalFromDouble([maxDate.date timeIntervalSinceDate:self.startDay]*12 )]];
     
     NSSortDescriptor *sortDescriptor;
     sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"valueForDate"
@@ -264,6 +266,8 @@
     [yRange expandRangeByFactor:CPTDecimalFromCGFloat(1.1f)];
     plotSpace.yRange = yRange;
     plotSpace.delegate = self;
+    
+    //[plotSpace setGlobalYRange:yRange];
     
     CPTMutableLineStyle *reportLineStyle = [reportPlot.dataLineStyle mutableCopy];
     reportLineStyle.lineWidth = 1.5;

@@ -64,7 +64,7 @@
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
         
-        logHistory = [dataLoader getActivityList];
+        logHistory = [dataLoader getActivityListFrom:0 to:-1];
         
         dispatch_async(dispatch_get_main_queue(), ^(){
             

@@ -16,16 +16,17 @@
 #define LOCATION_TYPE @"type_id"
 #define LOCATION_GROUP @"group"
 #define LOCATION_ADRESS @"adress"
+#define LOCATION_USER_ID @"user_id"
 
 @implementation Location
-@synthesize locID,locIsDeleted,locLatitude,locLongitude,locName,typeLocation, locationGroup, addres;
+@synthesize locID,locIsDeleted,locLatitude,locLongitude,locName,typeLocation, locationGroup, addres, locUserId;
 
 - (id)init
 {
     self = [super init];
     if (self)
     {
-        [self setValuesID:-1 isDeleted:NO lati:0.0f longi:0.0f name:@"" group:@"" adress:@""];
+        [self setValuesID:-1 isDeleted:NO lati:0.0f longi:0.0f name:@"" group:@"" adress:@"" userId:-1];
     }
     return self;
 }
@@ -39,6 +40,7 @@
     [encoder encodeInteger:typeLocation forKey:LOCATION_TYPE];
     [encoder encodeObject:locationGroup forKey:LOCATION_GROUP];
     [encoder encodeObject:addres forKey:LOCATION_ADRESS];
+    [encoder encodeInteger:locUserId forKey:LOCATION_USER_ID];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder
@@ -52,13 +54,14 @@
         typeLocation = [decoder decodeIntForKey:LOCATION_TYPE];
         locationGroup = [decoder decodeObjectForKey:LOCATION_GROUP];
         addres = [decoder decodeObjectForKey:LOCATION_ADRESS];
+        locUserId = [decoder decodeIntForKey:LOCATION_USER_ID];
     }
     return self;
 }
 
 
 
-- (void)setValuesID:(int)_id isDeleted:(BOOL)_deleted lati:(float)_latitude longi:(float)_long name:(NSString*) _name group:(NSString *)_group adress:(NSString *)_adress{
+- (void)setValuesID:(int)_id isDeleted:(BOOL)_deleted lati:(float)_latitude longi:(float)_long name:(NSString*) _name group:(NSString *)_group adress:(NSString *)_adress userId: (int) _userId{
     locID = _id;
     locIsDeleted = _deleted;
     locLongitude = _long;
@@ -66,6 +69,7 @@
     locName = _name;
     locationGroup = _group;
     addres = _adress;
+    locUserId = _userId;
 }
 
 - (void)setValuesFromDict:(NSDictionary*) _info{
@@ -75,7 +79,8 @@
                  longi:[[_info objectForKey:LOCATION_LONGITUDE] floatValue]
                  name: [_info objectForKey:LOCATION_NAME]
                 group: [_info objectForKey:LOCATION_GROUP]
-               adress: [_info objectForKey:LOCATION_ADRESS]];
+               adress: [_info objectForKey:LOCATION_ADRESS]
+                userId:[[_info objectForKey:LOCATION_USER_ID] intValue]];
     typeLocation = [[_info objectForKey:LOCATION_TYPE] intValue];
 }
 

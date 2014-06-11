@@ -184,7 +184,16 @@
     NSArray * buffer = [allBuddyList objectAtIndex:indexPath.section];
     Buddy * buddy = [buffer objectAtIndex:indexPath.row];
     BuddyPageViewController * bpvc = [[BuddyPageViewController alloc]initWithNibName:@"BuddyPageViewController" bundle:nil withBuddy:buddy];
-    [self.navigationController pushViewController:bpvc animated:YES];
+    
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        [dataLoader getLocationsAssociatedWithUser];
+        
+        dispatch_async(dispatch_get_main_queue(),^(){
+            [self.navigationController pushViewController:bpvc animated:YES];
+        });
+    });
+    
 }
 
 - (void)didReceiveMemoryWarning

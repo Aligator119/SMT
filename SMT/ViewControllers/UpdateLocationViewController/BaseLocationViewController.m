@@ -25,11 +25,13 @@
 @property (nonatomic, weak) IBOutlet UIView * coordinatesView;
 @property (nonatomic, weak) IBOutlet UIButton * deleteButton;
 
-@property (strong, nonatomic) IBOutlet UILabel *lbGroup;
-@property (strong, nonatomic) IBOutlet UILabel *lbType;
-@property (strong, nonatomic) IBOutlet UILabel *lbAdress;
-@property (strong, nonatomic) IBOutlet UILabel *lbCoordinate;
-@property (strong, nonatomic) IBOutlet UIImageView *image;
+@property (weak, nonatomic) IBOutlet UILabel *lbGroup;
+@property (weak, nonatomic) IBOutlet UILabel *lbType;
+@property (weak, nonatomic) IBOutlet UILabel *lbAdress;
+@property (weak, nonatomic) IBOutlet UILabel *lbCoordinate;
+@property (weak, nonatomic) IBOutlet UIImageView *image;
+
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
 @end
 
@@ -67,6 +69,11 @@
     }
     self.lbGroup.text = self.location.locationGroup;
     self.lbAdress.text = self.location.addres;
+    
+    if (self.location.locUserId != appDel.user.userID){
+        self.saveButton.hidden = YES;
+        self.deleteButton.hidden = YES;
+    }
 }
 
 -(IBAction)back:(id)sender{
