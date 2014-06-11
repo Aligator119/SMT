@@ -66,7 +66,7 @@
                         <constraint firstItem="b9a-C1-2QT" firstAttribute="top" secondItem="gcK-YT-eE9" secondAttribute="top" constant="5" id="yv4-DQ-wLs"/>
                     </constraints>
                 </view>
-                <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wbH-A4-oKL">
+                <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wbH-A4-oKL">
                     <rect key="frame" x="0.0" y="114" width="320" height="454"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -153,9 +153,13 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="GQ7-6k-gSf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1yg-wS-XV0"/>
+                <constraint firstAttribute="bottom" secondItem="wbH-A4-oKL" secondAttribute="bottom" id="5Rb-ds-TJj"/>
                 <constraint firstAttribute="trailing" secondItem="GQ7-6k-gSf" secondAttribute="trailing" id="9DZ-t4-Nxz"/>
+                <constraint firstItem="wbH-A4-oKL" firstAttribute="top" secondItem="gcK-YT-eE9" secondAttribute="bottom" id="GRj-O6-Qxi"/>
                 <constraint firstAttribute="trailing" secondItem="gcK-YT-eE9" secondAttribute="trailing" id="IY5-xt-34F"/>
                 <constraint firstItem="gcK-YT-eE9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="X6j-vz-cdK"/>
+                <constraint firstItem="wbH-A4-oKL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bqf-0y-ZTT"/>
+                <constraint firstAttribute="trailing" secondItem="wbH-A4-oKL" secondAttribute="trailing" id="tDg-yM-uqv"/>
                 <constraint firstItem="gcK-YT-eE9" firstAttribute="top" secondItem="GQ7-6k-gSf" secondAttribute="bottom" id="vBS-TS-cVn"/>
                 <constraint firstItem="GQ7-6k-gSf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="xyK-fP-JT0"/>
             </constraints>

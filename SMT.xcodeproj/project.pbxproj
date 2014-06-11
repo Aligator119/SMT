@@ -77,6 +77,7 @@
 		046C6C0E190FECC400E3AC56 /* InviteFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C6C0C190FECC400E3AC56 /* InviteFriendCell.xib */; };
 		046C6C12190FECEE00E3AC56 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046C6C10190FECEE00E3AC56 /* Cell.m */; };
 		046C6C13190FECEE00E3AC56 /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C6C11190FECEE00E3AC56 /* Cell.xib */; };
+		047A7BA21947476F00ACE6D5 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A7BA11947476F00ACE6D5 /* Photo.m */; };
 		047EE597192F47D700FD17FC /* InviteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 047EE592192F47D700FD17FC /* InviteCell.m */; };
 		047EE598192F47D700FD17FC /* InviteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047EE593192F47D700FD17FC /* InviteCell.xib */; };
 		047EE599192F47D700FD17FC /* InviteFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047EE595192F47D700FD17FC /* InviteFriendViewController.m */; };
@@ -305,6 +306,8 @@
 		046C6C0F190FECEE00E3AC56 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cell.h; path = ViewControllers/BodyListViewController/CustomCell/Cell.h; sourceTree = "<group>"; };
 		046C6C10190FECEE00E3AC56 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Cell.m; path = ViewControllers/BodyListViewController/CustomCell/Cell.m; sourceTree = "<group>"; };
 		046C6C11190FECEE00E3AC56 /* Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Cell.xib; path = ViewControllers/BodyListViewController/CustomCell/Cell.xib; sourceTree = "<group>"; };
+		047A7BA01947476F00ACE6D5 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = Classes/Photo.h; sourceTree = "<group>"; };
+		047A7BA11947476F00ACE6D5 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = Classes/Photo.m; sourceTree = "<group>"; };
 		047EE591192F47D700FD17FC /* InviteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteCell.h; sourceTree = "<group>"; };
 		047EE592192F47D700FD17FC /* InviteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteCell.m; sourceTree = "<group>"; };
 		047EE593192F47D700FD17FC /* InviteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteCell.xib; sourceTree = "<group>"; };
@@ -768,6 +771,8 @@
 				11C9F679191780DC00CDAFBA /* WheatherPredict.h */,
 				11C9F67A191780DC00CDAFBA /* WheatherPredict.m */,
 				04F7CBBE193DC42B000AB881 /* CustomView */,
+				047A7BA01947476F00ACE6D5 /* Photo.h */,
+				047A7BA11947476F00ACE6D5 /* Photo.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1628,6 +1633,7 @@
 				04E84190193340640064C03C /* NorthernPikeCell.m in Sources */,
 				0433548D1910E7C9003767D0 /* Location.m in Sources */,
 				04CEC03A191B81EF00BF784D /* LogHistoryViewController.m in Sources */,
+				047A7BA21947476F00ACE6D5 /* Photo.m in Sources */,
 				11D48DE61918E32700A9787E /* AFURLRequestSerialization.m in Sources */,
 				04DF99631921FDB600D66BEC /* LogDetailViewController.m in Sources */,
 				04A2A3C6191B80150006677E /* SMTMarker.m in Sources */,

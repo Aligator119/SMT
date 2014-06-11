@@ -11,6 +11,7 @@
 #import "Buddy.h"
 #import "Activity.h"
 #import "AFNetworking.h"
+#import "Photo.h"
 
 @class AppDelegate;
 
@@ -117,9 +118,9 @@ enum ApplicationServiceRequest
 - (void) deleteActivityWithId: (NSInteger) _activityId;
 
 //------- Photo metods -----------------------------------------
-- (void)getPhoto;
+- (NSArray *)getPhoto;
 - (void)getPhotoWithId:(int)photo_id;
-- (void)uploadPhoto:(UIImage *)photo;
+- (NSString *)uploadPhoto:(UIImage *)photo;
 - (void)updatePhotoWithId:(int) photo_id andActivity:(int)activity_id andSighting:(int)sighting_id andType:(int)type_id andDescription:(NSString *)description andCaption:(NSString *)caption;
 - (void)deletePhotoWithId:(int)photo_id;
 //------- Log Detail -----------------------------------------------

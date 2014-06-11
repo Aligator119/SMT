@@ -540,72 +540,73 @@
 
 #pragma mark - Photo
 
-- (void) getPhoto
+- (NSArray *) getPhoto
 {
     NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@%@?app_id=%@&app_key=%@", strUrl, SubstringPhoto, App_id, App_key];
     NSMutableArray * photoList = [NSMutableArray new];
-    for (NSDictionary *act in [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto]){
-        [photoList addObject:[act objectForKey:@"url"]];
+    NSDictionary * buf = [[self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto] objectForKey:@"photos"];
+    for (NSDictionary *act in buf){
+        Photo * ithem = [[Photo alloc]init];
+        ithem.photoID = [act objectForKey:@"id"];
+        ithem.fullPhoto = [act objectForKey:@"fullPhoto"];
+        ithem.raw = [act objectForKey:@"raw"];
+        ithem.thumbnail = [act objectForKey:@"url"];
+        ithem.uploadDate = [act objectForKey:@"upload_date"];
+        ithem.userName = [act objectForKey:@"username"];;
+        [photoList addObject:ithem];
     }
-
+    return photoList;
 }
 
 - (void) getPhotoWithId:(int)photo_id
 {
     NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@%@/%d?app_id=%@&app_key=%@", strUrl, SubstringPhoto, photo_id, App_id, App_key];
     NSString * photo = [NSString new];
-    for (NSDictionary *act in [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto]){
+    NSDictionary *act = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto];
         photo = [act objectForKey:@"url"];
-    }
+    
 
 }
 
-- (void) uploadPhoto:(UIImage *)photo
+- (NSString *) uploadPhoto:(UIImage *)photo
 {
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@?app_id=%@&app_key=%@",strUrl,SubstringPhoto, App_id, App_key];
     NSLog(@"URL : %@",strUrlRequestAdress);
     
-    //NSString * imgStr = [UIImageJPEGRepresentation(photo,1.0) base64Encoding];
-    NSData * data = UIImagePNGRepresentation(photo);
+    NSData *imageData = UIImageJPEGRepresentation(photo, 0.9f);
     
-    bbb = YES;
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     
-    /*AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//----------------------------------------------------------------------------------
+    [request setURL:[NSURL URLWithString:strUrlRequestAdress]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:@"19921992q" forHTTPHeaderField:@"X-password"];
+    [request setValue:@"pola1@bigmir.net" forHTTPHeaderField:@"X-username"];
     
-    NSData * imageData = UIImagePNGRepresentation(photo);
+    //Add the header info
+	NSString *stringBoundary = @"0xKhTmLbOuNdArY";
+	NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",stringBoundary];
+	[request addValue:contentType forHTTPHeaderField: @"Content-Type"];
     
-    if (imageData){
-        NSDictionary *params = [NSDictionary dictionaryWithObjects:@[App_id, App_key] forKeys:@[@"app_id", @"app_key"]];
     
-        NSError *error;
-        manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-        manager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
-        NSMutableURLRequest *request = [manager.requestSerializer multipartFormRequestWithMethod:@"POST" URLString:strUrlRequestAdress parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData> formData){
-            [formData appendPartWithFileData:imageData name:@"photo" fileName:@"bbb" mimeType:@"image/png"];
-        }error:&error];
-        
-        
-        [manager.requestSerializer setValue:@"19921992q" forHTTPHeaderField:@"X-password"];
-        [manager.requestSerializer setValue:@"pola1@bigmir.net" forHTTPHeaderField:@"X-username"];
-        [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        [manager.requestSerializer setValue:@"must-revalidate" forHTTPHeaderField:@"Cashe-Control"];
-        
-        
-        AFHTTPRequestOperation *op = [manager HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"response:%@", responseObject);
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"error:%@", error);
-        }];
-        [op start];
-    }*/
-    /*NSString * imgData = [UIImageJPEGRepresentation(photo, 0.9) base64Encoding];
-    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[imgData, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"photo", @"app_id", @"app_key"]];
-    NSError *error;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
     
-    NSLog(@"%@", error);*/
     
-    [self startRequest:strUrlRequestAdress andData:data typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto];
+    NSMutableData *body = [NSMutableData data];
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"photo\"; filename=\"photo.jpg\"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[NSData dataWithData:imageData]];
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:body];
+    
+    NSError * reqError = nil;
+    NSURLResponse * response = nil;
+    receivedData = (NSMutableData* )[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&reqError];
+    NSLog(@"receivedData %@",[[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding]);
+    NSError * jsonError = [[NSError alloc]init];
+    CJSONDeserializer *deserializer = [CJSONDeserializer deserializer];
+    NSDictionary * info = [deserializer deserialize:receivedData error:&jsonError];
+    return [info objectForKey:@"id"];
 }
 
 - ( void) updatePhotoWithId:(int)photo_id andActivity:(int)activity_id andSighting:(int)sighting_id andType:(int)type_id andDescription:(NSString *)description andCaption:(NSString *)caption
@@ -703,7 +704,7 @@
         
         NSMutableData *body = [NSMutableData data];
         [body appendData:[[NSString stringWithFormat:@"--%@",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-                           [body appendData:[@"Content-Disposition: form-data; name=\"photo\"" dataUsingEncoding:NSUTF8StringEncoding]];
+                           [body appendData:[@"Content-Disposition: form-data; name=\"photo\"; filename=\"Image.png\"" dataUsingEncoding:NSUTF8StringEncoding]];
                                               [body appendData:[@"Content-Type: application/octet-stream" dataUsingEncoding:NSUTF8StringEncoding]];
                                                                  [body appendData:[NSData dataWithData:_data]];
                                                                  [body appendData:[[NSString stringWithFormat:@"--%@--",boundary] dataUsingEncoding:NSUTF8StringEncoding]];

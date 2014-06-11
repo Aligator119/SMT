@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ImageCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *image;
+@property (weak, nonatomic) IBOutlet UIImageView *foneImage;
+
+
+- (void) setImage:(UIImage *)img;
 
 @end

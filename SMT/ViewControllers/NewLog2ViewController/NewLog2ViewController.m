@@ -387,10 +387,10 @@
         NSMutableArray * speciesanswers = [[NSMutableArray alloc]init];
         for (id obj in self.header.subviews) {
             if ([obj isKindOfClass:[CustomButton class]]) {
-                [speciesanswers addObject:@{@"￼speciesquestio n_id" : [((CustomButton *)obj) getQuestion],
+                [speciesanswers addObject:@{@"￼speciesquestion_id" : [((CustomButton *)obj) getQuestion],
                                             @"answer"              : [((CustomButton *)obj) getSelectedIthem]}];
             } else if ([obj isKindOfClass:[CustomTextField class]]) {
-                [speciesanswers addObject:@{@"￼speciesquestio n_id" : [((CustomTextField *)obj) getQuestionID],
+                [speciesanswers addObject:@{@"￼speciesquestion_id" : [((CustomTextField *)obj) getQuestionID],
                                             @"answer"              : [((CustomTextField *)obj) getText]}];
             }
         }

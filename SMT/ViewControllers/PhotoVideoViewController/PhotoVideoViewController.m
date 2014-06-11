@@ -9,17 +9,19 @@
 #import "PhotoVideoViewController.h"
 #import "LogDetail2ViewController.h"
 #import "DataLoader.h"
+#import "Photo.h"
 
 #define KEY_USERDEFAULT @"added_Image"
 
 @interface PhotoVideoViewController ()
 {
-    NSUserDefaults * def;
     NSMutableDictionary * dict;
-    //NSDateFormatter * dateFormatter;
+    NSMutableDictionary * photoDict;
+    NSDateFormatter * dateFormatter;
     NSDateFormatter * sectionFormatter;
     NSDateFormatter * selectedFormatter;
     DataLoader * dataLoader;
+    NSArray * arrayData;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIView *overlayView;
@@ -49,8 +51,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    //dateFormatter = [[NSDateFormatter alloc]init];
-    //[dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"MMMM dd, yyyy"];
     sectionFormatter = [[NSDateFormatter alloc]init];
     [sectionFormatter setDateFormat:@"MMMM"];
     selectedFormatter = [[NSDateFormatter alloc]init];
@@ -70,14 +72,23 @@
     [self.collectionTable registerClass:[CustomHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     [self.collectionTable registerNib:headerNib forCellWithReuseIdentifier:@"header"];
     
-    def = [NSUserDefaults standardUserDefaults];
+    //def = [NSUserDefaults standardUserDefaults];
     
     //[def removeObjectForKey:KEY_USERDEFAULT];
     
-    dict = [[NSMutableDictionary alloc]initWithDictionary:[self getImage]];
-    self.list = [dict allKeys];
-    self.list = [self.list sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    dict = [[NSMutableDictionary alloc]init];
+    photoDict = [[NSMutableDictionary alloc]init];
+    //self.list = [dict allKeys];
+    //self.list = [self.list sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     
+    
+//----------------------------------------------------------------------------------------------------
+    
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [self getImage];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
@@ -95,38 +106,17 @@
 {
     ImageCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"imagecell" forIndexPath:indexPath];
     NSArray * items = [dict objectForKey:[self.list objectAtIndex:indexPath.section]];
-    NSDictionary * data = [items objectAtIndex:indexPath.row];
-    
-    typedef void (^ALAssetsLibraryAssetForURLResultBlock)(ALAsset *asset);
-    typedef void (^ALAssetsLibraryAccessFailureBlock)(NSError *error);
-    
-    ALAssetsLibraryAssetForURLResultBlock resultblock = ^(ALAsset *myasset)
+    Photo * photo = [items objectAtIndex:indexPath.row];
+    if ([photoDict objectForKey:photo.photoID])
     {
-        ALAssetRepresentation *rep = [myasset defaultRepresentation];
-        CGImageRef iref = [rep fullResolutionImage];
-        UIImage *images;
-        if (iref)
-        {
-            
-            images = [UIImage imageWithCGImage:iref scale:[rep scale] orientation:(UIImageOrientation)[rep orientation]];
-            cell.image.image = images;
-            
-        }
-        
-    };
-    
-    ALAssetsLibraryAccessFailureBlock failureblock  = ^(NSError *myerror)
-    {
-        NSLog(@"can't get image");
-        
-    };
-    
-    NSURL *asseturl = [data objectForKey:@"path"];
-    
-    ALAssetsLibrary* assetslibrary = [[ALAssetsLibrary alloc] init];
-    [assetslibrary assetForURL:asseturl 
-                   resultBlock:resultblock   
-                  failureBlock:failureblock];
+        cell.foneImage.image = [photoDict objectForKey:photo.photoID];
+    } else {
+        NSURL * url = [NSURL URLWithString:photo.thumbnail];
+        NSData * imgData = [NSData dataWithContentsOfURL:url];
+        UIImage * img = [UIImage imageWithData:imgData];
+        [photoDict setValue:img forKey:photo.photoID];
+        cell.foneImage.image = img;
+    }
     
     return cell;
 }
@@ -161,7 +151,7 @@
 {
     id<PhotoViewControllerDelegate> delegate = self.delegate;
     if ([delegate respondsToSelector:@selector(selectPhoto:)]) {
-        [delegate selectPhoto:((ImageCell *)[collectionView cellForItemAtIndexPath:indexPath]).image.image];
+        [delegate selectPhoto:((ImageCell *)[collectionView cellForItemAtIndexPath:indexPath]).foneImage.image];
     }
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -201,36 +191,36 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
-    NSString * path = [info objectForKey:@"UIImagePickerControllerReferenceURL"];
-    NSString * str = [selectedFormatter stringFromDate:[NSDate date]];//WithTimeIntervalSinceNow:29320000.0]];
+//    NSString * path = [info objectForKey:@"UIImagePickerControllerReferenceURL"];
+//    NSString * str = [selectedFormatter stringFromDate:[NSDate date]];
     [self dismissViewControllerAnimated:YES completion:^{
-        BOOL flag = NO;
-        for (NSString * key in [dict allKeys]) {
-        if ([key isEqualToString:str]) {
-            NSMutableArray * buffer = [dict objectForKey:str];
-            NSDictionary * newImage = [[NSDictionary alloc]initWithObjectsAndKeys:path, @"path", nil];
-            [buffer addObject:newImage];
-            [dict setObject:buffer forKey:str];
-            flag = YES;
-            NSData * buf = [NSKeyedArchiver archivedDataWithRootObject:dict];
-            [def setObject:buf forKey:KEY_USERDEFAULT];
-            [def synchronize];
-        }
-        }
-        if (!flag) {
-            NSMutableArray * buffer = [[NSMutableArray alloc]init];
-            NSDictionary * newImage = [[NSDictionary alloc]initWithObjectsAndKeys:path, @"path", nil];
-            [buffer addObject:newImage];
-            NSMutableDictionary * newDict = [[NSMutableDictionary alloc]initWithDictionary:dict];
-            [newDict addEntriesFromDictionary:@{str: buffer}];
-            NSData * buf = [NSKeyedArchiver archivedDataWithRootObject:newDict];
-            [def setObject:buf forKey:KEY_USERDEFAULT];
-            dict = [newDict mutableCopy];
-            [def synchronize];
-        }
-        self.list = [dict allKeys];
-        self.list = [self.list sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-        [self.collectionTable reloadData];
+//        BOOL flag = NO;
+//        for (NSString * key in [dict allKeys]) {
+//        if ([key isEqualToString:str]) {
+//            NSMutableArray * buffer = [dict objectForKey:str];
+//            NSDictionary * newImage = [[NSDictionary alloc]initWithObjectsAndKeys:path, @"path", nil];
+//            [buffer addObject:newImage];
+//            [dict setObject:buffer forKey:str];
+//            flag = YES;
+//            NSData * buf = [NSKeyedArchiver archivedDataWithRootObject:dict];
+//            //[def setObject:buf forKey:KEY_USERDEFAULT];
+//            //[def synchronize];
+//        }
+//        }
+//        if (!flag) {
+//            NSMutableArray * buffer = [[NSMutableArray alloc]init];
+//            NSDictionary * newImage = [[NSDictionary alloc]initWithObjectsAndKeys:path, @"path", nil];
+//            [buffer addObject:newImage];
+//            NSMutableDictionary * newDict = [[NSMutableDictionary alloc]initWithDictionary:dict];
+//            [newDict addEntriesFromDictionary:@{str: buffer}];
+//            NSData * buf = [NSKeyedArchiver archivedDataWithRootObject:newDict];
+//            //[def setObject:buf forKey:KEY_USERDEFAULT];
+//            dict = [newDict mutableCopy];
+//            //[def synchronize];
+//        }
+//        self.list = [dict allKeys];
+//        self.list = [self.list sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+//        [self.collectionTable reloadData];
         //----------------------------------------------------------------------------------------------------
         dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(newQueue, ^(){
@@ -246,7 +236,9 @@
                 {
                     
                     images = [UIImage imageWithCGImage:iref scale:[rep scale] orientation:(UIImageOrientation)[rep orientation]];
-                    [dataLoader uploadPhoto:images];
+                    NSString * iD = [dataLoader uploadPhoto:images];
+                    NSLog(@"%@",iD);
+                    [self getImage];
                     
                 }
                 
@@ -278,22 +270,6 @@
     
 }
 
-////----------------------------------------------------------------------------------------------------
-//dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//dispatch_async(newQueue, ^(){
-//    
-//    [dataLoader uploadPhoto:images];
-//    
-//    dispatch_async(dispatch_get_main_queue(), ^(){
-//        
-//        if(!dataLoader.isCorrectRezult) {
-//            NSLog(@"Error saved detail log");
-//        } else {
-//            
-//        }
-//    });
-//});
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -311,9 +287,39 @@
 
 - (NSDictionary *) getImage
 {
-    NSData * buf = [def objectForKey:KEY_USERDEFAULT];
-    NSMutableDictionary * ret = [[NSMutableDictionary alloc]initWithDictionary:[NSKeyedUnarchiver unarchiveObjectWithData:buf]];
-    return ret;
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        
+        arrayData = [dataLoader getPhoto];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            
+            if(!dataLoader.isCorrectRezult) {
+                NSLog(@"Error download sybSpecie");
+            } else {
+                for (Photo * photo in arrayData) {
+                    NSDate * uploadDate = [dateFormatter dateFromString:photo.uploadDate];
+                    if ([[dict allKeys] containsObject:[selectedFormatter stringFromDate:uploadDate]]){
+                        NSMutableArray * buffer = [dict objectForKey:[selectedFormatter stringFromDate:uploadDate]];
+                        [buffer addObject:photo];
+                        [dict setObject:buffer forKey:[selectedFormatter stringFromDate:uploadDate]];
+                    } else {
+                        NSMutableArray * buffer = [[NSMutableArray alloc]init];
+                        [buffer addObject:photo];
+                        NSMutableDictionary * newDict = [[NSMutableDictionary alloc]initWithDictionary:dict];
+                        [newDict addEntriesFromDictionary:@{[selectedFormatter stringFromDate:uploadDate]: buffer}];
+                        dict = [newDict mutableCopy];
+                    }
+                }
+                self.list = [dict allKeys];
+                self.list = [self.list sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+                [self.collectionTable reloadData];
+                
+            }
+        });
+    });
+
+    return nil;
 }
 
 - (IBAction)actBack:(id)sender {

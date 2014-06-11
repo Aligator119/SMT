@@ -29,7 +29,7 @@
             </constraints>
             <size key="customSize" width="90" height="90"/>
             <connections>
-                <outlet property="image" destination="5vz-ri-h3O" id="rKO-Dp-QxM"/>
+                <outlet property="foneImage" destination="5vz-ri-h3O" id="XMw-Mx-RIF"/>
             </connections>
         </collectionViewCell>
     </objects>
