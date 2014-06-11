@@ -10,12 +10,13 @@
 #import "ImageCell.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "CustomHeader.h"
+#import "Photo.h"
 
 @protocol PhotoViewControllerDelegate <NSObject>
 
 @required
 
-- (void)selectPhoto:(UIImage *)image;
+- (void)selectPhoto:(Photo *)photo;
 
 @end
 

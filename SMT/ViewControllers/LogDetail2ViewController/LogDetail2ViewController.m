@@ -262,9 +262,10 @@
     [self.navigationController pushViewController:pvvc animated:YES];
 }
 
-- (void)selectPhoto:(UIImage *)image
+- (void)selectPhoto:(Photo *)photo
 {
-    self.imgUser.image = image;
+    self.imgUser.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.thumbnail]]];
+    photo_id = photo.photoID;
 }
 
 @end

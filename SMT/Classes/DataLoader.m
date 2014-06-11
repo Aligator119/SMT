@@ -542,7 +542,7 @@
 
 - (NSArray *) getPhoto
 {
-    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@%@?app_id=%@&app_key=%@", strUrl, SubstringPhoto, App_id, App_key];
+    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@%@?app_id=%@&app_key=%@&last=-1", strUrl, SubstringPhoto, App_id, App_key];
     NSMutableArray * photoList = [NSMutableArray new];
     NSDictionary * buf = [[self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto] objectForKey:@"photos"];
     for (NSDictionary *act in buf){
@@ -552,20 +552,25 @@
         ithem.raw = [act objectForKey:@"raw"];
         ithem.thumbnail = [act objectForKey:@"url"];
         ithem.uploadDate = [act objectForKey:@"upload_date"];
-        ithem.userName = [act objectForKey:@"username"];;
+        ithem.userName = [act objectForKey:@"username"];
         [photoList addObject:ithem];
     }
     return photoList;
 }
 
-- (void) getPhotoWithId:(int)photo_id
+- (Photo *) getPhotoWithId:(int)photo_id
 {
     NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@%@/%d?app_id=%@&app_key=%@", strUrl, SubstringPhoto, photo_id, App_id, App_key];
-    NSString * photo = [NSString new];
     NSDictionary *act = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto];
-        photo = [act objectForKey:@"url"];
+    Photo * ithem = [[Photo alloc]init];
+    ithem.photoID = [act objectForKey:@"id"];
+    ithem.fullPhoto = [act objectForKey:@"fullPhoto"];
+    ithem.raw = [act objectForKey:@"raw"];
+    ithem.thumbnail = [act objectForKey:@"url"];
+    ithem.uploadDate = [act objectForKey:@"upload_date"];
+    ithem.userName = [act objectForKey:@"username"];
     
-
+    return ithem;
 }
 
 - (NSString *) uploadPhoto:(UIImage *)photo

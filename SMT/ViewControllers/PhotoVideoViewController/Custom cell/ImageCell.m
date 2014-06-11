@@ -1,12 +1,8 @@
-//
-//  ImageCell.m
-//  SMT
-//
-//  Created by Mac on 5/6/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import "ImageCell.h"
+#import "UIViewController+LoaderCategory.h"
+
+#define ActiveTag 12321
+
 
 @implementation ImageCell
 
@@ -19,10 +15,41 @@
     return self;
 }
 
-
-- (void) setImage:(UIImage *)img
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        UIActivityIndicatorView * a = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        [self.contentView addSubview:a];
+        
+        //CGRect screenRect = self.contentView.bounds; //[[UIScreen mainScreen] bounds];
+        a.center = self.contentView.center; //CGPointMake(screenRect.size.width/2,screenRect.size.height/2);
+        
+        a.color = [UIColor blackColor];
+        a.hidesWhenStopped = YES;
+        a.tag = ActiveTag;
+    }
+    return self;
+}
+
+- (void) setImage:(NSString *)url
+{
+    UIActivityIndicatorView * a = (UIActivityIndicatorView* )[self.contentView viewWithTag:ActiveTag];
+    [a startAnimating];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
     
+        _img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            
+            self.foneImage.image = _img;
+            UIActivityIndicatorView * a = (UIActivityIndicatorView* )[self.contentView viewWithTag:ActiveTag];
+            [a stopAnimating];
+        });
+    });
+
+   
 }
 
 
