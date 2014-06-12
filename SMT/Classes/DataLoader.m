@@ -433,6 +433,23 @@
     return reportData;
 }
 
+- (NSMutableArray*) getActivitiesWithBuddyID:(int)buddy_id
+{
+    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log?app_id=%@&app_key=%@&buddy_id=%d", strUrl, App_id, App_key,buddy_id];
+    NSMutableArray * reportData = [NSMutableArray new];
+    NSDictionary * buf = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListActivities];
+    for (NSDictionary *act in buf) {
+        NSMutableDictionary * rep = [[NSMutableDictionary alloc] init];
+        [rep setValue:[act objectForKey:@"species"] forKey:@"species"];
+        [rep setValue:[act objectForKey:@"logtimestamp"] forKey:@"date"];
+        [rep setValue:[act objectForKey:@"location"] forKey:@"location"];
+        [rep setValue:[act objectForKey:@"sightings"] forKey:@"sightings"];
+        [reportData addObject:rep];
+    }
+    
+    return reportData;
+}
+
 - (NSMutableArray*) getActivityListFrom: (NSInteger) first to: (NSInteger) last{
     NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log?app_id=%@&app_key=%@&first=%i&last=%i", strUrl, App_id, App_key, first, last];
     NSMutableArray * speciesIdArray = [NSMutableArray new];
@@ -571,6 +588,25 @@
     ithem.userName = [act objectForKey:@"username"];
     
     return ithem;
+}
+
+- (NSArray *)getPhotoWithBuddyId:(int)buddy_id
+{
+    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@%@?app_id=%@&app_key=%@&buddy_id=%d&last=-1", strUrl, SubstringPhoto, App_id, App_key,buddy_id];
+    NSMutableArray * photoList = [NSMutableArray new];
+    NSDictionary * buf = [[self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto] objectForKey:@"photos"];
+    for (NSDictionary *act in buf){
+        Photo * ithem = [[Photo alloc]init];
+        ithem.photoID = [act objectForKey:@"id"];
+        ithem.fullPhoto = [act objectForKey:@"fullPhoto"];
+        ithem.raw = [act objectForKey:@"raw"];
+        ithem.thumbnail = [act objectForKey:@"url"];
+        ithem.uploadDate = [act objectForKey:@"upload_date"];
+        ithem.userName = [act objectForKey:@"username"];
+        [photoList addObject:ithem];
+    }
+    return photoList;
+
 }
 
 - (NSString *) uploadPhoto:(UIImage *)photo

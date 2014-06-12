@@ -112,6 +112,7 @@ enum ApplicationServiceRequest
 //------------- Activity ---------------------------------------------
 - (NSString *) createActivityWithActivityObject: (Activity*) _activity andActivityDetails: (NSArray*) _activityDetails andSpeciesId: (NSInteger) _speciesId;
 - (NSMutableArray*) getAllActivities;
+- (NSMutableArray*) getActivitiesWithBuddyID:(int)buddy_id;
 - (NSMutableArray*) getActivityListFrom: (NSInteger) first to: (NSInteger) last;
 - (NSDictionary *) getActivityWithId: (NSInteger) _id;
 - (void) upadateActivityWithId: (NSString*) _activityId speciesId: (NSString*) _speciesId startTime: (NSString*) _startTime endTime: (NSString*) _endTime locationId: (NSString*) _locationId date: (NSString*) _date;
@@ -120,6 +121,7 @@ enum ApplicationServiceRequest
 //------- Photo metods -----------------------------------------
 - (NSArray *)getPhoto;
 - (Photo *)getPhotoWithId:(int)photo_id;
+- (NSArray *)getPhotoWithBuddyId:(int)buddy_id;
 - (NSString *)uploadPhoto:(UIImage *)photo;
 - (void)updatePhotoWithId:(int) photo_id andActivity:(int)activity_id andSighting:(int)sighting_id andType:(int)type_id andDescription:(NSString *)description andCaption:(NSString *)caption;
 - (void)deletePhotoWithId:(int)photo_id;
@@ -127,5 +129,8 @@ enum ApplicationServiceRequest
 - (void) getLogDetail;
 - (void) updateLogDetailWithId:(NSString *) logId andSighting:(NSDictionary *)sighting;
 - (void) deleteLogDetailWithId:(int)logId;
+//------- Trophy -----------------------------------------------
+
+
 
 @end

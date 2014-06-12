@@ -77,6 +77,8 @@
 		046C6C0E190FECC400E3AC56 /* InviteFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C6C0C190FECC400E3AC56 /* InviteFriendCell.xib */; };
 		046C6C12190FECEE00E3AC56 /* Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046C6C10190FECEE00E3AC56 /* Cell.m */; };
 		046C6C13190FECEE00E3AC56 /* Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046C6C11190FECEE00E3AC56 /* Cell.xib */; };
+		0477219019487B330029E450 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477218E19487B330029E450 /* ActivityCell.m */; };
+		0477219119487B330029E450 /* ActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0477218F19487B330029E450 /* ActivityCell.xib */; };
 		047A7BA21947476F00ACE6D5 /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 047A7BA11947476F00ACE6D5 /* Photo.m */; };
 		047EE597192F47D700FD17FC /* InviteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 047EE592192F47D700FD17FC /* InviteCell.m */; };
 		047EE598192F47D700FD17FC /* InviteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047EE593192F47D700FD17FC /* InviteCell.xib */; };
@@ -306,6 +308,9 @@
 		046C6C0F190FECEE00E3AC56 /* Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Cell.h; path = ViewControllers/BodyListViewController/CustomCell/Cell.h; sourceTree = "<group>"; };
 		046C6C10190FECEE00E3AC56 /* Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Cell.m; path = ViewControllers/BodyListViewController/CustomCell/Cell.m; sourceTree = "<group>"; };
 		046C6C11190FECEE00E3AC56 /* Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Cell.xib; path = ViewControllers/BodyListViewController/CustomCell/Cell.xib; sourceTree = "<group>"; };
+		0477218D19487B330029E450 /* ActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ActivityCell.h; path = ViewControllers/BuddyPageViewController/ActivityCell/ActivityCell.h; sourceTree = "<group>"; };
+		0477218E19487B330029E450 /* ActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ActivityCell.m; path = ViewControllers/BuddyPageViewController/ActivityCell/ActivityCell.m; sourceTree = "<group>"; };
+		0477218F19487B330029E450 /* ActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityCell.xib; path = ViewControllers/BuddyPageViewController/ActivityCell/ActivityCell.xib; sourceTree = "<group>"; };
 		047A7BA01947476F00ACE6D5 /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Photo.h; path = Classes/Photo.h; sourceTree = "<group>"; };
 		047A7BA11947476F00ACE6D5 /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Photo.m; path = Classes/Photo.m; sourceTree = "<group>"; };
 		047EE591192F47D700FD17FC /* InviteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteCell.h; sourceTree = "<group>"; };
@@ -939,6 +944,16 @@
 			name = CustomCell;
 			sourceTree = "<group>";
 		};
+		0477218C19487AEE0029E450 /* ActivityCell */ = {
+			isa = PBXGroup;
+			children = (
+				0477218D19487B330029E450 /* ActivityCell.h */,
+				0477218E19487B330029E450 /* ActivityCell.m */,
+				0477218F19487B330029E450 /* ActivityCell.xib */,
+			);
+			name = ActivityCell;
+			sourceTree = "<group>";
+		};
 		047EE58F192F47D700FD17FC /* InviteFriendViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1355,6 +1370,7 @@
 		04F342EC192110E40054294C /* BuddyPageViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0477218C19487AEE0029E450 /* ActivityCell */,
 				04F342ED1921118D0054294C /* BuddyPageViewController.h */,
 				04F342EE1921118E0054294C /* BuddyPageViewController.m */,
 				04F342EF1921118E0054294C /* BuddyPageViewController.xib */,
@@ -1517,6 +1533,7 @@
 				04D76FDE1934D14E00E1F59B /* star_orange@2x.png in Resources */,
 				0408069B190EA37D00E063C3 /* InfoPlist.strings in Resources */,
 				04F4A50E1936143E00A29912 /* AddCell.xib in Resources */,
+				0477219119487B330029E450 /* ActivityCell.xib in Resources */,
 				04409429190FA53900C4A558 /* ForgotPasswordViewController.xib in Resources */,
 				04409421190F975E00C4A558 /* LoginViewController_iPhone4.xib in Resources */,
 				04A2A399191B7F9F0006677E /* SpeciesViewController.xib in Resources */,
@@ -1613,6 +1630,7 @@
 				04E5B91B193780B800E1C824 /* DateValues.m in Sources */,
 				843CD56219333D3400EF7E46 /* Activity.m in Sources */,
 				04CEC047191B860C00BF784D /* LocationSearch.m in Sources */,
+				0477219019487B330029E450 /* ActivityCell.m in Sources */,
 				11C9F68A1917E52A00CDAFBA /* UIImageView+AFNetworking.m in Sources */,
 				11C9F67B191780DC00CDAFBA /* WheatherPredict.m in Sources */,
 				0408069D190EA37D00E063C3 /* main.m in Sources */,

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Buddy.h"
+#import "CustomHeader.h"
 
-@interface BuddyPageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface BuddyPageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;

@@ -1,5 +1,4 @@
 #import "ImageCell.h"
-#import "UIViewController+LoaderCategory.h"
 
 #define ActiveTag 12321
 
