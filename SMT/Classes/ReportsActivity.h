@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSMutableArray * harvestrows;
 @property (nonatomic) float tempetature;
 @property (nonatomic) float moonIllumination;
+@property (nonatomic) NSInteger species_id;
 
 - (id) initWithData: (NSDictionary*) dict;
 

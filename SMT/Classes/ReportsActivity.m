@@ -19,6 +19,7 @@
         NSDictionary *weather = [dict objectForKey:@"weather"];
         self.tempetature = [[weather objectForKey:@"maxtempC"] floatValue];
         self.moonIllumination = [[weather objectForKey:@"moonillum"] floatValue];
+        self.species_id = [[dict objectForKey:@"species_id"] integerValue];
         self.harvestrows = [NSMutableArray new];
         for (NSDictionary *harvDict in [dict objectForKey:@"harvestrows"]){
             ReportsHarvestrow *harv = [[ReportsHarvestrow alloc] initWithData:harvDict];
