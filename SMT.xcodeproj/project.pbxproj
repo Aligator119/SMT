@@ -235,6 +235,10 @@
 		84E605C3194AF5CC00F8D61F /* weather@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E6059A194AF5CC00F8D61F /* weather@2x.png */; };
 		84E605C4194AF5CC00F8D61F /* weather@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E6059B194AF5CC00F8D61F /* weather@2x~ipad.png */; };
 		84E605C5194AF5CC00F8D61F /* weather~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E6059C194AF5CC00F8D61F /* weather~ipad.png */; };
+		84E605C8194B16BD00F8D61F /* download_fish.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E605C6194B16BD00F8D61F /* download_fish.png */; };
+		84E605C9194B16BD00F8D61F /* download_hunt.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E605C7194B16BD00F8D61F /* download_hunt.png */; };
+		84E605CC194B1E7000F8D61F /* weather_header_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E605CA194B1E7000F8D61F /* weather_header_bg.png */; };
+		84E605CD194B1E7000F8D61F /* weather_header_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E605CB194B1E7000F8D61F /* weather_header_bg@2x.png */; };
 		84F0115F1947178A00BC032B /* ReportsHarvestrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F0115E1947178A00BC032B /* ReportsHarvestrow.m */; };
 		84F2893119407D2B00D61E4C /* ReportsActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F2893019407D2B00D61E4C /* ReportsActivity.m */; };
 /* End PBXBuildFile section */
@@ -654,6 +658,10 @@
 		84E6059A194AF5CC00F8D61F /* weather@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weather@2x.png"; sourceTree = "<group>"; };
 		84E6059B194AF5CC00F8D61F /* weather@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weather@2x~ipad.png"; sourceTree = "<group>"; };
 		84E6059C194AF5CC00F8D61F /* weather~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weather~ipad.png"; sourceTree = "<group>"; };
+		84E605C6194B16BD00F8D61F /* download_fish.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = download_fish.png; sourceTree = "<group>"; };
+		84E605C7194B16BD00F8D61F /* download_hunt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = download_hunt.png; sourceTree = "<group>"; };
+		84E605CA194B1E7000F8D61F /* weather_header_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weather_header_bg.png; sourceTree = "<group>"; };
+		84E605CB194B1E7000F8D61F /* weather_header_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weather_header_bg@2x.png"; sourceTree = "<group>"; };
 		84F0115D1947178A00BC032B /* ReportsHarvestrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportsHarvestrow.h; path = Classes/ReportsHarvestrow.h; sourceTree = "<group>"; };
 		84F0115E1947178A00BC032B /* ReportsHarvestrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReportsHarvestrow.m; path = Classes/ReportsHarvestrow.m; sourceTree = "<group>"; };
 		84F2892F19407D2B00D61E4C /* ReportsActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportsActivity.h; path = Classes/ReportsActivity.h; sourceTree = "<group>"; };
@@ -1025,6 +1033,10 @@
 			isa = PBXGroup;
 			children = (
 				84E60573194AF5CC00F8D61F /* icons */,
+				84E605C6194B16BD00F8D61F /* download_fish.png */,
+				84E605C7194B16BD00F8D61F /* download_hunt.png */,
+				84E605CA194B1E7000F8D61F /* weather_header_bg.png */,
+				84E605CB194B1E7000F8D61F /* weather_header_bg@2x.png */,
 				0405E4991949F01A0059CCFE /* arrow_righrt_BTN.png */,
 				0405E49A1949F01A0059CCFE /* arrow_righrt_BTN@2x.png */,
 				0405E4951949A8620059CCFE /* chek.png */,
@@ -1728,7 +1740,9 @@
 				84E605AF194AF5CC00F8D61F /* log_and_activity@2x~ipad.png in Resources */,
 				04A2A3BF191B7FDC0006677E /* ImageCell.xib in Resources */,
 				04EFC32219249890008A59D7 /* sportsman_tracker_BG@2x-1.png in Resources */,
+				84E605CD194B1E7000F8D61F /* weather_header_bg@2x.png in Resources */,
 				04A2A3AF191B7FD30006677E /* LogAnActivityViewController.xib in Resources */,
+				84E605CC194B1E7000F8D61F /* weather_header_bg.png in Resources */,
 				84E605A7194AF5CC00F8D61F /* fishing_map@2x~ipad.png in Resources */,
 				84E605B6194AF5CC00F8D61F /* prediction@2x.png in Resources */,
 				04A2A385191B7F820006677E /* WeatherViewController~ipad.xib in Resources */,
@@ -1773,6 +1787,7 @@
 				04CEC03E191B82EE00BF784D /* GoogleMaps.bundle in Resources */,
 				84E605B0194AF5CC00F8D61F /* log_and_activity~ipad.png in Resources */,
 				04D76FD81934D14E00E1F59B /* star_BTN_press@2x.png in Resources */,
+				84E605C9194B16BD00F8D61F /* download_hunt.png in Resources */,
 				84E605B2194AF5CC00F8D61F /* logout@2x.png in Resources */,
 				84E605B5194AF5CC00F8D61F /* prediction.png in Resources */,
 				04A2A3C3191B7FDC0006677E /* PhotoVideoViewController.xib in Resources */,
@@ -1796,6 +1811,7 @@
 				84E605C3194AF5CC00F8D61F /* weather@2x.png in Resources */,
 				84E605B8194AF5CC00F8D61F /* prediction~ipad.png in Resources */,
 				04EFC32119249890008A59D7 /* sportsman_tracker_BG-1.png in Resources */,
+				84E605C8194B16BD00F8D61F /* download_fish.png in Resources */,
 				04A2A3CC191B80350006677E /* BaseLocationViewController.xib in Resources */,
 				04B015C9191B7EE7002F6FA9 /* MapViewController.xib in Resources */,
 				84E605A1194AF5CC00F8D61F /* camera.png in Resources */,

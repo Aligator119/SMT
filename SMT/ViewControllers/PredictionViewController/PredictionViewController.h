@@ -11,8 +11,8 @@
 @interface PredictionViewController : UIViewController <UIGestureRecognizerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;
-@property (weak, nonatomic) IBOutlet UIImageView *huntPredictor;
-@property (weak, nonatomic) IBOutlet UIImageView *fishPredictor;
+@property (weak, nonatomic) IBOutlet UIView *huntPredictor;
+@property (weak, nonatomic) IBOutlet UIView *fishPredictor;
 
 - (IBAction)actBack:(id)sender;
 @end
