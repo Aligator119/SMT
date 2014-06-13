@@ -17,6 +17,7 @@
 #import "BuddyListViewController.h"
 #import "PredictionViewController.h"
 #import "ReportsViewController.h"
+#import "FlyoutMenuCell.h"
 
 
 #define USER_DATA @"userdata"
@@ -29,6 +30,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * topViewHeightConstr;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * topViewVerticalConstr;
+
+@property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 
 @end
 
@@ -52,8 +55,10 @@
         self.topViewVerticalConstr.constant -= 20;
     }
     
+    [self.collectionView registerNib:[UINib nibWithNibName:@"FlyoutMenuCell" bundle:nil] forCellWithReuseIdentifier:@"FlyoutMenuCell"];
+    
     AppDelegate  *app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-    self.lbName.text = app.user.userFirstName;
+    self.lbName.text =  [NSString stringWithFormat:@"%@ %@", app.user.userFirstName, app.user.userSecondName];
     self.lbLocation.text = app.user.userName;
     //self.lbLocation.text = app.user.userSecondName;
     self.imgUser.layer.masksToBounds = YES;
@@ -66,7 +71,9 @@
     
     NSArray *functionsArrayIdentifiers = [[NSArray alloc] initWithObjects:@"openLogAnActivity", @"openHuntingMap", @"openFishingMap", @"openCameraAndPhotos", @"openPrediction", @"openReports", @"openWeather", @"openBuddies", @"openSettings", @"logout", nil];
     
-    functionsDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:functionsArrayIdentifiers, @"identifiers", menuItems, @"strings", nil];
+    NSArray *iconsArray = [NSArray arrayWithObjects:@"log_and_activity", @"hunting_map", @"fishing_map", @"camera", @"prediction", @"reports", @"weather", @"buddies", @"settings", @"logout", nil];
+    
+    functionsDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:functionsArrayIdentifiers, @"identifiers", menuItems, @"strings", iconsArray, @"icons", nil];
 //--------------------------------------------------------------------------------------------------------------------
 //    if ([app.speciesList firstObject] == nil) {
 //        DataLoader * dataLoader = [DataLoader instance];
@@ -178,6 +185,21 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBar.hidden = YES;
+}
+
+- (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return menuItems.count;
+}
+
+- (UICollectionViewCell*) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    FlyoutMenuCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FlyoutMenuCell" forIndexPath:indexPath];
+    [cell processCellWithImageName:[[functionsDictionary objectForKey:@"icons"] objectAtIndex:indexPath.row] andTitle:[menuItems objectAtIndex:indexPath.row]];
+    return cell;
+}
+
+- (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    [self performSelector:NSSelectorFromString([[functionsDictionary objectForKey:@"identifiers"] objectAtIndex:indexPath.row])];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
