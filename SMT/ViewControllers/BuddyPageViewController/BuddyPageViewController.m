@@ -70,7 +70,7 @@
     [self.collectionTable registerClass:[CustomHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     [self.collectionTable registerNib:headerNib forCellWithReuseIdentifier:@"header"];
     
-    [self.image setBackgroundColor:[UIColor greenColor]];
+    //[self.image setBackgroundColor:[UIColor greenColor]];
     [self AddActivityIndicator:[UIColor redColor] forView:self.table];
     //[self AddActivityIndicator:[UIColor redColor] forView:self.collectionTable];
     
@@ -223,10 +223,10 @@
 
 }
 
-- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return [NSString stringWithFormat:@"%@ %@", self.buddy.userFirstName, self.buddy.userSecondName];
-}
+//- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    return [NSString stringWithFormat:@"%@ %@", self.buddy.userFirstName, self.buddy.userSecondName];
+//}
 
 
 #pragma mark Collection table delegate metods
@@ -313,6 +313,7 @@
         }
             break;
         case 3: {
+            [self endLoader];
             if (!photosList) {
             photosList = [dataLoader getPhotoWithBuddyId:[self.buddy.userID intValue]];
             }
