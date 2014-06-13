@@ -10,8 +10,14 @@
 
 
 @interface HistoryCell ()
+{
+    NSData * data;
+}
 
 @property (strong, nonatomic) IBOutlet UILabel *lbName;
+@property (strong, nonatomic) IBOutlet UIImageView *img;
+@property (strong, nonatomic) IBOutlet UILabel *lbLocation;
+@property (strong, nonatomic) IBOutlet UILabel *lbDate;
 
 @end
 
@@ -30,12 +36,16 @@
     // Configure the view for the selected state
 }
 
-- (void) setCellFromSpecies:(NSString *)specie_id
+- (void) setCellFromSpecies:(NSDictionary *)specie
 {
+    self.lbName.text = [[specie objectForKey:@"species"] objectForKey:@"name"];
+    NSURL * url = [NSURL URLWithString:[@"http://sportsmantracker.com/" stringByAppendingString:[[specie objectForKey:@"species"] objectForKey:@"thumbnail"]]];
+    self.lbLocation.text = [[specie objectForKey:@"location"] objectForKey:@"name"];
+    self.lbDate.text = [specie objectForKey:@"logtimestamp"];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
         
-        Species * specie = [[DataLoader instance] getSpecieWithId:[specie_id intValue]];
+        data = [NSData dataWithContentsOfURL:url];
         
         dispatch_async(dispatch_get_main_queue(), ^(){
             
@@ -43,7 +53,7 @@
                 NSLog(@"Error download log history");
             } else {
                 
-                self.lbName.text = specie.name;
+                self.img.image = [UIImage imageWithData:data];
             }
         });
     });

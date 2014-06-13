@@ -125,12 +125,12 @@
 }
 
 - (IBAction)actButtonBack:(UIButton *)sender {
-    for (id obj in self.navigationController.viewControllers) {
-        if ([obj isKindOfClass:[LogAnActivityViewController class]]) {
-            [self.navigationController popToViewController:obj animated:YES];
-        }
-    }
-    //[self.navigationController popViewControllerAnimated:YES];
+//    for (id obj in self.navigationController.viewControllers) {
+//        if ([obj isKindOfClass:[LogAnActivityViewController class]]) {
+//            [self.navigationController popToViewController:obj animated:YES];
+//        }
+//    }
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning

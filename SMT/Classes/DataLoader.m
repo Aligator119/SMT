@@ -438,7 +438,7 @@
     NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log?app_id=%@&app_key=%@&buddy_id=%d&last=-1", strUrl, App_id, App_key,buddy_id];
     NSMutableArray * reportData = [NSMutableArray new];
     NSDictionary * buf = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListActivities];
-    if (buf) {
+    if (![buf isKindOfClass:[NSString class]]) {
     for (NSDictionary *act in buf) {
         NSMutableDictionary * rep = [[NSMutableDictionary alloc] init];
         [rep setValue:[act objectForKey:@"species"] forKey:@"species"];
@@ -456,10 +456,13 @@
     NSMutableArray * speciesIdArray = [NSMutableArray new];
     for (NSDictionary *act in [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListActivities]){
         NSMutableDictionary *actDict = [NSMutableDictionary new];
-        NSNumber * spec = [NSNumber numberWithInteger:[[act objectForKey: @"species_id"]integerValue]];
         NSString *date = [act objectForKey:@"date"];
-        [actDict setObject:spec forKey:@"species_id"];
+        NSDictionary * dict = @{@"species": [act objectForKey:@"species"],
+                                @"logtimestamp" : [act objectForKey:@"logtimestamp"],
+                                @"location"     : [act objectForKey:@"location"]};
+        //[actDict setObject:[act objectForKey:@"logtimestamp"] forKey:@"logtimestamp"];
         [actDict setObject:date forKey:@"date"];
+        [actDict setObject:dict forKey:@"data"];
         [speciesIdArray addObject:actDict];
     }
     

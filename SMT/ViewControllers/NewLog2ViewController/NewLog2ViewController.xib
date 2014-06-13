@@ -14,6 +14,8 @@
                 <outlet property="btnLocation" destination="2Bw-cq-S4j" id="jRL-yx-mfy"/>
                 <outlet property="btnNorthempike" destination="zOn-ib-lAw" id="hhr-cJ-xKa"/>
                 <outlet property="btnStartTime" destination="XIq-WU-SvA" id="0bK-XQ-K2K"/>
+                <outlet property="constrainsADD" destination="Kyu-rV-529" id="ySX-XN-4aX"/>
+                <outlet property="constrainsNorthempike" destination="BZA-wg-VyR" id="AJz-Hm-6TV"/>
                 <outlet property="datePicker" destination="2nW-CQ-D7F" id="2Kt-mq-5JC"/>
                 <outlet property="datePickerView" destination="zct-yI-2jz" id="t1G-Se-cQk"/>
                 <outlet property="footer" destination="bbG-gQ-FDo" id="mYj-nD-5sj"/>
@@ -187,20 +189,28 @@
                         <rect key="frame" x="0.0" y="404" width="320" height="100"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" tag="55" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOn-ib-lAw" customClass="CustomButton">
+                            <button opaque="NO" tag="55" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOn-ib-lAw" customClass="CustomButton">
                                 <rect key="frame" x="30" y="10" width="175" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="BZA-wg-VyR"/>
+                                    <constraint firstAttribute="height" constant="35" id="xd7-fG-hgo"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Northern Pike">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYi-UZ-xbQ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYi-UZ-xbQ">
                                 <rect key="frame" x="210" y="10" width="80" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Kyu-rV-529"/>
+                                    <constraint firstAttribute="height" constant="35" id="sJJ-tF-BiI"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Add">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -229,9 +239,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="lYi-UZ-xbQ" firstAttribute="top" secondItem="bbG-gQ-FDo" secondAttribute="top" constant="10" id="4fW-qA-noS"/>
+                            <constraint firstItem="zJU-Rr-dMc" firstAttribute="top" secondItem="lYi-UZ-xbQ" secondAttribute="bottom" constant="10" id="6aK-qs-9NK"/>
                             <constraint firstAttribute="trailing" secondItem="zJU-Rr-dMc" secondAttribute="trailing" constant="30" id="Oob-vt-mMa"/>
+                            <constraint firstItem="zOn-ib-lAw" firstAttribute="leading" secondItem="bbG-gQ-FDo" secondAttribute="leading" constant="30" id="Uff-Ej-RXx"/>
                             <constraint firstItem="zJU-Rr-dMc" firstAttribute="leading" secondItem="bbG-gQ-FDo" secondAttribute="leading" constant="30" id="Xa6-gC-kbV"/>
                             <constraint firstAttribute="bottom" secondItem="zJU-Rr-dMc" secondAttribute="bottom" constant="10" id="d8e-pc-jHS"/>
+                            <constraint firstItem="zJU-Rr-dMc" firstAttribute="top" secondItem="zOn-ib-lAw" secondAttribute="bottom" constant="10" id="nPK-MW-DvK"/>
+                            <constraint firstAttribute="trailing" secondItem="lYi-UZ-xbQ" secondAttribute="trailing" constant="30" id="sfZ-o7-34d"/>
+                            <constraint firstItem="zOn-ib-lAw" firstAttribute="top" secondItem="bbG-gQ-FDo" secondAttribute="top" constant="10" id="wtq-Br-ndZ"/>
                         </constraints>
                     </view>
                     <connections>
