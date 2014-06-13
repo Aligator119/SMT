@@ -38,7 +38,6 @@
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
         self.navigationBarHeightConstr.constant -= 20;
-        self.navigationBarVerticalConstr.constant -=20;
     }
 }
 
@@ -54,7 +53,7 @@
 }
 
 - (IBAction)actButtonBack:(UIButton *)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (IBAction)actButtonHistory:(UIButton *)sender

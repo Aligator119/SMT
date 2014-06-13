@@ -435,9 +435,10 @@
 
 - (NSMutableArray*) getActivitiesWithBuddyID:(int)buddy_id
 {
-    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log?app_id=%@&app_key=%@&buddy_id=%d", strUrl, App_id, App_key,buddy_id];
+    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log?app_id=%@&app_key=%@&buddy_id=%d&last=-1", strUrl, App_id, App_key,buddy_id];
     NSMutableArray * reportData = [NSMutableArray new];
     NSDictionary * buf = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListActivities];
+    if (buf) {
     for (NSDictionary *act in buf) {
         NSMutableDictionary * rep = [[NSMutableDictionary alloc] init];
         [rep setValue:[act objectForKey:@"species"] forKey:@"species"];
@@ -446,7 +447,7 @@
         [rep setValue:[act objectForKey:@"sightings"] forKey:@"sightings"];
         [reportData addObject:rep];
     }
-    
+    }
     return reportData;
 }
 
@@ -676,6 +677,58 @@
     
     [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequestDelete setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto];
 }
+
+#pragma mark Shared Location
+-(NSArray *) getBuddySharedLocation
+{
+    //typeOfServiceRequest = ApplicationServiceRequestLocationsAssociatedWithUser;
+    //NSString * strLocations = [NSString stringWithFormat:@"%i?%@",appDel.user.userID,APP_ID_KEY];
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@sharedlocation/buddies?app_id=%@&app_key=%@",strUrl, App_id, App_key];
+    
+    NSMutableArray * listSharedLocations = [NSMutableArray new];
+   
+    for (NSDictionary * dicInfo in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestLocationsAssociatedWithUser]) {
+        Buddy * buf = [Buddy new];
+        buf.userID =        [dicInfo objectForKey:@"User ID"];
+        buf.userName =      [dicInfo objectForKey:@"Email"];
+        buf.userFirstName = [dicInfo objectForKey:@"First Name"];
+        buf.userSecondName = [dicInfo objectForKey:@"Last Name"];
+        [listSharedLocations addObject:buf];
+    }
+    
+    return listSharedLocations;
+}
+
+- (void) sharedLocation:(int)location_id andWithBuddy:(int)buddy_id
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@sharedlocation",strUrl];
+    NSLog(@"URL : %@",strUrlRequestAdress);
+    
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[[NSString stringWithFormat:@"%d",location_id], [NSString stringWithFormat:@"%d",buddy_id], @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"id", @"user_id", @"app_id", @"app_key"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    
+    NSLog(@"%@", error);
+    
+    [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestLocationsAssociatedWithUser];
+}
+
+
+- (void) unsharedLocation:(int)location_id andWithBuddy:(int)buddy_id
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@sharedlocation/%i",strUrl,location_id];
+    NSString * str = [NSString stringWithFormat:@"%d", buddy_id];
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[str, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"user_id", @"app_id", @"app_key"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    
+    NSLog(@"%@", error);
+    
+    [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequestDelete setHeaders:YES andTypeRequest:ApplicationServiceRequestLocationsAssociatedWithUser];
+}
+
+
+
 
 #pragma mark - Log Detail
 

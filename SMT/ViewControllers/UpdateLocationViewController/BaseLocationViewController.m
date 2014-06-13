@@ -11,6 +11,7 @@
 #import "DataLoader.h"
 #import "Location.h"
 #import "MapViewController.h"
+#import "ShareLocationViewController.h"
 
 @interface BaseLocationViewController (){
     AppDelegate * appDel;
@@ -24,6 +25,7 @@
 @property (nonatomic, weak) IBOutlet UIView * updateNameView;
 @property (nonatomic, weak) IBOutlet UIView * coordinatesView;
 @property (nonatomic, weak) IBOutlet UIButton * deleteButton;
+@property (nonatomic, weak) IBOutlet UIButton *shareButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *lbGroup;
 @property (weak, nonatomic) IBOutlet UILabel *lbType;
@@ -32,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
+- (IBAction)actShared:(id)sender;
 
 @end
 
@@ -73,6 +76,7 @@
     if (self.location.locUserId != appDel.user.userID){
         self.saveButton.hidden = YES;
         self.deleteButton.hidden = YES;
+        self.shareButton.hidden = YES;
     }
 }
 
@@ -116,4 +120,8 @@
     return YES;
 }
 
+- (IBAction)actShared:(id)sender {
+    ShareLocationViewController * slvc = [[ShareLocationViewController alloc]initWithNibName:@"ShareLocationViewController" bundle:nil andLocation:self.location];
+    [self.navigationController pushViewController:slvc animated:YES];
+}
 @end

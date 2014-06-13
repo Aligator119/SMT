@@ -25,6 +25,7 @@
     NSArray * trophyList;
     NSArray * photosList;
     NSMutableDictionary * cashPhotoList;
+    NSMutableDictionary * cashTrophy;
     DataLoader * dataLoader;
 }
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionTable;
@@ -78,6 +79,7 @@
     [self findSharedLocationsList];
     activityPhoto = [NSMutableDictionary new];
     cashPhotoList = [NSMutableDictionary new];
+    cashTrophy    = [NSMutableDictionary new];
     self.collectionTable.hidden = YES;
 }
 
@@ -168,11 +170,18 @@
         }
         case 2:{
             NSDictionary * trophyDict = [trophyList objectAtIndex:indexPath.row];
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"tablecell"];
-            if (!cell) {
-                cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"tablecell"];
+            ActivityCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ActivityCell"];
+            if (![[cashTrophy allKeys] containsObject:[NSString stringWithFormat:@"%d",indexPath.row]]) {
+                int photo_id = [[trophyDict objectForKey:@"photo_id"] intValue];
+                Photo * photo = photo_id ? [dataLoader getPhotoWithId:photo_id] : nil;
+                NSURL * url = [NSURL URLWithString:photo.thumbnail];
+                UIImage * img = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+                [cashTrophy setValue:img forKey:[NSString stringWithFormat:@"%d",indexPath.row]];
             }
-            cell.textLabel.text = [NSString stringWithFormat:@"%d",indexPath.row];
+            cell.img.image = [cashTrophy objectForKey:[NSString stringWithFormat:@"%d",indexPath.row]];
+            cell.lbName.text = @"subSpecies";//[trophyDict objectForKey:@"<#string#>"];
+            cell.lbLocation.text = @"";
+            cell.lbDate.text = [trophyDict objectForKey:@"time"];
             return cell;
             break;
         }
@@ -194,13 +203,13 @@
             
         case 1:
         {
-            row = 44.0;
+            row = 44.0f;
         }
             break;
             
         case 2:
         {
-           row = 44.0;
+           row = 60.0f;
         }
             break;
             

@@ -16,6 +16,7 @@
                 <outlet property="btnStartTime" destination="XIq-WU-SvA" id="0bK-XQ-K2K"/>
                 <outlet property="datePicker" destination="2nW-CQ-D7F" id="2Kt-mq-5JC"/>
                 <outlet property="datePickerView" destination="zct-yI-2jz" id="t1G-Se-cQk"/>
+                <outlet property="footer" destination="bbG-gQ-FDo" id="mYj-nD-5sj"/>
                 <outlet property="header" destination="zQB-Fd-II3" id="7zO-fc-8Ia"/>
                 <outlet property="infoView" destination="4rd-xy-s9N" id="Dc1-ol-p32"/>
                 <outlet property="navigationBarHeightConstr" destination="rsr-l4-QbC" id="vK9-Sn-kIt"/>
@@ -209,10 +210,13 @@
                                     <action selector="actAdd:" destination="-1" eventType="touchUpInside" id="9CZ-Xo-ab4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJU-Rr-dMc">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJU-Rr-dMc">
                                 <rect key="frame" x="30" y="55" width="260" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.79607843137254897" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="4v7-Op-eVH"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Finalize Log">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -224,6 +228,11 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="zJU-Rr-dMc" secondAttribute="trailing" constant="30" id="Oob-vt-mMa"/>
+                            <constraint firstItem="zJU-Rr-dMc" firstAttribute="leading" secondItem="bbG-gQ-FDo" secondAttribute="leading" constant="30" id="Xa6-gC-kbV"/>
+                            <constraint firstAttribute="bottom" secondItem="zJU-Rr-dMc" secondAttribute="bottom" constant="10" id="d8e-pc-jHS"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="qKE-ox-Uvo"/>

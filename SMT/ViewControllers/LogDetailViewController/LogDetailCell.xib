@@ -14,24 +14,42 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqQ-6l-91u">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eqQ-6l-91u">
                         <rect key="frame" x="10" y="11" width="120" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="4U7-rQ-Wpm"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.015686274510000001" green="0.20000000000000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BrO-hf-07d">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BrO-hf-07d">
                         <rect key="frame" x="140" y="11" width="152" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8ZX-70-h4X">
-                        <rect key="frame" x="300" y="0.0" width="20" height="43"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_righrt_BTN.png" translatesAutoresizingMaskIntoConstraints="NO" id="8ZX-70-h4X">
+                        <rect key="frame" x="300" y="10" width="20" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="F92-f1-iJj"/>
+                        </constraints>
                     </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="8ZX-70-h4X" secondAttribute="bottom" constant="10" id="1EA-wf-mcf"/>
+                    <constraint firstAttribute="trailing" secondItem="8ZX-70-h4X" secondAttribute="trailing" id="3JZ-C3-qVU"/>
+                    <constraint firstAttribute="bottom" secondItem="eqQ-6l-91u" secondAttribute="bottom" constant="11" id="7uC-gi-KzQ"/>
+                    <constraint firstItem="eqQ-6l-91u" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="DGf-Ee-rtH"/>
+                    <constraint firstItem="8ZX-70-h4X" firstAttribute="leading" secondItem="BrO-hf-07d" secondAttribute="trailing" constant="8" id="Dgy-3V-arw"/>
+                    <constraint firstItem="BrO-hf-07d" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="FF5-uG-vPX"/>
+                    <constraint firstItem="BrO-hf-07d" firstAttribute="leading" secondItem="eqQ-6l-91u" secondAttribute="trailing" constant="10" id="Waj-B3-uUh"/>
+                    <constraint firstAttribute="bottom" secondItem="BrO-hf-07d" secondAttribute="bottom" constant="11" id="hWc-sb-5Mr"/>
+                    <constraint firstItem="8ZX-70-h4X" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="uwg-vt-58P"/>
+                    <constraint firstItem="eqQ-6l-91u" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="zHW-Cp-Q1e"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="lbDetailText" destination="BrO-hf-07d" id="uL2-fv-QUf"/>
@@ -39,4 +57,7 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="arrow_righrt_BTN.png" width="20" height="20"/>
+    </resources>
 </document>
