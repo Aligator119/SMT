@@ -17,6 +17,7 @@
                 <outlet property="lbType" destination="XaV-ed-9AC" id="wtl-bl-zjd"/>
                 <outlet property="locNameTextField" destination="2Gh-gA-aRX" id="OFj-wz-Ezv"/>
                 <outlet property="saveButton" destination="tRM-eQ-ciD" id="Adv-fl-vwP"/>
+                <outlet property="shareButton" destination="zF1-q7-k3E" id="Kop-Oi-mwD"/>
                 <outlet property="updateNameView" destination="kzg-as-OrO" id="OA2-0L-tud"/>
                 <outlet property="verticalConstr" destination="Kve-Id-6nc" id="p8z-ni-VIw"/>
                 <outlet property="view" destination="1" id="3"/>
@@ -54,6 +55,21 @@
                                 <outlet property="delegate" destination="-1" id="wOU-GP-YX0"/>
                             </connections>
                         </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zF1-q7-k3E">
+                            <rect key="frame" x="10" y="10" width="46" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="DId-Vi-Wne"/>
+                                <constraint firstAttribute="width" constant="46" id="g95-DZ-WkV"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="shared">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actShared:" destination="-1" eventType="touchUpInside" id="6iH-tW-1GS"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                     <constraints>
@@ -62,6 +78,8 @@
                         <constraint firstItem="2Gh-gA-aRX" firstAttribute="leading" secondItem="kzg-as-OrO" secondAttribute="leading" constant="7" id="Bap-dR-3Lg"/>
                         <constraint firstItem="ZBQ-8Y-BgL" firstAttribute="leading" secondItem="kzg-as-OrO" secondAttribute="leading" constant="10" id="Jlc-2z-jsX"/>
                         <constraint firstItem="ZBQ-8Y-BgL" firstAttribute="top" secondItem="kzg-as-OrO" secondAttribute="top" constant="14" id="NxP-Qa-m8e"/>
+                        <constraint firstItem="zF1-q7-k3E" firstAttribute="leading" secondItem="kzg-as-OrO" secondAttribute="leading" constant="10" id="ZXf-0f-IfW"/>
+                        <constraint firstItem="zF1-q7-k3E" firstAttribute="top" secondItem="kzg-as-OrO" secondAttribute="top" constant="10" id="hlh-5f-99z"/>
                         <constraint firstAttribute="height" constant="92" id="sZl-hE-eSG"/>
                         <constraint firstItem="2Gh-gA-aRX" firstAttribute="top" secondItem="ZBQ-8Y-BgL" secondAttribute="bottom" constant="13" id="z56-pJ-mfD"/>
                     </constraints>

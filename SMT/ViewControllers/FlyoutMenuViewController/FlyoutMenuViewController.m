@@ -51,7 +51,11 @@
         self.topViewHeightConstr.constant -= 20;
         self.topViewVerticalConstr.constant -= 20;
     }
-    
+//------------- clear navigationController viewControllers array --------------------------
+    NSMutableArray * controllers = [NSMutableArray new];
+    [controllers addObject:self];
+    self.navigationController.viewControllers = controllers;
+//------------------------------------------------------------------------------------------
     AppDelegate  *app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
     self.lbName.text = app.user.userFirstName;
     self.lbLocation.text = app.user.userName;

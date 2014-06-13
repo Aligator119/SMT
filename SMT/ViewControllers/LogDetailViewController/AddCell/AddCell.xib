@@ -29,7 +29,7 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="sGL-fj-unl" secondAttribute="bottom" constant="2" id="ACC-oV-b2P"/>
                     <constraint firstItem="sGL-fj-unl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="FGC-qB-s4j"/>
-                    <constraint firstAttribute="trailing" secondItem="sGL-fj-unl" secondAttribute="trailing" constant="30" id="cpo-gF-auW"/>
+                    <constraint firstAttribute="centerX" secondItem="sGL-fj-unl" secondAttribute="centerX" id="WAQ-ma-d7c"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
