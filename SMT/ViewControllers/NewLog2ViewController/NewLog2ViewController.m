@@ -33,6 +33,8 @@
     NSArray * questionsList;
     UITextField * callKeyBoard;
     }
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *constrainsADD;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *constrainsNorthempike;
 @property (strong, nonatomic) IBOutlet UIView *footer;
 @property (strong, nonatomic) IBOutlet UIView *pickerView;
 @property (strong, nonatomic) IBOutlet UIPickerView *picker;
@@ -255,6 +257,17 @@
             }
         });
     });
+    
+    [self.view layoutIfNeeded];
+    for (UIView * obj in self.header.subviews) {
+        if ([obj isKindOfClass:[CustomTextField class]] || [obj isKindOfClass:[CustomButton class]]) {
+            CGRect bounds = obj.frame;
+            bounds.size.width = self.btnDate.frame.size.width;
+            obj.frame = bounds;
+        }
+    }
+    self.constrainsADD.constant = self.view.frame.size.width * 0.25;
+    self.constrainsNorthempike.constant = self.view.frame.size.width * 0.55;
 }
     
 }

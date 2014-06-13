@@ -9,6 +9,7 @@
 #import "LogHistoryViewController.h"
 #import "FlyoutMenuViewController.h"
 #import "Species.h"
+#import "UIViewController+LoaderCategory.h"
 
 @interface LogHistoryViewController ()
 {
@@ -60,7 +61,10 @@
     calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     dataLoader = [DataLoader instance];
     dict = [[NSMutableDictionary alloc]init];
+    
+    [self AddActivityIndicator:[UIColor redColor] forView:self.table];
 //----------------------------------------------------------------------------------------------------
+    [self startLoader];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
         
@@ -76,16 +80,17 @@
 
                     if ([[dict allKeys] containsObject:[compareFormatter stringFromDate:[dateFormatter dateFromString:[obj objectForKey:@"date"]]]]) {
                         NSMutableArray * buf = [[NSMutableArray alloc]initWithArray:[dict objectForKey:[compareFormatter stringFromDate:[dateFormatter dateFromString:[obj objectForKey:@"date"]]]]];
-                        [buf addObject:[obj objectForKey:@"species_id"]];
+                        [buf addObject:[obj objectForKey:@"data"]];
                         [dict setValue:buf forKey:[compareFormatter stringFromDate:[dateFormatter dateFromString:[obj objectForKey:@"date"]]]];
                     } else {
-                        NSMutableArray * b = [[NSMutableArray alloc]initWithObjects:[obj objectForKey:@"species_id"], nil];
+                        NSMutableArray * b = [[NSMutableArray alloc]initWithObjects:[obj objectForKey:@"data"], nil];
                         [dict setValue:b forKey:[compareFormatter stringFromDate:[dateFormatter dateFromString:[obj objectForKey:@"date"]]]];
                     }
                 }
                 allKey = [dict allKeys];
                 [self.table reloadData];
             }
+            [self endLoader];
         });
     });
     
@@ -107,8 +112,8 @@
     HistoryCell * cell = [tableView dequeueReusableCellWithIdentifier:@"HistoryCell"];
     
     NSArray * item = [[NSArray alloc]initWithArray:[dict objectForKey:[allKey objectAtIndex:indexPath.section]]];
-    
-    [cell setCellFromSpecies:[item objectAtIndex:indexPath.row]];
+    NSMutableDictionary * specie = [item objectAtIndex:indexPath.row];
+    [cell setCellFromSpecies:specie];
     
     
     return cell;
@@ -117,6 +122,16 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     return [displayFormatter stringFromDate:[compareFormatter dateFromString:[allKey objectAtIndex:section]]];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60.0f;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 

@@ -71,7 +71,8 @@
     [self.collectionTable registerNib:headerNib forCellWithReuseIdentifier:@"header"];
     
     [self.image setBackgroundColor:[UIColor greenColor]];
-    [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
+    [self AddActivityIndicator:[UIColor redColor] forView:self.table];
+    //[self AddActivityIndicator:[UIColor redColor] forView:self.collectionTable];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToLocationDetails:) name:@"LocationListInfoButtonPressed" object:nil];
     
@@ -140,12 +141,15 @@
         }
             break;
     }
-    
+    if (row == 0) {
+        [self endLoader];
+    }
     return row;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self endLoader];
     switch (self.segmentControl.selectedSegmentIndex) {
         case 0:{
             NSDictionary * cb = [activityList objectAtIndex:indexPath.row];
@@ -234,6 +238,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self endLoader];
     ImageCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"imagecell" forIndexPath:indexPath];
     Photo * photo = [photosList objectAtIndex:indexPath.row];
     if (![[cashPhotoList allKeys] containsObject:[NSString stringWithFormat:@"%d",indexPath.row]]) {
@@ -269,6 +274,7 @@
 }
 
 -(IBAction)segmentControlStateChanged:(id)sender{
+    [self startLoader];
     int selected = self.segmentControl.selectedSegmentIndex;
     switch (selected) {
         case 0: {

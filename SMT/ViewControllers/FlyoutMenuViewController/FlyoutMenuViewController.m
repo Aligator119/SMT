@@ -17,7 +17,7 @@
 #import "BuddyListViewController.h"
 #import "PredictionViewController.h"
 #import "ReportsViewController.h"
-#import "FlyoutMenuCell.h"
+#import "NewLog1ViewController.h"
 
 
 #define USER_DATA @"userdata"
@@ -157,7 +157,8 @@
 
 - (void)openLogAnActivity
 {
-    [self.navigationController pushViewController:[[LogAnActivityViewController alloc]init] animated:YES];
+    //[self.navigationController pushViewController:[[LogAnActivityViewController alloc]init] animated:YES];
+    [self.navigationController pushViewController:[[NewLog1ViewController alloc]init] animated:YES];
 }
 
 - (void)openCameraAndPhotos

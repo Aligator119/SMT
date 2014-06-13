@@ -12,6 +12,6 @@
 
 @interface HistoryCell : UITableViewCell
 
-- (void) setCellFromSpecies:(NSString *) specie_id;
+- (void) setCellFromSpecies:(NSDictionary *) specie;
 
 @end

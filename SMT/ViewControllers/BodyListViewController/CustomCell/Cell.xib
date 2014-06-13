@@ -23,20 +23,19 @@
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tDA-6n-m1p">
-                        <rect key="frame" x="310" y="0.0" width="10" height="43"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_righrt_BTN.png" translatesAutoresizingMaskIntoConstraints="NO" id="tDA-6n-m1p">
+                        <rect key="frame" x="295" y="10" width="20" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.015686274510000001" green="0.20000000000000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="43" id="NyO-pA-m1C"/>
-                            <constraint firstAttribute="width" constant="10" id="q6S-75-vHn"/>
+                            <constraint firstAttribute="height" constant="24" id="NyO-pA-m1C"/>
+                            <constraint firstAttribute="width" constant="20" id="q6S-75-vHn"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="tDA-6n-m1p" secondAttribute="trailing" id="0qF-0x-Phg"/>
-                    <constraint firstItem="tDA-6n-m1p" firstAttribute="leading" secondItem="lzR-6u-H3a" secondAttribute="trailing" constant="10" id="9C3-Xl-Qjw"/>
-                    <constraint firstItem="tDA-6n-m1p" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="EjG-sq-lxs"/>
+                    <constraint firstAttribute="trailing" secondItem="tDA-6n-m1p" secondAttribute="trailing" constant="5" id="0qF-0x-Phg"/>
+                    <constraint firstItem="tDA-6n-m1p" firstAttribute="leading" secondItem="lzR-6u-H3a" secondAttribute="trailing" constant="-5" id="9C3-Xl-Qjw"/>
+                    <constraint firstItem="tDA-6n-m1p" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="EjG-sq-lxs"/>
                     <constraint firstItem="lzR-6u-H3a" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="yjR-cO-weG"/>
                     <constraint firstItem="lzR-6u-H3a" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="zox-PM-Obk"/>
                 </constraints>
@@ -46,4 +45,7 @@
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="arrow_righrt_BTN.png" width="20" height="20"/>
+    </resources>
 </document>
