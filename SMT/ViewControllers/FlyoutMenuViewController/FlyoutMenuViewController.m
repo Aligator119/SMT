@@ -18,7 +18,7 @@
 #import "PredictionViewController.h"
 #import "ReportsViewController.h"
 #import "NewLog1ViewController.h"
-
+#import "FlyoutMenuCell.h"
 
 #define USER_DATA @"userdata"
 
