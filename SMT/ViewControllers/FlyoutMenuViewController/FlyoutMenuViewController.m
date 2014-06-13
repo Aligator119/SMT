@@ -57,6 +57,11 @@
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"FlyoutMenuCell" bundle:nil] forCellWithReuseIdentifier:@"FlyoutMenuCell"];
     
+//------------- clear navigationController viewControllers array --------------------------
+    NSMutableArray * controllers = [NSMutableArray new];
+    [controllers addObject:self];
+    self.navigationController.viewControllers = controllers;
+//------------------------------------------------------------------------------------------
     AppDelegate  *app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
     self.lbName.text =  [NSString stringWithFormat:@"%@ %@", app.user.userFirstName, app.user.userSecondName];
     self.lbLocation.text = app.user.userName;

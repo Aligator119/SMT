@@ -84,6 +84,7 @@
     
     mapView_.myLocationEnabled = YES;
     mapView_.delegate = self;
+    mapView_.mapType = kGMSTypeHybrid;
     [self.mapContainerView addSubview:mapView_];
     
     // Show compass

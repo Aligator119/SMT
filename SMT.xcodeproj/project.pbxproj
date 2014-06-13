@@ -1025,6 +1025,10 @@
 			isa = PBXGroup;
 			children = (
 				84E60573194AF5CC00F8D61F /* icons */,
+				0405E4991949F01A0059CCFE /* arrow_righrt_BTN.png */,
+				0405E49A1949F01A0059CCFE /* arrow_righrt_BTN@2x.png */,
+				0405E4951949A8620059CCFE /* chek.png */,
+				0405E4961949A8620059CCFE /* unchek.png */,
 				04D76FCF1934D14E00E1F59B /* star_BTN_press.png */,
 				04D76FD01934D14E00E1F59B /* star_BTN_press@2x.png */,
 				04D76FD11934D14E00E1F59B /* star_BTN.png */,

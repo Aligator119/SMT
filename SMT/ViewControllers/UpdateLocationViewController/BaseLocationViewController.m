@@ -12,10 +12,13 @@
 #import "Location.h"
 #import "MapViewController.h"
 #import "ShareLocationViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface BaseLocationViewController (){
     AppDelegate * appDel;
     DataLoader * loader;
+    GMSMapView *mapView_;
+    
 }
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * heightConstr;
@@ -34,6 +37,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
+
+@property (nonatomic, weak) IBOutlet UIView *mapContainerView;
+@property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
+@property (nonatomic, strong) UITextField *activeTextField;
 - (IBAction)actShared:(id)sender;
 
 @end
@@ -78,6 +85,39 @@
         self.deleteButton.hidden = YES;
         self.shareButton.hidden = YES;
     }
+    
+    [self showMap];
+    
+    [self registerForKeyboardNotifications];
+    
+    
+}
+
+- (void) showMap{
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:self.location.locLatitude
+                                                            longitude:self.location.locLongitude
+                                                                 zoom:12];
+    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    
+    [mapView_ addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context:NULL];
+    
+    mapView_.myLocationEnabled = YES;
+    mapView_.delegate = self;
+    mapView_.mapType = kGMSTypeHybrid;
+    [self.mapContainerView addSubview:mapView_];
+    
+    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(self.location.locLatitude, self.location.locLongitude);
+    GMSMarker * marker = [GMSMarker markerWithPosition:coord];
+    marker.title = self.location.locName;
+    marker.map = mapView_;
+    
+    mapView_.selectedMarker = marker;
+    
+}
+
+- (void) viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    mapView_.frame = self.mapContainerView.bounds;
 }
 
 -(IBAction)back:(id)sender{
@@ -124,4 +164,46 @@
     ShareLocationViewController * slvc = [[ShareLocationViewController alloc]initWithNibName:@"ShareLocationViewController" bundle:nil andLocation:self.location];
     [self.navigationController pushViewController:slvc animated:YES];
 }
+
+#pragma mark Keabord methods
+
+-(void) dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void) registerForKeyboardNotifications{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+-(void) keyboardWasShown: (NSNotification*) notification{
+    NSDictionary * info = [notification userInfo];
+    CGSize keyboardSize = [self.view convertRect:[[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue] fromView:self.view.window].size;
+    UIEdgeInsets edgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0);
+    self.scrollView.contentInset = edgeInsets;
+    self.scrollView.scrollIndicatorInsets = edgeInsets;
+    
+    
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= keyboardSize.height;
+    
+    //if (!CGRectContainsPoint(aRect, self.activeTextField.frame.origin)){
+    [self.scrollView scrollRectToVisible:self.activeTextField.frame animated:YES];
+    //}
+}
+
+-(void) keyboardWillBeHidden: (NSNotification*) notification{
+    UIEdgeInsets edgeInsets = UIEdgeInsetsZero;
+    self.scrollView.contentInset = edgeInsets;
+    self.scrollView.scrollIndicatorInsets = edgeInsets;
+}
+
+-(void) textFieldDidBeginEditing:(UITextField *)textField{
+    self.activeTextField = textField;
+}
+
+-(void) textFieldDidEndEditing:(UITextField *)textField{
+    self.activeTextField = nil;
+}
+
 @end
