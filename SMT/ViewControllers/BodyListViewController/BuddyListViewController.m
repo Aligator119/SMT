@@ -79,7 +79,7 @@
     UINib *cellNib3 = [UINib nibWithNibName:@"IncomingFriendCell" bundle:[NSBundle mainBundle]];
     [self.table registerNib:cellNib3 forCellReuseIdentifier:@"IncomingFriendCell"];
     
-    
+    [self AddActivityIndicator:[UIColor redColor] forView:self.table];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -152,19 +152,6 @@
     return cell;
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    NSString * str;
-    Buddy * buf = [[allBuddyList objectAtIndex:section] firstObject];
-    if ([buf.userRelation isEqualToString:StatusReceived]) {
-        str = @"   Buddy Requests";
-    } else if ([buf.userRelation isEqualToString:StatusSent]) {
-        str = @"   Request Sent";
-    } else if ([buf.userRelation isEqualToString:StatusAccepted]){
-        str = @"   My buddies";
-    }
-    return str;
-}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -178,8 +165,30 @@
     return heigth;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    NSString * str;
+    Buddy * buf = [[allBuddyList objectAtIndex:section] firstObject];
+    if ([buf.userRelation isEqualToString:StatusReceived]) {
+        str = @"   Buddy Requests";
+    } else if ([buf.userRelation isEqualToString:StatusSent]) {
+        str = @"   Request Sent";
+    } else if ([buf.userRelation isEqualToString:StatusAccepted]){
+        str = @"   My buddies";
+    }
+
+    UIView * view = [[UIView alloc]init];
+    UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 300, 20)];
+    label.textColor = [UIColor blackColor];
+    label.text = str;
+    [view addSubview:label];
+    view.backgroundColor = [UIColor colorWithRed:0 green:150.0/255.0 blue:200.0/255.0 alpha:1.0];
+    return view;
+}
+
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self startLoader];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSArray * buffer = [allBuddyList objectAtIndex:indexPath.section];
     Buddy * buddy = [buffer objectAtIndex:indexPath.row];
@@ -191,6 +200,7 @@
         
         dispatch_async(dispatch_get_main_queue(),^(){
             [self.navigationController pushViewController:bpvc animated:YES];
+            [self endLoader];
         });
     });
     
