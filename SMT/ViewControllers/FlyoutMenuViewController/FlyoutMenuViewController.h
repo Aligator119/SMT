@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FlyoutMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface FlyoutMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *lbName;
 @property (weak, nonatomic) IBOutlet UILabel *lbLocation;
 @property (weak, nonatomic) IBOutlet UIImageView *imgUser;

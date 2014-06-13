@@ -142,7 +142,6 @@
 }
 
 - (IBAction)actButtonBack:(id)sender {
-    FlyoutMenuViewController * fmvc = [[FlyoutMenuViewController alloc]initWithNibName:@"FlyoutMenuViewController" bundle:nil];
-    [self.navigationController pushViewController:fmvc animated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 @end
