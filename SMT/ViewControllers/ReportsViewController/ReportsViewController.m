@@ -11,6 +11,15 @@
 #import "ReportsHarvestrow.h"
 
 @interface ReportsViewController ()
+{
+    NSMutableArray *activityLevelData;
+    NSMutableArray *harvestedData;
+    NSMutableArray *seenData;
+    NSMutableArray *dateData;
+    
+    NSInteger selectedSpeciesId;
+    NSInteger selectedSubSpeciesId;
+}
 
 @property (weak, nonatomic) IBOutlet SMTGraphView *graphView;
 @property (strong, nonatomic) NSMutableDictionary *valuesDict;
@@ -34,6 +43,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    selectedSpeciesId = 1;
+    selectedSubSpeciesId = 1;
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"MM-dd-yyyy hh:mm a"];
     NSMutableArray *arr = [[NSMutableArray alloc]init];
@@ -41,11 +54,38 @@
     
     self.valuesDict = [NSMutableDictionary dictionaryWithObjects:[arr sortedArrayUsingSelector:@selector(compare:)] forKeys:[NSArray arrayWithObjects: @"13", @"5", @"12", @"6", @"7", @"11", @"15", @"16", @"22", @"1", @"11", @"11", nil]];
     [self.graphView buildGraphWithDataFromDictionary:self.valuesDict];
+    
+    [self createDataSource];
 }
 
 
 - (IBAction)back:(id)sender{
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void) createDataSource{
+    
+    dateData = [NSMutableArray new];
+    activityLevelData = [NSMutableArray new];
+    harvestedData = [NSMutableArray new];
+    seenData = [NSMutableArray new];
+    
+    for (ReportsActivity * act in self.activitiesArray){
+        if (act.species_id == selectedSpeciesId){
+            NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+            [formatter setDateFormat:@"yyyy-MM-dd"];
+            NSDate * date = [formatter dateFromString:act.date];
+            [dateData addObject:date];
+            NSArray *harvArr = [NSArray arrayWithArray:act.harvestrows];
+            for (ReportsHarvestrow *harv in harvArr){
+                if (harv.subspecies_id == selectedSubSpeciesId){
+                    [activityLevelData addObject:[NSString stringWithFormat:@"%d", harv.activityLevel]];
+                    [harvestedData addObject:[NSString stringWithFormat:@"%d", harv.harvested]];
+                    [seenData addObject:[NSString stringWithFormat:@"%d", harv.seen]];
+                }
+            }
+        }
+    }
 }
 
 - (IBAction)DateSegmentDidChangeState:(id)sender{
@@ -67,6 +107,35 @@
         default:
             break;
     }
+}
+
+-(IBAction) GraphTypeSegmentDidChange:(id)sender{
+    NSInteger selectedIndex = self.dateSegmentControl.selectedSegmentIndex;
+    
+    switch (selectedIndex) {
+        case 0:
+            
+            break;
+            
+        case 1:
+            
+            break;
+            
+        case 2:
+            
+            break;
+            
+        default:
+            break;
+    }
+}
+
+-(IBAction) selectSpecies:(id)sender{
+    
+}
+
+-(IBAction) selectSubSpecies:(id)sender{
+    
 }
 
 @end
