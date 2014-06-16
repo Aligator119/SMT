@@ -55,10 +55,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    [dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
     [dateFormatter setDateFormat:@"MMMM dd, yyyy"];
     sectionFormatter = [[NSDateFormatter alloc]init];
+    [sectionFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    [sectionFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
     [sectionFormatter setDateFormat:@"MMMM"];
     selectedFormatter = [[NSDateFormatter alloc]init];
+    [selectedFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    [selectedFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
     [selectedFormatter setDateFormat:@"yyyy-MM"];
 
     UINib *cellNib = [UINib nibWithNibName:@"ImageCell" bundle:[NSBundle mainBundle]];
@@ -292,7 +298,8 @@
                 NSLog(@"Error download sybSpecie");
             } else {
                 for (Photo * photo in arrayData) {
-                    NSDate * uploadDate = [dateFormatter dateFromString:photo.uploadDate];
+                    NSDate * uploadDate = [NSDate date];
+                    uploadDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@",photo.uploadDate]];
                     if ([[dict allKeys] containsObject:[selectedFormatter stringFromDate:uploadDate]]){
                         NSMutableArray * buffer = [dict objectForKey:[selectedFormatter stringFromDate:uploadDate]];
                         [buffer addObject:photo];
