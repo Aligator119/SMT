@@ -17,7 +17,7 @@
 #define BUDDY_USER_LONGITUDE @"Longitude"
 #define BUDDY_USER_CAN_SEE_BUDDDY @"is_visible"
 #define BUDDY_CAN_SEE_USER @"can_see"
-#define BUDDY_AVATAR       @"avatar"
+#define BUDDY_AVATAR       @"avatar_url"
 /*
  [
  {
@@ -60,6 +60,7 @@
     //self.userAvatar      = @" ";
     self.userCanSeeBuddy = NO;
     self.userBuddyCanSeeUser = NO;
+    self.avatar_url = @"";
 }
 
 - (void)setData:(NSDictionary*)dic{
@@ -70,6 +71,7 @@
     self.userRelation = [dic objectForKey:BUDDY_STATUS];
     self.userPosLatitude = [dic objectForKey:BUDDY_USER_LATITUDE];
     self.userPosLongitude = [dic objectForKey:BUDDY_USER_LONGITUDE];
+    self.avatar_url = [dic objectForKey:BUDDY_AVATAR];
     
     self.userBuddyCanSeeUser = [[dic objectForKey:BUDDY_CAN_SEE_USER] boolValue];
     self.userCanSeeBuddy = [[dic objectForKey:BUDDY_USER_CAN_SEE_BUDDDY] boolValue];

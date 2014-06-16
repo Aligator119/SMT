@@ -52,8 +52,18 @@
     dataLoader = [DataLoader instance];
     
     self.lbNavigationBarTitle.text = @"Buddy details";
+    self.lbName.text = [[self.buddy.userFirstName stringByAppendingString:@" "]stringByAppendingString:self.buddy.userSecondName];
+    // download buddy avatar
     
-    //NSURL * imgURL = [NSURL URLWithString:self.buddy.]
+    NSURL * imgURL = [NSURL URLWithString:self.buddy.avatar_url];
+    NSData * imgData = [NSData dataWithContentsOfURL:imgURL];
+    if (imgData) {
+    self.image.image = [UIImage imageWithData:imgData];
+    } else {
+        self.image.backgroundColor = [UIColor colorWithRed:174.0/255.0 green:219.0/255.0 blue:198.0/255.0 alpha:1.0];
+    }
+    self.image.layer.masksToBounds = YES;
+    self.image.layer.cornerRadius = self.image.frame.size.width/2;
     
     UINib *cellNib = [UINib nibWithNibName:@"ActivityCell" bundle:[NSBundle mainBundle]];
     [self.table registerNib:cellNib forCellReuseIdentifier:@"ActivityCell"];
@@ -76,12 +86,7 @@
     cashTrophy    = [NSMutableDictionary new];
     self.collectionTable.hidden = YES;
     
-    self.lbName.text = [[self.buddy.userFirstName stringByAppendingString:@" "]stringByAppendingString:self.buddy.userSecondName];
-    self.image.layer.cornerRadius = self.image.frame.size.width/2;
-    self.image.backgroundColor = [UIColor colorWithRed:174.0/255.0 green:219.0/255.0 blue:198.0/255.0 alpha:1.0];
-    // download buddy avatar
-    
-//-----------------------------------------------------------------------------------
+   //-----------------------------------------------------------------------------------
     [self startLoader];
     [self loadData];
     [self.segmentControl setSelectedSegmentIndex:1];

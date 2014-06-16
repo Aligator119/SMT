@@ -22,6 +22,8 @@
 @property (strong, nonatomic) NSDate * huntEndTime;
 @property (strong, nonatomic) NSString * selectedIthem;
 @property (strong, nonatomic) Species * northernPike;
+@property (strong, nonatomic) IBOutlet UIView *backraundView1;
+@property (strong, nonatomic) IBOutlet UIView *backraundView2;
 
 @property (strong, nonatomic) IBOutlet UIView *infoView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
