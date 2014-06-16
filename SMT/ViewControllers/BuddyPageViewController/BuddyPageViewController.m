@@ -85,6 +85,9 @@
     self.collectionTable.hidden = YES;
     
     self.lbName.text = [[self.buddy.userFirstName stringByAppendingString:@" "]stringByAppendingString:self.buddy.userSecondName];
+    self.image.layer.cornerRadius = self.image.frame.size.width/2;
+    self.image.backgroundColor = [UIColor colorWithRed:174.0/255.0 green:219.0/255.0 blue:198.0/255.0 alpha:1.0];
+    // download buddy avatar
 }
 
 - (void)viewWillAppear:(BOOL)animated
