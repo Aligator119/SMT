@@ -425,11 +425,16 @@
 - (NSMutableArray*) getAllActivities{
     NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@log?app_id=%@&app_key=%@&last=-1", strUrl, App_id, App_key];
     NSMutableArray * reportData = [NSMutableArray new];
-    for (NSDictionary *act in [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListActivities]){
-        ReportsActivity * rep = [[ReportsActivity alloc] initWithData:act];
-        [reportData addObject:rep];
+    @try {
+        for (NSDictionary *act in [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListActivities]){
+            ReportsActivity * rep = [[ReportsActivity alloc] initWithData:act];
+            [reportData addObject:rep];
+        }
     }
-    
+    @catch (NSException *exception) {
+        NSLog(@"Geet activities error");
+    }
+
     return reportData;
 }
 

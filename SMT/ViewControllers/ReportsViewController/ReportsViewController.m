@@ -55,7 +55,7 @@
     self.valuesDict = [NSMutableDictionary dictionaryWithObjects:[arr sortedArrayUsingSelector:@selector(compare:)] forKeys:[NSArray arrayWithObjects: @"13", @"5", @"12", @"6", @"7", @"11", @"15", @"16", @"22", @"1", @"11", @"11", nil]];
     
     
-    [self createDataSource];
+    //[self createDataSource];
 }
 
 - (void) viewDidLayoutSubviews{
