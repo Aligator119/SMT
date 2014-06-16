@@ -29,6 +29,7 @@
     DataLoader * dataLoader;
 }
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionTable;
+@property (strong, nonatomic) IBOutlet UILabel *lbName;
 
 - (void)loadData;
 
@@ -82,6 +83,8 @@
     cashPhotoList = [NSMutableDictionary new];
     cashTrophy    = [NSMutableDictionary new];
     self.collectionTable.hidden = YES;
+    
+    self.lbName.text = [[self.buddy.userFirstName stringByAppendingString:@" "]stringByAppendingString:self.buddy.userSecondName];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -242,9 +245,7 @@
     ImageCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"imagecell" forIndexPath:indexPath];
     Photo * photo = [photosList objectAtIndex:indexPath.row];
     if (![[cashPhotoList allKeys] containsObject:photo.photoID]) {
-        
-        Photo * bbb = [dataLoader getPhotoWithId:[photo.photoID intValue]];
-        NSLog(@"%@",bbb);
+    
         UIImage * imgPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.fullPhoto]]];
         [cashPhotoList setValue:imgPhoto forKey:photo.photoID];
     }
