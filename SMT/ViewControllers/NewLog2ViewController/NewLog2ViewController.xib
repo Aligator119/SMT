@@ -21,6 +21,7 @@
                 <outlet property="footer" destination="bbG-gQ-FDo" id="mYj-nD-5sj"/>
                 <outlet property="header" destination="zQB-Fd-II3" id="7zO-fc-8Ia"/>
                 <outlet property="infoView" destination="4rd-xy-s9N" id="Dc1-ol-p32"/>
+                <outlet property="lbNavigationBar" destination="dis-9d-ojS" id="qLn-rA-zu8"/>
                 <outlet property="navigationBarHeightConstr" destination="rsr-l4-QbC" id="vK9-Sn-kIt"/>
                 <outlet property="navigationBarVerticalConstr" destination="CDb-Kz-a35" id="znG-ry-hvd"/>
                 <outlet property="picker" destination="5fY-uo-gvj" id="5I2-lQ-T4V"/>
@@ -50,7 +51,7 @@
                                         <constraint firstAttribute="width" constant="60" id="2qa-C2-Nnj"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal" title="Previous">
+                                    <state key="normal" title="Back">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>

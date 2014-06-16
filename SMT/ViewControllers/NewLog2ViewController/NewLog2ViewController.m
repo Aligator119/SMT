@@ -84,7 +84,7 @@
     }
     
     listOfSpecies = [[NSMutableArray alloc]init];
-
+    self.lbNavigationBar.text = self.species.name;
     //------------------------------------------------------------------------------
     
     self.selectedIthem = @"";
