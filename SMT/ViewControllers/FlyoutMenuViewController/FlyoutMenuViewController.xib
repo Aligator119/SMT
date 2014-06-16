@@ -30,21 +30,21 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lvu-BN-fDM">
-                            <rect key="frame" x="130" y="30" width="60" height="60"/>
+                            <rect key="frame" x="123" y="25" width="75" height="75"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.68627450980000004" green="0.86274509799999999" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="60" id="0J3-m8-t8W"/>
-                                <constraint firstAttribute="height" constant="60" id="ObA-vt-RcH"/>
+                                <constraint firstAttribute="width" constant="75" id="0J3-m8-t8W"/>
+                                <constraint firstAttribute="height" constant="75" id="ObA-vt-RcH"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAF-Wg-59s">
-                            <rect key="frame" x="25" y="98" width="270" height="32"/>
+                            <rect key="frame" x="25" y="105" width="270" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="270" id="3Vu-Fy-NcW"/>
-                                <constraint firstAttribute="height" constant="32" id="oLt-IS-R0r"/>
+                                <constraint firstAttribute="height" constant="25" id="oLt-IS-R0r"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -67,12 +67,12 @@
                     <constraints>
                         <constraint firstAttribute="centerX" secondItem="Rpn-6P-LA4" secondAttribute="centerX" id="8Br-OY-6Li"/>
                         <constraint firstAttribute="centerX" secondItem="PAF-Wg-59s" secondAttribute="centerX" id="8hA-eO-sa2"/>
-                        <constraint firstItem="PAF-Wg-59s" firstAttribute="top" secondItem="Lvu-BN-fDM" secondAttribute="bottom" constant="8" id="LXk-YR-0KV"/>
+                        <constraint firstItem="PAF-Wg-59s" firstAttribute="top" secondItem="Lvu-BN-fDM" secondAttribute="bottom" constant="5" id="LXk-YR-0KV"/>
                         <constraint firstAttribute="height" constant="160" id="RE8-zp-aK1"/>
                         <constraint firstItem="Rpn-6P-LA4" firstAttribute="top" secondItem="PAF-Wg-59s" secondAttribute="bottom" constant="2" id="Vl1-5u-yXh"/>
                         <constraint firstAttribute="bottom" secondItem="Rpn-6P-LA4" secondAttribute="bottom" constant="8" id="bVb-cX-stF"/>
                         <constraint firstAttribute="centerX" secondItem="Lvu-BN-fDM" secondAttribute="centerX" id="eeS-rX-buG"/>
-                        <constraint firstItem="Lvu-BN-fDM" firstAttribute="top" secondItem="b9f-ed-cPn" secondAttribute="top" constant="30" id="o35-PQ-GDh"/>
+                        <constraint firstItem="Lvu-BN-fDM" firstAttribute="top" secondItem="b9f-ed-cPn" secondAttribute="top" constant="25" id="o35-PQ-GDh"/>
                     </constraints>
                 </view>
                 <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="PCC-nq-jzO">

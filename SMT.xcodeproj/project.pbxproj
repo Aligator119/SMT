@@ -2058,17 +2058,15 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Alexander Sokhanych (U5HL738569)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/library/FacebookSDK",
-					"$(PROJECT_DIR)/library/GoogleMaps-iOS-1.7.2",
-					"$(PROJECT_DIR)/library",
+					"$(SRCROOT)/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SMT/SMT-Prefix.pch";
 				INFOPLIST_FILE = "SMT/SMT-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/**",
 					"$(inherited)",
-					"$(PROJECT_DIR)/library/CorePlot",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2086,17 +2084,15 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: Alexander Sokhanych (U5HL738569)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/library/FacebookSDK",
-					"$(PROJECT_DIR)/library/GoogleMaps-iOS-1.7.2",
-					"$(PROJECT_DIR)/library",
+					"$(SRCROOT)/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SMT/SMT-Prefix.pch";
 				INFOPLIST_FILE = "SMT/SMT-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
+					"$(SRCROOT)/**",
 					"$(inherited)",
-					"$(PROJECT_DIR)/library/CorePlot",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
