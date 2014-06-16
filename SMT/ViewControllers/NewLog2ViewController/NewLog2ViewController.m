@@ -497,7 +497,7 @@
 }
 
 - (IBAction)actCancel:(id)sender {
-    [[((UIButton *) sender) superview] removeFromSuperview];
+    [[[((UIButton *) sender) superview] superview] removeFromSuperview];
 }
 
 - (IBAction)actButtonBack:(id)sender {
