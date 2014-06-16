@@ -244,8 +244,8 @@
     if (![[cashPhotoList allKeys] containsObject:photo.photoID]) {
         
         Photo * bbb = [dataLoader getPhotoWithId:[photo.photoID intValue]];
-        NSLog(@"%@",bbb);
-        UIImage * imgPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.fullPhoto]]];
+       
+        UIImage * imgPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:bbb.fullPhoto]]];
         [cashPhotoList setValue:imgPhoto forKey:photo.photoID];
     }
     cell.foneImage.image = [cashPhotoList objectForKey:photo.photoID];
@@ -317,7 +317,7 @@
             break;
         case 3: {
             [self endLoader];
-            if (!photosList) {
+            if (photosList.firstObject == nil) {
             photosList = [dataLoader getPhotoWithBuddyId:[self.buddy.userID intValue]];
             }
             self.table.hidden = YES;

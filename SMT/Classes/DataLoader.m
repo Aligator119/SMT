@@ -598,17 +598,25 @@
 {
     NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@%@?app_id=%@&app_key=%@&buddy_id=%d&last=-1", strUrl, SubstringPhoto, App_id, App_key,buddy_id];
     NSMutableArray * photoList = [NSMutableArray new];
-    NSDictionary * buf = [[self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto] objectForKey:@"photos"];
-    for (NSDictionary *act in buf){
-        Photo * ithem = [[Photo alloc]init];
-        ithem.photoID = [act objectForKey:@"id"];
-        ithem.fullPhoto = [act objectForKey:@"fullPhoto"];
-        ithem.raw = [act objectForKey:@"raw"];
-        ithem.thumbnail = [act objectForKey:@"url"];
-        ithem.uploadDate = [act objectForKey:@"upload_date"];
-        ithem.userName = [act objectForKey:@"username"];
-        [photoList addObject:ithem];
+    
+    @try {
+        NSDictionary * buf = [[self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto] objectForKey:@"photos"];
+        for (NSDictionary *act in buf){
+            Photo * ithem = [[Photo alloc]init];
+            ithem.photoID = [act objectForKey:@"id"];
+            ithem.fullPhoto = [act objectForKey:@"fullPhoto"];
+            ithem.raw = [act objectForKey:@"raw"];
+            ithem.thumbnail = [act objectForKey:@"url"];
+            ithem.uploadDate = [act objectForKey:@"upload_date"];
+            ithem.userName = [act objectForKey:@"username"];
+            [photoList addObject:ithem];
+        }
     }
+    @catch (NSException *exception) {
+        NSLog(@"Photo info uploading error");
+    }
+
+    
     return photoList;
 
 }
