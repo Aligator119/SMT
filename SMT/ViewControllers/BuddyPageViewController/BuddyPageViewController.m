@@ -1,11 +1,3 @@
-//
-//  BuddyPageViewController.m
-//  SMT
-//
-//  Created by Mac on 5/12/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import "BuddyPageViewController.h"
 #import "AppDelegate.h"
 #import "LocationListCell.h"
@@ -59,7 +51,7 @@
     
     dataLoader = [DataLoader instance];
     
-    self.lbNavigationBarTitle.text = [NSString stringWithFormat:@"%@ %@", self.buddy.userFirstName, self.buddy.userSecondName];
+    self.lbNavigationBarTitle.text = @"Buddy details";
     
     //NSURL * imgURL = [NSURL URLWithString:self.buddy.]
     
@@ -88,10 +80,8 @@
     self.image.layer.cornerRadius = self.image.frame.size.width/2;
     self.image.backgroundColor = [UIColor colorWithRed:174.0/255.0 green:219.0/255.0 blue:198.0/255.0 alpha:1.0];
     // download buddy avatar
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
+    
+//-----------------------------------------------------------------------------------
     [self startLoader];
     [self loadData];
     [self.segmentControl setSelectedSegmentIndex:1];
@@ -100,6 +90,17 @@
     self.collectionTable.hidden = YES;
     [self.table reloadData];
 }
+
+//- (void)viewWillAppear:(BOOL)animated
+//{
+//    [self startLoader];
+//    [self loadData];
+//    [self.segmentControl setSelectedSegmentIndex:1];
+//    locationsList = [NSMutableArray arrayWithArray:buddySharedLocations];
+//    self.table.hidden = NO;
+//    self.collectionTable.hidden = YES;
+//    [self.table reloadData];
+//}
 
 
 -(void) findSharedLocationsList{
@@ -285,7 +286,7 @@
     int selected = self.segmentControl.selectedSegmentIndex;
     switch (selected) {
         case 0: {
-            if (!activityList) {
+            if (activityList.firstObject == nil) {
                 activityList = [dataLoader getActivitiesWithBuddyID:[self.buddy.userID intValue]];
                 self.table.hidden = NO;
                 self.collectionTable.hidden = YES;

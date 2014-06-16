@@ -30,6 +30,7 @@
 
 - (IBAction)actNumberSelectStar:(UIButton *)sender;
 
+@property (strong, nonatomic) IBOutlet UILabel *lbNavigationBar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andData:(NSDictionary *)dictionary;
 @property (weak, nonatomic) IBOutlet UIButton *btnLocation;
