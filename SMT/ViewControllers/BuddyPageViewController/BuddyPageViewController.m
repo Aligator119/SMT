@@ -245,10 +245,8 @@
     ImageCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"imagecell" forIndexPath:indexPath];
     Photo * photo = [photosList objectAtIndex:indexPath.row];
     if (![[cashPhotoList allKeys] containsObject:photo.photoID]) {
-        
-        Photo * bbb = [dataLoader getPhotoWithId:[photo.photoID intValue]];
-       
-        UIImage * imgPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:bbb.fullPhoto]]];
+    
+        UIImage * imgPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.fullPhoto]]];
         [cashPhotoList setValue:imgPhoto forKey:photo.photoID];
     }
     cell.foneImage.image = [cashPhotoList objectForKey:photo.photoID];
