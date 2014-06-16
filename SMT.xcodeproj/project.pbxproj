@@ -62,6 +62,7 @@
 		043354C71910EF3E003767D0 /* BuddySearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043354C51910EF3E003767D0 /* BuddySearchViewController.xib */; };
 		043354CD1910F0A7003767D0 /* BuddySearchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043354CB1910F0A7003767D0 /* BuddySearchCell.m */; };
 		043354CE1910F0A7003767D0 /* BuddySearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043354CC1910F0A7003767D0 /* BuddySearchCell.xib */; };
+		04346EB1194F2BA000DCD637 /* photo_load_animal.png in Resources */ = {isa = PBXBuildFile; fileRef = 04346EB0194F2BA000DCD637 /* photo_load_animal.png */; };
 		04409401190F7CD100C4A558 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04409400190F7CD100C4A558 /* FacebookSDK.framework */; };
 		04409406190F825F00C4A558 /* FlyoutMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04409404190F825F00C4A558 /* FlyoutMenuViewController.m */; };
 		04409407190F825F00C4A558 /* FlyoutMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04409405190F825F00C4A558 /* FlyoutMenuViewController.xib */; };
@@ -335,6 +336,7 @@
 		043354CA1910F0A7003767D0 /* BuddySearchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuddySearchCell.h; path = ViewControllers/BuddySearchViewController/BuddySeach/BuddySearchCell.h; sourceTree = "<group>"; };
 		043354CB1910F0A7003767D0 /* BuddySearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuddySearchCell.m; path = ViewControllers/BuddySearchViewController/BuddySeach/BuddySearchCell.m; sourceTree = "<group>"; };
 		043354CC1910F0A7003767D0 /* BuddySearchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BuddySearchCell.xib; path = ViewControllers/BuddySearchViewController/BuddySeach/BuddySearchCell.xib; sourceTree = "<group>"; };
+		04346EB0194F2BA000DCD637 /* photo_load_animal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = photo_load_animal.png; path = Image/photo_load_animal.png; sourceTree = "<group>"; };
 		04409400190F7CD100C4A558 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = library/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		04409403190F825F00C4A558 /* FlyoutMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlyoutMenuViewController.h; path = ViewControllers/FlyoutMenuViewController/FlyoutMenuViewController.h; sourceTree = "<group>"; };
 		04409404190F825F00C4A558 /* FlyoutMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlyoutMenuViewController.m; path = ViewControllers/FlyoutMenuViewController/FlyoutMenuViewController.m; sourceTree = "<group>"; };
@@ -1024,6 +1026,7 @@
 		046C6BEA190FDF0E00E3AC56 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				04346EB0194F2BA000DCD637 /* photo_load_animal.png */,
 				84E60573194AF5CC00F8D61F /* icons */,
 				0405E4991949F01A0059CCFE /* arrow_righrt_BTN.png */,
 				0405E49A1949F01A0059CCFE /* arrow_righrt_BTN@2x.png */,
@@ -1729,6 +1732,7 @@
 				04A2A3BF191B7FDC0006677E /* ImageCell.xib in Resources */,
 				04EFC32219249890008A59D7 /* sportsman_tracker_BG@2x-1.png in Resources */,
 				04A2A3AF191B7FD30006677E /* LogAnActivityViewController.xib in Resources */,
+				04346EB1194F2BA000DCD637 /* photo_load_animal.png in Resources */,
 				84E605A7194AF5CC00F8D61F /* fishing_map@2x~ipad.png in Resources */,
 				84E605B6194AF5CC00F8D61F /* prediction@2x.png in Resources */,
 				04A2A385191B7F820006677E /* WeatherViewController~ipad.xib in Resources */,
