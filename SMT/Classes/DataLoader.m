@@ -899,7 +899,7 @@
 //-------------------------------------------------------------------------------------------------------------------
 - (NSArray *)getAllSpecies
 {
-    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@%@?app_id=%@&app_key=%@",strUrl,SubstringSpecies, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
+    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@%@?app_id=%@&app_key=%@&last=-1",strUrl,SubstringSpecies, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
     NSDictionary *info = [NSDictionary new];
     info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestSpecies];
     appDel.speciesList = [NSMutableArray new];
