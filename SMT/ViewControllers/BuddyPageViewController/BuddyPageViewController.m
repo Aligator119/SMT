@@ -241,11 +241,14 @@
     [self endLoader];
     ImageCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"imagecell" forIndexPath:indexPath];
     Photo * photo = [photosList objectAtIndex:indexPath.row];
-    if (![[cashPhotoList allKeys] containsObject:[NSString stringWithFormat:@"%d",indexPath.row]]) {
-        UIImage * imgPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.thumbnail]]];
-        [cashPhotoList setValue:imgPhoto forKey:[NSString stringWithFormat:@"%d",indexPath.row]];
+    if (![[cashPhotoList allKeys] containsObject:photo.photoID]) {
+        
+        Photo * bbb = [dataLoader getPhotoWithId:[photo.photoID intValue]];
+        NSLog(@"%@",bbb);
+        UIImage * imgPhoto = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.fullPhoto]]];
+        [cashPhotoList setValue:imgPhoto forKey:photo.photoID];
     }
-    cell.foneImage.image = [cashPhotoList objectForKey:[NSString stringWithFormat:@"%d",indexPath.row]];
+    cell.foneImage.image = [cashPhotoList objectForKey:photo.photoID];
     return cell;
 
 }
