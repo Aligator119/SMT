@@ -29,6 +29,7 @@
     DataLoader * dataLoader;
 }
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionTable;
+@property (strong, nonatomic) IBOutlet UILabel *lbName;
 
 - (void)loadData;
 
@@ -82,6 +83,8 @@
     cashPhotoList = [NSMutableDictionary new];
     cashTrophy    = [NSMutableDictionary new];
     self.collectionTable.hidden = YES;
+    
+    self.lbName.text = [[self.buddy.userFirstName stringByAppendingString:@" "]stringByAppendingString:self.buddy.userSecondName];
 }
 
 - (void)viewWillAppear:(BOOL)animated
