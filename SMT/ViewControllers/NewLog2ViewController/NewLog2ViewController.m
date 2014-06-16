@@ -653,6 +653,7 @@
 
 - (void) openPickerWithData:(NSArray *)array andTag:(int)tag
 {
+    [self.view endEditing:YES];
     questionsList = [NSArray arrayWithArray:array];
     if ([[array firstObject] isKindOfClass:[Species class]]) {
         self.northernPike = [array firstObject];

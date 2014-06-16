@@ -25,6 +25,7 @@ enum TypeOfStatus{
 @property (strong, nonatomic) NSString * userPosLongitude;
 @property (nonatomic) BOOL userCanSeeBuddy;
 @property (nonatomic) BOOL userBuddyCanSeeUser;
+@property (nonatomic, strong) NSString * avatar_url;
 
 - (id)init;
 - (void)setData:(NSDictionary*)dic;
