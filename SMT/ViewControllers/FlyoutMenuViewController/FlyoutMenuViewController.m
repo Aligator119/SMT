@@ -135,17 +135,21 @@
     [((AppDelegate *)[UIApplication sharedApplication].delegate).listUserBuddies removeAllObjects];
     ((AppDelegate *)[UIApplication sharedApplication].delegate).wheatherPredictList = nil;
     [((AppDelegate *)[UIApplication sharedApplication].delegate).pred removeAllObjects];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    NSString * nibName = [AppDelegate nibNameForBaseName:@"LoginViewController"];
+    LoginViewController * lvc = [[LoginViewController alloc]initWithNibName:nibName bundle:nil];
+    [self.navigationController pushViewController:lvc animated:YES];
 }
 
 - (void)openReports
 {
+    [self startLoader];
     DataLoader *loader = [DataLoader instance];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
         NSMutableArray *result = [NSMutableArray arrayWithArray:[loader getAllActivities]];
         
         dispatch_async(dispatch_get_main_queue(),^(){
+            [self endLoader];
             ReportsViewController *reportsVC = [ReportsViewController new];
             reportsVC.activitiesArray = [NSMutableArray arrayWithArray:result];
             [self.navigationController pushViewController:reportsVC animated:YES];
@@ -268,7 +272,8 @@
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
        UIImage * image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.fullPhoto]]];
-        NSString * str = [dataLoader setUserAvatar:image];
+        //NSString * str =
+        [dataLoader setUserAvatar:image];
         
         dispatch_async(dispatch_get_main_queue(),^(){
             

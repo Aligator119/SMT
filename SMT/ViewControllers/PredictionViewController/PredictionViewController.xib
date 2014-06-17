@@ -69,8 +69,8 @@
                         <constraint firstAttribute="trailing" secondItem="1eQ-Wg-GBD" secondAttribute="trailing" id="ffa-Gz-Phd"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CUk-06-kMk">
-                    <rect key="frame" x="10" y="83" width="300" height="120"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CUk-06-kMk">
+                    <rect key="frame" x="10" y="84" width="300" height="120"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="download_hunt.png" translatesAutoresizingMaskIntoConstraints="NO" id="4Jy-eK-2S0">
@@ -86,8 +86,12 @@
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="88t-0O-FNX"/>
+                        <constraint firstAttribute="width" constant="300" id="bW2-Zw-SIK"/>
+                    </constraints>
                 </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nhb-Xg-20f">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhb-Xg-20f">
                     <rect key="frame" x="10" y="224" width="300" height="120"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -104,12 +108,20 @@
                         </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="120" id="Ks9-e8-P37"/>
+                        <constraint firstAttribute="width" constant="300" id="TBP-SK-JKi"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="centerX" secondItem="CUk-06-kMk" secondAttribute="centerX" id="B9S-ux-QTG"/>
+                <constraint firstItem="CUk-06-kMk" firstAttribute="top" secondItem="WVd-cz-cqa" secondAttribute="bottom" constant="20" id="Sig-tY-kpf"/>
                 <constraint firstItem="WVd-cz-cqa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="avA-qI-PzF"/>
                 <constraint firstAttribute="trailing" secondItem="WVd-cz-cqa" secondAttribute="trailing" id="kMB-4W-aEK"/>
+                <constraint firstAttribute="centerX" secondItem="nhb-Xg-20f" secondAttribute="centerX" id="thW-vx-nhA"/>
+                <constraint firstItem="nhb-Xg-20f" firstAttribute="top" secondItem="CUk-06-kMk" secondAttribute="bottom" constant="20" id="v5c-ta-B8z"/>
                 <constraint firstItem="WVd-cz-cqa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="wrU-bl-3hU"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

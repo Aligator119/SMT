@@ -79,11 +79,13 @@
     UINib *cellNib3 = [UINib nibWithNibName:@"IncomingFriendCell" bundle:[NSBundle mainBundle]];
     [self.table registerNib:cellNib3 forCellReuseIdentifier:@"IncomingFriendCell"];
     
-    [self AddActivityIndicator:[UIColor redColor] forView:self.table];
+    
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
+    [self AddActivityIndicator:[UIColor redColor] forView:self.table];
+
     self.navigationController.navigationBar.hidden = YES;
     
     app = (AppDelegate*) [[UIApplication sharedApplication] delegate];

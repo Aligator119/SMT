@@ -121,7 +121,7 @@
         cell.foneImage.image = [photoDict objectForKey:photo.photoID];
     } else {
         [self cashedImage:photo];
-        [cell setImage:photo.thumbnail];
+        [cell setImage:photo.fullPhoto];
     }
     //[self endLoader];
     return cell;

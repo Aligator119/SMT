@@ -13,6 +13,8 @@
 - (void)awakeFromNib
 {
     // Initialization code
+    self.tfHarvested.text = @"0";
+    self.tfSeen.text = @"0";
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

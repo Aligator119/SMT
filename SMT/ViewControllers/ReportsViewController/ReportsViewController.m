@@ -53,9 +53,23 @@
     arr = [NSMutableArray arrayWithObjects:[formatter dateFromString:@"01-02-2014 11:12 AM"],[formatter dateFromString:@"02-03-2014 02:12 AM"],[formatter dateFromString:@"02-09-2014 05:12 AM"],[formatter dateFromString:@"01-14-2014 04:12 AM"],[formatter dateFromString:@"01-18-2014 07:12 AM"],[formatter dateFromString:@"01-22-2014 11:12 AM"],[formatter dateFromString:@"01-24-2014 11:12 AM"],[formatter dateFromString:@"01-25-2014 02:12 AM"],[formatter dateFromString:@"01-26-2014 05:12 AM"],[formatter dateFromString:@"01-27-2014 04:12 AM"],[formatter dateFromString:@"01-27-2014 07:12 AM"],[formatter dateFromString:@"03-29-2014 11:12 AM"], nil];
     
     self.valuesDict = [NSMutableDictionary dictionaryWithObjects:[arr sortedArrayUsingSelector:@selector(compare:)] forKeys:[NSArray arrayWithObjects: @"13", @"5", @"12", @"6", @"7", @"11", @"15", @"16", @"22", @"1", @"11", @"11", nil]];
+    //self.dateSegmentControl.
+//    for (id segment in [self.dateSegmentControl subviews])
+//    {
+//        for (id label in [segment subviews])
+//        {
+//            if ([label isKindOfClass:[UILabel class]])
+//            {
+//                [label setTextAlignment:NSTextAlignmentCenter];
+//                [label setFont:[UIFont boldSystemFontOfSize:11]];
+//                [label setTextColor:[UIColor whiteColor]];
+//            }
+//        }           
+//    }
     
-    
-    //[self createDataSource];
+//    [self.dateSegmentControl setDividerImage:[UIImage imageNamed:@"bg_reports_selected.png"] forLeftSegmentState:UIControlStateSelected rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+//     [self.dateSegmentControl setDividerImage:[UIImage imageNamed:@"bg_reports.png"] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+//    [self.dateSegmentControl setDividerImage:[UIImage imageNamed:@"bg_reports.png"] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateSelected barMetrics:UIBarMetricsDefault];
 }
 
 - (void) viewDidLayoutSubviews{

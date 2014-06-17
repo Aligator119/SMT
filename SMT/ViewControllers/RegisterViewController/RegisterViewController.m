@@ -78,7 +78,7 @@
 
 
 -(IBAction)goToLoginVC:(id)sender{
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 -(BOOL) checkEmail: (NSString*) email{

@@ -55,11 +55,12 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="dxM-lU-9i8" secondAttribute="bottom" constant="16" id="2bD-EI-zlA"/>
-                    <constraint firstItem="hPp-Zu-tqa" firstAttribute="leading" secondItem="aRO-cE-80b" secondAttribute="trailing" constant="30" id="7oD-8B-qpm"/>
                     <constraint firstItem="hPp-Zu-tqa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="GpC-8d-ul6"/>
                     <constraint firstItem="kqt-oZ-LIM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="JIN-jq-0e5"/>
-                    <constraint firstItem="dxM-lU-9i8" firstAttribute="leading" secondItem="kqt-oZ-LIM" secondAttribute="trailing" constant="20" id="OLZ-r1-eYw"/>
+                    <constraint firstItem="dxM-lU-9i8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kqt-oZ-LIM" secondAttribute="trailing" constant="20" id="OLZ-r1-eYw"/>
+                    <constraint firstItem="kqt-oZ-LIM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hPp-Zu-tqa" secondAttribute="trailing" constant="20" id="YEb-bE-LJv"/>
                     <constraint firstItem="dxM-lU-9i8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="cT3-hA-186"/>
+                    <constraint firstItem="hPp-Zu-tqa" firstAttribute="leading" secondItem="aRO-cE-80b" secondAttribute="trailing" constant="30" id="e8k-Uo-sSW"/>
                     <constraint firstAttribute="bottom" secondItem="aRO-cE-80b" secondAttribute="bottom" constant="4" id="fOB-s4-Aiw"/>
                     <constraint firstItem="aRO-cE-80b" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="qmA-g2-04y"/>
                     <constraint firstAttribute="trailing" secondItem="dxM-lU-9i8" secondAttribute="trailing" constant="30" id="ssW-85-M2q"/>

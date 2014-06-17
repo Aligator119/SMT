@@ -13,7 +13,7 @@
     UIActivityIndicatorView * a = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     [self.view addSubview:a];
     
-    CGRect screenRect = view.bounds; //[[UIScreen mainScreen] bounds];
+    CGRect screenRect = [UIScreen mainScreen].bounds; //[[UIScreen mainScreen] bounds];
     a.center = CGPointMake(screenRect.size.width/2,screenRect.size.height/2);
     
     a.color = _colorIndicatar;

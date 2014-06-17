@@ -635,6 +635,7 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     path = [NSIndexPath indexPathForItem:textField.tag inSection:0];
+    [textField selectAll:nil];
     callKeyBoard = textField;
 }
 
