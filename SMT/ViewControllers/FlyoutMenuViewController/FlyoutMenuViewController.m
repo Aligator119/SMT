@@ -20,7 +20,6 @@
 #import "FlyoutMenuCell.h"
 #import "UIViewController+LoaderCategory.h"
 
-
 #define USER_DATA @"userdata"
 
 @interface FlyoutMenuViewController ()
@@ -76,7 +75,7 @@
     self.imgUser.layer.masksToBounds = YES;
     self.imgUser.layer.cornerRadius = self.imgUser.frame.size.width / 2;
     if (app.user.avatarAdress) {
-    NSURL * imgURL = [[NSURL alloc]initWithString:[@"http://dev.sportsmantracker.com"  stringByAppendingString:app.user.avatarAdress]];
+    NSURL * imgURL = [[NSURL alloc]initWithString: app.user.avatarAdress];
     NSData * data = [[NSData alloc]initWithContentsOfURL:imgURL];
     self.imgUser.image = [UIImage imageWithData:data];
     }

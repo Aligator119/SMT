@@ -68,7 +68,7 @@
                         <constraint firstAttribute="height" constant="64" id="loF-li-CPL"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2lw-ea-2Hq">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="2lw-ea-2Hq">
                     <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -80,9 +80,13 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="2lw-ea-2Hq" secondAttribute="trailing" id="3vq-Cj-MKv"/>
                 <constraint firstAttribute="trailing" secondItem="iWT-If-P9L" secondAttribute="trailing" id="GHd-dF-QSZ"/>
+                <constraint firstItem="2lw-ea-2Hq" firstAttribute="top" secondItem="iWT-If-P9L" secondAttribute="bottom" id="QxX-Ba-U0g"/>
                 <constraint firstItem="iWT-If-P9L" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="WAn-Gw-yKK"/>
+                <constraint firstAttribute="bottom" secondItem="2lw-ea-2Hq" secondAttribute="bottom" id="byn-In-kK2"/>
                 <constraint firstItem="iWT-If-P9L" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ki2-HO-y7j"/>
+                <constraint firstItem="2lw-ea-2Hq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sWE-8n-td1"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

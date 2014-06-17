@@ -53,9 +53,13 @@
     arr = [NSMutableArray arrayWithObjects:[formatter dateFromString:@"01-02-2014 11:12 AM"],[formatter dateFromString:@"02-03-2014 02:12 AM"],[formatter dateFromString:@"02-09-2014 05:12 AM"],[formatter dateFromString:@"01-14-2014 04:12 AM"],[formatter dateFromString:@"01-18-2014 07:12 AM"],[formatter dateFromString:@"01-22-2014 11:12 AM"],[formatter dateFromString:@"01-24-2014 11:12 AM"],[formatter dateFromString:@"01-25-2014 02:12 AM"],[formatter dateFromString:@"01-26-2014 05:12 AM"],[formatter dateFromString:@"01-27-2014 04:12 AM"],[formatter dateFromString:@"01-27-2014 07:12 AM"],[formatter dateFromString:@"03-29-2014 11:12 AM"], nil];
     
     self.valuesDict = [NSMutableDictionary dictionaryWithObjects:[arr sortedArrayUsingSelector:@selector(compare:)] forKeys:[NSArray arrayWithObjects: @"13", @"5", @"12", @"6", @"7", @"11", @"15", @"16", @"22", @"1", @"11", @"11", nil]];
-    [self.graphView buildGraphWithDataFromDictionary:self.valuesDict];
     
-    [self createDataSource];
+    
+    //[self createDataSource];
+}
+
+- (void) viewDidLayoutSubviews{
+    [self.graphView buildGraphWithDataFromDictionary:self.valuesDict];
 }
 
 

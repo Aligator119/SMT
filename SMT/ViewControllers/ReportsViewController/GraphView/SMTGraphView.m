@@ -225,7 +225,7 @@
 }
 
 -(void)configureGraph {
-    CPTGraph *graph = [[CPTXYGraph alloc] initWithFrame:self.hostView.bounds];
+    CPTGraph *graph = [[CPTXYGraph alloc] initWithFrame:self.bounds];
     [graph applyTheme:[CPTTheme themeNamed:kCPTPlainWhiteTheme]];
     self.hostView.hostedGraph = graph;
     CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) graph.defaultPlotSpace;

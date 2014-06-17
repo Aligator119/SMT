@@ -327,7 +327,7 @@
             break;
         case 3: {
             [self endLoader];
-            if (!photosList) {
+            if (photosList.firstObject == nil) {
             photosList = [dataLoader getPhotoWithBuddyId:[self.buddy.userID intValue]];
             }
             self.table.hidden = YES;

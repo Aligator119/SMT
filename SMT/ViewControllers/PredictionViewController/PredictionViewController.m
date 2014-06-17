@@ -53,7 +53,7 @@
 
 - (void) downloadHunter:(id)sender
 {
-    NSURL * url = [NSURL URLWithString:@"https://itunes.apple.com/us/app/hunt-predictor-hunting-times/id645518545?mt=8"];
+    NSURL * url = [NSURL URLWithString:@"https://itunes.apple.com/ru/app/hunt-predictor-hunting-times/id645518545?mt=8"];
     
     if (![[UIApplication sharedApplication] openURL:url])
         
