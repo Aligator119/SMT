@@ -125,6 +125,7 @@ enum ApplicationServiceRequest
 - (NSString *)uploadPhoto:(UIImage *)photo;
 - (void)updatePhotoWithId:(int) photo_id andActivity:(int)activity_id andSighting:(int)sighting_id andType:(int)type_id andDescription:(NSString *)description andCaption:(NSString *)caption;
 - (void)deletePhotoWithId:(int)photo_id;
+- (NSString *)setUserAvatar:(UIImage *)avatar;
 //------- Log Detail -----------------------------------------------
 - (void) getLogDetail;
 - (void) updateLogDetailWithId:(NSString *) logId andSighting:(NSDictionary *)sighting;

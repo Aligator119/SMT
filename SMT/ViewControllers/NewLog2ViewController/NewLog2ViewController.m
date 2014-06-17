@@ -44,6 +44,8 @@
 @property (strong, nonatomic) IBOutlet CustomButton *btnNorthempike;
 @property (strong, nonatomic) IBOutlet UIView *header;
 
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint * removeConstrain;
+
 @property (strong, nonatomic) Species * species;
 
 - (void) pressedDatePickerView:(id)sender;
@@ -109,6 +111,7 @@
     activity = [[Activity alloc]init];
     dates = [NSDate date];
     
+    [self.view removeConstraint:self.removeConstrain];
     
     UITapGestureRecognizer *datePickerViewRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pressedDatePickerView:)];
     [datePickerViewRecognizer setNumberOfTapsRequired:1];

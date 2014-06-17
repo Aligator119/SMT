@@ -13,12 +13,12 @@
 #import "SettingsViewController.h"
 #import "LogAnActivityViewController.h"
 #import "DataLoader.h"
-#import "PhotoVideoViewController.h"
 #import "BuddyListViewController.h"
 #import "PredictionViewController.h"
 #import "ReportsViewController.h"
 #import "NewLog1ViewController.h"
 #import "FlyoutMenuCell.h"
+#import "UIViewController+LoaderCategory.h"
 
 
 #define USER_DATA @"userdata"
@@ -27,12 +27,16 @@
 {
     NSArray * menuItems;
     NSDictionary *functionsDictionary;
+    DataLoader * dataLoader;
 }
 @property (weak, nonatomic) IBOutlet UITableView *table;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * topViewHeightConstr;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * topViewVerticalConstr;
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
+
+
+- (void)photoClick:(id)notification;
 
 @end
 
@@ -55,6 +59,8 @@
         self.topViewHeightConstr.constant -= 20;
         self.topViewVerticalConstr.constant -= 20;
     }
+    
+    dataLoader = [DataLoader instance];
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"FlyoutMenuCell" bundle:nil] forCellWithReuseIdentifier:@"FlyoutMenuCell"];
     
@@ -92,14 +98,20 @@
 //        });
 //       
 //    }
-    
+    [self AddActivityIndicator:[UIColor redColor] forView:self.view];
     
     self.table.backgroundView = nil;
+    
+    UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(photoClick:)];
+    [recognizer setNumberOfTapsRequired:1];
+    [recognizer setDelegate:self];
+    [self.imgUser addGestureRecognizer:recognizer];
+    self.imgUser.userInteractionEnabled = YES;
 }
 
 - (void)openFishingMap
 {
-    DataLoader * dataLoader = [DataLoader instance];
+    
     
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
@@ -241,6 +253,36 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self performSelector:NSSelectorFromString([[functionsDictionary objectForKey:@"identifiers"] objectAtIndex:indexPath.row])];
+}
+
+- (void) photoClick:notification
+{
+    PhotoVideoViewController * pvvc = [PhotoVideoViewController new];
+    pvvc.delegate = self;
+    [self.navigationController pushViewController:pvvc animated:YES];
+}
+
+
+- (void)selectPhoto:(Photo *)photo
+{
+    [self startLoader];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+       UIImage * image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.fullPhoto]]];
+        NSString * str = [dataLoader setUserAvatar:image];
+        
+        dispatch_async(dispatch_get_main_queue(),^(){
+            
+            if(!dataLoader.isCorrectRezult) {
+                NSLog(@"Error upload avatar");
+                [self endLoader];
+            } else {
+                self.imgUser.image = image;
+                [self endLoader];
+            }
+
+        });
+    });
 }
 
 - (void)didReceiveMemoryWarning

@@ -625,8 +625,8 @@
 //----------------------------------------------------------------------------------
     [request setURL:[NSURL URLWithString:strUrlRequestAdress]];
     [request setHTTPMethod:@"POST"];
-    [request setValue:@"19921992q" forHTTPHeaderField:@"X-password"];
-    [request setValue:@"pola1@bigmir.net" forHTTPHeaderField:@"X-username"];
+    [request setValue:appDel.user.userPassword forHTTPHeaderField:@"X-password"];
+    [request setValue:appDel.user.userName forHTTPHeaderField:@"X-username"];
     
     //Add the header info
 	NSString *stringBoundary = @"0xKhTmLbOuNdArY";
@@ -652,6 +652,49 @@
     CJSONDeserializer *deserializer = [CJSONDeserializer deserializer];
     NSDictionary * info = [deserializer deserialize:receivedData error:&jsonError];
     return [info objectForKey:@"id"];
+}
+
+
+- (NSString *)setUserAvatar:(UIImage *)avatar
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/avatar?app_id=%@&app_key=%@",strUrl,SubstringPhoto, App_id, App_key];
+    NSLog(@"URL : %@",strUrlRequestAdress);
+    
+    NSData *imageData = UIImageJPEGRepresentation(avatar, 0.9f);
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    
+    //----------------------------------------------------------------------------------
+    [request setURL:[NSURL URLWithString:strUrlRequestAdress]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:appDel.user.userPassword forHTTPHeaderField:@"X-password"];
+    [request setValue:appDel.user.userName forHTTPHeaderField:@"X-username"];
+    
+    //Add the header info
+	NSString *stringBoundary = @"0xKhTmLbOuNdArY";
+	NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@",stringBoundary];
+	[request addValue:contentType forHTTPHeaderField: @"Content-Type"];
+    
+    
+    
+    
+    NSMutableData *body = [NSMutableData data];
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"photo\"; filename=\"avatar.jpg\"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[@"Content-Type: application/octet-stream\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[NSData dataWithData:imageData]];
+    [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n",stringBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:body];
+    
+    NSError * reqError = nil;
+    NSURLResponse * response = nil;
+    receivedData = (NSMutableData* )[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&reqError];
+    NSLog(@"receivedData %@",[[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding]);
+    NSError * jsonError = [[NSError alloc]init];
+    CJSONDeserializer *deserializer = [CJSONDeserializer deserializer];
+    NSDictionary * info = [deserializer deserialize:receivedData error:&jsonError];
+    return [info objectForKey:@"file"];
+
 }
 
 - ( void) updatePhotoWithId:(int)photo_id andActivity:(int)activity_id andSighting:(int)sighting_id andType:(int)type_id andDescription:(NSString *)description andCaption:(NSString *)caption
