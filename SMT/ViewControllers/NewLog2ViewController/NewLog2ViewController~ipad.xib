@@ -16,14 +16,19 @@
                 <outlet property="btnStartTime" destination="4Eo-Ec-CQr" id="S30-3M-Sdj"/>
                 <outlet property="constrainsADD" destination="alB-I1-US8" id="bhz-BB-9lr"/>
                 <outlet property="constrainsNorthempike" destination="c0y-xc-CQz" id="WGv-tX-28M"/>
+                <outlet property="datePicker" destination="r7p-23-AYB" id="OeH-GE-ola"/>
+                <outlet property="datePickerView" destination="8ZH-Ya-rL6" id="ifR-wK-Z1F"/>
                 <outlet property="footer" destination="vFl-gh-rtY" id="IEO-1V-jwt"/>
                 <outlet property="header" destination="6jV-tq-L1z" id="oUe-IK-yaR"/>
+                <outlet property="infoView" destination="Im0-u2-yGL" id="maV-G9-5so"/>
+                <outlet property="lbNavigationBar" destination="IYu-LV-ML5" id="zFB-Rp-1aI"/>
                 <outlet property="navigationBarHeightConstr" destination="GZy-WE-d4C" id="h1n-WF-k4s"/>
                 <outlet property="picker" destination="yQ4-To-0sW" id="f8a-Nh-qB8"/>
                 <outlet property="pickerView" destination="SzM-jm-RcR" id="cqh-Bh-ohu"/>
                 <outlet property="removeConstrain" destination="LXq-xw-gjL" id="SnI-xZ-QhN"/>
                 <outlet property="table" destination="7nQ-1U-9bV" id="LSg-li-4ta"/>
                 <outlet property="view" destination="iN0-l3-epB" id="4DD-ud-20d"/>
+                <outlet property="viewStars" destination="hWs-qG-jh2" id="WWu-Qo-zky"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -83,11 +88,13 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XP6-w0-RuX">
                             <rect key="frame" x="30" y="10" width="324" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="k3c-hz-64h"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="Location">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -97,11 +104,13 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6td-fH-j5n">
                             <rect key="frame" x="30" y="50" width="324" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="fUG-pd-7AY"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="Date">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -111,12 +120,14 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Eo-Ec-CQr">
                             <rect key="frame" x="30" y="90" width="150" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="150" id="Ab0-fb-zs8"/>
                                 <constraint firstAttribute="height" constant="30" id="hkz-UQ-xBY"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="Start Time">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -126,12 +137,14 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gTu-6k-c0C">
                             <rect key="frame" x="204" y="90" width="150" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="150" id="Md0-8P-hQv"/>
                                 <constraint firstAttribute="height" constant="30" id="sl6-Ev-Ng7"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="End Time">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -162,8 +175,13 @@
                     <rect key="frame" x="384" y="64" width="384" height="960"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <view key="tableHeaderView" contentMode="scaleToFill" id="vFl-gh-rtY">
-                        <rect key="frame" x="0.0" y="0.0" width="384" height="100"/>
+                    <view key="tableHeaderView" contentMode="scaleToFill" id="S8o-6C-VG7">
+                        <rect key="frame" x="0.0" y="0.0" width="384" height="1"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <view key="tableFooterView" contentMode="scaleToFill" id="vFl-gh-rtY">
+                        <rect key="frame" x="0.0" y="860" width="384" height="100"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" tag="55" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N96-bM-cdm" customClass="CustomButton">
@@ -227,6 +245,10 @@
                             <constraint firstItem="qmm-h9-F5x" firstAttribute="leading" secondItem="vFl-gh-rtY" secondAttribute="leading" constant="30" id="rRh-eu-Cox"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="qJn-bx-msz"/>
+                        <outlet property="delegate" destination="-1" id="Fp1-Q0-fDu"/>
+                    </connections>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -248,7 +270,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sportsman_tracker_BG-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="G1m-bc-Fso">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sportsman_tracker_BG-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="G1m-bc-Fso">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -263,9 +285,13 @@
                                 <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yQ4-To-0sW">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="162"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-1" id="Fp9-gr-dZc"/>
+                                        <outlet property="delegate" destination="-1" id="UiG-7a-NZb"/>
+                                    </connections>
                                 </pickerView>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="psp-bU-cq8">
-                                    <rect key="frame" x="27" y="235" width="110" height="35"/>
+                                    <rect key="frame" x="30" y="235" width="110" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.37254901959999998" green="0.74117647060000003" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -303,9 +329,17 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="G1m-bc-Fso" firstAttribute="leading" secondItem="SzM-jm-RcR" secondAttribute="leading" id="1M3-Qv-VwS"/>
                 <constraint firstItem="dgJ-jj-FZ6" firstAttribute="leading" secondItem="SzM-jm-RcR" secondAttribute="leading" id="1lP-Ks-ULL"/>
+                <constraint firstAttribute="trailing" secondItem="G1m-bc-Fso" secondAttribute="trailing" id="6dB-rm-OjR"/>
                 <constraint firstAttribute="bottom" secondItem="dgJ-jj-FZ6" secondAttribute="bottom" id="BUD-ep-zEZ"/>
                 <constraint firstAttribute="trailing" secondItem="dgJ-jj-FZ6" secondAttribute="trailing" id="CNZ-gg-oJj"/>
+                <constraint firstItem="dgJ-jj-FZ6" firstAttribute="leading" secondItem="SzM-jm-RcR" secondAttribute="leading" id="HkB-ZG-cvc"/>
+                <constraint firstItem="G1m-bc-Fso" firstAttribute="top" secondItem="SzM-jm-RcR" secondAttribute="top" id="JXc-Fc-jqa"/>
+                <constraint firstAttribute="bottom" secondItem="dgJ-jj-FZ6" secondAttribute="bottom" id="Twr-fs-pkO"/>
+                <constraint firstItem="dgJ-jj-FZ6" firstAttribute="top" secondItem="SzM-jm-RcR" secondAttribute="top" id="hbc-e1-PkD"/>
+                <constraint firstAttribute="bottom" secondItem="G1m-bc-Fso" secondAttribute="bottom" id="hg1-Qw-ZBv"/>
+                <constraint firstAttribute="trailing" secondItem="dgJ-jj-FZ6" secondAttribute="trailing" id="lC6-98-Og0"/>
                 <constraint firstItem="dgJ-jj-FZ6" firstAttribute="top" secondItem="SzM-jm-RcR" secondAttribute="top" id="xk6-a0-zAM"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -320,6 +354,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="actNumberSelectStar:" destination="-1" eventType="touchUpInside" id="6Nh-Y5-INE"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hof-L5-1gl">
                     <rect key="frame" x="97" y="22" width="25" height="26"/>
@@ -327,6 +364,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="actNumberSelectStar:" destination="-1" eventType="touchUpInside" id="H3k-vB-rCf"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qsX-c7-S7v">
                     <rect key="frame" x="66" y="22" width="25" height="26"/>
@@ -334,6 +374,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="actNumberSelectStar:" destination="-1" eventType="touchUpInside" id="yft-yO-nUi"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="87O-oo-H79">
                     <rect key="frame" x="128" y="22" width="25" height="26"/>
@@ -341,6 +384,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="actNumberSelectStar:" destination="-1" eventType="touchUpInside" id="dzc-vD-pHQ"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZg-KZ-L0g">
                     <rect key="frame" x="159" y="22" width="25" height="26"/>
@@ -348,6 +394,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="actNumberSelectStar:" destination="-1" eventType="touchUpInside" id="LWn-pU-lMB"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Og0-HU-5ms">
                     <rect key="frame" x="190" y="22" width="25" height="26"/>
@@ -355,6 +404,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="actNumberSelectStar:" destination="-1" eventType="touchUpInside" id="iV6-0I-5FV"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZ1-38-YtN">
                     <rect key="frame" x="221" y="22" width="25" height="26"/>
@@ -362,6 +414,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="actNumberSelectStar:" destination="-1" eventType="touchUpInside" id="nsc-o3-rNm"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6cC-hd-qJ0">
                     <rect key="frame" x="314" y="22" width="25" height="26"/>
@@ -369,6 +424,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="actNumberSelectStar:" destination="-1" eventType="touchUpInside" id="QXz-l3-n7b"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DZ-2f-9Wg">
                     <rect key="frame" x="283" y="22" width="25" height="26"/>
@@ -376,6 +434,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="actNumberSelectStar:" destination="-1" eventType="touchUpInside" id="n1O-92-Uhp"/>
+                    </connections>
                 </button>
                 <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vc-KW-wuA">
                     <rect key="frame" x="252" y="22" width="25" height="26"/>
@@ -383,6 +444,9 @@
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="actNumberSelectStar:" destination="-1" eventType="touchUpInside" id="uOm-Ve-JYq"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -414,6 +478,85 @@
                 </label>
             </subviews>
             <color key="backgroundColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+        </view>
+        <view contentMode="scaleToFill" id="8ZH-Ya-rL6">
+            <rect key="frame" x="0.0" y="0.0" width="384" height="1024"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sportsman_tracker_BG-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="U4r-Vu-oT7">
+                    <rect key="frame" x="0.0" y="0.0" width="384" height="1024"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QXe-vF-SyM">
+                    <rect key="frame" x="0.0" y="0.0" width="384" height="1024"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="0.5" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3aw-A4-kZC">
+                    <rect key="frame" x="0.0" y="313" width="384" height="408"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="r7p-23-AYB">
+                            <rect key="frame" x="0.0" y="17" width="384" height="216"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <date key="date" timeIntervalSinceReferenceDate="424770202.384893">
+                                <!--2014-06-18 07:43:22 +0000-->
+                            </date>
+                            <timeZone key="timeZone" name="America/Los_Angeles">
+                                <mutableData key="data">
+VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
+y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
+5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
+8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
+AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
+DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
+HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
+KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
+OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
+Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
+VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
+Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
+cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
+f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
+</mutableData>
+                            </timeZone>
+                        </datePicker>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2GS-xo-puX">
+                            <rect key="frame" x="50" y="344" width="110" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.37254901959999998" green="0.74117647060000003" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Save">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actDoneDatePicker:" destination="-1" eventType="touchUpInside" id="Up5-md-MJG"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="179-fa-bQe">
+                            <rect key="frame" x="224" y="344" width="110" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.0039215686269999999" green="0.53725490200000003" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Cancel">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                    </subviews>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="U4r-Vu-oT7" secondAttribute="trailing" id="1ip-c9-g8Z"/>
+                <constraint firstAttribute="bottom" secondItem="QXe-vF-SyM" secondAttribute="bottom" id="CvD-mA-VBJ"/>
+                <constraint firstAttribute="bottom" secondItem="U4r-Vu-oT7" secondAttribute="bottom" id="Lpc-kR-OKM"/>
+                <constraint firstItem="QXe-vF-SyM" firstAttribute="leading" secondItem="8ZH-Ya-rL6" secondAttribute="leading" id="ezV-wR-48m"/>
+                <constraint firstItem="U4r-Vu-oT7" firstAttribute="leading" secondItem="8ZH-Ya-rL6" secondAttribute="leading" id="f3e-Jp-BaY"/>
+                <constraint firstAttribute="trailing" secondItem="QXe-vF-SyM" secondAttribute="trailing" id="ftC-N9-g08"/>
+                <constraint firstItem="QXe-vF-SyM" firstAttribute="top" secondItem="8ZH-Ya-rL6" secondAttribute="top" id="lw7-oZ-toI"/>
+                <constraint firstItem="U4r-Vu-oT7" firstAttribute="top" secondItem="8ZH-Ya-rL6" secondAttribute="top" id="x0i-ZS-aWw"/>
+            </constraints>
         </view>
     </objects>
     <resources>

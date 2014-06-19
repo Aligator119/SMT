@@ -7,6 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "FlyoutMenuViewController.h"
+#import "DataLoader.h"
+
+#define USER_DATA @"userdata"
+
+
 
 @implementation AppDelegate
 @synthesize session;
@@ -17,6 +23,7 @@
     // Set the active session
     [FBSession setActiveSession:session];
     
+    DataLoader * dataLoader = [DataLoader instance];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -45,9 +52,40 @@
 //------------------------------------------------------------------------------
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    NSString * nibName = [AppDelegate nibNameForBaseName:@"LoginViewController"];
-    self.viewController = [[LoginViewController alloc]initWithNibName:nibName bundle:nil];
-    self.navigationController = [[UINavigationController alloc]initWithRootViewController:self.viewController];
+//-------------------------------------------------------------------------------------------
+    NSData * userData = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DATA];
+    if (userData) {
+        UserInfo * user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+        // enter to home screen
+        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+        
+        
+        self.user.userName = user.userName;
+        self.user.userPassword = user.userPassword;
+        // * * Avtorize * *
+        
+            
+        [dataLoader avtorizeUser:self.user.userName password:self.user.userPassword];
+            // * * * *
+                
+        if(dataLoader.isCorrectRezult){
+                    
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+                    
+            FlyoutMenuViewController * fmVC = [[FlyoutMenuViewController alloc] initWithNibName:@"FlyoutMenuViewController" bundle:nil];
+            self.navigationController = [[UINavigationController alloc]initWithRootViewController:fmVC];
+            self.window.rootViewController = self.navigationController;
+        } else {
+            [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            NSString * nibName = [AppDelegate nibNameForBaseName:@"LoginViewController"];
+            self.viewController = [[LoginViewController alloc]initWithNibName:nibName bundle:nil];
+            self.navigationController = [[UINavigationController alloc]initWithRootViewController:self.viewController];
+        }
+
+        
+    }
+//--------------------------------------------------------------------------------------------
+   
     self.window.rootViewController = self.navigationController;
     self.navigationController.navigationBar.hidden = YES;
     self.window.backgroundColor = [UIColor whiteColor];

@@ -89,12 +89,13 @@
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IPP-4d-oJQ">
                     <rect key="frame" x="0.0" y="64" width="320" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                     <segments>
                         <segment title="Day"/>
                         <segment title="Week"/>
                         <segment title="Month"/>
                     </segments>
-                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" red="0.0" green="0.59999999999999998" blue="0.79559192518248179" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <action selector="DateSegmentDidChangeState:" destination="-1" eventType="valueChanged" id="7sY-lZ-qlb"/>
                     </connections>
@@ -102,12 +103,13 @@
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="IT8-cx-avh">
                     <rect key="frame" x="0.0" y="534" width="320" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                     <segments>
                         <segment title="Seen"/>
                         <segment title="Harvested"/>
                         <segment title="Activity Level"/>
                     </segments>
-                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" red="0.0" green="0.59999999999999998" blue="0.79559192519999999" alpha="1" colorSpace="calibratedRGB"/>
                 </segmentedControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

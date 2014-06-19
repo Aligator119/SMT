@@ -12,6 +12,9 @@
 #define TAG 12345
 #define HiegthView 130
 
+#define startHiegth 66
+#define constHiegth 40
+
 
 #define COMPLETE_DATE_UNITS   NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond
 
@@ -32,6 +35,7 @@
     NSString * logID;
     NSArray * questionsList;
     UITextField * callKeyBoard;
+    int count;
     }
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *constrainsADD;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *constrainsNorthempike;
@@ -58,6 +62,7 @@
 - (void)actSelectStar:(UIButton *)sender;
 - (void)keyboardDidShow: (NSNotification *) notif;
 - (void)keyboardDidHide: (NSNotification *) notif;
+- (BOOL) isiPad;
 @end
 
 @implementation NewLog2ViewController
@@ -84,6 +89,7 @@
         self.navigationBarHeightConstr.constant -= 20;
         self.navigationBarVerticalConstr.constant -=20;
     }
+    count = 0;
     
     listOfSpecies = [[NSMutableArray alloc]init];
     self.lbNavigationBar.text = self.species.name;
@@ -148,8 +154,12 @@
     for (NSDictionary * dict in questionsList) {
         if ([[dict objectForKey:@"inputType"] isEqualToString:@"menu"]) {
             CGPoint point = self.header.frame.origin;
-            point.y += self.header.frame.size.height;
-            point.x += self.header.frame.size.width;
+            if ([self isiPad]) {
+                point.y += startHiegth + (constHiegth * count);
+            } else {
+                point.y += self.header.frame.size.height;
+                point.x += self.header.frame.size.width;
+            }
             CustomButton * btn = [[CustomButton alloc]initWithFrame:CGRectMake(30.0, point.y, 260.0, 30.0)];
             btn.backgroundColor= [UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:235.0/255.0 alpha:1.0];
             btn.delegate = self;
@@ -189,11 +199,18 @@
 //                                       views: viewsDict];
 //            [self.header addConstraints:newHConstraints];
 //            [self.header addConstraints:newVConstraints];
+            count++;
+            if (![self isiPad]) {
             [self.header setFrame:CGRectMake(self.header.frame.origin.x, self.header.frame.origin.y, self.header.frame.size.width, self.header.frame.size.height + 40.0)];
+            }
         } else {
             CGPoint point = self.header.frame.origin;
-            point.y += self.header.frame.size.height;
-            point.x += self.header.frame.size.width;
+            if ([self isiPad]) {
+                point.y += startHiegth + (constHiegth * count);
+            } else {
+                point.y += self.header.frame.size.height;
+                point.x += self.header.frame.size.width;
+            }
             CustomTextField * tf = [[CustomTextField alloc]initWithFrame:CGRectMake(30.0, point.y, 260.0, 30.0)];
             tf.backgroundColor= [UIColor colorWithRed:235.0/255.0 green:235.0/255.0 blue:235.0/255.0 alpha:1.0];
             [tf setWithInputDictionary:dict];
@@ -210,10 +227,12 @@
 //                                       metrics: nil
 //                                       views: viewsDict];
 //            [self.header addConstraints:newConstraints];
-            
+            count++;
+            if ([self isiPad]) {
             CGRect bounds = self.header.frame;
             bounds.size.height += 40.0;
             self.header.frame = bounds;
+            }
         }
     
     }
@@ -269,8 +288,8 @@
             obj.frame = bounds;
         }
     }
-    self.constrainsADD.constant = self.view.frame.size.width * 0.25;
-    self.constrainsNorthempike.constant = self.view.frame.size.width * 0.55;
+    self.constrainsADD.constant = self.footer.frame.size.width * 0.25;
+    self.constrainsNorthempike.constant = self.footer.frame.size.width * 0.55;
 }
     
 }
@@ -657,6 +676,10 @@
 
 - (void) openPickerWithData:(NSArray *)array andTag:(int)tag
 {
+    if (array.count) {
+        if ([self isiPad]) {
+            self.pickerView.frame = self.header.frame;
+        }
     [self.view endEditing:YES];
     questionsList = [NSArray arrayWithArray:array];
     if ([[array firstObject] isKindOfClass:[Species class]]) {
@@ -668,6 +691,13 @@
     [self.picker selectedRowInComponent:0];
     [self.picker reloadAllComponents];
     [self.view addSubview:self.pickerView];
+    }
+}
+
+- (BOOL) isiPad
+{
+    NSString * model = [UIDevice currentDevice].model;
+    return [model isEqualToString:@"iPad Simulator"] ? YES : NO;
 }
 
 @end

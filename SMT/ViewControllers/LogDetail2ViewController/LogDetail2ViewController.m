@@ -131,6 +131,18 @@
 }
 
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [self.view layoutIfNeeded];
+    for (UIView * obj in self.view.subviews) {
+        if ([obj isKindOfClass:[CustomTextField class]] || [obj isKindOfClass:[CustomButton class]]) {
+            CGRect bounds = obj.frame;
+            bounds.size.width = self.btnTrophy.frame.size.width;
+            obj.frame = bounds;
+        }
+    }
+}
+
 #pragma mark picker metods delegate
 
 - (NSInteger) numberOfComponentsInPickerView:(UIPickerView *)pickerView

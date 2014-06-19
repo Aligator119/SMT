@@ -23,8 +23,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sportsman_tracker_BG-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="6GJ-IE-aO4">
-                    <rect key="frame" x="0.0" y="64" width="320" height="510"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sportsman_tracker_BG-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="6GJ-IE-aO4">
+                    <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zxD-pJ-HSx">
@@ -151,10 +151,14 @@
                 <constraint firstItem="Z60-TX-t2F" firstAttribute="top" secondItem="tet-wE-Bwk" secondAttribute="bottom" constant="20" id="MwL-dF-9tp"/>
                 <constraint firstItem="zxD-pJ-HSx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="O3O-b2-EDS"/>
                 <constraint firstItem="hAr-eP-CdJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="Q0E-8Z-9p6"/>
+                <constraint firstItem="6GJ-IE-aO4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Q0x-Ts-U8W"/>
                 <constraint firstItem="tet-wE-Bwk" firstAttribute="top" secondItem="zxD-pJ-HSx" secondAttribute="bottom" id="QG7-2A-fcR"/>
+                <constraint firstAttribute="bottom" secondItem="6GJ-IE-aO4" secondAttribute="bottom" id="Slc-Vw-0gc"/>
                 <constraint firstItem="Z60-TX-t2F" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="XiH-aC-t0U"/>
                 <constraint firstItem="zxD-pJ-HSx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YwU-7b-16g"/>
+                <constraint firstAttribute="trailing" secondItem="6GJ-IE-aO4" secondAttribute="trailing" id="Zj2-cD-5FP"/>
                 <constraint firstItem="ND8-oc-1PT" firstAttribute="width" secondItem="hAr-eP-CdJ" secondAttribute="width" id="eYq-xN-EpY"/>
+                <constraint firstItem="6GJ-IE-aO4" firstAttribute="top" secondItem="zxD-pJ-HSx" secondAttribute="bottom" id="mxr-g6-uhK"/>
                 <constraint firstItem="hAr-eP-CdJ" firstAttribute="top" secondItem="Z60-TX-t2F" secondAttribute="bottom" constant="20" id="tQ9-P7-Gve"/>
                 <constraint firstAttribute="trailing" secondItem="zxD-pJ-HSx" secondAttribute="trailing" id="whm-Vh-MgE"/>
             </constraints>
