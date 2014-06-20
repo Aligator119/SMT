@@ -22,7 +22,7 @@
 static NSString * const kGoogleMapsKey = @"AIzaSyCyCqldV67LGrJTLb9oSNr61-iHMUIUlsA";
 static NSString * const kGoogleBrouserAPIkey = @"AIzaSyAgYW3MOr37pwGSATMfWXWklbfn_oaBhCA";
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate, UITabBarControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) LoginViewController * viewController;

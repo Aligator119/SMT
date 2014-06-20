@@ -19,8 +19,14 @@
 #import "NewLog1ViewController.h"
 #import "FlyoutMenuCell.h"
 #import "UIViewController+LoaderCategory.h"
+#import "ImageShow.h"
+#import "CameraViewController.h"
+#import "SettingMenuViewController.h"
 
 #define USER_DATA @"userdata"
+
+#define COLECTION_SHOW 5555
+#define COLECTION_DATA 1234
 
 @interface FlyoutMenuViewController ()
 {
@@ -28,11 +34,14 @@
     NSDictionary *functionsDictionary;
     DataLoader * dataLoader;
 }
-@property (weak, nonatomic) IBOutlet UITableView *table;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint * topViewHeightConstr;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint * topViewVerticalConstr;
 
-@property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint * topViewHeightConstr;
+
+
+@property (nonatomic, weak) IBOutlet UICollectionView *table;
+@property (strong, nonatomic) IBOutlet UICollectionView *colectionView;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segment;
+
 
 
 - (void)photoClick:(id)notification;
@@ -56,29 +65,18 @@
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
         self.topViewHeightConstr.constant -= 20;
-        self.topViewVerticalConstr.constant -= 20;
+        
     }
+    [self.colectionView registerNib:[UINib nibWithNibName:@"FlyoutMenuCell" bundle:nil] forCellWithReuseIdentifier:@"FlyoutMenuCell"];
+    [self.table registerNib:[UINib nibWithNibName:@"ImageShow" bundle:nil] forCellWithReuseIdentifier:@"ImageShow"];
+
+    self.table.tag = COLECTION_SHOW;
+    self.colectionView.tag = COLECTION_DATA;
     
     dataLoader = [DataLoader instance];
     
-    [self.collectionView registerNib:[UINib nibWithNibName:@"FlyoutMenuCell" bundle:nil] forCellWithReuseIdentifier:@"FlyoutMenuCell"];
+    [self.table registerNib:[UINib nibWithNibName:@"FlyoutMenuCell" bundle:nil] forCellWithReuseIdentifier:@"FlyoutMenuCell"];
     
-//------------- clear navigationController viewControllers array --------------------------
-    NSMutableArray * controllers = [NSMutableArray new];
-    [controllers addObject:self];
-    self.navigationController.viewControllers = controllers;
-//------------------------------------------------------------------------------------------
-    AppDelegate  *app = (AppDelegate*) [[UIApplication sharedApplication] delegate];
-    self.lbName.text =  [NSString stringWithFormat:@"%@ %@", app.user.userFirstName, app.user.userSecondName];
-    self.lbLocation.text = app.user.userName;
-    //self.lbLocation.text = app.user.userSecondName;
-    self.imgUser.layer.masksToBounds = YES;
-    self.imgUser.layer.cornerRadius = self.imgUser.frame.size.width / 2;
-    if (app.user.avatarAdress) {
-    NSURL * imgURL = [[NSURL alloc]initWithString: app.user.avatarAdress];
-    NSData * data = [[NSData alloc]initWithContentsOfURL:imgURL];
-    self.imgUser.image = [UIImage imageWithData:data];
-    }
 //--------------------------------------------------------------------------------------------------------------------
     menuItems = [[NSArray alloc]initWithObjects:@"Log an Activity", @"Hunting Map", @"Fishing Map", @"Camera/Photos", @"Prediction", @"Reports", @"Weather", @"Buddies", @"Settings", @"Logout", nil];
     
@@ -104,8 +102,8 @@
     UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(photoClick:)];
     [recognizer setNumberOfTapsRequired:1];
     [recognizer setDelegate:self];
-    [self.imgUser addGestureRecognizer:recognizer];
-    self.imgUser.userInteractionEnabled = YES;
+    //[self.imgUser addGestureRecognizer:recognizer];
+    //self.imgUser.userInteractionEnabled = YES;
 }
 
 - (void)openFishingMap
@@ -186,7 +184,6 @@
 }
 
 -(void)openHuntingMap{
-        DataLoader * dataLoader = [DataLoader instance];
         
         dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(newQueue, ^(){
@@ -216,14 +213,52 @@
 }
 
 - (UICollectionViewCell*) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    FlyoutMenuCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FlyoutMenuCell" forIndexPath:indexPath];
-    [cell processCellWithImageName:[[functionsDictionary objectForKey:@"icons"] objectAtIndex:indexPath.row] andTitle:[menuItems objectAtIndex:indexPath.row]];
+    UICollectionViewCell * cell;
+    if (collectionView.tag == COLECTION_DATA) {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FlyoutMenuCell" forIndexPath:indexPath];
+        [((FlyoutMenuCell *)cell) processCellWithImageName:[[functionsDictionary objectForKey:@"icons"] objectAtIndex:indexPath.row] andTitle:[menuItems objectAtIndex:indexPath.row]];
+    } else {
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageShow" forIndexPath:indexPath];
+        switch (indexPath.row) {
+            case 0:
+                ((ImageShow *)cell).image.image = [UIImage imageNamed:@"bg_reports_selected"];
+                break;
+            case 1:
+                ((ImageShow *)cell).image.image = [UIImage imageNamed:@"global_icon.png"];
+                break;
+            case 2:
+                ((ImageShow *)cell).image.image = [UIImage imageNamed:@"camera_icon.png"];
+                break;
+            case 3:
+                ((ImageShow *)cell).image.image = [UIImage imageNamed:@"note_icon.png"];
+                break;
+            default:
+                ((ImageShow *)cell).image.image = [UIImage imageNamed:@"bg_reports_selected"];
+                break;
+        }
+        
+    }
+    
     return cell;
 }
 
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    [self performSelector:NSSelectorFromString([[functionsDictionary objectForKey:@"identifiers"] objectAtIndex:indexPath.row])];
+    if (collectionView.tag == COLECTION_DATA) {
+        [self performSelector:NSSelectorFromString([[functionsDictionary objectForKey:@"identifiers"] objectAtIndex:indexPath.row])];
+    }
+    
+    if (collectionView.tag == COLECTION_SHOW) {
+        CGPoint point = collectionView.contentOffset;
+        point.x += 321.0;
+        if (point.x >= collectionView.contentSize.width) {
+            point.x = 0.0;
+        }
+        [UIView animateWithDuration:0.7f animations:^{
+            collectionView.contentOffset = point;
+        }];
+        
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -281,7 +316,7 @@
                 NSLog(@"Error upload avatar");
                 [self endLoader];
             } else {
-                self.imgUser.image = image;
+                //self.imgUser.image = image;
                 [self endLoader];
             }
 

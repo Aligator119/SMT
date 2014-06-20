@@ -15,6 +15,9 @@
 #import "ForgotPasswordViewController.h"
 #import "AppDelegate.h"
 #import "UserInfo.h"
+#import "MapViewController.h"
+#import "NewLog1ViewController.h"
+//#import "<#header#>"
 
 
 #define USER_DATA @"userdata"
@@ -124,9 +127,35 @@
                     }
                     [self.activityIndicat stopAnimating];
                     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+//-------------------------------------------------------------------------------------------------------------------------
+                    UITabBarController * tabBar = [UITabBarController new];
                     
-                    FlyoutMenuViewController * fmVC = [[FlyoutMenuViewController alloc] initWithNibName:@"FlyoutMenuViewController" bundle:nil];
-                    [self.navigationController pushViewController:fmVC animated:YES];
+                    if ([tabBar respondsToSelector:@selector(edgesForExtendedLayout)]){
+                        tabBar.edgesForExtendedLayout = UIRectEdgeNone;
+                    }
+                    
+                    FlyoutMenuViewController * fmVC = [FlyoutMenuViewController new];
+                    MapViewController * mapVC = [MapViewController new];
+                    NewLog1ViewController * nl1VC = [NewLog1ViewController new];
+                    
+                    tabBar.viewControllers = @[fmVC, mapVC, nl1VC];
+                    fmVC.tabBarItem.title = @"Home";
+                    fmVC.tabBarItem.image = [UIImage imageNamed:@"bookmarks"];
+                    [fmVC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142/255.f green:142/255.f blue:142/255.f alpha:1], UITextAttributeTextColor , nil] forState:UIControlStateSelected];
+                    
+                    mapVC.tabBarItem.title = @"Search Current Users";
+                    mapVC.tabBarItem.image = [UIImage imageNamed:@"map_img.png"];
+                    [mapVC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142/255.f green:142/255.f blue:142/255.f alpha:1], UITextAttributeTextColor , nil] forState:UIControlStateSelected];
+                    
+                    
+                    nl1VC.tabBarItem.title = @"Search Current Users";
+                    nl1VC.tabBarItem.image = [UIImage imageNamed:@"map_img.png"];
+                    [nl1VC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142/255.f green:142/255.f blue:142/255.f alpha:1], UITextAttributeTextColor , nil] forState:UIControlStateSelected];
+                    
+                    [self.navigationController pushViewController:tabBar animated:YES];
+
+                    //FlyoutMenuViewController * fmVC = [[FlyoutMenuViewController alloc] initWithNibName:@"FlyoutMenuViewController" bundle:nil];
+                    //[self.navigationController pushViewController:fmVC animated:YES];
                 } else {
                     [self.activityIndicat stopAnimating];
                     [[UIApplication sharedApplication] endIgnoringInteractionEvents];
@@ -210,8 +239,33 @@
             [self.activityIndicat stopAnimating];
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];
             
-            FlyoutMenuViewController * fmVC = [[FlyoutMenuViewController alloc] initWithNibName:@"FlyoutMenuViewController" bundle:nil];
-            [self.navigationController pushViewController:fmVC animated:YES];
+//            FlyoutMenuViewController * fmVC = [[FlyoutMenuViewController alloc] initWithNibName:@"FlyoutMenuViewController" bundle:nil];
+//            [self.navigationController pushViewController:fmVC animated:YES];
+            UITabBarController * tabBar = [UITabBarController new];
+            
+            if ([tabBar respondsToSelector:@selector(edgesForExtendedLayout)]){
+                tabBar.edgesForExtendedLayout = UIRectEdgeNone;
+            }
+            
+            FlyoutMenuViewController * fmVC = [FlyoutMenuViewController new];
+            MapViewController * mapVC = [MapViewController new];
+            NewLog1ViewController * nl1VC = [NewLog1ViewController new];
+            
+            tabBar.viewControllers = @[fmVC, mapVC, nl1VC];
+            fmVC.tabBarItem.title = @"Home";
+            fmVC.tabBarItem.image = [UIImage imageNamed:@"bookmarks"];
+            [fmVC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142/255.f green:142/255.f blue:142/255.f alpha:1], UITextAttributeTextColor , nil] forState:UIControlStateSelected];
+            
+            mapVC.tabBarItem.title = @"Search Current Users";
+            mapVC.tabBarItem.image = [UIImage imageNamed:@"map_img.png"];
+            [mapVC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142/255.f green:142/255.f blue:142/255.f alpha:1], UITextAttributeTextColor , nil] forState:UIControlStateSelected];
+            
+            
+            nl1VC.tabBarItem.title = @"Search Current Users";
+            nl1VC.tabBarItem.image = [UIImage imageNamed:@"map_img.png"];
+            [nl1VC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142/255.f green:142/255.f blue:142/255.f alpha:1], UITextAttributeTextColor , nil] forState:UIControlStateSelected];
+            
+            [self.navigationController pushViewController:tabBar animated:YES];
         } else {
             [self.activityIndicat stopAnimating];
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];
