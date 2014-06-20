@@ -82,34 +82,7 @@
                 tabBar.edgesForExtendedLayout = UIRectEdgeNone;
             }
 
-            [[tabBar tabBar] setBackgroundImage:[UIImage imageNamed:@"tabbar_BG.png"]];
-            [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
-            
-            FlyoutMenuViewController * fmVC = [FlyoutMenuViewController new];
-            MapViewController * mapVC = [MapViewController new];
-            NewLog1ViewController * nl1VC = [NewLog1ViewController new];
-            CameraViewController * cVC = [CameraViewController new];
-            SettingMenuViewController * smVC = [SettingMenuViewController new];
-            
-            tabBar.viewControllers = @[fmVC, mapVC, cVC, nl1VC, smVC];
-            //fmVC.tabBarItem.title = @"Home";
-            fmVC.tabBarItem.image = [UIImage imageNamed:@"home_icon.png"];
-            [fmVC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142/255.f green:142/255.f blue:142/255.f alpha:1], UITextAttributeTextColor , nil] forState:UIControlStateSelected];
-            
-            //mapVC.tabBarItem.title = @"Map";
-            mapVC.tabBarItem.image = [UIImage imageNamed:@"global_icon.png"];
-            [mapVC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142/255.f green:142/255.f blue:142/255.f alpha:1], UITextAttributeTextColor , nil] forState:UIControlStateSelected];
-            
-            cVC.tabBarItem.image = [UIImage imageNamed:@"camera_icon.png"];
-            [cVC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142/255.f green:142/255.f blue:142/255.f alpha:1], UITextAttributeTextColor , nil] forState:UIControlStateSelected];
-            
-            //nl1VC.tabBarItem.title = @"Activity";
-            nl1VC.tabBarItem.image = [UIImage imageNamed:@"note_icon.png"];
-            [nl1VC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142/255.f green:142/255.f blue:142/255.f alpha:1], UITextAttributeTextColor , nil] forState:UIControlStateSelected];
-            
-            smVC.tabBarItem.title = @"Setting";
-            //mapVC.tabBarItem.image = [UIImage imageNamed:@"global_icon.png"];
-            [smVC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142/255.f green:142/255.f blue:142/255.f alpha:1], UITextAttributeTextColor , nil] forState:UIControlStateSelected];
+            [AppDelegate setupTabBar:tabBar];
             
             self.navigationController = [[UINavigationController alloc]init];
             [self.navigationController pushViewController:tabBar animated:YES];
@@ -134,6 +107,41 @@
     
     
     [self.window makeKeyAndVisible];
+    return YES;
+}
+
+
++ (BOOL) setupTabBar:(UITabBarController *)tabBar
+{
+    [[tabBar tabBar] setBackgroundImage:[UIImage imageNamed:@"tabbar_BG.png"]];
+    [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];
+    
+    FlyoutMenuViewController * fmVC = [FlyoutMenuViewController new];
+    MapViewController * mapVC = [MapViewController new];
+    NewLog1ViewController * nl1VC = [NewLog1ViewController new];
+    CameraViewController * cVC = [CameraViewController new];
+    SettingMenuViewController * smVC = [SettingMenuViewController new];
+    
+    tabBar.viewControllers = @[fmVC, mapVC, cVC, nl1VC, smVC];
+    //fmVC.tabBarItem.title = @"Home";
+    fmVC.tabBarItem.image = [UIImage imageNamed:@"home_icon.png"];
+    [fmVC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142/255.f green:142/255.f blue:142/255.f alpha:1], UITextAttributeTextColor , nil] forState:UIControlStateSelected];
+    
+    //mapVC.tabBarItem.title = @"Map";
+    mapVC.tabBarItem.image = [UIImage imageNamed:@"global_icon.png"];
+    [mapVC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142/255.f green:142/255.f blue:142/255.f alpha:1], UITextAttributeTextColor , nil] forState:UIControlStateSelected];
+    
+    cVC.tabBarItem.image = [UIImage imageNamed:@"camera_icon.png"];
+    [cVC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142/255.f green:142/255.f blue:142/255.f alpha:1], UITextAttributeTextColor , nil] forState:UIControlStateSelected];
+    
+    //nl1VC.tabBarItem.title = @"Activity";
+    nl1VC.tabBarItem.image = [UIImage imageNamed:@"note_icon.png"];
+    [nl1VC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142/255.f green:142/255.f blue:142/255.f alpha:1], UITextAttributeTextColor , nil] forState:UIControlStateSelected];
+    
+    smVC.tabBarItem.title = @"Setting";
+    //mapVC.tabBarItem.image = [UIImage imageNamed:@"global_icon.png"];
+    [smVC.tabBarItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithRed:142/255.f green:142/255.f blue:142/255.f alpha:1], UITextAttributeTextColor , nil] forState:UIControlStateSelected];
+    
     return YES;
 }
 

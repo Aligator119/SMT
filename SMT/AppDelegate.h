@@ -68,4 +68,6 @@ static NSString * const kGoogleBrouserAPIkey = @"AIzaSyAgYW3MOr37pwGSATMfWXWklbf
 //- (void)startUpdateUserPosition;
 - (NSString*)deleteZeroFromTime:(NSString*)_time;
 
++ (BOOL) setupTabBar:(UITabBarController *)tabBar;
+
 @end
