@@ -21,7 +21,8 @@
 #import "UIViewController+LoaderCategory.h"
 #import "ImageShow.h"
 #import "CameraViewController.h"
-#import "SettingMenuViewController.h"
+
+
 
 #define USER_DATA @"userdata"
 
@@ -34,6 +35,8 @@
     NSDictionary *functionsDictionary;
     DataLoader * dataLoader;
 }
+@property (strong, nonatomic) IBOutlet UIView *presentView;
+@property (strong, nonatomic) IBOutlet UIView *forTabBar;
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * topViewHeightConstr;
 
@@ -45,6 +48,7 @@
 
 
 - (void)photoClick:(id)notification;
+
 
 @end
 
@@ -76,7 +80,6 @@
     dataLoader = [DataLoader instance];
     
     [self.table registerNib:[UINib nibWithNibName:@"FlyoutMenuCell" bundle:nil] forCellWithReuseIdentifier:@"FlyoutMenuCell"];
-    
 //--------------------------------------------------------------------------------------------------------------------
     menuItems = [[NSArray alloc]initWithObjects:@"Log an Activity", @"Hunting Map", @"Fishing Map", @"Camera/Photos", @"Prediction", @"Reports", @"Weather", @"Buddies", @"Settings", @"Logout", nil];
     
@@ -104,24 +107,11 @@
     [recognizer setDelegate:self];
     //[self.imgUser addGestureRecognizer:recognizer];
     //self.imgUser.userInteractionEnabled = YES;
+    
+    [self.view addSubview:self.presentView];
+    
 }
 
-- (void)openFishingMap
-{
-    
-    
-    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(newQueue, ^(){
-        [dataLoader getLocationsAssociatedWithUser];
-        
-        dispatch_async(dispatch_get_main_queue(),^(){
-            
-            MapViewController * mapVC = [MapViewController new];
-            mapVC.mapType = typeFishing;
-            [self.navigationController pushViewController:mapVC animated:YES];
-        });
-    });
-}
 
 - (void)logout
 {

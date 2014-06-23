@@ -9,6 +9,7 @@
 #import "Location.h"
 
 
+
 #define TAG 12345
 #define HiegthView 130
 
@@ -168,37 +169,6 @@
             [self.header addSubview:btn];
             
             [btn setWithInputDictionary:dict];
-//            NSLayoutConstraint * btnCurrentLeft = [NSLayoutConstraint constraintWithItem:btn
-//                                                                    attribute:NSLayoutAttributeLeft
-//                                                                    relatedBy:NSLayoutRelationEqual
-//                                                                    toItem:self.header
-//                                                                    attribute:NSLayoutAttributeLeft
-//                                                                    multiplier:0
-//                                                                    constant:30.0f];
-//            [self.header addConstraint:btnCurrentLeft];
-//            NSLayoutConstraint * btnCurrentRigth = [NSLayoutConstraint constraintWithItem:btn
-//                                                                               attribute:NSLayoutAttributeRight
-//                                                                               relatedBy:NSLayoutRelationEqual
-//                                                                                  toItem:self.header
-//                                                                               attribute:NSLayoutAttributeRight
-//                                                                              multiplier:0
-//                                                                                constant:30.0f];
-//            [self.header addConstraint:btnCurrentRigth];
-//            NSDictionary *viewsDict = NSDictionaryOfVariableBindings (btn);
-//            NSString *visualHFormat = @"H:|-30-[btn]-30-|";
-//            NSString *visualVFormat = @"V:[btn(30)]-10-|";
-//            NSArray *newHConstraints = [NSLayoutConstraint
-//                                        constraintsWithVisualFormat: visualHFormat
-//                                        options: 0
-//                                        metrics: nil
-//                                        views: viewsDict];
-//            NSArray *newVConstraints = [NSLayoutConstraint
-//                                       constraintsWithVisualFormat: visualVFormat
-//                                       options: 0
-//                                       metrics: nil
-//                                       views: viewsDict];
-//            [self.header addConstraints:newHConstraints];
-//            [self.header addConstraints:newVConstraints];
             count++;
             if (![self isiPad]) {
             [self.header setFrame:CGRectMake(self.header.frame.origin.x, self.header.frame.origin.y, self.header.frame.size.width, self.header.frame.size.height + 40.0)];
@@ -218,15 +188,6 @@
             tf.tag = tf_tag;
             tf_tag++;
             [self.header addSubview:tf];
-            
-//            NSDictionary *viewsDict = NSDictionaryOfVariableBindings (tf);
-//            NSString *visualFormat = @"H:|-30-[tf]-30-|";
-//            NSArray *newConstraints = [NSLayoutConstraint
-//                                       constraintsWithVisualFormat: visualFormat
-//                                       options: 0
-//                                       metrics: nil
-//                                       views: viewsDict];
-//            [self.header addConstraints:newConstraints];
             count++;
             if ([self isiPad]) {
             CGRect bounds = self.header.frame;
@@ -236,28 +197,6 @@
         }
     
     }
-
-//--------------------------------------------------------------------------------
-//    self.footer.autoresizesSubviews = NO;
-//    NSDictionary * elems = @{@"btn1" : self.btnNorthempike,
-//                             @"btn2" : self.btnAdd,
-//                             @"btn3" : self.btnFinalizeLog};
-//    
-//    // create autolayouts
-//    NSString * strHAlign  = @"H:|-30-[btn1]-5-[btn2]-30-|";
-//    NSString * strVAlign1 = @"V:|-10-[btn1]-10-[btn3]";
-//    NSString * strVAlign2 = @"V:|-10-[btn2]-10-[btn3]";
-//    
-//    NSArray * cHAlign = [NSLayoutConstraint constraintsWithVisualFormat:strHAlign options:0 metrics:nil views:elems];
-//    NSArray * cVAlign1 = [NSLayoutConstraint constraintsWithVisualFormat:strVAlign1 options:0 metrics:nil views:elems];
-//    NSArray * cVAlign2 = [NSLayoutConstraint constraintsWithVisualFormat:strVAlign2 options:0 metrics:nil views:elems];
-//    
-//    
-//    [self.footer addConstraints:cHAlign];
-//    [self.footer addConstraints:cVAlign1];
-//    [self.footer addConstraints:cVAlign2];
-//
-//    [self.footer updateConstraintsIfNeeded];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -293,7 +232,6 @@
 }
     
 }
-
 
 
 

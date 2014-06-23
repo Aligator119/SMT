@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MapViewController.h"
+#import "NewLog1ViewController.h"
+#import "FlyoutMenuViewController.h"
+#import "CustomTabBar.h"
 
 @interface CameraViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (strong, nonatomic) IBOutlet CustomTabBar *tabBar;
 
 @end

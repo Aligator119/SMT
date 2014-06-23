@@ -1,15 +1,8 @@
-//
-//  CameraViewController.m
-//  SMT
-//
-//  Created by Mac on 6/19/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import "CameraViewController.h"
 
 @interface CameraViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *image;
+
 
 - (IBAction)actSelectPhoto:(id)sender;
 - (IBAction)actTakePhoto:(id)sender;
@@ -30,6 +23,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         
         UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Error"
@@ -81,4 +78,6 @@
     
     [self presentViewController:picker animated:YES completion:NULL];
 }
+
+
 @end

@@ -37,6 +37,7 @@
 
 
 
+
 @end
 
 
@@ -58,6 +59,7 @@
     
     [self showMap];
     [self createLocationManager];
+    
 }
 
 - (void) viewDidLayoutSubviews{
@@ -306,7 +308,6 @@
     [self.navigationController pushViewController:locUpdateVC animated:YES];
     return;
 }
-
 
 
 

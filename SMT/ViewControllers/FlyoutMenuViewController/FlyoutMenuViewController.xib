@@ -8,10 +8,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FlyoutMenuViewController">
             <connections>
                 <outlet property="colectionView" destination="RQV-PX-9Oa" id="VWx-Mo-xcy"/>
+                <outlet property="forTabBar" destination="caK-EW-bWK" id="AqC-FX-I4R"/>
+                <outlet property="presentView" destination="i5M-Pr-FkT" id="FgO-Bj-iAd"/>
                 <outlet property="segment" destination="4hH-og-oi5" id="D1g-Es-KiZ"/>
+                <outlet property="tabBar" destination="Q6z-WW-d2G" id="RAq-F8-i6E"/>
                 <outlet property="table" destination="exG-Uq-koA" id="HL9-zb-a1o"/>
                 <outlet property="topViewHeightConstr" destination="RE8-zp-aK1" id="kIB-i2-x1u"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view" destination="us5-z3-jXY" id="Vkc-5j-l3D"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -58,6 +61,7 @@
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4hH-og-oi5">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.37254901959999998" green="0.74117647060000003" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="28" id="dmF-vF-zfG"/>
                             </constraints>
@@ -84,6 +88,60 @@
                                 <outlet property="delegate" destination="-1" id="Xsz-bY-1Jn"/>
                             </connections>
                         </collectionView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6z-WW-d2G" customClass="CustomTabBar">
+                            <rect key="frame" x="0.0" y="333" width="320" height="46"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tabbar_BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="FXd-Q9-hrg">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMl-a7-oJb">
+                                    <rect key="frame" x="17" y="8" width="36" height="36"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" backgroundImage="home_icon.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted" backgroundImage="home_icon_press.png"/>
+                                </button>
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sFa-3B-cQo">
+                                    <rect key="frame" x="73" y="8" width="36" height="36"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" backgroundImage="global_icon.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted" backgroundImage="global_icon_press.png"/>
+                                </button>
+                                <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8K8-e9-6oF">
+                                    <rect key="frame" x="142" y="8" width="36" height="36"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" backgroundImage="camera_icon.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted" backgroundImage="camera_icon_press.png"/>
+                                </button>
+                                <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCU-LM-moG">
+                                    <rect key="frame" x="213" y="8" width="36" height="36"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" backgroundImage="note_icon.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted" backgroundImage="note_icon_press.png"/>
+                                </button>
+                                <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDI-y0-h4w">
+                                    <rect key="frame" x="267" y="8" width="36" height="36"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" backgroundImage="st_icon.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="highlighted" backgroundImage="st_icon_press.png"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="46" id="fkm-sr-xIO"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
@@ -92,7 +150,10 @@
                         <constraint firstAttribute="trailing" secondItem="4hH-og-oi5" secondAttribute="trailing" id="RQK-D4-Hny"/>
                         <constraint firstItem="4hH-og-oi5" firstAttribute="top" secondItem="caK-EW-bWK" secondAttribute="top" id="VcZ-Z6-tu1"/>
                         <constraint firstItem="RQV-PX-9Oa" firstAttribute="leading" secondItem="caK-EW-bWK" secondAttribute="leading" id="aJT-oh-Sae"/>
+                        <constraint firstAttribute="bottom" secondItem="Q6z-WW-d2G" secondAttribute="bottom" constant="-1" id="jHy-fu-7Z5"/>
+                        <constraint firstAttribute="trailing" secondItem="Q6z-WW-d2G" secondAttribute="trailing" id="nyO-UM-BmM"/>
                         <constraint firstAttribute="trailing" secondItem="RQV-PX-9Oa" secondAttribute="trailing" id="o9h-7e-nKe"/>
+                        <constraint firstItem="Q6z-WW-d2G" firstAttribute="leading" secondItem="caK-EW-bWK" secondAttribute="leading" id="ruj-2d-fnO"/>
                         <constraint firstAttribute="bottom" secondItem="RQV-PX-9Oa" secondAttribute="bottom" constant="45" id="yts-Gs-Wc0"/>
                     </constraints>
                 </view>
@@ -118,9 +179,25 @@
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
+        <view contentMode="scaleToFill" id="us5-z3-jXY">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
     </objects>
     <resources>
-        <image name="home_icon.png" width="60" height="60"/>
+        <image name="camera_icon.png" width="30" height="30"/>
+        <image name="camera_icon_press.png" width="30" height="30"/>
+        <image name="global_icon.png" width="30" height="30"/>
+        <image name="global_icon_press.png" width="30" height="30"/>
+        <image name="home_icon.png" width="30" height="30"/>
+        <image name="home_icon_press.png" width="30" height="30"/>
+        <image name="note_icon.png" width="30" height="30"/>
+        <image name="note_icon_press.png" width="30" height="30"/>
         <image name="sportsman_tracker_BG-1.png" width="320" height="568"/>
+        <image name="st_icon.png" width="30" height="30"/>
+        <image name="st_icon_press.png" width="30" height="30"/>
+        <image name="tabbar_BG.png" width="320" height="50"/>
     </resources>
 </document>

@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="navigationBarHeightConstr" destination="QB4-Wz-raZ" id="Q98-wH-975"/>
                 <outlet property="navigationBarVerticalConstr" destination="wYc-gj-y61" id="63B-pS-ROx"/>
+                <outlet property="tabBar" destination="QNm-8w-anS" id="3LZ-dM-SZZ"/>
                 <outlet property="table" destination="0Uu-lE-FY7" id="3Z7-0V-dJr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -87,7 +88,7 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0Uu-lE-FY7">
-                    <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                    <rect key="frame" x="0.0" y="64" width="320" height="458"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="separatorColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
@@ -96,19 +97,89 @@
                         <outlet property="delegate" destination="-1" id="cTi-S4-2rG"/>
                     </connections>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QNm-8w-anS" customClass="CustomTabBar">
+                    <rect key="frame" x="0.0" y="522" width="320" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tabbar_BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="3dY-Pa-bsf">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gK4-tp-HpB">
+                            <rect key="frame" x="17" y="8" width="36" height="36"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="home_icon.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="home_icon_press.png"/>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znR-U3-vzl">
+                            <rect key="frame" x="73" y="8" width="36" height="36"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="global_icon.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="global_icon_press.png"/>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="shf-V6-5F0">
+                            <rect key="frame" x="142" y="8" width="36" height="36"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="camera_icon.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="camera_icon_press.png"/>
+                        </button>
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVo-RJ-wBh">
+                            <rect key="frame" x="213" y="8" width="36" height="36"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="note_icon.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="note_icon_press.png"/>
+                        </button>
+                        <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjy-mn-bxJ">
+                            <rect key="frame" x="267" y="8" width="36" height="36"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="st_icon.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="st_icon_press.png"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="46" id="6HK-xZ-ArO"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="0Uu-lE-FY7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0sB-so-2at"/>
                 <constraint firstAttribute="trailing" secondItem="foW-Na-foU" secondAttribute="trailing" id="5sp-3D-P2M"/>
                 <constraint firstItem="0Uu-lE-FY7" firstAttribute="top" secondItem="foW-Na-foU" secondAttribute="bottom" id="8th-1x-SVJ"/>
-                <constraint firstAttribute="bottom" secondItem="0Uu-lE-FY7" secondAttribute="bottom" id="CuE-I8-V2H"/>
+                <constraint firstAttribute="bottom" secondItem="0Uu-lE-FY7" secondAttribute="bottom" constant="46" id="CuE-I8-V2H"/>
+                <constraint firstAttribute="bottom" secondItem="QNm-8w-anS" secondAttribute="bottom" id="Ofq-ks-pJL"/>
                 <constraint firstAttribute="trailing" secondItem="0Uu-lE-FY7" secondAttribute="trailing" id="Uss-1K-Ssy"/>
                 <constraint firstItem="foW-Na-foU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="bw0-Cl-Dji"/>
                 <constraint firstItem="foW-Na-foU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="oIO-2Q-3Tf"/>
+                <constraint firstItem="QNm-8w-anS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="rhm-w1-fjV"/>
+                <constraint firstAttribute="trailing" secondItem="QNm-8w-anS" secondAttribute="trailing" id="vcF-QJ-jx2"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="camera_icon.png" width="30" height="30"/>
+        <image name="camera_icon_press.png" width="30" height="30"/>
+        <image name="global_icon.png" width="30" height="30"/>
+        <image name="global_icon_press.png" width="30" height="30"/>
+        <image name="home_icon.png" width="30" height="30"/>
+        <image name="home_icon_press.png" width="30" height="30"/>
+        <image name="note_icon.png" width="30" height="30"/>
+        <image name="note_icon_press.png" width="30" height="30"/>
+        <image name="st_icon.png" width="30" height="30"/>
+        <image name="st_icon_press.png" width="30" height="30"/>
+        <image name="tabbar_BG.png" width="320" height="50"/>
+    </resources>
 </document>

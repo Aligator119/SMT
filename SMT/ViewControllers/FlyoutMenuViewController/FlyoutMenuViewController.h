@@ -1,15 +1,8 @@
-//
-//  FlyoutMenuViewController.h
-//  SMT
-//
-//  Created by Mac on 4/29/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import "PhotoVideoViewController.h"
+#import "CustomTabBar.h"
 
-@interface FlyoutMenuViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate, PhotoViewControllerDelegate>
-
+@interface FlyoutMenuViewController : UIViewController <MyNewCustomTabBarDelegate, UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate>
+@property (strong, nonatomic) IBOutlet CustomTabBar *tabBar;
 
 @end

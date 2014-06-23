@@ -22,6 +22,7 @@
     NSArray * array;
     Species * spec;
 }
+
 - (IBAction)actButtonBack:(UIButton *)sender;
 - (IBAction)actButtonHistory:(UIButton *)sender;
 - (void)actDownloadData;
@@ -63,6 +64,7 @@
     
     [self actDownloadData];
 }
+
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

@@ -15,6 +15,7 @@
 #import "CurrentCondition.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "ConstantsClass.h"
+#import "CustomTabBar.h"
 
 @class UserInfo;
 @class UserLocationInThisMoment;
@@ -68,6 +69,8 @@ static NSString * const kGoogleBrouserAPIkey = @"AIzaSyAgYW3MOr37pwGSATMfWXWklbf
 //- (void)startUpdateUserPosition;
 - (NSString*)deleteZeroFromTime:(NSString*)_time;
 
-+ (BOOL) setupTabBar:(UITabBarController *)tabBar;
+
+
+
 
 @end
