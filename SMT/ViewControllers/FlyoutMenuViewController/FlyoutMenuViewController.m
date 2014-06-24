@@ -73,7 +73,6 @@
     
     self.table.backgroundView = nil;
     
-    [self.view addSubview:self.presentView];
     isPresent = YES;
     [((UIButton *)[self.tabBar viewWithTag:1]) setBackgroundImage:[UIImage imageNamed:@"home_icon_press.png"] forState:UIControlStateNormal];
 
