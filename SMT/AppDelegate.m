@@ -78,21 +78,20 @@
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];
 //-----------------------------------------------------------------------------------------------------------------------
             
-            //FlyoutMenuViewController * fmvc = [FlyoutMenuViewController new];
-            FirstViewController * fmvc = [FirstViewController new];
-            self.navigationController = [[UINavigationController alloc]initWithRootViewController:fmvc];
-            //[self.navigationController pushViewController:tabBar animated:YES];
+            FirstViewController * fvc = [[FirstViewController alloc]initWithNibName:@"FirstViewController" bundle:nil];
+            self.navigationController = [[UINavigationController alloc]initWithRootViewController:fvc];
+            //[self.navigationController pushViewController:fvc animated:YES];
             self.window.rootViewController = self.navigationController;
         }
     } else {
-        //[[UIApplication sharedApplication] endIgnoringInteractionEvents];
         NSString * nibName = [AppDelegate nibNameForBaseName:@"LoginViewController"];
         self.viewController = [[LoginViewController alloc]initWithNibName:nibName bundle:nil];
         self.navigationController = [[UINavigationController alloc]initWithRootViewController:self.viewController];
+        self.window.rootViewController = self.navigationController;
     }
 //--------------------------------------------------------------------------------------------
    
-    self.window.rootViewController = self.navigationController;
+    
     self.navigationController.navigationBar.hidden = YES;
     self.window.backgroundColor = [UIColor whiteColor];
     self.speciesList = [NSMutableArray new];
