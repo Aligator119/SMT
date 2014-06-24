@@ -1,5 +1,13 @@
 #import "FirstViewController.h"
 #import "DataLoader.h"
+#import "SettingsViewController.h"
+#import "PhotoVideoViewController.h"
+#import "PredictionViewController.h"
+#import "BuddyListViewController.h"
+#import "WeatherViewController.h"
+#import "UIViewController+LoaderCategory.h"
+#import "Photo.h"
+#import "LogHistoryViewController.h"
 
 #define USER_DATA @"userdata"
 
@@ -15,7 +23,7 @@
     NSArray * menuItems;
     NSDictionary *functionsDictionary;
     DataLoader * dataLoader;
-
+    AppDelegate * appDelegate;
 }
 @property (strong, nonatomic) IBOutlet UIImageView *imgUser;
 @property (strong, nonatomic) IBOutlet UILabel *lbNameUser;
@@ -26,6 +34,7 @@
 - (void)deselectSettingButton;
 - (void)selectSettingButton;
 - (NSString *) getImageName:(int)tag;
+- (void)photoClick:(id)notification;
 @end
 
 @implementation FirstViewController
@@ -43,8 +52,20 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     isSettings = NO;
-    
+    dataLoader = [DataLoader instance];
+    self.lbNameUser.text = [NSString stringWithFormat:@"%@ %@", appDelegate.user.userFirstName, appDelegate.user.userSecondName];
+    self.lbNameLocation.text = @"";
+    self.lbStatus.text = @"";
+    self.imgUser.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:appDelegate.user.avatarAdress]]];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        //[dataLoader get];
+        dispatch_async(dispatch_get_main_queue(),^(){
+            
+        });
+    });
     
 //-------------------------------------------------------------------------------------------------------------------------
     menuItems = [[NSArray alloc]initWithObjects:@"Log History", @"Prediction", @"Weather", @"Buddies", @"Camera/Photos", @"Messages", @"Settings", nil];
@@ -54,8 +75,13 @@
     NSArray *iconsArray = [NSArray arrayWithObjects:@"log_History", @"prediction", @"weather", @"buddies", @"camera", @"messages", @"settings", nil];
     
     functionsDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:functionsArrayIdentifiers, @"identifiers", menuItems, @"strings", iconsArray, @"icons", nil];
-
+//----------------------------------------------------------------------------------------------------------------
+    UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(photoClick:)];
+    [recognizer setNumberOfTapsRequired:1];
+    [recognizer setDelegate:self];
+    [self.imgUser addGestureRecognizer:recognizer];
     
+    [self AddActivityIndicator:[UIColor redColor] forView:self.view];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -114,14 +140,50 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self performSelector:NSSelectorFromString([[functionsDictionary objectForKey:@"identifiers"] objectAtIndex:indexPath.row])];
 }
 
-- (void)didReceiveMemoryWarning
+//------------------------------------------------------------------------------------------------------------------------
+-(void)openSettings
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self.navigationController pushViewController:[SettingsViewController new] animated:YES];
 }
 
+- (void)openCameraAndPhotos
+{
+    PhotoVideoViewController * pvvc = [[PhotoVideoViewController alloc]initWithNibName:@"PhotoVideoViewController" bundle:nil];
+    [self.navigationController pushViewController:pvvc animated:YES];
+}
+
+- (void)openBuddies
+{
+    [self.navigationController pushViewController:[[BuddyListViewController alloc]init] animated:YES];
+}
+
+- (void)openPrediction
+{
+    [self.navigationController pushViewController:[[PredictionViewController alloc]init] animated:YES];
+}
+
+- (void)openWeather
+{
+    [self.navigationController pushViewController:[[WeatherViewController alloc]init] animated:YES];
+}
+
+
+- (void)openLogHistory
+{
+LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibName:@"LogHistoryViewController" bundle:nil];
+[self.navigationController pushViewController:lhvc animated:YES];
+}
+
+- (void)openMessages
+{
+    //message
+}
+
+
+//-------------------------------------------------------------------------------------------------------------------------
 - (void)selectController:(int)tag
 {
     [fmVC setIsPresent:NO];
@@ -293,5 +355,38 @@
     }
     return name;
 }
+
+//--------- set photo-------------------------------------------------------------------------------------
+- (void) photoClick:notification
+{
+    PhotoVideoViewController * pvvc = [PhotoVideoViewController new];
+    pvvc.delegate = self;
+    [self.navigationController pushViewController:pvvc animated:YES];
+}
+
+
+- (void)selectPhoto:(Photo *)photo
+{
+    [self startLoader];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        UIImage * image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.fullPhoto]]];
+        //NSString * str =
+        [dataLoader setUserAvatar:image];
+        
+        dispatch_async(dispatch_get_main_queue(),^(){
+            
+            if(!dataLoader.isCorrectRezult) {
+                NSLog(@"Error upload avatar");
+                [self endLoader];
+            } else {
+                self.imgUser.image = image;
+                [self endLoader];
+            }
+            
+        });
+    });
+}
+
 
 @end

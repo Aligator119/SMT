@@ -23,8 +23,6 @@
     Species * spec;
 }
 
-- (IBAction)actButtonBack:(UIButton *)sender;
-- (IBAction)actButtonHistory:(UIButton *)sender;
 - (void)actDownloadData;
 @end
 
@@ -119,21 +117,6 @@
     });
 }
 
-
-- (IBAction)actButtonHistory:(UIButton *)sender
-{
-    LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibName:@"LogHistoryViewController" bundle:nil];
-    [self.navigationController pushViewController:lhvc animated:YES];
-}
-
-- (IBAction)actButtonBack:(UIButton *)sender {
-//    for (id obj in self.navigationController.viewControllers) {
-//        if ([obj isKindOfClass:[LogAnActivityViewController class]]) {
-//            [self.navigationController popToViewController:obj animated:YES];
-//        }
-//    }
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
 
 - (void)didReceiveMemoryWarning
 {
