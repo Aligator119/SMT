@@ -14,6 +14,5 @@
 
 - (void)showSettings;
 
-- (void)goToViewController:(UIViewController *)viewController;
 
 @end

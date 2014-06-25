@@ -68,11 +68,11 @@
     });
     
 //-------------------------------------------------------------------------------------------------------------------------
-    menuItems = [[NSArray alloc]initWithObjects:@"Log History", @"Prediction", @"Weather", @"Buddies", @"Camera/Photos", @"Messages", @"Settings", nil];
+    menuItems = [[NSArray alloc]initWithObjects:@"Log History", @"Prediction", @"Weather", @"Buddies", @"Camera/Photos", /*@"Messages",*/ @"Settings", nil];
     
-    NSArray *functionsArrayIdentifiers = [[NSArray alloc] initWithObjects:@"openLogHistory", @"openPrediction", @"openWeather", @"openBuddies", @"openCameraAndPhotos", @"openMessages", @"openSettings", nil];
+    NSArray *functionsArrayIdentifiers = [[NSArray alloc] initWithObjects:@"openLogHistory", @"openPrediction", @"openWeather", @"openBuddies", @"openCameraAndPhotos", /*@"openMessages",*/ @"openSettings", nil];
     
-    NSArray *iconsArray = [NSArray arrayWithObjects:@"log_History", @"prediction", @"weather", @"buddies", @"camera", @"messages", @"settings", nil];
+    NSArray *iconsArray = [NSArray arrayWithObjects:@"calendar", @"prediction", @"weather", @"buddies", @"camera", /*@"messages",*/ @"settings", nil];
     
     functionsDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:functionsArrayIdentifiers, @"identifiers", menuItems, @"strings", iconsArray, @"icons", nil];
 //----------------------------------------------------------------------------------------------------------------
@@ -261,7 +261,7 @@ LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibNa
            _current.frame = bounds;
         }];
     } else {
-        [UIView animateWithDuration:1.0f animations:^{
+        [UIView animateWithDuration:0.5f animations:^{
             CGRect bounds = _current.frame;
             bounds.origin.x += 250.0;
             _current.frame = bounds;
@@ -270,9 +270,7 @@ LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibNa
     
 }
 
-- (void)goToViewController:(UIViewController *)viewController
-{
-}
+
 
 - (IBAction)actCloseSetting:(id)sender {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DATA];
@@ -294,10 +292,8 @@ LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibNa
         for (UIView * obj in _current.subviews)
         {
             for (UIView * vie in obj.subviews) {
-                for (UIView * vie2 in vie.subviews) {
-                    if ([vie2 isKindOfClass:[CustomTabBar class]]) {
-                        [((UIButton *)[obj viewWithTag:5]) setBackgroundImage:[UIImage imageNamed:@"st_icon_press.png"] forState:UIControlStateNormal];
-                    }
+                if ([vie isKindOfClass:[CustomTabBar class]]) {
+                    [((UIButton *)[obj viewWithTag:5]) setBackgroundImage:[UIImage imageNamed:@"st_icon_press.png"] forState:UIControlStateNormal];
                 }
             }
         }
@@ -317,11 +313,9 @@ LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibNa
         for (UIView * obj in _current.subviews)
         {
             for (UIView * vie in obj.subviews) {
-                for (UIView * vie2 in vie.subviews) {
-                    if ([vie2 isKindOfClass:[CustomTabBar class]]) {
-                        [((UIButton *)[obj viewWithTag:5]) setBackgroundImage:[UIImage imageNamed:@"st_icon.png"] forState:UIControlStateNormal];
-                        [((UIButton *)[obj viewWithTag:activeTag]) setBackgroundImage:[UIImage imageNamed:[self getImageName:activeTag]] forState:UIControlStateNormal];
-                    }
+                if ([vie isKindOfClass:[CustomTabBar class]]) {
+                    [((UIButton *)[obj viewWithTag:5]) setBackgroundImage:[UIImage imageNamed:@"st_icon.png"] forState:UIControlStateNormal];
+                    [((UIButton *)[obj viewWithTag:activeTag]) setBackgroundImage:[UIImage imageNamed:[self getImageName:activeTag]] forState:UIControlStateNormal];
                 }
             }
         }

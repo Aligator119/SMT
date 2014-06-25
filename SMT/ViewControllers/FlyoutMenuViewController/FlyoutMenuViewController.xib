@@ -57,22 +57,23 @@
                     <rect key="frame" x="0.0" y="190" width="320" height="378"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4hH-og-oi5">
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4hH-og-oi5">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.37254901959999998" green="0.74117647060000003" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="28" id="dmF-vF-zfG"/>
                             </constraints>
                             <segments>
                                 <segment title="" image="home_icon.png"/>
-                                <segment title=""/>
-                                <segment title=""/>
-                                <segment title=""/>
+                                <segment title="" image="look_icon.png"/>
+                                <segment title="" image="video_camera_icon.png"/>
+                                <segment title="TIPS"/>
                             </segments>
+                            <color key="tintColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                         </segmentedControl>
                         <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="RQV-PX-9Oa">
-                            <rect key="frame" x="0.0" y="28" width="320" height="305"/>
+                            <rect key="frame" x="0.0" y="30" width="320" height="305"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FfI-dM-q8r">
@@ -145,7 +146,7 @@
                     <color key="backgroundColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="4hH-og-oi5" firstAttribute="leading" secondItem="caK-EW-bWK" secondAttribute="leading" id="36f-cL-0WP"/>
-                        <constraint firstItem="RQV-PX-9Oa" firstAttribute="top" secondItem="4hH-og-oi5" secondAttribute="bottom" id="C85-t1-qEC"/>
+                        <constraint firstItem="RQV-PX-9Oa" firstAttribute="top" secondItem="4hH-og-oi5" secondAttribute="bottom" constant="2" id="C85-t1-qEC"/>
                         <constraint firstItem="RQV-PX-9Oa" firstAttribute="leading" secondItem="caK-EW-bWK" secondAttribute="leading" id="Ft0-NU-rXq"/>
                         <constraint firstAttribute="trailing" secondItem="4hH-og-oi5" secondAttribute="trailing" id="RQK-D4-Hny"/>
                         <constraint firstItem="4hH-og-oi5" firstAttribute="top" secondItem="caK-EW-bWK" secondAttribute="top" id="VcZ-Z6-tu1"/>
@@ -153,7 +154,7 @@
                         <constraint firstAttribute="trailing" secondItem="Q6z-WW-d2G" secondAttribute="trailing" id="nyO-UM-BmM"/>
                         <constraint firstAttribute="trailing" secondItem="RQV-PX-9Oa" secondAttribute="trailing" id="o9h-7e-nKe"/>
                         <constraint firstItem="Q6z-WW-d2G" firstAttribute="leading" secondItem="caK-EW-bWK" secondAttribute="leading" id="ruj-2d-fnO"/>
-                        <constraint firstAttribute="bottom" secondItem="RQV-PX-9Oa" secondAttribute="bottom" constant="45" id="yts-Gs-Wc0"/>
+                        <constraint firstAttribute="bottom" secondItem="RQV-PX-9Oa" secondAttribute="bottom" constant="43" id="yts-Gs-Wc0"/>
                     </constraints>
                 </view>
             </subviews>
@@ -190,11 +191,13 @@
         <image name="global_icon_press.png" width="30" height="30"/>
         <image name="home_icon.png" width="30" height="30"/>
         <image name="home_icon_press.png" width="30" height="30"/>
+        <image name="look_icon.png" width="30" height="30"/>
         <image name="note_icon.png" width="30" height="30"/>
         <image name="note_icon_press.png" width="30" height="30"/>
         <image name="sportsman_tracker_BG-1.png" width="320" height="568"/>
         <image name="st_icon.png" width="30" height="30"/>
         <image name="st_icon_press.png" width="30" height="30"/>
         <image name="tabbar_BG.png" width="320" height="50"/>
+        <image name="video_camera_icon.png" width="30" height="30"/>
     </resources>
 </document>

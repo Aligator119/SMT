@@ -75,7 +75,8 @@
     
     isPresent = YES;
     [((UIButton *)[self.tabBar viewWithTag:1]) setBackgroundImage:[UIImage imageNamed:@"home_icon_press.png"] forState:UIControlStateNormal];
-
+    
+    [self.segment setBackgroundImage:[UIImage imageNamed:@"segment_control_black_BG.png"] forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
 }
 
 
