@@ -642,8 +642,6 @@
 		04F4989F1953262F00FC065C /* look_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = look_icon.png; path = Image/look_icon.png; sourceTree = "<group>"; };
 		04F498A01953262F00FC065C /* note_icon_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = note_icon_press.png; path = Image/note_icon_press.png; sourceTree = "<group>"; };
 		04F498A11953262F00FC065C /* note_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = note_icon.png; path = Image/note_icon.png; sourceTree = "<group>"; };
-		04F498A21953262F00FC065C /* segment_control_black_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = segment_control_black_BG.png; path = Image/segment_control_black_BG.png; sourceTree = "<group>"; };
-		04F498A31953262F00FC065C /* segment_control_gray_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = segment_control_gray_BG.png; path = Image/segment_control_gray_BG.png; sourceTree = "<group>"; };
 		04F498A41953262F00FC065C /* video_camera_icon_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video_camera_icon_press.png; path = Image/video_camera_icon_press.png; sourceTree = "<group>"; };
 		04F498A51953262F00FC065C /* video_camera_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video_camera_icon.png; path = Image/video_camera_icon.png; sourceTree = "<group>"; };
 		04F498B619532B5400FC065C /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CameraViewController.h; path = ViewControllers/CameraViewController.h; sourceTree = "<group>"; };
@@ -1177,8 +1175,6 @@
 				04F4989F1953262F00FC065C /* look_icon.png */,
 				04F498A01953262F00FC065C /* note_icon_press.png */,
 				04F498A11953262F00FC065C /* note_icon.png */,
-				04F498A21953262F00FC065C /* segment_control_black_BG.png */,
-				04F498A31953262F00FC065C /* segment_control_gray_BG.png */,
 				04F498A41953262F00FC065C /* video_camera_icon_press.png */,
 				04F498A51953262F00FC065C /* video_camera_icon.png */,
 				04F4988E1952FB9400FC065C /* tabbar_BG.png */,

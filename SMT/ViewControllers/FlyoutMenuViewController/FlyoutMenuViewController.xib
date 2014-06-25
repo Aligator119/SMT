@@ -13,6 +13,7 @@
                 <outlet property="btn4" destination="avi-e2-VS5" id="f7i-m7-tLq"/>
                 <outlet property="colectionView" destination="RQV-PX-9Oa" id="VWx-Mo-xcy"/>
                 <outlet property="forTabBar" destination="caK-EW-bWK" id="AqC-FX-I4R"/>
+                <outlet property="pageController" destination="SWC-e9-rUe" id="enS-b0-Bvg"/>
                 <outlet property="tabBar" destination="Q6z-WW-d2G" id="RAq-F8-i6E"/>
                 <outlet property="table" destination="exG-Uq-koA" id="HL9-zb-a1o"/>
                 <outlet property="topViewHeightConstr" destination="RE8-zp-aK1" id="kIB-i2-x1u"/>
@@ -265,6 +266,13 @@
                         <constraint firstItem="iqr-cj-RxU" firstAttribute="leading" secondItem="caK-EW-bWK" secondAttribute="leading" id="y4K-px-7z4"/>
                     </constraints>
                 </view>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="SWC-e9-rUe">
+                    <rect key="frame" x="20" y="153" width="280" height="37"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="37" id="r15-59-1Af"/>
+                    </constraints>
+                </pageControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -283,10 +291,13 @@
                 <constraint firstItem="caK-EW-bWK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jfP-0Y-lIK"/>
                 <constraint firstItem="caK-EW-bWK" firstAttribute="top" secondItem="exG-Uq-koA" secondAttribute="bottom" id="lCz-sg-Dcl"/>
                 <constraint firstItem="exG-Uq-koA" firstAttribute="top" secondItem="b9f-ed-cPn" secondAttribute="bottom" id="lPL-zM-lpy"/>
+                <constraint firstAttribute="trailing" secondItem="SWC-e9-rUe" secondAttribute="trailing" constant="20" id="mKC-gb-FXS"/>
                 <constraint firstItem="4oq-Yq-am3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="q7M-28-eoQ"/>
                 <constraint firstAttribute="trailing" secondItem="caK-EW-bWK" secondAttribute="trailing" id="rju-gn-QRJ"/>
                 <constraint firstItem="b9f-ed-cPn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sPo-dL-bBB"/>
                 <constraint firstItem="exG-Uq-koA" firstAttribute="top" secondItem="b9f-ed-cPn" secondAttribute="bottom" id="sdp-5l-VZV"/>
+                <constraint firstItem="SWC-e9-rUe" firstAttribute="top" secondItem="b9f-ed-cPn" secondAttribute="bottom" constant="89" id="vL0-on-VMo"/>
+                <constraint firstItem="SWC-e9-rUe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="xeD-VR-Va7"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>

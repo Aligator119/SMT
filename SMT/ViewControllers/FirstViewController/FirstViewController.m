@@ -82,6 +82,7 @@
     [self.imgUser addGestureRecognizer:recognizer];
     
     [self AddActivityIndicator:[UIColor redColor] forView:self.view];
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated

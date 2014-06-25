@@ -43,6 +43,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *btn2;
 @property (strong, nonatomic) IBOutlet UIButton *btn3;
 @property (strong, nonatomic) IBOutlet UIButton *btn4;
+@property (strong, nonatomic) IBOutlet UIPageControl *pageController;
 
 - (IBAction)actHome:(id)sender;
 - (IBAction)actLookSee:(id)sender;
@@ -92,6 +93,8 @@
     selectedBtn3 = NO;
     selectedBtn4 = NO;
     [self reverseBackroundImageWithNumber:1];
+    
+    self.pageController.numberOfPages = 5;
 }
 
 
@@ -149,19 +152,19 @@
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageShow" forIndexPath:indexPath];
         switch (indexPath.row) {
             case 0:
-                ((ImageShow *)cell).image.image = [UIImage imageNamed:@"bg_reports_selected"];
+                ((ImageShow *)cell).image.image = [UIImage imageNamed:@"tips_icon.png"];
                 break;
             case 1:
-                ((ImageShow *)cell).image.image = [UIImage imageNamed:@"global_icon.png"];
+                ((ImageShow *)cell).image.image = [UIImage imageNamed:@"tips_icon.png"];
                 break;
             case 2:
-                ((ImageShow *)cell).image.image = [UIImage imageNamed:@"camera_icon.png"];
+                ((ImageShow *)cell).image.image = [UIImage imageNamed:@"tips_icon.png"];
                 break;
             case 3:
-                ((ImageShow *)cell).image.image = [UIImage imageNamed:@"note_icon.png"];
+                ((ImageShow *)cell).image.image = [UIImage imageNamed:@"tips_icon.png"];
                 break;
             default:
-                ((ImageShow *)cell).image.image = [UIImage imageNamed:@"bg_reports_selected"];
+                ((ImageShow *)cell).image.image = [UIImage imageNamed:@"tips_icon.png"];
                 break;
         }
         
@@ -186,7 +189,7 @@
         [UIView animateWithDuration:0.7f animations:^{
             collectionView.contentOffset = point;
         }];
-        
+        self.pageController.currentPage = indexPath.row;
     }
 }
 
