@@ -224,7 +224,7 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated
-{   if ([self.northernPikeList firstObject] == nil) {
+{   if ([self.northernPikeList firstObject] == nil && [listOfSpecies count] == 0) {
     [self startLoader];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
@@ -239,6 +239,9 @@
                 for (Species * s in self.northernPikeList) {
                     if ([s.required intValue] == 1) {
                         [listOfSpecies addObject:s];
+                        ActivityDetails * details = [[ActivityDetails alloc]init];
+                        details.subspecies_id = [s.specId intValue];
+                        [activityDetails addObject:details];
                     }
                 }
                 for (Species * rem in listOfSpecies) {
