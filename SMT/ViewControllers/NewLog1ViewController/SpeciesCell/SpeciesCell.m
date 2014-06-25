@@ -37,6 +37,11 @@
     dispatch_async(queue, ^{
         NSData * imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:specie.thumbnail]];
         dispatch_async(dispatch_get_main_queue(), ^{
+            self.img.layer.masksToBounds = YES;
+            self.img.layer.cornerRadius = self.img.frame.size.height / 2;
+            self.img.layer.borderColor = [UIColor grayColor].CGColor;
+            self.img.layer.borderWidth = 1.0f;
+            
             self.img.image = [UIImage imageWithData:imageData];
         });
     });

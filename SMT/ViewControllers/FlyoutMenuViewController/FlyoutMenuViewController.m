@@ -27,8 +27,11 @@
 @interface FlyoutMenuViewController ()
 {
     DataLoader * dataLoader;
+    BOOL selectedBtn1;
+    BOOL selectedBtn2;
+    BOOL selectedBtn3;
+    BOOL selectedBtn4;
 }
-@property (strong, nonatomic) IBOutlet UIView *presentView;
 @property (strong, nonatomic) IBOutlet UIView *forTabBar;
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * topViewHeightConstr;
@@ -36,9 +39,18 @@
 
 @property (nonatomic, weak) IBOutlet UICollectionView *table;
 @property (strong, nonatomic) IBOutlet UICollectionView *colectionView;
-@property (strong, nonatomic) IBOutlet UISegmentedControl *segment;
+@property (strong, nonatomic) IBOutlet UIButton *btn1;
+@property (strong, nonatomic) IBOutlet UIButton *btn2;
+@property (strong, nonatomic) IBOutlet UIButton *btn3;
+@property (strong, nonatomic) IBOutlet UIButton *btn4;
 
+- (IBAction)actHome:(id)sender;
+- (IBAction)actLookSee:(id)sender;
+- (IBAction)actVideo:(id)sender;
+- (IBAction)actTIPS:(id)sender;
 
+- (void)reverseBackroundImageWithNumber:(int)num;
+- (void)setImageWithAllButton;
 @end
 
 @implementation FlyoutMenuViewController
@@ -75,8 +87,11 @@
     
     isPresent = YES;
     [((UIButton *)[self.tabBar viewWithTag:1]) setBackgroundImage:[UIImage imageNamed:@"home_icon_press.png"] forState:UIControlStateNormal];
-    
-    [self.segment setBackgroundImage:[UIImage imageNamed:@"segment_control_black_BG.png"] forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+    selectedBtn1 = NO;
+    selectedBtn2 = NO;
+    selectedBtn3 = NO;
+    selectedBtn4 = NO;
+    [self reverseBackroundImageWithNumber:1];
 }
 
 
@@ -175,5 +190,94 @@
     }
 }
 
+
+- (IBAction)actHome:(id)sender {
+    [self reverseBackroundImageWithNumber:1];
+}
+
+- (IBAction)actLookSee:(id)sender {
+    [self reverseBackroundImageWithNumber:2];
+}
+
+- (IBAction)actVideo:(id)sender {
+    [self reverseBackroundImageWithNumber:3];
+}
+- (IBAction)actTIPS:(id)sender {
+    [self reverseBackroundImageWithNumber:4];
+}
+
+- (void)reverseBackroundImageWithNumber:(int)num
+{
+    switch (num) {
+        case 1:
+        {
+            selectedBtn1 = NO;
+            selectedBtn2 = YES;
+            selectedBtn3 = YES;
+            selectedBtn4 = YES;
+            [self setImageWithAllButton];
+        }
+            break;
+        case 2:
+        {
+            selectedBtn1 = YES;
+            selectedBtn2 = NO;
+            selectedBtn3 = YES;
+            selectedBtn4 = YES;
+            [self setImageWithAllButton];
+        }
+            break;
+        case 3:
+        {
+            selectedBtn1 = YES;
+            selectedBtn2 = YES;
+            selectedBtn3 = NO;
+            selectedBtn4 = YES;
+            [self setImageWithAllButton];
+        }
+            break;
+        case 4:
+        {
+            selectedBtn1 = YES;
+            selectedBtn2 = YES;
+            selectedBtn3 = YES;
+            selectedBtn4 = NO;
+            [self setImageWithAllButton];
+        }
+            break;
+    }
+}
+
+- (void)setImageWithAllButton
+{
+    if (selectedBtn1) {
+        [self.btn1 setBackgroundImage:[UIImage imageNamed:@"foto_icon.png"] forState:UIControlStateNormal];
+        //[self.btn1 setBackgroundImage:[UIImage imageNamed:@"foto_icon_press.png"] forState:UIControlStateHighlighted];
+    } else {
+        //[self.btn1 setBackgroundImage:[UIImage imageNamed:@"foto_icon.png"] forState:UIControlStateHighlighted];
+        [self.btn1 setBackgroundImage:[UIImage imageNamed:@"foto_icon_press.png"] forState:UIControlStateNormal];
+    }
+    if (selectedBtn2) {
+        [self.btn2 setBackgroundImage:[UIImage imageNamed:@"look_icon.png"] forState:UIControlStateNormal];
+        //[self.btn2 setBackgroundImage:[UIImage imageNamed:@"look_icon_press.png"] forState:UIControlStateHighlighted];
+    } else {
+        //[self.btn2 setBackgroundImage:[UIImage imageNamed:@"look_icon.png"] forState:UIControlStateHighlighted];
+        [self.btn2 setBackgroundImage:[UIImage imageNamed:@"look_icon_press.png"] forState:UIControlStateNormal];
+    }
+    if (selectedBtn3) {
+        [self.btn3 setBackgroundImage:[UIImage imageNamed:@"video_camera_icon.png"] forState:UIControlStateNormal];
+        //[self.btn3 setBackgroundImage:[UIImage imageNamed:@"video_camera_icon_press.png"] forState:UIControlStateHighlighted];
+    } else {
+        //[self.btn3 setBackgroundImage:[UIImage imageNamed:@"video_camera_icon.png"] forState:UIControlStateHighlighted];
+        [self.btn3 setBackgroundImage:[UIImage imageNamed:@"video_camera_icon_press.png"] forState:UIControlStateNormal];
+    }
+    if (selectedBtn4) {
+        [self.btn4 setBackgroundImage:[UIImage imageNamed:@"tips_icon.png"] forState:UIControlStateNormal];
+        //[self.btn4 setBackgroundImage:[UIImage imageNamed:@"foto_icon_press.png"] forState:UIControlStateHighlighted];
+    } else {
+        //[self.btn4 setBackgroundImage:[UIImage imageNamed:@"tips_icon.png"] forState:UIControlStateHighlighted];
+        [self.btn4 setBackgroundImage:[UIImage imageNamed:@"tips_icon_press.png"] forState:UIControlStateNormal];
+    }
+}
 
 @end
