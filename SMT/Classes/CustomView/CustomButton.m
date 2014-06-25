@@ -43,8 +43,12 @@
 
 
 - (void)removeSelectIthem
-{   if (selectSpecie)
-    [inputArray removeObject:selectSpecie];
+{   if (selectSpecie) {
+        [inputArray removeObject:selectSpecie];
+        if (inputArray.count) {
+            [self setSelectedSpecies:[inputArray firstObject]];
+        }
+    }
 }
 
 - (void) addSpecie:(Species *)spec

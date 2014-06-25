@@ -17,6 +17,7 @@
 {
     BOOL isPresent;
 }
+@property (nonatomic) BOOL isTabBar;
 @property (nonatomic) NSInteger mapType;
 @property (strong, nonatomic) IBOutlet CustomTabBar *tabBar;
 - (void) moveToLocation: (CLLocationCoordinate2D) loc;

@@ -371,7 +371,11 @@
 
 - (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    self.selectedIthem = [questionsList objectAtIndex:row];
+    if (self.picker.tag == 55) {
+        self.northernPike = [questionsList objectAtIndex:row];
+    } else {
+        self.selectedIthem = [questionsList objectAtIndex:row];
+    }
 }
 
 //---------------------------------------------------------------------------------------------------------------
@@ -539,14 +543,15 @@
 - (IBAction)actAdd:(id)sender {
     if (self.northernPike) {
         [self.btnNorthempike removeSelectIthem];
-        [self.btnNorthempike setTitle:@"Northern Pike" forState:UIControlStateNormal];
         [listOfSpecies addObject:self.northernPike];
         ActivityDetails * details = [[ActivityDetails alloc]init];
         details.subspecies_id = [self.northernPike.specId intValue];
         [activityDetails addObject:details];
-        self.northernPike = nil;
+        self.northernPike = [self.btnNorthempike getSelectedSpecie];
         [self.table reloadData];
         
+    } else {
+        [self.btnNorthempike setTitle:@"" forState:UIControlStateNormal];
     }
 }
 
@@ -679,6 +684,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1){
         MapViewController * mvc = [[MapViewController alloc]initWithNibName:@"MapViewController" bundle:nil];
+        mvc.isTabBar = YES;
         [self.navigationController pushViewController:mvc animated:YES];
     }
 }

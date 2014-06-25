@@ -36,6 +36,8 @@
 @property (nonatomic, strong) CLGeocoder *geocoder;
 
 
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *mapBottom;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *tabBarHegth;
 
 
 @end
@@ -59,6 +61,12 @@
     
     [self showMap];
     [self createLocationManager];
+    
+    if (_isTabBar) {
+        self.mapBottom.constant = 0;
+        self.tabBarHegth.constant = 0;
+        [self.view layoutIfNeeded];
+    }
     
 }
 
