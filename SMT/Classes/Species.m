@@ -13,10 +13,11 @@
 #define DESCRIPTION @"description"
 #define PHOTO @"photo"
 #define THUMBNAIL @"thumbnail"
+#define REQUIRED  @"required"
 
 @implementation Species
 
-@synthesize specId, name, description, thumbnail, photo;
+@synthesize specId, name, description, thumbnail, photo, required;
 
 -(void)initSpeciesWithData:(NSDictionary *)infoDict
 {
@@ -25,6 +26,7 @@
     description = [infoDict objectForKey:DESCRIPTION];
     thumbnail = [NSString stringWithFormat:@"%@%@",URLSportsMaster,[infoDict objectForKey:THUMBNAIL]];
     photo = [NSString stringWithFormat:@"%@%@",URLSportsMaster,[infoDict objectForKey:PHOTO]];
+    required = [infoDict objectForKey:REQUIRED];
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder {
@@ -33,6 +35,7 @@
     [encoder encodeObject:description forKey:DESCRIPTION];
     [encoder encodeObject:thumbnail forKey:THUMBNAIL];
     [encoder encodeObject:photo forKey:THUMBNAIL];
+    [encoder encodeObject:required forKey:REQUIRED];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder
@@ -43,6 +46,7 @@
         description = [decoder decodeObjectForKey:DESCRIPTION];
         thumbnail = [decoder decodeObjectForKey:THUMBNAIL];
         photo = [decoder decodeObjectForKey:PHOTO];
+        required = [decoder decodeObjectForKey:REQUIRED];
     }
     return self;
 }

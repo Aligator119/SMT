@@ -13,7 +13,7 @@
 #import "CustomButton.h"
 #import "CustomTextField.h"
 
-@interface NewLog2ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, LocationListViewControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, ButtonControllerDelegate>
+@interface NewLog2ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, LocationListViewControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, ButtonControllerDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray * northernPikeList;
 @property (strong, nonatomic) Location * location;

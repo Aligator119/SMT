@@ -7,6 +7,7 @@
 #import "Activity.h"
 #import "ActivityDetails.h"
 #import "Location.h"
+#import "MapViewController.h"
 
 
 
@@ -197,6 +198,29 @@
         }
     
     }
+    appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//set first location
+    [dataLoader getLocationsAssociatedWithUser];
+    if (!appDelegate.listLocations.count) {
+        [[[UIAlertView alloc]initWithTitle:@"Warning" message:@"No added location" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:@"Add location", nil] show ];
+    } else {
+        self.location = [appDelegate.listLocations objectAtIndex:0];
+        [self.btnLocation setTitle:self.location.locName forState:UIControlStateNormal];
+    }
+//set current date
+    self.huntDate = [NSDate date];
+    [self.btnDate setTitle:[btnDateFormatter stringFromDate:self.huntDate] forState:UIControlStateNormal];
+//set start time with current date
+    NSCalendar *gregorianCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents * components = [gregorianCalendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit fromDate:[NSDate date]];
+    components.hour -= 3;
+    self.huntStartTime = [gregorianCalendar dateFromComponents:components];
+    [self.btnStartTime setTitle:[btnTimeFormatter stringFromDate:self.huntStartTime] forState:UIControlStateNormal];
+//set end time with current date
+    self.huntEndTime = self.huntDate;
+    [self.btnEndTime setTitle:[btnTimeFormatter stringFromDate:self.huntEndTime] forState:UIControlStateNormal];
+
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -212,7 +236,18 @@
             if(!dataLoader.isCorrectRezult) {
                 NSLog(@"Error download sybSpecie");
             } else {
+                for (Species * s in self.northernPikeList) {
+                    if ([s.required intValue] == 1) {
+                        [listOfSpecies addObject:s];
+                    }
+                }
+                for (Species * rem in listOfSpecies) {
+                    [self.northernPikeList removeObject:rem];
+                }
                 [self.btnNorthempike setInputArray:self.northernPikeList];
+                //set northem pike first object
+                self.northernPike = [self.northernPikeList firstObject];
+                [self.btnNorthempike setSelectedSpecies:self.northernPike];
                 [self.table reloadData];
                 [self endLoader];
             }
@@ -636,6 +671,13 @@
 {
     NSString * model = [UIDevice currentDevice].model;
     return [model isEqualToString:@"iPad Simulator"] ? YES : NO;
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1){
+        MapViewController * mvc = [[MapViewController alloc]initWithNibName:@"MapViewController" bundle:nil];
+        [self.navigationController pushViewController:mvc animated:YES];
+    }
 }
 
 @end

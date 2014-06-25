@@ -6,6 +6,7 @@
     NSString * selectItem;
     Species * selectSpecie;
     NSString * questionID;
+    NSString * btnType;
 }
 
 - (void)click:(id)sender;
@@ -60,10 +61,13 @@
 {
     questionID = [dict objectForKey:@"id"];
     [self setTitle:[dict objectForKey:@"question"] forState:UIControlStateNormal];
+    btnType = [NSString stringWithFormat:@"%@: ",[dict objectForKey:@"question"]];
     inputArray = [[NSMutableArray alloc]init];
     for (NSDictionary * obj in [dict objectForKey:@"options"]) {
         [inputArray addObject:[obj objectForKey:@"myoption"]];
     }
+    selectItem = [inputArray firstObject];
+    [self setSelectedIthem:selectItem];
 }
 
 - (void) setButtonWithKillingDictionary:(NSDictionary *) dict
@@ -98,7 +102,7 @@
     for (NSString * obj in inputArray) {
         if ([obj isEqualToString:str]) {
             selectItem = str;
-            [self setTitle:str forState:UIControlStateNormal];
+            [self setTitle:[btnType stringByAppendingString:str] forState:UIControlStateNormal];
         }
     }
     }

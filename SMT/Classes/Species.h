@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSString *photo;
 @property (nonatomic) int seen;
 @property (nonatomic) int harvested;
+@property (strong, nonatomic) NSString * required;
 
 -(void)initSpeciesWithData:(NSDictionary*) infoDict;
 
