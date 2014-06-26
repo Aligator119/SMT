@@ -7,8 +7,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraViewController">
             <connections>
+                <outlet property="con1" destination="y16-9w-RcE" id="MQv-hi-5kd"/>
+                <outlet property="con2" destination="HHG-4M-qA2" id="IXt-pl-gRk"/>
+                <outlet property="con3" destination="Qhi-vf-ROp" id="hTh-R4-zw3"/>
+                <outlet property="con4" destination="ljB-Of-BJh" id="yTO-0A-t9c"/>
+                <outlet property="con5" destination="hEm-Lg-cGQ" id="ok6-vJ-PDl"/>
+                <outlet property="con6" destination="mbO-7Q-XjB" id="an5-3W-ABu"/>
                 <outlet property="image" destination="TcO-h8-2RU" id="YcH-rK-dGH"/>
                 <outlet property="tabBar" destination="Hgc-sJ-B9V" id="jCn-T5-JFb"/>
+                <outlet property="tabBarWidth" destination="YT2-WY-scq" id="Bgj-Se-Ka7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -49,45 +56,65 @@
                     <rect key="frame" x="0.0" y="522" width="320" height="46"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tabbar_BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="uTz-Zu-QIU">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabbar_BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="uTz-Zu-QIU">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJr-zl-O8C">
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJr-zl-O8C">
                             <rect key="frame" x="17" y="8" width="36" height="36"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="L9l-UY-xF5"/>
+                                <constraint firstAttribute="width" constant="36" id="Wgz-6o-lVY"/>
+                            </constraints>
                             <state key="normal" backgroundImage="home_icon.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="highlighted" backgroundImage="home_icon_press.png"/>
                         </button>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r8B-o3-Nmf">
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r8B-o3-Nmf">
                             <rect key="frame" x="73" y="8" width="36" height="36"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="4sv-KI-pJa"/>
+                                <constraint firstAttribute="width" constant="36" id="W4i-OZ-kIj"/>
+                            </constraints>
                             <state key="normal" backgroundImage="global_icon.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="highlighted" backgroundImage="global_icon_press.png"/>
                         </button>
-                        <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXC-nv-WNS">
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXC-nv-WNS">
                             <rect key="frame" x="142" y="8" width="36" height="36"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="36" id="1jM-vN-lO6"/>
+                                <constraint firstAttribute="height" constant="36" id="Pda-TK-5Cq"/>
+                            </constraints>
                             <state key="normal" backgroundImage="camera_icon.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="highlighted" backgroundImage="camera_icon_press.png"/>
                         </button>
-                        <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXo-x1-BLX">
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXo-x1-BLX">
                             <rect key="frame" x="213" y="8" width="36" height="36"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="36" id="aQX-7J-91E"/>
+                                <constraint firstAttribute="height" constant="36" id="wzk-Bc-XD0"/>
+                            </constraints>
                             <state key="normal" backgroundImage="note_icon.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="highlighted" backgroundImage="note_icon_press.png"/>
                         </button>
-                        <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KfL-H9-r6M">
+                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KfL-H9-r6M">
                             <rect key="frame" x="267" y="8" width="36" height="36"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="IDd-Sw-cky"/>
+                                <constraint firstAttribute="width" constant="36" id="n7T-dP-7Rz"/>
+                            </constraints>
                             <state key="normal" backgroundImage="st_icon.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -96,13 +123,28 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="uTz-Zu-QIU" secondAttribute="bottom" id="0Qk-Zx-aAr"/>
+                        <constraint firstItem="r8B-o3-Nmf" firstAttribute="leading" secondItem="GJr-zl-O8C" secondAttribute="trailing" constant="20" id="HHG-4M-qA2"/>
+                        <constraint firstAttribute="bottom" secondItem="UXo-x1-BLX" secondAttribute="bottom" constant="2" id="M0B-aP-H9m"/>
+                        <constraint firstAttribute="bottom" secondItem="KfL-H9-r6M" secondAttribute="bottom" constant="2" id="Mon-TI-e3y"/>
+                        <constraint firstItem="eXC-nv-WNS" firstAttribute="leading" secondItem="r8B-o3-Nmf" secondAttribute="trailing" constant="33" id="Qhi-vf-ROp"/>
+                        <constraint firstItem="uTz-Zu-QIU" firstAttribute="top" secondItem="Hgc-sJ-B9V" secondAttribute="top" id="TD4-zH-XZ1"/>
+                        <constraint firstAttribute="width" constant="320" id="YT2-WY-scq"/>
+                        <constraint firstItem="uTz-Zu-QIU" firstAttribute="leading" secondItem="Hgc-sJ-B9V" secondAttribute="leading" id="bPC-Zz-3zK"/>
+                        <constraint firstAttribute="trailing" secondItem="uTz-Zu-QIU" secondAttribute="trailing" id="cTf-kb-Mk8"/>
+                        <constraint firstItem="KfL-H9-r6M" firstAttribute="leading" secondItem="UXo-x1-BLX" secondAttribute="trailing" constant="18" id="hEm-Lg-cGQ"/>
+                        <constraint firstAttribute="bottom" secondItem="r8B-o3-Nmf" secondAttribute="bottom" constant="2" id="lev-NL-MrY"/>
+                        <constraint firstItem="UXo-x1-BLX" firstAttribute="leading" secondItem="eXC-nv-WNS" secondAttribute="trailing" constant="35" id="ljB-Of-BJh"/>
+                        <constraint firstAttribute="trailing" secondItem="KfL-H9-r6M" secondAttribute="trailing" constant="17" id="mbO-7Q-XjB"/>
+                        <constraint firstAttribute="bottom" secondItem="GJr-zl-O8C" secondAttribute="bottom" constant="2" id="oee-lU-HYx"/>
                         <constraint firstAttribute="height" constant="46" id="sZh-by-5NN"/>
+                        <constraint firstItem="GJr-zl-O8C" firstAttribute="leading" secondItem="Hgc-sJ-B9V" secondAttribute="leading" constant="17" id="y16-9w-RcE"/>
+                        <constraint firstAttribute="bottom" secondItem="eXC-nv-WNS" secondAttribute="bottom" constant="2" id="zrY-Kt-FyB"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Hgc-sJ-B9V" secondAttribute="trailing" id="50F-C1-1Kx"/>
                 <constraint firstItem="Hgc-sJ-B9V" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Pbc-9V-Sct"/>
                 <constraint firstAttribute="bottom" secondItem="Hgc-sJ-B9V" secondAttribute="bottom" id="TXe-Go-nFO"/>
             </constraints>

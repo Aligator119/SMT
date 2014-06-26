@@ -22,6 +22,13 @@
     NSArray * array;
     Species * spec;
 }
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *tabBarWidth;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *con1;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *con2;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *con3;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *con4;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *con5;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *con6;
 
 - (void)actDownloadData;
 @end
@@ -54,12 +61,20 @@
     
     UINib *cellNib = [UINib nibWithNibName:@"SpeciesCell" bundle:[NSBundle mainBundle]];
     [self.table registerNib:cellNib forCellReuseIdentifier:@"SpeciesCell"];
-    
+
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    
+    self.tabBarWidth.constant = self.view.frame.size.width;
+    float f = self.view.frame.size.width - 180;
+    self.con1.constant = f/6;
+    self.con2.constant = f/6;
+    self.con3.constant = f/6;
+    self.con4.constant = f/6;
+    self.con5.constant = f/6;
+    self.con6.constant = f/6;
+    [self.view updateConstraintsIfNeeded];
     [self actDownloadData];
 }
 

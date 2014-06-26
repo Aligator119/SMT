@@ -25,7 +25,7 @@
 - (IBAction)actBack:(id)sender;
 - (void)actChack:(UIButton *)sender;
 - (UIButton *)addChackButtonAndChek:(BOOL)flag andIndex:(int)row;
-- (void) getSharedsBuddy;
+- (void) getSharedsBuddyWithLocationID:(Location *)loc;
 @end
 
 @implementation ShareLocationViewController
@@ -54,7 +54,7 @@
     }
     
     dictionary = [NSMutableDictionary new];
-    [self getSharedsBuddy];
+    [self getSharedsBuddyWithLocationID:_location];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -69,16 +69,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
     }
-    
-//    for (Buddy * bud in buddyShareds) {
-//        if ([bud.userID intValue] == [buddy.userID intValue]) {
-//            [cell addSubview:[self addChackButtonAndChek:YES andIndex:indexPath.row]];
-//            cell.tag = 1;
-//        } else {
-//            [cell addSubview:[self addChackButtonAndChek:NO andIndex:indexPath.row]];
-//            cell.tag = 0;
-//        }
-//    }
+
     NSString * currentID = [NSString stringWithFormat:@"%@",buddy.userID];
     if ([idBuddyShareds containsObject:currentID]) {
         [cell addSubview:[self addChackButtonAndChek:YES andIndex:indexPath.row]];
@@ -127,6 +118,7 @@
 
 - (void)actChack:(UIButton *)sender
 {
+   
     [self startLoader];
     sender.enabled = NO;
     if (sender.superview.superview.tag) {
@@ -134,21 +126,23 @@
         
         dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(newQueue, ^(){
-            
+             NSDictionary * result;
             Buddy * buf = [appDelegate.listUserBuddies objectAtIndex:sender.tag];
-            [dataLoader unsharedLocation:_location.locID andWithBuddy:[buf.userID intValue]];
+            result = [dataLoader unsharedLocation:_location.locID andWithBuddy:[buf.userID intValue]];
             
             dispatch_async(dispatch_get_main_queue(), ^(){
                 
                 if(!dataLoader.isCorrectRezult) {
-                    NSLog(@"Error shared");
+                    NSLog(@"Error shared %@",result);
                     [sender setBackgroundImage:[UIImage imageNamed:@"chek"] forState:UIControlStateNormal];
                     [sender setBackgroundImage:[UIImage imageNamed:@"chek"] forState:UIControlStateHighlighted];
                 } else {
+                    NSLog(@"shared %@",result);
                     sender.superview.superview.tag = 0;
                     [sender setBackgroundImage:[UIImage imageNamed:@"unchek"] forState:UIControlStateNormal];
                     [sender setBackgroundImage:[UIImage imageNamed:@"unchek"] forState:UIControlStateHighlighted];
-                    [self getSharedsBuddy];
+                    //[self getSharedsBuddyWithLocationID:_location];
+                    [idBuddyShareds removeObject:[NSString stringWithFormat:@"%@",buf.userID]];
                     sender.enabled = YES;
                     [self.table reloadData];
                     [self endLoader];
@@ -162,21 +156,23 @@
         [sender setBackgroundImage:[UIImage imageNamed:@"chek"] forState:UIControlStateHighlighted];
         dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(newQueue, ^(){
-            
+            NSDictionary * result;
             Buddy * buf = [appDelegate.listUserBuddies objectAtIndex:sender.tag];
-            [dataLoader sharedLocation:_location.locID  andWithBuddy:[buf.userID intValue]];
+            result = [dataLoader sharedLocation:_location.locID  andWithBuddy:[buf.userID intValue]];
             
             dispatch_async(dispatch_get_main_queue(), ^(){
                 
                 if(!dataLoader.isCorrectRezult) {
-                    NSLog(@"Error shared");
+                    NSLog(@"Error shared %@",result);
                     [sender setBackgroundImage:[UIImage imageNamed:@"unchek"] forState:UIControlStateNormal];
                     [sender setBackgroundImage:[UIImage imageNamed:@"unchek"] forState:UIControlStateHighlighted];
                 } else {
+                    NSLog(@"shared %@",result);
                     sender.superview.superview.tag = 1;
                     [sender setBackgroundImage:[UIImage imageNamed:@"chek"] forState:UIControlStateNormal];
                     [sender setBackgroundImage:[UIImage imageNamed:@"chek"] forState:UIControlStateHighlighted];
-                    [self getSharedsBuddy];
+                    //[self getSharedsBuddyWithLocationID:_location];
+                    [idBuddyShareds addObject:[NSString stringWithFormat:@"%@",buf.userID]];
                     sender.enabled = YES;
                     [self.table reloadData];
                     [self endLoader];
@@ -187,8 +183,9 @@
 }
 
 
-- (void) getSharedsBuddy{
-    buddyShareds = [dataLoader getBuddySharedLocation];
+- (void) getSharedsBuddyWithLocationID:(Location *)loc;
+{
+    buddyShareds = [dataLoader getBuddySharedLocationWithID:[NSString stringWithFormat:@"%d",loc.locID]];
     idBuddyShareds = [[NSMutableArray alloc]init];
     for (Buddy * bud in buddyShareds) {
         [idBuddyShareds addObject:bud.userID];

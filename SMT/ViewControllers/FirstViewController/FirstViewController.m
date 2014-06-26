@@ -14,6 +14,7 @@
 @interface FirstViewController ()
 {
     BOOL isSettings;
+    BOOL isiPad;
     FlyoutMenuViewController * fmVC;
     LocationListViewController * llVC;
     CameraViewController * cVC;
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *lbNameLocation;
 @property (strong, nonatomic) IBOutlet UILabel *lbStatus;
 @property (strong, nonatomic) IBOutlet UITableView *table;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *leftsSpace;
 - (IBAction)actCloseSetting:(id)sender;
 - (void)deselectSettingButton;
 - (void)selectSettingButton;
@@ -84,11 +86,17 @@
     [self AddActivityIndicator:[UIColor redColor] forView:self.view];
     
     [dataLoader getLocationsAssociatedWithUser];
-    
+    isiPad = NO;
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    if (self.view.frame.size.width > 320.0) {
+        isiPad = YES;
+        self.leftsSpace.constant = self.view.frame.size.width * 0.218;
+        [self.view updateConstraintsIfNeeded];
+    }
+    
     fmVC = [FlyoutMenuViewController new];
     fmVC.view.frame = self.view.frame;
     fmVC.tabBar.delegate = self;
@@ -261,13 +269,21 @@ LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibNa
     if (!isSettings) {
         [UIView animateWithDuration:0.5f animations:^{
             CGRect bounds = _current.frame;
+            if (!isiPad) {
             bounds.origin.x -= 250.0;
+            } else {
+                bounds.origin.x -= self.view.frame.size.width * 0.78;
+            }
            _current.frame = bounds;
         }];
     } else {
         [UIView animateWithDuration:0.5f animations:^{
             CGRect bounds = _current.frame;
+            if (!isiPad) {
             bounds.origin.x += 250.0;
+            } else {
+                bounds.origin.x += self.view.frame.size.width * 0.78;
+            }
             _current.frame = bounds;
         }];
     }
@@ -279,12 +295,12 @@ LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibNa
 - (IBAction)actCloseSetting:(id)sender {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DATA];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    [((AppDelegate *)[UIApplication sharedApplication].delegate).listLocations removeAllObjects];
-    [((AppDelegate *)[UIApplication sharedApplication].delegate).speciesList removeAllObjects];
-    ((AppDelegate *)[UIApplication sharedApplication].delegate).defaultLocation = nil;
-    [((AppDelegate *)[UIApplication sharedApplication].delegate).listUserBuddies removeAllObjects];
-    ((AppDelegate *)[UIApplication sharedApplication].delegate).wheatherPredictList = nil;
-    [((AppDelegate *)[UIApplication sharedApplication].delegate).pred removeAllObjects];
+    [appDelegate.listLocations removeAllObjects];
+    [appDelegate.speciesList removeAllObjects];
+    appDelegate.defaultLocation = nil;
+    [appDelegate.listUserBuddies removeAllObjects];
+    appDelegate.wheatherPredictList = nil;
+    [appDelegate.pred removeAllObjects];
     NSString * nibName = [AppDelegate nibNameForBaseName:@"LoginViewController"];
     LoginViewController * lvc = [[LoginViewController alloc]initWithNibName:nibName bundle:nil];
     [self.navigationController pushViewController:lvc animated:YES];

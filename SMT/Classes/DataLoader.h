@@ -131,8 +131,8 @@ enum ApplicationServiceRequest
 - (void) updateLogDetailWithId:(NSString *) logId andSighting:(NSDictionary *)sighting;
 - (void) deleteLogDetailWithId:(int)logId;
 //------- Shared Location -----------------------------------------------
-- (NSArray *) getBuddySharedLocation;
-- (void) sharedLocation:(int)location_id andWithBuddy:(int)buddy_id;
-- (void) unsharedLocation:(int)location_id andWithBuddy:(int)buddy_id;
+- (NSArray *) getBuddySharedLocationWithID:(NSString *)loc_id;
+- (NSDictionary *) sharedLocation:(int)location_id andWithBuddy:(int)buddy_id;
+- (NSDictionary *) unsharedLocation:(int)location_id andWithBuddy:(int)buddy_id;
 
 @end
