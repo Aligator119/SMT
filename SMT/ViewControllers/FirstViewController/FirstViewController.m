@@ -96,6 +96,7 @@
     
     mapVC = [MapViewController new];
     mapVC.view.frame = self.view.frame;
+    mapVC.mapType = typeHunting;
     mapVC.tabBar.delegate = self;
     [mapVC viewWillAppear:YES];
     [mapVC viewDidAppear:YES];
