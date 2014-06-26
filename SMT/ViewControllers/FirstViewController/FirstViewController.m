@@ -15,7 +15,7 @@
 {
     BOOL isSettings;
     FlyoutMenuViewController * fmVC;
-    MapViewController * mapVC;
+    LocationListViewController * llVC;
     CameraViewController * cVC;
     NewLog1ViewController * nl1VC;
     int activeTag;
@@ -83,6 +83,8 @@
     
     [self AddActivityIndicator:[UIColor redColor] forView:self.view];
     
+    [dataLoader getLocationsAssociatedWithUser];
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -94,12 +96,12 @@
     [fmVC viewDidAppear:YES];
     
     
-    mapVC = [MapViewController new];
-    mapVC.view.frame = self.view.frame;
-    mapVC.mapType = typeHunting;
-    mapVC.tabBar.delegate = self;
-    [mapVC viewWillAppear:YES];
-    [mapVC viewDidAppear:YES];
+    llVC = [LocationListViewController new];
+    llVC.view.frame = self.view.frame;
+    llVC.mapType = typeHunting;
+    llVC.tabBar.delegate = self;
+    [llVC viewWillAppear:YES];
+    [llVC viewDidAppear:YES];
     
     cVC = [CameraViewController new];
     cVC.view.frame = self.view.frame;
@@ -189,7 +191,7 @@ LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibNa
 - (void)selectController:(int)tag
 {
     [fmVC setIsPresent:NO];
-    [mapVC setIsPresent:NO];
+    [llVC setIsPresent:NO];
     [nl1VC setIsPresent:NO];
     switch (tag) {
         case 1:
@@ -207,12 +209,12 @@ LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibNa
         case 2:
         {
             [_current removeFromSuperview];
-            if (![self.childViewControllers containsObject:mapVC]) {
-                [self addChildViewController:mapVC];
+            if (![self.childViewControllers containsObject:llVC]) {
+                [self addChildViewController:llVC];
             }
-            [self.view addSubview:mapVC.view];
-            _current = mapVC.view;
-            [mapVC setIsPresent:YES];
+            [self.view addSubview:llVC.view];
+            _current = llVC.view;
+            [llVC setIsPresent:YES];
             activeTag = tag;
         }
             break;

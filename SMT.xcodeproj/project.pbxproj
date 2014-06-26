@@ -171,6 +171,8 @@
 		04E5B96D193780EF00E1C824 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E5B96C193780EF00E1C824 /* libCorePlot-CocoaTouch.a */; };
 		04E84190193340640064C03C /* NorthernPikeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E8418E193340640064C03C /* NorthernPikeCell.m */; };
 		04E84191193340640064C03C /* NorthernPikeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E8418F193340640064C03C /* NorthernPikeCell.xib */; };
+		04E855EC195C194A00A54425 /* CellWithTwoButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E855EA195C194A00A54425 /* CellWithTwoButton.m */; };
+		04E855ED195C194A00A54425 /* CellWithTwoButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E855EB195C194A00A54425 /* CellWithTwoButton.xib */; };
 		04E88FC1191BA07B00DEF977 /* NewLog1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E88FBF191BA07B00DEF977 /* NewLog1ViewController.m */; };
 		04E88FC2191BA07B00DEF977 /* NewLog1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E88FC0191BA07B00DEF977 /* NewLog1ViewController.xib */; };
 		04EFC31F19249890008A59D7 /* logo-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EFC31B19249890008A59D7 /* logo-1.png */; };
@@ -617,6 +619,9 @@
 		04E8418D193340640064C03C /* NorthernPikeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NorthernPikeCell.h; path = ViewControllers/NewLog2ViewController/NorthernPikeCell/NorthernPikeCell.h; sourceTree = "<group>"; };
 		04E8418E193340640064C03C /* NorthernPikeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NorthernPikeCell.m; path = ViewControllers/NewLog2ViewController/NorthernPikeCell/NorthernPikeCell.m; sourceTree = "<group>"; };
 		04E8418F193340640064C03C /* NorthernPikeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NorthernPikeCell.xib; path = ViewControllers/NewLog2ViewController/NorthernPikeCell/NorthernPikeCell.xib; sourceTree = "<group>"; };
+		04E855E9195C194A00A54425 /* CellWithTwoButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CellWithTwoButton.h; path = cellWithTwoButton/CellWithTwoButton.h; sourceTree = "<group>"; };
+		04E855EA195C194A00A54425 /* CellWithTwoButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CellWithTwoButton.m; path = cellWithTwoButton/CellWithTwoButton.m; sourceTree = "<group>"; };
+		04E855EB195C194A00A54425 /* CellWithTwoButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CellWithTwoButton.xib; path = cellWithTwoButton/CellWithTwoButton.xib; sourceTree = "<group>"; };
 		04E88FBE191BA07B00DEF977 /* NewLog1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewLog1ViewController.h; sourceTree = "<group>"; };
 		04E88FBF191BA07B00DEF977 /* NewLog1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewLog1ViewController.m; sourceTree = "<group>"; };
 		04E88FC0191BA07B00DEF977 /* NewLog1ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewLog1ViewController.xib; sourceTree = "<group>"; };
@@ -1325,6 +1330,7 @@
 		04A2A39A191B7FC00006677E /* LocationListViewController */ = {
 			isa = PBXGroup;
 			children = (
+				04E855E8195C190000A54425 /* CellWithTwoButton */,
 				04A2A39B191B7FC00006677E /* LocationCell */,
 				04A2A39F191B7FC00006677E /* LocationListViewController.h */,
 				04A2A3A0191B7FC00006677E /* LocationListViewController.m */,
@@ -1634,6 +1640,16 @@
 			name = NorthernPikeCell;
 			sourceTree = "<group>";
 		};
+		04E855E8195C190000A54425 /* CellWithTwoButton */ = {
+			isa = PBXGroup;
+			children = (
+				04E855E9195C194A00A54425 /* CellWithTwoButton.h */,
+				04E855EA195C194A00A54425 /* CellWithTwoButton.m */,
+				04E855EB195C194A00A54425 /* CellWithTwoButton.xib */,
+			);
+			name = CellWithTwoButton;
+			sourceTree = "<group>";
+		};
 		04E88FBD191BA07B00DEF977 /* NewLog1ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1901,6 +1917,7 @@
 				84E605A5194AF5CC00F8D61F /* fishing_map.png in Resources */,
 				84E6059F194AF5CC00F8D61F /* buddies@2x~ipad.png in Resources */,
 				046C6C13190FECEE00E3AC56 /* Cell.xib in Resources */,
+				04E855ED195C194A00A54425 /* CellWithTwoButton.xib in Resources */,
 				04657AC5192614580018CB70 /* SelectLocationViewController.xib in Resources */,
 				04F498AD1953262F00FC065C /* look_icon.png in Resources */,
 				043354CE1910F0A7003767D0 /* BuddySearchCell.xib in Resources */,
@@ -2144,6 +2161,7 @@
 				043354AB1910ED9F003767D0 /* CFilteringJSONSerializer.m in Sources */,
 				04F498B919532B5400FC065C /* CameraViewController.m in Sources */,
 				04E5B8C719377F3000E1C824 /* SMTGraphView.m in Sources */,
+				04E855EC195C194A00A54425 /* CellWithTwoButton.m in Sources */,
 				04E5B8C219377E3000E1C824 /* ReportsViewController.m in Sources */,
 				04F7CBC8193DC5FC000AB881 /* CustomButton.m in Sources */,
 				11C9F67E1917814600CDAFBA /* DayPredict.m in Sources */,

@@ -36,10 +36,6 @@
 @property (nonatomic, strong) CLGeocoder *geocoder;
 
 
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *mapBottom;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *tabBarHegth;
-
-
 @end
 
 
@@ -61,12 +57,6 @@
     
     [self showMap];
     [self createLocationManager];
-    
-    if (_isTabBar) {
-        self.mapBottom.constant = 0;
-        self.tabBarHegth.constant = 0;
-        [self.view layoutIfNeeded];
-    }
     
 }
 
@@ -318,19 +308,6 @@
 }
 
 
--(void) setIsPresent:(BOOL)present
-{
-    isPresent = present;
-    if (isPresent) {
-        [((UIButton *)[self.tabBar viewWithTag:1]) setBackgroundImage:[UIImage imageNamed:@"home_icon.png"] forState:UIControlStateNormal];
-        [((UIButton *)[self.tabBar viewWithTag:2]) setBackgroundImage:[UIImage imageNamed:@"global_icon_press.png"] forState:UIControlStateNormal];
-        [((UIButton *)[self.tabBar viewWithTag:3]) setBackgroundImage:[UIImage imageNamed:@"camera_icon.png"] forState:UIControlStateNormal];
-        [((UIButton *)[self.tabBar viewWithTag:4]) setBackgroundImage:[UIImage imageNamed:@"note_icon.png"] forState:UIControlStateNormal];
-        [((UIButton *)[self.tabBar viewWithTag:5]) setBackgroundImage:[UIImage imageNamed:@"st_icon.png"] forState:UIControlStateNormal];
-    } else {
-        [((UIButton *)[self.tabBar viewWithTag:2]) setBackgroundImage:[UIImage imageNamed:@"global_icon.png"] forState:UIControlStateNormal];
-    }
-}
 
 
 

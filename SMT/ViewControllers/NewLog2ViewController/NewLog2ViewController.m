@@ -684,7 +684,6 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1){
         MapViewController * mvc = [[MapViewController alloc]initWithNibName:@"MapViewController" bundle:nil];
-        mvc.isTabBar = YES;
         [self.navigationController pushViewController:mvc animated:YES];
     }
 }

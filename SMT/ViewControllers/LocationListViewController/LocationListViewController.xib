@@ -10,6 +10,8 @@
                 <outlet property="locationChangeSegmentControl" destination="fTT-SD-RM8" id="J2t-Gl-tNX"/>
                 <outlet property="navigationBarHeightConstr" destination="CLH-S1-ReD" id="iLZ-om-qJK"/>
                 <outlet property="navigationBarVerticalConstr" destination="Avf-fl-6hp" id="BZw-cd-qZR"/>
+                <outlet property="segment" destination="fTT-SD-RM8" id="9yC-JV-0IT"/>
+                <outlet property="tabBar" destination="IZX-EA-s2i" id="EZS-M1-yvD"/>
                 <outlet property="tableView" destination="NLk-DQ-Rr2" id="XWp-WJ-TEW"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -77,11 +79,12 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fTT-SD-RM8">
-                            <rect key="frame" x="20" y="9" width="280" height="29"/>
+                            <rect key="frame" x="5" y="9" width="310" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="My Locations"/>
                                 <segment title="Shared Locations"/>
+                                <segment title="Public Locations"/>
                             </segments>
                             <connections>
                                 <action selector="locationTypeChange:" destination="-1" eventType="valueChanged" id="tSi-b1-jmL"/>
@@ -91,14 +94,14 @@
                     <color key="backgroundColor" red="0.79854910710000004" green="0.79854910710000004" blue="0.79854910710000004" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="fTT-SD-RM8" firstAttribute="top" secondItem="aPU-FT-i8P" secondAttribute="top" constant="9" id="9uV-3g-S0R"/>
-                        <constraint firstItem="fTT-SD-RM8" firstAttribute="leading" secondItem="aPU-FT-i8P" secondAttribute="leading" constant="20" id="KOG-Eh-WQE"/>
+                        <constraint firstItem="fTT-SD-RM8" firstAttribute="leading" secondItem="aPU-FT-i8P" secondAttribute="leading" constant="5" id="KOG-Eh-WQE"/>
                         <constraint firstAttribute="bottom" secondItem="fTT-SD-RM8" secondAttribute="bottom" constant="9" id="NZm-Pb-I7E"/>
-                        <constraint firstAttribute="trailing" secondItem="fTT-SD-RM8" secondAttribute="trailing" constant="20" id="cPV-h1-jaz"/>
+                        <constraint firstAttribute="trailing" secondItem="fTT-SD-RM8" secondAttribute="trailing" constant="5" id="cPV-h1-jaz"/>
                         <constraint firstAttribute="height" constant="46" id="thR-03-eSw"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="NLk-DQ-Rr2">
-                    <rect key="frame" x="0.0" y="110" width="320" height="370"/>
+                    <rect key="frame" x="0.0" y="110" width="320" height="324"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <color key="separatorColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
@@ -108,12 +111,68 @@
                         <outlet property="delegate" destination="-1" id="RuY-aD-ZEL"/>
                     </connections>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IZX-EA-s2i" customClass="CustomTabBar">
+                    <rect key="frame" x="0.0" y="434" width="320" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tabbar_BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="T0B-7E-lGf">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2X-wI-3aI">
+                            <rect key="frame" x="17" y="8" width="36" height="36"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="home_icon.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="home_icon_press.png"/>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jp3-QJ-Ewu">
+                            <rect key="frame" x="73" y="8" width="36" height="36"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="global_icon.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="global_icon_press.png"/>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkk-xO-t39">
+                            <rect key="frame" x="142" y="8" width="36" height="36"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="camera_icon.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="camera_icon_press.png"/>
+                        </button>
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vFB-5Y-foJ">
+                            <rect key="frame" x="213" y="8" width="36" height="36"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="note_icon.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="note_icon_press.png"/>
+                        </button>
+                        <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnn-Jf-08z">
+                            <rect key="frame" x="264" y="8" width="36" height="36"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="st_icon.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="st_icon_press.png"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="46" id="n1t-Cj-t5Q"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Fbw-Fa-j0E" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8Lp-CQ-WZR"/>
+                <constraint firstAttribute="trailing" secondItem="IZX-EA-s2i" secondAttribute="trailing" id="O4j-IL-rja"/>
+                <constraint firstAttribute="bottom" secondItem="IZX-EA-s2i" secondAttribute="bottom" id="QkE-bZ-OWa"/>
                 <constraint firstItem="NLk-DQ-Rr2" firstAttribute="top" secondItem="aPU-FT-i8P" secondAttribute="bottom" id="VST-QY-9iu"/>
-                <constraint firstAttribute="bottom" secondItem="NLk-DQ-Rr2" secondAttribute="bottom" id="XkA-gi-hda"/>
+                <constraint firstAttribute="bottom" secondItem="NLk-DQ-Rr2" secondAttribute="bottom" constant="46" id="XkA-gi-hda"/>
                 <constraint firstAttribute="trailing" secondItem="aPU-FT-i8P" secondAttribute="trailing" id="Zbv-SN-Blc"/>
                 <constraint firstAttribute="trailing" secondItem="NLk-DQ-Rr2" secondAttribute="trailing" id="cdh-it-gdS"/>
                 <constraint firstItem="aPU-FT-i8P" firstAttribute="top" secondItem="Fbw-Fa-j0E" secondAttribute="bottom" id="chX-oc-Td8"/>
@@ -121,9 +180,23 @@
                 <constraint firstItem="Fbw-Fa-j0E" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="knb-HW-93J"/>
                 <constraint firstItem="NLk-DQ-Rr2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ko8-3o-f4k"/>
                 <constraint firstItem="aPU-FT-i8P" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="odb-mF-ODk"/>
+                <constraint firstItem="IZX-EA-s2i" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="uoL-3a-ECJ"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
+    <resources>
+        <image name="camera_icon.png" width="30" height="30"/>
+        <image name="camera_icon_press.png" width="30" height="30"/>
+        <image name="global_icon.png" width="30" height="30"/>
+        <image name="global_icon_press.png" width="30" height="30"/>
+        <image name="home_icon.png" width="30" height="30"/>
+        <image name="home_icon_press.png" width="30" height="30"/>
+        <image name="note_icon.png" width="30" height="30"/>
+        <image name="note_icon_press.png" width="30" height="30"/>
+        <image name="st_icon.png" width="30" height="30"/>
+        <image name="st_icon_press.png" width="30" height="30"/>
+        <image name="tabbar_BG.png" width="320" height="50"/>
+    </resources>
 </document>

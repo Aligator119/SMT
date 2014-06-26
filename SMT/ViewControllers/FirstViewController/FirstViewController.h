@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 #import "FlyoutMenuViewController.h"
 #import "AppDelegate.h"
-#import "MapViewController.h"
+#import "LocationListViewController.h"
 #import "NewLog1ViewController.h"
 #import "UIViewController+LoaderCategory.h"
 #import "CameraViewController.h"

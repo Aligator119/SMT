@@ -11,8 +11,6 @@
                 <outlet property="mapContainerView" destination="rbx-TL-VMI" id="0HS-4k-jRb"/>
                 <outlet property="navigationBarHeightConstr" destination="dop-qp-ULz" id="Xh0-XE-ClJ"/>
                 <outlet property="navigationBarVerticalConstr" destination="NWb-gR-Aas" id="dln-m4-vGP"/>
-                <outlet property="tabBar" destination="omx-lT-hP4" id="D7Q-Cs-gDo"/>
-                <outlet property="tabBarHegth" destination="QaA-va-paW" id="z9Q-xZ-HtF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -102,7 +100,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mpe-f0-v8Y">
-                    <rect key="frame" x="0.0" y="384" width="320" height="50"/>
+                    <rect key="frame" x="0.0" y="430" width="320" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfS-hF-8eA">
@@ -150,63 +148,9 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rbx-TL-VMI">
-                    <rect key="frame" x="0.0" y="60" width="320" height="324"/>
+                    <rect key="frame" x="0.0" y="60" width="320" height="370"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="omx-lT-hP4" customClass="CustomTabBar">
-                    <rect key="frame" x="0.0" y="434" width="320" height="46"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tabbar_BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="BSH-mo-gd6">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="47"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znv-Cx-kDJ">
-                            <rect key="frame" x="17" y="8" width="36" height="36"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="home_icon.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <state key="highlighted" backgroundImage="home_icon_press.png"/>
-                        </button>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ILq-mh-90S">
-                            <rect key="frame" x="73" y="8" width="36" height="36"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="global_icon.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <state key="highlighted" backgroundImage="global_icon_press.png"/>
-                        </button>
-                        <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J9L-Oh-Bvv">
-                            <rect key="frame" x="142" y="8" width="36" height="36"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="camera_icon.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <state key="highlighted" backgroundImage="camera_icon_press.png"/>
-                        </button>
-                        <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yUz-XZ-mcZ">
-                            <rect key="frame" x="213" y="8" width="36" height="36"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="note_icon.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <state key="highlighted" backgroundImage="note_icon_press.png"/>
-                        </button>
-                        <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLW-Cb-Dtw">
-                            <rect key="frame" x="264" y="8" width="36" height="36"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="st_icon.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <state key="highlighted" backgroundImage="st_icon_press.png"/>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="46" id="QaA-va-paW"/>
-                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -215,31 +159,15 @@
                 <constraint firstItem="mpe-f0-v8Y" firstAttribute="top" secondItem="rbx-TL-VMI" secondAttribute="bottom" id="Ebw-mk-ASM"/>
                 <constraint firstItem="rbx-TL-VMI" firstAttribute="top" secondItem="sgy-ic-esP" secondAttribute="bottom" id="G5X-E1-po1"/>
                 <constraint firstItem="sgy-ic-esP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Jwj-5e-wmD"/>
-                <constraint firstAttribute="bottom" secondItem="omx-lT-hP4" secondAttribute="bottom" id="N0D-sA-Gyh"/>
                 <constraint firstItem="rbx-TL-VMI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="STR-ye-7VC"/>
-                <constraint firstAttribute="bottom" secondItem="mpe-f0-v8Y" secondAttribute="bottom" constant="46" id="SsM-T4-fJ7"/>
+                <constraint firstAttribute="bottom" secondItem="mpe-f0-v8Y" secondAttribute="bottom" id="SsM-T4-fJ7"/>
                 <constraint firstItem="sgy-ic-esP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="b9V-6v-sgh"/>
                 <constraint firstItem="mpe-f0-v8Y" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fq4-HD-i9V"/>
                 <constraint firstAttribute="trailing" secondItem="mpe-f0-v8Y" secondAttribute="trailing" id="myK-3R-Y4I"/>
                 <constraint firstAttribute="trailing" secondItem="sgy-ic-esP" secondAttribute="trailing" id="oym-nx-82N"/>
-                <constraint firstItem="omx-lT-hP4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pjo-3H-PXP"/>
-                <constraint firstAttribute="trailing" secondItem="omx-lT-hP4" secondAttribute="trailing" id="x7f-CN-OOQ"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
-    <resources>
-        <image name="camera_icon.png" width="30" height="30"/>
-        <image name="camera_icon_press.png" width="30" height="30"/>
-        <image name="global_icon.png" width="30" height="30"/>
-        <image name="global_icon_press.png" width="30" height="30"/>
-        <image name="home_icon.png" width="30" height="30"/>
-        <image name="home_icon_press.png" width="30" height="30"/>
-        <image name="note_icon.png" width="30" height="30"/>
-        <image name="note_icon_press.png" width="30" height="30"/>
-        <image name="st_icon.png" width="30" height="30"/>
-        <image name="st_icon_press.png" width="30" height="30"/>
-        <image name="tabbar_BG.png" width="320" height="50"/>
-    </resources>
 </document>
