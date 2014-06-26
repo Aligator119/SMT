@@ -742,7 +742,7 @@
 {
     //typeOfServiceRequest = ApplicationServiceRequestLocationsAssociatedWithUser;
     //NSString * strLocations = [NSString stringWithFormat:@"%i?%@",appDel.user.userID,APP_ID_KEY];
-    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@sharedlocation/buddies?app_id=%@&app_key=%@",strUrl, App_id, App_key];
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@sharedlocation/buddies?app_id=%@&app_key=%@&last=-1",strUrl, App_id, App_key];
     
     NSMutableArray * listSharedLocations = [NSMutableArray new];
    

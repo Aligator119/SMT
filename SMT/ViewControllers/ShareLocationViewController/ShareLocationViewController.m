@@ -17,6 +17,7 @@
     DataLoader * dataLoader;
     AppDelegate * appDelegate;
     NSArray * buddyShareds;
+    NSMutableArray * idBuddyShareds;
     NSMutableDictionary * dictionary;
 }
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
@@ -24,6 +25,7 @@
 - (IBAction)actBack:(id)sender;
 - (void)actChack:(UIButton *)sender;
 - (UIButton *)addChackButtonAndChek:(BOOL)flag andIndex:(int)row;
+- (void) getSharedsBuddy;
 @end
 
 @implementation ShareLocationViewController
@@ -50,8 +52,9 @@
     if (appDelegate.listUserBuddies.firstObject == nil) {
         [dataLoader buddyGetListUsersBuddies];
     }
-    buddyShareds = [dataLoader getBuddySharedLocation];
+    
     dictionary = [NSMutableDictionary new];
+    [self getSharedsBuddy];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -67,14 +70,22 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
     }
     
-    for (Buddy * bud in buddyShareds) {
-        if ([bud.userID intValue] == [buddy.userID intValue]) {
-            [cell addSubview:[self addChackButtonAndChek:YES andIndex:indexPath.row]];
-            cell.tag = 1;
-        } else {
-            [cell addSubview:[self addChackButtonAndChek:NO andIndex:indexPath.row]];
-            cell.tag = 0;
-        }
+//    for (Buddy * bud in buddyShareds) {
+//        if ([bud.userID intValue] == [buddy.userID intValue]) {
+//            [cell addSubview:[self addChackButtonAndChek:YES andIndex:indexPath.row]];
+//            cell.tag = 1;
+//        } else {
+//            [cell addSubview:[self addChackButtonAndChek:NO andIndex:indexPath.row]];
+//            cell.tag = 0;
+//        }
+//    }
+    NSString * currentID = [NSString stringWithFormat:@"%@",buddy.userID];
+    if ([idBuddyShareds containsObject:currentID]) {
+        [cell addSubview:[self addChackButtonAndChek:YES andIndex:indexPath.row]];
+        cell.tag = 1;
+    } else {
+        [cell addSubview:[self addChackButtonAndChek:NO andIndex:indexPath.row]];
+        cell.tag = 0;
     }
     cell.textLabel.text = buddy.userFirstName;
     return cell;
@@ -120,8 +131,7 @@
     sender.enabled = NO;
     if (sender.superview.superview.tag) {
         // remove buddy of list shared
-        [sender setBackgroundImage:[UIImage imageNamed:@"unchek"] forState:UIControlStateNormal];
-        [sender setBackgroundImage:[UIImage imageNamed:@"unchek"] forState:UIControlStateHighlighted];
+        
         dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(newQueue, ^(){
             
@@ -136,7 +146,9 @@
                     [sender setBackgroundImage:[UIImage imageNamed:@"chek"] forState:UIControlStateHighlighted];
                 } else {
                     sender.superview.superview.tag = 0;
-                    buddyShareds = [dataLoader getBuddySharedLocation];
+                    [sender setBackgroundImage:[UIImage imageNamed:@"unchek"] forState:UIControlStateNormal];
+                    [sender setBackgroundImage:[UIImage imageNamed:@"unchek"] forState:UIControlStateHighlighted];
+                    [self getSharedsBuddy];
                     sender.enabled = YES;
                     [self.table reloadData];
                     [self endLoader];
@@ -162,7 +174,9 @@
                     [sender setBackgroundImage:[UIImage imageNamed:@"unchek"] forState:UIControlStateHighlighted];
                 } else {
                     sender.superview.superview.tag = 1;
-                    buddyShareds = [dataLoader getBuddySharedLocation];
+                    [sender setBackgroundImage:[UIImage imageNamed:@"chek"] forState:UIControlStateNormal];
+                    [sender setBackgroundImage:[UIImage imageNamed:@"chek"] forState:UIControlStateHighlighted];
+                    [self getSharedsBuddy];
                     sender.enabled = YES;
                     [self.table reloadData];
                     [self endLoader];
@@ -172,6 +186,14 @@
     }
 }
 
+
+- (void) getSharedsBuddy{
+    buddyShareds = [dataLoader getBuddySharedLocation];
+    idBuddyShareds = [[NSMutableArray alloc]init];
+    for (Buddy * bud in buddyShareds) {
+        [idBuddyShareds addObject:bud.userID];
+    }
+}
 
 
 @end

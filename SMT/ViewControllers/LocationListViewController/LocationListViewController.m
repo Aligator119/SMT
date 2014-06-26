@@ -20,7 +20,6 @@
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *locationChangeSegmentControl;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segment;
-- (LocationListCell *) getFirstCell:(CellWithTwoButton *) cell;
 - (void) actAddLocationWithMap:(id)sender;
 - (void) actAddLocationWithAddres:(id)sender;
 @end
@@ -104,15 +103,17 @@
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    LocationListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"LocationListCell" forIndexPath:indexPath];
+    
     if ([[listLocations objectAtIndex:indexPath.row] isKindOfClass:[NSString class]]) {
         CellWithTwoButton *cell1 = [tableView dequeueReusableCellWithIdentifier:@"CellWithTwoButton"];
         [cell1.btnMap addTarget:self action:@selector(actAddLocationWithMap:) forControlEvents:UIControlEventTouchUpInside];
         [cell1.btnAddres addTarget:self action:@selector(actAddLocationWithAddres:) forControlEvents:UIControlEventTouchUpInside];
         return cell1;
+    } else {
+        LocationListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"LocationListCell" forIndexPath:indexPath];
+        [cell processCellInfo:[listLocations objectAtIndex:indexPath.row]];
+        return cell;
     }
-    [cell processCellInfo:[listLocations objectAtIndex:indexPath.row]];
-    return cell;
 }
 
 
@@ -121,9 +122,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (IBAction)actBack:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
-}
+
 
 - (IBAction)actGroups:(id)sender {
 }
@@ -179,18 +178,9 @@
 }
 
 
-- (UITableViewCell *) getFirstCell:(CellWithTwoButton *)cell
-{
-    
-    [cell.btnMap addTarget:self action:@selector(actAddLocationWithMap:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.btnAddres addTarget:self action:@selector(actAddLocationWithAddres:) forControlEvents:UIControlEventTouchUpInside];
-
-    return cell;
-}
-
 - (void) actAddLocationWithMap:(id)sender
 {
-    MapViewController * map = [MapViewController new];
+    MapViewController * map = [[MapViewController alloc]initWithNibName:@"MapViewController" bundle:nil];
     [self.navigationController pushViewController:map animated:YES];
 }
 

@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController">
             <connections>
-                <outlet property="mapBottom" destination="SsM-T4-fJ7" id="u8G-oI-8AV"/>
                 <outlet property="mapContainerView" destination="rbx-TL-VMI" id="0HS-4k-jRb"/>
                 <outlet property="navigationBarHeightConstr" destination="dop-qp-ULz" id="Xh0-XE-ClJ"/>
                 <outlet property="navigationBarVerticalConstr" destination="NWb-gR-Aas" id="dln-m4-vGP"/>
