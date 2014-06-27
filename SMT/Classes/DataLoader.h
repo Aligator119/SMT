@@ -57,8 +57,7 @@ enum ApplicationServiceRequest
     
     NSString * keyUsername;
     NSString * keyUserID;
-    NSString * keyUserFirstName;
-    NSString * keyUserSecondName;
+    NSString * keyName;
     
     //NSDictionary * info;
     

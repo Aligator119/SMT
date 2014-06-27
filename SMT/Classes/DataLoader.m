@@ -75,8 +75,7 @@
 {
     keyUsername = @"Username";
     keyUserID = @"User ID";
-    keyUserFirstName = @"First Name";
-    keyUserSecondName = @"Last Name";
+    keyName = @"Name";
     self.isCorrectRezult = NO;
 }
 
@@ -120,7 +119,7 @@
     if (self.isCorrectRezult){
     [appDel.user setUserInfoName:[info objectForKey:keyUsername] appID:[[info objectForKey:keyUserID] intValue]];
     [appDel.user setUserInfoPassword:enterPassword];
-    [appDel.user setUserFirstName:[info objectForKey:keyUserFirstName] andSecondName:[info objectForKey:keyUserSecondName]];
+    [appDel.user setUserName:[info objectForKey:keyName]];
     appDel.user.avatarAdress = [info objectForKey:@"Avatar"];
     
     NSDictionary *retrievedDictionary = [[NSUserDefaults standardUserDefaults] dictionaryForKey:FB_USER_SIGN];
@@ -191,7 +190,7 @@
     
     [appDel.user setUserInfoName:[info objectForKey:keyUsername] appID:[[info objectForKey:keyUserID] intValue]];
     [appDel.user setUserInfoPassword:enterPassword];
-    [appDel.user setUserFirstName:[info objectForKey:keyUserFirstName] andSecondName:[info objectForKey:keyUserSecondName]];
+    [appDel.user setUserName:[info objectForKey:keyName]];
     appDel.user.avatarAdress = [info objectForKey:@"Avatar"];
     }
 }
@@ -639,7 +638,7 @@
     [request setURL:[NSURL URLWithString:strUrlRequestAdress]];
     [request setHTTPMethod:@"POST"];
     [request setValue:appDel.user.userPassword forHTTPHeaderField:@"X-password"];
-    [request setValue:appDel.user.userName forHTTPHeaderField:@"X-username"];
+    [request setValue:appDel.user.userEmail forHTTPHeaderField:@"X-username"];
     
     //Add the header info
 	NSString *stringBoundary = @"0xKhTmLbOuNdArY";
@@ -681,7 +680,7 @@
     [request setURL:[NSURL URLWithString:strUrlRequestAdress]];
     [request setHTTPMethod:@"POST"];
     [request setValue:appDel.user.userPassword forHTTPHeaderField:@"X-password"];
-    [request setValue:appDel.user.userName forHTTPHeaderField:@"X-username"];
+    [request setValue:appDel.user.userEmail forHTTPHeaderField:@"X-username"];
     
     //Add the header info
 	NSString *stringBoundary = @"0xKhTmLbOuNdArY";
@@ -750,8 +749,7 @@
             Buddy * buf = [Buddy new];
             buf.userID =        [dicInfo objectForKey:@"User ID"];
             buf.userName =      [dicInfo objectForKey:@"Email"];
-            buf.userFirstName = [dicInfo objectForKey:@"First Name"];
-            buf.userSecondName = [dicInfo objectForKey:@"Last Name"];
+            buf.name = [dicInfo objectForKey:@"Name"];
             [listSharedLocations addObject:buf];
         }
     }
@@ -875,7 +873,7 @@
     }
     
     if(_setHeaders){
-        [request setValue:appDel.user.userName forHTTPHeaderField:@"X-Username"];
+        [request setValue:appDel.user.userEmail forHTTPHeaderField:@"X-Username"];
         [request setValue:appDel.user.userPassword forHTTPHeaderField:@"X-Password"];
     }
     

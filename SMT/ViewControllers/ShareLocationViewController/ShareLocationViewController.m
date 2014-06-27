@@ -78,7 +78,7 @@
         [cell addSubview:[self addChackButtonAndChek:NO andIndex:indexPath.row]];
         cell.tag = 0;
     }
-    cell.textLabel.text = buddy.userFirstName;
+    cell.textLabel.text = buddy.name;
     return cell;
 }
 

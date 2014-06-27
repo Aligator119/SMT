@@ -11,7 +11,7 @@
 
 @implementation UserInfo
 
-@synthesize userName, userPassword, userID, userFID, userFirstName, userSecondName;
+@synthesize name, userPassword, userID, userFID, userEmail;
 
 - (id)init
 {
@@ -25,13 +25,13 @@
 }
 
 - (void)setUserInfoName:(NSString*) _name password:(NSString*)_pass appID:(int) _appID{
-    userName = _name;
+    userEmail = _name;
     userPassword = _pass;
     userID = _appID;
 }
 
 - (void)setUserInfoName:(NSString*) _name appID:(int) _appID{
-    userName = _name;
+    userEmail = _name;
     userID = _appID;
 }
 
@@ -42,9 +42,8 @@
     userFID = _fid;
 }
 
-- (void)setUserFirstName:(NSString*)_firstName andSecondName:(NSString*)_secondName{
-    userSecondName = _secondName;
-    userFirstName = _firstName;
+- (void)setUserName:(NSString *)_userName {
+    name = _userName;
 }
 
 - (id) initWithCoder:(NSCoder *)aDecoder{
@@ -52,10 +51,9 @@
     if (self = [super init]){
         userID = [[aDecoder decodeObjectForKey:@"userID"] intValue];
         userFID = [aDecoder decodeObjectForKey:@"userFID"];
-        userName = [aDecoder decodeObjectForKey:@"userName"];
+        name = [aDecoder decodeObjectForKey:@"Name"];
         userPassword = [aDecoder decodeObjectForKey:@"userPassword"];
-        userFirstName = [aDecoder decodeObjectForKey:@"userFirstName"];
-        userSecondName = [aDecoder decodeObjectForKey:@"userSecondName"];
+        userEmail = [aDecoder decodeObjectForKey:@"userName"];
     }
     return self;
 }
@@ -63,10 +61,9 @@
 - (void) encodeWithCoder:(NSCoder *)aCoder{
     [aCoder encodeObject:[NSNumber numberWithInt:userID] forKey:@"userID"];
     [aCoder encodeObject:userFID forKey:@"userFID"];
-    [aCoder encodeObject:userName forKey:@"userName"];
+    [aCoder encodeObject:name forKey:@"userName"];
     [aCoder encodeObject:userPassword forKey:@"userPassword"];
-    [aCoder encodeObject:userFirstName forKey:@"userFirstName"];
-    [aCoder encodeObject:userSecondName forKey:@"userSecondName"];
+    [aCoder encodeObject:userEmail forKey:@"userName"];
 }
 
 + (BOOL)itsFirstMomentWhenUserLogin:(NSString*)usName{
@@ -76,7 +73,7 @@
     if(userList != nil){
         for(UserInfo * usInfo in userList){
 
-            if([usInfo.userName isEqualToString:usName]){
+            if([usInfo.userEmail isEqualToString:usName]){
                 return NO;
             }
         }
@@ -90,9 +87,9 @@
     
     if(userList != nil){
         for(UserInfo * usInfo in userList){
-            if([usInfo.userName isEqualToString:usName] && (usInfo.userFID.length > 5)){
+            if([usInfo.userEmail isEqualToString:usName] && (usInfo.userFID.length > 5)){
                 return 2;
-            } else if([usInfo.userName isEqualToString:usName]) return 1;
+            } else if([usInfo.userEmail isEqualToString:usName]) return 1;
         }
     }
     return 0;
@@ -115,7 +112,7 @@
     
     if(userList != nil){
         for(UserInfo * usInfo in userList){
-            if([usInfo.userName isEqualToString:usName]){
+            if([usInfo.userEmail isEqualToString:usName]){
                 usInfo.userFID = _FbID;
                 break;
             }

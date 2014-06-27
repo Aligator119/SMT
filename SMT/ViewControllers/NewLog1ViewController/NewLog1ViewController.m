@@ -28,7 +28,6 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *con3;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *con4;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *con5;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *con6;
 
 - (void)actDownloadData;
 @end
@@ -73,7 +72,6 @@
     self.con3.constant = f/6;
     self.con4.constant = f/6;
     self.con5.constant = f/6;
-    self.con6.constant = f/6;
     [self.view updateConstraintsIfNeeded];
     [self actDownloadData];
 }
@@ -96,6 +94,7 @@
     SpeciesCell * cell = [tableView dequeueReusableCellWithIdentifier:@"SpeciesCell"];
         
     [cell setSpecie:[appDelegate.speciesList objectAtIndex:indexPath.row]];
+    cell.contentView.backgroundColor = [UIColor clearColor];
     
     return cell;
 }
@@ -108,6 +107,33 @@
     return @"";
 }
 
+//-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//    
+//    //1. Setup the CATransform3D structure
+//    CATransform3D rotation;
+//    rotation = CATransform3DMakeRotation( (90.0*M_PI)/180, 0.0, 0.7, 0.4);
+//    rotation.m34 = 1.0/ -600;
+//    
+//    
+//    //2. Define the initial state (Before the animation)
+//    cell.layer.shadowColor = [[UIColor blackColor]CGColor];
+//    cell.layer.shadowOffset = CGSizeMake(10, 10);
+//    cell.alpha = 0;
+//    
+//    cell.layer.transform = rotation;
+//    cell.layer.anchorPoint = CGPointMake(0, 0.5);
+//    
+//    
+//    //3. Define the final state (After the animation) and commit the animation
+//    [UIView beginAnimations:@"rotation" context:NULL];
+//    [UIView setAnimationDuration:0.8];
+//    cell.layer.transform = CATransform3DIdentity;
+//    cell.alpha = 1;
+//    cell.layer.shadowOffset = CGSizeMake(0, 0);
+//    [UIView commitAnimations];
+//    
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

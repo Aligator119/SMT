@@ -92,13 +92,13 @@
         
         AppDelegate * appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
         
-        appDelegate.user.userName = user.userName;
+        appDelegate.user.userEmail = user.userEmail;
         appDelegate.user.userPassword = user.userPassword;
         // * * Avtorize * *
         dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(newQueue, ^(){
             
-            [dataLoader avtorizeUser:appDelegate.user.userName password:appDelegate.user.userPassword];
+            [dataLoader avtorizeUser:appDelegate.user.userEmail password:appDelegate.user.userPassword];
             // * * * *
             
             dispatch_async(dispatch_get_main_queue(), ^(){
@@ -107,16 +107,16 @@
                     dataLoader.isCorrectRezult = NO;
                     
                     if(!wasFacebookClick){
-                        if([UserInfo itsFirstMomentWhenUserLogin:appDelegate.user.userName]){
+                        if([UserInfo itsFirstMomentWhenUserLogin:appDelegate.user.userEmail]){
                             [appDelegate.user saveUser];
                         }
                     } else {
-                        switch ([UserInfo itsFirstMomentWhenUserLoginAndIsWithFacebook:appDelegate.user.userName]) {
+                        switch ([UserInfo itsFirstMomentWhenUserLoginAndIsWithFacebook:appDelegate.user.userEmail]) {
                             case fbUserMissing:
                                 [appDelegate.user saveUser];
                                 break;
                             case fbUserCreate:
-                                [appDelegate.user redwriteUserFbID:appDelegate.user.userName andFID:appDelegate.user.userFID];
+                                [appDelegate.user redwriteUserFbID:appDelegate.user.userEmail andFID:appDelegate.user.userFID];
                                 break;
                             default:
                                 break;
@@ -184,7 +184,7 @@
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
         
-    [dataLoader avtorizeUser:appDelegate.user.userName password:appDelegate.user.userPassword];
+    [dataLoader avtorizeUser:appDelegate.user.userEmail password:appDelegate.user.userPassword];
     // * * * *
         
     dispatch_async(dispatch_get_main_queue(), ^(){
@@ -193,16 +193,16 @@
             dataLoader.isCorrectRezult = NO;
         
             if(!wasFacebookClick){
-                if([UserInfo itsFirstMomentWhenUserLogin:appDelegate.user.userName]){
+                if([UserInfo itsFirstMomentWhenUserLogin:appDelegate.user.userEmail]){
                     [appDelegate.user saveUser];
                 }
             } else {
-                switch ([UserInfo itsFirstMomentWhenUserLoginAndIsWithFacebook:appDelegate.user.userName]) {
+                switch ([UserInfo itsFirstMomentWhenUserLoginAndIsWithFacebook:appDelegate.user.userEmail]) {
                     case fbUserMissing:
                         [appDelegate.user saveUser];
                         break;
                     case fbUserCreate:
-                        [appDelegate.user redwriteUserFbID:appDelegate.user.userName andFID:appDelegate.user.userFID];
+                        [appDelegate.user redwriteUserFbID:appDelegate.user.userEmail andFID:appDelegate.user.userFID];
                         break;
                     default:
                         break;

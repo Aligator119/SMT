@@ -1,18 +1,7 @@
-//
-//  AppDelegate.m
-//  SMT
-//
-//  Created by Mac on 4/28/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import "AppDelegate.h"
 #import "FlyoutMenuViewController.h"
 #import "DataLoader.h"
 #import "FirstViewController.h"
-
-
-
 
 
 #define USER_DATA @"userdata"
@@ -65,12 +54,12 @@
         [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
         
         
-        self.user.userName = user.userName;
+        self.user.userEmail = user.userEmail;
         self.user.userPassword = user.userPassword;
         // * * Avtorize * *
         
             
-        [dataLoader avtorizeUser:self.user.userName password:self.user.userPassword];
+        [dataLoader avtorizeUser:self.user.userEmail password:self.user.userPassword];
             // * * * *
                 
         if(dataLoader.isCorrectRezult){

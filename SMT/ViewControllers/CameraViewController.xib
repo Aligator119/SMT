@@ -12,7 +12,6 @@
                 <outlet property="con3" destination="Qhi-vf-ROp" id="hTh-R4-zw3"/>
                 <outlet property="con4" destination="ljB-Of-BJh" id="yTO-0A-t9c"/>
                 <outlet property="con5" destination="hEm-Lg-cGQ" id="ok6-vJ-PDl"/>
-                <outlet property="con6" destination="mbO-7Q-XjB" id="an5-3W-ABu"/>
                 <outlet property="image" destination="TcO-h8-2RU" id="YcH-rK-dGH"/>
                 <outlet property="tabBar" destination="Hgc-sJ-B9V" id="jCn-T5-JFb"/>
                 <outlet property="tabBarWidth" destination="YT2-WY-scq" id="Bgj-Se-Ka7"/>
@@ -135,7 +134,6 @@
                         <constraint firstItem="KfL-H9-r6M" firstAttribute="leading" secondItem="UXo-x1-BLX" secondAttribute="trailing" constant="18" id="hEm-Lg-cGQ"/>
                         <constraint firstAttribute="bottom" secondItem="r8B-o3-Nmf" secondAttribute="bottom" constant="2" id="lev-NL-MrY"/>
                         <constraint firstItem="UXo-x1-BLX" firstAttribute="leading" secondItem="eXC-nv-WNS" secondAttribute="trailing" constant="35" id="ljB-Of-BJh"/>
-                        <constraint firstAttribute="trailing" secondItem="KfL-H9-r6M" secondAttribute="trailing" constant="17" id="mbO-7Q-XjB"/>
                         <constraint firstAttribute="bottom" secondItem="GJr-zl-O8C" secondAttribute="bottom" constant="2" id="oee-lU-HYx"/>
                         <constraint firstAttribute="height" constant="46" id="sZh-by-5NN"/>
                         <constraint firstItem="GJr-zl-O8C" firstAttribute="leading" secondItem="Hgc-sJ-B9V" secondAttribute="leading" constant="17" id="y16-9w-RcE"/>

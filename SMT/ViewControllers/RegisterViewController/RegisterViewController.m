@@ -210,7 +210,7 @@
             
                 AppDelegate * appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
                 NSLog(@"userFid : %@",userFid);
-                [appDelegate.user redwriteUserFbID:appDelegate.user.userName andFID:userFid];
+                [appDelegate.user redwriteUserFbID:appDelegate.user.userEmail andFID:userFid];
                 
                 FlyoutMenuViewController * flyOutVC = [[FlyoutMenuViewController alloc] init];
                 [self.navigationController pushViewController:flyOutVC animated:YES];

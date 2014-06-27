@@ -46,7 +46,6 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *con3;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *con4;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *con5;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *con6;
 
 @property (nonatomic, weak) IBOutlet UICollectionView *table;
 @property (strong, nonatomic) IBOutlet UICollectionView *colectionView;
@@ -157,7 +156,6 @@
     self.con3.constant = f/6;
     self.con4.constant = f/6;
     self.con5.constant = f/6;
-    self.con6.constant = f/6;
     [self.view updateConstraintsIfNeeded];
 }
 

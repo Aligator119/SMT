@@ -12,7 +12,6 @@
                 <outlet property="con3" destination="AF6-pa-P8b" id="V4h-68-iJc"/>
                 <outlet property="con4" destination="bex-Hy-C8l" id="5PM-aR-Yq5"/>
                 <outlet property="con5" destination="E1O-E4-Mr9" id="ugI-Ec-Y3u"/>
-                <outlet property="con6" destination="ePL-qy-Xc9" id="trV-yq-8qB"/>
                 <outlet property="navigationBarHeightConstr" destination="QB4-Wz-raZ" id="Q98-wH-975"/>
                 <outlet property="navigationBarVerticalConstr" destination="wYc-gj-y61" id="63B-pS-ROx"/>
                 <outlet property="tabBar" destination="QNm-8w-anS" id="3LZ-dM-SZZ"/>
@@ -150,7 +149,6 @@
                         <constraint firstAttribute="bottom" secondItem="pVo-RJ-wBh" secondAttribute="bottom" constant="2" id="aRe-pV-maM"/>
                         <constraint firstItem="pVo-RJ-wBh" firstAttribute="leading" secondItem="shf-V6-5F0" secondAttribute="trailing" constant="35" id="bex-Hy-C8l"/>
                         <constraint firstItem="3dY-Pa-bsf" firstAttribute="top" secondItem="QNm-8w-anS" secondAttribute="top" id="eNV-gm-c1z"/>
-                        <constraint firstAttribute="trailing" secondItem="cjy-mn-bxJ" secondAttribute="trailing" constant="17" id="ePL-qy-Xc9"/>
                         <constraint firstItem="3dY-Pa-bsf" firstAttribute="leading" secondItem="QNm-8w-anS" secondAttribute="leading" id="gZ8-93-Vt9"/>
                         <constraint firstAttribute="bottom" secondItem="znR-U3-vzl" secondAttribute="bottom" constant="2" id="l8v-1r-xiN"/>
                         <constraint firstItem="znR-U3-vzl" firstAttribute="leading" secondItem="gK4-tp-HpB" secondAttribute="trailing" constant="20" id="pTO-Vd-EKw"/>

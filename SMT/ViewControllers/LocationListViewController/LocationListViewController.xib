@@ -12,7 +12,6 @@
                 <outlet property="con3" destination="dMg-FW-Uxb" id="RzT-6R-GVz"/>
                 <outlet property="con4" destination="Z69-o4-27v" id="amA-rc-aAK"/>
                 <outlet property="con5" destination="fMV-bW-8ns" id="McO-m9-n5U"/>
-                <outlet property="con6" destination="sbQ-xg-W65" id="z2c-f0-VA7"/>
                 <outlet property="locationChangeSegmentControl" destination="fTT-SD-RM8" id="J2t-Gl-tNX"/>
                 <outlet property="navigationBarHeightConstr" destination="CLH-S1-ReD" id="iLZ-om-qJK"/>
                 <outlet property="navigationBarVerticalConstr" destination="Avf-fl-6hp" id="BZw-cd-qZR"/>
@@ -200,7 +199,6 @@
                         <constraint firstAttribute="height" constant="46" id="n1t-Cj-t5Q"/>
                         <constraint firstItem="F2X-wI-3aI" firstAttribute="leading" secondItem="IZX-EA-s2i" secondAttribute="leading" constant="17" id="oL4-u2-kQ6"/>
                         <constraint firstAttribute="bottom" secondItem="T0B-7E-lGf" secondAttribute="bottom" id="qhx-PH-JdJ"/>
-                        <constraint firstAttribute="trailing" secondItem="rnn-Jf-08z" secondAttribute="trailing" constant="20" id="sbQ-xg-W65"/>
                         <constraint firstItem="Jp3-QJ-Ewu" firstAttribute="leading" secondItem="F2X-wI-3aI" secondAttribute="trailing" constant="20" id="zKX-1f-bam"/>
                         <constraint firstAttribute="bottom" secondItem="nkk-xO-t39" secondAttribute="bottom" constant="2" id="zOs-MV-f8k"/>
                     </constraints>

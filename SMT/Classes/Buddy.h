@@ -17,8 +17,7 @@ enum TypeOfStatus{
 @interface Buddy : NSObject
 
 @property (strong, nonatomic) NSString * userName;
-@property (strong, nonatomic) NSString * userFirstName;
-@property (strong, nonatomic) NSString * userSecondName;
+@property (strong, nonatomic) NSString * name;
 @property (strong, nonatomic) NSString * userID;
 @property (strong, nonatomic) NSString * userRelation;
 @property (strong, nonatomic) NSString * userPosLatitude;

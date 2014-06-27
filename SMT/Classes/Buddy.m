@@ -9,8 +9,7 @@
 #import "Buddy.h"
 
 #define BUDDY_EMAIL @"Email"
-#define BUDDY_FIRST_NAME @"First Name"
-#define BUDDY_LAST_NAME @"Last Name"
+#define BUDDY_NAME @"Name"
 #define BUDDY_STATUS @"Status"
 #define BUDDY_USER_ID @"User ID"
 #define BUDDY_USER_LATITUDE @"Latitude"
@@ -52,8 +51,7 @@
 - (void)setInitialData{
     self.userName = @" ";
     self.userID = @" ";
-    self.userFirstName = @" ";
-    self.userSecondName = @" ";
+    self.name = @" ";
     self.userRelation = @" ";
     self.userPosLatitude = @" ";
     self.userPosLatitude = @" ";
@@ -66,8 +64,7 @@
 - (void)setData:(NSDictionary*)dic{
     self.userName = [dic objectForKey:BUDDY_EMAIL];
     self.userID = [dic objectForKey:BUDDY_USER_ID];
-    self.userFirstName = [dic objectForKey:BUDDY_FIRST_NAME];
-    self.userSecondName = [dic objectForKey:BUDDY_LAST_NAME];
+    self.name = [dic objectForKey:BUDDY_NAME];
     self.userRelation = [dic objectForKey:BUDDY_STATUS];
     self.userPosLatitude = [dic objectForKey:BUDDY_USER_LATITUDE];
     self.userPosLongitude = [dic objectForKey:BUDDY_USER_LONGITUDE];

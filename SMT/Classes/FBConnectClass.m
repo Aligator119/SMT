@@ -227,7 +227,7 @@
                 // * * * * *
                 SEL open = @selector(fbUserLogin:password:);
                 if([self.delegate respondsToSelector:open]){
-                    [self.delegate fbUserLogin:findUser.userName password:findUser.userPassword];
+                    [self.delegate fbUserLogin:findUser.userEmail password:findUser.userPassword];
                     
                 }
             } else { // Data is upsent

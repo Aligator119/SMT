@@ -121,7 +121,7 @@
             if (!cell) {
                 cell = [[IncomingFriendCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"IncomingFriendCell"];
             }
-            ((IncomingFriendCell *)cell).lbFriendName.text = [NSString stringWithFormat:@"%@ %@",buddy.userFirstName ,buddy.userSecondName];
+            ((IncomingFriendCell *)cell).lbFriendName.text = buddy.name;
             [((IncomingFriendCell *)cell).btnDone addTarget:self action:@selector(actDone:) forControlEvents:UIControlEventTouchUpInside];
             [((IncomingFriendCell *)cell).btnAccept addTarget:self action:@selector(actAccept:) forControlEvents:UIControlEventTouchUpInside];
             ((IncomingFriendCell *)cell).btnDone.tag = [buddy.userID intValue];
@@ -135,7 +135,7 @@
             if (!cell) {
                 cell = [[Cell alloc]initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"Cell"];
             }
-            ((Cell *)cell).lbFriendName.text = [NSString stringWithFormat:@"%@ %@",buddy.userFirstName ,buddy.userSecondName];
+            ((Cell *)cell).lbFriendName.text = buddy.name;
         }
     
             
@@ -145,7 +145,7 @@
             if (!cell) {
                 cell = [[InviteFriendCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"InviteFriendCell"];
             }
-            ((InviteFriendCell *)cell).lbFriendName.text = [NSString stringWithFormat:@"%@ %@",buddy.userFirstName ,buddy.userSecondName];
+            ((InviteFriendCell *)cell).lbFriendName.text = buddy.name;
             [((InviteFriendCell *)cell).btnHidde addTarget:self action:@selector(actHidden:) forControlEvents:UIControlEventTouchUpInside];
             ((InviteFriendCell *)cell).btnHidde.tag = [buddy.userID intValue];
         }

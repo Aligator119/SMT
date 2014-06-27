@@ -57,7 +57,7 @@
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     isSettings = NO;
     dataLoader = [DataLoader instance];
-    self.lbNameUser.text = [NSString stringWithFormat:@"%@ %@", appDelegate.user.userFirstName, appDelegate.user.userSecondName];
+    self.lbNameUser.text =  appDelegate.user.name;
     self.lbNameLocation.text = @"";
     self.lbStatus.text = @"";
     self.imgUser.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:appDelegate.user.avatarAdress]]];

@@ -46,13 +46,13 @@
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
         self.navigationBarHeightConstr.constant -= 20;
         self.navigationBarVerticalConstr.constant -=20;
-        self.lbNavigationBarTitle.text = [NSString stringWithFormat:@"%@ %@", self.buddy.userFirstName, self.buddy.userSecondName];
+        self.lbNavigationBarTitle.text = self.buddy.name;
     }
     
     dataLoader = [DataLoader instance];
     
     self.lbNavigationBarTitle.text = @"Buddy details";
-    self.lbName.text = [[self.buddy.userFirstName stringByAppendingString:@" "]stringByAppendingString:self.buddy.userSecondName];
+    self.lbName.text = self.buddy.name;
     // download buddy avatar
     
     NSURL * imgURL = [NSURL URLWithString:self.buddy.avatar_url];
@@ -74,7 +74,7 @@
     [self.collectionTable registerNib:headerNib forCellWithReuseIdentifier:@"header"];
     
     //[self.image setBackgroundColor:[UIColor greenColor]];
-    [self AddActivityIndicator:[UIColor redColor] forView:self.table];
+    [self AddActivityIndicator:[UIColor redColor] forView:self.view];
     //[self AddActivityIndicator:[UIColor redColor] forView:self.collectionTable];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToLocationDetails:) name:@"LocationListInfoButtonPressed" object:nil];
@@ -271,7 +271,7 @@
     if (kind == UICollectionElementKindSectionHeader) {
         headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
         UILabel * lb = [[UILabel alloc]initWithFrame:headerView.frame];
-        lb.text = [[NSString stringWithFormat:@" %@",self.buddy.userFirstName] stringByAppendingString:self.buddy.userSecondName];
+        lb.text = self.buddy.name;
         lb.textColor = [UIColor colorWithRed:157.0/255.0 green:157.0/255.0 blue:159.0/255.0 alpha:1.0];
         [headerView setBackgroundColor:[UIColor colorWithRed:239.0/255.0 green:239.0/255.0 blue:244.0/255.0 alpha:1.0]];
         [headerView addSubview:lb];
