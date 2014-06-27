@@ -37,6 +37,7 @@
 - (void)selectSettingButton;
 - (NSString *) getImageName:(int)tag;
 - (void)photoClick:(id)notification;
+- (void)rightSwipeHandler:(id)sender;
 @end
 
 @implementation FirstViewController
@@ -87,6 +88,12 @@
     
     [dataLoader getLocationsAssociatedWithUser];
     isiPad = NO;
+    
+    UISwipeGestureRecognizer *rightRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightSwipeHandler:)];
+    rightRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    [self.view addGestureRecognizer:rightRecognizer];
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -254,7 +261,8 @@ LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibNa
             if (!isSettings) {
                 [self selectSettingButton];
             } else{
-                [self deselectSettingButton];            }
+                [self deselectSettingButton];
+            }
             [self showSettings];
             isSettings = !isSettings;
             
@@ -400,6 +408,16 @@ LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibNa
             
         });
     });
+}
+
+
+- (void)rightSwipeHandler:(id)sender
+{
+    if (isSettings) {
+        [self deselectSettingButton];
+        [self showSettings];
+        isSettings = !isSettings;
+    }
 }
 
 

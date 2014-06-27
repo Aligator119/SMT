@@ -13,7 +13,13 @@
 #import "CustomTabBar.h"
 
 @interface CameraViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+{
+    BOOL isPresent;
+}
 
 @property (strong, nonatomic) IBOutlet CustomTabBar *tabBar;
+
+-(void) setIsPresent:(BOOL)present;
+
 
 @end
