@@ -100,7 +100,7 @@
 {
     if (self.view.frame.size.width > 320.0) {
         isiPad = YES;
-        self.leftsSpace.constant = self.view.frame.size.width * 0.218;
+        self.leftsSpace.constant = self.view.frame.size.width * 0.38;
         [self.view updateConstraintsIfNeeded];
     }
     
@@ -278,9 +278,9 @@ LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibNa
         [UIView animateWithDuration:0.5f animations:^{
             CGRect bounds = _current.frame;
             if (!isiPad) {
-            bounds.origin.x -= 250.0;
+                bounds.origin.x -= 250.0;
             } else {
-                bounds.origin.x -= self.view.frame.size.width * 0.78;
+                bounds.origin.x -= self.view.frame.size.width * 0.62;
             }
            _current.frame = bounds;
         }];
@@ -288,9 +288,9 @@ LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibNa
         [UIView animateWithDuration:0.5f animations:^{
             CGRect bounds = _current.frame;
             if (!isiPad) {
-            bounds.origin.x += 250.0;
+                bounds.origin.x += 250.0;
             } else {
-                bounds.origin.x += self.view.frame.size.width * 0.78;
+                bounds.origin.x += self.view.frame.size.width * 0.62;
             }
             _current.frame = bounds;
         }];
