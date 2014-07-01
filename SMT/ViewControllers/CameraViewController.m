@@ -3,11 +3,7 @@
 @interface CameraViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *image;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *tabBarWidth;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *con1;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *con2;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *con3;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *con4;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *con5;
+
 
 
 - (IBAction)actSelectPhoto:(id)sender;
@@ -45,12 +41,6 @@
         
     }
     self.tabBarWidth.constant = self.view.frame.size.width;
-    float f = self.view.frame.size.width - 180;
-    self.con1.constant = f/6;
-    self.con2.constant = f/6;
-    self.con3.constant = f/6;
-    self.con4.constant = f/6;
-    self.con5.constant = f/6;
     [self.view updateConstraintsIfNeeded];
 }
 

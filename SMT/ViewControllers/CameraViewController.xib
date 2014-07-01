@@ -7,11 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraViewController">
             <connections>
-                <outlet property="con1" destination="y16-9w-RcE" id="MQv-hi-5kd"/>
-                <outlet property="con2" destination="HHG-4M-qA2" id="IXt-pl-gRk"/>
-                <outlet property="con3" destination="Qhi-vf-ROp" id="hTh-R4-zw3"/>
-                <outlet property="con4" destination="ljB-Of-BJh" id="yTO-0A-t9c"/>
-                <outlet property="con5" destination="hEm-Lg-cGQ" id="ok6-vJ-PDl"/>
                 <outlet property="image" destination="TcO-h8-2RU" id="YcH-rK-dGH"/>
                 <outlet property="tabBar" destination="Hgc-sJ-B9V" id="jCn-T5-JFb"/>
                 <outlet property="tabBarWidth" destination="YT2-WY-scq" id="Bgj-Se-Ka7"/>
@@ -58,6 +53,9 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabbar_BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="uTz-Zu-QIU">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="320" id="blc-oM-ZJb"/>
+                            </constraints>
                         </imageView>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJr-zl-O8C">
                             <rect key="frame" x="17" y="8" width="36" height="36"/>
@@ -120,23 +118,22 @@
                             <state key="highlighted" backgroundImage="st_icon_press.png"/>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="uTz-Zu-QIU" secondAttribute="bottom" id="0Qk-Zx-aAr"/>
+                        <constraint firstAttribute="centerX" secondItem="eXC-nv-WNS" secondAttribute="centerX" id="DgX-1v-yBX"/>
                         <constraint firstItem="r8B-o3-Nmf" firstAttribute="leading" secondItem="GJr-zl-O8C" secondAttribute="trailing" constant="20" id="HHG-4M-qA2"/>
                         <constraint firstAttribute="bottom" secondItem="UXo-x1-BLX" secondAttribute="bottom" constant="2" id="M0B-aP-H9m"/>
                         <constraint firstAttribute="bottom" secondItem="KfL-H9-r6M" secondAttribute="bottom" constant="2" id="Mon-TI-e3y"/>
                         <constraint firstItem="eXC-nv-WNS" firstAttribute="leading" secondItem="r8B-o3-Nmf" secondAttribute="trailing" constant="33" id="Qhi-vf-ROp"/>
                         <constraint firstItem="uTz-Zu-QIU" firstAttribute="top" secondItem="Hgc-sJ-B9V" secondAttribute="top" id="TD4-zH-XZ1"/>
                         <constraint firstAttribute="width" constant="320" id="YT2-WY-scq"/>
-                        <constraint firstItem="uTz-Zu-QIU" firstAttribute="leading" secondItem="Hgc-sJ-B9V" secondAttribute="leading" id="bPC-Zz-3zK"/>
-                        <constraint firstAttribute="trailing" secondItem="uTz-Zu-QIU" secondAttribute="trailing" id="cTf-kb-Mk8"/>
                         <constraint firstItem="KfL-H9-r6M" firstAttribute="leading" secondItem="UXo-x1-BLX" secondAttribute="trailing" constant="18" id="hEm-Lg-cGQ"/>
+                        <constraint firstAttribute="centerX" secondItem="uTz-Zu-QIU" secondAttribute="centerX" id="ikt-fY-MAe"/>
                         <constraint firstAttribute="bottom" secondItem="r8B-o3-Nmf" secondAttribute="bottom" constant="2" id="lev-NL-MrY"/>
                         <constraint firstItem="UXo-x1-BLX" firstAttribute="leading" secondItem="eXC-nv-WNS" secondAttribute="trailing" constant="35" id="ljB-Of-BJh"/>
                         <constraint firstAttribute="bottom" secondItem="GJr-zl-O8C" secondAttribute="bottom" constant="2" id="oee-lU-HYx"/>
                         <constraint firstAttribute="height" constant="46" id="sZh-by-5NN"/>
-                        <constraint firstItem="GJr-zl-O8C" firstAttribute="leading" secondItem="Hgc-sJ-B9V" secondAttribute="leading" constant="17" id="y16-9w-RcE"/>
                         <constraint firstAttribute="bottom" secondItem="eXC-nv-WNS" secondAttribute="bottom" constant="2" id="zrY-Kt-FyB"/>
                     </constraints>
                 </view>

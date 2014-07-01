@@ -7,11 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocationListViewController">
             <connections>
-                <outlet property="con1" destination="oL4-u2-kQ6" id="Mcr-TW-I0z"/>
-                <outlet property="con2" destination="zKX-1f-bam" id="bc9-xz-iQP"/>
-                <outlet property="con3" destination="dMg-FW-Uxb" id="RzT-6R-GVz"/>
-                <outlet property="con4" destination="Z69-o4-27v" id="amA-rc-aAK"/>
-                <outlet property="con5" destination="fMV-bW-8ns" id="McO-m9-n5U"/>
                 <outlet property="locationChangeSegmentControl" destination="fTT-SD-RM8" id="J2t-Gl-tNX"/>
                 <outlet property="navigationBarHeightConstr" destination="CLH-S1-ReD" id="iLZ-om-qJK"/>
                 <outlet property="navigationBarVerticalConstr" destination="Avf-fl-6hp" id="BZw-cd-qZR"/>
@@ -121,6 +116,9 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabbar_BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="T0B-7E-lGf">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="320" id="DAc-U8-RJe"/>
+                            </constraints>
                         </imageView>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2X-wI-3aI">
                             <rect key="frame" x="17" y="8" width="36" height="36"/>
@@ -183,10 +181,10 @@
                             <state key="highlighted" backgroundImage="st_icon_press.png"/>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="vFB-5Y-foJ" secondAttribute="bottom" constant="2" id="BQA-2I-GOc"/>
-                        <constraint firstItem="T0B-7E-lGf" firstAttribute="leading" secondItem="IZX-EA-s2i" secondAttribute="leading" id="GiO-VS-k48"/>
+                        <constraint firstAttribute="centerX" secondItem="nkk-xO-t39" secondAttribute="centerX" id="Cfh-g9-Mz8"/>
                         <constraint firstAttribute="bottom" secondItem="Jp3-QJ-Ewu" secondAttribute="bottom" constant="2" id="Ly0-su-0ZJ"/>
                         <constraint firstAttribute="bottom" secondItem="F2X-wI-3aI" secondAttribute="bottom" constant="2" id="VjU-8x-i4Z"/>
                         <constraint firstItem="vFB-5Y-foJ" firstAttribute="leading" secondItem="nkk-xO-t39" secondAttribute="trailing" constant="35" id="Z69-o4-27v"/>
@@ -194,10 +192,9 @@
                         <constraint firstItem="nkk-xO-t39" firstAttribute="leading" secondItem="Jp3-QJ-Ewu" secondAttribute="trailing" constant="33" id="dMg-FW-Uxb"/>
                         <constraint firstAttribute="width" constant="320" id="eHi-kk-XQM"/>
                         <constraint firstItem="rnn-Jf-08z" firstAttribute="leading" secondItem="vFB-5Y-foJ" secondAttribute="trailing" constant="15" id="fMV-bW-8ns"/>
-                        <constraint firstAttribute="trailing" secondItem="T0B-7E-lGf" secondAttribute="trailing" id="iIP-7B-8pA"/>
                         <constraint firstAttribute="bottom" secondItem="rnn-Jf-08z" secondAttribute="bottom" constant="2" id="l8c-Su-f9d"/>
                         <constraint firstAttribute="height" constant="46" id="n1t-Cj-t5Q"/>
-                        <constraint firstItem="F2X-wI-3aI" firstAttribute="leading" secondItem="IZX-EA-s2i" secondAttribute="leading" constant="17" id="oL4-u2-kQ6"/>
+                        <constraint firstAttribute="centerX" secondItem="T0B-7E-lGf" secondAttribute="centerX" id="n3c-wN-cwR"/>
                         <constraint firstAttribute="bottom" secondItem="T0B-7E-lGf" secondAttribute="bottom" id="qhx-PH-JdJ"/>
                         <constraint firstItem="Jp3-QJ-Ewu" firstAttribute="leading" secondItem="F2X-wI-3aI" secondAttribute="trailing" constant="20" id="zKX-1f-bam"/>
                         <constraint firstAttribute="bottom" secondItem="nkk-xO-t39" secondAttribute="bottom" constant="2" id="zOs-MV-f8k"/>
