@@ -136,7 +136,7 @@
     NSString * strUrlRequestAddress = [NSString stringWithFormat:@"http://devapi.sportsmantracker.com/v2/sendBuddyTrackingInvite/?email=%@&app=fp&name=%@&%@", email, name, APP_ID_KEY ];
     NSString * strUrlRequestData = @"";
     
-     [self startRequest:strUrlRequestAddress andData:strUrlRequestData typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestSendInvitation];
+     [self startRequest:strUrlRequestAddress andData:[strUrlRequestData dataUsingEncoding:NSUTF8StringEncoding] typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestSendInvitation];
 }
 
 -(void) createLocationWithName : (NSString*) name Latitude: (double) latitude Longitude: (double) longitude locationType:(NSInteger) _type
@@ -532,7 +532,7 @@
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i",strUrl,SubstringCurrentLocation,appDel.user.userID];
     NSString * strUrlRequestData1 = [NSString stringWithFormat:@"latitude=%@&longitude=%@&%@",_latitude,_longitude,APP_ID_KEY];
     
-    [self startRequest:strUrlRequestAdress andData:strUrlRequestData1 typeRequest:RequestPut setHeaders:YES andTypeRequest:ApplicationServiceRequestUpdateUserCurrentLocation];
+    [self startRequest:strUrlRequestAdress andData:[strUrlRequestData1 dataUsingEncoding:NSUTF8StringEncoding] typeRequest:RequestPut setHeaders:YES andTypeRequest:ApplicationServiceRequestUpdateUserCurrentLocation];
 }
 
 #pragma mark Shared locations

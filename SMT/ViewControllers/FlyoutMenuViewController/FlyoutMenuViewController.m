@@ -40,19 +40,23 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *btn2Hegth;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *btn3Hegth;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *tabBarWidth;
+@property (strong, nonatomic) IBOutlet UIView *btn1fone;
+@property (strong, nonatomic) IBOutlet UIView *btn2fone;
+@property (strong, nonatomic) IBOutlet UIView *btn3fone;
+@property (strong, nonatomic) IBOutlet UIView *btn4fone;
 
 @property (nonatomic, weak) IBOutlet UICollectionView *table;
 @property (strong, nonatomic) IBOutlet UICollectionView *colectionView;
-@property (strong, nonatomic) IBOutlet UIButton *btn1;
-@property (strong, nonatomic) IBOutlet UIButton *btn2;
-@property (strong, nonatomic) IBOutlet UIButton *btn3;
-@property (strong, nonatomic) IBOutlet UIButton *btn4;
+@property (strong, nonatomic) IBOutlet UIImageView *btn1;
+@property (strong, nonatomic) IBOutlet UIImageView *btn2;
+@property (strong, nonatomic) IBOutlet UIImageView *btn3;
+@property (strong, nonatomic) IBOutlet UIImageView *btn4;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageController;
 
-- (IBAction)actHome:(id)sender;
-- (IBAction)actLookSee:(id)sender;
-- (IBAction)actVideo:(id)sender;
-- (IBAction)actTIPS:(id)sender;
+- (void)actHome:(id)sender;
+- (void)actLookSee:(id)sender;
+- (void)actVideo:(id)sender;
+- (void)actTIPS:(id)sender;
 
 - (void)reverseBackroundImageWithNumber:(int)num;
 - (void)setImageWithAllButton;
@@ -99,6 +103,26 @@
     [self reverseBackroundImageWithNumber:1];
     
     self.pageController.numberOfPages = 5;
+    UITapGestureRecognizer * btn1Recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(actHome:)];
+    [btn1Recognizer setNumberOfTapsRequired:1];
+    [btn1Recognizer setDelegate:self];
+    [self.btn1 addGestureRecognizer:btn1Recognizer];
+    UITapGestureRecognizer * btn2Recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(actLookSee:)];
+    [btn2Recognizer setNumberOfTapsRequired:1];
+    [btn2Recognizer setDelegate:self];
+    [self.btn2 addGestureRecognizer:btn2Recognizer];
+    UITapGestureRecognizer * btn3Recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(actVideo:)];
+    [btn3Recognizer setNumberOfTapsRequired:1];
+    [btn3Recognizer setDelegate:self];
+    [self.btn3 addGestureRecognizer:btn3Recognizer];
+    UITapGestureRecognizer * btn4Recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(actTIPS:)];
+    [btn4Recognizer setNumberOfTapsRequired:1];
+    [btn4Recognizer setDelegate:self];
+    [self.btn4 addGestureRecognizer:btn4Recognizer];
+//    self.btn1fone.backgroundColor = [UIColor blackColor];
+//    self.btn2fone.backgroundColor = [UIColor blackColor];
+//    self.btn3fone.backgroundColor = [UIColor blackColor];
+//    self.btn4fone.backgroundColor = [UIColor blackColor];
 }
 
 
@@ -265,32 +289,32 @@
 - (void)setImageWithAllButton
 {
     if (selectedBtn1) {
-        [self.btn1 setBackgroundImage:[UIImage imageNamed:@"foto_icon.png"] forState:UIControlStateNormal];
-        //[self.btn1 setBackgroundImage:[UIImage imageNamed:@"foto_icon_press.png"] forState:UIControlStateHighlighted];
+        self.btn1.image = [UIImage imageNamed:@"foto_icon.png"];
+        self.btn1fone.backgroundColor = [UIColor colorWithRed:26/255.0 green:26/255.0 blue:26/255.0 alpha:1.0];
     } else {
-        //[self.btn1 setBackgroundImage:[UIImage imageNamed:@"foto_icon.png"] forState:UIControlStateHighlighted];
-        [self.btn1 setBackgroundImage:[UIImage imageNamed:@"foto_icon_press.png"] forState:UIControlStateNormal];
+        self.btn1fone.backgroundColor = [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1.0];
+        self.btn1.image = [UIImage imageNamed:@"foto_icon_press.png"];
     }
     if (selectedBtn2) {
-        [self.btn2 setBackgroundImage:[UIImage imageNamed:@"look_icon.png"] forState:UIControlStateNormal];
-        //[self.btn2 setBackgroundImage:[UIImage imageNamed:@"look_icon_press.png"] forState:UIControlStateHighlighted];
+        self.btn2.image = [UIImage imageNamed:@"look_icon.png"];
+        self.btn2fone.backgroundColor = [UIColor colorWithRed:26/255.0 green:26/255.0 blue:26/255.0 alpha:1.0];
     } else {
-        //[self.btn2 setBackgroundImage:[UIImage imageNamed:@"look_icon.png"] forState:UIControlStateHighlighted];
-        [self.btn2 setBackgroundImage:[UIImage imageNamed:@"look_icon_press.png"] forState:UIControlStateNormal];
+        self.btn2fone.backgroundColor = [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1.0];
+        self.btn2.image = [UIImage imageNamed:@"look_icon_press.png"];
     }
     if (selectedBtn3) {
-        [self.btn3 setBackgroundImage:[UIImage imageNamed:@"video_camera_icon.png"] forState:UIControlStateNormal];
-        //[self.btn3 setBackgroundImage:[UIImage imageNamed:@"video_camera_icon_press.png"] forState:UIControlStateHighlighted];
+        self.btn3.image = [UIImage imageNamed:@"video_camera_icon.png"];
+        self.btn3fone.backgroundColor = [UIColor colorWithRed:26/255.0 green:26/255.0 blue:26/255.0 alpha:1.0];
     } else {
-        //[self.btn3 setBackgroundImage:[UIImage imageNamed:@"video_camera_icon.png"] forState:UIControlStateHighlighted];
-        [self.btn3 setBackgroundImage:[UIImage imageNamed:@"video_camera_icon_press.png"] forState:UIControlStateNormal];
+        self.btn3fone.backgroundColor = [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1.0];
+        self.btn3.image = [UIImage imageNamed:@"video_camera_icon_press.png"];
     }
     if (selectedBtn4) {
-        [self.btn4 setBackgroundImage:[UIImage imageNamed:@"tips_icon.png"] forState:UIControlStateNormal];
-        //[self.btn4 setBackgroundImage:[UIImage imageNamed:@"foto_icon_press.png"] forState:UIControlStateHighlighted];
+        self.btn4.image = [UIImage imageNamed:@"tips_icon.png"];
+        self.btn4fone.backgroundColor = [UIColor colorWithRed:26/255.0 green:26/255.0 blue:26/255.0 alpha:1.0];
     } else {
-        //[self.btn4 setBackgroundImage:[UIImage imageNamed:@"tips_icon.png"] forState:UIControlStateHighlighted];
-        [self.btn4 setBackgroundImage:[UIImage imageNamed:@"tips_icon_press.png"] forState:UIControlStateNormal];
+        self.btn4fone.backgroundColor = [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1.0];
+        self.btn4.image = [UIImage imageNamed:@"tips_icon_press.png"];
     }
 }
 
