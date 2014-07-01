@@ -1,21 +1,23 @@
-//
-//  CameraViewController.h
-//  SMT
-//
-//  Created by Mac on 6/19/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
-#import "MapViewController.h"
 #import "NewLog1ViewController.h"
 #import "FlyoutMenuViewController.h"
 #import "CustomTabBar.h"
+
+
+@protocol CameraControllerDelegate <NSObject>
+
+@required
+
+- (void)newUserAvatar:(UIImage *)avatar;
+
+@end
+
 
 @interface CameraViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     BOOL isPresent;
 }
+@property (weak, nonatomic) id<CameraControllerDelegate> delegate;
 
 @property (strong, nonatomic) IBOutlet CustomTabBar *tabBar;
 

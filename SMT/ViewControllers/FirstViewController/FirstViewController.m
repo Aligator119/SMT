@@ -369,7 +369,7 @@ LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibNa
             name = @"global_icon_press.png";
             break;
         case 3:
-            name = @"Camera_icon_press.png";
+            name = @"camera_icon_press.png";
             break;
         case 4:
             name = @"note_icon_press.png";
@@ -418,6 +418,11 @@ LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibNa
         [self showSettings];
         isSettings = !isSettings;
     }
+}
+
+- (void) newUserAvatar:(UIImage *)avatar
+{
+    self.imgUser.image =avatar;
 }
 
 

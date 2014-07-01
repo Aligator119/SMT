@@ -1,13 +1,21 @@
 #import "CameraViewController.h"
+#import "DataLoader.h"
+#import "UIViewController+LoaderCategory.h"
 
 @interface CameraViewController ()
+{
+    DataLoader * dataLoader;
+}
 @property (strong, nonatomic) IBOutlet UIImageView *image;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *tabBarWidth;
 
 
 
 - (IBAction)actSelectPhoto:(id)sender;
-- (IBAction)actTakePhoto:(id)sender;
+- (IBAction)actSetAvatar:(id)sender;
+- (IBAction)actAddGalery:(id)sender;
+
+- (void)actTakePhoto;
 @end
 
 @implementation CameraViewController
@@ -25,6 +33,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    dataLoader = [DataLoader instance];
+    [self AddActivityIndicator:[UIColor redColor] forView:self.view];
+    UIButton * btn = (UIButton *)[self.tabBar viewWithTag:3];
+    [btn setBackgroundImage:[UIImage imageNamed:@"camera_icon_press.png"] forState:UIControlStateNormal];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -39,9 +51,13 @@
         
         [myAlertView show];
         
+    } else {
+        [self actTakePhoto];
     }
     self.tabBarWidth.constant = self.view.frame.size.width;
     [self.view updateConstraintsIfNeeded];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,6 +75,7 @@
     
 }
 
+
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
@@ -74,7 +91,58 @@
     [self presentViewController:picker animated:YES completion:NULL];
 }
 
-- (IBAction)actTakePhoto:(id)sender {
+- (IBAction)actSetAvatar:(id)sender {
+    
+    [self startLoader];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        
+        [dataLoader setUserAvatar:self.image.image];
+        
+        dispatch_async(dispatch_get_main_queue(),^(){
+            
+            if(!dataLoader.isCorrectRezult) {
+                NSLog(@"Error upload avatar");
+                [self endLoader];
+            } else {
+                
+                id<CameraControllerDelegate> delegate = self.delegate;
+                if ([delegate respondsToSelector:@selector(newUserAvatar:)]) {
+                    [delegate newUserAvatar:self.image.image];
+                }
+                [self endLoader];
+            }
+            
+        });
+    });
+
+}
+
+- (IBAction)actAddGalery:(id)sender {
+    
+    [self startLoader];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        
+        [dataLoader uploadPhoto:self.image.image];
+        
+        dispatch_async(dispatch_get_main_queue(),^(){
+            
+            if(!dataLoader.isCorrectRezult) {
+                NSLog(@"Error upload avatar");
+                [self endLoader];
+            } else {
+                //self.imgUser.image = image;
+                [self endLoader];
+            }
+            
+        });
+    });
+}
+
+
+
+- (void)actTakePhoto {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
     picker.allowsEditing = YES;

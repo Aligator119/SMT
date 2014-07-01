@@ -8,7 +8,7 @@
 #import "CustomTabBar.h"
 
 
-@interface FirstViewController : UIViewController <MyNewCustomTabBarDelegate, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
+@interface FirstViewController : UIViewController <MyNewCustomTabBarDelegate, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, CameraControllerDelegate>
 
 @property (strong, nonatomic) UIView * current;
 
