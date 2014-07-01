@@ -1662,6 +1662,15 @@
 			path = ViewControllers/NewLog1ViewController;
 			sourceTree = "<group>";
 		};
+		04EF6B4A1962A40C00E2357E /* Custom TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				04F75C13195815EB000C42DA /* CustomTabBar.h */,
+				04F75C14195815EB000C42DA /* CustomTabBar.m */,
+			);
+			name = "Custom TabBar";
+			sourceTree = "<group>";
+		};
 		04F342EC192110E40054294C /* BuddyPageViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1696,8 +1705,7 @@
 		04F498B519532B2C00FC065C /* FirstViewController */ = {
 			isa = PBXGroup;
 			children = (
-				04F75C13195815EB000C42DA /* CustomTabBar.h */,
-				04F75C14195815EB000C42DA /* CustomTabBar.m */,
+				04EF6B4A1962A40C00E2357E /* Custom TabBar */,
 				04AD700D19586C30001701E7 /* FirstViewController.h */,
 				04AD700E19586C30001701E7 /* FirstViewController.m */,
 				04AD701019586EA8001701E7 /* FirstViewController.xib */,

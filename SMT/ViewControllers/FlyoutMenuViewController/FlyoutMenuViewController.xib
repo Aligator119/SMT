@@ -270,7 +270,7 @@
                         <constraint firstItem="iqr-cj-RxU" firstAttribute="leading" secondItem="caK-EW-bWK" secondAttribute="leading" id="y4K-px-7z4"/>
                     </constraints>
                 </view>
-                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="SWC-e9-rUe">
+                <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="SWC-e9-rUe">
                     <rect key="frame" x="20" y="153" width="280" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
