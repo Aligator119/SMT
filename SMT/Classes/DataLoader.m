@@ -736,6 +736,69 @@
     [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequestDelete setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto];
 }
 
+#pragma mark TIPS
+- (NSArray *)getTipsWithUserId:(int)userID
+{
+    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@tip?&user_id=%d&app_id=%@&app_key=%@&last=-1",strUrl, userID, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
+    NSDictionary *info = [NSDictionary new];
+    info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestTips];
+    NSMutableArray * array = [NSMutableArray new];
+    for(NSDictionary * dic in info){
+       
+        [array addObject:dic];
+    }
+    return array;
+}
+
+- (NSArray *)getTipsWithTipsId:(int)tipsID
+{
+    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@tip/%d?&app_id=%@&app_key=%@&last=-1",strUrl, tipsID, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
+    NSDictionary *info = [NSDictionary new];
+    info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestTips];
+    NSMutableArray * array = [NSMutableArray new];
+    for(NSDictionary * dic in info){
+        
+        [array addObject:dic];
+    }
+    return array;
+}
+
+- (TIPS *)createNewTipsWithSpecieID:(int)specieID tip:(NSString *)tipText subSpecieID:(int)subSpecieID andUserID:(int)userID
+{
+    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@tip", strUrl];
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:@[@(specieID), tipText, @(subSpecieID), @(userID),  App_id, App_key] forKeys:@[@"species_id", @"tip", @"subspecies_id", @"user_id", @"app_id", @"app_key" ]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    NSDictionary * inf = [self startRequest:strUrlRequestAddress andData:jsonData typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestTips];
+    TIPS * tip = [[TIPS alloc]init];
+    [tip initTipsWithData:inf];
+    return tip;
+}
+
+- (void)updateTipsWithTipsID:(int)tipID specieID:(int)specieID tip:(NSString *)tipText subSpecieID:(int)subSpecieID andUserID:(int)userID
+{
+    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@tip/%d", strUrl, tipID];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjects:@[@(specieID), tipText, @(subSpecieID), @(userID), @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"species_id", @"tip", @"subspecies_id", @"user_id", @"app_id", @"app_key"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    [self startRequest:strUrlRequestAddress andData:jsonData typeRequest:RequesPatch setHeaders:YES andTypeRequest:ApplicationServiceRequestTips];
+}
+
+- (void)deleteTipsWithID:(int)tipsID
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@tip/%i",strUrl,tipsID];
+    
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[@"b63800ad",@"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"app_id", @"app_key"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    
+    NSLog(@"%@", error);
+    
+    [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequestDelete setHeaders:YES andTypeRequest:ApplicationServiceRequestTips];
+}
+
+
 #pragma mark Shared Location
 -(NSArray *) getBuddySharedLocationWithID:(NSString *)loc_id
 {

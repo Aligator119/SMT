@@ -16,6 +16,10 @@
 #import "UIViewController+LoaderCategory.h"
 #import "ImageShow.h"
 #import "CameraViewController.h"
+#import "TipsCell.h"
+#import "CreateTipsCell.h"
+#import "SpeciesCell.h"
+#import "TIPS.h"
 
 
 
@@ -27,12 +31,26 @@
 @interface FlyoutMenuViewController ()
 {
     DataLoader * dataLoader;
+    AppDelegate * appDelegate;
     BOOL selectedBtn1;
     BOOL selectedBtn2;
     BOOL selectedBtn3;
     BOOL selectedBtn4;
+    NSMutableArray * tipsList;
+    NSMutableArray * photoList;
+    
+    NSArray * subSpecies;
+    Species * selectSpecie;
+    Species * selectSubSpecie;
+    NSMutableDictionary * cashedPhoto;
+    float width;
+    int activeSegment;
+    NSIndexPath * index;
 }
 @property (strong, nonatomic) IBOutlet UIView *forTabBar;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *topBarHiegthConstrainsSubView;
+@property (strong, nonatomic) IBOutlet UITableView *tableSelect;
+@property (strong, nonatomic) IBOutlet UIView *subView;
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * topViewHeightConstr;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *btn1Hegth;
@@ -60,6 +78,13 @@
 
 - (void)reverseBackroundImageWithNumber:(int)num;
 - (void)setImageWithAllButton;
+- (void)actSelectSpecie;
+- (void)actSelectSubSpecie;
+
+- (void)downloadTIPS;
+- (void)downloadPhotos;
+
+- (IBAction)actCloseSubView:(id)sender;
 @end
 
 @implementation FlyoutMenuViewController
@@ -79,16 +104,24 @@
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
         self.topViewHeightConstr.constant -= 20;
-        
+        self.topBarHiegthConstrainsSubView.constant -=20;
     }
+    [self.colectionView registerNib:[UINib nibWithNibName:@"TipsCell" bundle:nil] forCellWithReuseIdentifier:@"TipsCell"];
+    [self.colectionView registerNib:[UINib nibWithNibName:@"CreateTipsCell" bundle:nil] forCellWithReuseIdentifier:@"CreateTipsCell"];
     [self.colectionView registerNib:[UINib nibWithNibName:@"ImageShow" bundle:nil] forCellWithReuseIdentifier:@"ImageShow"];
+    
+    
     [self.table registerNib:[UINib nibWithNibName:@"ImageShow" bundle:nil] forCellWithReuseIdentifier:@"ImageShow"];
+    UINib *cellNib = [UINib nibWithNibName:@"SpeciesCell" bundle:[NSBundle mainBundle]];
+    [self.tableSelect registerNib:cellNib forCellReuseIdentifier:@"SpeciesCell"];
 
     self.table.tag = COLECTION_SHOW;
     self.colectionView.tag = COLECTION_DATA;
     
     dataLoader = [DataLoader instance];
-    
+    appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    activeSegment = 1;
+    cashedPhoto = [[NSMutableDictionary alloc]init];
 //--------------------------------------------------------------------------------------------------------------------
     [self AddActivityIndicator:[UIColor redColor] forView:self.view];
     
@@ -119,12 +152,9 @@
     [btn4Recognizer setNumberOfTapsRequired:1];
     [btn4Recognizer setDelegate:self];
     [self.btn4 addGestureRecognizer:btn4Recognizer];
-//    self.btn1fone.backgroundColor = [UIColor blackColor];
-//    self.btn2fone.backgroundColor = [UIColor blackColor];
-//    self.btn3fone.backgroundColor = [UIColor blackColor];
-//    self.btn4fone.backgroundColor = [UIColor blackColor];
+    
+    [self AddActivityIndicator:[UIColor redColor] forView:self.view];
 }
-
 
 
 -(void) setIsPresent:(BOOL)present
@@ -169,20 +199,74 @@
     self.btn4Hegth.constant = self.btn1Hegth.constant;
     self.tabBarWidth.constant = self.view.frame.size.width;
     [self.view updateConstraintsIfNeeded];
+    width = self.view.frame.size.width;
+    [self downloadPhotos];
 }
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    int num;
     if (collectionView.tag == COLECTION_DATA) {
-        return 1;
+        if (!selectedBtn1) {
+            num = photoList.count;
+        } else if (!selectedBtn2) {
+            num = 1;
+        } else if (!selectedBtn3) {
+            num = 1;
+        } else if (!selectedBtn4) {
+            num = tipsList.count;
+        }
+    } else {
+        num = 5;
     }
-    return 5;
+    return num;
 }
 
 - (UICollectionViewCell*) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     UICollectionViewCell * cell;
     if (collectionView.tag == COLECTION_DATA) {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageShow" forIndexPath:indexPath];
-        //add data to bottom colectionView
+        switch (activeSegment) {
+            case 1:
+            {
+                if (photoList.count) {
+                Photo * photo = [photoList objectAtIndex:indexPath.row];
+                if (![[cashedPhoto allKeys] containsObject:photo.photoID]) {
+                    UIImage * img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.fullPhoto]]];
+                    [cashedPhoto addEntriesFromDictionary:@{photo.photoID: img}];
+                }
+                cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageShow" forIndexPath:indexPath];
+                ((ImageShow *)cell).image.image = [cashedPhoto objectForKey:photo.photoID];
+                }
+            }
+                break;
+            case 2:
+            {
+                cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TipsCell" forIndexPath:indexPath];
+            }
+                break;
+            case 3:
+            {
+                cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TipsCell" forIndexPath:indexPath];
+            }
+                break;
+            case 4:
+            {
+                if ([[tipsList objectAtIndex:indexPath.row] isKindOfClass:[NSString class]]) {
+                    cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CreateTipsCell" forIndexPath:indexPath];
+                    [((CreateTipsCell *)cell).btnSelectSpecie addTarget:self action:@selector(actSelectSpecie) forControlEvents:UIControlEventTouchUpInside];
+                    [((CreateTipsCell *)cell).btnSelectSubSpecie addTarget:self action:@selector(actSelectSubSpecie) forControlEvents:UIControlEventTouchUpInside];
+                    [((CreateTipsCell *)cell).tfText setDelegate:self];
+                    index = indexPath;
+                } else {
+                    cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TipsCell" forIndexPath:indexPath];
+                    //add data to bottom colectionView
+                    ((TipsCell *)cell).lbName.text = @"My Name";
+                    ((TipsCell *)cell).lbDate.text = @"10.10.2010";
+                    ((TipsCell *)cell).lbText.text = @"qwertyuiop[]asdfghjkl;'zxcvbbnm,./qwertyuiop[]assdffgghjjkll;;;'''zxccvvbbnnmm,,../qwerty";
+                }
+            }
+                break;
+        }
+        
     } else {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageShow" forIndexPath:indexPath];
         switch (indexPath.row) {
@@ -208,6 +292,26 @@
     return cell;
 }
 
+
+- (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGSize size;
+    if (collectionView.tag == COLECTION_DATA) {
+        if (!selectedBtn1) {
+             size = CGSizeMake(self.colectionView.frame.size.width-10, self.colectionView.frame.size.height/1.5);
+        } else if (!selectedBtn2) {
+            //num = 1;
+        } else if (!selectedBtn3) {
+            //num = 1;
+        } else if (!selectedBtn4) {
+             size = CGSizeMake(self.colectionView.frame.size.width-20, self.colectionView.frame.size.height);
+        }
+    } else {
+        size = CGSizeMake(self.table.frame.size.width, self.table.frame.size.height);
+    }
+    return size;
+}
+
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     if (collectionView.tag == COLECTION_DATA) {
@@ -217,7 +321,7 @@
     if (collectionView.tag == COLECTION_SHOW) {
         // action for top colectionView
         CGPoint point = collectionView.contentOffset;
-        point.x += 321.0;
+        point.x += width+1;
         if (point.x >= collectionView.contentSize.width) {
             point.x = 0.0;
         }
@@ -229,23 +333,24 @@
 }
 
 
-- (IBAction)actHome:(id)sender {
+- (void)actHome:(id)sender {
     [self reverseBackroundImageWithNumber:1];
 }
 
-- (IBAction)actLookSee:(id)sender {
+- (void)actLookSee:(id)sender {
     [self reverseBackroundImageWithNumber:2];
 }
 
-- (IBAction)actVideo:(id)sender {
+- (void)actVideo:(id)sender {
     [self reverseBackroundImageWithNumber:3];
 }
-- (IBAction)actTIPS:(id)sender {
+- (void)actTIPS:(id)sender {
     [self reverseBackroundImageWithNumber:4];
 }
 
 - (void)reverseBackroundImageWithNumber:(int)num
 {
+    activeSegment = num;
     switch (num) {
         case 1:
         {
@@ -281,9 +386,13 @@
             selectedBtn3 = YES;
             selectedBtn4 = NO;
             [self setImageWithAllButton];
+            if (tipsList.count < 2) {
+                [self downloadTIPS];
+            }
         }
             break;
     }
+    [self.colectionView reloadData];
 }
 
 - (void)setImageWithAllButton
@@ -316,6 +425,181 @@
         self.btn4fone.backgroundColor = [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1.0];
         self.btn4.image = [UIImage imageNamed:@"tips_icon_press.png"];
     }
+}
+#pragma mark table delegates metods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (self.tableSelect.tag == 1) {
+        return appDelegate.speciesList.count;
+    } else {
+        return subSpecies.count;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SpeciesCell * cell = [tableView dequeueReusableCellWithIdentifier:@"SpeciesCell"];
+    
+    if (tableView.tag == 1) {
+        [cell setSpecie:[appDelegate.speciesList objectAtIndex:indexPath.row]];
+    } else {
+        [cell setSpecie:[subSpecies objectAtIndex:indexPath.row]];
+    }
+    //cell.contentView.backgroundColor = [UIColor clearColor];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell * buf = [self.colectionView cellForItemAtIndexPath:index];
+    if (tableView.tag == 1) {
+        selectSpecie = [appDelegate.speciesList objectAtIndex:indexPath.row];
+        [((CreateTipsCell *)buf).btnSelectSpecie setTitle:selectSpecie.name forState:UIControlStateNormal];
+        [self.subView removeFromSuperview];
+    } else {
+        selectSubSpecie = [subSpecies objectAtIndex:indexPath.row];
+        [((CreateTipsCell *)buf).btnSelectSubSpecie setTitle:selectSubSpecie.name forState:UIControlStateNormal];
+        [self.subView removeFromSuperview];
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60;
+}
+
+#pragma mark Select Species and SubSpecies
+
+- (void)actSelectSpecie
+{
+    self.tableSelect.tag = 1;
+    [self.tableSelect reloadData];
+    [self.view addSubview:self.subView];
+}
+
+- (void)actSelectSubSpecie
+{
+    if (!selectSpecie) {
+        [[[UIAlertView alloc]initWithTitle:@"Error" message:@"No select Specie" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] show];
+    } else {
+        [self startLoader];
+        self.tableSelect.tag = 2;
+        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(newQueue, ^(){
+            subSpecies = [[NSArray alloc]initWithArray:[dataLoader getSubSpecies:[selectSpecie.specId intValue]]] ;
+        
+            dispatch_async(dispatch_get_main_queue(), ^(){
+            
+                if(!dataLoader.isCorrectRezult) {
+                    NSLog(@"Error download sybSpecie");
+                    [self endLoader];
+                } else {
+                    [self.tableSelect reloadData];
+                    [self.view addSubview:self.subView];
+                    [self endLoader];
+                }
+            });
+       });
+    }
+}
+
+#pragma mark UITextViewDelegats metods
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    [self startLoader];
+    NSLog(@"send tips");
+    // add send tips to servrs
+    int subID;
+    UICollectionViewCell * buf = [self.colectionView cellForItemAtIndexPath:index];
+    if (((CreateTipsCell *)buf).tfText.text && selectSpecie) {
+        if (!selectSubSpecie) {
+            subID = 0;
+        } else {
+            subID = [selectSubSpecie.specId intValue];
+        }
+        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(newQueue, ^(){
+            [dataLoader createNewTipsWithSpecieID:[selectSpecie.specId intValue] tip:((CreateTipsCell *)buf).tfText.text subSpecieID:subID andUserID:appDelegate.user.userID];
+        
+            dispatch_async(dispatch_get_main_queue(), ^(){
+            
+                if(!dataLoader.isCorrectRezult) {
+                    NSLog(@"Error create tips");
+                    [self endLoader];
+                } else {
+                    //[self.colectionView reloadData];
+                    NSLog(@"YES");
+                    [self endLoader];
+                    [self downloadTIPS];
+                }
+           });
+        });
+    }
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
+
+#pragma mark Download data
+
+- (void)downloadTIPS
+{
+    [self startLoader];
+    tipsList = [[NSMutableArray alloc]initWithObjects:@"new tips", nil];
+//    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_async(newQueue, ^(){
+//        NSArray * array = [dataLoader getTipsWithUserId:1] ;
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^(){
+//            
+//            if(!dataLoader.isCorrectRezult) {
+//                NSLog(@"Error download sybSpecie");
+//                [self endLoader];
+//            } else {
+//                tipsList = [[NSMutableArray alloc]initWithObjects:@"new tips", nil];
+//                [tipsList addObjectsFromArray:array];
+//                [self.colectionView reloadData];
+//                [self endLoader];
+//            }
+//        });
+//    });
+    [self endLoader];
+}
+
+
+- (void)downloadPhotos
+{
+    [self startLoader];
+    photoList = [[NSMutableArray alloc]init];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        photoList = [[NSMutableArray alloc]initWithArray:[dataLoader getPhoto]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            
+            if(!dataLoader.isCorrectRezult) {
+                NSLog(@"Error download sybSpecie");
+                [self endLoader];
+            } else {
+                [self.colectionView reloadData];
+                [self endLoader];
+            }
+        });
+    });
+}
+
+- (IBAction)actCloseSubView:(id)sender {
+    [self.subView removeFromSuperview];
 }
 
 @end

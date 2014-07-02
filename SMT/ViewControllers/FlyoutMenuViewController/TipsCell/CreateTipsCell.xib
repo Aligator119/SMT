@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CreateTipsCell" id="Uye-kZ-tgZ" customClass="CreateTipsCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="145"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="145"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Species:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5L9-zx-yfE">
+                        <rect key="frame" x="10" y="5" width="122" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="122" id="5R3-qZ-z2w"/>
+                            <constraint firstAttribute="height" constant="20" id="b1K-X5-cYz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Subspecies (optional):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XfS-Xh-jtH">
+                        <rect key="frame" x="10" y="30" width="193" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="193" id="Q0v-cc-ZhU"/>
+                            <constraint firstAttribute="height" constant="20" id="e6M-T4-IsI"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5UT-Gx-xC3">
+                        <rect key="frame" x="142" y="5" width="168" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="5lu-ic-MUJ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                        <state key="normal" title="Select">
+                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gKf-6D-RAe">
+                        <rect key="frame" x="208" y="30" width="102" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="X6H-EO-RBt"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                        <state key="normal" title="Select">
+                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBi-GD-9qB">
+                        <rect key="frame" x="10" y="55" width="300" height="85"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="alphabet" returnKeyType="send"/>
+                        <connections>
+                            <outlet property="delegate" destination="-1" id="oQL-eJ-WZ2"/>
+                        </connections>
+                    </textView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="XfS-Xh-jtH" firstAttribute="top" secondItem="5L9-zx-yfE" secondAttribute="bottom" constant="5" id="3nU-dT-PnB"/>
+                <constraint firstItem="5UT-Gx-xC3" firstAttribute="top" secondItem="Uye-kZ-tgZ" secondAttribute="top" constant="5" id="7Qu-Je-ii8"/>
+                <constraint firstItem="BBi-GD-9qB" firstAttribute="leading" secondItem="Uye-kZ-tgZ" secondAttribute="leading" constant="10" id="8P6-Ad-8ii"/>
+                <constraint firstItem="gKf-6D-RAe" firstAttribute="leading" secondItem="XfS-Xh-jtH" secondAttribute="trailing" constant="5" id="EZ4-K3-0TH"/>
+                <constraint firstAttribute="bottom" secondItem="BBi-GD-9qB" secondAttribute="bottom" constant="5" id="JeR-9t-XG4"/>
+                <constraint firstItem="5UT-Gx-xC3" firstAttribute="leading" secondItem="5L9-zx-yfE" secondAttribute="trailing" constant="10" id="Kxx-Eo-vUA"/>
+                <constraint firstItem="XfS-Xh-jtH" firstAttribute="leading" secondItem="Uye-kZ-tgZ" secondAttribute="leading" constant="10" id="RSS-bm-Qx5"/>
+                <constraint firstAttribute="trailing" secondItem="gKf-6D-RAe" secondAttribute="trailing" constant="10" id="ZoJ-Gz-6ll"/>
+                <constraint firstItem="5L9-zx-yfE" firstAttribute="leading" secondItem="Uye-kZ-tgZ" secondAttribute="leading" constant="10" id="a2u-0I-yvX"/>
+                <constraint firstItem="5L9-zx-yfE" firstAttribute="top" secondItem="Uye-kZ-tgZ" secondAttribute="top" constant="5" id="f2F-kK-9qd"/>
+                <constraint firstAttribute="trailing" secondItem="5UT-Gx-xC3" secondAttribute="trailing" constant="10" id="fny-wI-om9"/>
+                <constraint firstItem="BBi-GD-9qB" firstAttribute="top" secondItem="gKf-6D-RAe" secondAttribute="bottom" constant="5" id="hXy-yb-rpV"/>
+                <constraint firstAttribute="trailing" secondItem="BBi-GD-9qB" secondAttribute="trailing" constant="10" id="lpG-Vv-UFV"/>
+                <constraint firstItem="gKf-6D-RAe" firstAttribute="top" secondItem="5UT-Gx-xC3" secondAttribute="bottom" constant="5" id="yGk-TJ-dXj"/>
+            </constraints>
+            <size key="customSize" width="308" height="145"/>
+            <connections>
+                <outlet property="btnSelectSpecie" destination="5UT-Gx-xC3" id="Rhp-kf-JmA"/>
+                <outlet property="btnSelectSubSpecie" destination="gKf-6D-RAe" id="xu5-iJ-P56"/>
+                <outlet property="tfText" destination="BBi-GD-9qB" id="pGY-0K-jkw"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+</document>

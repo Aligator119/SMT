@@ -22,9 +22,12 @@
                 <outlet property="colectionView" destination="RQV-PX-9Oa" id="VWx-Mo-xcy"/>
                 <outlet property="forTabBar" destination="caK-EW-bWK" id="AqC-FX-I4R"/>
                 <outlet property="pageController" destination="SWC-e9-rUe" id="enS-b0-Bvg"/>
+                <outlet property="subView" destination="fwl-vO-1IC" id="sSZ-Nk-ccU"/>
                 <outlet property="tabBar" destination="Q6z-WW-d2G" id="RAq-F8-i6E"/>
                 <outlet property="tabBarWidth" destination="10N-Lo-agy" id="Xai-JA-frr"/>
                 <outlet property="table" destination="exG-Uq-koA" id="HL9-zb-a1o"/>
+                <outlet property="tableSelect" destination="gWa-7C-ef6" id="j22-rD-MsX"/>
+                <outlet property="topBarHiegthConstrainsSubView" destination="14F-au-ea6" id="OGc-lb-ArL"/>
                 <outlet property="topViewHeightConstr" destination="RE8-zp-aK1" id="kIB-i2-x1u"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sdI-dQ-EV0"/>
             </connections>
@@ -331,6 +334,60 @@
                 <constraint firstItem="SWC-e9-rUe" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="xeD-VR-Va7"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view contentMode="scaleToFill" id="fwl-vO-1IC">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Auh-y2-J7e">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TdF-wL-bd0">
+                            <rect key="frame" x="5" y="27" width="60" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="iA3-YZ-cdc"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="Close">
+                                <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actCloseSubView:" destination="-1" eventType="touchUpInside" id="aAl-76-yjp"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.48627450979999998" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="14F-au-ea6"/>
+                        <constraint firstItem="TdF-wL-bd0" firstAttribute="top" secondItem="Auh-y2-J7e" secondAttribute="top" constant="27" id="4JD-lf-KNP"/>
+                        <constraint firstAttribute="bottom" secondItem="TdF-wL-bd0" secondAttribute="bottom" constant="7" id="NOG-9U-NuQ"/>
+                        <constraint firstItem="TdF-wL-bd0" firstAttribute="leading" secondItem="Auh-y2-J7e" secondAttribute="leading" constant="5" id="aO9-wm-JjL"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gWa-7C-ef6">
+                    <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Huf-gb-Ypg"/>
+                        <outlet property="delegate" destination="-1" id="VVA-Fn-QW8"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="gWa-7C-ef6" secondAttribute="bottom" id="4ex-Xe-meR"/>
+                <constraint firstItem="gWa-7C-ef6" firstAttribute="leading" secondItem="fwl-vO-1IC" secondAttribute="leading" id="9pN-94-OCf"/>
+                <constraint firstItem="Auh-y2-J7e" firstAttribute="leading" secondItem="fwl-vO-1IC" secondAttribute="leading" id="W1f-eD-5Rs"/>
+                <constraint firstAttribute="trailing" secondItem="gWa-7C-ef6" secondAttribute="trailing" id="aKp-wf-fqg"/>
+                <constraint firstAttribute="trailing" secondItem="Auh-y2-J7e" secondAttribute="trailing" id="h5C-Zs-Gf3"/>
+                <constraint firstItem="gWa-7C-ef6" firstAttribute="top" secondItem="Auh-y2-J7e" secondAttribute="bottom" id="kHp-DA-Ksm"/>
+                <constraint firstItem="Auh-y2-J7e" firstAttribute="top" secondItem="fwl-vO-1IC" secondAttribute="top" id="pfo-CK-m78"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>

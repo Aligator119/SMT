@@ -132,6 +132,7 @@
 		04A2A3C6191B80150006677E /* SMTMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A3C5191B80150006677E /* SMTMarker.m */; };
 		04A2A3CB191B80350006677E /* BaseLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A2A3C9191B80350006677E /* BaseLocationViewController.m */; };
 		04A2A3CC191B80350006677E /* BaseLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04A2A3CA191B80350006677E /* BaseLocationViewController.xib */; };
+		04A5C1991964368300593841 /* TIPS.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A5C1981964368300593841 /* TIPS.m */; };
 		04AD700F19586C30001701E7 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AD700E19586C30001701E7 /* FirstViewController.m */; };
 		04AD701119586EA8001701E7 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AD701019586EA8001701E7 /* FirstViewController.xib */; };
 		04B015B6191B6FD3002F6FA9 /* NewLog2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B015B4191B6FD3002F6FA9 /* NewLog2ViewController.m */; };
@@ -225,6 +226,10 @@
 		04F7CBC8193DC5FC000AB881 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7CBC7193DC5FC000AB881 /* CustomButton.m */; };
 		04F7F42819235F2A007E39B5 /* PredictionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7F42619235F2A007E39B5 /* PredictionViewController.m */; };
 		04F7F42919235F2A007E39B5 /* PredictionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F7F42719235F2A007E39B5 /* PredictionViewController.xib */; };
+		04FBA88C1963E59500D5D713 /* TipsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA88B1963E59400D5D713 /* TipsCell.m */; };
+		04FBA88E1963E5B500D5D713 /* TipsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FBA88D1963E5B500D5D713 /* TipsCell.xib */; };
+		04FBA8991963ED0800D5D713 /* CreateTipsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FBA8981963ED0800D5D713 /* CreateTipsCell.xib */; };
+		04FBA89C1963ED4C00D5D713 /* CreateTipsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA89B1963ED4C00D5D713 /* CreateTipsCell.m */; };
 		113626841911239B004E5857 /* CurrentCondition.m in Sources */ = {isa = PBXBuildFile; fileRef = 113626831911239B004E5857 /* CurrentCondition.m */; };
 		11C9F67B191780DC00CDAFBA /* WheatherPredict.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F67A191780DC00CDAFBA /* WheatherPredict.m */; };
 		11C9F67E1917814600CDAFBA /* DayPredict.m in Sources */ = {isa = PBXBuildFile; fileRef = 11C9F67D1917814600CDAFBA /* DayPredict.m */; };
@@ -487,6 +492,8 @@
 		04A2A3C8191B80350006677E /* BaseLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseLocationViewController.h; sourceTree = "<group>"; };
 		04A2A3C9191B80350006677E /* BaseLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseLocationViewController.m; sourceTree = "<group>"; };
 		04A2A3CA191B80350006677E /* BaseLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseLocationViewController.xib; sourceTree = "<group>"; };
+		04A5C1971964368300593841 /* TIPS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TIPS.h; path = Classes/TIPS.h; sourceTree = "<group>"; };
+		04A5C1981964368300593841 /* TIPS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TIPS.m; path = Classes/TIPS.m; sourceTree = "<group>"; };
 		04AD700D19586C30001701E7 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FirstViewController.h; path = ViewControllers/FirstViewController/FirstViewController.h; sourceTree = "<group>"; };
 		04AD700E19586C30001701E7 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FirstViewController.m; path = ViewControllers/FirstViewController/FirstViewController.m; sourceTree = "<group>"; };
 		04AD701019586EA8001701E7 /* FirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FirstViewController.xib; path = ViewControllers/FirstViewController/FirstViewController.xib; sourceTree = "<group>"; };
@@ -684,6 +691,12 @@
 		04F7F42519235F2A007E39B5 /* PredictionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PredictionViewController.h; path = ViewControllers/PredictionViewController/PredictionViewController.h; sourceTree = "<group>"; };
 		04F7F42619235F2A007E39B5 /* PredictionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PredictionViewController.m; path = ViewControllers/PredictionViewController/PredictionViewController.m; sourceTree = "<group>"; };
 		04F7F42719235F2A007E39B5 /* PredictionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PredictionViewController.xib; path = ViewControllers/PredictionViewController/PredictionViewController.xib; sourceTree = "<group>"; };
+		04FBA88A1963E59400D5D713 /* TipsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TipsCell.h; path = ViewControllers/FlyoutMenuViewController/TipsCell/TipsCell.h; sourceTree = "<group>"; };
+		04FBA88B1963E59400D5D713 /* TipsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TipsCell.m; path = ViewControllers/FlyoutMenuViewController/TipsCell/TipsCell.m; sourceTree = "<group>"; };
+		04FBA88D1963E5B500D5D713 /* TipsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TipsCell.xib; path = ViewControllers/FlyoutMenuViewController/TipsCell/TipsCell.xib; sourceTree = "<group>"; };
+		04FBA8981963ED0800D5D713 /* CreateTipsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CreateTipsCell.xib; path = ViewControllers/FlyoutMenuViewController/TipsCell/CreateTipsCell.xib; sourceTree = "<group>"; };
+		04FBA89A1963ED4C00D5D713 /* CreateTipsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CreateTipsCell.h; path = ViewControllers/FlyoutMenuViewController/TipsCell/CreateTipsCell.h; sourceTree = "<group>"; };
+		04FBA89B1963ED4C00D5D713 /* CreateTipsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CreateTipsCell.m; path = ViewControllers/FlyoutMenuViewController/TipsCell/CreateTipsCell.m; sourceTree = "<group>"; };
 		113626821911239B004E5857 /* CurrentCondition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentCondition.h; path = Classes/CurrentCondition.h; sourceTree = "<group>"; };
 		113626831911239B004E5857 /* CurrentCondition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentCondition.m; path = Classes/CurrentCondition.m; sourceTree = "<group>"; };
 		11C9F679191780DC00CDAFBA /* WheatherPredict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WheatherPredict.h; path = Classes/WheatherPredict.h; sourceTree = "<group>"; };
@@ -1005,6 +1018,8 @@
 				04F7CBBE193DC42B000AB881 /* CustomView */,
 				047A7BA01947476F00ACE6D5 /* Photo.h */,
 				047A7BA11947476F00ACE6D5 /* Photo.m */,
+				04A5C1971964368300593841 /* TIPS.h */,
+				04A5C1981964368300593841 /* TIPS.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1110,8 +1125,9 @@
 		04409402190F820100C4A558 /* FlyoutMenuViewController */ = {
 			isa = PBXGroup;
 			children = (
+				04FBA8891963E54500D5D713 /* TipsCell */,
 				04F49892195311D600FC065C /* imageShow */,
-				84E6056D194ADE2700F8D61F /* MenuCell */,
+				84E6056D194ADE2700F8D61F /* HomeCell */,
 				04409403190F825F00C4A558 /* FlyoutMenuViewController.h */,
 				04409404190F825F00C4A558 /* FlyoutMenuViewController.m */,
 				04409405190F825F00C4A558 /* FlyoutMenuViewController.xib */,
@@ -1771,6 +1787,19 @@
 			name = PredictionViewController;
 			sourceTree = "<group>";
 		};
+		04FBA8891963E54500D5D713 /* TipsCell */ = {
+			isa = PBXGroup;
+			children = (
+				04FBA88A1963E59400D5D713 /* TipsCell.h */,
+				04FBA88B1963E59400D5D713 /* TipsCell.m */,
+				04FBA88D1963E5B500D5D713 /* TipsCell.xib */,
+				04FBA89A1963ED4C00D5D713 /* CreateTipsCell.h */,
+				04FBA89B1963ED4C00D5D713 /* CreateTipsCell.m */,
+				04FBA8981963ED0800D5D713 /* CreateTipsCell.xib */,
+			);
+			name = TipsCell;
+			sourceTree = "<group>";
+		};
 		11D48DCC1918E32700A9787E /* AFNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -1779,14 +1808,14 @@
 			path = Classes/AFNetworking;
 			sourceTree = "<group>";
 		};
-		84E6056D194ADE2700F8D61F /* MenuCell */ = {
+		84E6056D194ADE2700F8D61F /* HomeCell */ = {
 			isa = PBXGroup;
 			children = (
 				84E6056E194ADEC700F8D61F /* FlyoutMenuCell.h */,
 				84E6056F194ADEC700F8D61F /* FlyoutMenuCell.m */,
 				84E60571194ADEE100F8D61F /* FlyoutMenuCell.xib */,
 			);
-			name = MenuCell;
+			name = HomeCell;
 			sourceTree = "<group>";
 		};
 		84E60573194AF5CC00F8D61F /* icons */ = {
@@ -1973,6 +2002,7 @@
 				04F498B21953262F00FC065C /* video_camera_icon_press.png in Resources */,
 				84E605A3194AF5CC00F8D61F /* camera@x2~ipad.png in Resources */,
 				04D76FD91934D14E00E1F59B /* star_BTN.png in Resources */,
+				04FBA88E1963E5B500D5D713 /* TipsCell.xib in Resources */,
 				04E5B8C319377E3000E1C824 /* ReportsViewController.xib in Resources */,
 				84E605B9194AF5CC00F8D61F /* reports.png in Resources */,
 				04E5B8BD1937777E00E1C824 /* HistoryCell.xib in Resources */,
@@ -2020,6 +2050,7 @@
 				04D76FDB1934D14E00E1F59B /* star_opasity_orange.png in Resources */,
 				04F75C3719582791000C42DA /* video_camera_icon@2x.png in Resources */,
 				0416596C195AD3EE0078AD3A /* tips_icon.png in Resources */,
+				04FBA8991963ED0800D5D713 /* CreateTipsCell.xib in Resources */,
 				04F75C2919582791000C42DA /* camera_icon@2x.png in Resources */,
 				04022A2F19502CF4007ADE81 /* NewLog2ViewController~ipad.xib in Resources */,
 				04CEC03E191B82EE00BF784D /* GoogleMaps.bundle in Resources */,
@@ -2117,9 +2148,11 @@
 				04A2A3BE191B7FDC0006677E /* ImageCell.m in Sources */,
 				04F7F42819235F2A007E39B5 /* PredictionViewController.m in Sources */,
 				046C6C08190FECA700E3AC56 /* IncomingFriendCell.m in Sources */,
+				04A5C1991964368300593841 /* TIPS.m in Sources */,
 				84F2893119407D2B00D61E4C /* ReportsActivity.m in Sources */,
 				043354B01910ED9F003767D0 /* CJSONSerializedData.m in Sources */,
 				046C6C12190FECEE00E3AC56 /* Cell.m in Sources */,
+				04FBA89C1963ED4C00D5D713 /* CreateTipsCell.m in Sources */,
 				04F7CBC1193DC4AF000AB881 /* CustomTextField.m in Sources */,
 				04E5B91B193780B800E1C824 /* DateValues.m in Sources */,
 				843CD56219333D3400EF7E46 /* Activity.m in Sources */,
@@ -2130,6 +2163,7 @@
 				0408069D190EA37D00E063C3 /* main.m in Sources */,
 				043354AA1910ED9F003767D0 /* CDataScanner.m in Sources */,
 				0433548E1910E7C9003767D0 /* NSString+HTML.m in Sources */,
+				04FBA88C1963E59500D5D713 /* TipsCell.m in Sources */,
 				04A2A3AE191B7FD30006677E /* LogAnActivityViewController.m in Sources */,
 				043354AE1910ED9F003767D0 /* CJSONScanner.m in Sources */,
 				04DF996F19222A2400D66BEC /* LogDetailCell.m in Sources */,

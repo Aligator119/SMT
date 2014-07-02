@@ -2,7 +2,7 @@
 #import "PhotoVideoViewController.h"
 #import "CustomTabBar.h"
 
-@interface FlyoutMenuViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate>
+@interface FlyoutMenuViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 {
     BOOL isPresent;
 }

@@ -1,17 +1,10 @@
-//
-//  DataLoader.h
-//  testCaAnimation
-//
-//  Created by Vasya on 01.01.14.
-//  Copyright (c) 2014 Vasya. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 #import "Species.h"
 #import "Buddy.h"
 #import "Activity.h"
 #import "AFNetworking.h"
 #import "Photo.h"
+#import "TIPS.h"
 
 @class AppDelegate;
 
@@ -48,6 +41,7 @@ enum ApplicationServiceRequest
     ApplicationServiceRequestGetSharedLocationsFromBuddy = 28,
     ApplicationServiceRequestShareLocationWithBuddy = 29,
     ApplicationServiceRequestUnshareLocation = 30,
+    ApplicationServiceRequestTips = 31,
 };
 
 @interface DataLoader : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
@@ -133,5 +127,11 @@ enum ApplicationServiceRequest
 - (NSArray *) getBuddySharedLocationWithID:(NSString *)loc_id;
 - (NSDictionary *) sharedLocation:(int)location_id andWithBuddy:(int)buddy_id;
 - (NSDictionary *) unsharedLocation:(int)location_id andWithBuddy:(int)buddy_id;
+//--------TIPS----------------------------------------------------------------------
+- (NSArray *)getTipsWithUserId:(int)userID;
+- (NSArray *)getTipsWithTipsId:(int)tipsID;
+- (TIPS *)createNewTipsWithSpecieID:(int)specieID tip:(NSString *)tipText subSpecieID:(int)subSpecieID andUserID:(int)userID;
+- (void)updateTipsWithTipsID:(int)tipID specieID:(int)specieID tip:(NSString *)tipText subSpecieID:(int)subSpecieID andUserID:(int)userID;
+- (void)deleteTipsWithID:(int)tipsID;
 
 @end
