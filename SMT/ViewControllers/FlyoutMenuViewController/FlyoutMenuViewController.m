@@ -46,6 +46,8 @@
     float width;
     int activeSegment;
     NSIndexPath * index;
+    NSArray * recipes;
+    NSArray * searchResults;
 }
 @property (strong, nonatomic) IBOutlet UIView *forTabBar;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *topBarHiegthConstrainsSubView;
@@ -70,6 +72,8 @@
 @property (strong, nonatomic) IBOutlet UIImageView *btn3;
 @property (strong, nonatomic) IBOutlet UIImageView *btn4;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageController;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *heigthShowColectionViewConstraint;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 - (void)actHome:(id)sender;
 - (void)actLookSee:(id)sender;
@@ -115,6 +119,7 @@
     UINib *cellNib = [UINib nibWithNibName:@"SpeciesCell" bundle:[NSBundle mainBundle]];
     [self.tableSelect registerNib:cellNib forCellReuseIdentifier:@"SpeciesCell"];
 
+    [self.table setPagingEnabled:YES];
     self.table.tag = COLECTION_SHOW;
     self.colectionView.tag = COLECTION_DATA;
     
@@ -154,6 +159,8 @@
     [self.btn4 addGestureRecognizer:btn4Recognizer];
     
     [self AddActivityIndicator:[UIColor redColor] forView:self.view];
+    
+    recipes = [[NSArray alloc]initWithObjects:@"asd", @"zxc", @"qwerty", nil];
 }
 
 
@@ -191,15 +198,16 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    
+    width = self.view.frame.size.width;
     self.navigationController.navigationBar.hidden = YES;
-    self.btn1Hegth.constant = self.view.frame.size.width / 4;
+    self.btn1Hegth.constant = width / 4;
     self.btn2Hegth.constant = self.btn1Hegth.constant;
     self.btn3Hegth.constant = self.btn1Hegth.constant;
     self.btn4Hegth.constant = self.btn1Hegth.constant;
     self.tabBarWidth.constant = self.view.frame.size.width;
+    self.heigthShowColectionViewConstraint.constant = width * 0.39;
     [self.view updateConstraintsIfNeeded];
-    width = self.view.frame.size.width;
+    
     [self downloadPhotos];
 }
 
@@ -231,7 +239,9 @@
                 Photo * photo = [photoList objectAtIndex:indexPath.row];
                 if (![[cashedPhoto allKeys] containsObject:photo.photoID]) {
                     UIImage * img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.fullPhoto]]];
-                    [cashedPhoto addEntriesFromDictionary:@{photo.photoID: img}];
+                    if (img) {
+                        [cashedPhoto addEntriesFromDictionary:@{photo.photoID: img}];
+                    }
                 }
                 cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageShow" forIndexPath:indexPath];
                 ((ImageShow *)cell).image.image = [cashedPhoto objectForKey:photo.photoID];
@@ -269,6 +279,7 @@
         
     } else {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageShow" forIndexPath:indexPath];
+
         switch (indexPath.row) {
             case 0:
                 ((ImageShow *)cell).image.image = [UIImage imageNamed:@"tips_icon.png"];
@@ -320,15 +331,8 @@
     
     if (collectionView.tag == COLECTION_SHOW) {
         // action for top colectionView
-        CGPoint point = collectionView.contentOffset;
-        point.x += width+1;
-        if (point.x >= collectionView.contentSize.width) {
-            point.x = 0.0;
-        }
-        [UIView animateWithDuration:0.7f animations:^{
-            collectionView.contentOffset = point;
-        }];
-        self.pageController.currentPage = indexPath.row+1;
+        //currentPage = indexPath.row;
+        
     }
 }
 
@@ -426,25 +430,52 @@
         self.btn4.image = [UIImage imageNamed:@"tips_icon_press.png"];
     }
 }
+
+
+
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    if (scrollView.tag == COLECTION_SHOW) {
+        for (UICollectionViewCell *cell in [self.table visibleCells]) {
+            NSIndexPath *indexPath = [self.table indexPathForCell:cell];
+           self.pageController.currentPage = indexPath.row;
+        }
+    }
+}
+
+
 #pragma mark table delegates metods
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    int num;
     if (self.tableSelect.tag == 1) {
-        return appDelegate.speciesList.count;
+        num = appDelegate.speciesList.count;
+    } else if (tableView.tag == 2) {
+        num = subSpecies.count;
     } else {
-        return subSpecies.count;
+        num = searchResults.count;
     }
+    return num;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SpeciesCell * cell = [tableView dequeueReusableCellWithIdentifier:@"SpeciesCell"];
+    UITableViewCell * cell;
     
     if (tableView.tag == 1) {
-        [cell setSpecie:[appDelegate.speciesList objectAtIndex:indexPath.row]];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"SpeciesCell"];
+        [(SpeciesCell *)cell setSpecie:[appDelegate.speciesList objectAtIndex:indexPath.row]];
+    } else if (tableView.tag == 2) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"SpeciesCell"];
+        [(SpeciesCell *)cell setSpecie:[subSpecies objectAtIndex:indexPath.row]];
     } else {
-        [cell setSpecie:[subSpecies objectAtIndex:indexPath.row]];
+       cell = [tableView dequeueReusableCellWithIdentifier:@"RecipeCell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RecipeCell"];
+        }
+        
+        cell.textLabel.text = [searchResults objectAtIndex:indexPath.row];
     }
     //cell.contentView.backgroundColor = [UIColor clearColor];
     
@@ -548,6 +579,28 @@
     }
     return YES;
 }
+
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+   
+    NSPredicate *resultPredicate = [NSPredicate
+                                    predicateWithFormat:@"SELF contains[cd] %@",
+                                    searchText];
+    
+    searchResults = [recipes filteredArrayUsingPredicate:resultPredicate];
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    
+    return YES;
+}
+
 
 
 #pragma mark Download data

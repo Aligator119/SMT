@@ -18,42 +18,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TcO-h8-2RU">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="470"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="TcO-h8-2RU">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="482"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GwW-Ku-SA4">
-                    <rect key="frame" x="13" y="478" width="57" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="57" id="G0f-uW-xC7"/>
-                        <constraint firstAttribute="height" constant="30" id="IoJ-CD-fO6"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Galery">
-                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="actSelectPhoto:" destination="-1" eventType="touchUpInside" id="Xom-mG-sYN"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qON-6S-1NF">
-                    <rect key="frame" x="102" y="478" width="80" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="80" id="Y9K-kp-C7V"/>
-                        <constraint firstAttribute="height" constant="30" id="k3a-qS-SEB"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Set Avatar">
-                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="actSetAvatar:" destination="-1" eventType="touchUpInside" id="twB-Xs-qVh"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hgc-sJ-B9V" customClass="CustomTabBar">
                     <rect key="frame" x="0.0" y="522" width="320" height="46"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -145,38 +113,123 @@
                         <constraint firstAttribute="bottom" secondItem="eXC-nv-WNS" secondAttribute="bottom" constant="2" id="zrY-Kt-FyB"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jbc-Gl-mJC">
-                    <rect key="frame" x="208" y="478" width="92" height="30"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ub-xc-A5C">
+                    <rect key="frame" x="0.0" y="482" width="320" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixv-jT-5TT">
+                            <rect key="frame" x="8" y="0.0" width="1" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="MpB-3I-67l"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4S7-41-979">
+                            <rect key="frame" x="109" y="0.0" width="1" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="AIV-LJ-3PJ"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Dw-xq-882">
+                            <rect key="frame" x="210" y="0.0" width="1" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="8jz-fk-WWs"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fqJ-OV-jr6">
+                            <rect key="frame" x="311" y="0.0" width="1" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="NXl-PM-dPZ"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UnN-Qg-LkO">
+                            <rect key="frame" x="9" y="0.0" width="100" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="lVY-SN-d3A"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="Galery">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actSelectPhoto:" destination="-1" eventType="touchUpInside" id="d27-ZT-xTq"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vgo-Ia-dgs">
+                            <rect key="frame" x="110" y="0.0" width="100" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="tnJ-qP-aWZ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="Set Avatar">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actSetAvatar:" destination="-1" eventType="touchUpInside" id="UR3-aY-Dfg"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yR6-SM-uw4">
+                            <rect key="frame" x="211" y="0.0" width="100" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="Ly9-yr-eGw"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="AddGalery">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actAddGalery:" destination="-1" eventType="touchUpInside" id="Qox-67-9zg"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="Jjn-AR-37k"/>
-                        <constraint firstAttribute="width" constant="92" id="QXX-q2-HpY"/>
+                        <constraint firstItem="4S7-41-979" firstAttribute="leading" secondItem="UnN-Qg-LkO" secondAttribute="trailing" id="4ha-hG-ir7"/>
+                        <constraint firstAttribute="bottom" secondItem="4S7-41-979" secondAttribute="bottom" id="6dr-rc-e0r"/>
+                        <constraint firstItem="UnN-Qg-LkO" firstAttribute="leading" secondItem="ixv-jT-5TT" secondAttribute="trailing" id="BHL-Hk-PcX"/>
+                        <constraint firstAttribute="height" constant="40" id="Bt1-4i-y4x"/>
+                        <constraint firstAttribute="centerX" secondItem="Vgo-Ia-dgs" secondAttribute="centerX" id="Cka-R8-nEp"/>
+                        <constraint firstItem="0Dw-xq-882" firstAttribute="leading" secondItem="Vgo-Ia-dgs" secondAttribute="trailing" id="G5M-c7-cVR"/>
+                        <constraint firstAttribute="bottom" secondItem="0Dw-xq-882" secondAttribute="bottom" id="I0H-AG-cIL"/>
+                        <constraint firstItem="yR6-SM-uw4" firstAttribute="top" secondItem="3Ub-xc-A5C" secondAttribute="top" id="TwG-6g-jLC"/>
+                        <constraint firstItem="Vgo-Ia-dgs" firstAttribute="top" secondItem="3Ub-xc-A5C" secondAttribute="top" id="aAp-W2-LXl"/>
+                        <constraint firstItem="ixv-jT-5TT" firstAttribute="top" secondItem="3Ub-xc-A5C" secondAttribute="top" id="d9y-NL-ARf"/>
+                        <constraint firstItem="fqJ-OV-jr6" firstAttribute="leading" secondItem="yR6-SM-uw4" secondAttribute="trailing" id="dic-MG-Qvr"/>
+                        <constraint firstAttribute="bottom" secondItem="fqJ-OV-jr6" secondAttribute="bottom" id="fdG-Hg-6F3"/>
+                        <constraint firstAttribute="bottom" secondItem="yR6-SM-uw4" secondAttribute="bottom" id="gUH-wb-68m"/>
+                        <constraint firstItem="4S7-41-979" firstAttribute="top" secondItem="3Ub-xc-A5C" secondAttribute="top" id="hAG-AQ-mrI"/>
+                        <constraint firstItem="yR6-SM-uw4" firstAttribute="leading" secondItem="0Dw-xq-882" secondAttribute="trailing" id="jyt-py-jB0"/>
+                        <constraint firstItem="0Dw-xq-882" firstAttribute="top" secondItem="3Ub-xc-A5C" secondAttribute="top" id="lX2-2L-bc6"/>
+                        <constraint firstAttribute="bottom" secondItem="Vgo-Ia-dgs" secondAttribute="bottom" id="mVr-lX-MVV"/>
+                        <constraint firstAttribute="bottom" secondItem="UnN-Qg-LkO" secondAttribute="bottom" id="msR-IR-foe"/>
+                        <constraint firstItem="Vgo-Ia-dgs" firstAttribute="leading" secondItem="4S7-41-979" secondAttribute="trailing" id="uOK-oa-K57"/>
+                        <constraint firstItem="UnN-Qg-LkO" firstAttribute="top" secondItem="3Ub-xc-A5C" secondAttribute="top" id="vL2-HH-QHG"/>
+                        <constraint firstAttribute="bottom" secondItem="ixv-jT-5TT" secondAttribute="bottom" id="yjn-Ig-7Aq"/>
+                        <constraint firstItem="fqJ-OV-jr6" firstAttribute="top" secondItem="3Ub-xc-A5C" secondAttribute="top" id="zoc-HZ-JyO"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Add Galery">
-                        <color key="titleColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="actAddGalery:" destination="-1" eventType="touchUpInside" id="TIX-ge-Y5g"/>
-                    </connections>
-                </button>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="Hgc-sJ-B9V" firstAttribute="top" secondItem="GwW-Ku-SA4" secondAttribute="bottom" constant="14" id="2WV-kf-eHx"/>
-                <constraint firstAttribute="trailing" secondItem="Jbc-Gl-mJC" secondAttribute="trailing" constant="20" id="61a-2w-xFT"/>
-                <constraint firstItem="Hgc-sJ-B9V" firstAttribute="top" secondItem="Jbc-Gl-mJC" secondAttribute="bottom" constant="14" id="798-Lf-reM"/>
                 <constraint firstItem="TcO-h8-2RU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AbR-hJ-7Z5"/>
+                <constraint firstItem="3Ub-xc-A5C" firstAttribute="top" secondItem="TcO-h8-2RU" secondAttribute="bottom" id="BkC-z9-2Xz"/>
                 <constraint firstAttribute="trailing" secondItem="TcO-h8-2RU" secondAttribute="trailing" id="FTx-Zm-kU7"/>
                 <constraint firstItem="TcO-h8-2RU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Gvx-FP-6me"/>
                 <constraint firstItem="Hgc-sJ-B9V" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Pbc-9V-Sct"/>
-                <constraint firstItem="Hgc-sJ-B9V" firstAttribute="top" secondItem="qON-6S-1NF" secondAttribute="bottom" constant="14" id="QFc-74-pnP"/>
+                <constraint firstAttribute="trailing" secondItem="3Ub-xc-A5C" secondAttribute="trailing" id="R78-32-abx"/>
                 <constraint firstAttribute="bottom" secondItem="Hgc-sJ-B9V" secondAttribute="bottom" id="TXe-Go-nFO"/>
-                <constraint firstItem="qON-6S-1NF" firstAttribute="leading" secondItem="GwW-Ku-SA4" secondAttribute="trailing" constant="32" id="aUo-sm-3BF"/>
-                <constraint firstItem="Jbc-Gl-mJC" firstAttribute="leading" secondItem="qON-6S-1NF" secondAttribute="trailing" constant="26" id="aWj-rp-Z1x"/>
-                <constraint firstItem="Jbc-Gl-mJC" firstAttribute="top" secondItem="TcO-h8-2RU" secondAttribute="bottom" constant="8" id="eGl-Yi-RdN"/>
-                <constraint firstItem="GwW-Ku-SA4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="13" id="lW5-Iy-EtZ"/>
+                <constraint firstItem="3Ub-xc-A5C" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="jVf-0F-iS8"/>
+                <constraint firstItem="Hgc-sJ-B9V" firstAttribute="top" secondItem="3Ub-xc-A5C" secondAttribute="bottom" id="x10-8b-T3c"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -191,6 +244,7 @@
         <image name="home_icon_press.png" width="30" height="30"/>
         <image name="note_icon.png" width="30" height="30"/>
         <image name="note_icon_press.png" width="30" height="30"/>
+        <image name="placeholder.png" width="500" height="498"/>
         <image name="st_icon.png" width="30" height="30"/>
         <image name="st_icon_press.png" width="30" height="30"/>
         <image name="tabbar_BG.png" width="320" height="50"/>

@@ -240,6 +240,7 @@ LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibNa
                 [self addChildViewController:cVC];
             }
             [self.view addSubview:cVC.view];
+            cVC.isCamera = YES;
             _current = cVC.view;
             activeTag = tag;
         }

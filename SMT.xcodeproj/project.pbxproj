@@ -140,6 +140,7 @@
 		04B015C8191B7EE7002F6FA9 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B015C6191B7EE7002F6FA9 /* MapViewController.m */; };
 		04B015C9191B7EE7002F6FA9 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04B015C7191B7EE7002F6FA9 /* MapViewController.xib */; };
 		04B312FA191A281C0055D460 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B312F9191A281C0055D460 /* AssetsLibrary.framework */; };
+		04CC79A719659BD700A61C63 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 04CC79A619659BD700A61C63 /* placeholder.png */; };
 		04CEC03A191B81EF00BF784D /* LogHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC038191B81EF00BF784D /* LogHistoryViewController.m */; };
 		04CEC03B191B81EF00BF784D /* LogHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CEC039191B81EF00BF784D /* LogHistoryViewController.xib */; };
 		04CEC03C191B82DD00BF784D /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0425C3AA19111ECA0097709E /* GoogleMaps.framework */; };
@@ -504,6 +505,7 @@
 		04B015C6191B7EE7002F6FA9 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		04B015C7191B7EE7002F6FA9 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		04B312F9191A281C0055D460 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		04CC79A619659BD700A61C63 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = Image/placeholder.png; sourceTree = "<group>"; };
 		04CEC037191B81EF00BF784D /* LogHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogHistoryViewController.h; sourceTree = "<group>"; };
 		04CEC038191B81EF00BF784D /* LogHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogHistoryViewController.m; sourceTree = "<group>"; };
 		04CEC039191B81EF00BF784D /* LogHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogHistoryViewController.xib; sourceTree = "<group>"; };
@@ -1160,6 +1162,7 @@
 		046C6BEA190FDF0E00E3AC56 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				04CC79A619659BD700A61C63 /* placeholder.png */,
 				04165966195AD3ED0078AD3A /* tips_icon_press.png */,
 				04165967195AD3ED0078AD3A /* tips_icon_press@2x.png */,
 				04165968195AD3ED0078AD3A /* tips_icon.png */,
@@ -2105,6 +2108,7 @@
 				84E605B4194AF5CC00F8D61F /* logout~ipad.png in Resources */,
 				04F498A81953262F00FC065C /* global_icon_press.png in Resources */,
 				04CEC044191B83C600BF784D /* LocationSearchViewController.xib in Resources */,
+				04CC79A719659BD700A61C63 /* placeholder.png in Resources */,
 				84E605A0194AF5CC00F8D61F /* buddies~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

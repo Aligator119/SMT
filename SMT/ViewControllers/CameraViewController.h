@@ -13,12 +13,12 @@
 @end
 
 
-@interface CameraViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface CameraViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 {
     BOOL isPresent;
 }
 @property (weak, nonatomic) id<CameraControllerDelegate> delegate;
-
+@property (nonatomic) BOOL isCamera;
 @property (strong, nonatomic) IBOutlet CustomTabBar *tabBar;
 
 -(void) setIsPresent:(BOOL)present;

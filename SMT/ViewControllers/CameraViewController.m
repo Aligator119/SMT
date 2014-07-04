@@ -10,7 +10,6 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *tabBarWidth;
 
 
-
 - (IBAction)actSelectPhoto:(id)sender;
 - (IBAction)actSetAvatar:(id)sender;
 - (IBAction)actAddGalery:(id)sender;
@@ -37,27 +36,29 @@
     [self AddActivityIndicator:[UIColor redColor] forView:self.view];
     UIButton * btn = (UIButton *)[self.tabBar viewWithTag:3];
     [btn setBackgroundImage:[UIImage imageNamed:@"camera_icon_press.png"] forState:UIControlStateNormal];
+    self.isCamera = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        
-        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                              message:@"Device has no camera"
-                                                             delegate:nil
-                                                    cancelButtonTitle:@"OK"
-                                                    otherButtonTitles: nil];
-        
-        [myAlertView show];
-        
-    } else {
-        [self actTakePhoto];
-    }
     self.tabBarWidth.constant = self.view.frame.size.width;
     [self.view updateConstraintsIfNeeded];
-    
-    
+    if (_isCamera) {
+        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        
+            UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                  message:@"Device has no camera"
+                                                                 delegate:nil
+                                                        cancelButtonTitle:@"OK"
+                                                        otherButtonTitles: nil];
+        
+            [myAlertView show];
+        
+        } else {
+            [self actTakePhoto];
+        }
+        _isCamera = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,7 +93,7 @@
 }
 
 - (IBAction)actSetAvatar:(id)sender {
-    
+    if (self.image.image) {
     [self startLoader];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
@@ -115,11 +116,12 @@
             
         });
     });
+    }
 
 }
 
 - (IBAction)actAddGalery:(id)sender {
-    
+    if (self.image.image) {
     [self startLoader];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
@@ -138,6 +140,7 @@
             
         });
     });
+    }
 }
 
 
