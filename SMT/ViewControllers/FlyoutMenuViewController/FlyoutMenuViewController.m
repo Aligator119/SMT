@@ -271,7 +271,7 @@
                     cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageShow" forIndexPath:indexPath];
                     Photo * photo = [photoList objectAtIndex:indexPath.row];
                     if (![[cashedPhoto allKeys] containsObject:photo.photoID]) {
-                      [((ImageShow *)cell) setImageWithURL:[NSURL URLWithString:photo.fullPhoto] andImageID:photo.photoID];
+                      [((ImageShow *)cell) setImageWithURL:[NSURL URLWithString:photo.fullPhoto] andImageID:photo.photoID andDescriptions:nil];
                     } else {
                         ((ImageShow *)cell).image.image = nil;
                         ((ImageShow *)cell).image.image = [cashedPhoto objectForKey:photo.photoID];
@@ -341,7 +341,7 @@
     CGSize size;
     if (collectionView.tag == COLECTION_DATA) {
         if (!selectedBtn1) {
-             size = CGSizeMake(self.colectionView.frame.size.width-10, self.colectionView.frame.size.height/1.5);
+             size = CGSizeMake(self.colectionView.frame.size.width-10, 150.0f);
         } else if (!selectedBtn2) {
             //num = 1;
         } else if (!selectedBtn3) {
@@ -543,6 +543,7 @@
 {
     self.tableSelect.tag = 1;
     [self.tableSelect reloadData];
+    self.subView.frame = self.view.frame;
     [self.view addSubview:self.subView];
 }
 
@@ -564,6 +565,7 @@
                     [self endLoader];
                 } else {
                     [self.tableSelect reloadData];
+                    self.subView.frame = self.view.frame;
                     [self.view addSubview:self.subView];
                     [self endLoader];
                 }

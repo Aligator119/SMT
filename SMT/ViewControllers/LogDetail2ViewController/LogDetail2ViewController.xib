@@ -7,15 +7,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogDetail2ViewController">
             <connections>
-                <outlet property="btnTrophy" destination="Z60-TX-t2F" id="Yb2-WA-Jov"/>
-                <outlet property="hiegth" destination="MwL-dF-9tp" id="JnG-83-Nmv"/>
+                <outlet property="hiegth" destination="fn1-4q-3Oe" id="U0W-GW-8MX"/>
                 <outlet property="imgUser" destination="PkJ-t8-KOf" id="QY2-60-Dz4"/>
                 <outlet property="lbName" destination="V8H-3d-7QV" id="grF-7J-Mub"/>
                 <outlet property="navigationBarHeightConstr" destination="xBk-4O-Fdy" id="bdO-ca-sIu"/>
                 <outlet property="navigationBarVerticalConstr" destination="EiZ-4j-0n7" id="f24-Qq-PYN"/>
                 <outlet property="picker" destination="Bht-8k-Kvp" id="TSq-8T-ke1"/>
                 <outlet property="pickerView" destination="rdF-eK-IgA" id="Zyk-Ds-TKE"/>
+                <outlet property="trophyImg" destination="Kkt-Jz-oZF" id="tMf-qs-BAS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewTrophy" destination="PdD-jB-uDg" id="diD-30-3Pq"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -98,17 +99,6 @@
                         <constraint firstAttribute="height" constant="60" id="9fc-z0-6Mk"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z60-TX-t2F">
-                    <rect key="frame" x="30" y="144" width="260" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="jE1-gm-gsv"/>
-                    </constraints>
-                    <state key="normal" title="          Add to Trophy Room">
-                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAr-eP-CdJ">
                     <rect key="frame" x="30" y="204" width="120" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -139,27 +129,57 @@
                         <action selector="actCancel:" destination="-1" eventType="touchUpInside" id="zAn-vF-sRv"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PdD-jB-uDg">
+                    <rect key="frame" x="30" y="144" width="260" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkbox_uncheck.png" translatesAutoresizingMaskIntoConstraints="NO" id="Kkt-Jz-oZF">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="pk5-br-3bP"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add to trophy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fg7-kR-Alx">
+                            <rect key="frame" x="40" y="0.0" width="220" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="Kkt-Jz-oZF" firstAttribute="leading" secondItem="PdD-jB-uDg" secondAttribute="leading" id="8H5-Vh-xnq"/>
+                        <constraint firstAttribute="bottom" secondItem="Kkt-Jz-oZF" secondAttribute="bottom" id="RSd-9Q-Daf"/>
+                        <constraint firstItem="Kkt-Jz-oZF" firstAttribute="top" secondItem="PdD-jB-uDg" secondAttribute="top" id="UxR-iD-MpN"/>
+                        <constraint firstAttribute="trailing" secondItem="Fg7-kR-Alx" secondAttribute="trailing" id="drz-Wl-5Ja"/>
+                        <constraint firstAttribute="bottom" secondItem="Fg7-kR-Alx" secondAttribute="bottom" id="nlk-h3-3rb"/>
+                        <constraint firstItem="Fg7-kR-Alx" firstAttribute="leading" secondItem="Kkt-Jz-oZF" secondAttribute="trailing" id="oD9-yQ-0Yw"/>
+                        <constraint firstItem="Fg7-kR-Alx" firstAttribute="top" secondItem="PdD-jB-uDg" secondAttribute="top" id="vhU-70-jyO"/>
+                        <constraint firstAttribute="height" constant="40" id="whu-Wp-QOy"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="tet-wE-Bwk" secondAttribute="trailing" id="1Ko-no-29F"/>
                 <constraint firstAttribute="trailing" secondItem="ND8-oc-1PT" secondAttribute="trailing" constant="30" id="2NF-R7-5yA"/>
+                <constraint firstItem="ND8-oc-1PT" firstAttribute="top" secondItem="PdD-jB-uDg" secondAttribute="bottom" constant="20" id="5FW-Du-XWh"/>
+                <constraint firstAttribute="trailing" secondItem="PdD-jB-uDg" secondAttribute="trailing" constant="30" id="67i-2R-5h5"/>
                 <constraint firstItem="ND8-oc-1PT" firstAttribute="leading" secondItem="hAr-eP-CdJ" secondAttribute="trailing" constant="20" id="9BW-gm-vMF"/>
                 <constraint firstItem="tet-wE-Bwk" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="EKn-ys-sWD"/>
-                <constraint firstAttribute="trailing" secondItem="Z60-TX-t2F" secondAttribute="trailing" constant="30" id="IhI-7W-Zm2"/>
-                <constraint firstItem="ND8-oc-1PT" firstAttribute="top" secondItem="Z60-TX-t2F" secondAttribute="bottom" constant="20" id="KhV-pD-EQL"/>
-                <constraint firstItem="Z60-TX-t2F" firstAttribute="top" secondItem="tet-wE-Bwk" secondAttribute="bottom" constant="20" id="MwL-dF-9tp"/>
+                <constraint firstItem="PdD-jB-uDg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="NOH-cL-nM2"/>
                 <constraint firstItem="zxD-pJ-HSx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="O3O-b2-EDS"/>
                 <constraint firstItem="hAr-eP-CdJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="Q0E-8Z-9p6"/>
                 <constraint firstItem="6GJ-IE-aO4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Q0x-Ts-U8W"/>
                 <constraint firstItem="tet-wE-Bwk" firstAttribute="top" secondItem="zxD-pJ-HSx" secondAttribute="bottom" id="QG7-2A-fcR"/>
                 <constraint firstAttribute="bottom" secondItem="6GJ-IE-aO4" secondAttribute="bottom" id="Slc-Vw-0gc"/>
-                <constraint firstItem="Z60-TX-t2F" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="XiH-aC-t0U"/>
                 <constraint firstItem="zxD-pJ-HSx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="YwU-7b-16g"/>
                 <constraint firstAttribute="trailing" secondItem="6GJ-IE-aO4" secondAttribute="trailing" id="Zj2-cD-5FP"/>
                 <constraint firstItem="ND8-oc-1PT" firstAttribute="width" secondItem="hAr-eP-CdJ" secondAttribute="width" id="eYq-xN-EpY"/>
+                <constraint firstItem="PdD-jB-uDg" firstAttribute="top" secondItem="tet-wE-Bwk" secondAttribute="bottom" constant="20" id="fn1-4q-3Oe"/>
+                <constraint firstItem="hAr-eP-CdJ" firstAttribute="top" secondItem="PdD-jB-uDg" secondAttribute="bottom" constant="20" id="jYW-eq-mgp"/>
                 <constraint firstItem="6GJ-IE-aO4" firstAttribute="top" secondItem="zxD-pJ-HSx" secondAttribute="bottom" id="mxr-g6-uhK"/>
-                <constraint firstItem="hAr-eP-CdJ" firstAttribute="top" secondItem="Z60-TX-t2F" secondAttribute="bottom" constant="20" id="tQ9-P7-Gve"/>
                 <constraint firstAttribute="trailing" secondItem="zxD-pJ-HSx" secondAttribute="trailing" id="whm-Vh-MgE"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -239,6 +259,7 @@
         </view>
     </objects>
     <resources>
+        <image name="checkbox_uncheck.png" width="30" height="30"/>
         <image name="photo_load_animal.png" width="125" height="125"/>
         <image name="sportsman_tracker_BG-1.png" width="320" height="568"/>
     </resources>

@@ -27,6 +27,7 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *hiegth;
 - (void) setImageView:(id)sender;
 - (void) actChangeValue:(CustomTextField *)sender;
+- (void) actAddTrophy;
 @end
 
 @implementation LogDetail2ViewController
@@ -128,6 +129,13 @@
 
     }
     self.hiegth.constant += (numberOfView * 40.0);
+    
+    UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(actAddTrophy)];
+    [recognizer setNumberOfTapsRequired:1];
+    recognizer.delegate = self;
+    [self.viewTrophy addGestureRecognizer:recognizer];
+    self.viewTrophy.tag = 0;
+    
 }
 
 
@@ -137,7 +145,7 @@
     for (UIView * obj in self.view.subviews) {
         if ([obj isKindOfClass:[CustomTextField class]] || [obj isKindOfClass:[CustomButton class]]) {
             CGRect bounds = obj.frame;
-            bounds.size.width = self.btnTrophy.frame.size.width;
+            bounds.size.width = self.viewTrophy.frame.size.width;
             obj.frame = bounds;
         }
     }
@@ -278,6 +286,19 @@
 {
     self.imgUser.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.thumbnail]]];
     photo_id = photo.photoID;
+}
+
+- (void) actAddTrophy
+{
+    if (self.viewTrophy.tag == 0) {
+        self.trophyImg.image = [UIImage imageNamed:@"checkbox_check.png"];
+        self.viewTrophy.tag = 1;
+        addTrophy = YES;
+    } else {
+        self.trophyImg.image = [UIImage imageNamed:@"checkbox_uncheck.png"];
+        self.viewTrophy.tag = 0;
+        addTrophy = NO;
+    }
 }
 
 @end

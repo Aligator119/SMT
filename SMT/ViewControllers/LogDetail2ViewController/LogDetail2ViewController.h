@@ -12,8 +12,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbName;
 @property (weak, nonatomic) IBOutlet UIImageView *imgUser;
 @property (strong, nonatomic) IBOutlet UIPickerView *picker;
-@property (weak, nonatomic) IBOutlet UIButton *btnTrophy;
+@property (weak, nonatomic) IBOutlet UIView * viewTrophy;
 @property (strong, nonatomic) IBOutlet UIView *pickerView;
+@property (strong, nonatomic) IBOutlet UIImageView *trophyImg;
 
 
 - (IBAction)actBack:(id)sender;
