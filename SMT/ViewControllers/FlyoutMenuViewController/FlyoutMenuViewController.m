@@ -297,6 +297,12 @@
                     [((CreateTipsCell *)cell).btnSelectSubSpecie addTarget:self action:@selector(actSelectSubSpecie) forControlEvents:UIControlEventTouchUpInside];
                     [((CreateTipsCell *)cell).btnCreateTIPS addTarget:self action:@selector(actCreateTIPS) forControlEvents:UIControlEventTouchUpInside];
                     [((CreateTipsCell *)cell).tfText setDelegate:self];
+                    [((CreateTipsCell *)cell).tfText.layer setMasksToBounds:YES];
+                    [((CreateTipsCell *)cell).tfText.layer setBorderWidth:1.0f];
+                    [((CreateTipsCell *)cell).tfText.layer setBorderColor:[UIColor blackColor].CGColor];
+                    [((CreateTipsCell *)cell).btnCreateTIPS.layer setMasksToBounds:YES];
+                    [((CreateTipsCell *)cell).btnCreateTIPS.layer setBorderWidth:1.0f];
+                    [((CreateTipsCell *)cell).btnCreateTIPS.layer setBorderColor:[UIColor blackColor].CGColor];
                     index = indexPath;
                 } else {
                     cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TipsCell" forIndexPath:indexPath];

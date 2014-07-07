@@ -17,13 +17,13 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         // Initialization code
-        [self.tfText.layer setMasksToBounds:YES];
-        [self.tfText.layer setBorderWidth:1.0f];
-        [self.tfText.layer setBorderColor:[UIColor blackColor].CGColor];
-        [self.btnCreateTIPS.layer setMasksToBounds:YES];
-        self.btnCreateTIPS.layer.cornerRadius = 10.0f;
-        [self.btnCreateTIPS.layer setBorderWidth:1.0f];
-        [self.btnCreateTIPS.layer setBorderColor:[UIColor blackColor].CGColor];
+//        [self.tfText.layer setMasksToBounds:YES];
+//        [self.tfText.layer setBorderWidth:1.0f];
+//        [self.tfText.layer setBorderColor:[UIColor blackColor].CGColor];
+//        [self.btnCreateTIPS.layer setMasksToBounds:YES];
+//        self.btnCreateTIPS.layer.cornerRadius = 10.0f;
+//        [self.btnCreateTIPS.layer setBorderWidth:1.0f];
+//        [self.btnCreateTIPS.layer setBorderColor:[UIColor blackColor].CGColor];
     }
     return self;
 }
