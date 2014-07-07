@@ -64,36 +64,26 @@
     
     [self AddActivityIndicator:[UIColor redColor] forView:self.table];
 //----------------------------------------------------------------------------------------------------
-    [self startLoader];
-    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(newQueue, ^(){
-        
-        logHistory = [dataLoader getActivityListFrom:0 to:-1];
-        
-        dispatch_async(dispatch_get_main_queue(), ^(){
-            
-            if(!dataLoader.isCorrectRezult) {
-                NSLog(@"Error download log history");
-            } else {
-
-                for (id obj in logHistory) {
-
-                    if ([[dict allKeys] containsObject:[compareFormatter stringFromDate:[dateFormatter dateFromString:[obj objectForKey:@"date"]]]]) {
-                        NSMutableArray * buf = [[NSMutableArray alloc]initWithArray:[dict objectForKey:[compareFormatter stringFromDate:[dateFormatter dateFromString:[obj objectForKey:@"date"]]]]];
-                        [buf addObject:[obj objectForKey:@"data"]];
-                        [dict setValue:buf forKey:[compareFormatter stringFromDate:[dateFormatter dateFromString:[obj objectForKey:@"date"]]]];
-                    } else {
-                        NSMutableArray * b = [[NSMutableArray alloc]initWithObjects:[obj objectForKey:@"data"], nil];
-                        [dict setValue:b forKey:[compareFormatter stringFromDate:[dateFormatter dateFromString:[obj objectForKey:@"date"]]]];
-                    }
-                }
-                allKey = [dict allKeys];
-                [self.table reloadData];
-            }
-            [self endLoader];
-        });
-    });
     
+        
+    logHistory = [dataLoader getActivityListFrom:0 to:-1];
+        
+    
+    for (id obj in logHistory) {
+
+        if ([[dict allKeys] containsObject:[compareFormatter stringFromDate:[dateFormatter dateFromString:[obj objectForKey:@"date"]]]]) {
+            NSMutableArray * buf = [[NSMutableArray alloc]initWithArray:[dict objectForKey:[compareFormatter stringFromDate:[dateFormatter dateFromString:[obj objectForKey:@"date"]]]]];
+            [buf addObject:[obj objectForKey:@"data"]];
+            [dict setValue:buf forKey:[compareFormatter stringFromDate:[dateFormatter dateFromString:[obj objectForKey:@"date"]]]];
+        } else {
+            NSMutableArray * b = [[NSMutableArray alloc]initWithObjects:[obj objectForKey:@"data"], nil];
+            [dict setValue:b forKey:[compareFormatter stringFromDate:[dateFormatter dateFromString:[obj objectForKey:@"date"]]]];
+        }
+    }
+    
+    allKey = [dict allKeys];
+    [self.table reloadData];
+               
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

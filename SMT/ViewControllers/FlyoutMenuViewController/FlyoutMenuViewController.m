@@ -24,6 +24,7 @@
 
 
 #define USER_DATA @"userdata"
+#define DOWNLOAD_IMAGE_SUCCES @"image is download"
 
 #define COLECTION_SHOW 5555
 #define COLECTION_DATA 1234
@@ -89,6 +90,7 @@
 - (void)downloadPhotos;
 
 - (IBAction)actCloseSubView:(id)sender;
+- (void)cashedImageFromCell:(NSNotification *)info;
 @end
 
 @implementation FlyoutMenuViewController
@@ -161,6 +163,11 @@
     [self AddActivityIndicator:[UIColor redColor] forView:self.view];
     
     recipes = [[NSArray alloc]initWithObjects:@"asd", @"zxc", @"qwerty", nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(cashedImageFromCell:)
+                                                 name:DOWNLOAD_IMAGE_SUCCES
+                                               object:nil];
 }
 
 
@@ -211,6 +218,12 @@
     [self downloadPhotos];
 }
 
+- (void)cashedImageFromCell:(NSNotification *)info
+{
+    NSDictionary * userImage = [info userInfo];
+    [cashedPhoto addEntriesFromDictionary:userImage];
+}
+
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     int num;
     if (collectionView.tag == COLECTION_DATA) {
@@ -236,15 +249,14 @@
             case 1:
             {
                 if (photoList.count) {
-                Photo * photo = [photoList objectAtIndex:indexPath.row];
-                if (![[cashedPhoto allKeys] containsObject:photo.photoID]) {
-                    UIImage * img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.fullPhoto]]];
-                    if (img) {
-                        [cashedPhoto addEntriesFromDictionary:@{photo.photoID: img}];
+                    cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageShow" forIndexPath:indexPath];
+                    Photo * photo = [photoList objectAtIndex:indexPath.row];
+                    if (![[cashedPhoto allKeys] containsObject:photo.photoID]) {
+                      [((ImageShow *)cell) setImageWithURL:[NSURL URLWithString:photo.fullPhoto] andImageID:photo.photoID];
+                    } else {
+                        ((ImageShow *)cell).image.image = nil;
+                        ((ImageShow *)cell).image.image = [cashedPhoto objectForKey:photo.photoID];
                     }
-                }
-                cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageShow" forIndexPath:indexPath];
-                ((ImageShow *)cell).image.image = [cashedPhoto objectForKey:photo.photoID];
                 }
             }
                 break;
@@ -653,6 +665,11 @@
 
 - (IBAction)actCloseSubView:(id)sender {
     [self.subView removeFromSuperview];
+}
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

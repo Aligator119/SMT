@@ -84,7 +84,7 @@
     [recognizer setDelegate:self];
     [self.imgUser addGestureRecognizer:recognizer];
     
-    [self AddActivityIndicator:[UIColor redColor] forView:self.view];
+    [self AddActivityIndicator:[UIColor redColor] forView:self.table];
     
     [dataLoader getLocationsAssociatedWithUser];
     isiPad = NO;
@@ -170,13 +170,30 @@
 
 - (void)openCameraAndPhotos
 {
-    PhotoVideoViewController * pvvc = [[PhotoVideoViewController alloc]initWithNibName:@"PhotoVideoViewController" bundle:nil];
-    [self.navigationController pushViewController:pvvc animated:YES];
+    [self startLoader];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        PhotoVideoViewController * pvvc = [[PhotoVideoViewController alloc]initWithNibName:@"PhotoVideoViewController" bundle:nil];
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [self.navigationController pushViewController:pvvc animated:YES];
+            [self endLoader];
+        });
+    });
+
 }
 
 - (void)openBuddies
 {
-    [self.navigationController pushViewController:[[BuddyListViewController alloc]init] animated:YES];
+    [self startLoader];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        BuddyListViewController * blVC = [[BuddyListViewController alloc]initWithNibName:@"BuddyListViewController" bundle:nil];
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [self.navigationController pushViewController:blVC animated:YES];
+            [self endLoader];
+        });
+    });
+
 }
 
 - (void)openPrediction
@@ -186,19 +203,36 @@
 
 - (void)openWeather
 {
-    [self.navigationController pushViewController:[[WeatherViewController alloc]init] animated:YES];
+    [self startLoader];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        WeatherViewController * wVC = [[WeatherViewController alloc]initWithNibName:@"WeatherViewController" bundle:nil];
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [self.navigationController pushViewController:wVC animated:YES];
+            [self endLoader];
+        });
+    });
+
 }
 
 
 - (void)openLogHistory
 {
-LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibName:@"LogHistoryViewController" bundle:nil];
-[self.navigationController pushViewController:lhvc animated:YES];
+    [self startLoader];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibName:@"LogHistoryViewController" bundle:nil];
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [self.navigationController pushViewController:lhvc animated:YES];
+            [self endLoader];
+        });
+    });
 }
 
 - (void)openMessages
 {
     //message
+    NSLog(@"No added category \"Message\" on this project");
 }
 
 

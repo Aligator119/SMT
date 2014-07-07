@@ -2,6 +2,7 @@
 #import "NewLog1ViewController.h"
 #import "LogDetail2ViewController.h"
 #import "Species.h"
+#import "UIViewController+LoaderCategory.h"
 
 @interface LogDetailViewController ()
 {
@@ -72,6 +73,8 @@
     [self.table registerNib:cellNib2 forCellReuseIdentifier:@"AddCell"];
     
     dataLoader = [DataLoader instance];
+    
+    [self AddActivityIndicator:[UIColor redColor] forView:self.table];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -142,7 +145,8 @@
 {
     [self.table deselectRowAtIndexPath:indexPath animated:YES];
     if ([[self.table cellForRowAtIndexPath:indexPath] isKindOfClass:[LogDetailCell class]]) {
-    NSString * str = ((LogDetailCell *)[self.table cellForRowAtIndexPath:indexPath]).lbText.text;
+        [self startLoader];
+        NSString * str = ((LogDetailCell *)[self.table cellForRowAtIndexPath:indexPath]).lbText.text;
         dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(newQueue, ^(){
             
@@ -152,6 +156,7 @@
                 
                 if(!dataLoader.isCorrectRezult) {
                     NSLog(@"Error download harvester");
+                    [self endLoader];
                 } else {
                     int numSightings = 0;
                     harvestrows = [[settingsDict objectForKey:@"harvestrows"] objectAtIndex:indexPath.section];
@@ -166,6 +171,7 @@
                     sightings   = [[settingsDict objectForKey:@"sightings"] objectAtIndex:numSightings];
                     data = [[NSMutableDictionary alloc]initWithObjectsAndKeys:str, @"name", indexPath, @"index", harvestrows, @"harvestrows", sightings, @"sightings", nil];
                     [self addKillingQuestions];
+                    [self endLoader];
                 }
             });
         });

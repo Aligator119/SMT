@@ -128,7 +128,7 @@
 {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+    [self startLoader];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
         spec = [appDelegate.speciesList objectAtIndex:indexPath.row];
@@ -138,10 +138,12 @@
             
             if(!loader.isCorrectRezult) {
                 NSLog(@"Error download sybSpecie");
+                [self endLoader];
             } else {
                 NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:spec, @"species", array, @"questions", nil];
                 NewLog2ViewController * nlvc = [[NewLog2ViewController alloc]initWithNibName:@"NewLog2ViewController" bundle:nil andData:dict];
                 [self.navigationController pushViewController:nlvc animated:YES];
+                [self endLoader];
             }
         });
     });
