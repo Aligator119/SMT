@@ -44,7 +44,7 @@
             <size key="customSize" width="228" height="79"/>
             <connections>
                 <outlet property="heigthImage" destination="YNO-n1-PIp" id="Kww-z9-K1a"/>
-                <outlet property="image" destination="EmU-4Q-BPD" id="oLk-fD-nIN"/>
+                <outlet property="img" destination="EmU-4Q-BPD" id="dP9-T7-9Hm"/>
                 <outlet property="lbDescriptions" destination="am1-bA-N36" id="DZF-u6-vox"/>
             </connections>
         </collectionViewCell>

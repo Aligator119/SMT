@@ -21,7 +21,7 @@
         
         dispatch_async(dispatch_get_main_queue(), ^(){
             [self setPhotoDescriptions:str];
-            self.image.image = image;
+            self.img.image = image;
             [[NSNotificationCenter defaultCenter] postNotificationName:DOWNLOAD_IMAGE_SUCCES object:self userInfo:@{photoID: image}];
         });
     });
@@ -38,14 +38,22 @@
     }
 }
 
+
+- (void)setImage:(UIImage *)image
+{
+    self.heigthImage.constant = 0.0;
+    [self updateConstraints];
+    self.img.image = image;
+}
+
 - (void)prepareForReuse
 {
-    self.image.image = [[UIImage alloc]init];
+    self.img.image = [[UIImage alloc]init];
 }
 
 - (void)prepareToReuse
 {
-    self.image.image = [[UIImage alloc]init];
+    self.img.image = [[UIImage alloc]init];
 }
 
 
