@@ -53,6 +53,7 @@
                         <state key="highlighted" backgroundImage="star_BTN_press.png"/>
                     </button>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="dxM-lU-9i8" secondAttribute="bottom" constant="16" id="2bD-EI-zlA"/>
                     <constraint firstItem="hPp-Zu-tqa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="GpC-8d-ul6"/>

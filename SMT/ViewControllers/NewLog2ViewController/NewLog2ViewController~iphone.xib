@@ -38,6 +38,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sportsman_tracker_BG-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="A1s-Ee-kH4">
+                    <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MeH-RM-ry4">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -94,15 +98,14 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <view key="tableHeaderView" contentMode="scaleToFill" id="zQB-Fd-II3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sportsman_tracker_BG-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="A1s-Ee-kH4">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hf6-MP-8dO">
                                 <rect key="frame" x="165" y="90" width="125" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -169,13 +172,10 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="A1s-Ee-kH4" secondAttribute="trailing" id="2LW-xX-oxD"/>
                             <constraint firstItem="SRy-xi-GbC" firstAttribute="leading" secondItem="zQB-Fd-II3" secondAttribute="leading" constant="30" id="3e0-Py-uzQ"/>
                             <constraint firstItem="hf6-MP-8dO" firstAttribute="top" secondItem="SRy-xi-GbC" secondAttribute="bottom" constant="10" id="50E-15-k0T"/>
                             <constraint firstItem="SRy-xi-GbC" firstAttribute="top" secondItem="2Bw-cq-S4j" secondAttribute="bottom" constant="10" id="76m-wN-Pkx"/>
-                            <constraint firstAttribute="bottom" secondItem="A1s-Ee-kH4" secondAttribute="bottom" id="EFR-BS-WLs"/>
                             <constraint firstAttribute="trailing" secondItem="2Bw-cq-S4j" secondAttribute="trailing" constant="30" id="F5n-aV-1eA"/>
-                            <constraint firstItem="A1s-Ee-kH4" firstAttribute="top" secondItem="zQB-Fd-II3" secondAttribute="top" id="M3B-r5-7dW"/>
                             <constraint firstItem="2Bw-cq-S4j" firstAttribute="leading" secondItem="zQB-Fd-II3" secondAttribute="leading" constant="30" id="NLb-tU-8qr"/>
                             <constraint firstItem="XIq-WU-SvA" firstAttribute="leading" secondItem="zQB-Fd-II3" secondAttribute="leading" constant="30" id="Pte-eu-hDx"/>
                             <constraint firstAttribute="trailing" secondItem="hf6-MP-8dO" secondAttribute="trailing" constant="30" id="Si2-n2-lmx"/>
@@ -183,7 +183,6 @@
                             <constraint firstItem="2Bw-cq-S4j" firstAttribute="top" secondItem="zQB-Fd-II3" secondAttribute="top" constant="10" id="WWK-0Z-uxp"/>
                             <constraint firstItem="hf6-MP-8dO" firstAttribute="leading" secondItem="XIq-WU-SvA" secondAttribute="trailing" constant="10" id="YfI-Dz-zED"/>
                             <constraint firstItem="XIq-WU-SvA" firstAttribute="width" secondItem="hf6-MP-8dO" secondAttribute="width" id="egp-R1-rta"/>
-                            <constraint firstItem="A1s-Ee-kH4" firstAttribute="leading" secondItem="zQB-Fd-II3" secondAttribute="leading" id="etK-83-lE5"/>
                             <constraint firstAttribute="trailing" secondItem="SRy-xi-GbC" secondAttribute="trailing" constant="30" id="mvY-ed-GZX"/>
                             <constraint firstItem="XIq-WU-SvA" firstAttribute="top" secondItem="SRy-xi-GbC" secondAttribute="bottom" constant="10" id="x7T-cx-CCs"/>
                         </constraints>
@@ -240,7 +239,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="lYi-UZ-xbQ" firstAttribute="top" secondItem="bbG-gQ-FDo" secondAttribute="top" constant="10" id="4fW-qA-noS"/>
                             <constraint firstItem="zJU-Rr-dMc" firstAttribute="top" secondItem="lYi-UZ-xbQ" secondAttribute="bottom" constant="10" id="6aK-qs-9NK"/>
@@ -263,13 +262,17 @@
                 <constraint firstAttribute="trailing" secondItem="iFd-KG-lkl" secondAttribute="trailing" id="7Fc-8J-MMi"/>
                 <constraint firstAttribute="trailing" secondItem="MeH-RM-ry4" secondAttribute="trailing" id="9O1-3f-fYn"/>
                 <constraint firstItem="iFd-KG-lkl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="E7A-bu-OB0"/>
+                <constraint firstItem="A1s-Ee-kH4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Huw-nh-WS8"/>
+                <constraint firstAttribute="bottom" secondItem="A1s-Ee-kH4" secondAttribute="bottom" id="LE0-Xm-qG0"/>
                 <constraint firstItem="MeH-RM-ry4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="RlY-tu-ELF"/>
                 <constraint firstItem="iFd-KG-lkl" firstAttribute="top" secondItem="MeH-RM-ry4" secondAttribute="bottom" id="UhH-AD-POm"/>
                 <constraint firstItem="MeH-RM-ry4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="cJe-6B-grs"/>
                 <constraint firstAttribute="bottom" secondItem="iFd-KG-lkl" secondAttribute="bottom" id="dup-Wb-Yfd"/>
+                <constraint firstAttribute="trailing" secondItem="A1s-Ee-kH4" secondAttribute="trailing" id="kjr-vJ-E0V"/>
                 <constraint firstAttribute="bottom" secondItem="iFd-KG-lkl" secondAttribute="bottom" id="lov-5Y-Gfe"/>
                 <constraint firstAttribute="trailing" secondItem="iFd-KG-lkl" secondAttribute="trailing" id="muQ-QY-xhy"/>
                 <constraint firstItem="iFd-KG-lkl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="nA4-RC-wmZ"/>
+                <constraint firstItem="A1s-Ee-kH4" firstAttribute="top" secondItem="MeH-RM-ry4" secondAttribute="bottom" id="qNM-Vw-2Dy"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

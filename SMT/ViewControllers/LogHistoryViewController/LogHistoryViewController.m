@@ -62,7 +62,7 @@
     dataLoader = [DataLoader instance];
     dict = [[NSMutableDictionary alloc]init];
     
-    [self AddActivityIndicator:[UIColor redColor] forView:self.table];
+    [self AddActivityIndicator:[UIColor grayColor] forView:self.table];
 //----------------------------------------------------------------------------------------------------
     
         

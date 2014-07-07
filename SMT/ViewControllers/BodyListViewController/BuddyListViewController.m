@@ -84,7 +84,7 @@
 
 -(void) viewWillAppear:(BOOL)animated
 {
-    [self AddActivityIndicator:[UIColor redColor] forView:self.table];
+    [self AddActivityIndicator:[UIColor grayColor] forView:self.table];
 
     self.navigationController.navigationBar.hidden = YES;
     

@@ -49,6 +49,8 @@
     NSIndexPath * index;
     NSArray * recipes;
     NSArray * searchResults;
+//    UITextView * callKeyBoard;
+//    NSIndexPath * path;
 }
 @property (strong, nonatomic) IBOutlet UIView *forTabBar;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *topBarHiegthConstrainsSubView;
@@ -85,12 +87,16 @@
 - (void)setImageWithAllButton;
 - (void)actSelectSpecie;
 - (void)actSelectSubSpecie;
+- (void)actCreateTIPS;
 
 - (void)downloadTIPS;
 - (void)downloadPhotos;
 
 - (IBAction)actCloseSubView:(id)sender;
 - (void)cashedImageFromCell:(NSNotification *)info;
+
+- (void)keyboardDidShow: (NSNotification *) notif;
+- (void)keyboardDidHide: (NSNotification *) notif;
 @end
 
 @implementation FlyoutMenuViewController
@@ -130,7 +136,7 @@
     activeSegment = 1;
     cashedPhoto = [[NSMutableDictionary alloc]init];
 //--------------------------------------------------------------------------------------------------------------------
-    [self AddActivityIndicator:[UIColor redColor] forView:self.view];
+    [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
     
     self.table.backgroundView = nil;
     
@@ -160,7 +166,7 @@
     [btn4Recognizer setDelegate:self];
     [self.btn4 addGestureRecognizer:btn4Recognizer];
     
-    [self AddActivityIndicator:[UIColor redColor] forView:self.view];
+    [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
     
     recipes = [[NSArray alloc]initWithObjects:@"asd", @"zxc", @"qwerty", nil];
     
@@ -168,7 +174,20 @@
                                              selector:@selector(cashedImageFromCell:)
                                                  name:DOWNLOAD_IMAGE_SUCCES
                                                object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardDidShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHide:)
+                                                 name:UIKeyboardDidHideNotification
+                                               object:nil];
+    
 }
+
+
 
 
 -(void) setIsPresent:(BOOL)present
@@ -276,6 +295,7 @@
                     cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CreateTipsCell" forIndexPath:indexPath];
                     [((CreateTipsCell *)cell).btnSelectSpecie addTarget:self action:@selector(actSelectSpecie) forControlEvents:UIControlEventTouchUpInside];
                     [((CreateTipsCell *)cell).btnSelectSubSpecie addTarget:self action:@selector(actSelectSubSpecie) forControlEvents:UIControlEventTouchUpInside];
+                    [((CreateTipsCell *)cell).btnCreateTIPS addTarget:self action:@selector(actCreateTIPS) forControlEvents:UIControlEventTouchUpInside];
                     [((CreateTipsCell *)cell).tfText setDelegate:self];
                     index = indexPath;
                 } else {
@@ -351,17 +371,21 @@
 
 - (void)actHome:(id)sender {
     [self reverseBackroundImageWithNumber:1];
+    [self endLoader];
 }
 
 - (void)actLookSee:(id)sender {
     [self reverseBackroundImageWithNumber:2];
+    [self endLoader];
 }
 
 - (void)actVideo:(id)sender {
     [self reverseBackroundImageWithNumber:3];
+    [self endLoader];
 }
 - (void)actTIPS:(id)sender {
     [self reverseBackroundImageWithNumber:4];
+    [self endLoader];
 }
 
 - (void)reverseBackroundImageWithNumber:(int)num
@@ -548,12 +572,10 @@
     }
 }
 
-#pragma mark UITextViewDelegats metods
-
-- (void)textViewDidEndEditing:(UITextView *)textView
+- (void) actCreateTIPS
 {
     [self startLoader];
-    NSLog(@"send tips");
+    NSLog(@"Start send message on create tips");
     // add send tips to servrs
     int subID;
     UICollectionViewCell * buf = [self.colectionView cellForItemAtIndexPath:index];
@@ -566,21 +588,35 @@
         dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(newQueue, ^(){
             [dataLoader createNewTipsWithSpecieID:[selectSpecie.specId intValue] tip:((CreateTipsCell *)buf).tfText.text subSpecieID:subID andUserID:appDelegate.user.userID];
-        
-            dispatch_async(dispatch_get_main_queue(), ^(){
             
+            dispatch_async(dispatch_get_main_queue(), ^(){
+                
                 if(!dataLoader.isCorrectRezult) {
                     NSLog(@"Error create tips");
                     [self endLoader];
                 } else {
                     //[self.colectionView reloadData];
-                    NSLog(@"YES");
+                    NSLog(@"Create TIPS is succes");
                     [self endLoader];
                     [self downloadTIPS];
                 }
-           });
+            });
         });
     }
+
+}
+
+#pragma mark UITextViewDelegats metods
+
+- (void)textFieldDidBeginEditing:(UITextView *)textView
+{
+    //path = [NSIndexPath indexPathForItem:textView.tag inSection:0];
+    //callKeyBoard = textView;
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    [self resignFirstResponder];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
@@ -611,6 +647,20 @@
                                                      selectedScopeButtonIndex]]];
     
     return YES;
+}
+
+
+- (void)keyboardDidShow: (NSNotification *) notif{
+    NSDictionary * info = [notif userInfo];
+    CGSize keyboardSize = [self.view convertRect:[[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue] fromView:self.view.window].size;
+    CGRect bounds = [self.colectionView cellForItemAtIndexPath:index].frame;
+    bounds.size.height /= 3.5;
+        self.colectionView.contentInset = UIEdgeInsetsMake(0, 0, keyboardSize.height, 0);
+    [self.colectionView scrollRectToVisible:bounds animated:YES];
+}
+
+- (void)keyboardDidHide: (NSNotification *) notif{
+    self.colectionView.contentInset = UIEdgeInsetsZero;
 }
 
 

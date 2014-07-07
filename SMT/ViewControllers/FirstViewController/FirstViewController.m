@@ -84,7 +84,7 @@
     [recognizer setDelegate:self];
     [self.imgUser addGestureRecognizer:recognizer];
     
-    [self AddActivityIndicator:[UIColor redColor] forView:self.table];
+    [self AddActivityIndicator:[UIColor grayColor] forView:self.table];
     
     [dataLoader getLocationsAssociatedWithUser];
     isiPad = NO;

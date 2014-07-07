@@ -74,7 +74,7 @@
     [self.collectionTable registerNib:headerNib forCellWithReuseIdentifier:@"header"];
     
     //[self.image setBackgroundColor:[UIColor greenColor]];
-    [self AddActivityIndicator:[UIColor redColor] forView:self.view];
+    [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
     //[self AddActivityIndicator:[UIColor redColor] forView:self.collectionTable];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToLocationDetails:) name:@"LocationListInfoButtonPressed" object:nil];

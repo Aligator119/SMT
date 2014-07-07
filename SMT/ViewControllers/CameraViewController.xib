@@ -94,7 +94,7 @@
                             <state key="highlighted" backgroundImage="st_icon_press.png"/>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="uTz-Zu-QIU" secondAttribute="bottom" id="0Qk-Zx-aAr"/>
                         <constraint firstAttribute="centerX" secondItem="eXC-nv-WNS" secondAttribute="centerX" id="DgX-1v-yBX"/>
@@ -219,7 +219,6 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="TcO-h8-2RU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AbR-hJ-7Z5"/>
                 <constraint firstItem="3Ub-xc-A5C" firstAttribute="top" secondItem="TcO-h8-2RU" secondAttribute="bottom" id="BkC-z9-2Xz"/>

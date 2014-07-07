@@ -1,12 +1,5 @@
-//
-//  CreateTipsCell.m
-//  SMT
-//
-//  Created by Mac on 7/2/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import "CreateTipsCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation CreateTipsCell
 
@@ -15,6 +8,22 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        // Initialization code
+        [self.tfText.layer setMasksToBounds:YES];
+        [self.tfText.layer setBorderWidth:1.0f];
+        [self.tfText.layer setBorderColor:[UIColor blackColor].CGColor];
+        [self.btnCreateTIPS.layer setMasksToBounds:YES];
+        self.btnCreateTIPS.layer.cornerRadius = 10.0f;
+        [self.btnCreateTIPS.layer setBorderWidth:1.0f];
+        [self.btnCreateTIPS.layer setBorderColor:[UIColor blackColor].CGColor];
     }
     return self;
 }

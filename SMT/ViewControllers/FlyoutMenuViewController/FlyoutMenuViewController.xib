@@ -70,7 +70,7 @@
                         <constraint firstAttribute="bottom" secondItem="nxf-Ru-KV7" secondAttribute="bottom" id="tAZ-lK-dqH"/>
                     </constraints>
                 </view>
-                <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="exG-Uq-koA">
+                <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="exG-Uq-koA">
                     <rect key="frame" x="0.0" y="64" width="320" height="126"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -181,7 +181,7 @@
                                     <state key="highlighted" backgroundImage="st_icon_press.png"/>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="320" id="10N-Lo-agy"/>
                                 <constraint firstAttribute="bottom" secondItem="eMl-a7-oJb" secondAttribute="bottom" constant="2" id="343-nA-nGF"/>

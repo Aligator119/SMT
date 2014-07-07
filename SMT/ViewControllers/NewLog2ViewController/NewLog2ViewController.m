@@ -299,6 +299,7 @@
         [cell.btnLevel addTarget:self action:@selector(actSelectStar:) forControlEvents:UIControlEventTouchUpInside];
         cell.btnLevel.tag = indexPath.row;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell.contentView setBackgroundColor:[UIColor clearColor]];
     return cell;
 }
 

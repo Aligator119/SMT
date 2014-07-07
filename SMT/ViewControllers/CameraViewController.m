@@ -33,7 +33,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     dataLoader = [DataLoader instance];
-    [self AddActivityIndicator:[UIColor redColor] forView:self.view];
+    [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
     UIButton * btn = (UIButton *)[self.tabBar viewWithTag:3];
     [btn setBackgroundImage:[UIImage imageNamed:@"camera_icon_press.png"] forState:UIControlStateNormal];
     self.isCamera = YES;

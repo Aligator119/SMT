@@ -136,7 +136,7 @@
                             <state key="highlighted" backgroundImage="st_icon_press.png"/>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="46" id="6HK-xZ-ArO"/>
                         <constraint firstItem="shf-V6-5F0" firstAttribute="leading" secondItem="znR-U3-vzl" secondAttribute="trailing" constant="33" id="AF6-pa-P8b"/>
