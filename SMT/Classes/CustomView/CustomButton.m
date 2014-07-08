@@ -43,17 +43,26 @@
 
 
 - (void)removeSelectIthem
-{   if (selectSpecie) {
+{
+    if (selectSpecie) {
         [inputArray removeObject:selectSpecie];
         if (inputArray.count) {
             [self setSelectedSpecies:[inputArray firstObject]];
+        } else {
+            selectSpecie = nil;
+            [self setTitle:@"" forState:UIControlStateNormal];
         }
     }
 }
 
 - (void) addSpecie:(Species *)spec
 {
-    [inputArray addObject:spec];
+    if (inputArray.count == 0) {
+        [inputArray addObject:spec];
+        [self setSelectedSpecies:spec];
+    } else {
+        [inputArray addObject:spec];
+    }
 }
 
 - (void) setInputArray:(NSArray *)array
@@ -97,7 +106,14 @@
 
 - (Species *) getSelectedSpecie
 {
-    return selectSpecie;
+    //if (inputArray.count > 1) {
+        return selectSpecie;
+//    } else {
+//        Species * ret = selectSpecie;
+//        [inputArray removeObject:selectSpecie];
+//        selectSpecie = nil;
+//        return ret;
+//    }
 }
 
 - (void) setSelectedIthem:(NSString *)str

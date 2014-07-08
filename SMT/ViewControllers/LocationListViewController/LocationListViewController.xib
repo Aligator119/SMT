@@ -76,7 +76,7 @@
                     <rect key="frame" x="0.0" y="64" width="320" height="46"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fTT-SD-RM8">
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fTT-SD-RM8">
                             <rect key="frame" x="5" y="9" width="310" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
@@ -169,7 +169,7 @@
                             <state key="highlighted" backgroundImage="note_icon_press.png"/>
                         </button>
                         <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnn-Jf-08z">
-                            <rect key="frame" x="264" y="8" width="36" height="36"/>
+                            <rect key="frame" x="267" y="8" width="36" height="36"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="e26-1b-lKB"/>
@@ -191,7 +191,7 @@
                         <constraint firstItem="T0B-7E-lGf" firstAttribute="top" secondItem="IZX-EA-s2i" secondAttribute="top" id="ZdD-LG-MhA"/>
                         <constraint firstItem="nkk-xO-t39" firstAttribute="leading" secondItem="Jp3-QJ-Ewu" secondAttribute="trailing" constant="33" id="dMg-FW-Uxb"/>
                         <constraint firstAttribute="width" constant="320" id="eHi-kk-XQM"/>
-                        <constraint firstItem="rnn-Jf-08z" firstAttribute="leading" secondItem="vFB-5Y-foJ" secondAttribute="trailing" constant="15" id="fMV-bW-8ns"/>
+                        <constraint firstItem="rnn-Jf-08z" firstAttribute="leading" secondItem="vFB-5Y-foJ" secondAttribute="trailing" constant="18" id="fMV-bW-8ns"/>
                         <constraint firstAttribute="bottom" secondItem="rnn-Jf-08z" secondAttribute="bottom" constant="2" id="l8c-Su-f9d"/>
                         <constraint firstAttribute="height" constant="46" id="n1t-Cj-t5Q"/>
                         <constraint firstAttribute="centerX" secondItem="T0B-7E-lGf" secondAttribute="centerX" id="n3c-wN-cwR"/>

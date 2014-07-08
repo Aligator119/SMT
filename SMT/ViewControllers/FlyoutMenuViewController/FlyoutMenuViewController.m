@@ -91,6 +91,7 @@
 
 - (void)downloadTIPS;
 - (void)downloadPhotos;
+- (void)getImageWithUrl;
 
 - (IBAction)actCloseSubView:(id)sender;
 - (void)cashedImageFromCell:(NSNotification *)info;
@@ -184,7 +185,6 @@
                                              selector:@selector(keyboardDidHide:)
                                                  name:UIKeyboardDidHideNotification
                                                object:nil];
-    
 }
 
 
@@ -270,9 +270,7 @@
                 if (photoList.count) {
                     cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageShow" forIndexPath:indexPath];
                     Photo * photo = [photoList objectAtIndex:indexPath.row];
-                    if (![[cashedPhoto allKeys] containsObject:photo.photoID]) {
-                      [((ImageShow *)cell) setImageWithURL:[NSURL URLWithString:photo.fullPhoto] andImageID:photo.photoID andDescriptions:nil];
-                    } else {
+                    if ([[cashedPhoto allKeys] containsObject:photo.photoID]) {
                         ((ImageShow *)cell).img.image = nil;
                         ((ImageShow *)cell).img.image = [cashedPhoto objectForKey:photo.photoID];
                     }
@@ -317,7 +315,7 @@
         
     } else {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageShow" forIndexPath:indexPath];
-
+//set image for image show collection view
         switch (indexPath.row) {
             case 0:
                 [((ImageShow *)cell) setImage:[UIImage imageNamed:@"tips_icon.png"]];
@@ -347,7 +345,7 @@
     CGSize size;
     if (collectionView.tag == COLECTION_DATA) {
         if (!selectedBtn1) {
-             size = CGSizeMake(self.colectionView.frame.size.width-10, self.colectionView.frame.size.height + 25.0);
+             size = CGSizeMake(self.colectionView.frame.size.width-10, self.colectionView.frame.size.height);
         } else if (!selectedBtn2) {
             //num = 1;
         } else if (!selectedBtn3) {
@@ -715,8 +713,31 @@
                 [self endLoader];
             } else {
                 [self.colectionView reloadData];
+                [self getImageWithUrl];
                 [self endLoader];
             }
+        });
+    });
+}
+
+- (void)getImageWithUrl
+{
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        for (Photo * obj in photoList)
+        {
+            if (![[cashedPhoto allKeys] containsObject:obj.photoID]) {
+                UIImage * img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:obj.fullPhoto]]];
+                if (img) {
+                    [cashedPhoto addEntriesFromDictionary:@{obj.photoID: img}];
+                } else {
+                    img = [[UIImage alloc]init];
+                    [cashedPhoto addEntriesFromDictionary:@{obj.photoID: img}];
+                }
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [self.colectionView reloadData];
         });
     });
 }

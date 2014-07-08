@@ -3,6 +3,7 @@
 #import "LogDetail2ViewController.h"
 #import "Species.h"
 #import "UIViewController+LoaderCategory.h"
+#import "FirstViewController.h"
 
 @interface LogDetailViewController ()
 {
@@ -218,7 +219,11 @@
 }
 
 - (IBAction)actClose:(id)sender {
-    NewLog1ViewController * nlvc = [[NewLog1ViewController alloc] initWithNibName:@"NewLog1ViewController" bundle:nil];
-    [self.navigationController pushViewController:nlvc animated:YES];
+//    for (id obj in self.navigationController.viewControllers) {
+//        if ([obj isKindOfClass:[FirstViewController class]]) {
+//            [self.navigationController popToViewController:obj animated:YES];
+//        }
+//    }
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 @end

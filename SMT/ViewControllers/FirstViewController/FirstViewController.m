@@ -32,6 +32,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *lbStatus;
 @property (strong, nonatomic) IBOutlet UITableView *table;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *leftsSpace;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstr;
 - (IBAction)actCloseSetting:(id)sender;
 - (void)deselectSettingButton;
 - (void)selectSettingButton;
@@ -56,6 +57,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
+        self.topViewHeightConstr.constant -= 20;
+    }
     isSettings = NO;
     dataLoader = [DataLoader instance];
     self.lbNameUser.text =  appDelegate.user.name;

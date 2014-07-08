@@ -13,6 +13,7 @@
                 <outlet property="lbStatus" destination="eJ2-X4-ZMB" id="E9f-n4-6XE"/>
                 <outlet property="leftsSpace" destination="PGh-ka-SHh" id="1g3-le-Ghs"/>
                 <outlet property="table" destination="VRS-Ps-NQ1" id="ItY-62-hCA"/>
+                <outlet property="topViewHeightConstr" destination="zwk-8n-Q6e" id="HRO-0H-7J4"/>
                 <outlet property="view" destination="iN0-l3-epB" id="C8U-aD-wLf"/>
             </connections>
         </placeholder>
@@ -49,6 +50,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="Gjj-H3-OG1"/>
+                                                <constraint firstAttribute="height" constant="30" id="tU0-KZ-Jpl"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <state key="normal" title="Logout">
@@ -61,7 +63,6 @@
                                     </subviews>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstItem="kcw-RY-H8A" firstAttribute="top" secondItem="L1E-le-yq6" secondAttribute="top" constant="27" id="4ja-kQ-824"/>
                                         <constraint firstAttribute="trailing" secondItem="kcw-RY-H8A" secondAttribute="trailing" constant="10" id="IBE-Th-Hcp"/>
                                         <constraint firstAttribute="bottom" secondItem="kcw-RY-H8A" secondAttribute="bottom" constant="7" id="cFT-jj-yYK"/>
                                         <constraint firstAttribute="height" constant="64" id="zwk-8n-Q6e"/>
@@ -121,6 +122,7 @@
                                 <constraint firstItem="L1E-le-yq6" firstAttribute="leading" secondItem="npE-YV-wBW" secondAttribute="leading" id="hYh-NV-ii1"/>
                                 <constraint firstItem="fSv-Bd-ATy" firstAttribute="leading" secondItem="npE-YV-wBW" secondAttribute="leading" constant="14" id="n1k-Jh-0x5"/>
                                 <constraint firstAttribute="trailing" secondItem="Mdn-Qm-eKs" secondAttribute="trailing" constant="10" id="oZ1-aB-1Ef"/>
+                                <constraint firstItem="fSv-Bd-ATy" firstAttribute="top" secondItem="L1E-le-yq6" secondAttribute="bottom" constant="6" id="tp7-eb-idM"/>
                                 <constraint firstAttribute="height" constant="159" id="v6J-Gk-Fv3"/>
                             </constraints>
                         </view>
@@ -137,7 +139,6 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.87058823529999996" green="0.87058823529999996" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="2M9-bH-eE3" secondAttribute="bottom" id="2qU-op-aFL"/>
                 <constraint firstItem="2M9-bH-eE3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="70" id="PGh-ka-SHh"/>
