@@ -23,7 +23,7 @@
         [self.contentView addSubview:a];
         
         //CGRect screenRect = self.contentView.bounds; //[[UIScreen mainScreen] bounds];
-        a.center = self.contentView.center; //CGPointMake(screenRect.size.width/2,screenRect.size.height/2);
+        a.center = self.center; //CGPointMake(screenRect.size.width/2,screenRect.size.height/2);
         
         a.color = [UIColor blackColor];
         a.hidesWhenStopped = YES;
