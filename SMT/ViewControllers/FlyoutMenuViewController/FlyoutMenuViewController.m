@@ -348,7 +348,7 @@
     CGSize size;
     if (collectionView.tag == COLECTION_DATA) {
         if (!selectedBtn1) {
-             size = CGSizeMake(self.colectionView.frame.size.width-10, self.colectionView.frame.size.height);
+            size = CGSizeMake(self.colectionView.frame.size.width-10, 200);
         } else if (!selectedBtn2) {
             //num = 1;
         } else if (!selectedBtn3) {
