@@ -40,6 +40,11 @@
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
         self.navigationBarHeightConstr.constant -= 20;
         self.navigationBarVerticalConstr.constant -=20;
+        UIFont *font = [UIFont boldSystemFontOfSize:10.0f];
+        NSDictionary *attributes = [NSDictionary dictionaryWithObject:font
+                                                               forKey:NSFontAttributeName];
+        [self.segment setTitleTextAttributes:attributes
+                                        forState:UIControlStateNormal];
     }
 
     UIFont *font = [UIFont boldSystemFontOfSize:12.0f];

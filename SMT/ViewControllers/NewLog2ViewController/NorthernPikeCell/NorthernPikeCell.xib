@@ -28,6 +28,7 @@
                             <constraint firstAttribute="height" constant="40" id="5GX-6B-ZX1"/>
                             <constraint firstAttribute="width" constant="40" id="ec5-d1-6Zs"/>
                         </constraints>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                     </textField>
@@ -38,6 +39,7 @@
                             <constraint firstAttribute="height" constant="40" id="gsq-5B-hRf"/>
                             <constraint firstAttribute="width" constant="40" id="ter-uU-vbT"/>
                         </constraints>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                     </textField>
@@ -68,6 +70,7 @@
                     <constraint firstItem="aRO-cE-80b" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="tYw-40-z5g"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="btnLevel" destination="dxM-lU-9i8" id="cio-yg-A1G"/>
                 <outlet property="img" destination="aRO-cE-80b" id="jXB-YJ-t5q"/>

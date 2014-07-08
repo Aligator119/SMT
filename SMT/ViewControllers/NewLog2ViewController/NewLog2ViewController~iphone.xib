@@ -242,12 +242,10 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="lYi-UZ-xbQ" firstAttribute="top" secondItem="bbG-gQ-FDo" secondAttribute="top" constant="10" id="4fW-qA-noS"/>
-                            <constraint firstItem="zJU-Rr-dMc" firstAttribute="top" secondItem="lYi-UZ-xbQ" secondAttribute="bottom" constant="10" id="6aK-qs-9NK"/>
                             <constraint firstAttribute="trailing" secondItem="zJU-Rr-dMc" secondAttribute="trailing" constant="30" id="Oob-vt-mMa"/>
                             <constraint firstItem="zOn-ib-lAw" firstAttribute="leading" secondItem="bbG-gQ-FDo" secondAttribute="leading" constant="30" id="Uff-Ej-RXx"/>
                             <constraint firstItem="zJU-Rr-dMc" firstAttribute="leading" secondItem="bbG-gQ-FDo" secondAttribute="leading" constant="30" id="Xa6-gC-kbV"/>
                             <constraint firstAttribute="bottom" secondItem="zJU-Rr-dMc" secondAttribute="bottom" constant="10" id="d8e-pc-jHS"/>
-                            <constraint firstItem="zJU-Rr-dMc" firstAttribute="top" secondItem="zOn-ib-lAw" secondAttribute="bottom" constant="10" id="nPK-MW-DvK"/>
                             <constraint firstAttribute="trailing" secondItem="lYi-UZ-xbQ" secondAttribute="trailing" constant="30" id="sfZ-o7-34d"/>
                             <constraint firstItem="zOn-ib-lAw" firstAttribute="top" secondItem="bbG-gQ-FDo" secondAttribute="top" constant="10" id="wtq-Br-ndZ"/>
                         </constraints>

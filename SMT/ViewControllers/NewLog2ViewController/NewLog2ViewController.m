@@ -38,6 +38,7 @@
     NSArray * questionsList;
     UITextField * callKeyBoard;
     int count;
+    BOOL isHidden;
     }
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *constrainsADD;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *constrainsNorthempike;
@@ -103,7 +104,7 @@
     UINib *cellNib = [UINib nibWithNibName:@"NorthernPikeCell" bundle:[NSBundle mainBundle]];
     [self.table registerNib:cellNib forCellReuseIdentifier:@"NorthernPikeCell"];
     
-    
+    isHidden = NO;
     
     
     dateFormatter = [[NSDateFormatter alloc]init];
@@ -322,6 +323,12 @@
         [self.btnNorthempike addSpecie:buf];
         [activityDetails removeObjectAtIndex:indexPath.row];
         [listOfSpecies removeObjectAtIndex:indexPath.row];
+        if (isHidden) {
+            CGRect rect = self.footer.frame;
+            rect.size.height += 45.0;
+            self.footer.frame = rect;
+            isHidden = NO;
+        }
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
         }
         if (![listOfSpecies count]) {
@@ -373,7 +380,7 @@
 - (void) pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     if (self.picker.tag == 55) {
-        self.northernPike = [questionsList objectAtIndex:row];
+        [self.btnNorthempike setSelectedSpecies:[questionsList objectAtIndex:row]];
     } else {
         self.selectedIthem = [questionsList objectAtIndex:row];
     }
@@ -542,17 +549,22 @@
 
 
 - (IBAction)actAdd:(id)sender {
-    if (self.northernPike) {
+    if ([self.btnNorthempike getSelectedSpecie]) {
+        [listOfSpecies addObject:[self.btnNorthempike getSelectedSpecie]];
         [self.btnNorthempike removeSelectIthem];
-        [listOfSpecies addObject:self.northernPike];
         ActivityDetails * details = [[ActivityDetails alloc]init];
         details.subspecies_id = [self.northernPike.specId intValue];
         [activityDetails addObject:details];
+        [self.northernPikeList removeObject:self.northernPike];
         self.northernPike = [self.btnNorthempike getSelectedSpecie];
         [self.table reloadData];
         
-    } else {
-        [self.btnNorthempike setTitle:@"" forState:UIControlStateNormal];
+    }
+    if (![self.btnNorthempike getSelectedSpecie]) {
+        CGRect rect = self.footer.frame;
+        rect.size.height -= 45.0;
+        self.footer.frame = rect;
+        isHidden = YES;
     }
 }
 

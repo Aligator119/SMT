@@ -41,6 +41,7 @@
 
 - (void)setImage:(UIImage *)image
 {
+    self.img.contentMode = UIViewContentModeScaleToFill;
     self.heigthImage.constant = 0.0;
     [self updateConstraints];
     self.img.image = image;
