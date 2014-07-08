@@ -273,8 +273,8 @@
                     if (![[cashedPhoto allKeys] containsObject:photo.photoID]) {
                       [((ImageShow *)cell) setImageWithURL:[NSURL URLWithString:photo.fullPhoto] andImageID:photo.photoID andDescriptions:nil];
                     } else {
-                        ((ImageShow *)cell).image.image = nil;
-                        ((ImageShow *)cell).image.image = [cashedPhoto objectForKey:photo.photoID];
+                        ((ImageShow *)cell).img.image = nil;
+                        ((ImageShow *)cell).img.image = [cashedPhoto objectForKey:photo.photoID];
                     }
                 }
             }
@@ -320,19 +320,19 @@
 
         switch (indexPath.row) {
             case 0:
-                ((ImageShow *)cell).image.image = [UIImage imageNamed:@"tips_icon.png"];
+                [((ImageShow *)cell) setImage:[UIImage imageNamed:@"tips_icon.png"]];
                 break;
             case 1:
-                ((ImageShow *)cell).image.image = [UIImage imageNamed:@"tips_icon.png"];
+                [((ImageShow *)cell) setImage:[UIImage imageNamed:@"tips_icon.png"]];
                 break;
             case 2:
-                ((ImageShow *)cell).image.image = [UIImage imageNamed:@"tips_icon.png"];
+                [((ImageShow *)cell) setImage:[UIImage imageNamed:@"tips_icon.png"]];
                 break;
             case 3:
-                ((ImageShow *)cell).image.image = [UIImage imageNamed:@"tips_icon.png"];
+                [((ImageShow *)cell) setImage:[UIImage imageNamed:@"tips_icon.png"]];
                 break;
             default:
-                ((ImageShow *)cell).image.image = [UIImage imageNamed:@"tips_icon.png"];
+                [((ImageShow *)cell) setImage:[UIImage imageNamed:@"tips_icon.png"]];
                 break;
         }
         
@@ -347,7 +347,7 @@
     CGSize size;
     if (collectionView.tag == COLECTION_DATA) {
         if (!selectedBtn1) {
-             size = CGSizeMake(self.colectionView.frame.size.width-10, 150.0f);
+             size = CGSizeMake(self.colectionView.frame.size.width-10, self.colectionView.frame.size.height + 25.0);
         } else if (!selectedBtn2) {
             //num = 1;
         } else if (!selectedBtn3) {
