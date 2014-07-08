@@ -178,7 +178,7 @@
     
     AppDelegate * appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
     
-    appDelegate.user.userName = self.userNameTextField.text;
+    appDelegate.user.userEmail = self.userNameTextField.text;
     appDelegate.user.userPassword = self.passwordTextField.text;
     // * * Avtorize * *
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
