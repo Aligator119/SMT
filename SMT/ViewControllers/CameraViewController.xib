@@ -7,6 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraViewController">
             <connections>
+                <outlet property="btnAddToGalery" destination="yR6-SM-uw4" id="t8p-Ya-iee"/>
+                <outlet property="btnOpenGalery" destination="UnN-Qg-LkO" id="WaY-CE-2hn"/>
+                <outlet property="btnSetAvatar" destination="Vgo-Ia-dgs" id="dPI-8P-RjW"/>
                 <outlet property="image" destination="TcO-h8-2RU" id="YcH-rK-dGH"/>
                 <outlet property="tabBar" destination="Hgc-sJ-B9V" id="jCn-T5-JFb"/>
                 <outlet property="tabBarWidth" destination="YT2-WY-scq" id="Bgj-Se-Ka7"/>
@@ -118,7 +121,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ixv-jT-5TT">
-                            <rect key="frame" x="8" y="0.0" width="1" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="1" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <constraints>
@@ -126,7 +129,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4S7-41-979">
-                            <rect key="frame" x="109" y="0.0" width="1" height="40"/>
+                            <rect key="frame" x="106" y="0.0" width="1" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <constraints>
@@ -134,7 +137,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Dw-xq-882">
-                            <rect key="frame" x="210" y="0.0" width="1" height="40"/>
+                            <rect key="frame" x="213" y="0.0" width="1" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <constraints>
@@ -142,7 +145,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fqJ-OV-jr6">
-                            <rect key="frame" x="311" y="0.0" width="1" height="40"/>
+                            <rect key="frame" x="319" y="0.0" width="1" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <constraints>
@@ -150,13 +153,13 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UnN-Qg-LkO">
-                            <rect key="frame" x="9" y="0.0" width="100" height="40"/>
+                            <rect key="frame" x="1" y="0.0" width="105" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="100" id="lVY-SN-d3A"/>
+                                <constraint firstAttribute="width" constant="105" id="lVY-SN-d3A"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <state key="normal" title="Galery">
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="Open Galery">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -164,12 +167,12 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vgo-Ia-dgs">
-                            <rect key="frame" x="110" y="0.0" width="100" height="40"/>
+                            <rect key="frame" x="107" y="0.0" width="106" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="100" id="tnJ-qP-aWZ"/>
+                                <constraint firstAttribute="width" constant="106" id="tnJ-qP-aWZ"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="Set Avatar">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -178,13 +181,13 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yR6-SM-uw4">
-                            <rect key="frame" x="211" y="0.0" width="100" height="40"/>
+                            <rect key="frame" x="214" y="0.0" width="105" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="100" id="Ly9-yr-eGw"/>
+                                <constraint firstAttribute="width" constant="105" id="Ly9-yr-eGw"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <state key="normal" title="AddGalery">
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="Add to Galery">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -192,7 +195,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="4S7-41-979" firstAttribute="leading" secondItem="UnN-Qg-LkO" secondAttribute="trailing" id="4ha-hG-ir7"/>
                         <constraint firstAttribute="bottom" secondItem="4S7-41-979" secondAttribute="bottom" id="6dr-rc-e0r"/>
@@ -219,6 +222,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="TcO-h8-2RU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AbR-hJ-7Z5"/>
                 <constraint firstItem="3Ub-xc-A5C" firstAttribute="top" secondItem="TcO-h8-2RU" secondAttribute="bottom" id="BkC-z9-2Xz"/>

@@ -168,7 +168,7 @@
     
     [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
     
-    recipes = [[NSArray alloc]initWithObjects:@"asd", @"zxc", @"qwerty", nil];
+    recipes = [[NSArray alloc]initWithObjects:@"asd", @"zxc", @"qwerty", @"qaz", nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(cashedImageFromCell:)

@@ -8,6 +8,9 @@
 }
 @property (strong, nonatomic) IBOutlet UIImageView *image;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *tabBarWidth;
+@property (strong, nonatomic) IBOutlet UIButton *btnOpenGalery;
+@property (strong, nonatomic) IBOutlet UIButton *btnSetAvatar;
+@property (strong, nonatomic) IBOutlet UIButton *btnAddToGalery;
 
 
 - (IBAction)actSelectPhoto:(id)sender;
@@ -41,6 +44,10 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    self.btnSetAvatar.userInteractionEnabled = NO;
+    [self.btnSetAvatar setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    self.btnAddToGalery.userInteractionEnabled = NO;
+    [self.btnAddToGalery setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     self.tabBarWidth.constant = self.view.frame.size.width;
     [self.view updateConstraintsIfNeeded];
     if (_isCamera) {
@@ -71,15 +78,24 @@
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     self.image.image = chosenImage;
-    
-    [picker dismissViewControllerAnimated:YES completion:NULL];
-    
+
+    [picker dismissViewControllerAnimated:YES completion:^{
+        self.btnSetAvatar.userInteractionEnabled = YES;
+        [self.btnSetAvatar setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        self.btnAddToGalery.userInteractionEnabled = YES;
+        [self.btnAddToGalery setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    }];
 }
 
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     
-    [picker dismissViewControllerAnimated:YES completion:NULL];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        self.btnSetAvatar.userInteractionEnabled = NO;
+        [self.btnSetAvatar setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        self.btnAddToGalery.userInteractionEnabled = NO;
+        [self.btnAddToGalery setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    }];
     
 }
 
