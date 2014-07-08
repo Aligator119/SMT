@@ -243,6 +243,12 @@
                         ActivityDetails * details = [[ActivityDetails alloc]init];
                         details.subspecies_id = [s.specId intValue];
                         [activityDetails addObject:details];
+                        if (self.northernPikeList.count == listOfSpecies.count) {
+                            CGRect rect = self.footer.frame;
+                            rect.size.height -= 45.0;
+                            self.footer.frame = rect;
+                            isHidden = YES;
+                        }
                     }
                 }
                 for (Species * rem in listOfSpecies) {
