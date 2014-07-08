@@ -73,7 +73,6 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="76" id="21k-dv-XlW"/>
                                         <constraint firstAttribute="width" constant="76" id="LXK-DC-6Ws"/>
                                     </constraints>
                                 </imageView>
@@ -122,7 +121,7 @@
                                 <constraint firstItem="L1E-le-yq6" firstAttribute="leading" secondItem="npE-YV-wBW" secondAttribute="leading" id="hYh-NV-ii1"/>
                                 <constraint firstItem="fSv-Bd-ATy" firstAttribute="leading" secondItem="npE-YV-wBW" secondAttribute="leading" constant="14" id="n1k-Jh-0x5"/>
                                 <constraint firstAttribute="trailing" secondItem="Mdn-Qm-eKs" secondAttribute="trailing" constant="10" id="oZ1-aB-1Ef"/>
-                                <constraint firstItem="fSv-Bd-ATy" firstAttribute="top" secondItem="L1E-le-yq6" secondAttribute="bottom" constant="6" id="tp7-eb-idM"/>
+                                <constraint firstItem="fSv-Bd-ATy" firstAttribute="top" secondItem="L1E-le-yq6" secondAttribute="bottom" constant="7" id="tp7-eb-idM"/>
                                 <constraint firstAttribute="height" constant="159" id="v6J-Gk-Fv3"/>
                             </constraints>
                         </view>
