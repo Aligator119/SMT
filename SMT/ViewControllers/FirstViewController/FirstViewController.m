@@ -62,6 +62,8 @@
     self.lbNameLocation.text = @"";
     self.lbStatus.text = @"";
     self.imgUser.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:appDelegate.user.avatarAdress]]];
+    self.imgUser.layer.masksToBounds = YES;
+    self.imgUser.layer.cornerRadius = self.imgUser.frame.size.width/2;
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
         //[dataLoader get];
