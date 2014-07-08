@@ -22,8 +22,9 @@
         UIActivityIndicatorView * a = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
         [self.contentView addSubview:a];
         
-        //CGRect screenRect = self.contentView.bounds; //[[UIScreen mainScreen] bounds];
-        a.center = self.center; //CGPointMake(screenRect.size.width/2,screenRect.size.height/2);
+        CGPoint point = self.center;
+        point.y = self.contentView.frame.size.height/2 + 25;
+        a.center = point;
         
         a.color = [UIColor blackColor];
         a.hidesWhenStopped = YES;
