@@ -10,4 +10,5 @@
 - (void)setPhotoDescriptions:(NSString *)str;
 - (void)setImage:(UIImage *)image;
 - (void)startLaderInCell;
+- (void)stopLoaderInCell;
 @end

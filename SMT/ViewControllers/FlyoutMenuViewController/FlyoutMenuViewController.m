@@ -272,7 +272,10 @@
                     Photo * photo = [photoList objectAtIndex:indexPath.row];
                     if ([[cashedPhoto allKeys] containsObject:photo.photoID]) {
                         ((ImageShow *)cell).img.image = nil;
+                        [((ImageShow *)cell) stopLoaderInCell];
                         ((ImageShow *)cell).img.image = [cashedPhoto objectForKey:photo.photoID];
+                    } else {
+                        [((ImageShow *)cell) startLaderInCell];
                     }
                 }
             }
