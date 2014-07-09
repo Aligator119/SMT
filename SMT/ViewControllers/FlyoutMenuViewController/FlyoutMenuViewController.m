@@ -33,6 +33,7 @@
 {
     DataLoader * dataLoader;
     AppDelegate * appDelegate;
+    NSDateFormatter * dateFormatter;
     BOOL selectedBtn1;
     BOOL selectedBtn2;
     BOOL selectedBtn3;
@@ -140,6 +141,9 @@
     [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
     
     self.table.backgroundView = nil;
+    
+    dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"MMMM dd yyyy"];
     
     isPresent = YES;
     [((UIButton *)[self.tabBar viewWithTag:1]) setBackgroundImage:[UIImage imageNamed:@"home_icon_press.png"] forState:UIControlStateNormal];
@@ -273,7 +277,7 @@
                     if ([[cashedPhoto allKeys] containsObject:photo.photoID]) {
                         ((ImageShow *)cell).img.image = nil;
                         [((ImageShow *)cell) stopLoaderInCell];
-                        ((ImageShow *)cell).img.image = [cashedPhoto objectForKey:photo.photoID];
+                        [((ImageShow *)cell) setPhotoDescriptions:photo.description andUserName:photo.userName andImage:[cashedPhoto objectForKey:photo.photoID]];
                     } else {
                         [((ImageShow *)cell) startLaderInCell];
                     }
@@ -308,9 +312,10 @@
                 } else {
                     cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TipsCell" forIndexPath:indexPath];
                     //add data to bottom colectionView
-                    ((TipsCell *)cell).lbName.text = @"My Name";
-                    ((TipsCell *)cell).lbDate.text = @"10.10.2010";
-                    ((TipsCell *)cell).lbText.text = @"qwertyuiop[]asdfghjkl;'zxcvbbnm,./qwertyuiop[]assdffgghjjkll;;;'''zxccvvbbnnmm,,../qwerty";
+                    TIPS * tip = [tipsList objectAtIndex:indexPath.row];
+                    ((TipsCell *)cell).lbName.text = [NSString stringWithFormat:@"%@",tip.user_id];
+                    ((TipsCell *)cell).lbDate.text = tip.timestamp;
+                    ((TipsCell *)cell).lbText.text = tip.tip;
                 }
             }
                 break;
@@ -354,7 +359,11 @@
         } else if (!selectedBtn3) {
             //num = 1;
         } else if (!selectedBtn4) {
-             size = CGSizeMake(self.colectionView.frame.size.width-20, self.colectionView.frame.size.height);
+             if ([[tipsList objectAtIndex:indexPath.row] isKindOfClass:[NSString class]]) {
+                 size = CGSizeMake(self.colectionView.frame.size.width-20, self.colectionView.frame.size.height);
+             } else {
+                 size = CGSizeMake(self.colectionView.frame.size.width-10, 80);
+             }
         }
     } else {
         size = CGSizeMake(self.table.frame.size.width, self.table.frame.size.height);
@@ -680,23 +689,23 @@
 {
     [self startLoader];
     tipsList = [[NSMutableArray alloc]initWithObjects:@"new tips", nil];
-//    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//    dispatch_async(newQueue, ^(){
-//        NSArray * array = [dataLoader getTipsWithUserId:1] ;
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^(){
-//            
-//            if(!dataLoader.isCorrectRezult) {
-//                NSLog(@"Error download sybSpecie");
-//                [self endLoader];
-//            } else {
-//                tipsList = [[NSMutableArray alloc]initWithObjects:@"new tips", nil];
-//                [tipsList addObjectsFromArray:array];
-//                [self.colectionView reloadData];
-//                [self endLoader];
-//            }
-//        });
-//    });
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        NSArray * array = [dataLoader getTips] ;
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            
+            if(!dataLoader.isCorrectRezult) {
+                NSLog(@"Error download sybSpecie");
+                [self endLoader];
+            } else {
+                tipsList = [[NSMutableArray alloc]initWithObjects:@"new tips", nil];
+                [tipsList addObjectsFromArray:array];
+                [self.colectionView reloadData];
+                [self endLoader];
+            }
+        });
+    });
     [self endLoader];
 }
 

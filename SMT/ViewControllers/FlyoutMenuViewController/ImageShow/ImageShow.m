@@ -33,23 +33,25 @@
     return self;
 }
 
-- (void)setImageWithURL:(NSURL *) url andImageID:(NSString *)photoID andDescriptions:(NSString *)str
+- (void)setImageWithURL:(NSURL *) url andImageID:(NSString *)photoID descriptions:(NSString *)str andUserName:(NSString *)name
 {
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
         UIImage * image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
         
         dispatch_async(dispatch_get_main_queue(), ^(){
-            [self setPhotoDescriptions:str];
-            self.img.image = image;
+            [self setPhotoDescriptions:str andUserName:name andImage:image];
+            //self.img.image = image;
             [[NSNotificationCenter defaultCenter] postNotificationName:DOWNLOAD_IMAGE_SUCCES object:self userInfo:@{photoID: image}];
         });
     });
 
 }
 
-- (void)setPhotoDescriptions:(NSString *)str
+- (void)setPhotoDescriptions:(NSString *)str andUserName:(NSString *)name andImage:(UIImage *)image
 {
+    self.lbName.text = name;
+    self.img.image = image;
     if (!str) {
         self.heigthImage.constant = 0.0;
         [self updateConstraints];
@@ -62,6 +64,7 @@
 - (void)setImage:(UIImage *)image
 {
     self.img.contentMode = UIViewContentModeScaleToFill;
+    self.topConstrains.constant = 0.0f;
     self.heigthImage.constant = 0.0;
     [self updateConstraints];
     self.img.image = image;

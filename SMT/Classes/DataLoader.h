@@ -129,7 +129,7 @@ enum ApplicationServiceRequest
 - (NSDictionary *) unsharedLocation:(int)location_id andWithBuddy:(int)buddy_id;
 - (void) getPublicLocationWithID:(NSString *)locID name:(NSString *)name page:(int)page limit:(int)limit state_fips:(int)state county_fips:(int)country;
 //--------TIPS----------------------------------------------------------------------
-- (NSArray *)getTipsWithUserId:(int)userID;
+- (NSArray *)getTips;
 - (NSArray *)getTipsWithTipsId:(int)tipsID;
 - (TIPS *)createNewTipsWithSpecieID:(int)specieID tip:(NSString *)tipText subSpecieID:(int)subSpecieID andUserID:(int)userID;
 - (void)updateTipsWithTipsID:(int)tipID specieID:(int)specieID tip:(NSString *)tipText subSpecieID:(int)subSpecieID andUserID:(int)userID;

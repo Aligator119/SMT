@@ -608,6 +608,8 @@
         ithem.thumbnail = [act objectForKey:@"url"];
         ithem.uploadDate = [act objectForKey:@"upload_date"];
         ithem.userName = [act objectForKey:@"username"];
+        ithem.description = [[act objectForKey:@"raw"] objectForKey:@"description"];
+        ithem.caption = [[act objectForKey:@"raw"] objectForKey:@"caption"];
         [photoList addObject:ithem];
     }
     return photoList;
@@ -767,15 +769,16 @@
 }
 
 #pragma mark TIPS
-- (NSArray *)getTipsWithUserId:(int)userID
+- (NSArray *)getTips
 {
-    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@tip?&user_id=%d&app_id=%@&app_key=%@&last=-1",strUrl, userID, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
+    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@tip?&app_id=%@&app_key=%@po",strUrl, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
     NSDictionary *info = [NSDictionary new];
-    info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestTips];
+    info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestTips];
     NSMutableArray * array = [NSMutableArray new];
     for(NSDictionary * dic in info){
-       
-        [array addObject:dic];
+        TIPS * tip = [TIPS new];
+        [tip initTipsWithData:dic];
+        [array addObject:tip];
     }
     return array;
 }
