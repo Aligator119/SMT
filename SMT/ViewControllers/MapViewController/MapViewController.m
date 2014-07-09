@@ -66,11 +66,12 @@
 
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    if (self.mapType == typeFishing){
+    /*if (self.mapType == typeFishing){
         listLocations = [NSArray arrayWithArray:appDel.listFishLocations];
     } else if (self.mapType == typeHunting){
         listLocations = [NSArray arrayWithArray:appDel.listHuntLocations];
-    }
+    }*/
+    listLocations = [NSArray arrayWithArray:appDel.listLocations];
     [self setAllLocationMarkers];
 }
 
