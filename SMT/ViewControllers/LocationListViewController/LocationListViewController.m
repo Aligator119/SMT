@@ -78,8 +78,7 @@
             break;
         case 2:
         {
-            NSMutableArray * buf =[[NSMutableArray alloc]initWithArray:appDel.listSharedFishLocations];
-            [buf addObjectsFromArray:appDel.listSharedHuntLocations];
+            NSMutableArray * buf =[[NSMutableArray alloc]initWithArray:appDel.publicLocations];
             listLocations = [NSArray arrayWithArray:buf];
             [self.tableView reloadData];
         }
@@ -159,9 +158,9 @@
             break;
         case 2:
             if (self.mapType == typeFishing){
-                listLocations = [NSArray arrayWithArray:appDel.listSharedFishLocations];
+                listLocations = [NSArray arrayWithArray:appDel.publicLocations];
             } else if (self.mapType == typeHunting){
-                listLocations = [NSArray arrayWithArray:appDel.listSharedHuntLocations];
+                listLocations = [NSArray arrayWithArray:appDel.publicLocations];
             }
             [self.tableView reloadData];
             break;
