@@ -11,10 +11,14 @@
 #import "LocationListCell.h"
 #import "AppDelegate.h"
 #import "BaseLocationViewController.h"
+#import "DataLoader.h"
 
 @interface LocationListViewController (){
     AppDelegate * appDel;
     NSArray *listLocations;
+    BOOL isUpdate;
+    int limit;
+    DataLoader * dataLoader;
 }
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *tabBarWidth;
 
@@ -52,6 +56,9 @@
                                                            forKey:NSFontAttributeName];
     [self.segment setTitleTextAttributes:attributes
                                     forState:UIControlStateNormal];
+    isUpdate = NO;
+    limit = 10;
+    dataLoader = [DataLoader instance];
     
 }
 
@@ -78,8 +85,7 @@
             break;
         case 2:
         {
-            NSMutableArray * buf =[[NSMutableArray alloc]initWithArray:appDel.listSharedFishLocations];
-            [buf addObjectsFromArray:appDel.listSharedHuntLocations];
+            NSMutableArray * buf =[[NSMutableArray alloc]initWithArray:appDel.publicLocations];
             listLocations = [NSArray arrayWithArray:buf];
             [self.tableView reloadData];
         }
@@ -131,7 +137,37 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(self.tableView.contentOffset.y<0){
+        //it means table view is pulled down like refresh
+        return;
+    }
+    else if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height)) {
+        if (isUpdate) {
+            return;
+        } else {
+            isUpdate = YES;
+            limit += 10;
+            NSLog(@"bottom!!!! is update");
+            dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            dispatch_async(newQueue, ^(){
+                [dataLoader getPublicLocationWithID:nil name:nil page:0 limit:limit state_fips:0 county_fips:0];
+                
+                dispatch_async(dispatch_get_main_queue(), ^(){
+                    
+                    if(!dataLoader.isCorrectRezult) {
+                        NSLog(@"Error download Public location");
+                    } else {
+                        isUpdate = NO;
+                        listLocations = appDel.publicLocations;
+                        [self.tableView reloadData];
+                    }
+                });
+            });
 
+        }
+    }
+}
 
 - (IBAction)actGroups:(id)sender {
 }
@@ -159,9 +195,9 @@
             break;
         case 2:
             if (self.mapType == typeFishing){
-                listLocations = [NSArray arrayWithArray:appDel.listSharedFishLocations];
+                listLocations = [NSArray arrayWithArray:appDel.publicLocations];
             } else if (self.mapType == typeHunting){
-                listLocations = [NSArray arrayWithArray:appDel.listSharedHuntLocations];
+                listLocations = [NSArray arrayWithArray:appDel.publicLocations];
             }
             [self.tableView reloadData];
             break;

@@ -563,6 +563,36 @@
     [self startRequest:strUrlRequestAddress andData:jsonData typeRequest:RequestDelete setHeaders:YES andTypeRequest:ApplicationServiceRequestUnshareLocation];
 }
 
+- (void) getPublicLocationWithID:(NSString *)locID name:(NSString *)name page:(int)page limit:(int)limit state_fips:(int)state county_fips:(int)country
+{
+    if (!locID) {
+        locID = @"";
+    }
+    if (!name) {
+        name = @"";
+    }
+    if (!page) {
+        page = 0;
+    }
+    if (!limit) {
+        limit = 10;
+    }
+    if (!state) {
+        state = 0;
+    }
+    if (!country) {
+        country = 0;
+    }
+    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@publiclocation?&id=%@&name=%@&page=%d&limit=%d&state_fips=%d&county_fips=%d&app_id=%@&app_key=%@", strUrl, locID, name, page, limit, state, country, App_id, App_key];
+    NSMutableArray * array = [[NSMutableArray alloc]initWithArray:appDel.publicLocations];
+    for (NSDictionary * dict in [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetAllSharedLocations]) {
+        Location * location = [Location new];
+        [location setValuesFromDict:dict];
+        [array addObject:location];
+    }
+    appDel.publicLocations = array;
+}
+
 #pragma mark - Photo
 
 - (NSArray *) getPhoto
