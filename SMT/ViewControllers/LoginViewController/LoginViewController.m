@@ -83,60 +83,60 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     
-    NSData * userData = [userDefault objectForKey:USER_DATA];
-    if (userData) {
-        UserInfo * user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
-        // enter to home screen
-        [self.activityIndicat startAnimating];
-        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-        
-        AppDelegate * appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
-        
-        appDelegate.user.userEmail = user.userEmail;
-        appDelegate.user.userPassword = user.userPassword;
-        // * * Avtorize * *
-        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        dispatch_async(newQueue, ^(){
-            
-            [dataLoader avtorizeUser:appDelegate.user.userEmail password:appDelegate.user.userPassword];
-            // * * * *
-            
-            dispatch_async(dispatch_get_main_queue(), ^(){
-                
-                if(dataLoader.isCorrectRezult){
-                    dataLoader.isCorrectRezult = NO;
-                    
-                    if(!wasFacebookClick){
-                        if([UserInfo itsFirstMomentWhenUserLogin:appDelegate.user.userEmail]){
-                            [appDelegate.user saveUser];
-                        }
-                    } else {
-                        switch ([UserInfo itsFirstMomentWhenUserLoginAndIsWithFacebook:appDelegate.user.userEmail]) {
-                            case fbUserMissing:
-                                [appDelegate.user saveUser];
-                                break;
-                            case fbUserCreate:
-                                [appDelegate.user redwriteUserFbID:appDelegate.user.userEmail andFID:appDelegate.user.userFID];
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                    [self.activityIndicat stopAnimating];
-                    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-//----------------------------------------------------------------------------------------------------------------------
-
-                    FirstViewController * fVC = [[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil];
-                    [self.navigationController pushViewController:fVC animated:YES];
-                } else {
-                    [self.activityIndicat stopAnimating];
-                    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-                }
-            });
-            
-        });
-
-    }
+//    NSData * userData = [userDefault objectForKey:USER_DATA];
+//    if (userData) {
+//        UserInfo * user = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+//        // enter to home screen
+//        [self.activityIndicat startAnimating];
+//        [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+//        
+//        AppDelegate * appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
+//        
+//        appDelegate.user.userEmail = user.userEmail;
+//        appDelegate.user.userPassword = user.userPassword;
+//        // * * Avtorize * *
+//        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//        dispatch_async(newQueue, ^(){
+//            
+//            [dataLoader avtorizeUser:appDelegate.user.userEmail password:appDelegate.user.userPassword];
+//            // * * * *
+//            
+//            dispatch_async(dispatch_get_main_queue(), ^(){
+//                
+//                if(dataLoader.isCorrectRezult){
+//                    dataLoader.isCorrectRezult = NO;
+//                    
+//                    if(!wasFacebookClick){
+//                        if([UserInfo itsFirstMomentWhenUserLogin:appDelegate.user.userEmail]){
+//                            [appDelegate.user saveUser];
+//                        }
+//                    } else {
+//                        switch ([UserInfo itsFirstMomentWhenUserLoginAndIsWithFacebook:appDelegate.user.userEmail]) {
+//                            case fbUserMissing:
+//                                [appDelegate.user saveUser];
+//                                break;
+//                            case fbUserCreate:
+//                                [appDelegate.user redwriteUserFbID:appDelegate.user.userEmail andFID:appDelegate.user.userFID];
+//                                break;
+//                            default:
+//                                break;
+//                        }
+//                    }
+//                    [self.activityIndicat stopAnimating];
+//                    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+////----------------------------------------------------------------------------------------------------------------------
+//
+//                    FirstViewController * fVC = [[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil];
+//                    [self.navigationController pushViewController:fVC animated:YES];
+//                } else {
+//                    [self.activityIndicat stopAnimating];
+//                    [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+//                }
+//            });
+//            
+//        });
+//
+//    }
     
 }
 

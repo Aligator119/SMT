@@ -20,6 +20,7 @@
 #import "CreateTipsCell.h"
 #import "SpeciesCell.h"
 #import "TIPS.h"
+#import "OutfitterCell.h"
 
 
 
@@ -40,6 +41,7 @@
     BOOL selectedBtn4;
     NSMutableArray * tipsList;
     NSMutableArray * photoList;
+    NSMutableArray * outfitterList;
     
     NSArray * subSpecies;
     Species * selectSpecie;
@@ -93,6 +95,7 @@
 - (void)downloadTIPS;
 - (void)downloadPhotos;
 - (void)getImageWithUrl;
+- (void)downloadOutfitter;
 
 - (IBAction)actCloseSubView:(id)sender;
 - (void)cashedImageFromCell:(NSNotification *)info;
@@ -123,7 +126,7 @@
     [self.colectionView registerNib:[UINib nibWithNibName:@"TipsCell" bundle:nil] forCellWithReuseIdentifier:@"TipsCell"];
     [self.colectionView registerNib:[UINib nibWithNibName:@"CreateTipsCell" bundle:nil] forCellWithReuseIdentifier:@"CreateTipsCell"];
     [self.colectionView registerNib:[UINib nibWithNibName:@"ImageShow" bundle:nil] forCellWithReuseIdentifier:@"ImageShow"];
-    
+    [self.colectionView registerNib:[UINib nibWithNibName:@"OutfitterCell" bundle:nil] forCellWithReuseIdentifier:@"OutfitterCell"];
     
     [self.table registerNib:[UINib nibWithNibName:@"ImageShow" bundle:nil] forCellWithReuseIdentifier:@"ImageShow"];
     UINib *cellNib = [UINib nibWithNibName:@"SpeciesCell" bundle:[NSBundle mainBundle]];
@@ -255,7 +258,7 @@
         } else if (!selectedBtn2) {
             num = 1;
         } else if (!selectedBtn3) {
-            num = 1;
+            num = outfitterList.count;
         } else if (!selectedBtn4) {
             num = tipsList.count;
         }
@@ -291,7 +294,10 @@
                 break;
             case 3:
             {
-                cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TipsCell" forIndexPath:indexPath];
+                //outfitterList add data
+                NSDictionary * dic = [outfitterList objectAtIndex:indexPath.row];
+                cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"OutfitterCell" forIndexPath:indexPath];
+                ((OutfitterCell *)cell).lbName.text = [dic objectForKey:@"Name"];
             }
                 break;
             case 4:
@@ -357,10 +363,10 @@
         } else if (!selectedBtn2) {
             //num = 1;
         } else if (!selectedBtn3) {
-            //num = 1;
+            size = CGSizeMake(self.colectionView.frame.size.width-10, 100);
         } else if (!selectedBtn4) {
              if ([[tipsList objectAtIndex:indexPath.row] isKindOfClass:[NSString class]]) {
-                 size = CGSizeMake(self.colectionView.frame.size.width-20, self.colectionView.frame.size.height);
+                 size = CGSizeMake(self.colectionView.frame.size.width-20, 200);
              } else {
                  size = CGSizeMake(self.colectionView.frame.size.width-10, 80);
              }
@@ -433,6 +439,7 @@
             selectedBtn3 = NO;
             selectedBtn4 = YES;
             [self setImageWithAllButton];
+            [self downloadOutfitter];
         }
             break;
         case 4:
@@ -592,7 +599,7 @@
 
 - (void) actCreateTIPS
 {
-    [self startLoader];
+    
     NSLog(@"Start send message on create tips");
     // add send tips to servrs
     int subID;
@@ -603,6 +610,7 @@
         } else {
             subID = [selectSubSpecie.specId intValue];
         }
+        [self startLoader];
         dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(newQueue, ^(){
             [dataLoader createNewTipsWithSpecieID:[selectSpecie.specId intValue] tip:((CreateTipsCell *)buf).tfText.text subSpecieID:subID andUserID:appDelegate.user.userID];
@@ -618,6 +626,11 @@
                     [self endLoader];
                     [self downloadTIPS];
                 }
+                selectSpecie = nil;
+                selectSubSpecie = nil;
+                ((CreateTipsCell *)buf).tfText.text = @"";
+                [((CreateTipsCell *)buf).btnSelectSpecie setTitle:@"Select" forState:UIControlStateNormal];
+                [((CreateTipsCell *)buf).btnSelectSubSpecie setTitle:@"Select" forState:UIControlStateNormal];
             });
         });
     }
@@ -742,6 +755,7 @@
                 UIImage * img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:obj.fullPhoto]]];
                 if (img) {
                     [cashedPhoto addEntriesFromDictionary:@{obj.photoID: img}];
+                    [self.colectionView reloadData];
                 } else {
                     img = [[UIImage alloc]init];
                     [cashedPhoto addEntriesFromDictionary:@{obj.photoID: img}];
@@ -753,6 +767,30 @@
         });
     });
 }
+
+
+- (void)downloadOutfitter
+{
+    [self startLoader];
+    outfitterList = [[NSMutableArray alloc]init];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        outfitterList = [[NSMutableArray alloc]initWithArray:[dataLoader getUsersWithProfiletype:2]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            
+            if(!dataLoader.isCorrectRezult) {
+                NSLog(@"Error download outfitter");
+                [self endLoader];
+            } else {
+                [self.colectionView reloadData];
+                [self endLoader];
+            }
+        });
+    });
+}
+
+
 
 - (IBAction)actCloseSubView:(id)sender {
     [self.subView removeFromSuperview];

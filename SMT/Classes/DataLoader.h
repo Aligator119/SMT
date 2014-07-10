@@ -82,6 +82,8 @@ enum ApplicationServiceRequest
                      newLati:(NSString*)_lati
                      newLong:(NSString*)_long;
 
+#pragma mark Users
+- (NSArray *)getUsersWithProfiletype:(int)profiletype_id;
 - (void)buddyAddWithName:(NSString*)buddyName;
 - (void)buddyGetListUsersBuddies;
 - (Buddy *)buddyGetUserBuddyWithId:(int)_idBuddy;

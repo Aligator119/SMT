@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		04022A2F19502CF4007ADE81 /* NewLog2ViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04022A2E19502CF3007ADE81 /* NewLog2ViewController~ipad.xib */; };
+		04044FBD196ECB110032935A /* OutfitterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04044FBC196ECB110032935A /* OutfitterCell.m */; };
+		04044FBF196ECB270032935A /* OutfitterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04044FBE196ECB270032935A /* OutfitterCell.xib */; };
 		0405E493194996EC0059CCFE /* ShareLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0405E491194996EC0059CCFE /* ShareLocationViewController.m */; };
 		0405E494194996EC0059CCFE /* ShareLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0405E492194996EC0059CCFE /* ShareLocationViewController.xib */; };
 		0405E4971949A8620059CCFE /* chek.png in Resources */ = {isa = PBXBuildFile; fileRef = 0405E4951949A8620059CCFE /* chek.png */; };
@@ -317,6 +319,9 @@
 
 /* Begin PBXFileReference section */
 		04022A2E19502CF3007ADE81 /* NewLog2ViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "NewLog2ViewController~ipad.xib"; path = "ViewControllers/NewLog2ViewController/NewLog2ViewController~ipad.xib"; sourceTree = "<group>"; };
+		04044FBB196ECB110032935A /* OutfitterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutfitterCell.h; path = ViewControllers/FlyoutMenuViewController/OutfitterCell/OutfitterCell.h; sourceTree = "<group>"; };
+		04044FBC196ECB110032935A /* OutfitterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutfitterCell.m; path = ViewControllers/FlyoutMenuViewController/OutfitterCell/OutfitterCell.m; sourceTree = "<group>"; };
+		04044FBE196ECB270032935A /* OutfitterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OutfitterCell.xib; path = ViewControllers/FlyoutMenuViewController/OutfitterCell/OutfitterCell.xib; sourceTree = "<group>"; };
 		0405E490194996EC0059CCFE /* ShareLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareLocationViewController.h; path = ViewControllers/ShareLocationViewController/ShareLocationViewController.h; sourceTree = "<group>"; };
 		0405E491194996EC0059CCFE /* ShareLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShareLocationViewController.m; path = ViewControllers/ShareLocationViewController/ShareLocationViewController.m; sourceTree = "<group>"; };
 		0405E492194996EC0059CCFE /* ShareLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShareLocationViewController.xib; path = ViewControllers/ShareLocationViewController/ShareLocationViewController.xib; sourceTree = "<group>"; };
@@ -840,6 +845,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04044FBA196ECAC40032935A /* OutfitterCell */ = {
+			isa = PBXGroup;
+			children = (
+				04044FBB196ECB110032935A /* OutfitterCell.h */,
+				04044FBC196ECB110032935A /* OutfitterCell.m */,
+				04044FBE196ECB270032935A /* OutfitterCell.xib */,
+			);
+			name = OutfitterCell;
+			sourceTree = "<group>";
+		};
 		0405E48F194996BA0059CCFE /* ShareLocationViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1135,6 +1150,7 @@
 		04409402190F820100C4A558 /* FlyoutMenuViewController */ = {
 			isa = PBXGroup;
 			children = (
+				04044FBA196ECAC40032935A /* OutfitterCell */,
 				04FBA8891963E54500D5D713 /* TipsCell */,
 				04F49892195311D600FC065C /* imageShow */,
 				84E6056D194ADE2700F8D61F /* HomeCell */,
@@ -2033,6 +2049,7 @@
 				0416596D195AD3EE0078AD3A /* tips_icon@2x.png in Resources */,
 				04F498AB1953262F00FC065C /* home_icon.png in Resources */,
 				04F498901952FB9500FC065C /* tabbar_BG.png in Resources */,
+				04044FBF196ECB270032935A /* OutfitterCell.xib in Resources */,
 				04165962195ACD180078AD3A /* foto_icon_press.png in Resources */,
 				046C6C09190FECA700E3AC56 /* IncomingFriendCell.xib in Resources */,
 				84E605AD194AF5CC00F8D61F /* log_and_activity.png in Resources */,
@@ -2216,6 +2233,7 @@
 				04A2A3CB191B80350006677E /* BaseLocationViewController.m in Sources */,
 				11D48E08191A8C8900A9787E /* UIViewController+LoaderCategory.m in Sources */,
 				043354B21910ED9F003767D0 /* NSDictionary_JSONExtensions.m in Sources */,
+				04044FBD196ECB110032935A /* OutfitterCell.m in Sources */,
 				043354C11910EEB7003767D0 /* SearchingBuddy.m in Sources */,
 				043354AF1910ED9F003767D0 /* CJSONSerialization.m in Sources */,
 				84E60570194ADEC700F8D61F /* FlyoutMenuCell.m in Sources */,

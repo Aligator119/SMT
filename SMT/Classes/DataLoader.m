@@ -305,6 +305,20 @@
 
 #pragma mark - Work with Buddies request
 
+- (NSArray *)getUsersWithProfiletype:(int)profiletype_id
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@user?&profiletype_id=%d",strUrl, profiletype_id];
+
+    NSMutableArray * array = [[NSMutableArray alloc]init];
+    for (NSDictionary * dic in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestAddBuddy])
+    {
+        [array addObject:dic];
+    }
+    return array;
+}
+
+
+
 //- (void) updateUserTrackingVisibility: (BOOL) _tracking_visibility
 //{
 //    int tracking_visibility = _tracking_visibility ? 1 : 0;

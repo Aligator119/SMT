@@ -69,7 +69,6 @@
             
             FirstViewController * fvc = [[FirstViewController alloc]initWithNibName:@"FirstViewController" bundle:nil];
             self.navigationController = [[UINavigationController alloc]initWithRootViewController:fvc];
-            //[self.navigationController pushViewController:fvc animated:YES];
             self.window.rootViewController = self.navigationController;
         }
     } else {
