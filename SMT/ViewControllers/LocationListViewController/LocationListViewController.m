@@ -151,7 +151,7 @@
             NSLog(@"bottom!!!! is update");
             dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
             dispatch_async(newQueue, ^(){
-                [dataLoader getPublicLocationWithID:nil name:nil page:0 limit:limit state_fips:0 county_fips:0 isSearch:NO];
+                [dataLoader getPublicLocationWithID:nil name:nil page:0 limit:limit state_fips:0 county_fips:0];
                 
                 dispatch_async(dispatch_get_main_queue(), ^(){
                     

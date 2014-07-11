@@ -577,7 +577,7 @@
     [self startRequest:strUrlRequestAddress andData:jsonData typeRequest:RequestDelete setHeaders:YES andTypeRequest:ApplicationServiceRequestUnshareLocation];
 }
 
-- (NSArray *) getPublicLocationWithID:(NSString *)locID name:(NSString *)name page:(int)page limit:(int)limit state_fips:(int)state county_fips:(int)country isSearch:(BOOL)flag
+- (void) getPublicLocationWithID:(NSString *)locID name:(NSString *)name page:(int)page limit:(int)limit state_fips:(int)state county_fips:(int)country
 {
     if (!locID) {
         locID = @"";
@@ -604,8 +604,18 @@
         [location setValuesFromDict:dict];
         [array addObject:location];
     }
-    if (!flag) {
+    
         appDel.publicLocations = array;
+}
+
+- (NSArray *) getPublicLocationWithName:(NSString *)name
+{
+    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@publiclocation?&name=%@&app_id=%@&app_key=%@", strUrl,  name, App_id, App_key];
+    NSMutableArray * array = [[NSMutableArray alloc]initWithArray:appDel.publicLocations];
+    for (NSDictionary * dict in [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetAllSharedLocations]) {
+        Location * location = [Location new];
+        [location setValuesFromDict:dict];
+        [array addObject:location];
     }
     return array;
 }

@@ -190,7 +190,7 @@
     [self startLoader];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
-        searchResult = [[NSMutableArray alloc]initWithArray:[dataLoader getPublicLocationWithID:0 name:str page:0 limit:0 state_fips:0 county_fips:0 isSearch:YES]];
+        searchResult = [[NSMutableArray alloc]initWithArray:[dataLoader getPublicLocationWithName:str]];
         
         dispatch_async(dispatch_get_main_queue(), ^(){
             
