@@ -21,6 +21,7 @@
 #import "SpeciesCell.h"
 #import "TIPS.h"
 #import "OutfitterCell.h"
+#import "SearchViewController.h"
 
 
 
@@ -102,6 +103,8 @@
 
 - (void)keyboardDidShow: (NSNotification *) notif;
 - (void)keyboardDidHide: (NSNotification *) notif;
+- (IBAction)actSearch:(id)sender;
+
 @end
 
 @implementation FlyoutMenuViewController
@@ -692,6 +695,11 @@
 
 - (void)keyboardDidHide: (NSNotification *) notif{
     self.colectionView.contentInset = UIEdgeInsetsZero;
+}
+
+- (IBAction)actSearch:(id)sender {
+    SearchViewController * sVC = [SearchViewController new];
+    [self.navigationController pushViewController:sVC animated:NO];
 }
 
 

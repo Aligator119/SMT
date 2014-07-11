@@ -577,7 +577,7 @@
     [self startRequest:strUrlRequestAddress andData:jsonData typeRequest:RequestDelete setHeaders:YES andTypeRequest:ApplicationServiceRequestUnshareLocation];
 }
 
-- (void) getPublicLocationWithID:(NSString *)locID name:(NSString *)name page:(int)page limit:(int)limit state_fips:(int)state county_fips:(int)country
+- (NSArray *) getPublicLocationWithID:(NSString *)locID name:(NSString *)name page:(int)page limit:(int)limit state_fips:(int)state county_fips:(int)country isSearch:(BOOL)flag
 {
     if (!locID) {
         locID = @"";
@@ -604,7 +604,10 @@
         [location setValuesFromDict:dict];
         [array addObject:location];
     }
-    appDel.publicLocations = array;
+    if (!flag) {
+        appDel.publicLocations = array;
+    }
+    return array;
 }
 
 #pragma mark - Photo

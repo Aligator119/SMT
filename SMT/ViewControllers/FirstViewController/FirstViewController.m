@@ -91,7 +91,7 @@
     [self AddActivityIndicator:[UIColor grayColor] forView:self.table];
     
     [dataLoader getLocationsAssociatedWithUser];
-    [dataLoader getPublicLocationWithID:nil name:nil page:0 limit:0 state_fips:0 county_fips:0];
+    [dataLoader getPublicLocationWithID:nil name:nil page:0 limit:0 state_fips:0 county_fips:0 isSearch:NO];
     isiPad = NO;
     
     UISwipeGestureRecognizer *rightRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightSwipeHandler:)];
@@ -136,6 +136,7 @@
     
     if (!currentController) {
         [self.view addSubview:fmVC.view];
+        [self addChildViewController:fmVC];
         currentController = fmVC;
         _current = fmVC.view;
         activeTag = 1;
