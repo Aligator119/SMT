@@ -24,12 +24,12 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jCA-2t-XpO">
-                            <rect key="frame" x="10" y="27" width="240" height="30"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="jCA-2t-XpO">
+                            <rect key="frame" x="15" y="29" width="235" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.0" green="0.25882352941176467" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="3gZ-mc-9Pa"/>
+                                <constraint firstAttribute="height" constant="25" id="3gZ-mc-9Pa"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" returnKeyType="search"/>
@@ -56,15 +56,15 @@
                     <color key="backgroundColor" red="0.0" green="0.48627450979999998" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="jdJ-8G-M3O" secondAttribute="bottom" constant="7" id="2Lr-Le-Bdn"/>
-                        <constraint firstAttribute="bottom" secondItem="jCA-2t-XpO" secondAttribute="bottom" constant="7" id="BxY-uI-jVQ"/>
+                        <constraint firstAttribute="bottom" secondItem="jCA-2t-XpO" secondAttribute="bottom" constant="10" id="BxY-uI-jVQ"/>
                         <constraint firstAttribute="trailing" secondItem="jdJ-8G-M3O" secondAttribute="trailing" constant="5" id="QBr-rN-FNz"/>
                         <constraint firstAttribute="height" constant="64" id="RZT-dn-4cM"/>
-                        <constraint firstItem="jCA-2t-XpO" firstAttribute="leading" secondItem="3PU-AG-8C6" secondAttribute="leading" constant="10" id="Yzx-Nj-kth"/>
+                        <constraint firstItem="jCA-2t-XpO" firstAttribute="leading" secondItem="3PU-AG-8C6" secondAttribute="leading" constant="15" id="Yzx-Nj-kth"/>
                         <constraint firstItem="jdJ-8G-M3O" firstAttribute="leading" secondItem="jCA-2t-XpO" secondAttribute="trailing" constant="5" id="yU6-B0-Psg"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="haz-nJ-7bD">
-                    <rect key="frame" x="0.0" y="92" width="320" height="476"/>
+                    <rect key="frame" x="0.0" y="97" width="320" height="476"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -72,21 +72,24 @@
                         <outlet property="delegate" destination="-1" id="78Y-oF-aMs"/>
                     </connections>
                 </tableView>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LGA-rB-frp">
-                    <rect key="frame" x="10" y="64" width="300" height="29"/>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LGA-rB-frp">
+                    <rect key="frame" x="10" y="66" width="300" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <segments>
                         <segment title="Users"/>
                         <segment title="Location"/>
                         <segment title="Outfitter"/>
                     </segments>
+                    <connections>
+                        <action selector="actSegmentChangeValue:" destination="-1" eventType="valueChanged" id="pY0-5h-8SO"/>
+                    </connections>
                 </segmentedControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="LGA-rB-frp" firstAttribute="top" secondItem="3PU-AG-8C6" secondAttribute="bottom" id="9H3-B2-ri9"/>
-                <constraint firstItem="haz-nJ-7bD" firstAttribute="top" secondItem="LGA-rB-frp" secondAttribute="bottom" id="H6v-24-rEE"/>
-                <constraint firstAttribute="bottom" secondItem="haz-nJ-7bD" secondAttribute="bottom" id="K8q-uH-pmB"/>
+                <constraint firstItem="LGA-rB-frp" firstAttribute="top" secondItem="3PU-AG-8C6" secondAttribute="bottom" constant="2" id="9H3-B2-ri9"/>
+                <constraint firstItem="haz-nJ-7bD" firstAttribute="top" secondItem="LGA-rB-frp" secondAttribute="bottom" constant="3" id="H6v-24-rEE"/>
+                <constraint firstAttribute="bottom" secondItem="haz-nJ-7bD" secondAttribute="bottom" constant="-5" id="K8q-uH-pmB"/>
                 <constraint firstAttribute="trailing" secondItem="haz-nJ-7bD" secondAttribute="trailing" id="KIX-6f-Dra"/>
                 <constraint firstItem="3PU-AG-8C6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="VbG-Vu-bjU"/>
                 <constraint firstAttribute="trailing" secondItem="LGA-rB-frp" secondAttribute="trailing" constant="10" id="he3-ju-zVH"/>
@@ -99,4 +102,7 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="BG.png" width="243" height="25"/>
+    </resources>
 </document>

@@ -104,6 +104,7 @@
 - (void)keyboardDidShow: (NSNotification *) notif;
 - (void)keyboardDidHide: (NSNotification *) notif;
 - (IBAction)actSearch:(id)sender;
+- (UIImage *)createImageWithColor:(UIColor *)color;
 
 @end
 
@@ -195,6 +196,11 @@
                                              selector:@selector(keyboardDidHide:)
                                                  name:UIKeyboardDidHideNotification
                                                object:nil];
+    [self.searchBar setBackgroundImage:[self createImageWithColor:[UIColor colorWithRed:0 green:124/255.0 blue:170/255.0 alpha:1]]];
+    [self.searchBar setSearchFieldBackgroundImage:[UIImage imageNamed:@"BG.png"] forState:UIControlStateNormal];
+    [self.searchBar setPlaceholder:@"Search"];
+
+    [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor blackColor]];
 }
 
 
@@ -369,7 +375,7 @@
             size = CGSizeMake(self.colectionView.frame.size.width-10, 100);
         } else if (!selectedBtn4) {
              if ([[tipsList objectAtIndex:indexPath.row] isKindOfClass:[NSString class]]) {
-                 size = CGSizeMake(self.colectionView.frame.size.width-20, 200);
+                 size = CGSizeMake(self.colectionView.frame.size.width-10, 200);
              } else {
                  size = CGSizeMake(self.colectionView.frame.size.width-10, 80);
              }
@@ -802,6 +808,19 @@
 
 - (IBAction)actCloseSubView:(id)sender {
     [self.subView removeFromSuperview];
+}
+
+- (UIImage *)createImageWithColor:(UIColor *)color
+{
+    CGSize imageSize = CGSizeMake(300, 30);
+    UIColor *fillColor = color;
+    UIGraphicsBeginImageContextWithOptions(imageSize, YES, 0);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [fillColor setFill];
+    CGContextFillRect(context, CGRectMake(0, 0, imageSize.width, imageSize.height));
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
 }
 
 - (void) dealloc

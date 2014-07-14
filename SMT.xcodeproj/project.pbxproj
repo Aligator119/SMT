@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040217601973FA5E00594E0D /* BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 0402175E1973FA5E00594E0D /* BG.png */; };
+		040217611973FA5E00594E0D /* BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0402175F1973FA5E00594E0D /* BG@2x.png */; };
 		04022A2F19502CF4007ADE81 /* NewLog2ViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04022A2E19502CF3007ADE81 /* NewLog2ViewController~ipad.xib */; };
 		04044FBD196ECB110032935A /* OutfitterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04044FBC196ECB110032935A /* OutfitterCell.m */; };
 		04044FBF196ECB270032935A /* OutfitterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04044FBE196ECB270032935A /* OutfitterCell.xib */; };
@@ -320,6 +322,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0402175E1973FA5E00594E0D /* BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BG.png; path = Image/BG.png; sourceTree = "<group>"; };
+		0402175F1973FA5E00594E0D /* BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BG@2x.png"; path = "Image/BG@2x.png"; sourceTree = "<group>"; };
 		04022A2E19502CF3007ADE81 /* NewLog2ViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "NewLog2ViewController~ipad.xib"; path = "ViewControllers/NewLog2ViewController/NewLog2ViewController~ipad.xib"; sourceTree = "<group>"; };
 		04044FBB196ECB110032935A /* OutfitterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutfitterCell.h; path = ViewControllers/FlyoutMenuViewController/OutfitterCell/OutfitterCell.h; sourceTree = "<group>"; };
 		04044FBC196ECB110032935A /* OutfitterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutfitterCell.m; path = ViewControllers/FlyoutMenuViewController/OutfitterCell/OutfitterCell.m; sourceTree = "<group>"; };
@@ -1202,6 +1206,8 @@
 		046C6BEA190FDF0E00E3AC56 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				0402175E1973FA5E00594E0D /* BG.png */,
+				0402175F1973FA5E00594E0D /* BG@2x.png */,
 				04E8F036196AD61600DFE0AB /* checkbox_check.png */,
 				04E8F037196AD61600DFE0AB /* checkbox_check@2x.png */,
 				04E8F038196AD61600DFE0AB /* checkbox_uncheck.png */,
@@ -2019,6 +2025,7 @@
 				04D76FD71934D14E00E1F59B /* star_BTN_press.png in Resources */,
 				04A2A3C1191B7FDC0006677E /* CustomHeader.xib in Resources */,
 				04D76FDE1934D14E00E1F59B /* star_orange@2x.png in Resources */,
+				040217601973FA5E00594E0D /* BG.png in Resources */,
 				0408069B190EA37D00E063C3 /* InfoPlist.strings in Resources */,
 				04F75C3019582791000C42DA /* note_icon_press@2x.png in Resources */,
 				84E605AE194AF5CC00F8D61F /* log_and_activity@2x.png in Resources */,
@@ -2123,6 +2130,7 @@
 				04F75C2819582791000C42DA /* camera_icon_press@2x.png in Resources */,
 				84E605A2194AF5CC00F8D61F /* camera@x2.png in Resources */,
 				04F75C3619582791000C42DA /* video_camera_icon_press@2x.png in Resources */,
+				040217611973FA5E00594E0D /* BG@2x.png in Resources */,
 				047EE59A192F47D700FD17FC /* InviteFriendViewController.xib in Resources */,
 				84E605BD194AF5CC00F8D61F /* settings.png in Resources */,
 				84E605A9194AF5CC00F8D61F /* hunting_map.png in Resources */,

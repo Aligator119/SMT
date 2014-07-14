@@ -22,6 +22,7 @@
 - (void)searchLocationWithName:(NSString *)str;
 - (void)searchOutfitterWithName:(NSString *)str;
 - (IBAction)actSearchCancel:(id)sender;
+- (IBAction)actSegmentChangeValue:(id)sender;
 @end
 
 @implementation SearchViewController
@@ -54,6 +55,11 @@
     [self.table registerNib:cellNib1 forCellReuseIdentifier:@"LocationListCell"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToLocationDetails:) name:@"LocationListInfoButtonPressed" object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.tfSearch becomeFirstResponder];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -232,6 +238,12 @@
     self.btnCancelWidth.constant = 0;
     [self updateViewConstraints];
     [self.navigationController popToRootViewControllerAnimated:NO];
+}
+
+- (IBAction)actSegmentChangeValue:(id)sender {
+    [searchResult removeAllObjects];
+    self.tfSearch.text = @"";
+    [self.table reloadData];
 }
 
 - (IBAction)AddBuddy:(id)sender{
