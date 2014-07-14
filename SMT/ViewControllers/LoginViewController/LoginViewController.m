@@ -66,9 +66,11 @@
     [self.btnRegister setBackgroundImage:[self createImageWithCollor:normal] forState:UIControlStateNormal];
     [self.btnRegister setBackgroundImage:[self createImageWithCollor:pressed] forState:UIControlStateHighlighted];
     
+    self.screenName = @"Login screen";
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
     self.navigationController.navigationBar.hidden = YES;
     [self addActivity];
     self.userNameTextField.text = @"";

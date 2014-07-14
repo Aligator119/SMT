@@ -57,6 +57,7 @@
     
     [self showMap];
     [self createLocationManager];
+    self.screenName = @"Map screen";
     
 }
 

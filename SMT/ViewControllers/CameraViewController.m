@@ -40,10 +40,13 @@
     UIButton * btn = (UIButton *)[self.tabBar viewWithTag:3];
     [btn setBackgroundImage:[UIImage imageNamed:@"camera_icon_press.png"] forState:UIControlStateNormal];
     self.isCamera = YES;
+    
+    self.screenName = @"Camera screen";
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:YES];
     self.btnSetAvatar.userInteractionEnabled = NO;
     [self.btnSetAvatar setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     self.btnAddToGalery.userInteractionEnabled = NO;

@@ -39,10 +39,13 @@
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
         self.navigationBarHeightConstr.constant -= 20;
     }
+    
+    self.screenName = @"LogAnActivity screen";
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:YES];
     self.navigationController.navigationBar.hidden = YES;
 }
 

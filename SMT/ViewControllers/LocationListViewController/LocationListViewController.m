@@ -59,6 +59,7 @@
     isUpdate = NO;
     limit = 10;
     dataLoader = [DataLoader instance];
+    self.screenName = @"Location list screen";
     
 }
 

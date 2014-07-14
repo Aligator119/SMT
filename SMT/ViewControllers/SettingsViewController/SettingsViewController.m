@@ -47,6 +47,8 @@
     self.selectedSpecies = [self defaultSpecies];
  
     [self setupButtonsTitles];
+    
+    self.screenName = @"Setting screen";
 }
 
 - (void) setupButtonsTitles{

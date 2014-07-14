@@ -36,9 +36,12 @@
     [self setPropertiesOfTable];
     
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor whiteColor]];
+    
+    self.screenName = @"Buddy search screen";
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
     //[self AddActivityIndicator:[UIColor blackColor]];
 }
 

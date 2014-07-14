@@ -43,6 +43,8 @@
     [fishRecognizer setNumberOfTapsRequired:1];
     [fishRecognizer setDelegate:self];
     [self.fishPredictor addGestureRecognizer:fishRecognizer];
+    
+    self.screenName = @"Prediction screen";
 }
 
 - (void)didReceiveMemoryWarning

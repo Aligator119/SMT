@@ -55,10 +55,12 @@
     [self.table registerNib:cellNib1 forCellReuseIdentifier:@"LocationListCell"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToLocationDetails:) name:@"LocationListInfoButtonPressed" object:nil];
+    self.screenName = @"Search screen";
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:YES];
     [self.tfSearch becomeFirstResponder];
 }
 

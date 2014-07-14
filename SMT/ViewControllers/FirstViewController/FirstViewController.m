@@ -103,6 +103,7 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:YES];
     if (self.view.frame.size.width > 320.0) {
         isiPad = YES;
         self.leftsSpace.constant = self.view.frame.size.width * 0.38;

@@ -2,11 +2,13 @@
 #import "PhotoVideoViewController.h"
 #import "CustomTabBar.h"
 
-@interface FlyoutMenuViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, UIScrollViewDelegate>
+@interface FlyoutMenuViewController : GAITrackedViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIGestureRecognizerDelegate, UICollectionViewDelegateFlowLayout, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, UISearchDisplayDelegate, UISearchBarDelegate, UIScrollViewDelegate>
 {
     BOOL isPresent;
 }
 @property (strong, nonatomic) IBOutlet CustomTabBar *tabBar;
+
+@property (nonatomic, copy) NSString * screenName;
 
 -(void) setIsPresent:(BOOL)present;
 @end

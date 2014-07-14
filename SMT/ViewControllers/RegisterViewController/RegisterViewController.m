@@ -62,10 +62,13 @@
     [self.btnLogin setBackgroundImage:[self createImageWithCollor:pressed] forState:UIControlStateHighlighted];
     [self.btnRegister setBackgroundImage:[self createImageWithCollor:normal] forState:UIControlStateNormal];
     [self.btnRegister setBackgroundImage:[self createImageWithCollor:pressed] forState:UIControlStateHighlighted];
+    
+    self.screenName = @"Register screen";
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:YES];
     self.navigationController.navigationBar.hidden = YES;
 }
 

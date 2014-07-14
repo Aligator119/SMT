@@ -55,6 +55,7 @@
     
     dictionary = [NSMutableDictionary new];
     [self getSharedsBuddyWithLocationID:_location];
+    self.screenName = @"Shared location screen";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

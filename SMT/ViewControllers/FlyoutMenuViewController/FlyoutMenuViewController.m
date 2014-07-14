@@ -201,6 +201,7 @@
     [self.searchBar setPlaceholder:@"Search"];
 
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor blackColor]];
+    self.screenName = @"Home screen";
 }
 
 
@@ -240,6 +241,7 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:YES];
     width = self.view.frame.size.width;
     self.navigationController.navigationBar.hidden = YES;
     self.btn1Hegth.constant = width / 4;

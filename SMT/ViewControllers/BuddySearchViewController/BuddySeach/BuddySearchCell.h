@@ -1,11 +1,3 @@
-//
-//  HPBuddySearchCell.h
-//  HunterPredictor
-//
-//  Created by Vasya on 06.02.14.
-//  Copyright (c) 2014 mobilesoft365. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import "AddBuddyProtocol.h"
 @class BuddySearchViewController;
@@ -18,6 +10,6 @@
 @property (strong, nonatomic) UIViewController * delegateController;
 
 - (void)setSizeToFit;
-- (void)addDelegate:(BuddySearchViewController*)delegate;
+- (void)addDelegate:(UIViewController*)delegate;
 
 @end

@@ -49,8 +49,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.screenName = @"WeatherDetail";
-    
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) {
         self.vericalConstr.constant -= 20;
         self.heightConstr.constant -= 20;

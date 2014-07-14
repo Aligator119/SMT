@@ -1,11 +1,3 @@
-//
-//  WeatherDetailViewController.h
-//  HunterPredictor
-//
-//  Created by Aleksey on 2/20/14.
-//  Copyright (c) 2014 mobilesoft365. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import "Location.h"
 
@@ -20,12 +12,12 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblMoonPercent;
 @property (strong, nonatomic) IBOutlet UIImageView *imgMoonIcon;
 
-@property (nonatomic, copy) NSString * screenName;
 
 //@property (strong, nonatomic) NSString * locationName;
 @property (strong, nonatomic) Location * currentLocation;
 
 - (id)initWithIndexPathRow:(NSInteger)row;
+
 
 //- (IBAction)openTides;
 

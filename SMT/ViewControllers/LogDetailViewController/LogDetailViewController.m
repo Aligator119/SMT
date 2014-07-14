@@ -76,10 +76,12 @@
     dataLoader = [DataLoader instance];
     
     [self AddActivityIndicator:[UIColor grayColor] forView:self.table];
+    self.screenName = @"LogDetail Screen";
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:YES];
     if (self.index) {
         NSMutableArray * array = [[NSMutableArray alloc]init];
         NSArray * buf = [selectedCell objectForKey:[NSString stringWithFormat:@"%d",self.index.section]];

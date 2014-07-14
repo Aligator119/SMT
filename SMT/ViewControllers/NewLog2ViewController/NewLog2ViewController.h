@@ -1,11 +1,3 @@
-//
-//  NewLog2ViewController.h
-//  SMT
-//
-//  Created by Mac on 5/8/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import "Species.h"
 #import "Location.h"
@@ -13,7 +5,7 @@
 #import "CustomButton.h"
 #import "CustomTextField.h"
 
-@interface NewLog2ViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, LocationListViewControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, ButtonControllerDelegate, UIAlertViewDelegate>
+@interface NewLog2ViewController : GAITrackedViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, LocationListViewControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, ButtonControllerDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray * northernPikeList;
 @property (strong, nonatomic) Location * location;
@@ -44,6 +36,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *btnAdd;
 @property (weak, nonatomic) IBOutlet UIButton *btnFinalizeLog;
+
+@property (nonatomic, copy) NSString * screenName;
 
 - (IBAction)actLocation:(id)sender;
 - (IBAction)actDate:(id)sender;

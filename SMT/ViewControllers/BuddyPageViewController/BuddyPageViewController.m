@@ -94,6 +94,7 @@
     self.table.hidden = NO;
     self.collectionTable.hidden = YES;
     [self.table reloadData];
+    self.screenName = @"Buddy details screen";
 }
 
 //- (void)viewWillAppear:(BOOL)animated

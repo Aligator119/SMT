@@ -1,11 +1,3 @@
-//
-//  SelectLocationViewController.h
-//  SMT
-//
-//  Created by Mac on 5/16/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import "Location.h"
 
@@ -19,12 +11,14 @@
 
 @end
 
-@interface SelectLocationViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface SelectLocationViewController : GAITrackedViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) id<LocationListViewControllerDelegate> delegate;
 
 - (IBAction)cancelButtonTap:(id)sender;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
+
+@property (nonatomic, copy) NSString * screenName;
 
 
 @end

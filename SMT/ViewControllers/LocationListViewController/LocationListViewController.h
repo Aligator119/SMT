@@ -1,11 +1,3 @@
-//
-//  LocationListViewController.h
-//  SMT
-//
-//  Created by Admin on 5/6/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import "NewLog1ViewController.h"
 #import "CameraViewController.h"
@@ -15,7 +7,7 @@
 #import "CellWithTwoButton.h"
 
 
-@interface LocationListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface LocationListViewController : GAITrackedViewController <UITableViewDataSource, UITableViewDelegate>
 {
     BOOL isPresent;
 }
@@ -24,6 +16,8 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;
 @property (nonatomic) NSInteger mapType;
 @property (strong, nonatomic) IBOutlet CustomTabBar *tabBar;
+
+@property (nonatomic, copy) NSString * screenName;
 
 -(void) setIsPresent:(BOOL)present;
 
