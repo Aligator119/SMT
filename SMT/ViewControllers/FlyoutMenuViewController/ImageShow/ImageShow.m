@@ -53,9 +53,11 @@
     self.lbName.text = name;
     self.img.image = image;
     if (!str) {
-        self.heigthImage.constant = 0.0;
-        [self updateConstraints];
+        //self.heigthImage.constant = 0.0;
+        //[self updateConstraints];
     } else {
+        //self.heigthImage.constant = 17.0;
+        //[self updateConstraints];
         self.lbDescriptions.text = str;
     }
 }

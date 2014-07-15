@@ -45,8 +45,8 @@
     }
     [self.tfSearch.layer setMasksToBounds:YES];
     self.tfSearch.layer.cornerRadius = 5.0f;
-    self.btnCancelWidth.constant = 0;
-    [self updateViewConstraints];
+    //self.btnCancelWidth.constant = 0;
+    //[self updateViewConstraints];
     dataLoader = [DataLoader instance];
     [self AddActivityIndicator:[UIColor grayColor] forView:self.table];
     UINib *cellNib = [UINib nibWithNibName:@"BuddySearchCell" bundle:[NSBundle mainBundle]];
@@ -141,8 +141,8 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     [self.tfSearch setBackgroundColor:[UIColor whiteColor]];
-    self.btnCancelWidth.constant = 60.0f;
-    [self updateViewConstraints];
+    //self.btnCancelWidth.constant = 60.0f;
+    //[self updateViewConstraints];
 }
 
 
@@ -237,7 +237,7 @@
 }
 
 - (IBAction)actSearchCancel:(id)sender {
-    self.btnCancelWidth.constant = 0;
+    //self.btnCancelWidth.constant = 0;
     [self updateViewConstraints];
     [self.navigationController popToRootViewControllerAnimated:NO];
 }

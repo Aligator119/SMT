@@ -781,6 +781,19 @@
     [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequesPatch setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto];
 }
 
+- (void)setDescriptionWithPhotoID:(int)photoID andDescription:(NSString *)des
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i",strUrl,SubstringPhoto,photoID];
+    
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[des,@"b63800ad",@"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"description", @"app_id", @"app_key"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    
+    NSLog(@"%@", error);
+    
+   NSLog(@"%@",[self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequesPatch setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto]);
+}
+
 - (void) deletePhotoWithId:(int)photo_id
 {
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i",strUrl,SubstringPhoto,photo_id];

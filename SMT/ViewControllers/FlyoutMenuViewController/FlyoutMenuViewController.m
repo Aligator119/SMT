@@ -28,8 +28,12 @@
 #define USER_DATA @"userdata"
 #define DOWNLOAD_IMAGE_SUCCES @"image is download"
 
+#define HEIGTH_IMAGE_CELL 180
+
 #define COLECTION_SHOW 5555
 #define COLECTION_DATA 1234
+#define OpusCommentCellStandartFont [UIFont fontWithName:@"HelveticaNeue" size:14.f]
+# define CGFLOAT_MAX FLT_MAX
 
 @interface FlyoutMenuViewController ()
 {
@@ -105,7 +109,7 @@
 - (void)keyboardDidHide: (NSNotification *) notif;
 - (IBAction)actSearch:(id)sender;
 - (UIImage *)createImageWithColor:(UIColor *)color;
-
+- (float) getHeigthTextLabel:(NSString *)str;
 @end
 
 @implementation FlyoutMenuViewController
@@ -370,7 +374,8 @@
     CGSize size;
     if (collectionView.tag == COLECTION_DATA) {
         if (!selectedBtn1) {
-            size = CGSizeMake(self.colectionView.frame.size.width-10, 200);
+            Photo * photo = [photoList objectAtIndex:indexPath.row];
+            size = CGSizeMake(self.colectionView.frame.size.width-10, HEIGTH_IMAGE_CELL + [self getHeigthTextLabel:photo.description]);
         } else if (!selectedBtn2) {
             //num = 1;
         } else if (!selectedBtn3) {
@@ -823,6 +828,22 @@
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;
+}
+
+- (float) getHeigthTextLabel:(NSString *)str
+{
+    float f = 0;
+    
+    if (str) {
+        CGFloat labelWidth = self.view.frame.size.width - 20.0f;
+        CGSize contentTextSize = [str sizeWithFont:OpusCommentCellStandartFont
+                                 constrainedToSize:CGSizeMake(labelWidth, CGFLOAT_MAX)
+                                     lineBreakMode:NSLineBreakByWordWrapping];
+        
+        f = contentTextSize.height + 5;
+
+    }
+    return f;
 }
 
 - (void) dealloc

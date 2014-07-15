@@ -118,6 +118,7 @@ enum ApplicationServiceRequest
 - (Photo *)getPhotoWithId:(int)photo_id;
 - (NSArray *)getPhotoWithBuddyId:(int)buddy_id;
 - (NSString *)uploadPhoto:(UIImage *)photo;
+- (void)setDescriptionWithPhotoID:(int)photoID andDescription:(NSString *)des;
 - (void)updatePhotoWithId:(int) photo_id andActivity:(int)activity_id andSighting:(int)sighting_id andType:(int)type_id andDescription:(NSString *)description andCaption:(NSString *)caption;
 - (void)deletePhotoWithId:(int)photo_id;
 - (NSString *)setUserAvatar:(UIImage *)avatar;

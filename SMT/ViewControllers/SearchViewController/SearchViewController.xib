@@ -25,7 +25,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="jCA-2t-XpO">
-                            <rect key="frame" x="15" y="29" width="235" height="25"/>
+                            <rect key="frame" x="18" y="29" width="232" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.0" green="0.25882352941176467" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
@@ -59,7 +59,7 @@
                         <constraint firstAttribute="bottom" secondItem="jCA-2t-XpO" secondAttribute="bottom" constant="10" id="BxY-uI-jVQ"/>
                         <constraint firstAttribute="trailing" secondItem="jdJ-8G-M3O" secondAttribute="trailing" constant="5" id="QBr-rN-FNz"/>
                         <constraint firstAttribute="height" constant="64" id="RZT-dn-4cM"/>
-                        <constraint firstItem="jCA-2t-XpO" firstAttribute="leading" secondItem="3PU-AG-8C6" secondAttribute="leading" constant="15" id="Yzx-Nj-kth"/>
+                        <constraint firstItem="jCA-2t-XpO" firstAttribute="leading" secondItem="3PU-AG-8C6" secondAttribute="leading" constant="18" id="Yzx-Nj-kth"/>
                         <constraint firstItem="jdJ-8G-M3O" firstAttribute="leading" secondItem="jCA-2t-XpO" secondAttribute="trailing" constant="5" id="yU6-B0-Psg"/>
                     </constraints>
                 </view>

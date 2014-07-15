@@ -87,6 +87,7 @@
         [self.btnSetAvatar setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.btnAddToGalery.userInteractionEnabled = YES;
         [self.btnAddToGalery setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _isCamera = NO;
     }];
 }
 
@@ -98,6 +99,7 @@
         [self.btnSetAvatar setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         self.btnAddToGalery.userInteractionEnabled = NO;
         [self.btnAddToGalery setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        _isCamera = NO;
     }];
     
 }
@@ -145,7 +147,7 @@
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
         
-        [dataLoader uploadPhoto:self.image.image];
+        NSString * str_id = [dataLoader uploadPhoto:self.image.image];
         
         dispatch_async(dispatch_get_main_queue(),^(){
             
@@ -154,6 +156,7 @@
                 [self endLoader];
             } else {
                 //self.imgUser.image = image;
+                [dataLoader setDescriptionWithPhotoID:[str_id intValue] andDescription:@"first comment"];
                 [self endLoader];
             }
             
