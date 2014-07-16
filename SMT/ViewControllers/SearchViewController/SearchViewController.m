@@ -6,6 +6,7 @@
 #import "Location.h"
 #import "LocationListCell.h"
 #import "BaseLocationViewController.h"
+#import "SearchOutfitterCell.h"
 
 @interface SearchViewController ()
 {
@@ -53,6 +54,8 @@
     [self.table registerNib:cellNib forCellReuseIdentifier:@"BuddySearchCell"];
     UINib *cellNib1 = [UINib nibWithNibName:@"LocationListCell" bundle:[NSBundle mainBundle]];
     [self.table registerNib:cellNib1 forCellReuseIdentifier:@"LocationListCell"];
+    UINib *cellNib2 = [UINib nibWithNibName:@"SearchOutfitterCell" bundle:[NSBundle mainBundle]];
+    [self.table registerNib:cellNib2 forCellReuseIdentifier:@"SearchOutfitterCell"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToLocationDetails:) name:@"LocationListInfoButtonPressed" object:nil];
     self.screenName = @"Search screen";
@@ -93,7 +96,12 @@
             break;
         case 2:
         {
-            
+            NSDictionary * dic = [searchResult objectAtIndex:indexPath.row];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"SearchOutfitterCell"];
+            ((SearchOutfitterCell *)cell).lbName.text = [dic objectForKey:@"Name"];
+            ((SearchOutfitterCell *)cell).lbDistance.text = @"123";
+            ((SearchOutfitterCell *)cell).lbAddres.text = @"Addres";
+            ((SearchOutfitterCell *)cell).lbDetail.text = @"Detail";
         }
             break;
     }
@@ -115,7 +123,7 @@
             break;
         case 2:
         {
-            return 44.0f;
+            return 100.0f;
         }
             break;
     }
@@ -220,7 +228,7 @@
     [self startLoader];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
-        searchResult = [[NSMutableArray alloc]initWithArray:[dataLoader getTips]];
+        searchResult = [[NSMutableArray alloc]initWithArray:[dataLoader getUsersWithProfiletype:2 andName:str]];
         
         dispatch_async(dispatch_get_main_queue(), ^(){
             

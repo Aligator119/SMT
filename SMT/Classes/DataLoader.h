@@ -84,6 +84,7 @@ enum ApplicationServiceRequest
 
 #pragma mark Users
 - (NSArray *)getUsersWithProfiletype:(int)profiletype_id;
+- (NSArray *)getUsersWithProfiletype:(int)profiletype_id andName:(NSString *)name;
 - (void)buddyAddWithName:(NSString*)buddyName;
 - (void)buddyGetListUsersBuddies;
 - (Buddy *)buddyGetUserBuddyWithId:(int)_idBuddy;
