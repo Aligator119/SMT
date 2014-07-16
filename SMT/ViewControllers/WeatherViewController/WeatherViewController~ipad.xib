@@ -97,7 +97,7 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="centerY" secondItem="9FR-Z1-syf" secondAttribute="centerY" constant="-3" id="C29-xX-KZ0"/>
                                 <constraint firstItem="9FR-Z1-syf" firstAttribute="centerY" secondItem="7J8-iq-trj" secondAttribute="centerY" id="GgX-ir-vrP"/>
@@ -109,7 +109,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.14901960780000001" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="Rn5-pD-ILv" secondAttribute="trailing" id="JZP-pq-QES"/>
                         <constraint firstAttribute="bottom" secondItem="Rn5-pD-ILv" secondAttribute="bottom" id="SHK-yV-aaf"/>
