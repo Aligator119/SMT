@@ -317,7 +317,17 @@
     return array;
 }
 
-
+- (NSArray *)getUsersWithProfiletype:(int)profiletype_id andName:(NSString *)name
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@user?&profiletype_id=%d&name=%@",strUrl, profiletype_id,name];
+    
+    NSMutableArray * array = [[NSMutableArray alloc]init];
+    for (NSDictionary * dic in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestAddBuddy])
+    {
+        [array addObject:dic];
+    }
+    return array;
+}
 
 //- (void) updateUserTrackingVisibility: (BOOL) _tracking_visibility
 //{
@@ -688,8 +698,18 @@
 {
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@?app_id=%@&app_key=%@",strUrl,SubstringPhoto, App_id, App_key];
     NSLog(@"URL : %@",strUrlRequestAdress);
+    UIImage * image;
+    if (photo.size.height > 600) {
+        float coef_h = photo.size.height / 600;
+        float coef_w = photo.size.width / 800;
+        float coef = coef_h > coef_w ? coef_h : coef_w;
+        image = [UIImage imageWithCGImage:photo.CGImage scale:coef orientation:photo.imageOrientation];
+        NSLog(@"Compression image %f X %f -> %f X %f", photo.size.width, photo.size.height, image.size.width, image.size.height);
+    } else {
+        image = photo;
+    }
     
-    NSData *imageData = UIImageJPEGRepresentation(photo, 0.9f);
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.9f);
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     

@@ -239,6 +239,8 @@
 		04F7CBC8193DC5FC000AB881 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7CBC7193DC5FC000AB881 /* CustomButton.m */; };
 		04F7F42819235F2A007E39B5 /* PredictionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7F42619235F2A007E39B5 /* PredictionViewController.m */; };
 		04F7F42919235F2A007E39B5 /* PredictionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F7F42719235F2A007E39B5 /* PredictionViewController.xib */; };
+		04FA3274197680FC006D12B4 /* SearchOutfitterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FA3272197680FC006D12B4 /* SearchOutfitterCell.m */; };
+		04FA3275197680FC006D12B4 /* SearchOutfitterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FA3273197680FC006D12B4 /* SearchOutfitterCell.xib */; };
 		04FBA88C1963E59500D5D713 /* TipsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FBA88B1963E59400D5D713 /* TipsCell.m */; };
 		04FBA88E1963E5B500D5D713 /* TipsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FBA88D1963E5B500D5D713 /* TipsCell.xib */; };
 		04FBA8991963ED0800D5D713 /* CreateTipsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FBA8981963ED0800D5D713 /* CreateTipsCell.xib */; };
@@ -729,6 +731,9 @@
 		04F7F42519235F2A007E39B5 /* PredictionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PredictionViewController.h; path = ViewControllers/PredictionViewController/PredictionViewController.h; sourceTree = "<group>"; };
 		04F7F42619235F2A007E39B5 /* PredictionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PredictionViewController.m; path = ViewControllers/PredictionViewController/PredictionViewController.m; sourceTree = "<group>"; };
 		04F7F42719235F2A007E39B5 /* PredictionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PredictionViewController.xib; path = ViewControllers/PredictionViewController/PredictionViewController.xib; sourceTree = "<group>"; };
+		04FA3271197680FC006D12B4 /* SearchOutfitterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchOutfitterCell.h; path = ViewControllers/SearchViewController/SearchOutfitterCell/SearchOutfitterCell.h; sourceTree = "<group>"; };
+		04FA3272197680FC006D12B4 /* SearchOutfitterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchOutfitterCell.m; path = ViewControllers/SearchViewController/SearchOutfitterCell/SearchOutfitterCell.m; sourceTree = "<group>"; };
+		04FA3273197680FC006D12B4 /* SearchOutfitterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchOutfitterCell.xib; path = ViewControllers/SearchViewController/SearchOutfitterCell/SearchOutfitterCell.xib; sourceTree = "<group>"; };
 		04FBA88A1963E59400D5D713 /* TipsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TipsCell.h; path = ViewControllers/FlyoutMenuViewController/TipsCell/TipsCell.h; sourceTree = "<group>"; };
 		04FBA88B1963E59400D5D713 /* TipsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TipsCell.m; path = ViewControllers/FlyoutMenuViewController/TipsCell/TipsCell.m; sourceTree = "<group>"; };
 		04FBA88D1963E5B500D5D713 /* TipsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TipsCell.xib; path = ViewControllers/FlyoutMenuViewController/TipsCell/TipsCell.xib; sourceTree = "<group>"; };
@@ -883,6 +888,7 @@
 		04044FC0196ED1980032935A /* SearchViewController */ = {
 			isa = PBXGroup;
 			children = (
+				04FA327019768095006D12B4 /* SearchOutfittersCell */,
 				04044FC1196ED1D20032935A /* SearchViewController.h */,
 				04044FC2196ED1D20032935A /* SearchViewController.m */,
 				04044FC3196ED1D20032935A /* SearchViewController.xib */,
@@ -1877,6 +1883,16 @@
 			name = PredictionViewController;
 			sourceTree = "<group>";
 		};
+		04FA327019768095006D12B4 /* SearchOutfittersCell */ = {
+			isa = PBXGroup;
+			children = (
+				04FA3271197680FC006D12B4 /* SearchOutfitterCell.h */,
+				04FA3272197680FC006D12B4 /* SearchOutfitterCell.m */,
+				04FA3273197680FC006D12B4 /* SearchOutfitterCell.xib */,
+			);
+			name = SearchOutfittersCell;
+			sourceTree = "<group>";
+		};
 		04FBA8891963E54500D5D713 /* TipsCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2104,6 +2120,7 @@
 				04409422190F975E00C4A558 /* LoginViewController_iPhone5.xib in Resources */,
 				84E605C1194AF5CC00F8D61F /* Thumbs.db in Resources */,
 				84E605B7194AF5CC00F8D61F /* prediction@2x~ipad.png in Resources */,
+				04FA3275197680FC006D12B4 /* SearchOutfitterCell.xib in Resources */,
 				0440943F190FA98B00C4A558 /* RegisterViewController_iPhone5.xib in Resources */,
 				84E605BA194AF5CC00F8D61F /* reports@2x.png in Resources */,
 				0416596D195AD3EE0078AD3A /* tips_icon@2x.png in Resources */,
@@ -2279,6 +2296,7 @@
 				04E84190193340640064C03C /* NorthernPikeCell.m in Sources */,
 				0433548D1910E7C9003767D0 /* Location.m in Sources */,
 				04CEC03A191B81EF00BF784D /* LogHistoryViewController.m in Sources */,
+				04FA3274197680FC006D12B4 /* SearchOutfitterCell.m in Sources */,
 				047A7BA21947476F00ACE6D5 /* Photo.m in Sources */,
 				11D48DE61918E32700A9787E /* AFURLRequestSerialization.m in Sources */,
 				04AD700F19586C30001701E7 /* FirstViewController.m in Sources */,
