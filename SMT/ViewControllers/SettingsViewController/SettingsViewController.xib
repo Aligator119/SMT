@@ -101,7 +101,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="aKF-hW-lWp" secondAttribute="bottom" constant="7" id="Jjp-Hv-MOd"/>
                         <constraint firstItem="aKF-hW-lWp" firstAttribute="leading" secondItem="1DG-w0-yvp" secondAttribute="leading" constant="5" id="p1e-1p-GxH"/>

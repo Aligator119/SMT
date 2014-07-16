@@ -92,7 +92,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="QNX-kH-eEf" firstAttribute="leading" secondItem="ahV-S6-rMc" secondAttribute="leading" id="2be-kL-fyf"/>
                         <constraint firstItem="QNX-kH-eEf" firstAttribute="leading" secondItem="ahV-S6-rMc" secondAttribute="leading" id="M9z-FX-pea"/>

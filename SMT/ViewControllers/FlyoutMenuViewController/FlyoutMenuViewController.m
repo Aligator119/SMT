@@ -200,7 +200,7 @@
                                              selector:@selector(keyboardDidHide:)
                                                  name:UIKeyboardDidHideNotification
                                                object:nil];
-    [self.searchBar setBackgroundImage:[self createImageWithColor:[UIColor colorWithRed:0 green:124/255.0 blue:170/255.0 alpha:1]]];
+    //[self.searchBar setBackgroundImage:[self createImageWithColor:[UIColor colorWithRed:0 green:124/255.0 blue:170/255.0 alpha:1]]];
     [self.searchBar setSearchFieldBackgroundImage:[UIImage imageNamed:@"BG.png"] forState:UIControlStateNormal];
     [self.searchBar setPlaceholder:@"Search"];
 
@@ -285,7 +285,14 @@
 
 - (UICollectionViewCell*) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     UICollectionViewCell * cell;
+    cell.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.bounds].CGPath;
     if (collectionView.tag == COLECTION_DATA) {
+//        [cell.layer setMasksToBounds:YES];
+//        
+//        [cell.layer setShadowOffset:CGSizeMake(0, 1)];
+//        [cell.layer setShadowColor:[[UIColor darkGrayColor] CGColor]];
+//        [cell.layer setShadowRadius:3.0];
+//        [cell.layer setShadowOpacity:0.8];
         switch (activeSegment) {
             case 1:
             {
@@ -323,12 +330,12 @@
                     [((CreateTipsCell *)cell).btnSelectSubSpecie addTarget:self action:@selector(actSelectSubSpecie) forControlEvents:UIControlEventTouchUpInside];
                     [((CreateTipsCell *)cell).btnCreateTIPS addTarget:self action:@selector(actCreateTIPS) forControlEvents:UIControlEventTouchUpInside];
                     [((CreateTipsCell *)cell).tfText setDelegate:self];
-                    [((CreateTipsCell *)cell).tfText.layer setMasksToBounds:YES];
-                    [((CreateTipsCell *)cell).tfText.layer setBorderWidth:1.0f];
-                    [((CreateTipsCell *)cell).tfText.layer setBorderColor:[UIColor blackColor].CGColor];
-                    [((CreateTipsCell *)cell).btnCreateTIPS.layer setMasksToBounds:YES];
-                    [((CreateTipsCell *)cell).btnCreateTIPS.layer setBorderWidth:1.0f];
-                    [((CreateTipsCell *)cell).btnCreateTIPS.layer setBorderColor:[UIColor blackColor].CGColor];
+                    //[((CreateTipsCell *)cell).tfText.layer setMasksToBounds:YES];
+                    //[((CreateTipsCell *)cell).tfText.layer setBorderWidth:1.0f];
+                    //[((CreateTipsCell *)cell).tfText.layer setBorderColor:[UIColor blackColor].CGColor];
+                    //[((CreateTipsCell *)cell).btnCreateTIPS.layer setMasksToBounds:YES];
+                    //[((CreateTipsCell *)cell).btnCreateTIPS.layer setBorderWidth:1.0f];
+                    //[((CreateTipsCell *)cell).btnCreateTIPS.layer setBorderColor:[UIColor blackColor].CGColor];
                     index = indexPath;
                 } else {
                     cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TipsCell" forIndexPath:indexPath];
@@ -375,7 +382,7 @@
     if (collectionView.tag == COLECTION_DATA) {
         if (!selectedBtn1) {
             Photo * photo = [photoList objectAtIndex:indexPath.row];
-            size = CGSizeMake(self.colectionView.frame.size.width-10, HEIGTH_IMAGE_CELL + [self getHeigthTextLabel:photo.description]);
+            size = CGSizeMake(self.colectionView.frame.size.width-10, /*((self.colectionView.frame.size.width-10) * 0.58)*/ HEIGTH_IMAGE_CELL + [self getHeigthTextLabel:photo.description]);
         } else if (!selectedBtn2) {
             //num = 1;
         } else if (!selectedBtn3) {
