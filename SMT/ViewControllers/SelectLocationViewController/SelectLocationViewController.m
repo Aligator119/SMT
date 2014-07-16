@@ -37,10 +37,12 @@
         self.navigationBarHeightConstr.constant -= 20;
     }
 
+    self.screenName = @"Select location sceen";
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:YES];
     DataLoader *loader = [[DataLoader alloc]init];
     appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     if ([appDelegate.listLocations firstObject]==nil) {

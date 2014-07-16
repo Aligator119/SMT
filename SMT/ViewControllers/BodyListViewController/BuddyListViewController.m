@@ -79,11 +79,13 @@
     UINib *cellNib3 = [UINib nibWithNibName:@"IncomingFriendCell" bundle:[NSBundle mainBundle]];
     [self.table registerNib:cellNib3 forCellReuseIdentifier:@"IncomingFriendCell"];
     
+    self.screenName = @"Buddy list screen";
     
 }
 
 -(void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:YES];
     [self AddActivityIndicator:[UIColor grayColor] forView:self.table];
 
     self.navigationController.navigationBar.hidden = YES;

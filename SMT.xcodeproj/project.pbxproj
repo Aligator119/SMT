@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040217601973FA5E00594E0D /* BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 0402175E1973FA5E00594E0D /* BG.png */; };
+		040217611973FA5E00594E0D /* BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0402175F1973FA5E00594E0D /* BG@2x.png */; };
 		04022A2F19502CF4007ADE81 /* NewLog2ViewController~ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04022A2E19502CF3007ADE81 /* NewLog2ViewController~ipad.xib */; };
+		04044FBD196ECB110032935A /* OutfitterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04044FBC196ECB110032935A /* OutfitterCell.m */; };
+		04044FBF196ECB270032935A /* OutfitterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04044FBE196ECB270032935A /* OutfitterCell.xib */; };
+		04044FC4196ED1D20032935A /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04044FC2196ED1D20032935A /* SearchViewController.m */; };
+		04044FC5196ED1D20032935A /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04044FC3196ED1D20032935A /* SearchViewController.xib */; };
 		0405E493194996EC0059CCFE /* ShareLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0405E491194996EC0059CCFE /* ShareLocationViewController.m */; };
 		0405E494194996EC0059CCFE /* ShareLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0405E492194996EC0059CCFE /* ShareLocationViewController.xib */; };
 		0405E4971949A8620059CCFE /* chek.png in Resources */ = {isa = PBXBuildFile; fileRef = 0405E4951949A8620059CCFE /* chek.png */; };
@@ -175,6 +181,8 @@
 		04E84191193340640064C03C /* NorthernPikeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E8418F193340640064C03C /* NorthernPikeCell.xib */; };
 		04E855EC195C194A00A54425 /* CellWithTwoButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E855EA195C194A00A54425 /* CellWithTwoButton.m */; };
 		04E855ED195C194A00A54425 /* CellWithTwoButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E855EB195C194A00A54425 /* CellWithTwoButton.xib */; };
+		04E87CD1197414B60096E578 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E87CD0197414B60096E578 /* libGoogleAnalyticsServices.a */; };
+		04E87CDE197415200096E578 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 04E87CDD197415200096E578 /* libsqlite3.dylib */; };
 		04E88FC1191BA07B00DEF977 /* NewLog1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E88FBF191BA07B00DEF977 /* NewLog1ViewController.m */; };
 		04E88FC2191BA07B00DEF977 /* NewLog1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E88FC0191BA07B00DEF977 /* NewLog1ViewController.xib */; };
 		04E8F03A196AD61600DFE0AB /* checkbox_check.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E8F036196AD61600DFE0AB /* checkbox_check.png */; };
@@ -316,7 +324,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0402175E1973FA5E00594E0D /* BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BG.png; path = Image/BG.png; sourceTree = "<group>"; };
+		0402175F1973FA5E00594E0D /* BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BG@2x.png"; path = "Image/BG@2x.png"; sourceTree = "<group>"; };
 		04022A2E19502CF3007ADE81 /* NewLog2ViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "NewLog2ViewController~ipad.xib"; path = "ViewControllers/NewLog2ViewController/NewLog2ViewController~ipad.xib"; sourceTree = "<group>"; };
+		04044FBB196ECB110032935A /* OutfitterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OutfitterCell.h; path = ViewControllers/FlyoutMenuViewController/OutfitterCell/OutfitterCell.h; sourceTree = "<group>"; };
+		04044FBC196ECB110032935A /* OutfitterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OutfitterCell.m; path = ViewControllers/FlyoutMenuViewController/OutfitterCell/OutfitterCell.m; sourceTree = "<group>"; };
+		04044FBE196ECB270032935A /* OutfitterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = OutfitterCell.xib; path = ViewControllers/FlyoutMenuViewController/OutfitterCell/OutfitterCell.xib; sourceTree = "<group>"; };
+		04044FC1196ED1D20032935A /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchViewController.h; path = ViewControllers/SearchViewController/SearchViewController.h; sourceTree = "<group>"; };
+		04044FC2196ED1D20032935A /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchViewController.m; path = ViewControllers/SearchViewController/SearchViewController.m; sourceTree = "<group>"; };
+		04044FC3196ED1D20032935A /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchViewController.xib; path = ViewControllers/SearchViewController/SearchViewController.xib; sourceTree = "<group>"; };
 		0405E490194996EC0059CCFE /* ShareLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShareLocationViewController.h; path = ViewControllers/ShareLocationViewController/ShareLocationViewController.h; sourceTree = "<group>"; };
 		0405E491194996EC0059CCFE /* ShareLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShareLocationViewController.m; path = ViewControllers/ShareLocationViewController/ShareLocationViewController.m; sourceTree = "<group>"; };
 		0405E492194996EC0059CCFE /* ShareLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShareLocationViewController.xib; path = ViewControllers/ShareLocationViewController/ShareLocationViewController.xib; sourceTree = "<group>"; };
@@ -635,6 +651,18 @@
 		04E855E9195C194A00A54425 /* CellWithTwoButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CellWithTwoButton.h; path = cellWithTwoButton/CellWithTwoButton.h; sourceTree = "<group>"; };
 		04E855EA195C194A00A54425 /* CellWithTwoButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CellWithTwoButton.m; path = cellWithTwoButton/CellWithTwoButton.m; sourceTree = "<group>"; };
 		04E855EB195C194A00A54425 /* CellWithTwoButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CellWithTwoButton.xib; path = cellWithTwoButton/CellWithTwoButton.xib; sourceTree = "<group>"; };
+		04E87CD0197414B60096E578 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = library/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		04E87CD3197414C80096E578 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		04E87CD4197414C80096E578 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		04E87CD5197414C80096E578 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
+		04E87CD6197414C80096E578 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		04E87CD7197414C80096E578 /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProductAction.h; sourceTree = "<group>"; };
+		04E87CD8197414C80096E578 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		04E87CD9197414C80096E578 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		04E87CDA197414C80096E578 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		04E87CDB197414C80096E578 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		04E87CDC197414C80096E578 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		04E87CDD197415200096E578 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		04E88FBE191BA07B00DEF977 /* NewLog1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewLog1ViewController.h; sourceTree = "<group>"; };
 		04E88FBF191BA07B00DEF977 /* NewLog1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewLog1ViewController.m; sourceTree = "<group>"; };
 		04E88FC0191BA07B00DEF977 /* NewLog1ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewLog1ViewController.xib; sourceTree = "<group>"; };
@@ -805,6 +833,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E87CDE197415200096E578 /* libsqlite3.dylib in Frameworks */,
+				04E87CD1197414B60096E578 /* libGoogleAnalyticsServices.a in Frameworks */,
 				04CEC03C191B82DD00BF784D /* GoogleMaps.framework in Frameworks */,
 				04B312FA191A281C0055D460 /* AssetsLibrary.framework in Frameworks */,
 				0425C3A0191114850097709E /* SystemConfiguration.framework in Frameworks */,
@@ -840,6 +870,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04044FBA196ECAC40032935A /* OutfitterCell */ = {
+			isa = PBXGroup;
+			children = (
+				04044FBB196ECB110032935A /* OutfitterCell.h */,
+				04044FBC196ECB110032935A /* OutfitterCell.m */,
+				04044FBE196ECB270032935A /* OutfitterCell.xib */,
+			);
+			name = OutfitterCell;
+			sourceTree = "<group>";
+		};
+		04044FC0196ED1980032935A /* SearchViewController */ = {
+			isa = PBXGroup;
+			children = (
+				04044FC1196ED1D20032935A /* SearchViewController.h */,
+				04044FC2196ED1D20032935A /* SearchViewController.m */,
+				04044FC3196ED1D20032935A /* SearchViewController.xib */,
+			);
+			name = SearchViewController;
+			sourceTree = "<group>";
+		};
 		0405E48F194996BA0059CCFE /* ShareLocationViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -864,6 +914,7 @@
 		04080684190EA37D00E063C3 = {
 			isa = PBXGroup;
 			children = (
+				04E87CD2197414C80096E578 /* GoogleAnalitics */,
 				04E5B91C193780EE00E1C824 /* CorePlot */,
 				04CEC03D191B82EE00BF784D /* GoogleMaps.bundle */,
 				04080696190EA37D00E063C3 /* SMT */,
@@ -885,6 +936,8 @@
 		0408068F190EA37D00E063C3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				04E87CDD197415200096E578 /* libsqlite3.dylib */,
+				04E87CD0197414B60096E578 /* libGoogleAnalyticsServices.a */,
 				04B312F9191A281C0055D460 /* AssetsLibrary.framework */,
 				0425C3AA19111ECA0097709E /* GoogleMaps.framework */,
 				0425C39F191114850097709E /* SystemConfiguration.framework */,
@@ -1087,6 +1140,7 @@
 		044093F9190F7ABC00C4A558 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				04044FC0196ED1980032935A /* SearchViewController */,
 				043354C21910EF20003767D0 /* BuddySearchViewController */,
 				04F498B519532B2C00FC065C /* FirstViewController */,
 				04F498B419532B1E00FC065C /* CameraViewController */,
@@ -1135,6 +1189,7 @@
 		04409402190F820100C4A558 /* FlyoutMenuViewController */ = {
 			isa = PBXGroup;
 			children = (
+				04044FBA196ECAC40032935A /* OutfitterCell */,
 				04FBA8891963E54500D5D713 /* TipsCell */,
 				04F49892195311D600FC065C /* imageShow */,
 				84E6056D194ADE2700F8D61F /* HomeCell */,
@@ -1170,6 +1225,8 @@
 		046C6BEA190FDF0E00E3AC56 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				0402175E1973FA5E00594E0D /* BG.png */,
+				0402175F1973FA5E00594E0D /* BG@2x.png */,
 				04E8F036196AD61600DFE0AB /* checkbox_check.png */,
 				04E8F037196AD61600DFE0AB /* checkbox_check@2x.png */,
 				04E8F038196AD61600DFE0AB /* checkbox_uncheck.png */,
@@ -1681,6 +1738,24 @@
 			name = CellWithTwoButton;
 			sourceTree = "<group>";
 		};
+		04E87CD2197414C80096E578 /* GoogleAnalitics */ = {
+			isa = PBXGroup;
+			children = (
+				04E87CD3197414C80096E578 /* GAI.h */,
+				04E87CD4197414C80096E578 /* GAIDictionaryBuilder.h */,
+				04E87CD5197414C80096E578 /* GAIEcommerceFields.h */,
+				04E87CD6197414C80096E578 /* GAIEcommerceProduct.h */,
+				04E87CD7197414C80096E578 /* GAIEcommerceProductAction.h */,
+				04E87CD8197414C80096E578 /* GAIEcommercePromotion.h */,
+				04E87CD9197414C80096E578 /* GAIFields.h */,
+				04E87CDA197414C80096E578 /* GAILogger.h */,
+				04E87CDB197414C80096E578 /* GAITrackedViewController.h */,
+				04E87CDC197414C80096E578 /* GAITracker.h */,
+			);
+			name = GoogleAnalitics;
+			path = library/GoogleAnalitics;
+			sourceTree = "<group>";
+		};
 		04E88FBD191BA07B00DEF977 /* NewLog1ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1987,6 +2062,7 @@
 				04D76FD71934D14E00E1F59B /* star_BTN_press.png in Resources */,
 				04A2A3C1191B7FDC0006677E /* CustomHeader.xib in Resources */,
 				04D76FDE1934D14E00E1F59B /* star_orange@2x.png in Resources */,
+				040217601973FA5E00594E0D /* BG.png in Resources */,
 				0408069B190EA37D00E063C3 /* InfoPlist.strings in Resources */,
 				04F75C3019582791000C42DA /* note_icon_press@2x.png in Resources */,
 				84E605AE194AF5CC00F8D61F /* log_and_activity@2x.png in Resources */,
@@ -2033,6 +2109,8 @@
 				0416596D195AD3EE0078AD3A /* tips_icon@2x.png in Resources */,
 				04F498AB1953262F00FC065C /* home_icon.png in Resources */,
 				04F498901952FB9500FC065C /* tabbar_BG.png in Resources */,
+				04044FBF196ECB270032935A /* OutfitterCell.xib in Resources */,
+				04044FC5196ED1D20032935A /* SearchViewController.xib in Resources */,
 				04165962195ACD180078AD3A /* foto_icon_press.png in Resources */,
 				046C6C09190FECA700E3AC56 /* IncomingFriendCell.xib in Resources */,
 				84E605AD194AF5CC00F8D61F /* log_and_activity.png in Resources */,
@@ -2089,6 +2167,7 @@
 				04F75C2819582791000C42DA /* camera_icon_press@2x.png in Resources */,
 				84E605A2194AF5CC00F8D61F /* camera@x2.png in Resources */,
 				04F75C3619582791000C42DA /* video_camera_icon_press@2x.png in Resources */,
+				040217611973FA5E00594E0D /* BG@2x.png in Resources */,
 				047EE59A192F47D700FD17FC /* InviteFriendViewController.xib in Resources */,
 				84E605BD194AF5CC00F8D61F /* settings.png in Resources */,
 				84E605A9194AF5CC00F8D61F /* hunting_map.png in Resources */,
@@ -2216,6 +2295,7 @@
 				04A2A3CB191B80350006677E /* BaseLocationViewController.m in Sources */,
 				11D48E08191A8C8900A9787E /* UIViewController+LoaderCategory.m in Sources */,
 				043354B21910ED9F003767D0 /* NSDictionary_JSONExtensions.m in Sources */,
+				04044FBD196ECB110032935A /* OutfitterCell.m in Sources */,
 				043354C11910EEB7003767D0 /* SearchingBuddy.m in Sources */,
 				043354AF1910ED9F003767D0 /* CJSONSerialization.m in Sources */,
 				84E60570194ADEC700F8D61F /* FlyoutMenuCell.m in Sources */,
@@ -2240,6 +2320,7 @@
 				043354CD1910F0A7003767D0 /* BuddySearchCell.m in Sources */,
 				043354B11910ED9F003767D0 /* CJSONSerializer.m in Sources */,
 				04A2A370191B7F530006677E /* SettingsViewController.m in Sources */,
+				04044FC4196ED1D20032935A /* SearchViewController.m in Sources */,
 				04E5B8BC1937777E00E1C824 /* HistoryCell.m in Sources */,
 				84F0115F1947178A00BC032B /* ReportsHarvestrow.m in Sources */,
 				0433548A1910E7C9003767D0 /* ConstantsClass.m in Sources */,
@@ -2379,6 +2460,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/**",
 					"$(inherited)",
+					"$(PROJECT_DIR)/library",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2405,6 +2487,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/**",
 					"$(inherited)",
+					"$(PROJECT_DIR)/library",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";

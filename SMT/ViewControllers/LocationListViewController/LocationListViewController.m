@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "BaseLocationViewController.h"
 #import "DataLoader.h"
+#import "UIViewController+LoaderCategory.h"
 
 @interface LocationListViewController (){
     AppDelegate * appDel;
@@ -59,6 +60,8 @@
     isUpdate = NO;
     limit = 10;
     dataLoader = [DataLoader instance];
+    self.screenName = @"Location list screen";
+    [self AddActivityIndicator:[UIColor grayColor] forView:self.tableView];
     
 }
 
@@ -146,6 +149,7 @@
         if (isUpdate) {
             return;
         } else {
+            [self startLoader];
             isUpdate = YES;
             limit += 10;
             NSLog(@"bottom!!!! is update");
@@ -162,6 +166,7 @@
                         listLocations = appDel.publicLocations;
                         [self.tableView reloadData];
                     }
+                    [self endLoader];
                 });
             });
 

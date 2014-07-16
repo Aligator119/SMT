@@ -24,6 +24,10 @@
     
     [GMSServices provideAPIKey:kGoogleBrouserAPIkey];
     
+    [[GAI sharedInstance].logger setLogLevel:kGAILogLevelVerbose];
+    [GAI sharedInstance].dispatchInterval = 20;
+    id <GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:kGoogleAnaliticKey];
+    
     //Test with versionOfBuild
     /*
      NSString * version = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"];
@@ -69,7 +73,6 @@
             
             FirstViewController * fvc = [[FirstViewController alloc]initWithNibName:@"FirstViewController" bundle:nil];
             self.navigationController = [[UINavigationController alloc]initWithRootViewController:fvc];
-            //[self.navigationController pushViewController:fvc animated:YES];
             self.window.rootViewController = self.navigationController;
         }
     } else {

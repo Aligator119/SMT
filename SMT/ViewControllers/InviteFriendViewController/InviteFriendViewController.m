@@ -35,7 +35,7 @@
 {
     [super viewDidLoad];
     
-    self.screenName = @"InviteContacts";
+    self.screenName = @"InviteContacts screen";
     
     self.navigationController.navigationBar.hidden = YES;
     

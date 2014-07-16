@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSString * subspecies_id;
 @property (strong, nonatomic) NSString * tip;
 @property (strong, nonatomic) NSString * user_id;
+@property (strong, nonatomic) NSString * timestamp;
 
 -(void)initTipsWithData:(NSDictionary*) infoDict;
 

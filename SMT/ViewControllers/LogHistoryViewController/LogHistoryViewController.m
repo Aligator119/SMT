@@ -83,6 +83,7 @@
     
     allKey = [dict allKeys];
     [self.table reloadData];
+    self.screenName = @"LogHistory screen";
                
 }
 

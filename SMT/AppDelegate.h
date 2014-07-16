@@ -9,11 +9,14 @@
 #import "ConstantsClass.h"
 #import "CustomTabBar.h"
 
+
 @class UserInfo;
 @class UserLocationInThisMoment;
 
 static NSString * const kGoogleMapsKey = @"AIzaSyCyCqldV67LGrJTLb9oSNr61-iHMUIUlsA";
 static NSString * const kGoogleBrouserAPIkey = @"AIzaSyAgYW3MOr37pwGSATMfWXWklbfn_oaBhCA";
+
+static NSString * const kGoogleAnaliticKey = @"UA-3665575-10";
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate, UITabBarControllerDelegate>
 

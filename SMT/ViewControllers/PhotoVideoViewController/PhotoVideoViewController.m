@@ -93,10 +93,12 @@
     
 //----------------------------------------------------------------------------------------------------
     //[self startLoader];
+    self.screenName = @"Photo screen";
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:YES];
     [self getImage];
 }
 

@@ -13,7 +13,7 @@
 @end
 
 
-@interface PhotoVideoViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
+@interface PhotoVideoViewController : GAITrackedViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) id<PhotoViewControllerDelegate> delegate;
 
@@ -22,6 +22,8 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;
 @property (strong, nonatomic) NSArray *list;
 @property (strong, nonatomic) id controller;
+
+@property (nonatomic, copy) NSString * screenName;
 
 - (IBAction)actTakePhoto:(id)sender;
 - (IBAction)actChooseExisting:(id)sender;

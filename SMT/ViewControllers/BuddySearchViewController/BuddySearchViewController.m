@@ -36,9 +36,12 @@
     [self setPropertiesOfTable];
     
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor whiteColor]];
+    
+    self.screenName = @"Buddy search screen";
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
     //[self AddActivityIndicator:[UIColor blackColor]];
 }
 
@@ -126,8 +129,8 @@
     
     SearchingBuddy * buddy = (SearchingBuddy*)[listFindedUsers objectAtIndex:indexPath.row];
     //****
-    NSString * str = [NSString stringWithFormat:@"%@ %@",[buddy.userProfile objectForKey:@"firstname"], [buddy.userProfile objectForKey:@"lastname"]];
-    costumCell.lblBuddySecondName.text = str;
+    //NSString * str = [NSString stringWithFormat:@"%@ %@",[buddy.userProfile objectForKey:@"firstname"], [buddy.userProfile objectForKey:@"lastname"]];
+    costumCell.lblBuddySecondName.text = buddy.userName;
     costumCell.lblBuddyUserName.text = buddy.userName;
     //*****
     

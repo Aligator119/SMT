@@ -10,7 +10,7 @@
 #import "Location.h"
 #import "SelectLocationViewController.h"
 
-@interface WeatherViewController : UIViewController <UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate, LocationListViewControllerDelegate>
+@interface WeatherViewController : GAITrackedViewController <UITableViewDelegate, UITableViewDataSource,UIAlertViewDelegate, LocationListViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet UILabel *sunrise;
 @property (strong, nonatomic) IBOutlet UILabel *sunset;
 @property (strong, nonatomic) IBOutlet UILabel *moonrise;

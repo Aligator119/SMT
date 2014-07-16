@@ -221,11 +221,13 @@
     self.huntEndTime = self.huntDate;
     [self.btnEndTime setTitle:[btnTimeFormatter stringFromDate:self.huntEndTime] forState:UIControlStateNormal];
 
-    
+    self.screenName = @"Create log screen";
 }
 
 - (void) viewWillAppear:(BOOL)animated
-{   if ([self.northernPikeList firstObject] == nil && [listOfSpecies count] == 0) {
+{
+    [super viewWillAppear:YES];
+    if ([self.northernPikeList firstObject] == nil && [listOfSpecies count] == 0) {
     [self startLoader];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){

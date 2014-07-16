@@ -82,6 +82,8 @@ enum ApplicationServiceRequest
                      newLati:(NSString*)_lati
                      newLong:(NSString*)_long;
 
+#pragma mark Users
+- (NSArray *)getUsersWithProfiletype:(int)profiletype_id;
 - (void)buddyAddWithName:(NSString*)buddyName;
 - (void)buddyGetListUsersBuddies;
 - (Buddy *)buddyGetUserBuddyWithId:(int)_idBuddy;
@@ -116,6 +118,7 @@ enum ApplicationServiceRequest
 - (Photo *)getPhotoWithId:(int)photo_id;
 - (NSArray *)getPhotoWithBuddyId:(int)buddy_id;
 - (NSString *)uploadPhoto:(UIImage *)photo;
+- (void)setDescriptionWithPhotoID:(int)photoID andDescription:(NSString *)des;
 - (void)updatePhotoWithId:(int) photo_id andActivity:(int)activity_id andSighting:(int)sighting_id andType:(int)type_id andDescription:(NSString *)description andCaption:(NSString *)caption;
 - (void)deletePhotoWithId:(int)photo_id;
 - (NSString *)setUserAvatar:(UIImage *)avatar;
@@ -128,8 +131,9 @@ enum ApplicationServiceRequest
 - (NSDictionary *) sharedLocation:(int)location_id andWithBuddy:(int)buddy_id;
 - (NSDictionary *) unsharedLocation:(int)location_id andWithBuddy:(int)buddy_id;
 - (void) getPublicLocationWithID:(NSString *)locID name:(NSString *)name page:(int)page limit:(int)limit state_fips:(int)state county_fips:(int)country;
+- (NSArray *) getPublicLocationWithName:(NSString *)name;
 //--------TIPS----------------------------------------------------------------------
-- (NSArray *)getTipsWithUserId:(int)userID;
+- (NSArray *)getTips;
 - (NSArray *)getTipsWithTipsId:(int)tipsID;
 - (TIPS *)createNewTipsWithSpecieID:(int)specieID tip:(NSString *)tipText subSpecieID:(int)subSpecieID andUserID:(int)userID;
 - (void)updateTipsWithTipsID:(int)tipID specieID:(int)specieID tip:(NSString *)tipText subSpecieID:(int)subSpecieID andUserID:(int)userID;

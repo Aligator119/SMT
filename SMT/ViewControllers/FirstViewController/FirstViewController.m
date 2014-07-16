@@ -105,6 +105,7 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:YES];
     if (self.view.frame.size.width > 320.0) {
         isiPad = YES;
         self.leftsSpace.constant = self.view.frame.size.width * 0.38;
@@ -138,6 +139,7 @@
     
     if (!currentController) {
         [self.view addSubview:fmVC.view];
+        [self addChildViewController:fmVC];
         currentController = fmVC;
         _current = fmVC.view;
         activeTag = 1;

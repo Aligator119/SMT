@@ -1,16 +1,8 @@
-//
-//  BuddyPageViewController.h
-//  SMT
-//
-//  Created by Mac on 5/12/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 #import "Buddy.h"
 #import "CustomHeader.h"
 
-@interface BuddyPageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
+@interface BuddyPageViewController : GAITrackedViewController <UITableViewDataSource, UITableViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;
@@ -20,6 +12,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 
 @property (strong, nonatomic) Buddy * buddy;
+
+@property (nonatomic, copy) NSString * screenName;
 
 - (IBAction)actBack:(id)sender;
 

@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *trophyImg;
 
 
+
 - (IBAction)actBack:(id)sender;
 - (IBAction)actSaveDetail:(id)sender;
 - (IBAction)actCancel:(id)sender;

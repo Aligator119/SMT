@@ -305,6 +305,20 @@
 
 #pragma mark - Work with Buddies request
 
+- (NSArray *)getUsersWithProfiletype:(int)profiletype_id
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@user?&profiletype_id=%d",strUrl, profiletype_id];
+
+    NSMutableArray * array = [[NSMutableArray alloc]init];
+    for (NSDictionary * dic in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestAddBuddy])
+    {
+        [array addObject:dic];
+    }
+    return array;
+}
+
+
+
 //- (void) updateUserTrackingVisibility: (BOOL) _tracking_visibility
 //{
 //    int tracking_visibility = _tracking_visibility ? 1 : 0;
@@ -590,7 +604,20 @@
         [location setValuesFromDict:dict];
         [array addObject:location];
     }
-    appDel.publicLocations = array;
+    
+        appDel.publicLocations = array;
+}
+
+- (NSArray *) getPublicLocationWithName:(NSString *)name
+{
+    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@publiclocation?&name=%@&app_id=%@&app_key=%@", strUrl,  name, App_id, App_key];
+    NSMutableArray * array = [[NSMutableArray alloc]initWithArray:appDel.publicLocations];
+    for (NSDictionary * dict in [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetAllSharedLocations]) {
+        Location * location = [Location new];
+        [location setValuesFromDict:dict];
+        [array addObject:location];
+    }
+    return array;
 }
 
 #pragma mark - Photo
@@ -608,6 +635,8 @@
         ithem.thumbnail = [act objectForKey:@"url"];
         ithem.uploadDate = [act objectForKey:@"upload_date"];
         ithem.userName = [act objectForKey:@"username"];
+        ithem.description = [[act objectForKey:@"raw"] objectForKey:@"description"];
+        ithem.caption = [[act objectForKey:@"raw"] objectForKey:@"caption"];
         [photoList addObject:ithem];
     }
     return photoList;
@@ -752,6 +781,19 @@
     [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequesPatch setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto];
 }
 
+- (void)setDescriptionWithPhotoID:(int)photoID andDescription:(NSString *)des
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i",strUrl,SubstringPhoto,photoID];
+    
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[des,@"b63800ad",@"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"description", @"app_id", @"app_key"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    
+    NSLog(@"%@", error);
+    
+   NSLog(@"%@",[self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequesPatch setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto]);
+}
+
 - (void) deletePhotoWithId:(int)photo_id
 {
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@/%i",strUrl,SubstringPhoto,photo_id];
@@ -767,15 +809,16 @@
 }
 
 #pragma mark TIPS
-- (NSArray *)getTipsWithUserId:(int)userID
+- (NSArray *)getTips
 {
-    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@tip?&user_id=%d&app_id=%@&app_key=%@&last=-1",strUrl, userID, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
+    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@tip?&app_id=%@&app_key=%@po",strUrl, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
     NSDictionary *info = [NSDictionary new];
-    info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestTips];
+    info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestTips];
     NSMutableArray * array = [NSMutableArray new];
     for(NSDictionary * dic in info){
-       
-        [array addObject:dic];
+        TIPS * tip = [TIPS new];
+        [tip initTipsWithData:dic];
+        [array addObject:tip];
     }
     return array;
 }

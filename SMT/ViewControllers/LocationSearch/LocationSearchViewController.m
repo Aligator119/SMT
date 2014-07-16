@@ -30,6 +30,7 @@
         self.navigationBarHeightConstr.constant -= 20;
         self.navigationBarVerticalConstr.constant -= 20;
     }
+    self.screenName = @"Location search screen";
 }
 
 -(void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{

@@ -61,9 +61,11 @@
         self.heightConstr.constant -= 20;
     }
     [self getLocation];
+    self.screenName = @"Weather screen";
 }
 
 - (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
     if (self.currentLocation!=nil) {
         [self setUpdateParams];
         [self.weatherTableView reloadData];
