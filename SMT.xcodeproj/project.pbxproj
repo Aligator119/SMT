@@ -239,6 +239,8 @@
 		04F7CBC8193DC5FC000AB881 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7CBC7193DC5FC000AB881 /* CustomButton.m */; };
 		04F7F42819235F2A007E39B5 /* PredictionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7F42619235F2A007E39B5 /* PredictionViewController.m */; };
 		04F7F42919235F2A007E39B5 /* PredictionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F7F42719235F2A007E39B5 /* PredictionViewController.xib */; };
+		04F9C8CD1977B04200428B73 /* CellForFirstView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F9C8CC1977B04200428B73 /* CellForFirstView.m */; };
+		04F9C8CF1977B06100428B73 /* CellForFirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F9C8CE1977B06100428B73 /* CellForFirstView.xib */; };
 		04FA3274197680FC006D12B4 /* SearchOutfitterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FA3272197680FC006D12B4 /* SearchOutfitterCell.m */; };
 		04FA3275197680FC006D12B4 /* SearchOutfitterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FA3273197680FC006D12B4 /* SearchOutfitterCell.xib */; };
 		04FA3278197699CD006D12B4 /* placeholderImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 04FA3276197699CD006D12B4 /* placeholderImage.png */; };
@@ -733,6 +735,9 @@
 		04F7F42519235F2A007E39B5 /* PredictionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PredictionViewController.h; path = ViewControllers/PredictionViewController/PredictionViewController.h; sourceTree = "<group>"; };
 		04F7F42619235F2A007E39B5 /* PredictionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PredictionViewController.m; path = ViewControllers/PredictionViewController/PredictionViewController.m; sourceTree = "<group>"; };
 		04F7F42719235F2A007E39B5 /* PredictionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PredictionViewController.xib; path = ViewControllers/PredictionViewController/PredictionViewController.xib; sourceTree = "<group>"; };
+		04F9C8CB1977B04200428B73 /* CellForFirstView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CellForFirstView.h; path = ViewControllers/FlyoutMenuViewController/FirstCell/CellForFirstView.h; sourceTree = "<group>"; };
+		04F9C8CC1977B04200428B73 /* CellForFirstView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CellForFirstView.m; path = ViewControllers/FlyoutMenuViewController/FirstCell/CellForFirstView.m; sourceTree = "<group>"; };
+		04F9C8CE1977B06100428B73 /* CellForFirstView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CellForFirstView.xib; path = ViewControllers/FlyoutMenuViewController/FirstCell/CellForFirstView.xib; sourceTree = "<group>"; };
 		04FA3271197680FC006D12B4 /* SearchOutfitterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SearchOutfitterCell.h; path = ViewControllers/SearchViewController/SearchOutfitterCell/SearchOutfitterCell.h; sourceTree = "<group>"; };
 		04FA3272197680FC006D12B4 /* SearchOutfitterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SearchOutfitterCell.m; path = ViewControllers/SearchViewController/SearchOutfitterCell/SearchOutfitterCell.m; sourceTree = "<group>"; };
 		04FA3273197680FC006D12B4 /* SearchOutfitterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchOutfitterCell.xib; path = ViewControllers/SearchViewController/SearchOutfitterCell/SearchOutfitterCell.xib; sourceTree = "<group>"; };
@@ -1199,6 +1204,7 @@
 		04409402190F820100C4A558 /* FlyoutMenuViewController */ = {
 			isa = PBXGroup;
 			children = (
+				04F9C8CA1977AFDE00428B73 /* CellForFirstCollectionView */,
 				04044FBA196ECAC40032935A /* OutfitterCell */,
 				04FBA8891963E54500D5D713 /* TipsCell */,
 				04F49892195311D600FC065C /* imageShow */,
@@ -1889,6 +1895,16 @@
 			name = PredictionViewController;
 			sourceTree = "<group>";
 		};
+		04F9C8CA1977AFDE00428B73 /* CellForFirstCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				04F9C8CB1977B04200428B73 /* CellForFirstView.h */,
+				04F9C8CC1977B04200428B73 /* CellForFirstView.m */,
+				04F9C8CE1977B06100428B73 /* CellForFirstView.xib */,
+			);
+			name = CellForFirstCollectionView;
+			sourceTree = "<group>";
+		};
 		04FA327019768095006D12B4 /* SearchOutfittersCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2124,6 +2140,7 @@
 				04E88FC2191BA07B00DEF977 /* NewLog1ViewController.xib in Resources */,
 				84E605C0194AF5CC00F8D61F /* settings~ipad.png in Resources */,
 				04409422190F975E00C4A558 /* LoginViewController_iPhone5.xib in Resources */,
+				04F9C8CF1977B06100428B73 /* CellForFirstView.xib in Resources */,
 				84E605C1194AF5CC00F8D61F /* Thumbs.db in Resources */,
 				84E605B7194AF5CC00F8D61F /* prediction@2x~ipad.png in Resources */,
 				04FA3279197699CD006D12B4 /* userPlaceholder.png in Resources */,
@@ -2265,6 +2282,7 @@
 				043354AC1910ED9F003767D0 /* CJSONDeserializer_BlocksExtensions.m in Sources */,
 				04409440190FA98B00C4A558 /* RegisterViewController.m in Sources */,
 				11D48DE51918E32700A9787E /* AFURLConnectionOperation.m in Sources */,
+				04F9C8CD1977B04200428B73 /* CellForFirstView.m in Sources */,
 				843CD56519333E0E00EF7E46 /* ActivityDetails.m in Sources */,
 				04A2A3C0191B7FDC0006677E /* CustomHeader.m in Sources */,
 				11D48DE81918E32700A9787E /* AFURLSessionManager.m in Sources */,

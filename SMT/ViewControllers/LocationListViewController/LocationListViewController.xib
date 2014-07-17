@@ -64,12 +64,14 @@
                                 <segment title="Shared Locations"/>
                                 <segment title="Public Locations"/>
                             </segments>
+                            <color key="tintColor" red="0.21568627450980393" green="0.21568627450980393" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="locationTypeChange:" destination="-1" eventType="valueChanged" id="tSi-b1-jmL"/>
                             </connections>
                         </segmentedControl>
                     </subviews>
                     <color key="backgroundColor" red="0.79854910710000004" green="0.79854910710000004" blue="0.79854910710000004" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="fTT-SD-RM8" firstAttribute="top" secondItem="aPU-FT-i8P" secondAttribute="top" constant="9" id="9uV-3g-S0R"/>
                         <constraint firstItem="fTT-SD-RM8" firstAttribute="leading" secondItem="aPU-FT-i8P" secondAttribute="leading" constant="5" id="KOG-Eh-WQE"/>

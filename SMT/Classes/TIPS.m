@@ -6,10 +6,11 @@
 #define TIP           @"tip"
 #define TIPS_ID       @"id"
 #define TIMESTAMP     @"timestamp"
+#define USER_NAME     @"username"
 
 @implementation TIPS
 
-@synthesize user_id, species_id, subspecies_id, tip, tipsID, timestamp;
+@synthesize user_id, species_id, subspecies_id, tip, tipsID, timestamp, userName;
 
 -(void)initTipsWithData:(NSDictionary*) infoDict
 {
@@ -19,6 +20,7 @@
     subspecies_id = [infoDict objectForKey:SUB_SPECIE_ID];
     user_id       = [infoDict objectForKey:USER_ID];
     timestamp     = [infoDict objectForKey:TIMESTAMP];
+    userName      = [infoDict objectForKey:USER_NAME];
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder {
@@ -28,6 +30,7 @@
     [encoder encodeObject:subspecies_id forKey:SUB_SPECIE_ID];
     [encoder encodeObject:user_id forKey:USER_ID];
     [encoder encodeObject:timestamp forKey:TIMESTAMP];
+    [encoder encodeObject:userName forKey:USER_NAME];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder
@@ -39,6 +42,7 @@
         subspecies_id = [decoder decodeObjectForKey:SUB_SPECIE_ID];
         user_id = [decoder decodeObjectForKey:USER_ID];
         timestamp = [decoder decodeObjectForKey:TIMESTAMP];
+        userName = [decoder decodeObjectForKey:USER_NAME];
     }
     return self;
 }

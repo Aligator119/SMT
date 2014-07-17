@@ -8,10 +8,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TipsCell" id="BIp-6P-gNS" customClass="TipsCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="109"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="109"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZXp-uy-82L">
@@ -35,34 +35,33 @@
                         <color key="textColor" red="0.59215686274509804" green="0.59215686274509804" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPi-2r-YuL">
-                        <rect key="frame" x="10" y="30" width="300" height="74"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="b4E-y1-2rq">
+                        <rect key="frame" x="10" y="30" width="300" height="0.0"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="textColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    </textView>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="wPi-2r-YuL" firstAttribute="leading" secondItem="BIp-6P-gNS" secondAttribute="leading" constant="10" id="DMb-RH-ERp"/>
                 <constraint firstAttribute="trailing" secondItem="RpG-fF-20x" secondAttribute="trailing" constant="10" id="EAa-se-AyE"/>
-                <constraint firstItem="wPi-2r-YuL" firstAttribute="top" secondItem="RpG-fF-20x" secondAttribute="bottom" constant="5" id="hWg-34-Fg0"/>
-                <constraint firstAttribute="bottom" secondItem="wPi-2r-YuL" secondAttribute="bottom" constant="5" id="i8s-Ze-00r"/>
+                <constraint firstAttribute="trailing" secondItem="b4E-y1-2rq" secondAttribute="trailing" constant="10" id="Ill-h3-sMk"/>
+                <constraint firstItem="b4E-y1-2rq" firstAttribute="top" secondItem="ZXp-uy-82L" secondAttribute="bottom" constant="5" id="fvE-0A-7lg"/>
+                <constraint firstItem="b4E-y1-2rq" firstAttribute="leading" secondItem="BIp-6P-gNS" secondAttribute="leading" constant="10" id="g84-ap-o3D"/>
                 <constraint firstItem="RpG-fF-20x" firstAttribute="leading" secondItem="ZXp-uy-82L" secondAttribute="trailing" constant="5" id="ksn-xv-cAo"/>
-                <constraint firstAttribute="trailing" secondItem="wPi-2r-YuL" secondAttribute="trailing" constant="10" id="wt7-dX-rt7"/>
+                <constraint firstAttribute="bottom" secondItem="b4E-y1-2rq" secondAttribute="bottom" constant="5" id="pLs-E6-qiu"/>
                 <constraint firstItem="ZXp-uy-82L" firstAttribute="leading" secondItem="BIp-6P-gNS" secondAttribute="leading" constant="10" id="xYI-py-a1c"/>
                 <constraint firstItem="ZXp-uy-82L" firstAttribute="top" secondItem="BIp-6P-gNS" secondAttribute="top" constant="5" id="zev-aa-Obs"/>
                 <constraint firstItem="RpG-fF-20x" firstAttribute="top" secondItem="BIp-6P-gNS" secondAttribute="top" constant="5" id="znY-yo-qYq"/>
             </constraints>
-            <size key="customSize" width="317" height="109"/>
+            <size key="customSize" width="317" height="30"/>
             <connections>
                 <outlet property="lbDate" destination="RpG-fF-20x" id="Z4V-ba-qS1"/>
                 <outlet property="lbName" destination="ZXp-uy-82L" id="EUx-O8-yFF"/>
-                <outlet property="lbText" destination="wPi-2r-YuL" id="gLN-mz-LOT"/>
+                <outlet property="lbText" destination="b4E-y1-2rq" id="g4M-U7-6Ku"/>
             </connections>
         </collectionViewCell>
     </objects>
