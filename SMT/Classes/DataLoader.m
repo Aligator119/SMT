@@ -322,9 +322,15 @@
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@user?&profiletype_id=%d&name=%@",strUrl, profiletype_id,name];
     
     NSMutableArray * array = [[NSMutableArray alloc]init];
-    for (NSDictionary * dic in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestAddBuddy])
-    {
-        [array addObject:dic];
+    @try {
+        for (NSDictionary * dic in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestAddBuddy])
+        {
+            [array addObject:dic];
+        }
+    }
+    @catch (NSException *exception) {
+        self.isCorrectRezult = NO;
+        NSLog(@"ERROR !");
     }
     return array;
 }

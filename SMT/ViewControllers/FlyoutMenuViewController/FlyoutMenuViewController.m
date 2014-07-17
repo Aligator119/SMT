@@ -396,8 +396,8 @@
 }
 
 - (void)actLookSee:(id)sender {
-    [self reverseBackroundImageWithNumber:2];
-    [self endLoader];
+    //[self reverseBackroundImageWithNumber:2];
+    //[self endLoader];
 }
 
 - (void)actVideo:(id)sender {
@@ -756,10 +756,9 @@
                 UIImage * img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:obj.fullPhoto]]];
                 if (img) {
                     [cashedPhoto addEntriesFromDictionary:@{obj.photoID: img}];
-                    [self.colectionView reloadData];
                 } else {
-                    img = [[UIImage alloc]init];
-                    [cashedPhoto addEntriesFromDictionary:@{obj.photoID: img}];
+                    //img = [[UIImage alloc]init];
+                    //[cashedPhoto addEntriesFromDictionary:@{obj.photoID: img}];
                 }
             }
             dispatch_async(dispatch_get_main_queue(), ^(){
