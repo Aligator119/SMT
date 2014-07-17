@@ -11,6 +11,6 @@
 @interface TipsCell : UICollectionViewCell
 @property (strong, nonatomic) IBOutlet UILabel *lbName;
 @property (strong, nonatomic) IBOutlet UILabel *lbDate;
-@property (strong, nonatomic) IBOutlet UITextView *lbText;
+@property (strong, nonatomic) IBOutlet UILabel *lbText;
 
 @end

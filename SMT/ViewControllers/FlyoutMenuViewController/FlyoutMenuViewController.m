@@ -22,6 +22,7 @@
 #import "TIPS.h"
 #import "OutfitterCell.h"
 #import "SearchViewController.h"
+#import "CellForFirstView.h"
 
 
 
@@ -29,17 +30,18 @@
 #define DOWNLOAD_IMAGE_SUCCES @"image is download"
 
 #define HEIGTH_IMAGE_CELL 180
+#define HEIGTH_CREATE_TIPS_CELL  200
+#define HEIGTH_TIPS_CELL  35
 
 #define COLECTION_SHOW 5555
 #define COLECTION_DATA 1234
-#define OpusCommentCellStandartFont [UIFont fontWithName:@"HelveticaNeue" size:14.f]
+#define OpusCommentCellStandartFont [UIFont fontWithName:@"HelveticaNeue" size:15.f]
 # define CGFLOAT_MAX FLT_MAX
 
 @interface FlyoutMenuViewController ()
 {
     DataLoader * dataLoader;
     AppDelegate * appDelegate;
-    NSDateFormatter * dateFormatter;
     BOOL selectedBtn1;
     BOOL selectedBtn2;
     BOOL selectedBtn3;
@@ -57,8 +59,8 @@
     NSIndexPath * index;
     NSArray * recipes;
     NSArray * searchResults;
-//    UITextView * callKeyBoard;
-//    NSIndexPath * path;
+    NSDateFormatter * format1;
+    NSDateFormatter * format2;
 }
 @property (strong, nonatomic) IBOutlet UIView *forTabBar;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *topBarHiegthConstrainsSubView;
@@ -109,7 +111,7 @@
 - (void)keyboardDidHide: (NSNotification *) notif;
 - (IBAction)actSearch:(id)sender;
 - (UIImage *)createImageWithColor:(UIColor *)color;
-- (float) getHeigthTextLabel:(NSString *)str;
+- (float) getHeigthText:(NSString *)str andLabelWidth:(float) lbWidth;
 @end
 
 @implementation FlyoutMenuViewController
@@ -136,7 +138,7 @@
     [self.colectionView registerNib:[UINib nibWithNibName:@"ImageShow" bundle:nil] forCellWithReuseIdentifier:@"ImageShow"];
     [self.colectionView registerNib:[UINib nibWithNibName:@"OutfitterCell" bundle:nil] forCellWithReuseIdentifier:@"OutfitterCell"];
     
-    [self.table registerNib:[UINib nibWithNibName:@"ImageShow" bundle:nil] forCellWithReuseIdentifier:@"ImageShow"];
+    [self.table registerNib:[UINib nibWithNibName:@"CellForFirstView" bundle:nil] forCellWithReuseIdentifier:@"CellForFirstView"];
     UINib *cellNib = [UINib nibWithNibName:@"SpeciesCell" bundle:[NSBundle mainBundle]];
     [self.tableSelect registerNib:cellNib forCellReuseIdentifier:@"SpeciesCell"];
 
@@ -152,9 +154,6 @@
     [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
     
     self.table.backgroundView = nil;
-    
-    dateFormatter = [[NSDateFormatter alloc]init];
-    [dateFormatter setDateFormat:@"MMMM dd yyyy"];
     
     isPresent = YES;
     [((UIButton *)[self.tabBar viewWithTag:1]) setBackgroundImage:[UIImage imageNamed:@"home_icon_press.png"] forState:UIControlStateNormal];
@@ -206,6 +205,12 @@
 
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor blackColor]];
     self.screenName = @"Home screen";
+    
+    format1 = [[NSDateFormatter alloc]init];
+    [format1 setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    
+    format2 = [[NSDateFormatter alloc]init];
+    [format2 setDateFormat:@"MMMM dd, yyyy"];
 }
 
 
@@ -224,24 +229,6 @@
         [((UIButton *)[self.tabBar viewWithTag:1]) setBackgroundImage:[UIImage imageNamed:@"home_icon.png"] forState:UIControlStateNormal];
     }
 }
-
-//- (void)openReports
-//{
-//    [self startLoader];
-//    DataLoader *loader = [DataLoader instance];
-//    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//    dispatch_async(newQueue, ^(){
-//        NSMutableArray *result = [NSMutableArray arrayWithArray:[loader getAllActivities]];
-//        
-//        dispatch_async(dispatch_get_main_queue(),^(){
-//            [self endLoader];
-//            ReportsViewController *reportsVC = [ReportsViewController new];
-//            reportsVC.activitiesArray = [NSMutableArray arrayWithArray:result];
-//            [self.navigationController pushViewController:reportsVC animated:YES];
-//        });
-//    });
-//}
-
 
 - (void) viewWillAppear:(BOOL)animated
 {
@@ -287,12 +274,6 @@
     UICollectionViewCell * cell;
     cell.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.bounds].CGPath;
     if (collectionView.tag == COLECTION_DATA) {
-//        [cell.layer setMasksToBounds:YES];
-//        
-//        [cell.layer setShadowOffset:CGSizeMake(0, 1)];
-//        [cell.layer setShadowColor:[[UIColor darkGrayColor] CGColor]];
-//        [cell.layer setShadowRadius:3.0];
-//        [cell.layer setShadowOpacity:0.8];
         switch (activeSegment) {
             case 1:
             {
@@ -330,19 +311,14 @@
                     [((CreateTipsCell *)cell).btnSelectSubSpecie addTarget:self action:@selector(actSelectSubSpecie) forControlEvents:UIControlEventTouchUpInside];
                     [((CreateTipsCell *)cell).btnCreateTIPS addTarget:self action:@selector(actCreateTIPS) forControlEvents:UIControlEventTouchUpInside];
                     [((CreateTipsCell *)cell).tfText setDelegate:self];
-                    //[((CreateTipsCell *)cell).tfText.layer setMasksToBounds:YES];
-                    //[((CreateTipsCell *)cell).tfText.layer setBorderWidth:1.0f];
-                    //[((CreateTipsCell *)cell).tfText.layer setBorderColor:[UIColor blackColor].CGColor];
-                    //[((CreateTipsCell *)cell).btnCreateTIPS.layer setMasksToBounds:YES];
-                    //[((CreateTipsCell *)cell).btnCreateTIPS.layer setBorderWidth:1.0f];
-                    //[((CreateTipsCell *)cell).btnCreateTIPS.layer setBorderColor:[UIColor blackColor].CGColor];
                     index = indexPath;
                 } else {
                     cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TipsCell" forIndexPath:indexPath];
                     //add data to bottom colectionView
                     TIPS * tip = [tipsList objectAtIndex:indexPath.row];
-                    ((TipsCell *)cell).lbName.text = [NSString stringWithFormat:@"%@",tip.user_id];
-                    ((TipsCell *)cell).lbDate.text = tip.timestamp;
+                    ((TipsCell *)cell).lbName.text = tip.userName;
+                    NSDate * date1 = [format1 dateFromString:tip.timestamp];
+                    ((TipsCell *)cell).lbDate.text = [format2 stringFromDate:date1];
                     ((TipsCell *)cell).lbText.text = tip.tip;
                 }
             }
@@ -350,23 +326,23 @@
         }
         
     } else {
-        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageShow" forIndexPath:indexPath];
+        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellForFirstView" forIndexPath:indexPath];
 //set image for image show collection view
         switch (indexPath.row) {
             case 0:
-                [((ImageShow *)cell) setImage:[UIImage imageNamed:@"tips_icon.png"]];
+                ((CellForFirstView *)cell).imgShow.image = [UIImage imageNamed:@"tips_icon.png"];
                 break;
             case 1:
-                [((ImageShow *)cell) setImage:[UIImage imageNamed:@"tips_icon.png"]];
+                ((CellForFirstView *)cell).imgShow.image = [UIImage imageNamed:@"tips_icon.png"];
                 break;
             case 2:
-                [((ImageShow *)cell) setImage:[UIImage imageNamed:@"tips_icon.png"]];
+                ((CellForFirstView *)cell).imgShow.image = [UIImage imageNamed:@"tips_icon.png"];
                 break;
             case 3:
-                [((ImageShow *)cell) setImage:[UIImage imageNamed:@"tips_icon.png"]];
+                ((CellForFirstView *)cell).imgShow.image = [UIImage imageNamed:@"tips_icon.png"];
                 break;
             default:
-                [((ImageShow *)cell) setImage:[UIImage imageNamed:@"tips_icon.png"]];
+                ((CellForFirstView *)cell).imgShow.image = [UIImage imageNamed:@"tips_icon.png"];
                 break;
         }
         
@@ -382,16 +358,17 @@
     if (collectionView.tag == COLECTION_DATA) {
         if (!selectedBtn1) {
             Photo * photo = [photoList objectAtIndex:indexPath.row];
-            size = CGSizeMake(self.colectionView.frame.size.width-10, /*((self.colectionView.frame.size.width-10) * 0.58)*/ HEIGTH_IMAGE_CELL + [self getHeigthTextLabel:photo.description]);
+            size = CGSizeMake(self.colectionView.frame.size.width-10, /*((self.colectionView.frame.size.width-10) * 0.58)*/ HEIGTH_IMAGE_CELL + [self getHeigthText:photo.description andLabelWidth:self.colectionView.frame.size.width - 20]);
         } else if (!selectedBtn2) {
             //num = 1;
         } else if (!selectedBtn3) {
             size = CGSizeMake(self.colectionView.frame.size.width-10, 100);
         } else if (!selectedBtn4) {
              if ([[tipsList objectAtIndex:indexPath.row] isKindOfClass:[NSString class]]) {
-                 size = CGSizeMake(self.colectionView.frame.size.width-10, 200);
+                 size = CGSizeMake(self.colectionView.frame.size.width-10, HEIGTH_CREATE_TIPS_CELL);
              } else {
-                 size = CGSizeMake(self.colectionView.frame.size.width-10, 80);
+                 TIPS * tip = [tipsList objectAtIndex:indexPath.row];
+                 size = CGSizeMake(self.colectionView.frame.size.width-10, HEIGTH_TIPS_CELL + [self getHeigthText:tip.tip andLabelWidth:self.colectionView.frame.size.width-50]);
              }
         }
     } else {
@@ -753,7 +730,6 @@
 
 - (void)downloadPhotos
 {
-    [self startLoader];
     photoList = [[NSMutableArray alloc]init];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
@@ -763,11 +739,9 @@
             
             if(!dataLoader.isCorrectRezult) {
                 NSLog(@"Error download sybSpecie");
-                [self endLoader];
             } else {
                 [self.colectionView reloadData];
                 [self getImageWithUrl];
-                [self endLoader];
             }
         });
     });
@@ -837,17 +811,17 @@
     return image;
 }
 
-- (float) getHeigthTextLabel:(NSString *)str
+- (float) getHeigthText:(NSString *)str andLabelWidth:(float) lbWidth
 {
     float f = 0;
     
     if (str) {
-        CGFloat labelWidth = self.view.frame.size.width - 20.0f;
+        //CGFloat labelWidth = self.view.frame.size.width - 30.0f;
         CGSize contentTextSize = [str sizeWithFont:OpusCommentCellStandartFont
-                                 constrainedToSize:CGSizeMake(labelWidth, CGFLOAT_MAX)
+                                 constrainedToSize:CGSizeMake(lbWidth, CGFLOAT_MAX)
                                      lineBreakMode:NSLineBreakByWordWrapping];
         
-        f = contentTextSize.height + 5;
+        f = contentTextSize.height;
 
     }
     return f;
