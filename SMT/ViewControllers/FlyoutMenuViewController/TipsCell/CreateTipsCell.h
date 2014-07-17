@@ -2,13 +2,13 @@
 #import "Species.h"
 
 @interface CreateTipsCell : UICollectionViewCell //<UITextViewDelegate>
-@property (strong, nonatomic) IBOutlet UITextView *tfText;
-@property (strong, nonatomic) IBOutlet UIButton *btnSelectSpecie;
-@property (strong, nonatomic) IBOutlet UIButton *btnSelectSubSpecie;
-@property (strong, nonatomic) IBOutlet UIButton *btnCreateTIPS;
+@property (weak, nonatomic) IBOutlet UITextView *tfText;
+@property (weak, nonatomic) IBOutlet UIButton *btnSelectSpecie;
+@property (weak, nonatomic) IBOutlet UIButton *btnSelectSubSpecie;
+@property (weak, nonatomic) IBOutlet UIButton *btnCreateTIPS;
 
 
-@property (strong, nonatomic) Species * specie;
-@property (strong, nonatomic) Species * subSpecie;
+@property (weak, nonatomic) Species * specie;
+@property (weak, nonatomic) Species * subSpecie;
 
 @end

@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface CellForFirstView : UICollectionViewCell
-@property (strong, nonatomic) IBOutlet UIImageView *imgShow;
+@property (weak, nonatomic) IBOutlet UIImageView *imgShow;
 
 @end

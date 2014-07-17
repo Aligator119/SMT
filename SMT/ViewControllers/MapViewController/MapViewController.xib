@@ -31,7 +31,9 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46" id="4tV-NF-Nkb"/>
                                         <constraint firstAttribute="width" constant="46" id="hXc-d6-fOL"/>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="l1a-tC-EbP"/>
                                         <constraint firstAttribute="height" constant="30" id="m4C-kV-chh"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -46,29 +48,21 @@
                                 <searchBar userInteractionEnabled="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="92J-2z-CKh">
                                     <rect key="frame" x="60" y="-2" width="200" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="YGe-bI-gDy"/>
+                                        <constraint firstAttribute="width" constant="200" id="ZIj-MT-yDo"/>
+                                    </constraints>
                                     <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Wb-Yv-vsl">
-                                    <rect key="frame" x="286" y="9" width="22" height="22"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="22" id="ejY-FQ-31K"/>
-                                        <constraint firstAttribute="height" constant="22" id="nun-mw-QC0"/>
-                                    </constraints>
-                                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <state key="normal">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="goToLocationList:" destination="-1" eventType="touchUpInside" id="8dg-ha-DSC"/>
-                                    </connections>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxH-eV-3Gm">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxH-eV-3Gm">
                                     <rect key="frame" x="60" y="0.0" width="200" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="200" id="J1L-lk-wfX"/>
+                                        <constraint firstAttribute="height" constant="40" id="j4V-wM-sGS"/>
+                                    </constraints>
                                     <state key="normal">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -78,14 +72,13 @@
                                 </button>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="2Wb-Yv-vsl" firstAttribute="leading" secondItem="92J-2z-CKh" secondAttribute="trailing" constant="26" id="Bdu-ms-fpn"/>
                                 <constraint firstItem="Ivb-Rd-u6y" firstAttribute="leading" secondItem="cmu-e6-dGe" secondAttribute="leading" constant="5" id="ByW-au-vjf"/>
                                 <constraint firstItem="92J-2z-CKh" firstAttribute="top" secondItem="cmu-e6-dGe" secondAttribute="top" constant="-2" id="J7F-yT-A2N"/>
                                 <constraint firstItem="Ivb-Rd-u6y" firstAttribute="top" secondItem="cmu-e6-dGe" secondAttribute="top" constant="5" id="Pnq-d3-FOm"/>
+                                <constraint firstItem="nxH-eV-3Gm" firstAttribute="leading" secondItem="Ivb-Rd-u6y" secondAttribute="trailing" constant="9" id="V8x-wz-oWC"/>
                                 <constraint firstAttribute="bottom" secondItem="92J-2z-CKh" secondAttribute="bottom" constant="-2" id="ZQC-Pq-8xU"/>
-                                <constraint firstItem="2Wb-Yv-vsl" firstAttribute="top" secondItem="cmu-e6-dGe" secondAttribute="top" constant="9" id="dwa-8N-E22"/>
+                                <constraint firstItem="nxH-eV-3Gm" firstAttribute="centerY" secondItem="Ivb-Rd-u6y" secondAttribute="centerY" id="d46-5W-K3y"/>
                                 <constraint firstAttribute="height" constant="40" id="ohI-U1-ILI"/>
-                                <constraint firstAttribute="trailing" secondItem="2Wb-Yv-vsl" secondAttribute="trailing" constant="12" id="qZF-30-KzV"/>
                                 <constraint firstItem="92J-2z-CKh" firstAttribute="leading" secondItem="Ivb-Rd-u6y" secondAttribute="trailing" constant="9" id="qoL-BJ-5j5"/>
                             </constraints>
                         </view>

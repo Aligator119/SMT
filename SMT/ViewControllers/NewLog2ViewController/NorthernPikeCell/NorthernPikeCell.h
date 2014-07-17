@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface NorthernPikeCell : UITableViewCell
-@property (strong, nonatomic) IBOutlet UIImageView *img;
+@property (weak, nonatomic) IBOutlet UIImageView *img;
 @property (strong, nonatomic) IBOutlet UITextField *tfSeen;
 @property (strong, nonatomic) IBOutlet UITextField *tfHarvested;
 @property (strong, nonatomic) IBOutlet UIButton *btnLevel;

@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface SearchOutfitterCell : UITableViewCell
-@property (strong, nonatomic) IBOutlet UIImageView *img;
-@property (strong, nonatomic) IBOutlet UILabel *lbName;
-@property (strong, nonatomic) IBOutlet UILabel *lbAddres;
-@property (strong, nonatomic) IBOutlet UILabel *lbDetail;
-@property (strong, nonatomic) IBOutlet UILabel *lbDistance;
+@property (weak, nonatomic) IBOutlet UIImageView *img;
+@property (weak, nonatomic) IBOutlet UILabel *lbName;
+@property (weak, nonatomic) IBOutlet UILabel *lbAddres;
+@property (weak, nonatomic) IBOutlet UILabel *lbDetail;
+@property (weak, nonatomic) IBOutlet UILabel *lbDistance;
 
 @end

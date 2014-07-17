@@ -10,8 +10,8 @@
 
 
 @interface SpeciesCell ()
-@property (strong, nonatomic) IBOutlet UIImageView *img;
-@property (strong, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UIImageView *img;
+@property (weak, nonatomic) IBOutlet UILabel *name;
 
 @end
 

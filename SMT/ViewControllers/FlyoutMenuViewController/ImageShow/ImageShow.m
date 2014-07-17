@@ -66,9 +66,8 @@
 - (void)setImage:(UIImage *)image
 {
     self.img.contentMode = UIViewContentModeScaleToFill;
-    self.topConstrains.constant = 0.0f;
-    self.heigthImage.constant = 0.0;
-    [self updateConstraints];
+    //self.heigthImage.constant = 0.0;
+    //[self updateConstraints];
     self.img.image = image;
 }
 
@@ -89,12 +88,8 @@
 
 - (void)prepareForReuse
 {
-    self.img.image = [[UIImage alloc]init];
-}
-
-- (void)prepareToReuse
-{
-    self.img.image = [[UIImage alloc]init];
+    self.lbName.text = @"";
+    self.img.image = [UIImage imageNamed:@"placeholderImage.png"];
 }
 
 
