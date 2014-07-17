@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface TipsCell : UICollectionViewCell
-@property (strong, nonatomic) IBOutlet UILabel *lbName;
-@property (strong, nonatomic) IBOutlet UILabel *lbDate;
-@property (strong, nonatomic) IBOutlet UILabel *lbText;
+@property (weak, nonatomic) IBOutlet UILabel *lbName;
+@property (weak, nonatomic) IBOutlet UILabel *lbDate;
+@property (weak, nonatomic) IBOutlet UILabel *lbText;
 
 @end

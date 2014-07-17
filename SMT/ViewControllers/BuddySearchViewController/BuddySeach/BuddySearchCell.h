@@ -4,10 +4,10 @@
 
 @interface BuddySearchCell : UITableViewCell <HPAddBuddyProtocol>
 
-@property (strong, nonatomic) IBOutlet UILabel * lblBuddySecondName;
-@property (strong, nonatomic) IBOutlet UILabel * lblBuddyUserName;
-@property (strong, nonatomic) IBOutlet UIButton * btnAddBuddy;
-@property (strong, nonatomic) UIViewController * delegateController;
+@property (weak, nonatomic) IBOutlet UILabel * lblBuddySecondName;
+@property (weak, nonatomic) IBOutlet UILabel * lblBuddyUserName;
+@property (weak, nonatomic) IBOutlet UIButton * btnAddBuddy;
+@property (weak, nonatomic) UIViewController * delegateController;
 
 - (void)setSizeToFit;
 - (void)addDelegate:(UIViewController*)delegate;

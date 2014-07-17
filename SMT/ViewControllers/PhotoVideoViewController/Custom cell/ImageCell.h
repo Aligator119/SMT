@@ -3,7 +3,7 @@
 
 @interface ImageCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *foneImage;
-@property (strong, nonatomic) UIImage * img;
+@property (weak, nonatomic) UIImage * img;
 
 - (void) setImage:(NSString *)url;
 

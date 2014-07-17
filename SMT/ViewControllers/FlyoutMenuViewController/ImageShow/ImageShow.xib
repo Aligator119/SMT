@@ -22,8 +22,8 @@
                             <constraint firstAttribute="height" constant="155" id="3wO-gA-6ff"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="am1-bA-N36">
-                        <rect key="frame" x="5" y="175" width="300" height="5"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="am1-bA-N36">
+                        <rect key="frame" x="5" y="175" width="300" height="0.0"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -51,7 +51,7 @@
                 <constraint firstItem="k7b-n7-gL6" firstAttribute="top" secondItem="sJg-1t-6qQ" secondAttribute="top" id="Vdi-4r-WIz"/>
                 <constraint firstItem="am1-bA-N36" firstAttribute="leading" secondItem="sJg-1t-6qQ" secondAttribute="leading" constant="5" id="Yx0-GU-96W"/>
                 <constraint firstAttribute="trailing" secondItem="am1-bA-N36" secondAttribute="trailing" constant="5" id="Zzn-Q2-ra1"/>
-                <constraint firstAttribute="bottom" secondItem="am1-bA-N36" secondAttribute="bottom" id="bZP-W1-A21"/>
+                <constraint firstAttribute="bottom" secondItem="am1-bA-N36" secondAttribute="bottom" constant="5" id="bZP-W1-A21"/>
                 <constraint firstItem="am1-bA-N36" firstAttribute="top" secondItem="EmU-4Q-BPD" secondAttribute="bottom" id="iPz-Kl-Uka"/>
                 <constraint firstAttribute="trailing" secondItem="EmU-4Q-BPD" secondAttribute="trailing" constant="3" id="jRr-EQ-827"/>
                 <constraint firstItem="k7b-n7-gL6" firstAttribute="leading" secondItem="sJg-1t-6qQ" secondAttribute="leading" constant="5" id="n1g-fz-5S7"/>

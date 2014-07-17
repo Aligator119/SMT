@@ -281,7 +281,6 @@
                     cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ImageShow" forIndexPath:indexPath];
                     Photo * photo = [photoList objectAtIndex:indexPath.row];
                     if ([[cashedPhoto allKeys] containsObject:photo.photoID]) {
-                        ((ImageShow *)cell).img.image = nil;
                         [((ImageShow *)cell) stopLoaderInCell];
                         [((ImageShow *)cell) setPhotoDescriptions:photo.description andUserName:photo.userName andImage:[cashedPhoto objectForKey:photo.photoID]];
                     } else {
@@ -763,10 +762,12 @@
                     [cashedPhoto addEntriesFromDictionary:@{obj.photoID: img}];
                 }
             }
+            dispatch_async(dispatch_get_main_queue(), ^(){
+                if (!selectedBtn1) {
+                    [self.colectionView reloadData];
+                }
+            });
         }
-        dispatch_async(dispatch_get_main_queue(), ^(){
-            [self.colectionView reloadData];
-        });
     });
 }
 
