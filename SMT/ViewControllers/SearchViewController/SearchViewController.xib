@@ -80,12 +80,13 @@
                         <segment title="Location"/>
                         <segment title="Outfitter"/>
                     </segments>
+                    <color key="tintColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <action selector="actSegmentChangeValue:" destination="-1" eventType="valueChanged" id="pY0-5h-8SO"/>
                     </connections>
                 </segmentedControl>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="0.81697650550000001" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="LGA-rB-frp" firstAttribute="top" secondItem="3PU-AG-8C6" secondAttribute="bottom" constant="2" id="9H3-B2-ri9"/>
                 <constraint firstItem="haz-nJ-7bD" firstAttribute="top" secondItem="LGA-rB-frp" secondAttribute="bottom" constant="3" id="H6v-24-rEE"/>

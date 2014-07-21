@@ -31,7 +31,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7b-n7-gL6">
-                        <rect key="frame" x="5" y="0.0" width="285" height="20"/>
+                        <rect key="frame" x="33" y="0.0" width="272" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="hOR-av-BSj"/>
@@ -40,19 +40,29 @@
                         <color key="textColor" red="0.41960784313725491" green="0.41960784313725491" blue="0.41960784313725491" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userPlaceholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ime-R2-t8K">
+                        <rect key="frame" x="5" y="2" width="20" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="OgT-tP-lkB"/>
+                            <constraint firstAttribute="height" constant="20" id="m0N-jt-9LA"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="EmU-4Q-BPD" firstAttribute="leading" secondItem="sJg-1t-6qQ" secondAttribute="leading" constant="5" id="Bm0-zx-mEG"/>
+                <constraint firstItem="k7b-n7-gL6" firstAttribute="leading" secondItem="Ime-R2-t8K" secondAttribute="trailing" constant="8" id="CbU-cs-eeT"/>
                 <constraint firstItem="EmU-4Q-BPD" firstAttribute="top" secondItem="k7b-n7-gL6" secondAttribute="bottom" constant="3" id="LYA-XR-XhK"/>
-                <constraint firstAttribute="trailing" secondItem="k7b-n7-gL6" secondAttribute="trailing" constant="20" id="R35-1H-Ic5"/>
+                <constraint firstAttribute="trailing" secondItem="k7b-n7-gL6" secondAttribute="trailing" constant="5" id="R35-1H-Ic5"/>
                 <constraint firstItem="am1-bA-N36" firstAttribute="leading" secondItem="sJg-1t-6qQ" secondAttribute="leading" constant="5" id="Yx0-GU-96W"/>
                 <constraint firstAttribute="trailing" secondItem="am1-bA-N36" secondAttribute="trailing" constant="5" id="Zzn-Q2-ra1"/>
                 <constraint firstAttribute="bottom" secondItem="am1-bA-N36" secondAttribute="bottom" constant="2" id="bZP-W1-A21"/>
                 <constraint firstAttribute="trailing" secondItem="EmU-4Q-BPD" secondAttribute="trailing" constant="5" id="jRr-EQ-827"/>
-                <constraint firstItem="k7b-n7-gL6" firstAttribute="leading" secondItem="sJg-1t-6qQ" secondAttribute="leading" constant="5" id="n1g-fz-5S7"/>
+                <constraint firstItem="k7b-n7-gL6" firstAttribute="leading" secondItem="sJg-1t-6qQ" secondAttribute="leading" constant="33" id="n1g-fz-5S7"/>
+                <constraint firstItem="EmU-4Q-BPD" firstAttribute="top" secondItem="Ime-R2-t8K" secondAttribute="bottom" constant="1" id="pnJ-Hj-vBk"/>
                 <constraint firstItem="k7b-n7-gL6" firstAttribute="top" secondItem="sJg-1t-6qQ" secondAttribute="top" id="to1-sa-uf8"/>
                 <constraint firstItem="am1-bA-N36" firstAttribute="top" secondItem="EmU-4Q-BPD" secondAttribute="bottom" constant="5" id="wrT-1Z-fEu"/>
             </constraints>
@@ -66,5 +76,6 @@
     </objects>
     <resources>
         <image name="placeholderImage.png" width="355" height="163"/>
+        <image name="userPlaceholder.png" width="28" height="26"/>
     </resources>
 </document>

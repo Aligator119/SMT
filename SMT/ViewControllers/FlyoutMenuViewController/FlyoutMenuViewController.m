@@ -572,7 +572,7 @@
 - (void)actSelectSubSpecie
 {
     if (!selectSpecie) {
-        [[[UIAlertView alloc]initWithTitle:@"Error" message:@"No select Specie" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] show];
+        [[[UIAlertView alloc]initWithTitle:@"Error" message:@"Please select Species" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] show];
     } else {
         [self startLoader];
         self.tableSelect.tag = 2;
@@ -583,7 +583,7 @@
             dispatch_async(dispatch_get_main_queue(), ^(){
             
                 if(!dataLoader.isCorrectRezult) {
-                    NSLog(@"Error download sybSpecie");
+                    NSLog(@"Error download subspecies");
                     [self endLoader];
                 } else {
                     [self.tableSelect reloadData];
