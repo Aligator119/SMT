@@ -4,7 +4,7 @@
 #import "Location.h"
 #import "Species.h"
 
-@interface SettingsViewController : GAITrackedViewController <LocationListViewControllerDelegate, SpeciesViewControllerDelegate>
+@interface SettingsViewController : GAITrackedViewController <LocationListViewControllerDelegate, SpeciesViewControllerDelegate, UITextFieldDelegate>
 
 @property (nonatomic, copy) NSString * screenName;
 

@@ -10,6 +10,9 @@
                 <outlet property="locationButton" destination="slr-ua-jrM" id="G5x-Mv-KtU"/>
                 <outlet property="navigationBarHeightConstr" destination="tr9-lU-XlL" id="q9q-B9-O3T"/>
                 <outlet property="speciesButton" destination="9CO-rZ-gsm" id="iIE-fJ-3B7"/>
+                <outlet property="tfNewPassworld_1" destination="xMM-fx-zgY" id="sJw-bH-gKf"/>
+                <outlet property="tfNewPassworld_2" destination="fJd-YM-iay" id="CaZ-bo-7Qx"/>
+                <outlet property="tfOldPassword" destination="daY-9v-nYl" id="6X7-QP-cXR"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -117,6 +120,9 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="c5p-9K-fOQ"/>
+                    </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xMM-fx-zgY">
                     <rect key="frame" x="0.0" y="319" width="320" height="49"/>
@@ -127,6 +133,9 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="Bv3-lz-qg8"/>
+                    </connections>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fJd-YM-iay">
                     <rect key="frame" x="0.0" y="370" width="320" height="49"/>
@@ -137,6 +146,9 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="e2v-2f-lxW"/>
+                    </connections>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MRU-pb-WJX">
                     <rect key="frame" x="0.0" y="520" width="320" height="48"/>

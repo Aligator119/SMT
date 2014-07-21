@@ -128,6 +128,21 @@
     }
 }
 
+
+- (void)changeUserPassworld:(NSString *)passworld
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@user/me",strUrl];
+    
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[passworld, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"password", @"app_id", @"app_key"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    
+    NSLog(@"%@", error);
+    
+    [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequesPatch setHeaders:YES andTypeRequest:ApplicationServiceRequestCreateUser];
+}
+
+
 -(void) sendInvitationEmailWithEmail: (NSString*) _email andName: (NSString*) _name
 {
     NSString * email = [self convertString:_email];

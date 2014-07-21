@@ -12,13 +12,18 @@
 
 #define DEFAULT_LOCATION @"default_location"
 #define DEFAULT_SPECIES @"default_species"
+#define USER_DATA @"userdata"
 
 @interface SettingsViewController ()
 {
     NSUserDefaults *settings;
     AppDelegate *appDelegate;
+    DataLoader * dataLoader;
 }
 
+@property (strong, nonatomic) IBOutlet UITextField *tfOldPassword;
+@property (strong, nonatomic) IBOutlet UITextField *tfNewPassworld_1;
+@property (strong, nonatomic) IBOutlet UITextField *tfNewPassworld_2;
 @property (strong, nonatomic) Location *selectedLocation;
 @property (strong, nonatomic) Species *selectedSpecies;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * navigationBarHeightConstr;
@@ -49,6 +54,8 @@
     [self setupButtonsTitles];
     
     self.screenName = @"Setting screen";
+    
+    dataLoader = [DataLoader instance];
 }
 
 - (void) setupButtonsTitles{
@@ -91,7 +98,41 @@
 - (IBAction)saveSettingsButtonTap:(id)sender {
     [self saveLocation:self.selectedLocation];
     [self saveSpecies:self.selectedSpecies];
-    [self.navigationController popViewControllerAnimated:YES];
+    if (self.tfOldPassword.text.length && self.tfNewPassworld_1.text.length && self.tfNewPassworld_2.text.length) {
+        if ([self.tfOldPassword.text isEqualToString:appDelegate.user.userPassword]) {
+            if ([self.tfNewPassworld_1.text isEqualToString:self.tfNewPassworld_2.text]) {
+                [self startLoader];
+                dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                dispatch_async(newQueue, ^(){
+                
+                    [dataLoader changeUserPassworld:self.tfNewPassworld_1.text];
+                    dispatch_async(dispatch_get_main_queue(), ^(){
+                    
+                        if(!dataLoader.isCorrectRezult) {
+                            NSLog(@"Error change passworld");
+                            [self endLoader];
+                        } else {
+                            appDelegate.user.userPassword = self.tfNewPassworld_1.text;
+                            [settings removeObjectForKey:USER_DATA];
+                            [settings synchronize];
+                            NSData * data = [NSKeyedArchiver archivedDataWithRootObject:appDelegate.user];
+                            [settings setObject:data forKey:USER_DATA];
+                            [settings synchronize];
+                            [self endLoader];
+                            [self.navigationController popViewControllerAnimated:YES];
+                        }
+                    });
+                });
+
+            } else {
+                [[[UIAlertView alloc]initWithTitle:@"Warning" message:@"Incoming passwords are not the same" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+            }
+        } else {
+            [[[UIAlertView alloc]initWithTitle:@"Warning" message:@"Incoming old password are not the same" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+        }
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 - (Location*)defaultLocation
@@ -131,6 +172,11 @@
     [self.speciesButton setTitle:self.selectedSpecies.name forState:UIControlStateNormal];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return NO;
+}
 
 @end
 

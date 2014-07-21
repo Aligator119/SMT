@@ -74,6 +74,7 @@ enum ApplicationServiceRequest
                        password:(NSString*) userPassword
                       birthYear:(int) birthYear
                             sex:(NSString*) userMale;
+- (void)changeUserPassworld:(NSString *)passworld;
 - (void)getLocationsAssociatedWithUser;
 - (void) createLocationWithName : (NSString*) name Latitude: (double) latitude Longitude: (double) longitude locationType:(NSInteger) _type;
 - (void)deleteLocationWithID:(int) _locID;
