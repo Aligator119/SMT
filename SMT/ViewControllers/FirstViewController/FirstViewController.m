@@ -39,6 +39,7 @@
 - (NSString *) getImageName:(int)tag;
 - (void)photoClick:(id)notification;
 - (void)rightSwipeHandler:(id)sender;
+- (void)downloadSeasons;
 @end
 
 @implementation FirstViewController
@@ -144,6 +145,7 @@
         _current = fmVC.view;
         activeTag = 1;
     }
+    //[self downloadSeasons];
 
 }
 
@@ -480,5 +482,22 @@
     self.imgUser.image =avatar;
 }
 
+- (void)downloadSeasons
+{
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        NSArray * buf = [[NSArray alloc]initWithArray:[dataLoader getSeasonWithRegionID:1]];
+        
+        dispatch_async(dispatch_get_main_queue(),^(){
+            
+            if(!dataLoader.isCorrectRezult) {
+                NSLog(@"Error download seasons");
+            } else {
+                appDelegate.seasons = buf;
+            }
+            
+        });
+    });
+}
 
 @end

@@ -1,11 +1,3 @@
-//
-//  FlyoutMenuViewController.m
-//  SMT
-//
-//  Created by Mac on 4/29/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import "FlyoutMenuViewController.h"
 #import "AppDelegate.h"
 #import "MapViewController.h"
@@ -38,6 +30,13 @@
 #define OpusCommentCellStandartFont [UIFont fontWithName:@"HelveticaNeue" size:15.f]
 # define CGFLOAT_MAX FLT_MAX
 
+#define HEIGTH_SEASONS_TABLE 125
+
+#define NEW_TIPS @"new tips"
+
+#define minHeaderHeight 0
+#define maxHeaderHeight 125
+
 @interface FlyoutMenuViewController ()
 {
     DataLoader * dataLoader;
@@ -62,6 +61,7 @@
     NSDateFormatter * format1;
     NSDateFormatter * format2;
 }
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *seasonSectioHiegth;
 @property (strong, nonatomic) IBOutlet UIView *forTabBar;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *topBarHiegthConstrainsSubView;
 @property (strong, nonatomic) IBOutlet UITableView *tableSelect;
@@ -104,6 +104,8 @@
 - (void)getImageWithUrl;
 - (void)downloadOutfitter;
 
+- (void)actDisplayCreateTIPS;
+
 - (IBAction)actCloseSubView:(id)sender;
 - (void)cashedImageFromCell:(NSNotification *)info;
 
@@ -137,6 +139,7 @@
     [self.colectionView registerNib:[UINib nibWithNibName:@"CreateTipsCell" bundle:nil] forCellWithReuseIdentifier:@"CreateTipsCell"];
     [self.colectionView registerNib:[UINib nibWithNibName:@"ImageShow" bundle:nil] forCellWithReuseIdentifier:@"ImageShow"];
     [self.colectionView registerNib:[UINib nibWithNibName:@"OutfitterCell" bundle:nil] forCellWithReuseIdentifier:@"OutfitterCell"];
+    [self.colectionView registerNib:[UINib nibWithNibName:@"AddTips" bundle:nil] forCellWithReuseIdentifier:@"AddTips"];
     
     [self.table registerNib:[UINib nibWithNibName:@"CellForFirstView" bundle:nil] forCellWithReuseIdentifier:@"CellForFirstView"];
     UINib *cellNib = [UINib nibWithNibName:@"SpeciesCell" bundle:[NSBundle mainBundle]];
@@ -305,12 +308,18 @@
             case 4:
             {
                 if ([[tipsList objectAtIndex:indexPath.row] isKindOfClass:[NSString class]]) {
-                    cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CreateTipsCell" forIndexPath:indexPath];
-                    [((CreateTipsCell *)cell).btnSelectSpecie addTarget:self action:@selector(actSelectSpecie) forControlEvents:UIControlEventTouchUpInside];
-                    [((CreateTipsCell *)cell).btnSelectSubSpecie addTarget:self action:@selector(actSelectSubSpecie) forControlEvents:UIControlEventTouchUpInside];
-                    [((CreateTipsCell *)cell).btnCreateTIPS addTarget:self action:@selector(actCreateTIPS) forControlEvents:UIControlEventTouchUpInside];
-                    [((CreateTipsCell *)cell).tfText setDelegate:self];
-                    index = indexPath;
+                    NSString * str = [tipsList objectAtIndex:indexPath.row];
+                    if ([str isEqualToString:NEW_TIPS])  {
+                       cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AddTips" forIndexPath:indexPath];
+                        [((AddTips *)cell).btnAddTips addTarget:self action:@selector(actDisplayCreateTIPS) forControlEvents:UIControlEventTouchUpInside];
+                    } else {
+                        cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CreateTipsCell" forIndexPath:indexPath];
+                        [((CreateTipsCell *)cell).btnSelectSpecie addTarget:self action:@selector(actSelectSpecie) forControlEvents:UIControlEventTouchUpInside];
+                        [((CreateTipsCell *)cell).btnSelectSubSpecie addTarget:self action:@selector(actSelectSubSpecie) forControlEvents:UIControlEventTouchUpInside];
+                        [((CreateTipsCell *)cell).btnCreateTIPS addTarget:self action:@selector(actCreateTIPS) forControlEvents:UIControlEventTouchUpInside];
+                        [((CreateTipsCell *)cell).tfText setDelegate:self];
+                    }
+                        index = indexPath;
                 } else {
                     cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"TipsCell" forIndexPath:indexPath];
                     //add data to bottom colectionView
@@ -364,10 +373,15 @@
             size = CGSizeMake(self.colectionView.frame.size.width-10, 100);
         } else if (!selectedBtn4) {
              if ([[tipsList objectAtIndex:indexPath.row] isKindOfClass:[NSString class]]) {
-                 size = CGSizeMake(self.colectionView.frame.size.width-10, HEIGTH_CREATE_TIPS_CELL);
+                 NSString * str = [tipsList objectAtIndex:indexPath.row];
+                 if ([str isEqualToString:NEW_TIPS]) {
+                     size = CGSizeMake(self.colectionView.frame.size.width-10,40);
+                 } else {
+                     size = CGSizeMake(self.colectionView.frame.size.width-10, HEIGTH_CREATE_TIPS_CELL);
+                 }
              } else {
-                 TIPS * tip = [tipsList objectAtIndex:indexPath.row];
-                 size = CGSizeMake(self.colectionView.frame.size.width-10, HEIGTH_TIPS_CELL + [self getHeigthText:tip.tip andLabelWidth:self.colectionView.frame.size.width-50]);
+                TIPS * tip = [tipsList objectAtIndex:indexPath.row];
+                size = CGSizeMake(self.colectionView.frame.size.width-10, HEIGTH_TIPS_CELL + [self getHeigthText:tip.tip andLabelWidth:self.colectionView.frame.size.width-50]);
              }
         }
     } else {
@@ -380,6 +394,11 @@
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
     if (collectionView.tag == COLECTION_DATA) {
         // action for bottom colectionView
+        if (!selectedBtn1) {
+            Photo * photo = [photoList objectAtIndex:indexPath.row];
+            FullImageViewController * cVC = [[FullImageViewController alloc]initWithNibName:@"FullImageViewController" bundle:nil andImage:photo];
+            [self.navigationController pushViewController:cVC animated:YES];
+        }
     }
     
     if (collectionView.tag == COLECTION_SHOW) {
@@ -390,6 +409,27 @@
 }
 
 
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    CGFloat position = scrollView.contentOffset.y;
+    
+    if (position > 0) {
+        if (self.heigthShowColectionViewConstraint.constant > minHeaderHeight) {
+            self.heigthShowColectionViewConstraint.constant = MAX(self.heigthShowColectionViewConstraint.constant - ABS(position), minHeaderHeight);
+            scrollView.contentOffset = CGPointZero;
+        }
+    } else {
+        if (self.heigthShowColectionViewConstraint.constant < maxHeaderHeight) {
+            self.heigthShowColectionViewConstraint.constant = MIN(self.heigthShowColectionViewConstraint.constant + ABS(position), maxHeaderHeight);
+            scrollView.contentOffset = CGPointZero;
+        }
+    }
+}
+
+
+
 - (void)actHome:(id)sender {
     [self reverseBackroundImageWithNumber:1];
     [self endLoader];
@@ -398,6 +438,7 @@
 - (void)actLookSee:(id)sender {
     //[self reverseBackroundImageWithNumber:2];
     //[self endLoader];
+    [self.navigationController pushViewController:[CommentViewController new] animated:YES];
 }
 
 - (void)actVideo:(id)sender {
@@ -705,7 +746,7 @@
 - (void)downloadTIPS
 {
     [self startLoader];
-    tipsList = [[NSMutableArray alloc]initWithObjects:@"new tips", nil];
+    tipsList = [[NSMutableArray alloc]initWithObjects:NEW_TIPS, nil];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
         NSArray * array = [dataLoader getTips] ;
@@ -716,7 +757,7 @@
                 NSLog(@"Error download sybSpecie");
                 [self endLoader];
             } else {
-                tipsList = [[NSMutableArray alloc]initWithObjects:@"new tips", nil];
+                tipsList = [[NSMutableArray alloc]initWithObjects:NEW_TIPS, nil];
                 [tipsList addObjectsFromArray:array];
                 [self.colectionView reloadData];
                 [self endLoader];
@@ -826,6 +867,17 @@
     }
     return f;
 }
+
+
+- (void)actDisplayCreateTIPS
+{
+    [tipsList removeObject:NEW_TIPS];
+    NSMutableArray * buf = [[NSMutableArray alloc]initWithObjects:@"created", nil];
+    [buf addObjectsFromArray:tipsList];
+    tipsList = buf;
+    [self.colectionView reloadData];
+}
+
 
 - (void) dealloc
 {

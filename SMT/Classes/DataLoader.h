@@ -5,6 +5,7 @@
 #import "AFNetworking.h"
 #import "Photo.h"
 #import "TIPS.h"
+#import "Season.h"
 
 @class AppDelegate;
 
@@ -42,6 +43,7 @@ enum ApplicationServiceRequest
     ApplicationServiceRequestShareLocationWithBuddy = 29,
     ApplicationServiceRequestUnshareLocation = 30,
     ApplicationServiceRequestTips = 31,
+    ApplicationServiceRequestComment = 32,
 };
 
 @interface DataLoader : NSObject <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
@@ -124,16 +126,19 @@ enum ApplicationServiceRequest
 - (void)updatePhotoWithId:(int) photo_id andActivity:(int)activity_id andSighting:(int)sighting_id andType:(int)type_id andDescription:(NSString *)description andCaption:(NSString *)caption;
 - (void)deletePhotoWithId:(int)photo_id;
 - (NSString *)setUserAvatar:(UIImage *)avatar;
+
 //------- Log Detail -----------------------------------------------
 - (void) getLogDetail;
 - (void) updateLogDetailWithId:(NSString *) logId andSighting:(NSDictionary *)sighting;
 - (void) deleteLogDetailWithId:(int)logId;
+
 //------- Shared Location -----------------------------------------------
 - (NSArray *) getBuddySharedLocationWithID:(NSString *)loc_id;
 - (NSDictionary *) sharedLocation:(int)location_id andWithBuddy:(int)buddy_id;
 - (NSDictionary *) unsharedLocation:(int)location_id andWithBuddy:(int)buddy_id;
 - (void) getPublicLocationWithID:(NSString *)locID name:(NSString *)name page:(int)page limit:(int)limit state_fips:(int)state county_fips:(int)country;
 - (NSArray *) getPublicLocationWithName:(NSString *)name;
+
 //--------TIPS----------------------------------------------------------------------
 - (NSArray *)getTips;
 - (NSArray *)getTipsWithTipsId:(int)tipsID;
@@ -141,4 +146,12 @@ enum ApplicationServiceRequest
 - (void)updateTipsWithTipsID:(int)tipID specieID:(int)specieID tip:(NSString *)tipText subSpecieID:(int)subSpecieID andUserID:(int)userID;
 - (void)deleteTipsWithID:(int)tipsID;
 
+//------Seasons-------------------------------------------------------------------------------
+- (NSArray *) getSeasonWithRegionID:(int)region_id;
+- (Season *) getSeasonWithID:(int)season_id;
+
+//----Comments-------------------------------------------------------------------------
+- (NSArray *)getCommentsWithPhotoID:(int)photo_id;
+- (void) createComment:(NSString *)text withPhoto:(int)photo_id;
+- (void) deleteCommentWithID:(int)comment_id;
 @end
