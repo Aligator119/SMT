@@ -4,7 +4,7 @@
 #import "LogAnActivityViewController.h"
 #import "DataLoader.h"
 #import "NewLog1ViewController.h"
-#import "FlyoutMenuCell.h"
+//#import "FlyoutMenuCell.h"
 #import "UIViewController+LoaderCategory.h"
 #import "ImageShow.h"
 #import "CameraViewController.h"
@@ -21,7 +21,7 @@
 #define USER_DATA @"userdata"
 #define DOWNLOAD_IMAGE_SUCCES @"image is download"
 
-#define HEIGTH_IMAGE_CELL 180
+#define HEIGTH_IMAGE_CELL 200
 #define HEIGTH_CREATE_TIPS_CELL  200
 #define HEIGTH_TIPS_CELL  35
 
@@ -60,6 +60,7 @@
     NSArray * searchResults;
     NSDateFormatter * format1;
     NSDateFormatter * format2;
+    UIRefreshControl *refreshControl;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *seasonSectioHiegth;
 @property (strong, nonatomic) IBOutlet UIView *forTabBar;
@@ -114,6 +115,9 @@
 - (IBAction)actSearch:(id)sender;
 - (UIImage *)createImageWithColor:(UIColor *)color;
 - (float) getHeigthText:(NSString *)str andLabelWidth:(float) lbWidth;
+
+- (void) openComments:(UIButton *)sender;
+- (void) refershControlAction;
 @end
 
 @implementation FlyoutMenuViewController
@@ -148,6 +152,12 @@
     [self.table setPagingEnabled:YES];
     self.table.tag = COLECTION_SHOW;
     self.colectionView.tag = COLECTION_DATA;
+    
+    refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = [UIColor grayColor];
+    [refreshControl addTarget:self action:@selector(refershControlAction) forControlEvents:UIControlEventValueChanged];
+    [self.colectionView addSubview:refreshControl];
+    //self.colectionView.alwaysBounceVertical = YES;
     
     dataLoader = [DataLoader instance];
     appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -285,7 +295,8 @@
                     Photo * photo = [photoList objectAtIndex:indexPath.row];
                     if ([[cashedPhoto allKeys] containsObject:photo.photoID]) {
                         [((ImageShow *)cell) stopLoaderInCell];
-                        [((ImageShow *)cell) setPhotoDescriptions:photo.description andUserName:photo.userName andImage:[cashedPhoto objectForKey:photo.photoID]];
+                        [((ImageShow *)cell) setPhotoDescriptions:photo.description andUserName:photo.userName andImage:[cashedPhoto objectForKey:photo.photoID] photoID:photo.photoID];
+                        [((ImageShow *)cell).btnComment addTarget:self action:@selector(openComments:) forControlEvents:UIControlEventTouchUpInside];
                     } else {
                         [((ImageShow *)cell) startLaderInCell];
                     }
@@ -746,7 +757,6 @@
 - (void)downloadTIPS
 {
     [self startLoader];
-    tipsList = [[NSMutableArray alloc]initWithObjects:NEW_TIPS, nil];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
         NSArray * array = [dataLoader getTips] ;
@@ -757,9 +767,11 @@
                 NSLog(@"Error download sybSpecie");
                 [self endLoader];
             } else {
-                tipsList = [[NSMutableArray alloc]initWithObjects:NEW_TIPS, nil];
-                [tipsList addObjectsFromArray:array];
-                [self.colectionView reloadData];
+                if (tipsList.count != array.count) {
+                    tipsList = [[NSMutableArray alloc]initWithObjects:NEW_TIPS, nil];
+                    [tipsList addObjectsFromArray:array];
+                    [self.colectionView reloadData];
+                }
                 [self endLoader];
             }
         });
@@ -826,7 +838,9 @@
                 NSLog(@"Error download outfitter");
                 [self endLoader];
             } else {
-                [self.colectionView reloadData];
+                if (selectedBtn3) {
+                    [self.colectionView reloadData];
+                }
                 [self endLoader];
             }
         });
@@ -878,6 +892,31 @@
     [self.colectionView reloadData];
 }
 
+- (void) openComments:(UIButton *)sender
+{
+    NSString * str_id = [NSString stringWithFormat:@"%d",sender.tag];
+    CommentViewController * cVC = [[CommentViewController alloc]initWithNibName:@"CommentViewController" bundle:nil forImageID:str_id];
+    [self.navigationController pushViewController:cVC animated:YES];
+}
+
+- (void) refershControlAction
+{
+    if (activeSegment == 1 || activeSegment == 4) {
+        switch (activeSegment) {
+            case 1:
+            {
+                [self downloadPhotos];
+            }
+                break;
+            case 4:
+            {
+                [self downloadTIPS];
+            }
+                break;
+            }
+    }
+    [refreshControl endRefreshing];
+}
 
 - (void) dealloc
 {

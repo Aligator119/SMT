@@ -2,12 +2,14 @@
 #import "CommentCell.h"
 #import "CreateCommentCell.h"
 #import "DataLoader.h"
+#import "UIViewController+LoaderCategory.h"
 
 #define CREATE_COMMENT @"create"
 
 @interface CommentViewController ()
 {
     DataLoader * dataLoader;
+    NSString * photoID;
 }
 @property (strong, nonatomic) NSArray * commentList;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstr;
@@ -20,11 +22,12 @@
 
 @implementation CommentViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forImageID:(NSString *)photo_id
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        photoID = photo_id;
     }
     return self;
 }
@@ -36,12 +39,13 @@
         self.topViewHeightConstr.constant -= 20;
     }
     // Do any additional setup after loading the view from its nib.
+    [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
     [self.collectionView registerNib:[UINib nibWithNibName:@"CommentCell" bundle:nil] forCellWithReuseIdentifier:@"CommentCell"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"CreateCommentCell" bundle:nil] forCellWithReuseIdentifier:@"CreateCommentCell"];
     dataLoader = [DataLoader instance];
     //self.commentList = [[NSArray alloc]initWithObjects:@"com 1", @"com 2", @"com 3", @"com 4", @"com 5", @"com 6", @"com 7", @"com 8", @"com 9", @"com 10", @"com 11", @"com 12", CREATE_COMMENT, nil];
-    //self.commentList = [[NSArray alloc]initWithArray:[dataLoader getCommentsWithPhotoID:466]];
-    [dataLoader createComment:@"first comment" withPhoto:466];
+    //self.commentList = [[NSArray alloc]initWithArray:[dataLoader getCommentsWithPhotoID:photoID]];
+    //[dataLoader createComment:@"first comment" withPhoto:photoID];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
