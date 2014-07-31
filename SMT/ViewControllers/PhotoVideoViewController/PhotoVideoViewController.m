@@ -1,11 +1,3 @@
-//
-//  PhotoVideoViewController.m
-//  SMT
-//
-//  Created by Mac on 5/6/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import "PhotoVideoViewController.h"
 #import "LogDetail2ViewController.h"
 #import "DataLoader.h"

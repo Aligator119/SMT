@@ -1,11 +1,3 @@
-//
-//  MapViewController.m
-//  SMT
-//
-//  Created by Mac on 4/30/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import "MapViewController.h"
 #import "LocationSearchViewController.h"
 #import <CoreLocation/CoreLocation.h>
@@ -16,6 +8,7 @@
 #import "Location.h"
 #import "UIViewController+LoaderCategory.h"
 #import "BaseLocationViewController.h"
+
 
 @interface MapViewController()
 {
@@ -32,6 +25,7 @@
 
 @property (nonatomic, weak) IBOutlet UIView * mapContainerView;
 
+@property (nonatomic, strong) PopUpMenu * popUpVC;
 @property (nonatomic, strong) UIImageView * compassView;
 @property (nonatomic, strong) CLGeocoder *geocoder;
 
@@ -40,6 +34,7 @@
 
 
 @implementation MapViewController
+
 
 - (void)viewDidLoad
 {
@@ -58,8 +53,9 @@
     [self showMap];
     [self createLocationManager];
     self.screenName = @"Map screen";
-    
+   
 }
+
 
 - (void) viewDidLayoutSubviews{
     mapView_.frame = self.mapContainerView.bounds;
@@ -72,6 +68,12 @@
     } else if (self.mapType == typeHunting){
         listLocations = [NSArray arrayWithArray:appDel.listHuntLocations];
     }*/
+    if (self.isPresentView == 2) {
+        self.popUpVC = [[PopUpMenu alloc] initWithNibName:@"PopUpMenu" bundle:nil];
+        self.popUpVC.delegate = self;
+        [self.view addSubview:self.popUpVC.view];
+    }
+    
     listLocations = [NSArray arrayWithArray:appDel.listLocations];
     [self setAllLocationMarkers];
 }
@@ -79,7 +81,7 @@
 - (void) showMap{
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
                                                             longitude:151.20
-                                                                 zoom:6];
+                                                                 zoom:14];
     mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     
     [mapView_ addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context:NULL];
@@ -141,6 +143,15 @@
 
 - (IBAction)openMapTypeMenu:(id)sender{
     
+//    CLGeocoder * geocoder = [[CLGeocoder alloc] init];
+//    [geocoder geocodeAddressString:@"1 Infinite Loop"
+//                 completionHandler:^(NSArray* placemarks, NSError* error){
+//                     for (CLPlacemark* aPlacemark in placemarks)
+//                     {
+//                         // Process the placemark.
+//                         NSLog(@"%@",aPlacemark.addressDictionary);
+//                     }
+//                 }];
 }
 
 - (IBAction)goToCurrentLocation:(id)sender{
@@ -310,8 +321,15 @@
 }
 
 
+- (void)searcheLatitude:(float)latitude andLongitude:(float)longitude
+{
+    [self.popUpVC.view removeFromSuperview];
+    CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(latitude, longitude);
+    [mapView_ animateToLocation:coord];
+}
 
 
 
-
+- (IBAction)actCreateLocationWithAddres:(id)sender {
+}
 @end

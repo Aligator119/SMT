@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -25,6 +25,7 @@
                 <outlet property="pageController" destination="SWC-e9-rUe" id="enS-b0-Bvg"/>
                 <outlet property="searchBar" destination="nxf-Ru-KV7" id="DxI-p1-8Fz"/>
                 <outlet property="searchDisplayController" destination="VmT-pL-cRh" id="dYz-sT-KSO"/>
+                <outlet property="seasonSectioHiegth" destination="8Hf-pv-Wyj" id="5CX-OB-jPZ"/>
                 <outlet property="subView" destination="fwl-vO-1IC" id="sSZ-Nk-ccU"/>
                 <outlet property="tabBar" destination="Q6z-WW-d2G" id="RAq-F8-i6E"/>
                 <outlet property="tabBarWidth" destination="10N-Lo-agy" id="Xai-JA-frr"/>

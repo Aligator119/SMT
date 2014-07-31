@@ -4,10 +4,9 @@
 #import "FlyoutMenuViewController.h"
 #import "MapViewController.h"
 #import "CustomTabBar.h"
-#import "CellWithTwoButton.h"
 
 
-@interface LocationListViewController : GAITrackedViewController <UITableViewDataSource, UITableViewDelegate>
+@interface LocationListViewController : GAITrackedViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
 {
     BOOL isPresent;
 }

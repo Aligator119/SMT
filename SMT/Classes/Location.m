@@ -82,6 +82,7 @@
                adress: [_info objectForKey:LOCATION_ADRESS]
                 userId:[[_info objectForKey:LOCATION_USER_ID] intValue]];
     typeLocation = [[_info objectForKey:LOCATION_TYPE] intValue];
+    //typeLocation = [[_info objectForKey:LOCATION_TYPE] intValue] ? [[_info objectForKey:LOCATION_TYPE] intValue] : 1 ;
 }
 
 - (NSString*)getLocationNames{

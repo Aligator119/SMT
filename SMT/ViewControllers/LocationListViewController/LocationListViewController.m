@@ -1,11 +1,3 @@
-//
-//  LocationListViewController.m
-//  SMT
-//
-//  Created by Admin on 5/6/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import "LocationListViewController.h"
 #import "Location.h"
 #import "LocationListCell.h"
@@ -13,6 +5,7 @@
 #import "BaseLocationViewController.h"
 #import "DataLoader.h"
 #import "UIViewController+LoaderCategory.h"
+#import "LocationSearchViewController.h"
 
 @interface LocationListViewController (){
     AppDelegate * appDel;
@@ -23,12 +16,17 @@
 }
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *tabBarWidth;
 
+@property (weak, nonatomic) IBOutlet UIView *fly_up;
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, weak) IBOutlet UISegmentedControl *locationChangeSegmentControl;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *segment;
-- (void) actAddLocationWithMap:(id)sender;
-- (void) actAddLocationWithAddres:(id)sender;
+- (IBAction) actNewLocation:(id)sender;
+- (IBAction) actAddLocationWithMap:(id)sender;
+- (IBAction) actAddLocationWithAddres:(id)sender;
+- (IBAction) actAddLocationWithLatLong:(id)sender;
+
+- (void)clickNotPopUpMenu;
 @end
 
 @implementation LocationListViewController
@@ -36,9 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToLocationDetails:) name:@"LocationListInfoButtonPressed" object:nil];
     [self.tableView registerNib:[UINib nibWithNibName:@"LocationListCell" bundle:nil] forCellReuseIdentifier:@"LocationListCell"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"CellWithTwoButton" bundle:nil] forCellReuseIdentifier:@"CellWithTwoButton"];
     
     appDel = (AppDelegate*) [UIApplication sharedApplication].delegate;
     
@@ -62,7 +58,9 @@
     dataLoader = [DataLoader instance];
     self.screenName = @"Location list screen";
     [self AddActivityIndicator:[UIColor grayColor] forView:self.tableView];
-    
+    UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickNotPopUpMenu)];
+    recognizer.delegate =self;
+    [self.fly_up addGestureRecognizer:recognizer];
 }
 
 - (void) viewWillAppear:(BOOL)animated{
@@ -71,8 +69,7 @@
     switch (self.locationChangeSegmentControl.selectedSegmentIndex) {
         case 0:
         {
-            NSMutableArray * buf =[[NSMutableArray alloc]initWithArray:@[[NSString stringWithFormat:@"add"]]];
-            [buf addObjectsFromArray:appDel.listFishLocations];
+            NSMutableArray * buf =[[NSMutableArray alloc]initWithArray:appDel.listFishLocations];
             [buf addObjectsFromArray:appDel.listHuntLocations];
             listLocations = [NSArray arrayWithArray:buf];
             [self.tableView reloadData];
@@ -108,12 +105,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
--(void) moveToLocationDetails: (NSNotification*) notification{
-    Location * loc = (Location*) [notification object];
-    BaseLocationViewController *updateLocationVC = [BaseLocationViewController new];
-    updateLocationVC.location = loc;
-    [self.navigationController pushViewController:updateLocationVC animated:YES];
-}
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
@@ -122,22 +113,22 @@
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if ([[listLocations objectAtIndex:indexPath.row] isKindOfClass:[NSString class]]) {
-        CellWithTwoButton *cell1 = [tableView dequeueReusableCellWithIdentifier:@"CellWithTwoButton"];
-        [cell1.btnMap addTarget:self action:@selector(actAddLocationWithMap:) forControlEvents:UIControlEventTouchUpInside];
-        [cell1.btnAddres addTarget:self action:@selector(actAddLocationWithAddres:) forControlEvents:UIControlEventTouchUpInside];
-        return cell1;
-    } else {
-        LocationListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"LocationListCell" forIndexPath:indexPath];
-        [cell processCellInfo:[listLocations objectAtIndex:indexPath.row]];
-        return cell;
-    }
+    LocationListCell * cell = [tableView dequeueReusableCellWithIdentifier:@"LocationListCell" forIndexPath:indexPath];
+    [cell processCellInfo:[listLocations objectAtIndex:indexPath.row]];
+    return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    // go to BaseLocationViewController
+    if (![[listLocations objectAtIndex:indexPath.row] isKindOfClass:[NSString class]]) {
+        Location * loc = (Location*) [listLocations objectAtIndex:indexPath.row];
+        BaseLocationViewController *updateLocationVC = [BaseLocationViewController new];
+        updateLocationVC.location = loc;
+        [self.navigationController pushViewController:updateLocationVC animated:YES];
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -146,30 +137,33 @@
         return;
     }
     else if(self.tableView.contentOffset.y >= (self.tableView.contentSize.height - self.tableView.bounds.size.height)) {
-        if (isUpdate) {
-            return;
-        } else {
-            [self startLoader];
-            isUpdate = YES;
-            limit += 10;
-            NSLog(@"bottom!!!! is update");
-            dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-            dispatch_async(newQueue, ^(){
-                [dataLoader getPublicLocationWithID:nil name:nil page:0 limit:limit state_fips:0 county_fips:0];
+        if (self.segment.selectedSegmentIndex == 2) {
+            
+            if (isUpdate) {
+                return;
+            } else {
+                [self startLoader];
+                isUpdate = YES;
+                limit += 10;
+                NSLog(@"bottom!!!! is update");
+                dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+                dispatch_async(newQueue, ^(){
+                    [dataLoader getPublicLocationWithID:nil name:nil page:0 limit:limit state_fips:0 county_fips:0];
                 
-                dispatch_async(dispatch_get_main_queue(), ^(){
+                    dispatch_async(dispatch_get_main_queue(), ^(){
                     
-                    if(!dataLoader.isCorrectRezult) {
-                        NSLog(@"Error download Public location");
-                    } else {
-                        isUpdate = NO;
-                        listLocations = appDel.publicLocations;
-                        [self.tableView reloadData];
-                    }
-                    [self endLoader];
+                        if(!dataLoader.isCorrectRezult) {
+                            NSLog(@"Error download Public location");
+                        } else {
+                            isUpdate = NO;
+                            listLocations = appDel.publicLocations;
+                            [self.tableView reloadData];
+                        }
+                        [self endLoader];
+                    });
                 });
-            });
 
+            }
         }
     }
 }
@@ -180,9 +174,8 @@
     switch (selected) {
         case 0:
         {
-            NSMutableArray * buf =[[NSMutableArray alloc]initWithArray:@[[NSString stringWithFormat:@"add"]]];
+            NSMutableArray * buf =[[NSMutableArray alloc]initWithArray:appDel.listFishLocations];
             [buf addObjectsFromArray:appDel.listHuntLocations];
-            [buf addObjectsFromArray:appDel.listFishLocations];
             listLocations = [NSArray arrayWithArray:buf];
             [self.tableView reloadData];
         }
@@ -226,15 +219,37 @@
 }
 
 
+- (IBAction) actNewLocation:(id)sender
+{
+    self.fly_up.hidden = NO;
+}
+
 - (void) actAddLocationWithMap:(id)sender
 {
+    self.fly_up.hidden = YES;
     MapViewController * map = [[MapViewController alloc]initWithNibName:@"MapViewController" bundle:nil];
     [self.navigationController pushViewController:map animated:YES];
 }
 
 - (void) actAddLocationWithAddres:(id)sender
 {
-    [[[UIAlertView alloc]initWithTitle:@"Fatal Error" message:@"No create controller" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil] show];
+    self.fly_up.hidden = YES;
+    LocationSearchViewController * locationSearchVC = [LocationSearchViewController new];
+    locationSearchVC.parent = self;
+    [self.navigationController pushViewController:locationSearchVC animated:YES];
+}
+
+- (IBAction) actAddLocationWithLatLong:(id)sender
+{
+    self.fly_up.hidden = YES;
+    MapViewController * map = [[MapViewController alloc]initWithNibName:@"MapViewController" bundle:nil];
+    map.isPresentView = 2;
+    [self.navigationController pushViewController:map animated:YES];
+}
+
+- (void)clickNotPopUpMenu
+{
+    self.fly_up.hidden = YES;
 }
 
 @end

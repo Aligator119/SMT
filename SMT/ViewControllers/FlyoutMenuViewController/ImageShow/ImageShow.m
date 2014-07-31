@@ -35,12 +35,13 @@
 
 - (void)setImageWithURL:(NSURL *) url andImageID:(NSString *)photoID descriptions:(NSString *)str andUserName:(NSString *)name
 {
+    self.btnComment.tag = [photoID intValue];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
         UIImage * image = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
         
         dispatch_async(dispatch_get_main_queue(), ^(){
-            [self setPhotoDescriptions:str andUserName:name andImage:image];
+            [self setPhotoDescriptions:str andUserName:name andImage:image photoID:photoID];
             //self.img.image = image;
             [[NSNotificationCenter defaultCenter] postNotificationName:DOWNLOAD_IMAGE_SUCCES object:self userInfo:@{photoID: image}];
         });
@@ -48,32 +49,29 @@
 
 }
 
-- (void)setPhotoDescriptions:(NSString *)str andUserName:(NSString *)name andImage:(UIImage *)image
+- (void)setPhotoDescriptions:(NSString *)str andUserName:(NSString *)name andImage:(UIImage *)image photoID:(NSString *)photo_id
 {
     self.lbName.text = name;
     self.img.image = image;
-    if (!str) {
-        //self.heigthImage.constant = 0.0;
-        //[self updateConstraints];
-    } else {
-        //self.heigthImage.constant = 17.0;
-        //[self updateConstraints];
+    self.btnComment.tag = [photo_id intValue];
+    if (str) {
         self.lbDescriptions.text = str;
+    } else {
+        self.lbDescriptions.text = @"";
     }
-}
-
-
-- (void)setImage:(UIImage *)image
-{
-    self.img.contentMode = UIViewContentModeScaleToFill;
-    //self.heigthImage.constant = 0.0;
-    //[self updateConstraints];
-    self.img.image = image;
+    [self.btnComment.layer setMasksToBounds:YES];
+    self.btnComment.layer.borderWidth = 0.5f;
+    self.btnComment.layer.borderColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0].CGColor;
+    [self.btnComment setBackgroundColor:[UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1.0]];
 }
 
 
 - (void)startLaderInCell
 {
+    [self.btnComment.layer setMasksToBounds:YES];
+    self.btnComment.layer.borderWidth = 0.5f;
+    self.btnComment.layer.borderColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0].CGColor;
+    [self.btnComment setBackgroundColor:[UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1.0]];
     UIActivityIndicatorView * a = (UIActivityIndicatorView* )[self.contentView viewWithTag:ActiveTag];
     [a startAnimating];
 }

@@ -962,6 +962,75 @@
 }
 
 
+#pragma mark - Seasons
+- (NSArray *) getSeasonWithRegionID:(int)region_id
+{
+    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@season?&region_id=%d&app_id=%@&app_key=%@&last=-1",strUrl, region_id, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
+    NSDictionary *info = [NSDictionary new];
+    info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestTips];
+    NSMutableArray * array = [NSMutableArray new];
+    for(NSDictionary * dic in info){
+        
+        [array addObject:dic];
+    }
+    return array;
+}
+
+- (Season *) getSeasonWithID:(int)season_id
+{
+    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@season?&id=%d&app_id=%@&app_key=%@&last=-1",strUrl, season_id, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
+    NSDictionary *info = [NSDictionary new];
+    info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestTips];
+    Season * season = [Season new];
+    for(NSDictionary * dic in info){
+        
+        //[season addObject:dic];
+    }
+    return season;
+}
+
+
+#pragma mark - Comment
+- (NSArray *)getCommentsWithPhotoID:(int)photo_id
+{
+    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@photocomment?&photo_id=%d&app_id=%@&app_key=%@&last=-1",strUrl, photo_id, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
+    NSDictionary *info = [NSDictionary new];
+    info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestComment];
+    NSMutableArray * array = [NSMutableArray new];
+    @try {
+        for(NSDictionary * dic in info){
+            [array addObject:dic];
+        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"comments domt existing");
+    }
+    
+        return array;
+}
+
+- (void) createComment:(NSString *)text withPhoto:(int)photo_id
+{
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@photocomment",strUrl];
+    //NSLog(@"URL : %@",strUrlRequestAdress);
+    
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[@(photo_id), text, @(1), @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"photo_id", @"comment", @"status", @"app_id", @"app_key"]];
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dict options:NSJSONWritingPrettyPrinted error:&error];
+    
+    NSLog(@"%@", error);
+    
+    [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequestPost setHeaders:YES andTypeRequest:ApplicationServiceRequestComment];
+}
+
+- (void) deleteCommentWithID:(int)comment_id
+{
+   NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@photocomment/%d",strUrl, comment_id];
+    
+    [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestDelete setHeaders:YES andTypeRequest:ApplicationServiceRequestComment];
+}
+
+
 
 
 #pragma mark - Log Detail

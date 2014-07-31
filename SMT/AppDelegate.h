@@ -8,6 +8,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 #import "ConstantsClass.h"
 #import "CustomTabBar.h"
+#import "Season.h"
 
 
 @class UserInfo;
@@ -45,6 +46,9 @@ static NSString * const kGoogleAnaliticKey = @"UA-3665575-10";
 @property (assign,nonatomic) BOOL isApplicationInBackground;
 
 @property (strong, nonatomic) NSMutableArray * pred;
+
+@property (strong, nonatomic) Season * currenSeason;
+@property (strong, nonatomic) NSArray * seasons;
 
 //@property (strong, nonatomic) UserLocationInThisMoment * userLocation;
 //@property (strong, nonatomic) NSTimer * timerForUserPositionsUpdating;
