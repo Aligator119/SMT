@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -15,39 +15,48 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsS-Rj-Xt6">
-                        <rect key="frame" x="14" y="11" width="265" height="21"/>
+                        <rect key="frame" x="40" y="11" width="260" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJd-tw-WkV">
-                        <rect key="frame" x="287" y="11" width="22" height="22"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="93s-jt-bTk">
+                        <rect key="frame" x="5" y="7" width="30" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="22" id="2zI-Iy-NVO"/>
-                            <constraint firstAttribute="width" constant="22" id="koD-x9-B9u"/>
+                            <constraint firstAttribute="height" constant="30" id="FX9-Sh-GLt"/>
+                            <constraint firstAttribute="width" constant="30" id="K1M-h8-ydu"/>
                         </constraints>
-                        <state key="normal">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                        <connections>
-                            <action selector="infoButtonPressed:" destination="v3j-FB-XBC" eventType="touchUpInside" id="N8l-OF-Ugm"/>
-                        </connections>
-                    </button>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_righrt_BTN.png" translatesAutoresizingMaskIntoConstraints="NO" id="B5i-SG-8Ud">
+                        <rect key="frame" x="305" y="12" width="10" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="10" id="6o0-Jf-cMl"/>
+                            <constraint firstAttribute="height" constant="20" id="wEc-a1-07g"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="jJd-tw-WkV" secondAttribute="trailing" constant="11" id="FWD-uy-3bd"/>
-                    <constraint firstItem="rsS-Rj-Xt6" firstAttribute="leading" secondItem="R1I-Ze-mv3" secondAttribute="leading" constant="14" id="MP0-rU-xlx"/>
+                    <constraint firstItem="B5i-SG-8Ud" firstAttribute="top" secondItem="R1I-Ze-mv3" secondAttribute="top" constant="12" id="08A-UU-OI1"/>
+                    <constraint firstItem="93s-jt-bTk" firstAttribute="leading" secondItem="R1I-Ze-mv3" secondAttribute="leading" constant="5" id="DkH-EW-a1u"/>
                     <constraint firstItem="rsS-Rj-Xt6" firstAttribute="top" secondItem="R1I-Ze-mv3" secondAttribute="top" constant="11" id="SF4-aR-wqZ"/>
-                    <constraint firstItem="jJd-tw-WkV" firstAttribute="leading" secondItem="rsS-Rj-Xt6" secondAttribute="trailing" constant="8" id="byz-dw-u31"/>
-                    <constraint firstItem="jJd-tw-WkV" firstAttribute="top" secondItem="R1I-Ze-mv3" secondAttribute="top" constant="11" id="mQl-Zs-0cG"/>
+                    <constraint firstAttribute="trailing" secondItem="B5i-SG-8Ud" secondAttribute="trailing" constant="5" id="aaP-3b-go5"/>
+                    <constraint firstItem="rsS-Rj-Xt6" firstAttribute="leading" secondItem="93s-jt-bTk" secondAttribute="trailing" constant="5" id="bOX-1u-AmG"/>
                     <constraint firstAttribute="bottom" secondItem="rsS-Rj-Xt6" secondAttribute="bottom" constant="11" id="tF0-a7-yyD"/>
+                    <constraint firstItem="93s-jt-bTk" firstAttribute="top" secondItem="R1I-Ze-mv3" secondAttribute="top" constant="7" id="uOe-p6-RwI"/>
+                    <constraint firstItem="B5i-SG-8Ud" firstAttribute="leading" secondItem="rsS-Rj-Xt6" secondAttribute="trailing" constant="5" id="xs1-Q5-LRh"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imageWigth" destination="K1M-h8-ydu" id="9Pb-z7-nQW"/>
+                <outlet property="locationIcon" destination="93s-jt-bTk" id="tIJ-eA-Hmx"/>
                 <outlet property="locationNameLabel" destination="rsS-Rj-Xt6" id="TdP-ut-CDV"/>
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="arrow_righrt_BTN.png" width="20" height="20"/>
+    </resources>
 </document>

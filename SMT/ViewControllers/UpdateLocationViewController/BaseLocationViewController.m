@@ -1,11 +1,3 @@
-//
-//  HPUpdateLocationViewController.m
-//  HunterPredictor
-//
-//  Created by Admin on 1/27/14.
-//  Copyright (c) 2014 mobilesoft365. All rights reserved.
-//
-
 #import "BaseLocationViewController.h"
 #import "AppDelegate.h"
 #import "DataLoader.h"
@@ -18,8 +10,10 @@
     AppDelegate * appDel;
     DataLoader * loader;
     GMSMapView *mapView_;
-    
+    BOOL isFullMap;
+    CGRect bounds;
 }
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mapHeigth;
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * heightConstr;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * verticalConstr;
@@ -34,15 +28,18 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbType;
 @property (weak, nonatomic) IBOutlet UILabel *lbAdress;
 @property (weak, nonatomic) IBOutlet UILabel *lbCoordinate;
-@property (weak, nonatomic) IBOutlet UIImageView *image;
+@property (weak, nonatomic) IBOutlet UIButton *btnDone;
 
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
 
 @property (nonatomic, weak) IBOutlet UIView *mapContainerView;
 @property (nonatomic, weak) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) UITextField *activeTextField;
 - (IBAction)actShared:(id)sender;
+- (IBAction)actCloseFullMap:(id)sender;
 
+- (void) actChangeSizeMap:(UITapGestureRecognizer *)recognizer;
 @end
 
 @implementation BaseLocationViewController
@@ -90,7 +87,11 @@
     
     [self registerForKeyboardNotifications];
     
-    
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    bounds = self.mapContainerView.frame;
 }
 
 - (void) showMap{
@@ -105,7 +106,13 @@
     mapView_.delegate = self;
     mapView_.mapType = kGMSTypeHybrid;
     [self.mapContainerView addSubview:mapView_];
-    
+//---------- add action to  gesture recognizer in google map ------------------------------------------------------
+    UIGestureRecognizer * recognizer = [mapView_.gestureRecognizers firstObject];
+    [recognizer addTarget:self action:@selector(actChangeSizeMap:)];
+    recognizer.delegate = self;
+    [self.mapContainerView addGestureRecognizer:recognizer];
+    isFullMap = NO;
+//----------------------------------------------------------------------------------------------------------------
     CLLocationCoordinate2D coord = CLLocationCoordinate2DMake(self.location.locLatitude, self.location.locLongitude);
     GMSMarker * marker = [GMSMarker markerWithPosition:coord];
     marker.title = self.location.locName;
@@ -165,6 +172,19 @@
     [self.navigationController pushViewController:slvc animated:YES];
 }
 
+- (IBAction)actCloseFullMap:(id)sender {
+    if (isFullMap) {
+        self.mapHeigth.constant = 160;
+        [UIView animateWithDuration:0.5 animations:^{
+            [self.view layoutIfNeeded];
+        }];
+        self.saveButton.hidden = NO;
+        self.backButton.hidden = NO;
+        self.btnDone.hidden = YES;
+        isFullMap = !isFullMap;
+    }
+}
+
 #pragma mark Keabord methods
 
 -(void) dealloc{
@@ -204,6 +224,22 @@
 
 -(void) textFieldDidEndEditing:(UITextField *)textField{
     self.activeTextField = nil;
+}
+
+- (void) actChangeSizeMap:(UITapGestureRecognizer *)recognizer
+{
+    if (!isFullMap) {
+        if (recognizer.numberOfTouches == 1 && recognizer.state == UIGestureRecognizerStateBegan) {
+            self.mapHeigth.constant = self.view.frame.size.height - 64.0;
+            [UIView animateWithDuration:0.5 animations:^{
+                [self.view layoutIfNeeded];
+            }];
+            self.saveButton.hidden = YES;
+            self.backButton.hidden = YES;
+            self.btnDone.hidden = NO;
+            isFullMap = !isFullMap;
+        }
+    }
 }
 
 @end

@@ -30,7 +30,6 @@
 #define OpusCommentCellStandartFont [UIFont fontWithName:@"HelveticaNeue" size:15.f]
 # define CGFLOAT_MAX FLT_MAX
 
-#define HEIGTH_SEASONS_TABLE 125
 
 #define NEW_TIPS @"new tips"
 
@@ -61,6 +60,7 @@
     NSDateFormatter * format1;
     NSDateFormatter * format2;
     UIRefreshControl *refreshControl;
+    float heigthSeasonsTable;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *seasonSectioHiegth;
 @property (strong, nonatomic) IBOutlet UIView *forTabBar;
@@ -139,6 +139,7 @@
         self.topViewHeightConstr.constant -= 20;
         self.topBarHiegthConstrainsSubView.constant -=20;
     }
+    
     [self.colectionView registerNib:[UINib nibWithNibName:@"TipsCell" bundle:nil] forCellWithReuseIdentifier:@"TipsCell"];
     [self.colectionView registerNib:[UINib nibWithNibName:@"CreateTipsCell" bundle:nil] forCellWithReuseIdentifier:@"CreateTipsCell"];
     [self.colectionView registerNib:[UINib nibWithNibName:@"ImageShow" bundle:nil] forCellWithReuseIdentifier:@"ImageShow"];
@@ -255,6 +256,7 @@
     self.tabBarWidth.constant = self.view.frame.size.width;
     self.heigthShowColectionViewConstraint.constant = width * 0.39;
     [self.view updateConstraintsIfNeeded];
+    heigthSeasonsTable = self.heigthShowColectionViewConstraint.constant;
     
     [self downloadPhotos];
 }
@@ -432,8 +434,8 @@
             scrollView.contentOffset = CGPointZero;
         }
     } else {
-        if (self.heigthShowColectionViewConstraint.constant < maxHeaderHeight) {
-            self.heigthShowColectionViewConstraint.constant = MIN(self.heigthShowColectionViewConstraint.constant + ABS(position), maxHeaderHeight);
+        if (self.heigthShowColectionViewConstraint.constant < heigthSeasonsTable) {
+            self.heigthShowColectionViewConstraint.constant = MIN(self.heigthShowColectionViewConstraint.constant + ABS(position), heigthSeasonsTable);
             scrollView.contentOffset = CGPointZero;
         }
     }
