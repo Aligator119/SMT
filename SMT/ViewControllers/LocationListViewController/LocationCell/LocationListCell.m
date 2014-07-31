@@ -25,8 +25,9 @@
         [self updateConstraintsIfNeeded];
          self.locationIcon.image = [UIImage imageNamed:@"fish_mode_icon_selected.png"];
     } else {
-        self.imageWigth.constant = 0;
+        self.imageWigth.constant = 30;
         [self updateConstraintsIfNeeded];
+        self.locationIcon.image = [UIImage imageNamed:@"fish_mode_icon_selected.png"];
     }
 }
 

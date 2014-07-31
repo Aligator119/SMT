@@ -6,6 +6,10 @@
 #import "ShareLocationViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
+
+#define EDIT_VIEW_HEIGTH 120
+
+
 @interface BaseLocationViewController (){
     AppDelegate * appDel;
     DataLoader * loader;
@@ -24,10 +28,11 @@
 @property (nonatomic, weak) IBOutlet UIButton * deleteButton;
 @property (nonatomic, weak) IBOutlet UIButton *shareButton;
 
-@property (weak, nonatomic) IBOutlet UILabel *lbGroup;
-@property (weak, nonatomic) IBOutlet UILabel *lbType;
-@property (weak, nonatomic) IBOutlet UILabel *lbAdress;
-@property (weak, nonatomic) IBOutlet UILabel *lbCoordinate;
+@property (weak, nonatomic) IBOutlet UILabel *lbLocation;
+@property (weak, nonatomic) IBOutlet UILabel *lbLatitude;
+@property (weak, nonatomic) IBOutlet UILabel *lbLongitude;
+@property (weak, nonatomic) IBOutlet UIImageView *imgTypeLocation;
+
 @property (weak, nonatomic) IBOutlet UIButton *btnDone;
 
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
@@ -61,21 +66,22 @@
     self.coordinatesView.layer.cornerRadius = 6;
     self.deleteButton.layer.cornerRadius = 6;
     
-    NSString * title = [NSString stringWithFormat:@"Lat/Lng "];
-    
-    NSString * data = [[[NSString stringWithFormat:@"%f",self.location.locLatitude] stringByAppendingString:@", "] stringByAppendingString:[NSString stringWithFormat:@"%f", self.location.locLongitude]];
-    NSMutableAttributedString * str = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@ %@", title, data]];
-    [str addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0,title.length)];
-    [self.lbCoordinate setAttributedText:str];
+//    NSString * title = [NSString stringWithFormat:@"Lat/Lng "];
+//    
+//    NSString * data = [[[NSString stringWithFormat:@"%f",self.location.locLatitude] stringByAppendingString:@", "] stringByAppendingString:[NSString stringWithFormat:@"%f", self.location.locLongitude]];
+//    NSMutableAttributedString * str = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@ %@", title, data]];
+//    [str addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0,title.length)];
+//    [self.lbCoordinate setAttributedText:str];
     
     
     if (self.location.typeLocation == 1) {
-        self.lbType.text = @"Hunting Location";
+        self.imgTypeLocation.image = [UIImage imageNamed:@"hunt_mode_icon_selected.png"];
     } else {
-        self.lbType.text = @"Fishing Location";
+        self.imgTypeLocation.image = [UIImage imageNamed:@"fish_mode_icon_selected.png"];
     }
-    self.lbGroup.text = self.location.locationGroup;
-    self.lbAdress.text = self.location.addres;
+    self.lbLocation.text = @"Location";
+    self.lbLatitude.text = [NSString stringWithFormat:@"Latitude: %f",self.location.locLatitude];
+    self.lbLongitude.text = [NSString stringWithFormat:@"Latitude: %f",self.location.locLongitude];;
     
     if (self.location.locUserId != appDel.user.userID){
         self.saveButton.hidden = YES;
@@ -86,6 +92,8 @@
     [self showMap];
     
     [self registerForKeyboardNotifications];
+    
+    
     
 }
 

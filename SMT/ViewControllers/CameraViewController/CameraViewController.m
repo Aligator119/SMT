@@ -172,8 +172,8 @@
     picker.delegate = self;
     picker.allowsEditing = YES;
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    
-    [self presentViewController:picker animated:YES completion:NULL];
+    [self.view addSubview:picker.cameraOverlayView];
+    //[self presentViewController:picker animated:YES completion:NULL];
 }
 
 -(void) setIsPresent:(BOOL)present
