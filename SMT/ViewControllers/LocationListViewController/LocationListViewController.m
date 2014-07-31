@@ -174,8 +174,6 @@
     }
 }
 
-- (IBAction)actGroups:(id)sender {
-}
 
 -(IBAction) locationTypeChange:(id)sender{
     int selected = self.locationChangeSegmentControl.selectedSegmentIndex;

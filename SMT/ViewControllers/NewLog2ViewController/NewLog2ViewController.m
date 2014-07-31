@@ -699,7 +699,7 @@
 - (BOOL) isiPad
 {
     NSString * model = [UIDevice currentDevice].model;
-    return [model isEqualToString:@"iPad Simulator"] ? YES : NO;
+    return [model isEqualToString:@"iPad"] ? YES : NO;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{

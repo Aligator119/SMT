@@ -21,6 +21,5 @@
 
 -(void) setIsPresent:(BOOL)present;
 
-- (IBAction)actGroups:(id)sender;
 
 @end
