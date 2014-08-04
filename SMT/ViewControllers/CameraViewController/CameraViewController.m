@@ -1,23 +1,28 @@
 #import "CameraViewController.h"
 #import "DataLoader.h"
 #import "UIViewController+LoaderCategory.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface CameraViewController ()
 {
     DataLoader * dataLoader;
+    AVCaptureSession * session;
+    AVCaptureStillImageOutput * stillImageOutput;
+    BOOL frontCamera;
 }
-@property (strong, nonatomic) IBOutlet UIImageView *image;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *tabBarWidth;
-@property (strong, nonatomic) IBOutlet UIButton *btnOpenGalery;
-@property (strong, nonatomic) IBOutlet UIButton *btnSetAvatar;
-@property (strong, nonatomic) IBOutlet UIButton *btnAddToGalery;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIView *captureView;
 
+- (IBAction)actOpenGalery:(id)sender;
 
-- (IBAction)actSelectPhoto:(id)sender;
-- (IBAction)actSetAvatar:(id)sender;
-- (IBAction)actAddGalery:(id)sender;
+- (IBAction)actTakePhoto:(id)sender;
 
-- (void)actTakePhoto;
+- (IBAction)actClose:(id)sender;
+
+- (IBAction)actChangeCamera:(id)sender;
+
+- (AVCaptureDevice *)frontCamera;
+- (void) settingInputDevice:(AVCaptureDevice *)inputDevice;
 @end
 
 @implementation CameraViewController
@@ -37,57 +42,75 @@
     // Do any additional setup after loading the view from its nib.
     dataLoader = [DataLoader instance];
     [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
-    UIButton * btn = (UIButton *)[self.tabBar viewWithTag:3];
-    [btn setBackgroundImage:[UIImage imageNamed:@"camera_icon_press.png"] forState:UIControlStateNormal];
-    self.isCamera = YES;
     
     self.screenName = @"Camera screen";
+    frontCamera = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:YES];
-    self.btnSetAvatar.userInteractionEnabled = NO;
-    [self.btnSetAvatar setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    self.btnAddToGalery.userInteractionEnabled = NO;
-    [self.btnAddToGalery setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    self.tabBarWidth.constant = self.view.frame.size.width;
-    [self.view updateConstraintsIfNeeded];
-    if (_isCamera) {
-        if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        
-            UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                                  message:@"Device has no camera"
-                                                                 delegate:nil
-                                                        cancelButtonTitle:@"OK"
-                                                        otherButtonTitles: nil];
-        
-            [myAlertView show];
-        
-        } else {
-            [self actTakePhoto];
-        }
-        _isCamera = NO;
-    }
+    [self settingInputDevice:[self frontCamera]];
 }
 
-- (void)didReceiveMemoryWarning
+
+- (AVCaptureDevice *)frontCamera {
+    AVCaptureDevice * inputDevice;
+    if (frontCamera) {
+        NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+        for (AVCaptureDevice *device in devices) {
+            if ([device position] == AVCaptureDevicePositionFront) {
+                inputDevice = device;
+            }
+        }
+
+    } else {
+        inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    }
+    return inputDevice;
+}
+
+- (void) settingInputDevice:(AVCaptureDevice *)inputDevice
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    session = [[AVCaptureSession alloc]init];
+    [session setSessionPreset:AVCaptureSessionPresetPhoto];
+    
+    //AVCaptureDevice * inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    
+    NSError * error;
+    AVCaptureDeviceInput * device = [AVCaptureDeviceInput deviceInputWithDevice:inputDevice error:&error];
+    
+    if ([session canAddInput:device]) {
+        [session addInput:device];
+    }
+    
+    AVCaptureVideoPreviewLayer * preLayer = [[AVCaptureVideoPreviewLayer alloc]initWithSession:session];
+    [preLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
+    
+    CALayer * rootLayer = [[self view] layer];
+    [rootLayer setMasksToBounds:YES];
+    CGRect frame = self.captureView.frame;
+    
+    [preLayer setFrame:frame];
+    
+    [rootLayer insertSublayer:preLayer atIndex:0];
+    
+    stillImageOutput = [[AVCaptureStillImageOutput alloc]init];
+    NSDictionary * outputSettings = [[NSDictionary alloc]initWithObjectsAndKeys:AVVideoCodecJPEG, AVVideoCodecKey, nil];
+    [stillImageOutput setOutputSettings:outputSettings];
+    
+    [session addOutput:stillImageOutput];
+    
+    [session startRunning];
+
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    self.image.image = chosenImage;
+    self.imageView.image = chosenImage;
 
     [picker dismissViewControllerAnimated:YES completion:^{
-        self.btnSetAvatar.userInteractionEnabled = YES;
-        [self.btnSetAvatar setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        self.btnAddToGalery.userInteractionEnabled = YES;
-        [self.btnAddToGalery setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        _isCamera = NO;
+        //l
     }];
 }
 
@@ -95,11 +118,7 @@
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     
     [picker dismissViewControllerAnimated:YES completion:^{
-        self.btnSetAvatar.userInteractionEnabled = NO;
-        [self.btnSetAvatar setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        self.btnAddToGalery.userInteractionEnabled = NO;
-        [self.btnAddToGalery setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        _isCamera = NO;
+       //l
     }];
     
 }
@@ -114,12 +133,12 @@
 }
 
 - (IBAction)actSetAvatar:(id)sender {
-    if (self.image.image) {
+    if (self.imageView.image) {
     [self startLoader];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
         
-        [dataLoader setUserAvatar:self.image.image];
+        [dataLoader setUserAvatar:self.imageView.image];
         
         dispatch_async(dispatch_get_main_queue(),^(){
             
@@ -130,7 +149,7 @@
                 
                 id<CameraControllerDelegate> delegate = self.delegate;
                 if ([delegate respondsToSelector:@selector(newUserAvatar:)]) {
-                    [delegate newUserAvatar:self.image.image];
+                    [delegate newUserAvatar:self.imageView.image];
                 }
                 [self endLoader];
             }
@@ -141,57 +160,47 @@
 
 }
 
-- (IBAction)actAddGalery:(id)sender {
-    if (self.image.image) {
-    [self startLoader];
-    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(newQueue, ^(){
-        
-        NSString * str_id = [dataLoader uploadPhoto:self.image.image];
-        
-        dispatch_async(dispatch_get_main_queue(),^(){
-            
-            if(!dataLoader.isCorrectRezult) {
-                NSLog(@"Error upload avatar");
-                [self endLoader];
-            } else {
-                //self.imgUser.image = image;
-                [dataLoader setDescriptionWithPhotoID:[str_id intValue] andDescription:@"first comment"];
-                [self endLoader];
-            }
-            
-        });
-    });
-    }
+
+
+
+
+
+- (IBAction)actOpenGalery:(id)sender {
 }
 
-
-
-- (void)actTakePhoto {
-//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-//    picker.delegate = self;
-//    picker.allowsEditing = YES;
-//    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-//
-//    [self presentViewController:picker animated:YES completion:NULL];
+- (IBAction)actTakePhoto:(id)sender {
+    AVCaptureConnection * videoConnection = nil;
     
-   
-}
-
--(void) setIsPresent:(BOOL)present
-{
-    isPresent = present;
-    if (isPresent) {
-        [((UIButton *)[self.tabBar viewWithTag:1]) setBackgroundImage:[UIImage imageNamed:@"home_icon.png"] forState:UIControlStateNormal];
-        [((UIButton *)[self.tabBar viewWithTag:2]) setBackgroundImage:[UIImage imageNamed:@"global_icon.png"] forState:UIControlStateNormal];
-        [((UIButton *)[self.tabBar viewWithTag:3]) setBackgroundImage:[UIImage imageNamed:@"camera_icon_press.png"] forState:UIControlStateNormal];
-        [((UIButton *)[self.tabBar viewWithTag:4]) setBackgroundImage:[UIImage imageNamed:@"note_icon.png"] forState:UIControlStateNormal];
-        [((UIButton *)[self.tabBar viewWithTag:5]) setBackgroundImage:[UIImage imageNamed:@"st_icon.png"] forState:UIControlStateNormal];
-    } else {
-        [((UIButton *)[self.tabBar viewWithTag:3]) setBackgroundImage:[UIImage imageNamed:@"camera_icon.png"] forState:UIControlStateNormal];
+    for (AVCaptureConnection * connection in stillImageOutput.connections) {
+        for (AVCaptureInputPort * port in connection.inputPorts) {
+            if ([[port mediaType] isEqual:AVMediaTypeVideo]) {
+                videoConnection = connection;
+                break;
+            }
+        }
+        if (videoConnection) {
+            break;
+        }
     }
+    
+    [stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
+        if(imageDataSampleBuffer != NULL) {
+            NSData * imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+            UIImage * image = [UIImage imageWithData:imageData];
+            self.imageView.image = image;
+            self.captureView.hidden = YES;
+            self.imageView.hidden = NO;
+        }
+    }];
+
 }
 
+- (IBAction)actClose:(id)sender {
+    
+}
 
-
+- (IBAction)actChangeCamera:(id)sender {
+    frontCamera = !frontCamera;
+    [self settingInputDevice:[self frontCamera]];
+}
 @end

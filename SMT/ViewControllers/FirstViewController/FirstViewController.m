@@ -128,7 +128,7 @@
     [llVC viewDidAppear:YES];
     
     cVC = [CameraViewController new];
-    cVC.view.frame = self.view.frame;
+    //cVC.view.frame = self.view.frame;
     cVC.tabBar.delegate = self;
     [cVC viewDidAppear:YES];
     
