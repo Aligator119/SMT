@@ -24,16 +24,22 @@
     // Configure the view for the selected state
 }
 
-- (void) setImageForCell:(NSString *)str
+- (void) setImageForCell:(Species *)spec
 {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_async(queue, ^{
-        NSData * imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:str]];
+        NSData * imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:spec.photo]];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.img.image = [UIImage imageWithData:imageData];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"log species photo" object:self userInfo:@{spec.specId: self.img.image}];
         });
     });
 
 }
+- (void)prepareForReuse
+{
+    //self.img.image = [UIImage imageNamed:@"placeholderImage.png"];
+}
+
 
 @end

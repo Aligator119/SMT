@@ -21,6 +21,7 @@
     DataLoader *loader;
     NSArray * array;
     Species * spec;
+    NSMutableDictionary * cashedPpoto;
 }
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *tabBarWidth;
 
@@ -55,6 +56,13 @@
     
     UINib *cellNib = [UINib nibWithNibName:@"SpeciesCell" bundle:[NSBundle mainBundle]];
     [self.table registerNib:cellNib forCellReuseIdentifier:@"SpeciesCell"];
+    
+    cashedPpoto = [[NSMutableDictionary alloc]init];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(cashedImageFromCell:)
+                                                 name:@"cashed species photo"
+                                               object:nil];
 
 }
 
@@ -81,8 +89,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     SpeciesCell * cell = [tableView dequeueReusableCellWithIdentifier:@"SpeciesCell"];
-        
-    [cell setSpecie:[appDelegate.speciesList objectAtIndex:indexPath.row]];
+    Species * specie = [appDelegate.speciesList objectAtIndex:indexPath.row];
+    if ([[cashedPpoto allKeys] containsObject:specie.specId]) {
+        [cell setSpecie:specie andImage:[cashedPpoto objectForKey:specie.specId]];
+    } else {
+        [cell setSpecie:specie andImage:[cashedPpoto objectForKey:nil]];
+    }
+    
     cell.contentView.backgroundColor = [UIColor clearColor];
     
     return cell;
@@ -91,7 +104,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-        return @"Select Species";
+        return @"  Select Species";
     }
     return @"";
 }
@@ -197,5 +210,16 @@
     }
 }
 
+
+- (void)cashedImageFromCell:(NSNotification *)info
+{
+    NSDictionary * userImage = [info userInfo];
+    [cashedPpoto addEntriesFromDictionary:userImage];
+}
+
+- (void) dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 @end

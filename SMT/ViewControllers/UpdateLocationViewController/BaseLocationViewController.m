@@ -22,11 +22,14 @@
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * heightConstr;
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * verticalConstr;
 @property (nonatomic, weak) IBOutlet UITextField * locNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *locLatitudeTextField;
+@property (weak, nonatomic) IBOutlet UITextField *locLongitudeTextField;
 
 @property (nonatomic, weak) IBOutlet UIView * updateNameView;
 @property (nonatomic, weak) IBOutlet UIView * coordinatesView;
 @property (nonatomic, weak) IBOutlet UIButton * deleteButton;
 @property (nonatomic, weak) IBOutlet UIButton *shareButton;
+@property (weak, nonatomic) IBOutlet UIButton *editButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *lbLocation;
 @property (weak, nonatomic) IBOutlet UILabel *lbLatitude;
@@ -43,6 +46,7 @@
 @property (nonatomic, strong) UITextField *activeTextField;
 - (IBAction)actShared:(id)sender;
 - (IBAction)actCloseFullMap:(id)sender;
+- (IBAction)actEdit:(id)sender;
 
 - (void) actChangeSizeMap:(UITapGestureRecognizer *)recognizer;
 @end
@@ -61,6 +65,8 @@
     loader = [DataLoader instance];
     
     self.locNameTextField.text = self.location.locName;
+    self.locLatitudeTextField.text = [NSString stringWithFormat:@"%f",self.location.locLatitude];
+    self.locLongitudeTextField.text = [NSString stringWithFormat:@"%f",self.location.locLongitude];
     
     self.updateNameView.layer.cornerRadius = 6;
     self.coordinatesView.layer.cornerRadius = 6;
@@ -125,7 +131,6 @@
     GMSMarker * marker = [GMSMarker markerWithPosition:coord];
     marker.title = self.location.locName;
     marker.map = mapView_;
-    
     mapView_.selectedMarker = marker;
     
 }
@@ -156,9 +161,9 @@
 -(IBAction)save:(id)sender{
     NSString *newName = self.locNameTextField.text;
     NSString * trimmedNewName = [newName stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    NSString * lat = [NSString stringWithFormat:@"%f", self.location.locLatitude];
-    NSString * lng = [NSString stringWithFormat:@"%f", self.location.locLongitude];
-    [loader updateChooseLocation:self.location.locID newName:trimmedNewName newLati:lat newLong:lng];
+    NSString * lat = self.locLatitudeTextField.text;//[NSString stringWithFormat:@"%f", self.location.locLatitude];
+    NSString * lng = self.locLongitudeTextField.text;//[NSString stringWithFormat:@"%f", self.location.locLongitude];
+    self.location = [loader updateChooseLocation:self.location.locID newName:trimmedNewName newLati:lat newLong:lng];
     if (loader.isCorrectRezult){
         for(int i = self.navigationController.viewControllers.count-1; i > 0; i--){
             UIViewController * vc = [self.navigationController.viewControllers objectAtIndex:i];
@@ -168,6 +173,10 @@
             }
         }
     }
+    self.saveButton.hidden = YES;
+    self.editButton.hidden = NO;
+    self.updateNameView.hidden = YES;
+    [self showMap];
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
@@ -186,11 +195,19 @@
         [UIView animateWithDuration:0.5 animations:^{
             [self.view layoutIfNeeded];
         }];
-        self.saveButton.hidden = NO;
+        self.saveButton.hidden = YES;
         self.backButton.hidden = NO;
+        self.editButton.hidden = NO;
         self.btnDone.hidden = YES;
         isFullMap = !isFullMap;
     }
+}
+
+- (IBAction)actEdit:(id)sender {
+    
+    self.editButton.hidden = YES;
+    self.saveButton.hidden = NO;
+    self.updateNameView.hidden = NO;
 }
 
 #pragma mark Keabord methods
@@ -244,6 +261,8 @@
             }];
             self.saveButton.hidden = YES;
             self.backButton.hidden = YES;
+            self.editButton.hidden = YES;
+            self.updateNameView.hidden = YES;
             self.btnDone.hidden = NO;
             isFullMap = !isFullMap;
         }

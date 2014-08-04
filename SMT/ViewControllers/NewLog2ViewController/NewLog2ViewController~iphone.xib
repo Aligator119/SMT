@@ -103,11 +103,11 @@
                     <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <view key="tableHeaderView" contentMode="scaleToFill" id="zQB-Fd-II3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hf6-MP-8dO">
-                                <rect key="frame" x="165" y="90" width="125" height="30"/>
+                                <rect key="frame" x="30" y="130" width="260" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -123,7 +123,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XIq-WU-SvA">
-                                <rect key="frame" x="30" y="90" width="125" height="30"/>
+                                <rect key="frame" x="30" y="90" width="260" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -173,18 +173,17 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="SRy-xi-GbC" firstAttribute="leading" secondItem="zQB-Fd-II3" secondAttribute="leading" constant="30" id="3e0-Py-uzQ"/>
-                            <constraint firstItem="hf6-MP-8dO" firstAttribute="top" secondItem="SRy-xi-GbC" secondAttribute="bottom" constant="10" id="50E-15-k0T"/>
                             <constraint firstItem="SRy-xi-GbC" firstAttribute="top" secondItem="2Bw-cq-S4j" secondAttribute="bottom" constant="10" id="76m-wN-Pkx"/>
                             <constraint firstAttribute="trailing" secondItem="2Bw-cq-S4j" secondAttribute="trailing" constant="30" id="F5n-aV-1eA"/>
                             <constraint firstItem="2Bw-cq-S4j" firstAttribute="leading" secondItem="zQB-Fd-II3" secondAttribute="leading" constant="30" id="NLb-tU-8qr"/>
+                            <constraint firstItem="hf6-MP-8dO" firstAttribute="leading" secondItem="zQB-Fd-II3" secondAttribute="leading" constant="30" id="NXF-i3-ywd"/>
                             <constraint firstItem="XIq-WU-SvA" firstAttribute="leading" secondItem="zQB-Fd-II3" secondAttribute="leading" constant="30" id="Pte-eu-hDx"/>
-                            <constraint firstAttribute="trailing" secondItem="hf6-MP-8dO" secondAttribute="trailing" constant="30" id="Si2-n2-lmx"/>
                             <constraint firstItem="XIq-WU-SvA" firstAttribute="top" secondItem="SRy-xi-GbC" secondAttribute="bottom" constant="10" id="UU9-EK-K76"/>
                             <constraint firstItem="2Bw-cq-S4j" firstAttribute="top" secondItem="zQB-Fd-II3" secondAttribute="top" constant="10" id="WWK-0Z-uxp"/>
-                            <constraint firstItem="hf6-MP-8dO" firstAttribute="leading" secondItem="XIq-WU-SvA" secondAttribute="trailing" constant="10" id="YfI-Dz-zED"/>
-                            <constraint firstItem="XIq-WU-SvA" firstAttribute="width" secondItem="hf6-MP-8dO" secondAttribute="width" id="egp-R1-rta"/>
+                            <constraint firstAttribute="trailing" secondItem="XIq-WU-SvA" secondAttribute="trailing" constant="30" id="Xcv-HL-VyJ"/>
+                            <constraint firstItem="hf6-MP-8dO" firstAttribute="top" secondItem="XIq-WU-SvA" secondAttribute="bottom" constant="10" id="Z6o-Gl-auV"/>
+                            <constraint firstAttribute="trailing" secondItem="hf6-MP-8dO" secondAttribute="trailing" constant="30" id="kir-5u-aCy"/>
                             <constraint firstAttribute="trailing" secondItem="SRy-xi-GbC" secondAttribute="trailing" constant="30" id="mvY-ed-GZX"/>
-                            <constraint firstItem="XIq-WU-SvA" firstAttribute="top" secondItem="SRy-xi-GbC" secondAttribute="bottom" constant="10" id="x7T-cx-CCs"/>
                         </constraints>
                     </view>
                     <view key="tableFooterView" contentMode="scaleToFill" id="bbG-gQ-FDo">
@@ -375,7 +374,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAh-EO-eO1">
-                    <rect key="frame" x="8" y="22" width="25" height="26"/>
+                    <rect key="frame" x="8" y="30" width="25" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -385,7 +384,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </button>
                 <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0D-iJ-BW1">
-                    <rect key="frame" x="70" y="22" width="25" height="26"/>
+                    <rect key="frame" x="70" y="30" width="25" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -395,7 +394,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </button>
                 <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OOd-0s-emH">
-                    <rect key="frame" x="39" y="22" width="25" height="26"/>
+                    <rect key="frame" x="39" y="30" width="25" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -405,7 +404,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </button>
                 <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rax-4H-Wkm">
-                    <rect key="frame" x="101" y="22" width="25" height="26"/>
+                    <rect key="frame" x="101" y="30" width="25" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -415,7 +414,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </button>
                 <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wTN-WT-dUx">
-                    <rect key="frame" x="132" y="22" width="25" height="26"/>
+                    <rect key="frame" x="132" y="30" width="25" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -425,7 +424,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </button>
                 <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Lu-uh-hGM">
-                    <rect key="frame" x="163" y="22" width="25" height="26"/>
+                    <rect key="frame" x="163" y="30" width="25" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -435,7 +434,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </button>
                 <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YqH-33-50M">
-                    <rect key="frame" x="194" y="22" width="25" height="26"/>
+                    <rect key="frame" x="194" y="30" width="25" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -445,7 +444,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </button>
                 <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rH6-tz-rR9">
-                    <rect key="frame" x="287" y="22" width="25" height="26"/>
+                    <rect key="frame" x="287" y="30" width="25" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -455,7 +454,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </button>
                 <button opaque="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lqX-QR-3ab">
-                    <rect key="frame" x="256" y="22" width="25" height="26"/>
+                    <rect key="frame" x="256" y="30" width="25" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -465,7 +464,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </connections>
                 </button>
                 <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyL-jn-Gro">
-                    <rect key="frame" x="225" y="22" width="25" height="26"/>
+                    <rect key="frame" x="225" y="30" width="25" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -474,6 +473,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <action selector="actNumberSelectStar:" destination="-1" eventType="touchUpInside" id="lez-Zr-KJD"/>
                     </connections>
                 </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Indicate how this activity compared to other outings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ltu-xl-AYQ">
+                    <rect key="frame" x="8" y="5" width="304" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
         </view>

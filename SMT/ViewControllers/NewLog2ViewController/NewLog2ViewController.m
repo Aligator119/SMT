@@ -39,6 +39,7 @@
     UITextField * callKeyBoard;
     int count;
     BOOL isHidden;
+    NSMutableDictionary * cashedPhoto;
     }
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *constrainsADD;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *constrainsNorthempike;
@@ -66,6 +67,7 @@
 - (void)keyboardDidShow: (NSNotification *) notif;
 - (void)keyboardDidHide: (NSNotification *) notif;
 - (BOOL) isiPad;
+- (void)cashedImageFromCell:(NSNotification *)info;
 @end
 
 @implementation NewLog2ViewController
@@ -106,6 +108,7 @@
     
     isHidden = NO;
     
+    [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
     
     dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"yyyyMMdd"];
@@ -216,12 +219,21 @@
     NSDateComponents * components = [gregorianCalendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit fromDate:[NSDate date]];
     components.hour -= 3;
     self.huntStartTime = [gregorianCalendar dateFromComponents:components];
-    [self.btnStartTime setTitle:[btnTimeFormatter stringFromDate:self.huntStartTime] forState:UIControlStateNormal];
+    [self.btnStartTime setTitle:[@"Start Time: " stringByAppendingString:[btnTimeFormatter stringFromDate:self.huntStartTime]] forState:UIControlStateNormal];
 //set end time with current date
     self.huntEndTime = self.huntDate;
-    [self.btnEndTime setTitle:[btnTimeFormatter stringFromDate:self.huntEndTime] forState:UIControlStateNormal];
+    [self.btnEndTime setTitle:[@"End Time: " stringByAppendingString:[btnTimeFormatter stringFromDate:self.huntEndTime]] forState:UIControlStateNormal];
 
     self.screenName = @"Create log screen";
+    
+    
+    cashedPhoto = [[NSMutableDictionary alloc]init];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(cashedImageFromCell:)
+                                                 name:@"log species photo"
+                                               object:nil];
+
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -281,6 +293,13 @@
 }
 
 
+- (void)cashedImageFromCell:(NSNotification *)info
+{
+    NSDictionary * userImage = [info userInfo];
+    [cashedPhoto addEntriesFromDictionary:userImage];
+}
+
+
 
 #pragma mark Table delegate metods
 //------------------------------------------------
@@ -297,16 +316,24 @@
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NorthernPikeCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NorthernPikeCell"];
-    
+    Species * specie = [listOfSpecies objectAtIndex:indexPath.row];
         [cell.tfSeen addTarget:self action:@selector(actDidOnToExitSeen:) forControlEvents:UIControlEventEditingChanged];
     cell.tfSeen.delegate = self;
         cell.tfSeen.tag = indexPath.row;
         [cell.tfHarvested addTarget:self action:@selector(actDidOnToExitHarvested:) forControlEvents:UIControlEventEditingChanged];
     cell.tfHarvested.delegate = self;
         cell.tfHarvested.tag = indexPath.row;
-        [cell setImageForCell:((Species *)[listOfSpecies objectAtIndex:indexPath.row]).photo];
+    if ([[cashedPhoto allKeys] containsObject:specie.specId]) {
+        cell.img.image = [cashedPhoto objectForKey:specie.specId];
+    } else {
+        [cell setImageForCell:specie];
+    }
         [cell.btnLevel addTarget:self action:@selector(actSelectStar:) forControlEvents:UIControlEventTouchUpInside];
         cell.btnLevel.tag = indexPath.row;
+    [cell.img.layer setMasksToBounds:YES];
+    cell.img.layer.cornerRadius = cell.img.frame.size.width / 2;
+    cell.img.layer.borderColor = [UIColor grayColor].CGColor;
+    cell.img.layer.borderWidth = 1.0f;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell.contentView setBackgroundColor:[UIColor clearColor]];
     return cell;
@@ -330,7 +357,7 @@
         [self.northernPikeList addObject:buf];
         [self.btnNorthempike addSpecie:buf];
         [activityDetails removeObjectAtIndex:indexPath.row];
-        [listOfSpecies removeObjectAtIndex:indexPath.row];
+        [listOfSpecies removeObject:buf];
         if (isHidden) {
             CGRect rect = self.footer.frame;
             rect.size.height += 45.0;
@@ -339,9 +366,9 @@
         }
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
         }
-        if (![listOfSpecies count]) {
+    //if (![listOfSpecies count]) {
             [tableView reloadData];
-    }
+    //}
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -445,14 +472,14 @@
         case 2:
              {
                 self.huntStartTime = self.datePicker.date;
-                [self.btnStartTime setTitle:[btnTimeFormatter stringFromDate:self.huntStartTime] forState:UIControlStateNormal];
+                [self.btnStartTime setTitle:[@"Start Time: " stringByAppendingString:[btnTimeFormatter stringFromDate:self.huntStartTime]] forState:UIControlStateNormal];
             }
             break;
             
         case 3:
             if ([[self.huntStartTime laterDate:self.datePicker.date] isEqualToDate:self.datePicker.date]) {
                 self.huntEndTime = self.datePicker.date;
-                [self.btnEndTime setTitle:[btnTimeFormatter stringFromDate:self.huntEndTime] forState:UIControlStateNormal];
+                [self.btnEndTime setTitle:[@"End Time: " stringByAppendingString:[btnTimeFormatter stringFromDate:self.huntEndTime]] forState:UIControlStateNormal];
             }
             break;
     }
@@ -488,7 +515,18 @@
                                             @"answer"              : [((CustomTextField *)obj) getText]}];
             }
         }
+        if (activityDetails.count == listOfSpecies.count) {
+            for (ActivityDetails * obj in activityDetails) {
+                if (obj.subspecies_id == 0 || obj.activitylevel == 0) {
+                    [[[UIAlertView alloc]initWithTitle:@"" message:@"Not all fields are filled" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+                    return;
+                }
+            }
+        } else {
+            [[[UIAlertView alloc]initWithTitle:@"Message" message:@"Not all fields are filled" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+        }
 //----------------------------------------------------------------------------------------------------
+        [self startLoader];
         dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(newQueue, ^(){
             
@@ -498,11 +536,13 @@
                 
                 if(!dataLoader.isCorrectRezult) {
                     NSLog(@"Error download sybSpecie");
+                    [self endLoader];
                 } else {
         
-                    NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:listOfSpecies, @"specie", activity, @"activity", activityDetails, @"activityDetails", logID, @"id", speciesanswers, @"speciesanswers", nil];
+                    NSDictionary * dict = [[NSDictionary alloc]initWithObjectsAndKeys:listOfSpecies, @"specie", activity, @"activity", activityDetails, @"activityDetails", logID, @"id", speciesanswers, @"speciesanswers", cashedPhoto, @"photo", nil];
                     LogDetailViewController * ldvc = [[LogDetailViewController alloc]initWithNibName:@"LogDetailViewController" bundle:nil andProperty:dict];
                     [self.navigationController pushViewController:ldvc animated:YES];
+                    [self endLoader];
 
                 }
             });
@@ -612,11 +652,13 @@
 - (void)actSelectStar:(UIButton *)sender
 {
     self.viewStars.tag = sender.tag;
-    for (UIButton * btn in self.viewStars.subviews) {
-        if (btn.tag <= ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).activitylevel) {
-            [btn setBackgroundImage:[UIImage imageNamed:@"star_orange.png"] forState:UIControlStateNormal];
-        } else {
-            [btn setBackgroundImage:[UIImage imageNamed:@"star_opasity_orange.png"] forState:UIControlStateNormal];
+    for (UIView * btn in self.viewStars.subviews) {
+        if ([btn isKindOfClass:[UIButton class]]) {
+            if (btn.tag <= ((ActivityDetails *)[activityDetails objectAtIndex:sender.tag]).activitylevel) {
+                [(UIButton *)btn setBackgroundImage:[UIImage imageNamed:@"star_orange.png"] forState:UIControlStateNormal];
+            } else {
+                [(UIButton *)btn setBackgroundImage:[UIImage imageNamed:@"star_opasity_orange.png"] forState:UIControlStateNormal];
+            }
         }
     }
     self.viewStars.backgroundColor = [UIColor whiteColor];
@@ -629,6 +671,8 @@
         CGRect bounds = self.viewStars.frame;
         bounds.origin.x -= width;
         self.viewStars.frame = bounds;
+    } completion:^(BOOL finished) {
+        [sender setBackgroundImage:[UIImage imageNamed:@"star_BTN_selected.png"] forState:UIControlStateNormal];
     }];
 }
 
@@ -636,10 +680,12 @@
 {
     ((ActivityDetails *)[activityDetails objectAtIndex:self.viewStars.tag]).activitylevel = sender.tag;
     for (UIButton * btn in self.viewStars.subviews) {
-        if (btn.tag<=sender.tag) {
-            [btn setBackgroundImage:[UIImage imageNamed:@"star_orange.png"] forState:UIControlStateNormal];
-        } else {
-            [btn setBackgroundImage:[UIImage imageNamed:@"star_opasity_orange.png"] forState:UIControlStateNormal];
+        if ([btn isKindOfClass:[UIButton class]]) {
+            if (btn.tag<=sender.tag) {
+                [btn setBackgroundImage:[UIImage imageNamed:@"star_orange.png"] forState:UIControlStateNormal];
+            } else {
+                [btn setBackgroundImage:[UIImage imageNamed:@"star_opasity_orange.png"] forState:UIControlStateNormal];
+            }
         }
     }
     [UIView animateWithDuration:0.5f animations:^{
@@ -650,7 +696,6 @@
     } completion:^(BOOL finished) {
         [self.viewStars removeFromSuperview];
     }];
-   
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField

@@ -20,6 +20,7 @@
     int subSpecieID;
     NSArray * killingQuestion;
     NSMutableDictionary * selectedCell;
+    NSDictionary * photo;
 }
 
 
@@ -47,6 +48,7 @@
     activity = [enteredData objectForKey:@"activity"];
     activityDetails = [enteredData objectForKey:@"activityDetails"];
     logID = [enteredData objectForKey:@"id"];
+    photo = [enteredData objectForKey:@"photo"];
     displayedCell = [[NSMutableArray alloc]init];
     for (int i=0;i<[self.list count];i++) {
         if (((ActivityDetails *)[activityDetails objectAtIndex:i]).seen >=3) {
@@ -139,14 +141,37 @@
     return cell;
 }
 
-- (NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return [@"    " stringByAppendingString:((Species *)[self.list objectAtIndex:section]).name];
+    return 30.0f;
+}
+
+
+-(UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    Species * spec = [self.list objectAtIndex:section];
+    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
+    UIImageView * iView = [[UIImageView alloc]initWithFrame:CGRectMake(5, 0, view.frame.size.height, view.frame.size.height)];
+    [iView.layer setMasksToBounds:YES];
+    iView.layer.cornerRadius = iView.frame.size.width / 2;
+    iView.layer.borderColor = [UIColor grayColor].CGColor;
+    iView.layer.borderWidth = 1.0f;
+    iView.image = [photo objectForKey:spec.specId];
+    UILabel * lb = [[UILabel alloc]initWithFrame:CGRectMake(50, 0, view.frame.size.width - 60, view.frame.size.height)];
+    lb.text = ((Species *)[self.list objectAtIndex:section]).name;
+    [view setBackgroundColor:[UIColor lightGrayColor]];
+    [view addSubview:iView];
+    [view addSubview:lb];
+    return view;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.table deselectRowAtIndexPath:indexPath animated:YES];
+    LogDetailCell * cel = (LogDetailCell *)[tableView cellForRowAtIndexPath:indexPath];
+    if ([cel.lbDetailText.text isEqualToString:@"Detail Saved"]) {
+        return;
+    }
     if ([[self.table cellForRowAtIndexPath:indexPath] isKindOfClass:[LogDetailCell class]]) {
         [self startLoader];
         NSString * str = ((LogDetailCell *)[self.table cellForRowAtIndexPath:indexPath]).lbText.text;

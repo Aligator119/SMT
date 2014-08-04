@@ -28,6 +28,11 @@
 @property (nonatomic, strong) PopUpMenu * popUpVC;
 @property (nonatomic, strong) UIImageView * compassView;
 @property (nonatomic, strong) CLGeocoder *geocoder;
+@property (weak, nonatomic) IBOutlet UIButton *fishButton;
+@property (weak, nonatomic) IBOutlet UIButton *huntButton;
+
+- (IBAction)actHuntMode:(id)sender;
+- (IBAction)actFishMode:(id)sender;
 
 
 @end
@@ -53,6 +58,9 @@
     [self showMap];
     [self createLocationManager];
     self.screenName = @"Map screen";
+    
+    [self.huntButton setBackgroundImage:[UIImage imageNamed:@"hunt_mode_icon_selected.png"] forState:UIControlStateNormal];
+    self.mapType = typeHunting;
    
 }
 
@@ -63,22 +71,23 @@
 
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    /*if (self.mapType == typeFishing){
-        listLocations = [NSArray arrayWithArray:appDel.listFishLocations];
-    } else if (self.mapType == typeHunting){
-        listLocations = [NSArray arrayWithArray:appDel.listHuntLocations];
-    }*/
     if (self.isPresentView == 2) {
         self.popUpVC = [[PopUpMenu alloc] initWithNibName:@"PopUpMenu" bundle:nil];
         self.popUpVC.delegate = self;
+        self.popUpVC.view.frame = self.view.frame;
         [self.view addSubview:self.popUpVC.view];
     }
     
-    listLocations = [NSArray arrayWithArray:appDel.listLocations];
     [self setAllLocationMarkers];
 }
 
 - (void) showMap{
+    if (self.mapType == typeFishing){
+        listLocations = [NSArray arrayWithArray:appDel.listFishLocations];
+    } else if (self.mapType == typeHunting){
+        listLocations = [NSArray arrayWithArray:appDel.listHuntLocations];
+    }
+    
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86
                                                             longitude:151.20
                                                                  zoom:14];
@@ -329,7 +338,19 @@
 }
 
 
-
-- (IBAction)actCreateLocationWithAddres:(id)sender {
+- (IBAction)actHuntMode:(id)sender {
+    self.mapType = typeHunting;
+    [self.huntButton setBackgroundImage:[UIImage imageNamed:@"hunt_mode_icon_selected.png"] forState:UIControlStateNormal];
+    [self.fishButton setBackgroundImage:[UIImage imageNamed:@"fish_mode_icon.png"] forState:UIControlStateNormal];
+    [self showMap];
 }
+
+- (IBAction)actFishMode:(id)sender {
+    self.mapType = typeFishing;
+    [self.huntButton setBackgroundImage:[UIImage imageNamed:@"hunt_mode_icon.png"] forState:UIControlStateNormal];
+    [self.fishButton setBackgroundImage:[UIImage imageNamed:@"fish_mode_icon_selected.png"] forState:UIControlStateNormal];
+    [self showMap];
+}
+
+
 @end

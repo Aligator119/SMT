@@ -168,12 +168,14 @@
 
 
 - (void)actTakePhoto {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    [self.view addSubview:picker.cameraOverlayView];
-    //[self presentViewController:picker animated:YES completion:NULL];
+//    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+//    picker.delegate = self;
+//    picker.allowsEditing = YES;
+//    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+//
+//    [self presentViewController:picker animated:YES completion:NULL];
+    
+   
 }
 
 -(void) setIsPresent:(BOOL)present

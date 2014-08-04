@@ -3,7 +3,6 @@
 #import "CJSONSerializer.h"
 #import "UserInfo.h"
 #import "AppDelegate.h"
-#import "Location.h"
 #import "FBConnectClass.h"
 #import "ConstantsClass.h"
 #import "NSString+HTML.h"
@@ -275,7 +274,7 @@
     [self startRequest:strUrlRequestAdress andData:jsonData typeRequest:RequestDelete setHeaders:YES andTypeRequest:ApplicationServiceRequestDeleteLocation];
 }
 
-- (void)updateChooseLocation:(int)_locID
+- (Location *)updateChooseLocation:(int)_locID
                      newName:(NSString*)_newName
                      newLati:(NSString*)_lati
                      newLong:(NSString*)_long
@@ -315,7 +314,7 @@
             }
         }
     }
-
+    return location;
 }
 
 #pragma mark - Work with Buddies request

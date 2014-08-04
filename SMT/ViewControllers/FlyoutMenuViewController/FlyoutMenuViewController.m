@@ -577,10 +577,10 @@
     
     if (tableView.tag == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"SpeciesCell"];
-        [(SpeciesCell *)cell setSpecie:[appDelegate.speciesList objectAtIndex:indexPath.row]];
+        [(SpeciesCell *)cell setSpecie:[appDelegate.speciesList objectAtIndex:indexPath.row]andImage:nil];
     } else if (tableView.tag == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"SpeciesCell"];
-        [(SpeciesCell *)cell setSpecie:[subSpecies objectAtIndex:indexPath.row]];
+        [(SpeciesCell *)cell setSpecie:[subSpecies objectAtIndex:indexPath.row]andImage:nil];
     } else {
        cell = [tableView dequeueReusableCellWithIdentifier:@"RecipeCell"];
         if (cell == nil) {

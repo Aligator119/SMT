@@ -6,6 +6,7 @@
 #import "Photo.h"
 #import "TIPS.h"
 #import "Season.h"
+#import "Location.h"
 
 @class AppDelegate;
 
@@ -80,7 +81,7 @@ enum ApplicationServiceRequest
 - (void)getLocationsAssociatedWithUser;
 - (void) createLocationWithName : (NSString*) name Latitude: (double) latitude Longitude: (double) longitude locationType:(NSInteger) _type;
 - (void)deleteLocationWithID:(int) _locID;
-- (void)updateChooseLocation:(int)_locID
+- (Location *)updateChooseLocation:(int)_locID
                      newName:(NSString*)_newName
                      newLati:(NSString*)_lati
                      newLong:(NSString*)_long;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController">
             <connections>
+                <outlet property="fishButton" destination="68W-Ua-bSx" id="SgU-N8-23x"/>
+                <outlet property="huntButton" destination="lW9-QA-ths" id="oXD-e7-UOd"/>
                 <outlet property="mapContainerView" destination="rbx-TL-VMI" id="0HS-4k-jRb"/>
                 <outlet property="navigationBarHeightConstr" destination="dop-qp-ULz" id="Xh0-XE-ClJ"/>
                 <outlet property="navigationBarVerticalConstr" destination="NWb-gR-Aas" id="dln-m4-vGP"/>
@@ -122,6 +124,9 @@
                                     <state key="normal" backgroundImage="hunt_mode_icon.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="actHuntMode:" destination="-1" eventType="touchUpInside" id="LNj-uj-DG8"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfS-hF-8eA">
                                     <rect key="frame" x="10" y="10" width="46" height="25"/>
@@ -146,6 +151,9 @@
                                     <state key="normal" backgroundImage="fish_mode_icon.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
+                                    <connections>
+                                        <action selector="actFishMode:" destination="-1" eventType="touchUpInside" id="Og0-SB-vNx"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

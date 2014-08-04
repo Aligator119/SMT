@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v7H-OU-hRa">
-                    <rect key="frame" x="15" y="224" width="290" height="120"/>
+                    <rect key="frame" x="15" y="200" width="290" height="120"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popup_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Dh-vN-AQ8">
@@ -44,6 +44,9 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="actCloseKeyBoard:" destination="-1" eventType="editingDidEndOnExit" id="FV8-E4-wnE"/>
+                            </connections>
                         </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder=" Enter Longitude" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dDo-Ix-FTe">
                             <rect key="frame" x="150" y="22" width="125" height="30"/>
@@ -54,6 +57,9 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <action selector="actCloseKeyBoard:" destination="-1" eventType="editingDidEndOnExit" id="fVB-n2-zpx"/>
+                            </connections>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoD-jm-YwS">
                             <rect key="frame" x="0.0" y="80" width="290" height="35"/>
@@ -104,8 +110,8 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="v7H-OU-hRa" secondAttribute="centerY" id="N6n-8o-dCo"/>
                 <constraint firstAttribute="centerX" secondItem="v7H-OU-hRa" secondAttribute="centerX" id="O0M-R3-jnj"/>
+                <constraint firstItem="v7H-OU-hRa" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="200" id="iiy-fz-mAk"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

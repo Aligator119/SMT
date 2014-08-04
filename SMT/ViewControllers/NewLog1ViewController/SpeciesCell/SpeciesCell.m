@@ -29,23 +29,38 @@
     // Configure the view for the selected state
 }
 
-- (void) setSpecie:(Species *)specie
+- (void) setSpecie:(Species *)specie andImage:(UIImage *)image
 {
     self.name.text = specie.name;
-    
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
-    dispatch_async(queue, ^{
-        NSData * imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:specie.thumbnail]];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.img.layer.masksToBounds = YES;
-            self.img.layer.cornerRadius = self.img.frame.size.height / 2;
-            self.img.layer.borderColor = [UIColor grayColor].CGColor;
-            self.img.layer.borderWidth = 1.0f;
-            
-            self.img.image = [UIImage imageWithData:imageData];
+    if (image) {
+        self.img.layer.masksToBounds = YES;
+        self.img.layer.cornerRadius = self.img.frame.size.height / 2;
+        self.img.layer.borderColor = [UIColor grayColor].CGColor;
+        self.img.layer.borderWidth = 1.0f;
+        self.img.image = image;
+    } else {
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+        dispatch_async(queue, ^{
+            NSData * imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:specie.thumbnail]];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.img.layer.masksToBounds = YES;
+                self.img.layer.cornerRadius = self.img.frame.size.height / 2;
+                self.img.layer.borderColor = [UIColor grayColor].CGColor;
+                self.img.layer.borderWidth = 1.0f;
+                
+                self.img.image = [UIImage imageWithData:imageData];
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"cashed species photo" object:self userInfo:@{specie.specId: self.img.image}];
+            });
         });
-    });
+    }
+}
 
+
+- (void)prepareForReuse
+{
+    
+    self.img.image = [UIImage imageNamed:@"placeholderImage.png"];
 }
 
 @end
