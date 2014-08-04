@@ -34,7 +34,8 @@
 - (IBAction)actHuntMode:(id)sender;
 - (IBAction)actFishMode:(id)sender;
 
-
+- (void)showAlertViewWithTittle:(NSString *)tittle;
+- (void)dismissMessage:(UIAlertView *)message;
 @end
 
 
@@ -343,6 +344,7 @@
     [self.huntButton setBackgroundImage:[UIImage imageNamed:@"hunt_mode_icon_selected.png"] forState:UIControlStateNormal];
     [self.fishButton setBackgroundImage:[UIImage imageNamed:@"fish_mode_icon.png"] forState:UIControlStateNormal];
     [self showMap];
+    [self showAlertViewWithTittle:@"Hunting Mode Activated"];
 }
 
 - (IBAction)actFishMode:(id)sender {
@@ -350,7 +352,19 @@
     [self.huntButton setBackgroundImage:[UIImage imageNamed:@"hunt_mode_icon.png"] forState:UIControlStateNormal];
     [self.fishButton setBackgroundImage:[UIImage imageNamed:@"fish_mode_icon_selected.png"] forState:UIControlStateNormal];
     [self showMap];
+    [self showAlertViewWithTittle:@"Fishing Mode Activated"];
 }
 
+- (void)showAlertViewWithTittle:(NSString *)tittle
+{
+    UIAlertView *myal = [[UIAlertView alloc] initWithTitle:@"Map mode" message:tittle delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+    [myal show];
+    [self performSelector:@selector(dismissMessage:) withObject:myal afterDelay:1];
+}
+
+- (void)dismissMessage:(UIAlertView *)message
+{
+    [message dismissWithClickedButtonIndex:-1 animated:YES];
+}
 
 @end
