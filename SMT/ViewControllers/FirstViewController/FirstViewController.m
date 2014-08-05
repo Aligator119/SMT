@@ -129,7 +129,7 @@
     
     cVC = [CameraViewController new];
     //cVC.view.frame = self.view.frame;
-    cVC.tabBar.delegate = self;
+    //cVC.tabBar.delegate = self;
     [cVC viewDidAppear:YES];
     
     nl1VC = [NewLog1ViewController new];
@@ -296,7 +296,7 @@
                 [self addChildViewController:cVC];
             }
             [self.view addSubview:cVC.view];
-            cVC.isCamera = YES;
+            //cVC.isCamera = YES;
             _current = cVC.view;
             activeTag = tag;
         }

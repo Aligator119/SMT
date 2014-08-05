@@ -192,10 +192,12 @@
             self.imageView.hidden = NO;
         }
     }];
-
 }
 
 - (IBAction)actClose:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+        //-
+    }];
     
 }
 
