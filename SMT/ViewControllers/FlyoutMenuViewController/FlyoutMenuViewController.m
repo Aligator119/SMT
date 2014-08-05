@@ -4,7 +4,6 @@
 #import "LogAnActivityViewController.h"
 #import "DataLoader.h"
 #import "NewLog1ViewController.h"
-//#import "FlyoutMenuCell.h"
 #import "UIViewController+LoaderCategory.h"
 #import "ImageShow.h"
 #import "CameraViewController.h"
@@ -15,6 +14,7 @@
 #import "OutfitterCell.h"
 #import "SearchViewController.h"
 #import "CellForFirstView.h"
+#import "FirstViewController.h"
 
 
 
@@ -47,7 +47,7 @@
     NSMutableArray * tipsList;
     NSMutableArray * photoList;
     NSMutableArray * outfitterList;
-    
+    BOOL isiPad;
     NSArray * subSpecies;
     Species * selectSpecie;
     Species * selectSubSpecie;
@@ -87,12 +87,13 @@
 @property (strong, nonatomic) IBOutlet UIImageView *btn4;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageController;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *heigthShowColectionViewConstraint;
-@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
 
 - (void)actHome:(id)sender;
 - (void)actLookSee:(id)sender;
 - (void)actVideo:(id)sender;
 - (void)actTIPS:(id)sender;
+
+- (IBAction)actMenu:(id)sender;
 
 - (void)reverseBackroundImageWithNumber:(int)num;
 - (void)setImageWithAllButton;
@@ -106,6 +107,7 @@
 - (void)downloadOutfitter;
 
 - (void)actDisplayCreateTIPS;
+- (IBAction)actCamera:(id)sender;
 
 - (IBAction)actCloseSubView:(id)sender;
 - (void)cashedImageFromCell:(NSNotification *)info;
@@ -139,6 +141,8 @@
         self.topViewHeightConstr.constant -= 20;
         self.topBarHiegthConstrainsSubView.constant -=20;
     }
+    
+    self.isMenu = NO;
     
     [self.colectionView registerNib:[UINib nibWithNibName:@"TipsCell" bundle:nil] forCellWithReuseIdentifier:@"TipsCell"];
     [self.colectionView registerNib:[UINib nibWithNibName:@"CreateTipsCell" bundle:nil] forCellWithReuseIdentifier:@"CreateTipsCell"];
@@ -213,9 +217,6 @@
                                              selector:@selector(keyboardDidHide:)
                                                  name:UIKeyboardDidHideNotification
                                                object:nil];
-    //[self.searchBar setBackgroundImage:[self createImageWithColor:[UIColor colorWithRed:0 green:124/255.0 blue:170/255.0 alpha:1]]];
-    [self.searchBar setSearchFieldBackgroundImage:[UIImage imageNamed:@"BG.png"] forState:UIControlStateNormal];
-    [self.searchBar setPlaceholder:@"Search"];
 
     [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:[UIColor blackColor]];
     self.screenName = @"Home screen";
@@ -246,6 +247,11 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    if (self.view.frame.size.width > 320.0) {
+        isiPad = YES;
+    } else {
+        isiPad = NO;
+    }
     [super viewWillAppear:YES];
     width = self.view.frame.size.width;
     self.navigationController.navigationBar.hidden = YES;
@@ -461,6 +467,39 @@
 - (void)actTIPS:(id)sender {
     [self reverseBackroundImageWithNumber:4];
     [self endLoader];
+}
+
+- (IBAction)actMenu:(id)sender {
+    
+    FirstViewController * fVC = [FirstViewController instance];
+    [self addChildViewController:fVC];
+    [fVC viewDidLoad];
+    [fVC viewWillAppear:YES];
+    
+    CGRect currentBounds = self.view.frame;
+    CGRect menuBounds = currentBounds;
+    menuBounds.origin.x -= currentBounds.size.width;
+    fVC.view.frame = menuBounds;
+    [self.view addSubview:fVC.view];
+    float shift = 0;
+    if (!isiPad) {
+        shift = self.view.frame.size.width * 0.78;
+    } else {
+        shift = self.view.frame.size.width * 0.62;
+    }
+    if (_isMenu) {
+        currentBounds.origin.x -=shift;
+        menuBounds.origin.x -= shift;
+    } else {
+        currentBounds.origin.x +=shift;
+        menuBounds.origin.x += shift;
+    }
+    //fVC.view.frame = menuBounds;
+    [UIView animateWithDuration:0.5f animations:^{
+        self.view.frame = currentBounds;
+        self.isMenu = !self.isMenu;
+    }];
+    
 }
 
 - (void)reverseBackroundImageWithNumber:(int)num
@@ -892,6 +931,11 @@
     [buf addObjectsFromArray:tipsList];
     tipsList = buf;
     [self.colectionView reloadData];
+}
+
+- (IBAction)actCamera:(id)sender {
+    CameraViewController * cVC = [CameraViewController new];
+    [self.navigationController pushViewController:cVC animated:YES];
 }
 
 - (void) openComments:(UIButton *)sender

@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="captureView" destination="feY-vS-h5H" id="Dip-9h-C9z"/>
                 <outlet property="imageView" destination="TcO-h8-2RU" id="zPU-s4-k4j"/>
+                <outlet property="presentView" destination="o6Z-CW-hhY" id="kte-Kh-vh5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,213 +18,159 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TcO-h8-2RU">
-                    <rect key="frame" x="0.0" y="64" width="320" height="380"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="380" id="VyI-eH-ha0"/>
-                    </constraints>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UnN-Qg-LkO">
-                    <rect key="frame" x="20" y="523" width="40" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="40" id="kPz-S9-gcn"/>
-                        <constraint firstAttribute="height" constant="40" id="svr-c5-2w4"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" backgroundImage="galery_BTN.png">
-                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="highlighted" backgroundImage="galery_BTN_press.png"/>
-                    <connections>
-                        <action selector="actOpenGalery:" destination="-1" eventType="touchUpInside" id="oA3-CF-Zc8"/>
-                        <action selector="actSelectPhoto:" destination="-1" eventType="touchUpInside" id="d27-ZT-xTq"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="feY-vS-h5H">
-                    <rect key="frame" x="0.0" y="64" width="320" height="389"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UnN-Qg-LkO">
+                            <rect key="frame" x="20" y="523" width="40" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="Dce-HJ-hs4"/>
+                                <constraint firstAttribute="height" constant="40" id="bRW-uA-Qgt"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" backgroundImage="galery_BTN.png">
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="galery_BTN_press.png"/>
+                            <connections>
+                                <action selector="actOpenGalery:" destination="-1" eventType="touchUpInside" id="oA3-CF-Zc8"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJP-Yz-80N">
+                            <rect key="frame" x="20" y="25" width="40" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="40" id="nug-pU-TCQ"/>
+                                <constraint firstAttribute="height" constant="40" id="xgU-Ry-50f"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="close_BTN.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="close_BTN_press.png"/>
+                            <connections>
+                                <action selector="actClose:" destination="-1" eventType="touchUpInside" id="Q9k-JV-cuC"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vD-e6-h3y">
+                            <rect key="frame" x="260" y="523" width="40" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="LFu-oc-CXC"/>
+                                <constraint firstAttribute="width" constant="40" id="cMg-GW-FM7"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="turn_the_camera_BTN.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="turn_the_camera_BTN_press.png"/>
+                            <connections>
+                                <action selector="actChangeCamera:" destination="-1" eventType="touchUpInside" id="UNU-8x-LnX"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4j-7m-QKD">
+                            <rect key="frame" x="126" y="518" width="68" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="68" id="Lfz-Ko-0DT"/>
+                                <constraint firstAttribute="height" constant="50" id="d5J-Si-ltI"/>
+                            </constraints>
+                            <state key="normal" backgroundImage="takePic_BTN.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="highlighted" backgroundImage="takePic_BTN_press.png"/>
+                            <connections>
+                                <action selector="actTakePhoto:" destination="-1" eventType="touchUpInside" id="Nmo-5J-OQz"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="M4j-7m-QKD" secondAttribute="bottom" id="4ZG-vH-Bgj"/>
+                        <constraint firstAttribute="centerX" secondItem="M4j-7m-QKD" secondAttribute="centerX" id="cnW-1n-nZq"/>
+                        <constraint firstAttribute="trailing" secondItem="0vD-e6-h3y" secondAttribute="trailing" constant="20" id="efu-Z3-f9A"/>
+                        <constraint firstItem="UnN-Qg-LkO" firstAttribute="leading" secondItem="feY-vS-h5H" secondAttribute="leading" constant="20" id="fNq-mx-HPc"/>
+                        <constraint firstAttribute="bottom" secondItem="UnN-Qg-LkO" secondAttribute="bottom" constant="5" id="gRn-UQ-1NY"/>
+                        <constraint firstItem="WJP-Yz-80N" firstAttribute="top" secondItem="feY-vS-h5H" secondAttribute="top" constant="25" id="gTb-h2-gUM"/>
+                        <constraint firstAttribute="bottom" secondItem="0vD-e6-h3y" secondAttribute="bottom" constant="5" id="l8y-2v-CON"/>
+                        <constraint firstItem="WJP-Yz-80N" firstAttribute="leading" secondItem="feY-vS-h5H" secondAttribute="leading" constant="20" id="rMf-Cc-s6n"/>
+                    </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4j-7m-QKD">
-                    <rect key="frame" x="126" y="518" width="68" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="6TM-2z-4AT"/>
-                        <constraint firstAttribute="width" constant="68" id="UBL-SQ-axl"/>
-                    </constraints>
-                    <state key="normal" backgroundImage="takePic_BTN.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="highlighted" backgroundImage="takePic_BTN_press.png"/>
-                    <connections>
-                        <action selector="actTakePhoto:" destination="-1" eventType="touchUpInside" id="Nmo-5J-OQz"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJP-Yz-80N">
-                    <rect key="frame" x="260" y="523" width="40" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="5mK-xn-eCA"/>
-                        <constraint firstAttribute="width" constant="40" id="MhT-LS-eoa"/>
-                    </constraints>
-                    <state key="normal" backgroundImage="close_BTN.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="highlighted" backgroundImage="close_BTN_press.png"/>
-                    <connections>
-                        <action selector="actClose:" destination="-1" eventType="touchUpInside" id="Q9k-JV-cuC"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vD-e6-h3y">
-                    <rect key="frame" x="260" y="473" width="40" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="40" id="1JS-Ui-p2c"/>
-                        <constraint firstAttribute="height" constant="40" id="FQg-le-ykr"/>
-                    </constraints>
-                    <state key="normal" backgroundImage="turn_the_camera_BTN.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="highlighted" backgroundImage="turn_the_camera_BTN_press.png"/>
-                    <connections>
-                        <action selector="actChangeCamera:" destination="-1" eventType="touchUpInside" id="UNU-8x-LnX"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="WJP-Yz-80N" secondAttribute="bottom" constant="5" id="0eG-RI-iyJ"/>
-                <constraint firstItem="WJP-Yz-80N" firstAttribute="top" secondItem="0vD-e6-h3y" secondAttribute="bottom" constant="10" id="3Rd-zP-1Y4"/>
                 <constraint firstAttribute="trailing" secondItem="feY-vS-h5H" secondAttribute="trailing" id="7bS-eA-GV9"/>
-                <constraint firstItem="TcO-h8-2RU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AbR-hJ-7Z5"/>
-                <constraint firstAttribute="bottom" secondItem="M4j-7m-QKD" secondAttribute="bottom" id="C0v-wo-lBH"/>
-                <constraint firstAttribute="trailing" secondItem="TcO-h8-2RU" secondAttribute="trailing" id="FTx-Zm-kU7"/>
-                <constraint firstItem="TcO-h8-2RU" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="Gvx-FP-6me"/>
-                <constraint firstItem="feY-vS-h5H" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="JMD-oI-jdy"/>
-                <constraint firstItem="UnN-Qg-LkO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Pwf-Rh-Fd8"/>
-                <constraint firstAttribute="bottom" secondItem="UnN-Qg-LkO" secondAttribute="bottom" constant="5" id="g3J-7I-FzR"/>
+                <constraint firstItem="feY-vS-h5H" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="JMD-oI-jdy"/>
+                <constraint firstAttribute="bottom" secondItem="feY-vS-h5H" secondAttribute="bottom" id="f32-y5-ycA"/>
                 <constraint firstItem="feY-vS-h5H" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hVY-va-Pdx"/>
-                <constraint firstAttribute="centerX" secondItem="M4j-7m-QKD" secondAttribute="centerX" id="kej-tg-rly"/>
-                <constraint firstItem="0vD-e6-h3y" firstAttribute="top" secondItem="feY-vS-h5H" secondAttribute="bottom" constant="20" id="mi9-MZ-PAt"/>
-                <constraint firstAttribute="trailing" secondItem="WJP-Yz-80N" secondAttribute="trailing" constant="20" id="oAX-RG-aNr"/>
-                <constraint firstAttribute="trailing" secondItem="0vD-e6-h3y" secondAttribute="trailing" constant="20" id="xrc-HQ-ztR"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
-        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hgc-sJ-B9V" customClass="CustomTabBar">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
+        <view contentMode="scaleToFill" id="o6Z-CW-hhY">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabbar_BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="uTz-Zu-QIU">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="320" id="blc-oM-ZJb"/>
-                    </constraints>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TcO-h8-2RU">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
-                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJr-zl-O8C">
-                    <rect key="frame" x="17" y="8" width="36" height="36"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Om-1f-hZd">
+                    <rect key="frame" x="132" y="518" width="68" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="36" id="L9l-UY-xF5"/>
-                        <constraint firstAttribute="width" constant="36" id="Wgz-6o-lVY"/>
+                        <constraint firstAttribute="height" constant="50" id="DdL-Os-FuQ"/>
+                        <constraint firstAttribute="width" constant="68" id="gGX-x4-fvB"/>
                     </constraints>
-                    <state key="normal" backgroundImage="home_icon.png">
+                    <state key="normal" backgroundImage="takePic_check_BTN.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="highlighted" backgroundImage="home_icon_press.png"/>
+                    <state key="highlighted" backgroundImage="takePic_check_BTN_press.png"/>
+                    <connections>
+                        <action selector="actConfirm:" destination="-1" eventType="touchUpInside" id="Ly0-Xg-10l"/>
+                    </connections>
                 </button>
-                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r8B-o3-Nmf">
-                    <rect key="frame" x="73" y="8" width="36" height="36"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUj-jg-8em">
+                    <rect key="frame" x="267" y="533" width="43" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="36" id="4sv-KI-pJa"/>
-                        <constraint firstAttribute="width" constant="36" id="W4i-OZ-kIj"/>
+                        <constraint firstAttribute="height" constant="30" id="hAk-WX-eUm"/>
+                        <constraint firstAttribute="width" constant="43" id="pKN-Kl-Veb"/>
                     </constraints>
-                    <state key="normal" backgroundImage="global_icon.png">
+                    <fontDescription key="fontDescription" name="MarkerFelt-Wide" family="Marker Felt" pointSize="14"/>
+                    <state key="normal" title="Retake">
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="highlighted" backgroundImage="global_icon_press.png"/>
-                </button>
-                <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXC-nv-WNS">
-                    <rect key="frame" x="142" y="8" width="36" height="36"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="36" id="1jM-vN-lO6"/>
-                        <constraint firstAttribute="height" constant="36" id="Pda-TK-5Cq"/>
-                    </constraints>
-                    <state key="normal" backgroundImage="camera_icon.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="highlighted" backgroundImage="camera_icon_press.png"/>
-                </button>
-                <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXo-x1-BLX">
-                    <rect key="frame" x="213" y="8" width="36" height="36"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="36" id="aQX-7J-91E"/>
-                        <constraint firstAttribute="height" constant="36" id="wzk-Bc-XD0"/>
-                    </constraints>
-                    <state key="normal" backgroundImage="note_icon.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="highlighted" backgroundImage="note_icon_press.png"/>
-                </button>
-                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KfL-H9-r6M">
-                    <rect key="frame" x="267" y="8" width="36" height="36"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="36" id="IDd-Sw-cky"/>
-                        <constraint firstAttribute="width" constant="36" id="n7T-dP-7Rz"/>
-                    </constraints>
-                    <state key="normal" backgroundImage="st_icon.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="highlighted" backgroundImage="st_icon_press.png"/>
+                    <connections>
+                        <action selector="actRetake:" destination="-1" eventType="touchUpInside" id="vGR-4R-TGy"/>
+                    </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="uTz-Zu-QIU" secondAttribute="bottom" id="0Qk-Zx-aAr"/>
-                <constraint firstAttribute="centerX" secondItem="eXC-nv-WNS" secondAttribute="centerX" id="DgX-1v-yBX"/>
-                <constraint firstItem="r8B-o3-Nmf" firstAttribute="leading" secondItem="GJr-zl-O8C" secondAttribute="trailing" constant="20" id="HHG-4M-qA2"/>
-                <constraint firstAttribute="bottom" secondItem="UXo-x1-BLX" secondAttribute="bottom" constant="2" id="M0B-aP-H9m"/>
-                <constraint firstAttribute="bottom" secondItem="KfL-H9-r6M" secondAttribute="bottom" constant="2" id="Mon-TI-e3y"/>
-                <constraint firstItem="eXC-nv-WNS" firstAttribute="leading" secondItem="r8B-o3-Nmf" secondAttribute="trailing" constant="33" id="Qhi-vf-ROp"/>
-                <constraint firstItem="uTz-Zu-QIU" firstAttribute="top" secondItem="Hgc-sJ-B9V" secondAttribute="top" id="TD4-zH-XZ1"/>
-                <constraint firstAttribute="width" constant="320" id="YT2-WY-scq"/>
-                <constraint firstItem="KfL-H9-r6M" firstAttribute="leading" secondItem="UXo-x1-BLX" secondAttribute="trailing" constant="18" id="hEm-Lg-cGQ"/>
-                <constraint firstAttribute="centerX" secondItem="uTz-Zu-QIU" secondAttribute="centerX" id="ikt-fY-MAe"/>
-                <constraint firstAttribute="bottom" secondItem="r8B-o3-Nmf" secondAttribute="bottom" constant="2" id="lev-NL-MrY"/>
-                <constraint firstItem="UXo-x1-BLX" firstAttribute="leading" secondItem="eXC-nv-WNS" secondAttribute="trailing" constant="35" id="ljB-Of-BJh"/>
-                <constraint firstAttribute="bottom" secondItem="GJr-zl-O8C" secondAttribute="bottom" constant="2" id="oee-lU-HYx"/>
-                <constraint firstAttribute="height" constant="46" id="sZh-by-5NN"/>
-                <constraint firstAttribute="bottom" secondItem="eXC-nv-WNS" secondAttribute="bottom" constant="2" id="zrY-Kt-FyB"/>
+                <constraint firstAttribute="bottom" secondItem="7Om-1f-hZd" secondAttribute="bottom" id="8ib-tl-q1s"/>
+                <constraint firstAttribute="trailing" secondItem="uUj-jg-8em" secondAttribute="trailing" constant="10" id="EoH-u5-UGj"/>
+                <constraint firstAttribute="centerX" secondItem="7Om-1f-hZd" secondAttribute="centerX" constant="-6" id="NbR-wK-tjF"/>
+                <constraint firstAttribute="bottom" secondItem="uUj-jg-8em" secondAttribute="bottom" constant="5" id="a6J-KN-xzv"/>
+                <constraint firstAttribute="trailing" secondItem="TcO-h8-2RU" secondAttribute="trailing" id="cbL-kD-3DR"/>
+                <constraint firstItem="TcO-h8-2RU" firstAttribute="top" secondItem="o6Z-CW-hhY" secondAttribute="top" id="oUc-s9-4fu"/>
+                <constraint firstAttribute="bottom" secondItem="TcO-h8-2RU" secondAttribute="bottom" id="u1M-Dr-wvq"/>
+                <constraint firstItem="TcO-h8-2RU" firstAttribute="leading" secondItem="o6Z-CW-hhY" secondAttribute="leading" id="ubf-Pc-s0l"/>
             </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
     <resources>
-        <image name="camera_icon.png" width="30" height="30"/>
-        <image name="camera_icon_press.png" width="30" height="30"/>
         <image name="close_BTN.png" width="44" height="44"/>
         <image name="close_BTN_press.png" width="44" height="44"/>
         <image name="galery_BTN.png" width="44" height="44"/>
         <image name="galery_BTN_press.png" width="44" height="44"/>
-        <image name="global_icon.png" width="30" height="30"/>
-        <image name="global_icon_press.png" width="30" height="30"/>
-        <image name="home_icon.png" width="30" height="30"/>
-        <image name="home_icon_press.png" width="30" height="30"/>
-        <image name="note_icon.png" width="30" height="30"/>
-        <image name="note_icon_press.png" width="30" height="30"/>
-        <image name="st_icon.png" width="30" height="30"/>
-        <image name="st_icon_press.png" width="30" height="30"/>
-        <image name="tabbar_BG.png" width="320" height="50"/>
         <image name="takePic_BTN.png" width="74" height="56"/>
         <image name="takePic_BTN_press.png" width="74" height="56"/>
+        <image name="takePic_check_BTN.png" width="74" height="56"/>
+        <image name="takePic_check_BTN_press.png" width="74" height="56"/>
         <image name="turn_the_camera_BTN.png" width="44" height="44"/>
         <image name="turn_the_camera_BTN_press.png" width="44" height="44"/>
     </resources>

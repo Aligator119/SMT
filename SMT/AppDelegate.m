@@ -71,7 +71,7 @@
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];
 //-----------------------------------------------------------------------------------------------------------------------
             
-            FirstViewController * fvc = [[FirstViewController alloc]initWithNibName:@"FirstViewController" bundle:nil];
+            FlyoutMenuViewController * fvc = [[FlyoutMenuViewController alloc]initWithNibName:@"FlyoutMenuViewController" bundle:nil];
             self.navigationController = [[UINavigationController alloc]initWithRootViewController:fvc];
             self.window.rootViewController = self.navigationController;
         }

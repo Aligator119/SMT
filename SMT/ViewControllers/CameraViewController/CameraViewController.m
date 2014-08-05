@@ -8,10 +8,12 @@
     DataLoader * dataLoader;
     AVCaptureSession * session;
     AVCaptureStillImageOutput * stillImageOutput;
-    BOOL frontCamera;
+    AVCaptureVideoPreviewLayer * preLayer;
 }
+
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIView *captureView;
+@property (strong, nonatomic) IBOutlet UIView *presentView;
 
 - (IBAction)actOpenGalery:(id)sender;
 
@@ -21,8 +23,11 @@
 
 - (IBAction)actChangeCamera:(id)sender;
 
-- (AVCaptureDevice *)frontCamera;
-- (void) settingInputDevice:(AVCaptureDevice *)inputDevice;
+- (IBAction)actConfirm:(id)sender;
+
+- (IBAction)actRetake:(id)sender;
+
+- (void) settingInputDevice;
 @end
 
 @implementation CameraViewController
@@ -44,37 +49,26 @@
     [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
     
     self.screenName = @"Camera screen";
-    frontCamera = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self settingInputDevice:[self frontCamera]];
+    [session stopRunning];
+    
+    [self settingInputDevice];
 }
 
-
-- (AVCaptureDevice *)frontCamera {
-    AVCaptureDevice * inputDevice;
-    if (frontCamera) {
-        NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
-        for (AVCaptureDevice *device in devices) {
-            if ([device position] == AVCaptureDevicePositionFront) {
-                inputDevice = device;
-            }
-        }
-
-    } else {
-        inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-    }
-    return inputDevice;
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [self resetCamera];
 }
 
-- (void) settingInputDevice:(AVCaptureDevice *)inputDevice
+- (void) settingInputDevice
 {
     session = [[AVCaptureSession alloc]init];
     [session setSessionPreset:AVCaptureSessionPresetPhoto];
     
-    //AVCaptureDevice * inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    AVCaptureDevice * inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
     NSError * error;
     AVCaptureDeviceInput * device = [AVCaptureDeviceInput deviceInputWithDevice:inputDevice error:&error];
@@ -83,12 +77,12 @@
         [session addInput:device];
     }
     
-    AVCaptureVideoPreviewLayer * preLayer = [[AVCaptureVideoPreviewLayer alloc]initWithSession:session];
+    preLayer = [[AVCaptureVideoPreviewLayer alloc]initWithSession:session];
     [preLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
     
     CALayer * rootLayer = [[self view] layer];
     [rootLayer setMasksToBounds:YES];
-    CGRect frame = self.captureView.frame;
+    CGRect frame = self.view.frame;
     
     [preLayer setFrame:frame];
     
@@ -108,9 +102,10 @@
     
     UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
     self.imageView.image = chosenImage;
+    [self.view addSubview:self.presentView];
 
     [picker dismissViewControllerAnimated:YES completion:^{
-        //l
+        //sdfghjkl
     }];
 }
 
@@ -118,19 +113,11 @@
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     
     [picker dismissViewControllerAnimated:YES completion:^{
-       //l
+       
     }];
     
 }
 
-- (IBAction)actSelectPhoto:(id)sender {
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    
-    [self presentViewController:picker animated:YES completion:NULL];
-}
 
 - (IBAction)actSetAvatar:(id)sender {
     if (self.imageView.image) {
@@ -161,11 +148,13 @@
 }
 
 
-
-
-
-
 - (IBAction)actOpenGalery:(id)sender {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
 }
 
 - (IBAction)actTakePhoto:(id)sender {
@@ -188,21 +177,84 @@
             NSData * imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
             UIImage * image = [UIImage imageWithData:imageData];
             self.imageView.image = image;
-            self.captureView.hidden = YES;
-            self.imageView.hidden = NO;
+            [self.view addSubview:self.presentView];
         }
     }];
 }
 
 - (IBAction)actClose:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        //-
-    }];
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        //-
+//    }];
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 
 - (IBAction)actChangeCamera:(id)sender {
-    frontCamera = !frontCamera;
-    [self settingInputDevice:[self frontCamera]];
+    if(session)
+    {
+        //Indicate that some changes will be made to the session
+        [session beginConfiguration];
+        
+        //Remove existing input
+        AVCaptureInput* currentCameraInput = [session.inputs objectAtIndex:0];
+        [session removeInput:currentCameraInput];
+        
+        //Get new input
+        AVCaptureDevice *newCamera = nil;
+        if(((AVCaptureDeviceInput*)currentCameraInput).device.position == AVCaptureDevicePositionBack)
+        {
+            newCamera = [self cameraWithPosition:AVCaptureDevicePositionFront];
+        }
+        else
+        {
+            newCamera = [self cameraWithPosition:AVCaptureDevicePositionBack];
+        }
+        
+        //Add input to session
+        AVCaptureDeviceInput *newVideoInput = [[AVCaptureDeviceInput alloc] initWithDevice:newCamera error:nil];
+        [session addInput:newVideoInput];
+        
+        //Commit all the configuration changes at once
+        [session commitConfiguration];
+    }
+
+
+
 }
+
+- (IBAction)actConfirm:(id)sender {
+}
+
+- (IBAction)actRetake:(id)sender {
+    
+    [self.presentView removeFromSuperview];
+    [self resetCamera];
+    [self viewWillAppear:YES];
+}
+
+- (AVCaptureDevice *) cameraWithPosition:(AVCaptureDevicePosition) position
+{
+    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    for (AVCaptureDevice *device in devices)
+    {
+        if ([device position] == position) return device;
+    }
+    return nil;
+}
+
+
+- (void) resetCamera
+{
+    if([session isRunning])[session stopRunning];
+    AVCaptureInput* input = [session.inputs objectAtIndex:0];
+    [session removeInput:input];
+    AVCaptureVideoDataOutput* output = (AVCaptureVideoDataOutput*)[session.outputs objectAtIndex:0];
+    [session removeOutput:output];
+    [preLayer removeFromSuperlayer];
+    
+    preLayer = nil;
+    session = nil;
+}
+
 @end

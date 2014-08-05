@@ -12,6 +12,7 @@
 @property (strong, nonatomic) IBOutlet CustomTabBar *tabBar;
 
 @property (nonatomic, copy) NSString * screenName;
+@property (nonatomic) BOOL isMenu;
 
 -(void) setIsPresent:(BOOL)present;
 @end

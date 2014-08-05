@@ -15,10 +15,6 @@
 {
     BOOL isSettings;
     BOOL isiPad;
-    FlyoutMenuViewController * fmVC;
-    LocationListViewController * llVC;
-    CameraViewController * cVC;
-    NewLog1ViewController * nl1VC;
     int activeTag;
     UIViewController * currentController;
     NSArray * menuItems;
@@ -28,18 +24,19 @@
 }
 @property (strong, nonatomic) IBOutlet UIImageView *imgUser;
 @property (strong, nonatomic) IBOutlet UILabel *lbNameUser;
-@property (strong, nonatomic) IBOutlet UILabel *lbNameLocation;
-@property (strong, nonatomic) IBOutlet UILabel *lbStatus;
 @property (strong, nonatomic) IBOutlet UITableView *table;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *leftsSpace;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstr;
-- (IBAction)actCloseSetting:(id)sender;
+
+
 - (void)deselectSettingButton;
 - (void)selectSettingButton;
 - (NSString *) getImageName:(int)tag;
 - (void)photoClick:(id)notification;
 - (void)rightSwipeHandler:(id)sender;
 - (void)downloadSeasons;
+
+
 @end
 
 @implementation FirstViewController
@@ -64,11 +61,11 @@
     isSettings = NO;
     dataLoader = [DataLoader instance];
     self.lbNameUser.text =  appDelegate.user.name;
-    self.lbNameLocation.text = @"";
-    self.lbStatus.text = @"";
     self.imgUser.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:appDelegate.user.avatarAdress]]];
     self.imgUser.layer.masksToBounds = YES;
     self.imgUser.layer.cornerRadius = self.imgUser.frame.size.width/2;
+    self.imgUser.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.imgUser.layer.borderWidth = 1.0f;
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
         //[dataLoader get];
@@ -102,6 +99,7 @@
     
     [self.view addGestureRecognizer:rightRecognizer];
     
+    
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -113,40 +111,50 @@
         [self.view updateConstraintsIfNeeded];
     }
     
-    fmVC = [FlyoutMenuViewController new];
-    fmVC.view.frame = self.view.frame;
-    fmVC.tabBar.delegate = self;
-    [fmVC viewWillAppear:YES];
-    [fmVC viewDidAppear:YES];
-    
-    
-    llVC = [LocationListViewController new];
-    llVC.view.frame = self.view.frame;
-    llVC.mapType = typeHunting;
-    llVC.tabBar.delegate = self;
-    [llVC viewWillAppear:YES];
-    [llVC viewDidAppear:YES];
-    
-    cVC = [CameraViewController new];
-    //cVC.view.frame = self.view.frame;
-    //cVC.tabBar.delegate = self;
-    [cVC viewDidAppear:YES];
-    
-    nl1VC = [NewLog1ViewController new];
-    nl1VC.view.frame = self.view.frame;
-    nl1VC.tabBar.delegate = self;
-    [nl1VC viewWillAppear:YES];
-    [nl1VC viewDidAppear:YES];
-    
-    if (!currentController) {
-        [self.view addSubview:fmVC.view];
-        [self addChildViewController:fmVC];
-        currentController = fmVC;
-        _current = fmVC.view;
-        activeTag = 1;
-    }
-    //[self downloadSeasons];
+//    fmVC = [FlyoutMenuViewController new];
+//    fmVC.view.frame = self.view.frame;
+//    fmVC.tabBar.delegate = self;
+//    [fmVC viewWillAppear:YES];
+//    [fmVC viewDidAppear:YES];
+//    
+//    
+//    llVC = [LocationListViewController new];
+//    llVC.view.frame = self.view.frame;
+//    llVC.mapType = typeHunting;
+//    llVC.tabBar.delegate = self;
+//    [llVC viewWillAppear:YES];
+//    [llVC viewDidAppear:YES];
+//    
+//    cVC = [CameraViewController new];
+//    //cVC.view.frame = self.view.frame;
+//    //cVC.tabBar.delegate = self;
+//    //[cVC viewDidAppear:YES];
+//    
+//    nl1VC = [NewLog1ViewController new];
+//    nl1VC.view.frame = self.view.frame;
+//    nl1VC.tabBar.delegate = self;
+//    [nl1VC viewWillAppear:YES];
+//    [nl1VC viewDidAppear:YES];
+//    
+//    if (!currentController) {
+//        [self.view addSubview:fmVC.view];
+//        [self addChildViewController:fmVC];
+//        currentController = fmVC;
+//        _current = fmVC.view;
+//        activeTag = 1;
+//    }
+//    //[self downloadSeasons];
 
+}
+
++ (FirstViewController *)instance
+{
+    static FirstViewController * _instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil];
+    });
+    return _instance;
 }
 
 
@@ -162,8 +170,11 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"newCell"];
     }
     cell.textLabel.text = [[functionsDictionary objectForKey:@"strings"] objectAtIndex:indexPath.row];
-    cell.textLabel.textColor = [UIColor colorWithRed:144/255.0 green:144/255.0 blue:144/255.0 alpha:1.0];
+    cell.textLabel.textColor = [UIColor whiteColor];
     cell.imageView.image = [UIImage imageNamed:[[functionsDictionary objectForKey:@"icons"] objectAtIndex:indexPath.row]];
+    [cell.contentView setBackgroundColor:[UIColor clearColor]];
+    [cell setBackgroundColor:[UIColor clearColor]];
+    
     return cell;
 }
 
@@ -259,74 +270,75 @@
 
 
 //-------------------------------------------------------------------------------------------------------------------------
-- (void)selectController:(int)tag
-{
-    [fmVC setIsPresent:NO];
-    [llVC setIsPresent:NO];
-    [nl1VC setIsPresent:NO];
-    switch (tag) {
-        case 1:
-        {
-            [_current removeFromSuperview];
-            if (![self.childViewControllers containsObject:fmVC]) {
-                [self addChildViewController:fmVC];
-            }
-            [self.view addSubview:fmVC.view];
-            _current = fmVC.view;
-            [fmVC setIsPresent:YES];
-            activeTag = tag;
-        }
-            break;
-        case 2:
-        {
-            [_current removeFromSuperview];
-            if (![self.childViewControllers containsObject:llVC]) {
-                [self addChildViewController:llVC];
-            }
-            [self.view addSubview:llVC.view];
-            _current = llVC.view;
-            [llVC setIsPresent:YES];
-            activeTag = tag;
-        }
-            break;
-        case 3:
-        {
-            [_current removeFromSuperview];
-            if (![self.childViewControllers containsObject:cVC]) {
-                [self addChildViewController:cVC];
-            }
-            [self.view addSubview:cVC.view];
-            //cVC.isCamera = YES;
-            _current = cVC.view;
-            activeTag = tag;
-        }
-            break;
-        case 4:
-        {
-            [_current removeFromSuperview];
-            if (![self.childViewControllers containsObject:nl1VC]) {
-                [self addChildViewController:nl1VC];
-            }
-            [self.view addSubview:nl1VC.view];
-            _current = nl1VC.view;
-            [nl1VC setIsPresent:YES];
-            activeTag = tag;
-        }
-            break;
-        case 5:
-        {
-            if (!isSettings) {
-                [self selectSettingButton];
-            } else{
-                [self deselectSettingButton];
-            }
-            [self showSettings];
-            isSettings = !isSettings;
-            
-        }
-            break;
-    }
-}
+//- (void)selectController:(int)tag
+//{
+//    [fmVC setIsPresent:NO];
+//    [llVC setIsPresent:NO];
+//    [nl1VC setIsPresent:NO];
+//    switch (tag) {
+//        case 1:
+//        {
+//            [_current removeFromSuperview];
+//            if (![self.childViewControllers containsObject:fmVC]) {
+//                [self addChildViewController:fmVC];
+//            }
+//            [self.view addSubview:fmVC.view];
+//            _current = fmVC.view;
+//            [fmVC setIsPresent:YES];
+//            activeTag = tag;
+//        }
+//            break;
+//        case 2:
+//        {
+//            [_current removeFromSuperview];
+//            if (![self.childViewControllers containsObject:llVC]) {
+//                [self addChildViewController:llVC];
+//            }
+//            [self.view addSubview:llVC.view];
+//            _current = llVC.view;
+//            [llVC setIsPresent:YES];
+//            activeTag = tag;
+//        }
+//            break;
+//        case 3:
+//        {
+////            [_current removeFromSuperview];
+////            if (![self.childViewControllers containsObject:cVC]) {
+////                [self addChildViewController:cVC];
+////            }
+////            [self.view addSubview:cVC.view];
+////            //cVC.isCamera = YES;
+////            _current = cVC.view;
+////            activeTag = tag;
+//            [self.navigationController pushViewController:cVC animated:YES];
+//        }
+//            break;
+//        case 4:
+//        {
+//            [_current removeFromSuperview];
+//            if (![self.childViewControllers containsObject:nl1VC]) {
+//                [self addChildViewController:nl1VC];
+//            }
+//            [self.view addSubview:nl1VC.view];
+//            _current = nl1VC.view;
+//            [nl1VC setIsPresent:YES];
+//            activeTag = tag;
+//        }
+//            break;
+//        case 5:
+//        {
+//            if (!isSettings) {
+//                [self selectSettingButton];
+//            } else{
+//                [self deselectSettingButton];
+//            }
+//            [self showSettings];
+//            isSettings = !isSettings;
+//            
+//        }
+//            break;
+//    }
+//}
 
 
 - (void)showSettings
@@ -392,48 +404,48 @@
     }
 }
 
-- (void) deselectSettingButton
-{
-    if (activeTag == 1) {
-        for (UIView * obj in _current.subviews)
-        {
-            for (UIView * vie in obj.subviews) {
-                if ([vie isKindOfClass:[CustomTabBar class]]) {
-                    [((UIButton *)[obj viewWithTag:5]) setBackgroundImage:[UIImage imageNamed:@"st_icon.png"] forState:UIControlStateNormal];
-                    [((UIButton *)[obj viewWithTag:activeTag]) setBackgroundImage:[UIImage imageNamed:[self getImageName:activeTag]] forState:UIControlStateNormal];
-                }
-            }
-        }
-    } else {
-        for (UIView * obj in _current.subviews)
-        {
-            if ([obj isKindOfClass:[CustomTabBar class]]) {
-                [((UIButton *)[obj viewWithTag:5]) setBackgroundImage:[UIImage imageNamed:@"st_icon.png"] forState:UIControlStateNormal];
-                [((UIButton *)[obj viewWithTag:activeTag]) setBackgroundImage:[UIImage imageNamed:[self getImageName:activeTag]] forState:UIControlStateNormal];
-            }
-        }
-    }
-}
+//- (void) deselectSettingButton
+//{
+//    if (activeTag == 1) {
+//        for (UIView * obj in _current.subviews)
+//        {
+//            for (UIView * vie in obj.subviews) {
+//                if ([vie isKindOfClass:[CustomTabBar class]]) {
+//                    [((UIButton *)[obj viewWithTag:5]) setBackgroundImage:[UIImage imageNamed:@"st_icon.png"] forState:UIControlStateNormal];
+//                    [((UIButton *)[obj viewWithTag:activeTag]) setBackgroundImage:[UIImage imageNamed:[self getImageName:activeTag]] forState:UIControlStateNormal];
+//                }
+//            }
+//        }
+//    } else {
+//        for (UIView * obj in _current.subviews)
+//        {
+//            if ([obj isKindOfClass:[CustomTabBar class]]) {
+//                [((UIButton *)[obj viewWithTag:5]) setBackgroundImage:[UIImage imageNamed:@"st_icon.png"] forState:UIControlStateNormal];
+//                [((UIButton *)[obj viewWithTag:activeTag]) setBackgroundImage:[UIImage imageNamed:[self getImageName:activeTag]] forState:UIControlStateNormal];
+//            }
+//        }
+//    }
+//}
 
-- (NSString *)getImageName:(int)tag
-{
-    NSString * name;
-    switch (tag) {
-        case 1:
-            name = @"home_icon_press.png";
-            break;
-        case 2:
-            name = @"global_icon_press.png";
-            break;
-        case 3:
-            name = @"camera_icon_press.png";
-            break;
-        case 4:
-            name = @"note_icon_press.png";
-            break;
-    }
-    return name;
-}
+//- (NSString *)getImageName:(int)tag
+//{
+//    NSString * name;
+//    switch (tag) {
+//        case 1:
+//            name = @"home_icon_press.png";
+//            break;
+//        case 2:
+//            name = @"global_icon_press.png";
+//            break;
+//        case 3:
+//            name = @"camera_icon_press.png";
+//            break;
+//        case 4:
+//            name = @"note_icon_press.png";
+//            break;
+//    }
+//    return name;
+//}
 
 //--------- set photo-------------------------------------------------------------------------------------
 - (void) photoClick:notification

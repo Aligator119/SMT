@@ -1,8 +1,4 @@
 #import <UIKit/UIKit.h>
-#import "NewLog1ViewController.h"
-#import "FlyoutMenuViewController.h"
-#import "CustomTabBar.h"
-
 
 @protocol CameraControllerDelegate <NSObject>
 
