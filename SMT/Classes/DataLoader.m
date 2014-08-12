@@ -669,6 +669,7 @@
         ithem.caption = [[act objectForKey:@"raw"] objectForKey:@"caption"];
         [photoList addObject:ithem];
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"get photo finished" object:nil];
     return photoList;
 }
 

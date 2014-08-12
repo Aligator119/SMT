@@ -31,23 +31,34 @@
     return self;
 }
 
+- (void)setImg:(UIImage *)img
+{
+    UIActivityIndicatorView * a = (UIActivityIndicatorView* )[self.contentView viewWithTag:ActiveTag];
+    [a stopAnimating];
+    self.foneImage.image = img;
+}
+
 - (void) setImage:(NSString *)url
 {
     UIActivityIndicatorView * a = (UIActivityIndicatorView* )[self.contentView viewWithTag:ActiveTag];
     [a startAnimating];
-    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(newQueue, ^(){
-    
-        _img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
-        
-        dispatch_async(dispatch_get_main_queue(), ^(){
-            
-            self.foneImage.image = _img;
-            UIActivityIndicatorView * a = (UIActivityIndicatorView* )[self.contentView viewWithTag:ActiveTag];
-            [a stopAnimating];
-        });
-    });
+//    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_async(newQueue, ^(){
+//    
+//        _img = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:url]]];
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^(){
+//            
+//            self.foneImage.image = _img;
+//            UIActivityIndicatorView * a = (UIActivityIndicatorView* )[self.contentView viewWithTag:ActiveTag];
+//            [a stopAnimating];
+//        });
+//    });
 }
 
+- (void) prepareForReuse
+{
+    self.foneImage.image = nil;
+}
 
 @end

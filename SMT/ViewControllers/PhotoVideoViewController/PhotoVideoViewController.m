@@ -118,7 +118,7 @@
     Photo * photo = [items objectAtIndex:indexPath.row];
     if ([photoDict objectForKey:photo.photoID])
     {
-        cell.foneImage.image = [photoDict objectForKey:photo.photoID];
+        [cell setImg:[photoDict objectForKey:photo.photoID]];
     } else {
         [self cashedImage:photo];
         [cell setImage:photo.fullPhoto];
@@ -191,37 +191,10 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
-//    NSString * path = [info objectForKey:@"UIImagePickerControllerReferenceURL"];
-//    NSString * str = [selectedFormatter stringFromDate:[NSDate date]];
+
     [self dismissViewControllerAnimated:YES completion:^{
-//        BOOL flag = NO;
-//        for (NSString * key in [dict allKeys]) {
-//        if ([key isEqualToString:str]) {
-//            NSMutableArray * buffer = [dict objectForKey:str];
-//            NSDictionary * newImage = [[NSDictionary alloc]initWithObjectsAndKeys:path, @"path", nil];
-//            [buffer addObject:newImage];
-//            [dict setObject:buffer forKey:str];
-//            flag = YES;
-//            NSData * buf = [NSKeyedArchiver archivedDataWithRootObject:dict];
-//            //[def setObject:buf forKey:KEY_USERDEFAULT];
-//            //[def synchronize];
-//        }
-//        }
-//        if (!flag) {
-//            NSMutableArray * buffer = [[NSMutableArray alloc]init];
-//            NSDictionary * newImage = [[NSDictionary alloc]initWithObjectsAndKeys:path, @"path", nil];
-//            [buffer addObject:newImage];
-//            NSMutableDictionary * newDict = [[NSMutableDictionary alloc]initWithDictionary:dict];
-//            [newDict addEntriesFromDictionary:@{str: buffer}];
-//            NSData * buf = [NSKeyedArchiver archivedDataWithRootObject:newDict];
-//            //[def setObject:buf forKey:KEY_USERDEFAULT];
-//            dict = [newDict mutableCopy];
-//            //[def synchronize];
-//        }
-//        self.list = [dict allKeys];
-//        self.list = [self.list sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-//        [self.collectionTable reloadData];
-        //----------------------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------------------
         dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(newQueue, ^(){
             typedef void (^ALAssetsLibraryAssetForURLResultBlock)(ALAsset *asset);
@@ -330,10 +303,18 @@
 
 - (void) cashedImage:(Photo *)photo
 {
-    NSURL * url = [NSURL URLWithString:photo.thumbnail];
-    NSData * imgData = [NSData dataWithContentsOfURL:url];
-    UIImage * img = [UIImage imageWithData:imgData];
-    [photoDict setValue:img forKey:photo.photoID];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        
+        NSURL * url = [NSURL URLWithString:photo.thumbnail];
+        NSData * imgData = [NSData dataWithContentsOfURL:url];
+        UIImage * img = [UIImage imageWithData:imgData];
+        [photoDict setValue:img forKey:photo.photoID];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [self.collectionTable reloadData];
+        });
+    });
 }
 
 - (IBAction)actBack:(id)sender {
@@ -341,5 +322,6 @@
 }
 
 - (IBAction)actRefresh:(id)sender {
+    [self getImage];
 }
 @end

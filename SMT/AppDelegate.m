@@ -76,7 +76,7 @@
             
             MenuViewController * menuVC = [[MenuViewController alloc]initWithRearViewController:firstVC frontViewController:fvc];
             menuVC.rearViewRevealWidth = 0;
-            menuVC.rearViewRevealOverdraw = 260;
+            menuVC.rearViewRevealOverdraw = 220;
             menuVC.bounceBackOnOverdraw = NO;
             menuVC.stableDragOnOverdraw = YES;
             [menuVC setFrontViewPosition:FrontViewPositionRight];

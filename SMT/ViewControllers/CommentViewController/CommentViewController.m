@@ -70,7 +70,7 @@
 {
     for (UIView * obj in sender.superview.subviews) {
         if ([obj isKindOfClass:[UITextView class]]) {
-            NSLog(((UITextView *)obj).text);
+            NSLog(@"%@",((UITextView *)obj).text);
         }
     }
 }

@@ -61,7 +61,7 @@
     NSDateFormatter * format2;
     UIRefreshControl *refreshControl;
     float heigthSeasonsTable;
-    //FirstViewController * fVC;
+    BOOL isDownloadPhoto;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *seasonSectioHiegth;
 @property (strong, nonatomic) IBOutlet UIView *forTabBar;
@@ -74,7 +74,7 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *btn4Hegth;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *btn2Hegth;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *btn3Hegth;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *tabBarWidth;
+
 @property (strong, nonatomic) IBOutlet UIView *btn1fone;
 @property (strong, nonatomic) IBOutlet UIView *btn2fone;
 @property (strong, nonatomic) IBOutlet UIView *btn3fone;
@@ -88,15 +88,12 @@
 @property (strong, nonatomic) IBOutlet UIImageView *btn4;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageController;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *heigthShowColectionViewConstraint;
-@property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIButton *_menuButton;
 
 - (void)actHome:(id)sender;
 - (void)actLookSee:(id)sender;
 - (void)actVideo:(id)sender;
 - (void)actTIPS:(id)sender;
-
-- (IBAction)actMenu:(id)sender;
 
 - (void)reverseBackroundImageWithNumber:(int)num;
 - (void)setImageWithAllButton;
@@ -123,7 +120,8 @@
 
 - (void) openComments:(UIButton *)sender;
 - (void) refershControlAction;
-- (void) leftSwipeHandler:(UIPanGestureRecognizer *)recognizer;
+
+- (void) actCancelPhotoDownload;
 @end
 
 @implementation FlyoutMenuViewController
@@ -145,8 +143,6 @@
         self.topViewHeightConstr.constant -= 20;
         self.topBarHiegthConstrainsSubView.constant -=20;
     }
-    
-    self.isMenu = NO;
     
     [self.colectionView registerNib:[UINib nibWithNibName:@"TipsCell" bundle:nil] forCellWithReuseIdentifier:@"TipsCell"];
     [self.colectionView registerNib:[UINib nibWithNibName:@"CreateTipsCell" bundle:nil] forCellWithReuseIdentifier:@"CreateTipsCell"];
@@ -231,37 +227,21 @@
     format2 = [[NSDateFormatter alloc]init];
     [format2 setDateFormat:@"MMMM dd, yyyy"];
     
-    UIPanGestureRecognizer * panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(leftSwipeHandler:)];
-    panRecognizer.delegate = self;
     
-    [self.view addGestureRecognizer:panRecognizer];
-    
-//    fVC = [FirstViewController instance];
-//    [self addChildViewController:fVC];
-//    [fVC viewDidLoad];
-//    [fVC viewWillAppear:YES];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(actCancelPhotoDownload) name:@"get photo finished" object:nil];
     
     MenuViewController * menuController = self.revealViewController;
     
     [self.view addGestureRecognizer:menuController.panGestureRecognizer];
     [__menuButton addTarget:menuController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
+    
+    isDownloadPhoto = NO;
 }
 
 
-
-
--(void) setIsPresent:(BOOL)present
+- (void) actCancelPhotoDownload
 {
-    isPresent = present;
-    if (isPresent) {
-    [((UIButton *)[self.tabBar viewWithTag:1]) setBackgroundImage:[UIImage imageNamed:@"home_icon_press.png"] forState:UIControlStateNormal];
-    [((UIButton *)[self.tabBar viewWithTag:2]) setBackgroundImage:[UIImage imageNamed:@"global_icon.png"] forState:UIControlStateNormal];
-    [((UIButton *)[self.tabBar viewWithTag:3]) setBackgroundImage:[UIImage imageNamed:@"camera_icon.png"] forState:UIControlStateNormal];
-    [((UIButton *)[self.tabBar viewWithTag:4]) setBackgroundImage:[UIImage imageNamed:@"note_icon.png"] forState:UIControlStateNormal];
-    [((UIButton *)[self.tabBar viewWithTag:5]) setBackgroundImage:[UIImage imageNamed:@"st_icon.png"] forState:UIControlStateNormal];
-    } else {
-        [((UIButton *)[self.tabBar viewWithTag:1]) setBackgroundImage:[UIImage imageNamed:@"home_icon.png"] forState:UIControlStateNormal];
-    }
+    isDownloadPhoto = NO;
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -278,17 +258,11 @@
     self.btn2Hegth.constant = self.btn1Hegth.constant;
     self.btn3Hegth.constant = self.btn1Hegth.constant;
     self.btn4Hegth.constant = self.btn1Hegth.constant;
-    self.tabBarWidth.constant = self.view.frame.size.width;
     self.heigthShowColectionViewConstraint.constant = width * 0.39;
     [self.view updateConstraintsIfNeeded];
     heigthSeasonsTable = self.heigthShowColectionViewConstraint.constant;
     
     [self downloadPhotos];
-//    CGRect menuBounds = self.view.frame;
-//    menuBounds.origin.x -= self.view.frame.size.width;
-//    fVC.view.frame = menuBounds;
-//    [self.view addSubview:fVC.view];
-//    self.contentView.frame = self.view.frame;
 }
 
 - (void)cashedImageFromCell:(NSNotification *)info
@@ -409,7 +383,7 @@
     if (collectionView.tag == COLECTION_DATA) {
         if (!selectedBtn1) {
             Photo * photo = [photoList objectAtIndex:indexPath.row];
-            size = CGSizeMake(self.colectionView.frame.size.width-10, /*((self.colectionView.frame.size.width-10) * 0.58)*/ HEIGTH_IMAGE_CELL + [self getHeigthText:photo.description andLabelWidth:self.colectionView.frame.size.width - 20]);
+            size = CGSizeMake(self.colectionView.frame.size.width-10, HEIGTH_IMAGE_CELL + [self getHeigthText:photo.description andLabelWidth:self.colectionView.frame.size.width - 20]);
         } else if (!selectedBtn2) {
             //num = 1;
         } else if (!selectedBtn3) {
@@ -493,64 +467,7 @@
     [self endLoader];
 }
 
-- (IBAction)actMenu:(id)sender {
-    
-//    float shift = 0;
-//    if (!isiPad) {
-//        shift = self.view.frame.size.width * 0.78;
-//    } else {
-//        shift = self.view.frame.size.width * 0.62;
-//    }
-//    CGRect menuBounds = fVC.view.frame;
-//    
-//    if (!_isMenu) {
-//        menuBounds.origin.x =shift - self.view.frame.size.width;
-//        [UIView animateWithDuration:0.5f animations:^{
-//            fVC.view.frame = menuBounds;
-//        }];
-//        self.isMenu = !self.isMenu;
-//    }
-//    
-}
 
-- (void) leftSwipeHandler:(UIPanGestureRecognizer *)recognizer
-{
-    
-//    CGPoint start;
-//    CGPoint end;
-//    float shift = 0;
-//    if (!isiPad) {
-//        shift = self.view.frame.size.width * 0.78;
-//    } else {
-//        shift = self.view.frame.size.width * 0.62;
-//    }
-//    CGRect menuBounds = fVC.view.frame;
-//    
-//    
-//    if (recognizer.state == UIGestureRecognizerStateBegan) {
-//        start = [recognizer translationInView:self.view];
-//    }
-//    if (recognizer.state == UIGestureRecognizerStateEnded) {
-//        end = [recognizer translationInView:self.view];
-//        if (!_isMenu) {
-//            if (start.x < end.x) {
-//                menuBounds.origin.x =shift - self.view.frame.size.width;
-//                [UIView animateWithDuration:0.5f animations:^{
-//                    fVC.view.frame = menuBounds;
-//                }];
-//            }
-//            
-//        } else {
-//            if (start.x > end.x) {
-//                menuBounds.origin.x =fVC.view.frame.origin.x - shift;
-//                [UIView animateWithDuration:0.5f animations:^{
-//                    fVC.view.frame = menuBounds;
-//                }];
-//            }
-//        }
-//        self.isMenu = !self.isMenu;
-//    }
-}
 
 
 
@@ -857,7 +774,7 @@
         dispatch_async(dispatch_get_main_queue(), ^(){
             
             if(!dataLoader.isCorrectRezult) {
-                NSLog(@"Error download sybSpecie");
+                NSLog(@"Error download TIPS");
                 [self endLoader];
             } else {
                 if (tipsList.count != array.count) {
@@ -875,21 +792,25 @@
 
 - (void)downloadPhotos
 {
-    photoList = [[NSMutableArray alloc]init];
-    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(newQueue, ^(){
-        photoList = [[NSMutableArray alloc]initWithArray:[dataLoader getPhoto]];
-        
-        dispatch_async(dispatch_get_main_queue(), ^(){
+    if (!isDownloadPhoto) {
+        isDownloadPhoto = YES;
+        photoList = [[NSMutableArray alloc]init];
+        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(newQueue, ^(){
+            photoList = [[NSMutableArray alloc]initWithArray:[dataLoader getPhoto]];
             
-            if(!dataLoader.isCorrectRezult) {
-                NSLog(@"Error download sybSpecie");
-            } else {
-                [self.colectionView reloadData];
-                [self getImageWithUrl];
-            }
+            dispatch_async(dispatch_get_main_queue(), ^(){
+                
+                if(!dataLoader.isCorrectRezult) {
+                    NSLog(@"Error download photo");
+                } else {
+                    [self.colectionView reloadData];
+                    [self getImageWithUrl];
+                }
+            });
         });
-    });
+    }
+    
 }
 
 - (void)getImageWithUrl
