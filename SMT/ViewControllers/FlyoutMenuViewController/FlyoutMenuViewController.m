@@ -14,7 +14,7 @@
 #import "OutfitterCell.h"
 #import "SearchViewController.h"
 #import "CellForFirstView.h"
-#import "FirstViewController.h"
+#import "MenuViewController.h"
 
 
 
@@ -61,6 +61,7 @@
     NSDateFormatter * format2;
     UIRefreshControl *refreshControl;
     float heigthSeasonsTable;
+    //FirstViewController * fVC;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *seasonSectioHiegth;
 @property (strong, nonatomic) IBOutlet UIView *forTabBar;
@@ -87,6 +88,8 @@
 @property (strong, nonatomic) IBOutlet UIImageView *btn4;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageController;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *heigthShowColectionViewConstraint;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UIButton *_menuButton;
 
 - (void)actHome:(id)sender;
 - (void)actLookSee:(id)sender;
@@ -120,6 +123,7 @@
 
 - (void) openComments:(UIButton *)sender;
 - (void) refershControlAction;
+- (void) leftSwipeHandler:(UIPanGestureRecognizer *)recognizer;
 @end
 
 @implementation FlyoutMenuViewController
@@ -226,6 +230,21 @@
     
     format2 = [[NSDateFormatter alloc]init];
     [format2 setDateFormat:@"MMMM dd, yyyy"];
+    
+    UIPanGestureRecognizer * panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(leftSwipeHandler:)];
+    panRecognizer.delegate = self;
+    
+    [self.view addGestureRecognizer:panRecognizer];
+    
+//    fVC = [FirstViewController instance];
+//    [self addChildViewController:fVC];
+//    [fVC viewDidLoad];
+//    [fVC viewWillAppear:YES];
+    
+    MenuViewController * menuController = self.revealViewController;
+    
+    [self.view addGestureRecognizer:menuController.panGestureRecognizer];
+    [__menuButton addTarget:menuController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 
@@ -265,6 +284,11 @@
     heigthSeasonsTable = self.heigthShowColectionViewConstraint.constant;
     
     [self downloadPhotos];
+//    CGRect menuBounds = self.view.frame;
+//    menuBounds.origin.x -= self.view.frame.size.width;
+//    fVC.view.frame = menuBounds;
+//    [self.view addSubview:fVC.view];
+//    self.contentView.frame = self.view.frame;
 }
 
 - (void)cashedImageFromCell:(NSNotification *)info
@@ -471,36 +495,64 @@
 
 - (IBAction)actMenu:(id)sender {
     
-    FirstViewController * fVC = [FirstViewController instance];
-    [self addChildViewController:fVC];
-    [fVC viewDidLoad];
-    [fVC viewWillAppear:YES];
-    
-    CGRect currentBounds = self.view.frame;
-    CGRect menuBounds = currentBounds;
-    menuBounds.origin.x -= currentBounds.size.width;
-    fVC.view.frame = menuBounds;
-    [self.view addSubview:fVC.view];
-    float shift = 0;
-    if (!isiPad) {
-        shift = self.view.frame.size.width * 0.78;
-    } else {
-        shift = self.view.frame.size.width * 0.62;
-    }
-    if (_isMenu) {
-        currentBounds.origin.x -=shift;
-        menuBounds.origin.x -= shift;
-    } else {
-        currentBounds.origin.x +=shift;
-        menuBounds.origin.x += shift;
-    }
-    //fVC.view.frame = menuBounds;
-    [UIView animateWithDuration:0.5f animations:^{
-        self.view.frame = currentBounds;
-        self.isMenu = !self.isMenu;
-    }];
-    
+//    float shift = 0;
+//    if (!isiPad) {
+//        shift = self.view.frame.size.width * 0.78;
+//    } else {
+//        shift = self.view.frame.size.width * 0.62;
+//    }
+//    CGRect menuBounds = fVC.view.frame;
+//    
+//    if (!_isMenu) {
+//        menuBounds.origin.x =shift - self.view.frame.size.width;
+//        [UIView animateWithDuration:0.5f animations:^{
+//            fVC.view.frame = menuBounds;
+//        }];
+//        self.isMenu = !self.isMenu;
+//    }
+//    
 }
+
+- (void) leftSwipeHandler:(UIPanGestureRecognizer *)recognizer
+{
+    
+//    CGPoint start;
+//    CGPoint end;
+//    float shift = 0;
+//    if (!isiPad) {
+//        shift = self.view.frame.size.width * 0.78;
+//    } else {
+//        shift = self.view.frame.size.width * 0.62;
+//    }
+//    CGRect menuBounds = fVC.view.frame;
+//    
+//    
+//    if (recognizer.state == UIGestureRecognizerStateBegan) {
+//        start = [recognizer translationInView:self.view];
+//    }
+//    if (recognizer.state == UIGestureRecognizerStateEnded) {
+//        end = [recognizer translationInView:self.view];
+//        if (!_isMenu) {
+//            if (start.x < end.x) {
+//                menuBounds.origin.x =shift - self.view.frame.size.width;
+//                [UIView animateWithDuration:0.5f animations:^{
+//                    fVC.view.frame = menuBounds;
+//                }];
+//            }
+//            
+//        } else {
+//            if (start.x > end.x) {
+//                menuBounds.origin.x =fVC.view.frame.origin.x - shift;
+//                [UIView animateWithDuration:0.5f animations:^{
+//                    fVC.view.frame = menuBounds;
+//                }];
+//            }
+//        }
+//        self.isMenu = !self.isMenu;
+//    }
+}
+
+
 
 - (void)reverseBackroundImageWithNumber:(int)num
 {

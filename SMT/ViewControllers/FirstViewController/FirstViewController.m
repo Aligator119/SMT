@@ -8,6 +8,8 @@
 #import "UIViewController+LoaderCategory.h"
 #import "Photo.h"
 #import "LogHistoryViewController.h"
+#import "LocationListViewController.h"
+#import "FlyoutMenuViewController.h"
 
 #define USER_DATA @"userdata"
 
@@ -21,6 +23,7 @@
     NSDictionary *functionsDictionary;
     DataLoader * dataLoader;
     AppDelegate * appDelegate;
+    MenuViewController * menuController;
 }
 @property (strong, nonatomic) IBOutlet UIImageView *imgUser;
 @property (strong, nonatomic) IBOutlet UILabel *lbNameUser;
@@ -29,11 +32,7 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstr;
 
 
-- (void)deselectSettingButton;
-- (void)selectSettingButton;
-- (NSString *) getImageName:(int)tag;
 - (void)photoClick:(id)notification;
-- (void)rightSwipeHandler:(id)sender;
 - (void)downloadSeasons;
 
 
@@ -66,20 +65,20 @@
     self.imgUser.layer.cornerRadius = self.imgUser.frame.size.width/2;
     self.imgUser.layer.borderColor = [UIColor whiteColor].CGColor;
     self.imgUser.layer.borderWidth = 1.0f;
-    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(newQueue, ^(){
-        //[dataLoader get];
-        dispatch_async(dispatch_get_main_queue(),^(){
-            
-        });
-    });
+//    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_async(newQueue, ^(){
+//        //[dataLoader get];
+//        dispatch_async(dispatch_get_main_queue(),^(){
+//            
+//        });
+//    });
     
 //-------------------------------------------------------------------------------------------------------------------------
-    menuItems = [[NSArray alloc]initWithObjects:@"Log History", @"Prediction", @"Weather", @"Buddies", @"Camera/Photos", /*@"Messages",*/ @"Settings", nil];
+    menuItems = [[NSArray alloc]initWithObjects:@"Home", @"Map Locations", @"Log an Activity", @"Log History", @"Camera/Photos", @"Prediction", @"Weather", @"Buddies", @"Settings", @"Log out", nil];
     
-    NSArray *functionsArrayIdentifiers = [[NSArray alloc] initWithObjects:@"openLogHistory", @"openPrediction", @"openWeather", @"openBuddies", @"openCameraAndPhotos", /*@"openMessages",*/ @"openSettings", nil];
+    NSArray *functionsArrayIdentifiers = [[NSArray alloc] initWithObjects:@"openHome", @"openMap", @"openLoagAnActivity", @"openLogHistory", @"openCameraAndPhotos", @"openPrediction", @"openWeather", @"openBuddies", @"openSettings", @"logout", nil];
     
-    NSArray *iconsArray = [NSArray arrayWithObjects:@"calendar", @"prediction", @"weather", @"buddies", @"camera", /*@"messages",*/ @"settings", nil];
+    NSArray *iconsArray = [NSArray arrayWithObjects:@"home_icon", @"global_icon", @"note_icon", @"calendar", @"camera", @"prediction", @"weather", @"buddies", @"settings", @"logout", nil];
     
     functionsDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:functionsArrayIdentifiers, @"identifiers", menuItems, @"strings", iconsArray, @"icons", nil];
 //----------------------------------------------------------------------------------------------------------------
@@ -90,59 +89,21 @@
     
     [self AddActivityIndicator:[UIColor grayColor] forView:self.table];
     
-    [dataLoader getLocationsAssociatedWithUser];
-    [dataLoader getPublicLocationWithID:nil name:nil page:0 limit:0 state_fips:0 county_fips:0];
+    //[dataLoader getLocationsAssociatedWithUser];
+    //[dataLoader getPublicLocationWithID:nil name:nil page:0 limit:0 state_fips:0 county_fips:0];
     isiPad = NO;
-    
-    UISwipeGestureRecognizer *rightRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(rightSwipeHandler:)];
-    rightRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
-    
-    [self.view addGestureRecognizer:rightRecognizer];
-    
-    
+    menuController = self.revealViewController;
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    if (self.view.frame.size.width > 320.0) {
-        isiPad = YES;
-        self.leftsSpace.constant = self.view.frame.size.width * 0.38;
-        [self.view updateConstraintsIfNeeded];
-    }
-    
-//    fmVC = [FlyoutMenuViewController new];
-//    fmVC.view.frame = self.view.frame;
-//    fmVC.tabBar.delegate = self;
-//    [fmVC viewWillAppear:YES];
-//    [fmVC viewDidAppear:YES];
-//    
-//    
-//    llVC = [LocationListViewController new];
-//    llVC.view.frame = self.view.frame;
-//    llVC.mapType = typeHunting;
-//    llVC.tabBar.delegate = self;
-//    [llVC viewWillAppear:YES];
-//    [llVC viewDidAppear:YES];
-//    
-//    cVC = [CameraViewController new];
-//    //cVC.view.frame = self.view.frame;
-//    //cVC.tabBar.delegate = self;
-//    //[cVC viewDidAppear:YES];
-//    
-//    nl1VC = [NewLog1ViewController new];
-//    nl1VC.view.frame = self.view.frame;
-//    nl1VC.tabBar.delegate = self;
-//    [nl1VC viewWillAppear:YES];
-//    [nl1VC viewDidAppear:YES];
-//    
-//    if (!currentController) {
-//        [self.view addSubview:fmVC.view];
-//        [self addChildViewController:fmVC];
-//        currentController = fmVC;
-//        _current = fmVC.view;
-//        activeTag = 1;
+//    if (self.view.frame.size.width > 320.0) {
+//        isiPad = YES;
+//        self.leftsSpace.constant = self.view.frame.size.width * 0.38;
+//        [self.view updateConstraintsIfNeeded];
 //    }
+
 //    //[self downloadSeasons];
 
 }
@@ -196,9 +157,61 @@
 }
 
 //------------------------------------------------------------------------------------------------------------------------
--(void)openSettings
+
+- (void) openHome
 {
-    [self.navigationController pushViewController:[SettingsViewController new] animated:YES];
+    [self startLoader];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        FlyoutMenuViewController * flyputVC = [[FlyoutMenuViewController alloc]initWithNibName:@"FlyoutMenuViewController" bundle:nil];
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [menuController setFrontViewController:flyputVC animated:YES];    //sf
+            [menuController setFrontViewPosition:FrontViewPositionLeft animated:YES];
+            [self endLoader];
+        });
+    });
+}
+
+- (void) openMap
+{
+    [self startLoader];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        LocationListViewController * mapVC = [[LocationListViewController alloc]initWithNibName:@"LocationListViewController" bundle:nil];
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [menuController setFrontViewController:mapVC animated:YES];    //sf
+            [menuController setFrontViewPosition:FrontViewPositionLeft animated:YES];
+            [self endLoader];
+        });
+    });
+}
+
+- (void) openLoagAnActivity
+{
+    [self startLoader];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        NewLog1ViewController * nlvc = [[NewLog1ViewController alloc]initWithNibName:@"NewLog1ViewController" bundle:nil];
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [menuController setFrontViewController:nlvc animated:YES];    //sf
+            [menuController setFrontViewPosition:FrontViewPositionLeft animated:YES];
+            [self endLoader];
+        });
+    });
+}
+
+- (void)openLogHistory
+{
+    [self startLoader];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibName:@"LogHistoryViewController" bundle:nil];
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [menuController setFrontViewController:lhvc animated:YES];    //sf
+            [menuController setFrontViewPosition:FrontViewPositionLeft animated:YES];
+            [self endLoader];
+        });
+    });
 }
 
 - (void)openCameraAndPhotos
@@ -208,7 +221,38 @@
     dispatch_async(newQueue, ^(){
         PhotoVideoViewController * pvvc = [[PhotoVideoViewController alloc]initWithNibName:@"PhotoVideoViewController" bundle:nil];
         dispatch_async(dispatch_get_main_queue(), ^(){
-            [self.navigationController pushViewController:pvvc animated:YES];
+            [menuController setFrontViewController:pvvc animated:YES];    //sf
+            [menuController setFrontViewPosition:FrontViewPositionLeft animated:YES];
+            [self endLoader];
+        });
+    });
+
+}
+
+
+- (void)openPrediction
+{
+    [self startLoader];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        PredictionViewController * wVC = [PredictionViewController new];
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [menuController setFrontViewController:wVC animated:YES];    //sf
+            [menuController setFrontViewPosition:FrontViewPositionLeft animated:YES];
+            [self endLoader];
+        });
+    });
+}
+
+- (void)openWeather
+{
+    [self startLoader];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        WeatherViewController * wVC = [[WeatherViewController alloc]initWithNibName:@"WeatherViewController" bundle:nil];
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            [menuController setFrontViewController:wVC animated:YES];    //sf
+            [menuController setFrontViewPosition:FrontViewPositionLeft animated:YES];
             [self endLoader];
         });
     });
@@ -222,230 +266,32 @@
     dispatch_async(newQueue, ^(){
         BuddyListViewController * blVC = [[BuddyListViewController alloc]initWithNibName:@"BuddyListViewController" bundle:nil];
         dispatch_async(dispatch_get_main_queue(), ^(){
-            [self.navigationController pushViewController:blVC animated:YES];
+            [menuController setFrontViewController:blVC animated:YES];    //sf
+            [menuController setFrontViewPosition:FrontViewPositionLeft animated:YES];
+            
             [self endLoader];
         });
     });
-
-}
-
-- (void)openPrediction
-{
-    [self.navigationController pushViewController:[[PredictionViewController alloc]init] animated:YES];
-}
-
-- (void)openWeather
-{
-    [self startLoader];
-    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(newQueue, ^(){
-        WeatherViewController * wVC = [[WeatherViewController alloc]initWithNibName:@"WeatherViewController" bundle:nil];
-        dispatch_async(dispatch_get_main_queue(), ^(){
-            [self.navigationController pushViewController:wVC animated:YES];
-            [self endLoader];
-        });
-    });
-
-}
-
-
-- (void)openLogHistory
-{
-    [self startLoader];
-    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(newQueue, ^(){
-        LogHistoryViewController * lhvc = [[LogHistoryViewController alloc]initWithNibName:@"LogHistoryViewController" bundle:nil];
-        dispatch_async(dispatch_get_main_queue(), ^(){
-            [self.navigationController pushViewController:lhvc animated:YES];
-            [self endLoader];
-        });
-    });
-}
-
-- (void)openMessages
-{
-    //message
-    NSLog(@"No added category \"Message\" on this project");
-}
-
-
-//-------------------------------------------------------------------------------------------------------------------------
-//- (void)selectController:(int)tag
-//{
-//    [fmVC setIsPresent:NO];
-//    [llVC setIsPresent:NO];
-//    [nl1VC setIsPresent:NO];
-//    switch (tag) {
-//        case 1:
-//        {
-//            [_current removeFromSuperview];
-//            if (![self.childViewControllers containsObject:fmVC]) {
-//                [self addChildViewController:fmVC];
-//            }
-//            [self.view addSubview:fmVC.view];
-//            _current = fmVC.view;
-//            [fmVC setIsPresent:YES];
-//            activeTag = tag;
-//        }
-//            break;
-//        case 2:
-//        {
-//            [_current removeFromSuperview];
-//            if (![self.childViewControllers containsObject:llVC]) {
-//                [self addChildViewController:llVC];
-//            }
-//            [self.view addSubview:llVC.view];
-//            _current = llVC.view;
-//            [llVC setIsPresent:YES];
-//            activeTag = tag;
-//        }
-//            break;
-//        case 3:
-//        {
-////            [_current removeFromSuperview];
-////            if (![self.childViewControllers containsObject:cVC]) {
-////                [self addChildViewController:cVC];
-////            }
-////            [self.view addSubview:cVC.view];
-////            //cVC.isCamera = YES;
-////            _current = cVC.view;
-////            activeTag = tag;
-//            [self.navigationController pushViewController:cVC animated:YES];
-//        }
-//            break;
-//        case 4:
-//        {
-//            [_current removeFromSuperview];
-//            if (![self.childViewControllers containsObject:nl1VC]) {
-//                [self addChildViewController:nl1VC];
-//            }
-//            [self.view addSubview:nl1VC.view];
-//            _current = nl1VC.view;
-//            [nl1VC setIsPresent:YES];
-//            activeTag = tag;
-//        }
-//            break;
-//        case 5:
-//        {
-//            if (!isSettings) {
-//                [self selectSettingButton];
-//            } else{
-//                [self deselectSettingButton];
-//            }
-//            [self showSettings];
-//            isSettings = !isSettings;
-//            
-//        }
-//            break;
-//    }
-//}
-
-
-- (void)showSettings
-{
-    if (!isSettings) {
-        [UIView animateWithDuration:0.5f animations:^{
-            CGRect bounds = _current.frame;
-            if (!isiPad) {
-                bounds.origin.x -= 250.0;
-            } else {
-                bounds.origin.x -= self.view.frame.size.width * 0.62;
-            }
-           _current.frame = bounds;
-        }];
-    } else {
-        [UIView animateWithDuration:0.5f animations:^{
-            CGRect bounds = _current.frame;
-            if (!isiPad) {
-                bounds.origin.x += 250.0;
-            } else {
-                bounds.origin.x += self.view.frame.size.width * 0.62;
-            }
-            _current.frame = bounds;
-        }];
-    }
     
 }
 
 
-
-- (IBAction)actCloseSetting:(id)sender {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:USER_DATA];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    [appDelegate.listLocations removeAllObjects];
-    [appDelegate.speciesList removeAllObjects];
-    appDelegate.defaultLocation = nil;
-    [appDelegate.listUserBuddies removeAllObjects];
-    appDelegate.wheatherPredictList = nil;
-    [appDelegate.pred removeAllObjects];
-    NSString * nibName = [AppDelegate nibNameForBaseName:@"LoginViewController"];
-    LoginViewController * lvc = [[LoginViewController alloc]initWithNibName:nibName bundle:nil];
-    [self.navigationController pushViewController:lvc animated:YES];
-}
-
-- (void) selectSettingButton
+-(void)openSettings
 {
-    if (activeTag == 1) {
-        for (UIView * obj in _current.subviews)
-        {
-            for (UIView * vie in obj.subviews) {
-                if ([vie isKindOfClass:[CustomTabBar class]]) {
-                    [((UIButton *)[obj viewWithTag:5]) setBackgroundImage:[UIImage imageNamed:@"st_icon_press.png"] forState:UIControlStateNormal];
-                }
-            }
-        }
-    } else {
-        for (UIView * obj in _current.subviews)
-        {
-            if ([obj isKindOfClass:[CustomTabBar class]]) {
-                [((UIButton *)[obj viewWithTag:5]) setBackgroundImage:[UIImage imageNamed:@"st_icon_press.png"] forState:UIControlStateNormal];
-            }
-        }
-    }
+    [menuController setFrontViewController:[SettingsViewController new] animated:YES];    //sf
+    [menuController setFrontViewPosition:FrontViewPositionLeft animated:YES];
 }
 
-//- (void) deselectSettingButton
-//{
-//    if (activeTag == 1) {
-//        for (UIView * obj in _current.subviews)
-//        {
-//            for (UIView * vie in obj.subviews) {
-//                if ([vie isKindOfClass:[CustomTabBar class]]) {
-//                    [((UIButton *)[obj viewWithTag:5]) setBackgroundImage:[UIImage imageNamed:@"st_icon.png"] forState:UIControlStateNormal];
-//                    [((UIButton *)[obj viewWithTag:activeTag]) setBackgroundImage:[UIImage imageNamed:[self getImageName:activeTag]] forState:UIControlStateNormal];
-//                }
-//            }
-//        }
-//    } else {
-//        for (UIView * obj in _current.subviews)
-//        {
-//            if ([obj isKindOfClass:[CustomTabBar class]]) {
-//                [((UIButton *)[obj viewWithTag:5]) setBackgroundImage:[UIImage imageNamed:@"st_icon.png"] forState:UIControlStateNormal];
-//                [((UIButton *)[obj viewWithTag:activeTag]) setBackgroundImage:[UIImage imageNamed:[self getImageName:activeTag]] forState:UIControlStateNormal];
-//            }
-//        }
-//    }
-//}
+- (void)logout
+{
+    //logout
+    NSLog(@"No added category \"logout\" on this project");
+    //[self.navigationController pushViewController:[LocationListViewController new] animated:YES];
+}
 
-//- (NSString *)getImageName:(int)tag
-//{
-//    NSString * name;
-//    switch (tag) {
-//        case 1:
-//            name = @"home_icon_press.png";
-//            break;
-//        case 2:
-//            name = @"global_icon_press.png";
-//            break;
-//        case 3:
-//            name = @"camera_icon_press.png";
-//            break;
-//        case 4:
-//            name = @"note_icon_press.png";
-//            break;
-//    }
-//    return name;
-//}
+
+
+
 
 //--------- set photo-------------------------------------------------------------------------------------
 - (void) photoClick:notification
@@ -479,15 +325,6 @@
     });
 }
 
-
-- (void)rightSwipeHandler:(id)sender
-{
-    if (isSettings) {
-        [self deselectSettingButton];
-        [self showSettings];
-        isSettings = !isSettings;
-    }
-}
 
 - (void) newUserAvatar:(UIImage *)avatar
 {

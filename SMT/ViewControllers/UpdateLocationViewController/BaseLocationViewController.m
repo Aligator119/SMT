@@ -85,9 +85,9 @@
     } else {
         self.imgTypeLocation.image = [UIImage imageNamed:@"fish_mode_icon_selected.png"];
     }
-    self.lbLocation.text = @"Location";
+    self.lbLocation.text = self.location.locName;
     self.lbLatitude.text = [NSString stringWithFormat:@"Latitude: %f",self.location.locLatitude];
-    self.lbLongitude.text = [NSString stringWithFormat:@"Latitude: %f",self.location.locLongitude];;
+    self.lbLongitude.text = [NSString stringWithFormat:@"Longitude: %f",self.location.locLongitude];;
     
     if (self.location.locUserId != appDel.user.userID){
         self.saveButton.hidden = YES;

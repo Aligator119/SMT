@@ -30,6 +30,7 @@
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * navigationBarVerticalConstr;
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
 @property (weak, nonatomic) IBOutlet UIButton *speciesButton;
+@property (weak, nonatomic) IBOutlet UIButton *menuButton;
 
 @end
 
@@ -56,6 +57,11 @@
     self.screenName = @"Setting screen";
     
     dataLoader = [DataLoader instance];
+    
+    MenuViewController * menuController = self.revealViewController;
+    
+    [self.view addGestureRecognizer:menuController.panGestureRecognizer];
+    [_menuButton addTarget:menuController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void) setupButtonsTitles{

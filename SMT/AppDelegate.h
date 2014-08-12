@@ -9,6 +9,7 @@
 #import "ConstantsClass.h"
 #import "CustomTabBar.h"
 #import "Season.h"
+#import "MenuViewController.h"
 
 
 @class UserInfo;
@@ -19,7 +20,7 @@ static NSString * const kGoogleBrouserAPIkey = @"AIzaSyAgYW3MOr37pwGSATMfWXWklbf
 
 static NSString * const kGoogleAnaliticKey = @"UA-3665575-10";
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate, UITabBarControllerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UINavigationControllerDelegate, UITabBarControllerDelegate, MenuViewControllerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) LoginViewController * viewController;

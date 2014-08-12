@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LogHistoryViewController">
             <connections>
+                <outlet property="menuButton" destination="02e-IT-v9d" id="smr-dh-B32"/>
                 <outlet property="navigationBarHeightConstr" destination="loF-li-CPL" id="frS-C2-Jb0"/>
                 <outlet property="navigationBarVerticalConstr" destination="hOl-AA-3T1" id="HGz-JZ-doC"/>
                 <outlet property="table" destination="2lw-ea-2Hq" id="23j-G4-4UM"/>
@@ -27,18 +28,15 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02e-IT-v9d">
-                                    <rect key="frame" x="5" y="7" width="55" height="30"/>
+                                    <rect key="frame" x="5" y="0.0" width="44" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="55" id="Q42-MR-lCh"/>
+                                        <constraint firstAttribute="width" constant="44" id="Q42-MR-lCh"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal" title="Back">
+                                    <state key="normal" backgroundImage="st_icon.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
-                                    <connections>
-                                        <action selector="actButtonBack:" destination="-1" eventType="touchUpInside" id="KNc-Ke-iDN"/>
-                                    </connections>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDE-cr-NaA">
                                     <rect key="frame" x="70" y="7" width="185" height="30"/>
@@ -54,9 +52,9 @@
                                 <constraint firstAttribute="bottom" secondItem="mDE-cr-NaA" secondAttribute="bottom" constant="7" id="A9l-17-mGe"/>
                                 <constraint firstAttribute="height" constant="44" id="HDd-eD-GM9"/>
                                 <constraint firstItem="mDE-cr-NaA" firstAttribute="top" secondItem="TzR-Q7-DCf" secondAttribute="top" constant="7" id="UT3-31-kAb"/>
-                                <constraint firstItem="mDE-cr-NaA" firstAttribute="leading" secondItem="02e-IT-v9d" secondAttribute="trailing" constant="10" id="VKQ-RB-iCM"/>
-                                <constraint firstItem="02e-IT-v9d" firstAttribute="top" secondItem="TzR-Q7-DCf" secondAttribute="top" constant="7" id="WEh-3m-Vcb"/>
-                                <constraint firstAttribute="bottom" secondItem="02e-IT-v9d" secondAttribute="bottom" constant="7" id="eZn-Y0-NF9"/>
+                                <constraint firstItem="mDE-cr-NaA" firstAttribute="leading" secondItem="02e-IT-v9d" secondAttribute="trailing" constant="21" id="VKQ-RB-iCM"/>
+                                <constraint firstItem="02e-IT-v9d" firstAttribute="top" secondItem="TzR-Q7-DCf" secondAttribute="top" id="WEh-3m-Vcb"/>
+                                <constraint firstAttribute="bottom" secondItem="02e-IT-v9d" secondAttribute="bottom" id="eZn-Y0-NF9"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -92,4 +90,7 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="st_icon.png" width="30" height="30"/>
+    </resources>
 </document>

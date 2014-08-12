@@ -15,6 +15,7 @@
     DataLoader * dataLoader;
 }
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *tabBarWidth;
+@property (weak, nonatomic) IBOutlet UIButton *menuButton;
 
 @property (weak, nonatomic) IBOutlet UIView *fly_up;
 
@@ -61,6 +62,12 @@
     UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickNotPopUpMenu)];
     recognizer.delegate =self;
     [self.fly_up addGestureRecognizer:recognizer];
+    
+    MenuViewController * menuController = self.revealViewController;
+    
+    [self.view addGestureRecognizer:menuController.panGestureRecognizer];
+    [_menuButton addTarget:menuController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
+
 }
 
 - (void) viewWillAppear:(BOOL)animated{
@@ -246,6 +253,7 @@
     map.isPresentView = 2;
     [self.navigationController pushViewController:map animated:YES];
 }
+
 
 - (void)clickNotPopUpMenu
 {

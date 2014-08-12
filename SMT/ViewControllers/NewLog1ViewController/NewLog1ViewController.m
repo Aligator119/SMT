@@ -1,11 +1,3 @@
-//
-//  NewLog1ViewController.m
-//  SMT
-//
-//  Created by Mac on 5/8/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import "NewLog1ViewController.h"
 #import "LogHistoryViewController.h"
 #import "DataLoader.h"
@@ -24,6 +16,7 @@
     NSMutableDictionary * cashedPpoto;
 }
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *tabBarWidth;
+@property (weak, nonatomic) IBOutlet UIButton * menuButton;
 
 - (void)actDownloadData;
 @end
@@ -63,6 +56,11 @@
                                              selector:@selector(cashedImageFromCell:)
                                                  name:@"cashed species photo"
                                                object:nil];
+    
+    MenuViewController * menuController = self.revealViewController;
+    
+    [self.view addGestureRecognizer:menuController.panGestureRecognizer];
+    [_menuButton addTarget:menuController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
 
 }
 
@@ -193,20 +191,6 @@
             }
         });
     });
-    }
-}
-
--(void) setIsPresent:(BOOL)present
-{
-    isPresent = present;
-    if (isPresent) {
-        [((UIButton *)[self.tabBar viewWithTag:1]) setBackgroundImage:[UIImage imageNamed:@"home_icon.png"] forState:UIControlStateNormal];
-        [((UIButton *)[self.tabBar viewWithTag:2]) setBackgroundImage:[UIImage imageNamed:@"global_icon.png"] forState:UIControlStateNormal];
-        [((UIButton *)[self.tabBar viewWithTag:3]) setBackgroundImage:[UIImage imageNamed:@"camera_icon.png"] forState:UIControlStateNormal];
-        [((UIButton *)[self.tabBar viewWithTag:4]) setBackgroundImage:[UIImage imageNamed:@"note_icon_press.png"] forState:UIControlStateNormal];
-        [((UIButton *)[self.tabBar viewWithTag:5]) setBackgroundImage:[UIImage imageNamed:@"st_icon.png"] forState:UIControlStateNormal];
-    } else {
-        [((UIButton *)[self.tabBar viewWithTag:4]) setBackgroundImage:[UIImage imageNamed:@"note_icon.png"] forState:UIControlStateNormal];
     }
 }
 

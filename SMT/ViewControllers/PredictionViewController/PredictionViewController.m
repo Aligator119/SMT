@@ -9,6 +9,8 @@
 #import "PredictionViewController.h"
 
 @interface PredictionViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *menuButton;
+@property (strong, nonatomic) IBOutlet UIView *myView;
 
 - (void) downloadHunter:(id)sender;
 - (void) downloadFish:(id)sender;
@@ -45,6 +47,11 @@
     [self.fishPredictor addGestureRecognizer:fishRecognizer];
     
     self.screenName = @"Prediction screen";
+    
+    MenuViewController * menuController = self.revealViewController;
+    
+    [self.myView addGestureRecognizer:menuController.panGestureRecognizer];
+    [_menuButton addTarget:menuController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning

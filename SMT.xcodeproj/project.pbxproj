@@ -56,6 +56,7 @@
 		0425C39C1911146D0097709E /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0425C39B1911146D0097709E /* OpenGLES.framework */; };
 		0425C39E191114760097709E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0425C39D191114760097709E /* QuartzCore.framework */; };
 		0425C3A0191114850097709E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0425C39F191114850097709E /* SystemConfiguration.framework */; };
+		042893761999FF1900F96B49 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042893751999FF1900F96B49 /* MenuViewController.m */; };
 		0433548A1910E7C9003767D0 /* ConstantsClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 0433547F1910E7C9003767D0 /* ConstantsClass.m */; };
 		0433548B1910E7C9003767D0 /* DataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 043354811910E7C9003767D0 /* DataLoader.m */; };
 		0433548C1910E7C9003767D0 /* GTMNSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = 043354831910E7C9003767D0 /* GTMNSString+HTML.m */; };
@@ -154,7 +155,6 @@
 		04B06C2B1990F94B00F42B8E /* search_BTN.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B06C271990F94B00F42B8E /* search_BTN.png */; };
 		04B06C2C1990F94B00F42B8E /* search_BTN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B06C281990F94B00F42B8E /* search_BTN@2x.png */; };
 		04B312FA191A281C0055D460 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B312F9191A281C0055D460 /* AssetsLibrary.framework */; };
-		04CC79A719659BD700A61C63 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 04CC79A619659BD700A61C63 /* placeholder.png */; };
 		04CEC03A191B81EF00BF784D /* LogHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC038191B81EF00BF784D /* LogHistoryViewController.m */; };
 		04CEC03B191B81EF00BF784D /* LogHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CEC039191B81EF00BF784D /* LogHistoryViewController.xib */; };
 		04CEC03C191B82DD00BF784D /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0425C3AA19111ECA0097709E /* GoogleMaps.framework */; };
@@ -443,6 +443,8 @@
 		0425C39D191114760097709E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		0425C39F191114850097709E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0425C3AA19111ECA0097709E /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = library/GoogleMaps.framework; sourceTree = "<group>"; };
+		042893741999FF1900F96B49 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		042893751999FF1900F96B49 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		0433547E1910E7C9003767D0 /* ConstantsClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConstantsClass.h; path = Classes/ConstantsClass.h; sourceTree = "<group>"; };
 		0433547F1910E7C9003767D0 /* ConstantsClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConstantsClass.m; path = Classes/ConstantsClass.m; sourceTree = "<group>"; };
 		043354801910E7C9003767D0 /* DataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataLoader.h; path = Classes/DataLoader.h; sourceTree = "<group>"; };
@@ -594,7 +596,6 @@
 		04B06C271990F94B00F42B8E /* search_BTN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search_BTN.png; path = Image/search_BTN.png; sourceTree = "<group>"; };
 		04B06C281990F94B00F42B8E /* search_BTN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "search_BTN@2x.png"; path = "Image/search_BTN@2x.png"; sourceTree = "<group>"; };
 		04B312F9191A281C0055D460 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		04CC79A619659BD700A61C63 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = Image/placeholder.png; sourceTree = "<group>"; };
 		04CEC037191B81EF00BF784D /* LogHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogHistoryViewController.h; sourceTree = "<group>"; };
 		04CEC038191B81EF00BF784D /* LogHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogHistoryViewController.m; sourceTree = "<group>"; };
 		04CEC039191B81EF00BF784D /* LogHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogHistoryViewController.xib; sourceTree = "<group>"; };
@@ -1137,6 +1138,7 @@
 		0411E2081910D0B6006045B0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				042893731999FF1900F96B49 /* MenuViewController */,
 				84F0115D1947178A00BC032B /* ReportsHarvestrow.h */,
 				84F0115E1947178A00BC032B /* ReportsHarvestrow.m */,
 				84F2892F19407D2B00D61E4C /* ReportsActivity.h */,
@@ -1217,6 +1219,16 @@
 				A59FFED6198663A6006AD37E /* Season.m */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		042893731999FF1900F96B49 /* MenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				042893741999FF1900F96B49 /* MenuViewController.h */,
+				042893751999FF1900F96B49 /* MenuViewController.m */,
+			);
+			name = MenuViewController;
+			path = Classes/MenuViewController;
 			sourceTree = "<group>";
 		};
 		043354931910ED7B003767D0 /* touch JSON */ = {
@@ -1413,7 +1425,6 @@
 				04E8F037196AD61600DFE0AB /* checkbox_check@2x.png */,
 				04E8F038196AD61600DFE0AB /* checkbox_uncheck.png */,
 				04E8F039196AD61600DFE0AB /* checkbox_uncheck@2x.png */,
-				04CC79A619659BD700A61C63 /* placeholder.png */,
 				04165966195AD3ED0078AD3A /* tips_icon_press.png */,
 				04165967195AD3ED0078AD3A /* tips_icon_press@2x.png */,
 				04165968195AD3ED0078AD3A /* tips_icon.png */,
@@ -2497,7 +2508,6 @@
 				84E605B4194AF5CC00F8D61F /* logout~ipad.png in Resources */,
 				04F498A81953262F00FC065C /* global_icon_press.png in Resources */,
 				04CEC044191B83C600BF784D /* LocationSearchViewController.xib in Resources */,
-				04CC79A719659BD700A61C63 /* placeholder.png in Resources */,
 				84E605A0194AF5CC00F8D61F /* buddies~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2628,6 +2638,7 @@
 				0433548C1910E7C9003767D0 /* GTMNSString+HTML.m in Sources */,
 				04657AC4192614580018CB70 /* SelectLocationViewController.m in Sources */,
 				04A2A3A2191B7FC00006677E /* LocationListCell.m in Sources */,
+				042893761999FF1900F96B49 /* MenuViewController.m in Sources */,
 				04A2A383191B7F820006677E /* WeatherViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

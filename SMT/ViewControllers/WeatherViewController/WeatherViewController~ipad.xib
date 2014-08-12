@@ -43,26 +43,23 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9FR-Z1-syf">
-                                    <rect key="frame" x="10" y="10" width="51" height="27"/>
+                                    <rect key="frame" x="10" y="0.0" width="40" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="27" id="Ykm-zi-WAU"/>
-                                        <constraint firstAttribute="width" constant="51" id="iVa-81-BHQ"/>
+                                        <constraint firstAttribute="height" constant="40" id="Ykm-zi-WAU"/>
+                                        <constraint firstAttribute="width" constant="40" id="iVa-81-BHQ"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
                                     <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                     <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="32" maxY="0.0"/>
-                                    <state key="normal" title="Back">
+                                    <state key="normal" backgroundImage="st_icon.png">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <state key="highlighted" image="back_icon_press.png">
                                         <color key="titleColor" red="0.34509803919999998" green="0.75686274509999996" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
-                                    <connections>
-                                        <action selector="backButtonClick:" destination="-1" eventType="touchUpInside" id="MHh-jU-gao"/>
-                                    </connections>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7J8-iq-trj">
                                     <rect key="frame" x="84" y="13" width="600" height="21"/>
@@ -99,9 +96,9 @@
                             </subviews>
                             <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="centerY" secondItem="9FR-Z1-syf" secondAttribute="centerY" constant="-3" id="C29-xX-KZ0"/>
-                                <constraint firstItem="9FR-Z1-syf" firstAttribute="centerY" secondItem="7J8-iq-trj" secondAttribute="centerY" id="GgX-ir-vrP"/>
-                                <constraint firstItem="EfM-xR-QKN" firstAttribute="centerY" secondItem="9FR-Z1-syf" secondAttribute="centerY" id="NgO-Ls-Nce"/>
+                                <constraint firstAttribute="centerY" secondItem="9FR-Z1-syf" secondAttribute="centerY" id="C29-xX-KZ0"/>
+                                <constraint firstItem="9FR-Z1-syf" firstAttribute="centerY" secondItem="7J8-iq-trj" secondAttribute="centerY" constant="-3.5" id="GgX-ir-vrP"/>
+                                <constraint firstItem="EfM-xR-QKN" firstAttribute="centerY" secondItem="9FR-Z1-syf" secondAttribute="centerY" constant="3.5" id="NgO-Ls-Nce"/>
                                 <constraint firstAttribute="height" constant="40" id="cho-c5-FXh"/>
                                 <constraint firstItem="9FR-Z1-syf" firstAttribute="leading" secondItem="Rn5-pD-ILv" secondAttribute="leading" constant="10" id="i6R-VK-fm0"/>
                                 <constraint firstAttribute="centerX" secondItem="7J8-iq-trj" secondAttribute="centerX" id="pag-iG-LDK"/>
@@ -388,6 +385,7 @@
     </objects>
     <resources>
         <image name="back_icon_press.png" width="12" height="21"/>
+        <image name="st_icon.png" width="30" height="30"/>
         <image name="weather_header_bg.png" width="320" height="315"/>
     </resources>
 </document>

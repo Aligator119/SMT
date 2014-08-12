@@ -1,11 +1,3 @@
-//
-//  BodyListViewController.m
-//  SMT
-//
-//  Created by Mac on 4/29/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import "BuddyListViewController.h"
 #import "DataLoader.h"
 #import "AppDelegate.h"
@@ -39,6 +31,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *table;
+@property (weak, nonatomic) IBOutlet UIButton *menuButton;
 
 - (IBAction)actButtonBack:(UIButton *)sender;
 - (IBAction)actButtonAdd:(UIButton *)sender;
@@ -80,6 +73,11 @@
     [self.table registerNib:cellNib3 forCellReuseIdentifier:@"IncomingFriendCell"];
     
     self.screenName = @"Buddy list screen";
+    
+    MenuViewController * menuController = self.revealViewController;
+    
+    [self.view addGestureRecognizer:menuController.panGestureRecognizer];
+    [_menuButton addTarget:menuController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
     
 }
 

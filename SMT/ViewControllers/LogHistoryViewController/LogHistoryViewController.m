@@ -24,6 +24,7 @@
     NSCalendar * calendar;
 }
 @property (strong, nonatomic) IBOutlet UITableView *table;
+@property (weak, nonatomic) IBOutlet UIButton *menuButton;
 
 - (IBAction)actButtonBack:(id)sender;
 @end
@@ -84,6 +85,11 @@
     allKey = [dict allKeys];
     [self.table reloadData];
     self.screenName = @"LogHistory screen";
+    
+    MenuViewController * menuController = self.revealViewController;
+    
+    [self.view addGestureRecognizer:menuController.panGestureRecognizer];
+    [_menuButton addTarget:menuController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
                
 }
 

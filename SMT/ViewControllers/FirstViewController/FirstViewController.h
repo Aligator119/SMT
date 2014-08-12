@@ -9,9 +9,6 @@
 
 @interface FirstViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, CameraControllerDelegate>
 
-@property (strong, nonatomic) UIView * current;
-
-- (void)showSettings;
 
 + (FirstViewController *)instance;
 

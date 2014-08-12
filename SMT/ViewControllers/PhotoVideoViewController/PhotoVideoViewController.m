@@ -18,6 +18,7 @@
 }
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIView *overlayView;
+@property (weak, nonatomic) IBOutlet UIButton *menuButton;
 
 @property (nonatomic) UIImagePickerController *imagePickerController;
 
@@ -86,6 +87,11 @@
 //----------------------------------------------------------------------------------------------------
     //[self startLoader];
     self.screenName = @"Photo screen";
+    
+    MenuViewController * menuController = self.revealViewController;
+    
+    [self.view addGestureRecognizer:menuController.panGestureRecognizer];
+    [_menuButton addTarget:menuController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void) viewWillAppear:(BOOL)animated

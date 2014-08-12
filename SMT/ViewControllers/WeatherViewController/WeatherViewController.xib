@@ -50,22 +50,19 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F22-Ki-Nvv">
-                                    <rect key="frame" x="10" y="10" width="51" height="27"/>
+                                    <rect key="frame" x="5" y="0.0" width="40" height="40"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
                                     <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                     <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="32" maxY="0.0"/>
-                                    <state key="normal" title="Back">
+                                    <state key="normal" backgroundImage="st_icon.png">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <state key="highlighted" image="back_icon_press.png">
                                         <color key="titleColor" red="0.34509803919999998" green="0.75686274509999996" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
-                                    <connections>
-                                        <action selector="backButtonClick:" destination="-1" eventType="touchUpInside" id="FwN-OU-Vzx"/>
-                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8LL-nh-o8c">
                                     <rect key="frame" x="245" y="10" width="65" height="27"/>
@@ -277,6 +274,7 @@
     </objects>
     <resources>
         <image name="back_icon_press.png" width="12" height="21"/>
+        <image name="st_icon.png" width="30" height="30"/>
         <image name="weather_header_bg.png" width="320" height="315"/>
     </resources>
 </document>

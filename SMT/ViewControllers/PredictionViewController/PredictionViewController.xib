@@ -9,6 +9,8 @@
             <connections>
                 <outlet property="fishPredictor" destination="nhb-Xg-20f" id="Ds2-sr-mYS"/>
                 <outlet property="huntPredictor" destination="CUk-06-kMk" id="iwQ-ok-VEM"/>
+                <outlet property="menuButton" destination="IpR-vi-Xhz" id="Eo4-H1-e1S"/>
+                <outlet property="myView" destination="i5M-Pr-FkT" id="4Gi-Jc-bxy"/>
                 <outlet property="navigationBarHeightConstr" destination="6iB-F6-z8d" id="Rm3-A3-wdC"/>
                 <outlet property="navigationBarVerticalConstr" destination="FK4-VO-EaZ" id="ONL-j0-Ebp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -28,18 +30,15 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IpR-vi-Xhz">
-                                    <rect key="frame" x="5" y="7" width="55" height="30"/>
+                                    <rect key="frame" x="5" y="0.0" width="44" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="55" id="E6c-fa-IFW"/>
+                                        <constraint firstAttribute="width" constant="44" id="E6c-fa-IFW"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal" title="Menu">
+                                    <state key="normal" backgroundImage="st_icon.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
-                                    <connections>
-                                        <action selector="actBack:" destination="-1" eventType="touchUpInside" id="Gig-g0-cfP"/>
-                                    </connections>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prediction" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="maQ-8p-Si3">
                                     <rect key="frame" x="65" y="7" width="190" height="30"/>
@@ -51,10 +50,10 @@
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="maQ-8p-Si3" secondAttribute="trailing" constant="65" id="ChI-BK-FLn"/>
-                                <constraint firstAttribute="bottom" secondItem="IpR-vi-Xhz" secondAttribute="bottom" constant="7" id="GwD-I0-n3E"/>
+                                <constraint firstAttribute="bottom" secondItem="IpR-vi-Xhz" secondAttribute="bottom" id="GwD-I0-n3E"/>
                                 <constraint firstItem="IpR-vi-Xhz" firstAttribute="leading" secondItem="1eQ-Wg-GBD" secondAttribute="leading" constant="5" id="Gxx-sY-gwp"/>
-                                <constraint firstItem="IpR-vi-Xhz" firstAttribute="top" secondItem="1eQ-Wg-GBD" secondAttribute="top" constant="7" id="Kjo-ra-oxm"/>
-                                <constraint firstItem="maQ-8p-Si3" firstAttribute="leading" secondItem="IpR-vi-Xhz" secondAttribute="trailing" constant="5" id="ODn-KC-wnQ"/>
+                                <constraint firstItem="IpR-vi-Xhz" firstAttribute="top" secondItem="1eQ-Wg-GBD" secondAttribute="top" id="Kjo-ra-oxm"/>
+                                <constraint firstItem="maQ-8p-Si3" firstAttribute="leading" secondItem="IpR-vi-Xhz" secondAttribute="trailing" constant="16" id="ODn-KC-wnQ"/>
                                 <constraint firstAttribute="height" constant="44" id="dzW-Wh-ysq"/>
                                 <constraint firstItem="maQ-8p-Si3" firstAttribute="top" secondItem="1eQ-Wg-GBD" secondAttribute="top" constant="7" id="f45-Xt-IMR"/>
                                 <constraint firstAttribute="bottom" secondItem="maQ-8p-Si3" secondAttribute="bottom" constant="7" id="gw0-Oo-S06"/>
@@ -131,5 +130,6 @@
     <resources>
         <image name="download_fish.png" width="600" height="160"/>
         <image name="download_hunt.png" width="600" height="160"/>
+        <image name="st_icon.png" width="30" height="30"/>
     </resources>
 </document>

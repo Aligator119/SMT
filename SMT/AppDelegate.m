@@ -72,7 +72,18 @@
 //-----------------------------------------------------------------------------------------------------------------------
             
             FlyoutMenuViewController * fvc = [[FlyoutMenuViewController alloc]initWithNibName:@"FlyoutMenuViewController" bundle:nil];
-            self.navigationController = [[UINavigationController alloc]initWithRootViewController:fvc];
+            FirstViewController * firstVC =[FirstViewController instance];
+            
+            MenuViewController * menuVC = [[MenuViewController alloc]initWithRearViewController:firstVC frontViewController:fvc];
+            menuVC.rearViewRevealWidth = 0;
+            menuVC.rearViewRevealOverdraw = 260;
+            menuVC.bounceBackOnOverdraw = NO;
+            menuVC.stableDragOnOverdraw = YES;
+            [menuVC setFrontViewPosition:FrontViewPositionRight];
+            
+            menuVC.delegate = self;
+            
+            self.navigationController = [[UINavigationController alloc]initWithRootViewController:menuVC];
             self.window.rootViewController = self.navigationController;
         }
     } else {

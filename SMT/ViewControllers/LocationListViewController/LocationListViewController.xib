@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="fly_up" destination="zsI-0a-bgB" id="Urr-sY-b9L"/>
                 <outlet property="locationChangeSegmentControl" destination="fTT-SD-RM8" id="J2t-Gl-tNX"/>
+                <outlet property="menuButton" destination="zOq-eE-YGu" id="1ts-LI-Pnk"/>
                 <outlet property="navigationBarHeightConstr" destination="CLH-S1-ReD" id="iLZ-om-qJK"/>
                 <outlet property="navigationBarVerticalConstr" destination="Avf-fl-6hp" id="BZw-cd-qZR"/>
                 <outlet property="segment" destination="fTT-SD-RM8" id="9yC-JV-0IT"/>
@@ -53,10 +54,23 @@
                                         <action selector="actNewLocation:" destination="-1" eventType="touchUpInside" id="YLR-fa-5Ms"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOq-eE-YGu">
+                                    <rect key="frame" x="5" y="0.0" width="44" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="44" id="R0I-Dg-4TU"/>
+                                        <constraint firstAttribute="width" constant="44" id="TN0-Tf-LkG"/>
+                                    </constraints>
+                                    <state key="normal" backgroundImage="st_icon.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="yNZ-hS-UkJ" secondAttribute="bottom" constant="7" id="67i-Md-enr"/>
                                 <constraint firstAttribute="trailing" secondItem="yNZ-hS-UkJ" secondAttribute="trailing" constant="5" id="MRR-ft-Xb1"/>
+                                <constraint firstItem="zOq-eE-YGu" firstAttribute="leading" secondItem="kag-FE-Imf" secondAttribute="leading" constant="5" id="Oly-uH-uQV"/>
+                                <constraint firstAttribute="bottom" secondItem="zOq-eE-YGu" secondAttribute="bottom" id="Op6-0Y-wtn"/>
                                 <constraint firstItem="yNZ-hS-UkJ" firstAttribute="top" secondItem="kag-FE-Imf" secondAttribute="top" constant="7" id="jxT-sn-q1B"/>
                             </constraints>
                         </view>

@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoVideoViewController">
             <connections>
                 <outlet property="collectionTable" destination="wbH-A4-oKL" id="DUs-Gj-h69"/>
+                <outlet property="menuButton" destination="e5X-sy-3aZ" id="TcE-Q3-sj7"/>
                 <outlet property="navigationBarHeightConstr" destination="Myi-dJ-G92" id="U0o-6l-Onv"/>
                 <outlet property="navigationBarVerticalConstr" destination="JDs-io-a2N" id="AWE-gF-cDT"/>
                 <outlet property="overlayView" destination="i5M-Pr-FkT" id="qcz-oh-D1P"/>
@@ -91,18 +92,15 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5X-sy-3aZ">
-                                    <rect key="frame" x="5" y="7" width="55" height="30"/>
+                                    <rect key="frame" x="5" y="0.0" width="44" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="55" id="uVX-bv-QGg"/>
+                                        <constraint firstAttribute="width" constant="44" id="uVX-bv-QGg"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal" title="Back">
+                                    <state key="normal" backgroundImage="st_icon.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
-                                    <connections>
-                                        <action selector="actBack:" destination="-1" eventType="touchUpInside" id="yda-Rw-I5M"/>
-                                    </connections>
                                 </button>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos/Video" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LsB-Ia-Nn9">
                                     <rect key="frame" x="65" y="7" width="190" height="30"/>
@@ -128,8 +126,8 @@
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="5wb-7X-gjH"/>
-                                <constraint firstAttribute="bottom" secondItem="e5X-sy-3aZ" secondAttribute="bottom" constant="7" id="6Pr-0r-GsE"/>
-                                <constraint firstItem="e5X-sy-3aZ" firstAttribute="top" secondItem="jhX-Dw-mJB" secondAttribute="top" constant="7" id="Mxv-Ut-F92"/>
+                                <constraint firstAttribute="bottom" secondItem="e5X-sy-3aZ" secondAttribute="bottom" id="6Pr-0r-GsE"/>
+                                <constraint firstItem="e5X-sy-3aZ" firstAttribute="top" secondItem="jhX-Dw-mJB" secondAttribute="top" id="Mxv-Ut-F92"/>
                                 <constraint firstItem="qAD-PR-Wch" firstAttribute="top" secondItem="jhX-Dw-mJB" secondAttribute="top" constant="7" id="T94-Y1-Jhs"/>
                                 <constraint firstItem="LsB-Ia-Nn9" firstAttribute="top" secondItem="jhX-Dw-mJB" secondAttribute="top" constant="7" id="ciD-1h-z0C"/>
                                 <constraint firstAttribute="bottom" secondItem="LsB-Ia-Nn9" secondAttribute="bottom" constant="7" id="gor-z3-19K"/>
@@ -137,7 +135,7 @@
                                 <constraint firstItem="qAD-PR-Wch" firstAttribute="leading" secondItem="LsB-Ia-Nn9" secondAttribute="trailing" constant="5" id="oF7-IZ-3A7"/>
                                 <constraint firstItem="e5X-sy-3aZ" firstAttribute="leading" secondItem="jhX-Dw-mJB" secondAttribute="leading" constant="5" id="oWy-Uj-s4Y"/>
                                 <constraint firstAttribute="trailing" secondItem="qAD-PR-Wch" secondAttribute="trailing" constant="5" id="uJp-ia-B33"/>
-                                <constraint firstItem="LsB-Ia-Nn9" firstAttribute="leading" secondItem="e5X-sy-3aZ" secondAttribute="trailing" constant="5" id="vfh-0H-faI"/>
+                                <constraint firstItem="LsB-Ia-Nn9" firstAttribute="leading" secondItem="e5X-sy-3aZ" secondAttribute="trailing" constant="16" id="vfh-0H-faI"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -166,4 +164,7 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="st_icon.png" width="30" height="30"/>
+    </resources>
 </document>

@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController">
             <connections>
                 <outlet property="locationButton" destination="slr-ua-jrM" id="G5x-Mv-KtU"/>
+                <outlet property="menuButton" destination="aKF-hW-lWp" id="eAg-ho-qBh"/>
                 <outlet property="navigationBarHeightConstr" destination="tr9-lU-XlL" id="q9q-B9-O3T"/>
                 <outlet property="speciesButton" destination="9CO-rZ-gsm" id="iIE-fJ-3B7"/>
                 <outlet property="tfNewPassworld_1" destination="xMM-fx-zgY" id="sJw-bH-gKf"/>
@@ -91,22 +92,19 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aKF-hW-lWp">
-                            <rect key="frame" x="5" y="27" width="55" height="30"/>
+                            <rect key="frame" x="5" y="20" width="44" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="55" id="lUW-II-VN3"/>
-                                <constraint firstAttribute="height" constant="30" id="qNL-VO-RWz"/>
+                                <constraint firstAttribute="width" constant="44" id="lUW-II-VN3"/>
+                                <constraint firstAttribute="height" constant="44" id="qNL-VO-RWz"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="Menu"/>
-                            <connections>
-                                <action selector="backTomenuButtonTap:" destination="-1" eventType="touchUpInside" id="bNE-4T-hQO"/>
-                            </connections>
+                            <state key="normal" backgroundImage="st_icon.png"/>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="aKF-hW-lWp" secondAttribute="bottom" constant="7" id="Jjp-Hv-MOd"/>
+                        <constraint firstAttribute="bottom" secondItem="aKF-hW-lWp" secondAttribute="bottom" id="Jjp-Hv-MOd"/>
                         <constraint firstItem="aKF-hW-lWp" firstAttribute="leading" secondItem="1DG-w0-yvp" secondAttribute="leading" constant="5" id="p1e-1p-GxH"/>
                         <constraint firstAttribute="height" constant="64" id="tr9-lU-XlL"/>
                     </constraints>
@@ -231,4 +229,7 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="st_icon.png" width="30" height="30"/>
+    </resources>
 </document>

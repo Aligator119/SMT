@@ -174,7 +174,7 @@
                         <constraint firstAttribute="height" constant="50" id="xsB-uc-D3S"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rbx-TL-VMI">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rbx-TL-VMI">
                     <rect key="frame" x="0.0" y="60" width="320" height="370"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -182,12 +182,16 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="mpe-f0-v8Y" firstAttribute="top" secondItem="rbx-TL-VMI" secondAttribute="bottom" id="0eQ-0q-aTO"/>
                 <constraint firstItem="sgy-ic-esP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Jwj-5e-wmD"/>
+                <constraint firstAttribute="trailing" secondItem="rbx-TL-VMI" secondAttribute="trailing" id="QCj-vt-h3J"/>
                 <constraint firstAttribute="bottom" secondItem="mpe-f0-v8Y" secondAttribute="bottom" id="SsM-T4-fJ7"/>
                 <constraint firstItem="sgy-ic-esP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="b9V-6v-sgh"/>
                 <constraint firstItem="mpe-f0-v8Y" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="fq4-HD-i9V"/>
+                <constraint firstItem="rbx-TL-VMI" firstAttribute="top" secondItem="sgy-ic-esP" secondAttribute="bottom" id="g9j-7s-gME"/>
                 <constraint firstAttribute="trailing" secondItem="mpe-f0-v8Y" secondAttribute="trailing" id="myK-3R-Y4I"/>
                 <constraint firstAttribute="trailing" secondItem="sgy-ic-esP" secondAttribute="trailing" id="oym-nx-82N"/>
+                <constraint firstItem="rbx-TL-VMI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sYF-FK-i0s"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>

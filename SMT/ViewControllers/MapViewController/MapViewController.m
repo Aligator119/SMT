@@ -30,6 +30,7 @@
 @property (nonatomic, strong) CLGeocoder *geocoder;
 @property (weak, nonatomic) IBOutlet UIButton *fishButton;
 @property (weak, nonatomic) IBOutlet UIButton *huntButton;
+@property (weak, nonatomic) IBOutlet UIButton *menuButton;
 
 - (IBAction)actHuntMode:(id)sender;
 - (IBAction)actFishMode:(id)sender;
@@ -62,7 +63,8 @@
     
     [self.huntButton setBackgroundImage:[UIImage imageNamed:@"hunt_mode_icon_selected.png"] forState:UIControlStateNormal];
     self.mapType = typeHunting;
-   
+    
+      
 }
 
 
