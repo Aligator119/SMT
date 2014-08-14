@@ -239,6 +239,7 @@
 		04F4A5091935E3A300A29912 /* SpeciesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F4A5071935E3A200A29912 /* SpeciesCell.xib */; };
 		04F4A50D1936143E00A29912 /* AddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F4A50B1936143E00A29912 /* AddCell.m */; };
 		04F4A50E1936143E00A29912 /* AddCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F4A50C1936143E00A29912 /* AddCell.xib */; };
+		04F59979199C9B220001402A /* CameraButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F59978199C9B220001402A /* CameraButton.m */; };
 		04F75C15195815EB000C42DA /* CustomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F75C14195815EB000C42DA /* CustomTabBar.m */; };
 		04F75C2819582791000C42DA /* camera_icon_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F75C1819582791000C42DA /* camera_icon_press@2x.png */; };
 		04F75C2919582791000C42DA /* camera_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F75C1919582791000C42DA /* camera_icon@2x.png */; };
@@ -785,6 +786,8 @@
 		04F4A50A1936143E00A29912 /* AddCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddCell.h; path = ViewControllers/LogDetailViewController/AddCell/AddCell.h; sourceTree = "<group>"; };
 		04F4A50B1936143E00A29912 /* AddCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddCell.m; path = ViewControllers/LogDetailViewController/AddCell/AddCell.m; sourceTree = "<group>"; };
 		04F4A50C1936143E00A29912 /* AddCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddCell.xib; path = ViewControllers/LogDetailViewController/AddCell/AddCell.xib; sourceTree = "<group>"; };
+		04F59977199C9B220001402A /* CameraButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CameraButton.h; path = Classes/CameraButton/CameraButton.h; sourceTree = "<group>"; };
+		04F59978199C9B220001402A /* CameraButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CameraButton.m; path = Classes/CameraButton/CameraButton.m; sourceTree = "<group>"; };
 		04F75C13195815EB000C42DA /* CustomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTabBar.h; path = ViewControllers/SettingsViewController/CustomTabBar.h; sourceTree = "<group>"; };
 		04F75C14195815EB000C42DA /* CustomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTabBar.m; path = ViewControllers/SettingsViewController/CustomTabBar.m; sourceTree = "<group>"; };
 		04F75C1819582791000C42DA /* camera_icon_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera_icon_press@2x.png"; path = "Image/camera_icon_press@2x.png"; sourceTree = "<group>"; };
@@ -1138,6 +1141,7 @@
 		0411E2081910D0B6006045B0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				04F59976199C9AD50001402A /* CameraButton */,
 				042893731999FF1900F96B49 /* MenuViewController */,
 				84F0115D1947178A00BC032B /* ReportsHarvestrow.h */,
 				84F0115E1947178A00BC032B /* ReportsHarvestrow.m */,
@@ -2022,6 +2026,15 @@
 			name = AddCell;
 			sourceTree = "<group>";
 		};
+		04F59976199C9AD50001402A /* CameraButton */ = {
+			isa = PBXGroup;
+			children = (
+				04F59977199C9B220001402A /* CameraButton.h */,
+				04F59978199C9B220001402A /* CameraButton.m */,
+			);
+			name = CameraButton;
+			sourceTree = "<group>";
+		};
 		04F7CBBE193DC42B000AB881 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2555,6 +2568,7 @@
 				046C6C08190FECA700E3AC56 /* IncomingFriendCell.m in Sources */,
 				04A5C1991964368300593841 /* TIPS.m in Sources */,
 				84F2893119407D2B00D61E4C /* ReportsActivity.m in Sources */,
+				04F59979199C9B220001402A /* CameraButton.m in Sources */,
 				043354B01910ED9F003767D0 /* CJSONSerializedData.m in Sources */,
 				046C6C12190FECEE00E3AC56 /* Cell.m in Sources */,
 				04FBA89C1963ED4C00D5D713 /* CreateTipsCell.m in Sources */,

@@ -983,7 +983,7 @@
     info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestTips];
     Season * season = [Season new];
     for(NSDictionary * dic in info){
-        
+        NSLog(@"%@", dic);
         //[season addObject:dic];
     }
     return season;

@@ -6,6 +6,8 @@
 #import "NewLog2ViewController.h"
 #import "UIViewController+LoaderCategory.h"
 #import "LogAnActivityViewController.h"
+#import "CameraButton.h"
+#import "CameraViewController.h"
 
 @interface NewLog1ViewController ()
 {
@@ -63,6 +65,8 @@
     [_menuButton addTarget:menuController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
 
 }
+
+
 
 -(void) viewWillAppear:(BOOL)animated
 {

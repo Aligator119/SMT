@@ -3,6 +3,7 @@
 #import "DataLoader.h"
 #import "Photo.h"
 #import "UIViewController+LoaderCategory.h"
+#import "AppDelegate.h"
 
 #define KEY_USERDEFAULT @"added_Image"
 
@@ -15,6 +16,8 @@
     NSDateFormatter * selectedFormatter;
     DataLoader * dataLoader;
     NSArray * arrayData;
+    AppDelegate * appDelegate;
+    MenuViewController * menuController;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIView *overlayView;
@@ -88,10 +91,12 @@
     //[self startLoader];
     self.screenName = @"Photo screen";
     
-    MenuViewController * menuController = self.revealViewController;
+    menuController = self.revealViewController;
     
     [self.view addGestureRecognizer:menuController.panGestureRecognizer];
     [_menuButton addTarget:menuController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
+    
+    appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -149,12 +154,22 @@
 {
     NSArray * items = [dict objectForKey:[self.list objectAtIndex:indexPath.section]];
     Photo * photo = [items objectAtIndex:indexPath.row];
+    [dict removeAllObjects];
+    self.list = nil;
+    [collectionView reloadData];
     id<PhotoViewControllerDelegate> delegate = self.delegate;
     if ([delegate respondsToSelector:@selector(selectPhoto:)]) {
         [delegate selectPhoto:photo];
     }
+    //[menuController revealToggle:nil];
     
-    [self.navigationController popViewControllerAnimated:YES];
+    if (appDelegate.prevController) {
+        [menuController setFrontViewController:appDelegate.prevController animated:YES];
+        [menuController setFrontViewPosition:FrontViewPositionRightMost animated:YES];
+    } else {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
 }
 
 - (void)showImagePickerForSourceType:(UIImagePickerControllerSourceType)sourceType

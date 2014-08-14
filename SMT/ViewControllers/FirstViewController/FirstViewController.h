@@ -4,10 +4,10 @@
 #import "NewLog1ViewController.h"
 #import "UIViewController+LoaderCategory.h"
 #import "CameraViewController.h"
+#import "PhotoVideoViewController.h"
 
 
-
-@interface FirstViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, CameraControllerDelegate>
+@interface FirstViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, /*CameraControllerDelegate, PhotoViewControllerDelegate,*/ UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 
 + (FirstViewController *)instance;

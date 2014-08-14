@@ -6,6 +6,7 @@
 #import "DataLoader.h"
 #import "UIViewController+LoaderCategory.h"
 #import "LocationSearchViewController.h"
+#import "CameraButton.h"
 
 @interface LocationListViewController (){
     AppDelegate * appDel;
@@ -67,8 +68,8 @@
     
     [self.view addGestureRecognizer:menuController.panGestureRecognizer];
     [_menuButton addTarget:menuController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
-
 }
+
 
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

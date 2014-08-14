@@ -31,14 +31,19 @@
         NSData * imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:spec.photo]];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.img.image = [UIImage imageWithData:imageData];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"log species photo" object:self userInfo:@{spec.specId: self.img.image}];
+            if ([UIImage imageWithData:imageData]) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"log species photo" object:self userInfo:@{spec.specId: self.img.image}];
+            } else {
+                [self.img setBackgroundColor:[UIColor whiteColor]];
+            }
+            
         });
     });
 
 }
 - (void)prepareForReuse
 {
-    //self.img.image = [UIImage imageNamed:@"placeholderImage.png"];
+    self.img.image = nil;
 }
 
 

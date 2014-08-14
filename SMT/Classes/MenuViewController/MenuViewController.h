@@ -1,4 +1,5 @@
 #import <UIKit/UIKit.h>
+#import "CameraButton.h"
 
 @class MenuViewController;
 @protocol MenuViewControllerDelegate;
@@ -44,7 +45,9 @@ typedef NS_ENUM(NSInteger, SWRevealToggleAnimationType)
 
 
 @interface MenuViewController : UIViewController
-
+{
+    CameraButton * btnCamera;
+}
 /* Basic API */
 
 // Object instance init and rear view setting

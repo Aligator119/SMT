@@ -224,30 +224,14 @@
                                 <constraint firstItem="CD1-7k-RG5" firstAttribute="leading" secondItem="iqr-cj-RxU" secondAttribute="leading" id="q8e-0d-as5"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KVK-uJ-J5j">
-                            <rect key="frame" x="126" y="240" width="68" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="50" id="ckc-A9-jMG"/>
-                                <constraint firstAttribute="width" constant="68" id="ohA-7d-9BM"/>
-                            </constraints>
-                            <state key="normal" backgroundImage="takePic_BTN.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="actCamera:" destination="-1" eventType="touchUpInside" id="6MN-e9-qz9"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="iqr-cj-RxU" secondAttribute="trailing" id="0af-yz-jJi"/>
                         <constraint firstItem="iqr-cj-RxU" firstAttribute="top" secondItem="caK-EW-bWK" secondAttribute="top" id="0fW-31-zs3"/>
                         <constraint firstItem="RQV-PX-9Oa" firstAttribute="leading" secondItem="caK-EW-bWK" secondAttribute="leading" id="Ft0-NU-rXq"/>
-                        <constraint firstAttribute="bottom" secondItem="KVK-uJ-J5j" secondAttribute="bottom" id="HH1-aA-PuF"/>
                         <constraint firstItem="RQV-PX-9Oa" firstAttribute="top" secondItem="iqr-cj-RxU" secondAttribute="bottom" id="JFp-AF-vWh"/>
                         <constraint firstItem="RQV-PX-9Oa" firstAttribute="leading" secondItem="caK-EW-bWK" secondAttribute="leading" id="Sow-uG-nRO"/>
-                        <constraint firstAttribute="centerX" secondItem="KVK-uJ-J5j" secondAttribute="centerX" id="WOh-HI-Dn4"/>
                         <constraint firstItem="RQV-PX-9Oa" firstAttribute="top" secondItem="iqr-cj-RxU" secondAttribute="bottom" id="fz5-DB-2UM"/>
                         <constraint firstAttribute="trailing" secondItem="RQV-PX-9Oa" secondAttribute="trailing" id="gmk-nP-Gjf"/>
                         <constraint firstAttribute="trailing" secondItem="RQV-PX-9Oa" secondAttribute="trailing" id="o9h-7e-nKe"/>
@@ -350,14 +334,14 @@
                 <outlet property="searchResultsDelegate" destination="-1" id="53R-Es-l7R"/>
             </connections>
         </searchDisplayController>
-        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="272C1C30-82BD-4458-A7AB-B11F8E5329A7" id="4oq-Yq-am3">
+        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="32E5D5BF-0448-494D-9020-3C5DBEFAB64A" id="4oq-Yq-am3">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <color key="backgroundColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
         </imageView>
     </objects>
     <resources>
-        <image name="272C1C30-82BD-4458-A7AB-B11F8E5329A7" width="320" height="568">
+        <image name="32E5D5BF-0448-494D-9020-3C5DBEFAB64A" width="320" height="568">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -12553,7 +12537,6 @@ AAsm4gALJuUACybqAAAAAAAABAEAAAAAAAAAPwAAAAAAAAAAAAAAAAALJuw
         <image name="search_BTN_press.png" width="30" height="30"/>
         <image name="st_icon.png" width="30" height="30"/>
         <image name="st_icon_press.png" width="30" height="30"/>
-        <image name="takePic_BTN.png" width="74" height="56"/>
         <image name="tips_icon.png" width="80" height="30"/>
         <image name="video_camera_icon.png" width="80" height="30"/>
     </resources>

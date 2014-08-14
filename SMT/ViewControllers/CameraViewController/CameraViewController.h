@@ -2,9 +2,10 @@
 
 @protocol CameraControllerDelegate <NSObject>
 
-@required
+@optional
+- (void)returnImage:(UIImage *)image;
 
-- (void)newUserAvatar:(UIImage *)avatar;
+- (void)newUserAvatar:(UIImage *)image;
 
 @end
 
@@ -13,6 +14,7 @@
 
 @property (weak, nonatomic) id<CameraControllerDelegate> delegate;
 
+@property (nonatomic) BOOL isReturnImage;
 
 @property (nonatomic, copy) NSString * screenName;
 

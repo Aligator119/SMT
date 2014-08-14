@@ -5,8 +5,9 @@
 #import "PhotoVideoViewController.h"
 #import "CustomButton.h"
 #import "CustomTextField.h"
+#import "CameraViewController.h"
 
-@interface LogDetail2ViewController : UIViewController <UIGestureRecognizerDelegate, PhotoViewControllerDelegate, ButtonControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
+@interface LogDetail2ViewController : UIViewController <UIGestureRecognizerDelegate, ButtonControllerDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, CameraControllerDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarHeightConstr;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *navigationBarVerticalConstr;
 @property (weak, nonatomic) IBOutlet UILabel *lbName;

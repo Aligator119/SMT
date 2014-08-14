@@ -1,4 +1,5 @@
 #import "LogDetail2ViewController.h"
+#import "CameraViewController.h"
 
 #define Origin_Y 140.0
 #define LeftPointsTAG   1313
@@ -277,15 +278,24 @@
 
 - (void) setImageView:(id)sender
 {
-    PhotoVideoViewController * pvvc = [[PhotoVideoViewController alloc]initWithNibName:@"PhotoVideoViewController" bundle:nil];
-    pvvc.delegate = self;
-    [self.navigationController pushViewController:pvvc animated:YES];
+//    PhotoVideoViewController * pvvc = [[PhotoVideoViewController alloc]initWithNibName:@"PhotoVideoViewController" bundle:nil];
+//    pvvc.delegate = self;
+//    [self.navigationController pushViewController:pvvc animated:YES];
+    CameraViewController * camera = [CameraViewController new];
+    camera.delegate = self;
+    [self.navigationController pushViewController:camera animated:YES];
 }
 
 - (void)selectPhoto:(Photo *)photo
 {
     self.imgUser.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.thumbnail]]];
     photo_id = photo.photoID;
+}
+
+- (void)returnImage:(UIImage *)image
+{
+//    self.imgUser.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.thumbnail]]];
+//    photo_id = photo.photoID;
 }
 
 - (void) actAddTrophy

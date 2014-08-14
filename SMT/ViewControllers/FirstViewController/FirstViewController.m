@@ -1,7 +1,6 @@
 #import "FirstViewController.h"
 #import "DataLoader.h"
 #import "SettingsViewController.h"
-#import "PhotoVideoViewController.h"
 #import "PredictionViewController.h"
 #import "BuddyListViewController.h"
 #import "WeatherViewController.h"
@@ -24,6 +23,7 @@
     DataLoader * dataLoader;
     AppDelegate * appDelegate;
     MenuViewController * menuController;
+    UIImage * avatar;
 }
 @property (strong, nonatomic) IBOutlet UIImageView *imgUser;
 @property (strong, nonatomic) IBOutlet UILabel *lbNameUser;
@@ -278,7 +278,7 @@
 
 -(void)openSettings
 {
-    [menuController setFrontViewController:[SettingsViewController new] animated:YES];    //sf
+    [menuController setFrontViewController:[SettingsViewController new] animated:YES]; 
     [menuController setFrontViewPosition:FrontViewPositionLeft animated:YES];
 }
 
@@ -296,39 +296,89 @@
 //--------- set photo-------------------------------------------------------------------------------------
 - (void) photoClick:notification
 {
-    PhotoVideoViewController * pvvc = [PhotoVideoViewController new];
-    pvvc.delegate = self;
-    [self.navigationController pushViewController:pvvc animated:YES];
+//    appDelegate.prevController = menuController.frontViewController;
+//    PhotoVideoViewController * pvvc = [PhotoVideoViewController new];
+//    [pvvc setDelegate:self];
+//    [menuController setFrontViewController:pvvc animated:YES]; 
+//    [menuController setFrontViewPosition:FrontViewPositionLeft animated:YES];
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
 }
 
 
-- (void)selectPhoto:(Photo *)photo
-{
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    avatar = chosenImage;
+    
+    [picker dismissViewControllerAnimated:YES completion:^{
+        [self actSetAvatar];
+    }];
+}
+
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+    
+}
+
+
+- (void)actSetAvatar {
+    
     [self startLoader];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
-        UIImage * image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.fullPhoto]]];
-        //NSString * str =
-        [dataLoader setUserAvatar:image];
-        
-        dispatch_async(dispatch_get_main_queue(),^(){
             
+        [dataLoader setUserAvatar:avatar];
+            
+        dispatch_async(dispatch_get_main_queue(),^(){
+                
             if(!dataLoader.isCorrectRezult) {
                 NSLog(@"Error upload avatar");
                 [self endLoader];
             } else {
-                self.imgUser.image = image;
+                self.imgUser.image = avatar;
                 [self endLoader];
             }
-            
+                
         });
     });
+    
 }
 
+//- (void)selectPhoto:(Photo *)photo
+//{
+//    [self startLoader];
+//    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_async(newQueue, ^(){
+//        //UIImage * image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photo.fullPhoto]]];
+//        [dataLoader setUserAvatar:avatar];
+//        
+//        dispatch_async(dispatch_get_main_queue(),^(){
+//            
+//            if(!dataLoader.isCorrectRezult) {
+//                NSLog(@"Error upload avatar");
+//                [self endLoader];
+//            } else {
+//                self.imgUser.image = image;
+//                [self endLoader];
+//            }
+//            
+//        });
+//    });
+//}
 
-- (void) newUserAvatar:(UIImage *)avatar
+
+- (void) newUserAvatar:(UIImage *)image
 {
-    self.imgUser.image =avatar;
+    self.imgUser.image =image;
 }
 
 - (void)downloadSeasons

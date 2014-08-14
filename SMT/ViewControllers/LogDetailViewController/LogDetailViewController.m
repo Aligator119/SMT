@@ -15,7 +15,7 @@
     DataLoader * dataLoader;
     NSDictionary * harvestrows;
     NSDictionary * sightings;
-    NSDictionary * settingsDict;
+    //NSDictionary * settingsDict;
     NSMutableDictionary * data;
     int subSpecieID;
     NSArray * killingQuestion;
@@ -79,6 +79,23 @@
     
     [self AddActivityIndicator:[UIColor grayColor] forView:self.table];
     self.screenName = @"LogDetail Screen";
+    
+    
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        
+        self.settingsDict = [[NSMutableDictionary alloc]initWithDictionary:[dataLoader getActivityWithId:[logID intValue]]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            
+            if(!dataLoader.isCorrectRezult) {
+                NSLog(@"Error download harvester");
+            } else {
+                 NSLog(@"download harvester");
+            }
+        });
+    });
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -168,42 +185,27 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.table deselectRowAtIndexPath:indexPath animated:YES];
-    LogDetailCell * cel = (LogDetailCell *)[tableView cellForRowAtIndexPath:indexPath];
-    if ([cel.lbDetailText.text isEqualToString:@"Detail Saved"]) {
-        return;
-    }
+//    LogDetailCell * cel = (LogDetailCell *)[tableView cellForRowAtIndexPath:indexPath];
+//    if ([cel.lbDetailText.text isEqualToString:@"Detail Saved"]) {
+//        return;
+//    }
     if ([[self.table cellForRowAtIndexPath:indexPath] isKindOfClass:[LogDetailCell class]]) {
-        [self startLoader];
         NSString * str = ((LogDetailCell *)[self.table cellForRowAtIndexPath:indexPath]).lbText.text;
-        dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-        dispatch_async(newQueue, ^(){
-            
-            settingsDict = [dataLoader getActivityWithId:[logID intValue]];
-            
-            dispatch_async(dispatch_get_main_queue(), ^(){
-                
-                if(!dataLoader.isCorrectRezult) {
-                    NSLog(@"Error download harvester");
-                    [self endLoader];
-                } else {
-                    int numSightings = 0;
-                    harvestrows = [[settingsDict objectForKey:@"harvestrows"] objectAtIndex:indexPath.section];
-                    for (int i = 0; i<=indexPath.section; i++) {
-                        if (i == indexPath.section) {
-                            numSightings += indexPath.row;
-                        } else {
-                            numSightings += [[((NSDictionary *)[[settingsDict objectForKey:@"harvestrows"] objectAtIndex:i]) objectForKey:@"seen"] intValue];
-                        }
-                    }
-                    
-                    sightings   = [[settingsDict objectForKey:@"sightings"] objectAtIndex:numSightings];
-                    data = [[NSMutableDictionary alloc]initWithObjectsAndKeys:str, @"name", indexPath, @"index", harvestrows, @"harvestrows", sightings, @"sightings", nil];
-                    [self addKillingQuestions];
-                    [self endLoader];
-                }
-            });
-        });
-    }
+        
+        int numSightings = 0;
+        harvestrows = [[self.settingsDict objectForKey:@"harvestrows"] objectAtIndex:indexPath.section];
+        for (int i = 0; i<=indexPath.section; i++) {
+            if (i == indexPath.section) {
+                numSightings += indexPath.row;
+            } else {
+                numSightings += [[((NSDictionary *)[[self.settingsDict objectForKey:@"harvestrows"] objectAtIndex:i]) objectForKey:@"seen"] intValue];
+            }
+        }
+        
+        sightings   = [[self.settingsDict objectForKey:@"sightings"] objectAtIndex:numSightings];
+        data = [[NSMutableDictionary alloc]initWithObjectsAndKeys:str, @"name", indexPath, @"index", harvestrows, @"harvestrows", sightings, @"sightings", nil];
+        [self addKillingQuestions];
+        }
 }
 
 

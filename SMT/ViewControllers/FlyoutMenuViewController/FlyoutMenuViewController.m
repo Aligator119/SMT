@@ -15,6 +15,7 @@
 #import "SearchViewController.h"
 #import "CellForFirstView.h"
 #import "MenuViewController.h"
+#import "CameraButton.h"
 
 
 
@@ -107,7 +108,7 @@
 - (void)downloadOutfitter;
 
 - (void)actDisplayCreateTIPS;
-- (IBAction)actCamera:(id)sender;
+- (void)actCamera:(id)sender;
 
 - (IBAction)actCloseSubView:(id)sender;
 - (void)cashedImageFromCell:(NSNotification *)info;
@@ -234,7 +235,9 @@
     
     [self.view addGestureRecognizer:menuController.panGestureRecognizer];
     [__menuButton addTarget:menuController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
-    
+    CameraButton * camera = [[CameraButton alloc]init];
+    [camera addTarget:self action:@selector(actCamera:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:camera];
     isDownloadPhoto = NO;
 }
 
@@ -852,7 +855,7 @@
                 NSLog(@"Error download outfitter");
                 [self endLoader];
             } else {
-                if (selectedBtn3) {
+                if (!selectedBtn3) {
                     [self.colectionView reloadData];
                 }
                 [self endLoader];
@@ -906,7 +909,7 @@
     [self.colectionView reloadData];
 }
 
-- (IBAction)actCamera:(id)sender {
+- (void)actCamera:(id)sender {
     CameraViewController * cVC = [CameraViewController new];
     [self.navigationController pushViewController:cVC animated:YES];
 }

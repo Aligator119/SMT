@@ -51,6 +51,8 @@ static NSString * const kGoogleAnaliticKey = @"UA-3665575-10";
 @property (strong, nonatomic) Season * currenSeason;
 @property (strong, nonatomic) NSArray * seasons;
 
+@property (strong, nonatomic) UIViewController * prevController;
+
 //@property (strong, nonatomic) UserLocationInThisMoment * userLocation;
 //@property (strong, nonatomic) NSTimer * timerForUserPositionsUpdating;
 @property (nonatomic) BOOL userTrackingVisibility;

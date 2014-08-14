@@ -547,6 +547,8 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
     SWContextTransitionObject *_frontTransitioningController;
     SWContextTransitionObject *_rightTransitioningController;
 }
+
+
 @end
 
 
@@ -558,6 +560,7 @@ static CGFloat scaledValue( CGFloat v1, CGFloat min2, CGFloat max2, CGFloat min1
 }
 
 const int FrontViewPositionNone = 0xff;
+
 
 
 #pragma mark - Init

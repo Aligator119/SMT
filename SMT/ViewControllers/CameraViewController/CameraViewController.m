@@ -49,6 +49,8 @@
     [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
     
     self.screenName = @"Camera screen";
+    
+    self.isReturnImage = NO;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -224,6 +226,14 @@
 }
 
 - (IBAction)actConfirm:(id)sender {
+    if (self.isReturnImage) {
+        id<CameraControllerDelegate> delegate = self.delegate;
+        if ([delegate respondsToSelector:@selector(returnImage:)]) {
+            [delegate returnImage:self.imageView.image];
+        }
+    } else {
+        // add logic to create log
+    }
 }
 
 - (IBAction)actRetake:(id)sender {

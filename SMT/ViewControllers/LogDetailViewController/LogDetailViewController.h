@@ -14,6 +14,8 @@
 
 @property (strong, nonatomic) NSIndexPath * index;
 
+@property (strong, nonatomic) NSMutableDictionary * settingsDict;
+
 @property (nonatomic, copy) NSString * screenName;
 
 - (IBAction)actClose:(id)sender;
