@@ -30,6 +30,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *table;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *leftsSpace;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstr;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *topSuperViewHeightConstr;
 
 
 - (void)photoClick:(id)notification;
@@ -56,6 +57,7 @@
     appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
         self.topViewHeightConstr.constant -= 20;
+        self.topSuperViewHeightConstr.constant -= 20;
     }
     isSettings = NO;
     dataLoader = [DataLoader instance];

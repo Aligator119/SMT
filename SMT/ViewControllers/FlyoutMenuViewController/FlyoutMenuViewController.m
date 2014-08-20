@@ -37,6 +37,8 @@
 #define minHeaderHeight 0
 #define maxHeaderHeight 125
 
+#define koefPageControlHeigth 0.295
+
 @interface FlyoutMenuViewController ()
 {
     DataLoader * dataLoader;
@@ -69,6 +71,7 @@
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *topBarHiegthConstrainsSubView;
 @property (strong, nonatomic) IBOutlet UITableView *tableSelect;
 @property (strong, nonatomic) IBOutlet UIView *subView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *pageControllerHeigth;
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * topViewHeightConstr;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *btn1Hegth;
@@ -446,6 +449,13 @@
             scrollView.contentOffset = CGPointZero;
         }
     }
+    self.pageControllerHeigth.constant = self.heigthShowColectionViewConstraint.constant * koefPageControlHeigth;
+    if (self.pageControllerHeigth.constant < 5.0) {
+        self.pageController.hidden = YES;
+    } else {
+        self.pageController.hidden = NO;
+    }
+    [self.view updateConstraintsIfNeeded];
 }
 
 
@@ -458,7 +468,7 @@
 - (void)actLookSee:(id)sender {
     //[self reverseBackroundImageWithNumber:2];
     //[self endLoader];
-    [self.navigationController pushViewController:[CommentViewController new] animated:YES];
+    //[self.navigationController pushViewController:[CommentViewController new] animated:YES];
 }
 
 - (void)actVideo:(id)sender {
@@ -539,11 +549,11 @@
         self.btn2.image = [UIImage imageNamed:@"look_icon_press.png"];
     }
     if (selectedBtn3) {
-        self.btn3.image = [UIImage imageNamed:@"video_camera_icon.png"];
+        self.btn3.image = [UIImage imageNamed:@"outfiters_icon.png"];
         self.btn3fone.backgroundColor = [UIColor colorWithRed:26/255.0 green:26/255.0 blue:26/255.0 alpha:1.0];
     } else {
         self.btn3fone.backgroundColor = [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1.0];
-        self.btn3.image = [UIImage imageNamed:@"video_camera_icon_press.png"];
+        self.btn3.image = [UIImage imageNamed:@"outfiters_icon_press.png"];
     }
     if (selectedBtn4) {
         self.btn4.image = [UIImage imageNamed:@"tips_icon.png"];

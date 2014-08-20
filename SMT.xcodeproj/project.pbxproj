@@ -20,6 +20,12 @@
 		0405E4981949A8620059CCFE /* unchek.png in Resources */ = {isa = PBXBuildFile; fileRef = 0405E4961949A8620059CCFE /* unchek.png */; };
 		0405E49B1949F01A0059CCFE /* arrow_righrt_BTN.png in Resources */ = {isa = PBXBuildFile; fileRef = 0405E4991949F01A0059CCFE /* arrow_righrt_BTN.png */; };
 		0405E49C1949F01A0059CCFE /* arrow_righrt_BTN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0405E49A1949F01A0059CCFE /* arrow_righrt_BTN@2x.png */; };
+		04062B9719A4BEF0008F6D7F /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 04062B9519A4BEF0008F6D7F /* logo.png */; };
+		04062B9819A4BEF0008F6D7F /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04062B9619A4BEF0008F6D7F /* logo@2x.png */; };
+		04062B9D19A4C1C3008F6D7F /* outfiters_icon_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 04062B9919A4C1C3008F6D7F /* outfiters_icon_press.png */; };
+		04062B9E19A4C1C3008F6D7F /* outfiters_icon_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04062B9A19A4C1C3008F6D7F /* outfiters_icon_press@2x.png */; };
+		04062B9F19A4C1C3008F6D7F /* outfiters_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 04062B9B19A4C1C3008F6D7F /* outfiters_icon.png */; };
+		04062BA019A4C1C3008F6D7F /* outfiters_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04062B9C19A4C1C3008F6D7F /* outfiters_icon@2x.png */; };
 		040706B4190FC1CE000D6660 /* BuddyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040706B2190FC1CE000D6660 /* BuddyListViewController.m */; };
 		040706B5190FC1CE000D6660 /* BuddyListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040706B3190FC1CE000D6660 /* BuddyListViewController.xib */; };
 		04080691190EA37D00E063C3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04080690190EA37D00E063C3 /* Foundation.framework */; };
@@ -233,8 +239,6 @@
 		04F498AD1953262F00FC065C /* look_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F4989F1953262F00FC065C /* look_icon.png */; };
 		04F498AE1953262F00FC065C /* note_icon_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F498A01953262F00FC065C /* note_icon_press.png */; };
 		04F498AF1953262F00FC065C /* note_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F498A11953262F00FC065C /* note_icon.png */; };
-		04F498B21953262F00FC065C /* video_camera_icon_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F498A41953262F00FC065C /* video_camera_icon_press.png */; };
-		04F498B31953262F00FC065C /* video_camera_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F498A51953262F00FC065C /* video_camera_icon.png */; };
 		04F4A5081935E3A200A29912 /* SpeciesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F4A5061935E3A200A29912 /* SpeciesCell.m */; };
 		04F4A5091935E3A300A29912 /* SpeciesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F4A5071935E3A200A29912 /* SpeciesCell.xib */; };
 		04F4A50D1936143E00A29912 /* AddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F4A50B1936143E00A29912 /* AddCell.m */; };
@@ -255,8 +259,6 @@
 		04F75C3319582791000C42DA /* st_icon_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F75C2319582791000C42DA /* st_icon_press@2x.png */; };
 		04F75C3419582791000C42DA /* st_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F75C2419582791000C42DA /* st_icon.png */; };
 		04F75C3519582791000C42DA /* st_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F75C2519582791000C42DA /* st_icon@2x.png */; };
-		04F75C3619582791000C42DA /* video_camera_icon_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F75C2619582791000C42DA /* video_camera_icon_press@2x.png */; };
-		04F75C3719582791000C42DA /* video_camera_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F75C2719582791000C42DA /* video_camera_icon@2x.png */; };
 		04F7CBC1193DC4AF000AB881 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7CBC0193DC4AF000AB881 /* CustomTextField.m */; };
 		04F7CBC3193DC4CD000AB881 /* CustomTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F7CBC2193DC4CD000AB881 /* CustomTextField.xib */; };
 		04F7CBC8193DC5FC000AB881 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7CBC7193DC5FC000AB881 /* CustomButton.m */; };
@@ -402,6 +404,12 @@
 		0405E4961949A8620059CCFE /* unchek.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = unchek.png; path = Image/unchek.png; sourceTree = "<group>"; };
 		0405E4991949F01A0059CCFE /* arrow_righrt_BTN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_righrt_BTN.png; path = Image/arrow_righrt_BTN.png; sourceTree = "<group>"; };
 		0405E49A1949F01A0059CCFE /* arrow_righrt_BTN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow_righrt_BTN@2x.png"; path = "Image/arrow_righrt_BTN@2x.png"; sourceTree = "<group>"; };
+		04062B9519A4BEF0008F6D7F /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = Image/logo.png; sourceTree = "<group>"; };
+		04062B9619A4BEF0008F6D7F /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo@2x.png"; path = "Image/logo@2x.png"; sourceTree = "<group>"; };
+		04062B9919A4C1C3008F6D7F /* outfiters_icon_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = outfiters_icon_press.png; path = Image/outfiters_icon_press.png; sourceTree = "<group>"; };
+		04062B9A19A4C1C3008F6D7F /* outfiters_icon_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "outfiters_icon_press@2x.png"; path = "Image/outfiters_icon_press@2x.png"; sourceTree = "<group>"; };
+		04062B9B19A4C1C3008F6D7F /* outfiters_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = outfiters_icon.png; path = Image/outfiters_icon.png; sourceTree = "<group>"; };
+		04062B9C19A4C1C3008F6D7F /* outfiters_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "outfiters_icon@2x.png"; path = "Image/outfiters_icon@2x.png"; sourceTree = "<group>"; };
 		040706B1190FC1CE000D6660 /* BuddyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BuddyListViewController.h; path = ViewControllers/BodyListViewController/BuddyListViewController.h; sourceTree = "<group>"; };
 		040706B2190FC1CE000D6660 /* BuddyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BuddyListViewController.m; path = ViewControllers/BodyListViewController/BuddyListViewController.m; sourceTree = "<group>"; };
 		040706B3190FC1CE000D6660 /* BuddyListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BuddyListViewController.xib; path = ViewControllers/BodyListViewController/BuddyListViewController.xib; sourceTree = "<group>"; };
@@ -1375,6 +1383,12 @@
 		046C6BEA190FDF0E00E3AC56 /* image */ = {
 			isa = PBXGroup;
 			children = (
+				04062B9919A4C1C3008F6D7F /* outfiters_icon_press.png */,
+				04062B9A19A4C1C3008F6D7F /* outfiters_icon_press@2x.png */,
+				04062B9B19A4C1C3008F6D7F /* outfiters_icon.png */,
+				04062B9C19A4C1C3008F6D7F /* outfiters_icon@2x.png */,
+				04062B9519A4BEF0008F6D7F /* logo.png */,
+				04062B9619A4BEF0008F6D7F /* logo@2x.png */,
 				04B06C251990F94B00F42B8E /* search_BTN_press.png */,
 				04B06C261990F94B00F42B8E /* search_BTN_press@2x.png */,
 				04B06C271990F94B00F42B8E /* search_BTN.png */,
@@ -2369,9 +2383,9 @@
 				046C6C0E190FECC400E3AC56 /* InviteFriendCell.xib in Resources */,
 				04A2A393191B7F8D0006677E /* WeatherDetailViewController~ipad.xib in Resources */,
 				A508896D19895E9B007E2C57 /* hunt_icon.png in Resources */,
+				04062B9819A4BEF0008F6D7F /* logo@2x.png in Resources */,
 				0405E49C1949F01A0059CCFE /* arrow_righrt_BTN@2x.png in Resources */,
 				04A2A390191B7F8D0006677E /* WeatherDetailCell.xib in Resources */,
-				04F498B21953262F00FC065C /* video_camera_icon_press.png in Resources */,
 				04D9F3D71990B18400B9433D /* galery_BTN_press@2x.png in Resources */,
 				A5498E12198A7CC60035A0DC /* delete_lication_BTN@2x.png in Resources */,
 				04B06C2C1990F94B00F42B8E /* search_BTN@2x.png in Resources */,
@@ -2414,6 +2428,7 @@
 				04409424190F975E00C4A558 /* LoginViewController~ipad.xib in Resources */,
 				04D76FDC1934D14E00E1F59B /* star_opasity_orange@2x.png in Resources */,
 				04D9F3D81990B18400B9433D /* galery_BTN.png in Resources */,
+				04062B9D19A4C1C3008F6D7F /* outfiters_icon_press.png in Resources */,
 				04F75C2F19582791000C42DA /* look_icon@2x.png in Resources */,
 				04A2A371191B7F530006677E /* SettingsViewController.xib in Resources */,
 				84E605AA194AF5CC00F8D61F /* hunting_map@2x.png in Resources */,
@@ -2444,7 +2459,6 @@
 				0416596A195AD3ED0078AD3A /* tips_icon_press.png in Resources */,
 				04DF997019222A2400D66BEC /* LogDetailCell.xib in Resources */,
 				04D76FDB1934D14E00E1F59B /* star_opasity_orange.png in Resources */,
-				04F75C3719582791000C42DA /* video_camera_icon@2x.png in Resources */,
 				0416596C195AD3EE0078AD3A /* tips_icon.png in Resources */,
 				04FBA8991963ED0800D5D713 /* CreateTipsCell.xib in Resources */,
 				04F75C2919582791000C42DA /* camera_icon@2x.png in Resources */,
@@ -2471,7 +2485,6 @@
 				84E6059E194AF5CC00F8D61F /* buddies@2x.png in Resources */,
 				04F75C2819582791000C42DA /* camera_icon_press@2x.png in Resources */,
 				84E605A2194AF5CC00F8D61F /* camera@x2.png in Resources */,
-				04F75C3619582791000C42DA /* video_camera_icon_press@2x.png in Resources */,
 				040217611973FA5E00594E0D /* BG@2x.png in Resources */,
 				047EE59A192F47D700FD17FC /* InviteFriendViewController.xib in Resources */,
 				84E605BD194AF5CC00F8D61F /* settings.png in Resources */,
@@ -2483,10 +2496,10 @@
 				04E8F03A196AD61600DFE0AB /* checkbox_check.png in Resources */,
 				04D9F3D41990B18400B9433D /* close_BTN.png in Resources */,
 				04D9F3D61990B18400B9433D /* galery_BTN_press.png in Resources */,
+				04062B9E19A4C1C3008F6D7F /* outfiters_icon_press@2x.png in Resources */,
 				A5498E0F198A7CC60035A0DC /* delete_lication_BTN_press.png in Resources */,
 				A529686F19880F2A006E9DC1 /* fish_mode_icon_selected.png in Resources */,
 				0416596B195AD3EE0078AD3A /* tips_icon_press@2x.png in Resources */,
-				04F498B31953262F00FC065C /* video_camera_icon.png in Resources */,
 				A5F757C5198A984E0088E148 /* edit_BTN.png in Resources */,
 				A59FFEF91986AD76006AD37E /* FullImageViewController.xib in Resources */,
 				0405E49B1949F01A0059CCFE /* arrow_righrt_BTN.png in Resources */,
@@ -2508,12 +2521,15 @@
 				04F75C3419582791000C42DA /* st_icon.png in Resources */,
 				A5498E10198A7CC60035A0DC /* delete_lication_BTN_press@2x.png in Resources */,
 				04F75C3119582791000C42DA /* note_icon@2x.png in Resources */,
+				04062BA019A4C1C3008F6D7F /* outfiters_icon@2x.png in Resources */,
 				04EFC32119249890008A59D7 /* sportsman_tracker_BG-1.png in Resources */,
 				84E605C8194B16BD00F8D61F /* download_fish.png in Resources */,
 				04A2A3CC191B80350006677E /* BaseLocationViewController.xib in Resources */,
 				04B015C9191B7EE7002F6FA9 /* MapViewController.xib in Resources */,
+				04062B9719A4BEF0008F6D7F /* logo.png in Resources */,
 				84E605A1194AF5CC00F8D61F /* camera.png in Resources */,
 				04A2A3A5191B7FC00006677E /* LocationListViewController.xib in Resources */,
+				04062B9F19A4C1C3008F6D7F /* outfiters_icon.png in Resources */,
 				040706B5190FC1CE000D6660 /* BuddyListViewController.xib in Resources */,
 				84E605BB194AF5CC00F8D61F /* reports@2x~ipad.png in Resources */,
 				04165964195ACD180078AD3A /* foto_icon.png in Resources */,
