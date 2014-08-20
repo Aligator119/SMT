@@ -335,14 +335,14 @@
                 <outlet property="searchResultsDelegate" destination="-1" id="53R-Es-l7R"/>
             </connections>
         </searchDisplayController>
-        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C4005AFF-BBA6-4400-AEA6-06E5C6B850E4" id="4oq-Yq-am3">
+        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C56AD0A7-320A-4B99-B5EB-1D1242DB1D1D" id="4oq-Yq-am3">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <color key="backgroundColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
         </imageView>
     </objects>
     <resources>
-        <image name="C4005AFF-BBA6-4400-AEA6-06E5C6B850E4" width="320" height="568">
+        <image name="C56AD0A7-320A-4B99-B5EB-1D1242DB1D1D" width="320" height="568">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -12537,8 +12537,8 @@ AAsm4gALJuUACybqAAAAAAAABAEAAAAAAAAAPwAAAAAAAAAAAAAAAAALJuw
         <image name="outfiters_icon.png" width="121" height="46"/>
         <image name="search_BTN.png" width="30" height="30"/>
         <image name="search_BTN_press.png" width="30" height="30"/>
-        <image name="st_icon.png" width="30" height="30"/>
-        <image name="st_icon_press.png" width="30" height="30"/>
+        <image name="st_icon.png" width="129" height="75"/>
+        <image name="st_icon_press.png" width="129" height="75"/>
         <image name="tips_icon.png" width="80" height="30"/>
     </resources>
 </document>

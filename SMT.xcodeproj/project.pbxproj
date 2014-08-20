@@ -256,9 +256,7 @@
 		04F75C3019582791000C42DA /* note_icon_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F75C2019582791000C42DA /* note_icon_press@2x.png */; };
 		04F75C3119582791000C42DA /* note_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F75C2119582791000C42DA /* note_icon@2x.png */; };
 		04F75C3219582791000C42DA /* st_icon_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F75C2219582791000C42DA /* st_icon_press.png */; };
-		04F75C3319582791000C42DA /* st_icon_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F75C2319582791000C42DA /* st_icon_press@2x.png */; };
 		04F75C3419582791000C42DA /* st_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F75C2419582791000C42DA /* st_icon.png */; };
-		04F75C3519582791000C42DA /* st_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F75C2519582791000C42DA /* st_icon@2x.png */; };
 		04F7CBC1193DC4AF000AB881 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7CBC0193DC4AF000AB881 /* CustomTextField.m */; };
 		04F7CBC3193DC4CD000AB881 /* CustomTextField.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04F7CBC2193DC4CD000AB881 /* CustomTextField.xib */; };
 		04F7CBC8193DC5FC000AB881 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F7CBC7193DC5FC000AB881 /* CustomButton.m */; };
@@ -2439,7 +2437,6 @@
 				04F75C2A19582791000C42DA /* global_icon_press@2x.png in Resources */,
 				04D76FDD1934D14E00E1F59B /* star_orange.png in Resources */,
 				04F498971953123600FC065C /* ImageShow.xib in Resources */,
-				04F75C3519582791000C42DA /* st_icon@2x.png in Resources */,
 				04E8F03B196AD61600DFE0AB /* checkbox_check@2x.png in Resources */,
 				84E605C4194AF5CC00F8D61F /* weather@2x~ipad.png in Resources */,
 				04DF99641921FDB600D66BEC /* LogDetailViewController.xib in Resources */,
@@ -2474,7 +2471,6 @@
 				84E605B5194AF5CC00F8D61F /* prediction.png in Resources */,
 				04B06C201990EBA700F42B8E /* takePic_check_BTN@2x.png in Resources */,
 				04A2A3C3191B7FDC0006677E /* PhotoVideoViewController.xib in Resources */,
-				04F75C3319582791000C42DA /* st_icon_press@2x.png in Resources */,
 				A59FFEF01986AC5D006AD37E /* CreateCommentCell.xib in Resources */,
 				04A2A3A3191B7FC00006677E /* LocationListCell.xib in Resources */,
 				84E605AB194AF5CC00F8D61F /* hunting_map@2x~ipad.png in Resources */,
