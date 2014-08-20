@@ -213,8 +213,19 @@
             [self.activityIndicat stopAnimating];
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];
             
-           FirstViewController * fVC = [[FirstViewController alloc]initWithNibName:@"FirstViewController" bundle:nil];
-            [self.navigationController pushViewController:fVC animated:YES];
+            FlyoutMenuViewController * fvc = [[FlyoutMenuViewController alloc]initWithNibName:@"FlyoutMenuViewController" bundle:nil];
+            FirstViewController * firstVC =[FirstViewController instance];
+            
+            MenuViewController * menuVC = [[MenuViewController alloc]initWithRearViewController:firstVC frontViewController:fvc];
+            menuVC.rearViewRevealWidth = 0;
+            menuVC.rearViewRevealOverdraw = 220;
+            menuVC.bounceBackOnOverdraw = NO;
+            menuVC.stableDragOnOverdraw = YES;
+            [menuVC setFrontViewPosition:FrontViewPositionRight];
+            
+            menuVC.delegate = self;
+            
+            [self.navigationController pushViewController:menuVC animated:YES];
             
         } else {
             [self.activityIndicat stopAnimating];

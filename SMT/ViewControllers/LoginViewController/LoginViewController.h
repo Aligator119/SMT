@@ -1,6 +1,7 @@
 #import <UIKit/UIKit.h>
+#import "MenuViewController.h"
 
-@interface LoginViewController : GAITrackedViewController <UITextFieldDelegate>
+@interface LoginViewController : GAITrackedViewController <UITextFieldDelegate, MenuViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIButton * btnFb;
 @property (strong, nonatomic) IBOutlet UIButton *btnLogin;
