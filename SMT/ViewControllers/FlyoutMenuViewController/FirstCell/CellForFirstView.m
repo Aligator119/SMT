@@ -1,11 +1,3 @@
-//
-//  CellForFirstView.m
-//  SMT
-//
-//  Created by Mac on 17.07.14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import "CellForFirstView.h"
 
 @implementation CellForFirstView
@@ -19,13 +11,18 @@
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)initWithSeason:(Season *)season
 {
-    // Drawing code
+    self.lbName.text = season.name;
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        UIImage * image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:season.thumbnail]]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            
+            self.imgShow.image = image;
+        });
+    });
 }
-*/
 
 @end

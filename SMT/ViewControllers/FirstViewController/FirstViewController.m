@@ -34,7 +34,7 @@
 
 
 - (void)photoClick:(id)notification;
-- (void)downloadSeasons;
+//- (void)downloadSeasons;
 
 
 @end
@@ -383,22 +383,22 @@
     self.imgUser.image =image;
 }
 
-- (void)downloadSeasons
-{
-    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(newQueue, ^(){
-        NSArray * buf = [[NSArray alloc]initWithArray:[dataLoader getSeasonWithRegionID:1]];
-        
-        dispatch_async(dispatch_get_main_queue(),^(){
-            
-            if(!dataLoader.isCorrectRezult) {
-                NSLog(@"Error download seasons");
-            } else {
-                appDelegate.seasons = buf;
-            }
-            
-        });
-    });
-}
+//- (void)downloadSeasons
+//{
+//    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_async(newQueue, ^(){
+//        NSArray * buf = [[NSArray alloc]initWithArray:[dataLoader getSeasonWithRegion:1]];
+//        
+//        dispatch_async(dispatch_get_main_queue(),^(){
+//            
+//            if(!dataLoader.isCorrectRezult) {
+//                NSLog(@"Error download seasons");
+//            } else {
+//                appDelegate.seasons = buf;
+//            }
+//            
+//        });
+//    });
+//}
 
 @end

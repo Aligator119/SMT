@@ -62,16 +62,26 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGz-XK-4wB">
-                            <rect key="frame" x="10" y="20" width="44" height="44"/>
+                            <rect key="frame" x="10" y="22" width="35" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="44" id="UKw-Fr-BKT"/>
-                                <constraint firstAttribute="height" constant="44" id="pds-dq-6Jo"/>
+                                <constraint firstAttribute="width" constant="35" id="UKw-Fr-BKT"/>
+                                <constraint firstAttribute="height" constant="35" id="pds-dq-6Jo"/>
                             </constraints>
                             <state key="normal" backgroundImage="st_icon.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="highlighted" backgroundImage="st_icon_press.png"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B4I-oD-K1M">
+                            <rect key="frame" x="204" y="26" width="46" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Button">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="actSelectRegion:" destination="-1" eventType="touchUpInside" id="unN-wh-Q8T"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.21568627450980393" green="0.21568627450980393" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
@@ -80,7 +90,7 @@
                         <constraint firstAttribute="bottom" secondItem="HW0-nG-Mei" secondAttribute="bottom" id="FLR-wc-9XG"/>
                         <constraint firstAttribute="height" constant="64" id="RE8-zp-aK1"/>
                         <constraint firstItem="IGz-XK-4wB" firstAttribute="leading" secondItem="b9f-ed-cPn" secondAttribute="leading" constant="10" id="TkX-eK-h1K"/>
-                        <constraint firstAttribute="bottom" secondItem="IGz-XK-4wB" secondAttribute="bottom" id="kFs-iP-1Vj"/>
+                        <constraint firstAttribute="bottom" secondItem="IGz-XK-4wB" secondAttribute="bottom" constant="7" id="kFs-iP-1Vj"/>
                     </constraints>
                 </view>
                 <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="exG-Uq-koA">
@@ -335,14 +345,14 @@
                 <outlet property="searchResultsDelegate" destination="-1" id="53R-Es-l7R"/>
             </connections>
         </searchDisplayController>
-        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C56AD0A7-320A-4B99-B5EB-1D1242DB1D1D" id="4oq-Yq-am3">
+        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="46DCEB94-4C53-41D1-A57B-5195DB053A87" id="4oq-Yq-am3">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <color key="backgroundColor" red="0.21960784310000001" green="0.3294117647" blue="0.52941176469999995" alpha="1" colorSpace="calibratedRGB"/>
         </imageView>
     </objects>
     <resources>
-        <image name="C56AD0A7-320A-4B99-B5EB-1D1242DB1D1D" width="320" height="568">
+        <image name="46DCEB94-4C53-41D1-A57B-5195DB053A87" width="320" height="568">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

@@ -161,6 +161,11 @@
 		04B06C2B1990F94B00F42B8E /* search_BTN.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B06C271990F94B00F42B8E /* search_BTN.png */; };
 		04B06C2C1990F94B00F42B8E /* search_BTN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B06C281990F94B00F42B8E /* search_BTN@2x.png */; };
 		04B312FA191A281C0055D460 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B312F9191A281C0055D460 /* AssetsLibrary.framework */; };
+		04C92DDD19ADBD0B0084E5D8 /* country.sql in Resources */ = {isa = PBXBuildFile; fileRef = 04C92DDC19ADBD0B0084E5D8 /* country.sql */; };
+		04CE20A119ACA381009A22F1 /* region_data in Resources */ = {isa = PBXBuildFile; fileRef = 04CE20A019ACA381009A22F1 /* region_data */; };
+		04CE20A519ACA3C3009A22F1 /* DBLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CE20A419ACA3C3009A22F1 /* DBLoader.m */; };
+		04CE20A819ACA8CC009A22F1 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CE20A719ACA8CC009A22F1 /* Country.m */; };
+		04CE20AB19ACAA49009A22F1 /* Region.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CE20AA19ACAA49009A22F1 /* Region.m */; };
 		04CEC03A191B81EF00BF784D /* LogHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CEC038191B81EF00BF784D /* LogHistoryViewController.m */; };
 		04CEC03B191B81EF00BF784D /* LogHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04CEC039191B81EF00BF784D /* LogHistoryViewController.xib */; };
 		04CEC03C191B82DD00BF784D /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0425C3AA19111ECA0097709E /* GoogleMaps.framework */; };
@@ -603,6 +608,14 @@
 		04B06C271990F94B00F42B8E /* search_BTN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search_BTN.png; path = Image/search_BTN.png; sourceTree = "<group>"; };
 		04B06C281990F94B00F42B8E /* search_BTN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "search_BTN@2x.png"; path = "Image/search_BTN@2x.png"; sourceTree = "<group>"; };
 		04B312F9191A281C0055D460 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		04C92DDC19ADBD0B0084E5D8 /* country.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = country.sql; path = SMT/DataBase/country.sql; sourceTree = "<group>"; };
+		04CE20A019ACA381009A22F1 /* region_data */ = {isa = PBXFileReference; lastKnownFileType = file; name = region_data; path = SMT/DataBase/region_data; sourceTree = "<group>"; };
+		04CE20A319ACA3C3009A22F1 /* DBLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBLoader.h; path = Classes/DBLoader.h; sourceTree = "<group>"; };
+		04CE20A419ACA3C3009A22F1 /* DBLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBLoader.m; path = Classes/DBLoader.m; sourceTree = "<group>"; };
+		04CE20A619ACA8CC009A22F1 /* Country.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Country.h; path = Classes/Country.h; sourceTree = "<group>"; };
+		04CE20A719ACA8CC009A22F1 /* Country.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Country.m; path = Classes/Country.m; sourceTree = "<group>"; };
+		04CE20A919ACAA49009A22F1 /* Region.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Region.h; path = Classes/Region.h; sourceTree = "<group>"; };
+		04CE20AA19ACAA49009A22F1 /* Region.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Region.m; path = Classes/Region.m; sourceTree = "<group>"; };
 		04CEC037191B81EF00BF784D /* LogHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogHistoryViewController.h; sourceTree = "<group>"; };
 		04CEC038191B81EF00BF784D /* LogHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogHistoryViewController.m; sourceTree = "<group>"; };
 		04CEC039191B81EF00BF784D /* LogHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogHistoryViewController.xib; sourceTree = "<group>"; };
@@ -1054,6 +1067,7 @@
 		04080684190EA37D00E063C3 = {
 			isa = PBXGroup;
 			children = (
+				04CE20A219ACA38B009A22F1 /* DataBase */,
 				04E87CD2197414C80096E578 /* GoogleAnalitics */,
 				04E5B91C193780EE00E1C824 /* CorePlot */,
 				04CEC03D191B82EE00BF784D /* GoogleMaps.bundle */,
@@ -1227,6 +1241,12 @@
 				04A5C1981964368300593841 /* TIPS.m */,
 				A59FFED5198663A6006AD37E /* Season.h */,
 				A59FFED6198663A6006AD37E /* Season.m */,
+				04CE20A319ACA3C3009A22F1 /* DBLoader.h */,
+				04CE20A419ACA3C3009A22F1 /* DBLoader.m */,
+				04CE20A619ACA8CC009A22F1 /* Country.h */,
+				04CE20A719ACA8CC009A22F1 /* Country.m */,
+				04CE20A919ACAA49009A22F1 /* Region.h */,
+				04CE20AA19ACAA49009A22F1 /* Region.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1734,6 +1754,15 @@
 			);
 			name = MapViewController;
 			path = ViewControllers/MapViewController;
+			sourceTree = "<group>";
+		};
+		04CE20A219ACA38B009A22F1 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				04C92DDC19ADBD0B0084E5D8 /* country.sql */,
+				04CE20A019ACA381009A22F1 /* region_data */,
+			);
+			name = DataBase;
 			sourceTree = "<group>";
 		};
 		04CEC036191B81EF00BF784D /* LogHistoryViewController */ = {
@@ -2425,6 +2454,7 @@
 				84E605AD194AF5CC00F8D61F /* log_and_activity.png in Resources */,
 				04409424190F975E00C4A558 /* LoginViewController~ipad.xib in Resources */,
 				04D76FDC1934D14E00E1F59B /* star_opasity_orange@2x.png in Resources */,
+				04C92DDD19ADBD0B0084E5D8 /* country.sql in Resources */,
 				04D9F3D81990B18400B9433D /* galery_BTN.png in Resources */,
 				04062B9D19A4C1C3008F6D7F /* outfiters_icon_press.png in Resources */,
 				04F75C2F19582791000C42DA /* look_icon@2x.png in Resources */,
@@ -2457,6 +2487,7 @@
 				04DF997019222A2400D66BEC /* LogDetailCell.xib in Resources */,
 				04D76FDB1934D14E00E1F59B /* star_opasity_orange.png in Resources */,
 				0416596C195AD3EE0078AD3A /* tips_icon.png in Resources */,
+				04CE20A119ACA381009A22F1 /* region_data in Resources */,
 				04FBA8991963ED0800D5D713 /* CreateTipsCell.xib in Resources */,
 				04F75C2919582791000C42DA /* camera_icon@2x.png in Resources */,
 				04022A2F19502CF4007ADE81 /* NewLog2ViewController~ipad.xib in Resources */,
@@ -2592,12 +2623,14 @@
 				11C9F68A1917E52A00CDAFBA /* UIImageView+AFNetworking.m in Sources */,
 				11C9F67B191780DC00CDAFBA /* WheatherPredict.m in Sources */,
 				A59FFEF31986AC6A006AD37E /* CreateCommentCell.m in Sources */,
+				04CE20A819ACA8CC009A22F1 /* Country.m in Sources */,
 				0408069D190EA37D00E063C3 /* main.m in Sources */,
 				043354AA1910ED9F003767D0 /* CDataScanner.m in Sources */,
 				0433548E1910E7C9003767D0 /* NSString+HTML.m in Sources */,
 				04FBA88C1963E59500D5D713 /* TipsCell.m in Sources */,
 				04A2A3AE191B7FD30006677E /* LogAnActivityViewController.m in Sources */,
 				043354AE1910ED9F003767D0 /* CJSONScanner.m in Sources */,
+				04CE20A519ACA3C3009A22F1 /* DBLoader.m in Sources */,
 				04DF996F19222A2400D66BEC /* LogDetailCell.m in Sources */,
 				04A2A3C2191B7FDC0006677E /* PhotoVideoViewController.m in Sources */,
 				04B015C8191B7EE7002F6FA9 /* MapViewController.m in Sources */,
@@ -2664,6 +2697,7 @@
 				0433548C1910E7C9003767D0 /* GTMNSString+HTML.m in Sources */,
 				04657AC4192614580018CB70 /* SelectLocationViewController.m in Sources */,
 				04A2A3A2191B7FC00006677E /* LocationListCell.m in Sources */,
+				04CE20AB19ACAA49009A22F1 /* Region.m in Sources */,
 				042893761999FF1900F96B49 /* MenuViewController.m in Sources */,
 				04A2A383191B7F820006677E /* WeatherViewController.m in Sources */,
 			);

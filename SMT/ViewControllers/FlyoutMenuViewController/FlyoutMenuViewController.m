@@ -16,7 +16,9 @@
 #import "CellForFirstView.h"
 #import "MenuViewController.h"
 #import "CameraButton.h"
-
+#import "Country.h"
+#import "Region.h"
+#import "DBLoader.h"
 
 
 #define USER_DATA @"userdata"
@@ -50,6 +52,8 @@
     NSMutableArray * tipsList;
     NSMutableArray * photoList;
     NSMutableArray * outfitterList;
+    NSArray * seasonsList;
+    NSMutableArray * speciesOfSisonsList;
     BOOL isiPad;
     NSArray * subSpecies;
     Species * selectSpecie;
@@ -65,6 +69,9 @@
     UIRefreshControl *refreshControl;
     float heigthSeasonsTable;
     BOOL isDownloadPhoto;
+    DBLoader * dataBaseLoader;
+    NSArray * countryList;
+    NSArray * regionList;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *seasonSectioHiegth;
 @property (strong, nonatomic) IBOutlet UIView *forTabBar;
@@ -109,6 +116,7 @@
 - (void)downloadPhotos;
 - (void)getImageWithUrl;
 - (void)downloadOutfitter;
+- (void)downloadSeasons;
 
 - (void)actDisplayCreateTIPS;
 - (void)actCamera:(id)sender;
@@ -126,6 +134,7 @@
 - (void) refershControlAction;
 
 - (void) actCancelPhotoDownload;
+- (IBAction)actSelectRegion:(id)sender;
 @end
 
 @implementation FlyoutMenuViewController
@@ -169,6 +178,7 @@
     //self.colectionView.alwaysBounceVertical = YES;
     
     dataLoader = [DataLoader instance];
+    dataBaseLoader = [DBLoader instance];
     appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     activeSegment = 1;
     cashedPhoto = [[NSMutableDictionary alloc]init];
@@ -185,7 +195,7 @@
     selectedBtn4 = NO;
     [self reverseBackroundImageWithNumber:1];
     
-    self.pageController.numberOfPages = 5;
+    
     UITapGestureRecognizer * btn1Recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(actHome:)];
     [btn1Recognizer setNumberOfTapsRequired:1];
     [btn1Recognizer setDelegate:self];
@@ -242,12 +252,21 @@
     [camera addTarget:self action:@selector(actCamera:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:camera];
     isDownloadPhoto = NO;
+    
+    [self downloadSeasons];
+    
+    
+    //[dataBaseLoader getContryList];
 }
 
 
 - (void) actCancelPhotoDownload
 {
     isDownloadPhoto = NO;
+}
+
+- (IBAction)actSelectRegion:(id)sender {
+    countryList = [dataBaseLoader getContryList];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -290,7 +309,8 @@
             num = tipsList.count;
         }
     } else {
-        num = 5;
+        num = seasonsList.count;
+        self.pageController.numberOfPages = num;
     }
     return num;
 }
@@ -359,24 +379,8 @@
     } else {
         cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CellForFirstView" forIndexPath:indexPath];
 //set image for image show collection view
-        switch (indexPath.row) {
-            case 0:
-                ((CellForFirstView *)cell).imgShow.image = [UIImage imageNamed:@"tips_icon.png"];
-                break;
-            case 1:
-                ((CellForFirstView *)cell).imgShow.image = [UIImage imageNamed:@"tips_icon.png"];
-                break;
-            case 2:
-                ((CellForFirstView *)cell).imgShow.image = [UIImage imageNamed:@"tips_icon.png"];
-                break;
-            case 3:
-                ((CellForFirstView *)cell).imgShow.image = [UIImage imageNamed:@"tips_icon.png"];
-                break;
-            default:
-                ((CellForFirstView *)cell).imgShow.image = [UIImage imageNamed:@"tips_icon.png"];
-                break;
-        }
-        
+        Season * sBuf = [seasonsList objectAtIndex:indexPath.row];
+        [((CellForFirstView *)cell) initWithSeason:sBuf];
     }
     
     return cell;
@@ -874,6 +878,26 @@
     });
 }
 
+
+- (void)downloadSeasons
+{
+    [self startLoader];
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        seasonsList = [[NSArray alloc]initWithArray:[dataLoader getSeasonWithRegion:144]];//appDelegate.user.region_id]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            
+            if(!dataLoader.isCorrectRezult) {
+                NSLog(@"Error download seasons");
+                [self endLoader];
+            } else {
+                [self.table reloadData];
+                [self endLoader];
+            }
+        });
+    });
+}
 
 
 - (IBAction)actCloseSubView:(id)sender {

@@ -963,30 +963,40 @@
 
 
 #pragma mark - Seasons
-- (NSArray *) getSeasonWithRegionID:(int)region_id
+- (NSArray *) getSeasonWithRegion:(int)region_id
 {
-    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@season?&region_id=%d&app_id=%@&app_key=%@&last=-1",strUrl, region_id, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
+    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@species?&state=%d&app_id=%@&app_key=%@&last=5",strUrl, region_id, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
     NSDictionary *info = [NSDictionary new];
-    info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestTips];
     NSMutableArray * array = [NSMutableArray new];
-    for(NSDictionary * dic in info){
+    @try {
+        info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestTips];
         
-        [array addObject:dic];
+        for(NSDictionary * dic in info){
+            Season * season = [Season new];
+            [season initSeasonWithData:dic];
+            [array addObject:season];
+        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Error enter empty json");
     }
     return array;
 }
 
-- (Season *) getSeasonWithID:(int)season_id
+- (NSArray *) getSpeciesWithSeason:(Season *)season
 {
-    NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@season?&id=%d&app_id=%@&app_key=%@&last=-1",strUrl, season_id, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
-    NSDictionary *info = [NSDictionary new];
-    info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestTips];
-    Season * season = [Season new];
-    for(NSDictionary * dic in info){
-        NSLog(@"%@", dic);
-        //[season addObject:dic];
+    NSMutableArray * array = [NSMutableArray new];
+    for (NSString * obj in season.subspecies) {
+        int i = [obj intValue];
+        NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@subspecies/%d?&app_id=%@&app_key=%@&last=-1",strUrl, i, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
+        NSDictionary *info = [NSDictionary new];
+        info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestTips];
+   
+        Species * spec = [Species new];
+        [spec initSpeciesWithData:info];
+        [array addObject:spec];
     }
-    return season;
+    return array;
 }
 
 

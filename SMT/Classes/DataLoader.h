@@ -109,6 +109,7 @@ enum ApplicationServiceRequest
 - (NSArray *)getSubSpecieKillingQuestionsWithId:(int) subSpecieID;
 - (NSArray *)getQuestionsWithSubSpecieId:(int) subSpecieId;
 
+
 //------------- Activity ---------------------------------------------
 - (NSString *) createActivityWithActivityObject: (Activity*) _activity andActivityDetails: (NSArray*) _activityDetails andSpeciesId: (NSInteger) _speciesId;
 - (NSMutableArray*) getAllActivities;
@@ -148,8 +149,8 @@ enum ApplicationServiceRequest
 - (void)deleteTipsWithID:(int)tipsID;
 
 //------Seasons-------------------------------------------------------------------------------
-- (NSArray *) getSeasonWithRegionID:(int)region_id;
-- (Season *) getSeasonWithID:(int)season_id;
+- (NSArray *) getSeasonWithRegion:(int)region_id;
+- (NSArray *) getSpeciesWithSeason:(Season *)season;
 
 //----Comments-------------------------------------------------------------------------
 - (NSArray *)getCommentsWithPhotoID:(int)photo_id;

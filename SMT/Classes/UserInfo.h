@@ -1,11 +1,3 @@
-//
-//  UserInfo.h
-//  testCaAnimation
-//
-//  Created by Vasya on 02.01.14.
-//  Copyright (c) 2014 Vasya. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 enum fbAttribute{
@@ -26,7 +18,7 @@ enum fbAttribute{
 @property (strong, nonatomic) NSString * userEmail;
 @property (strong, nonatomic) NSString * avatarAdress;
 @property (strong, nonatomic) NSData * imgData;
-
+@property (nonatomic) int region_id;
 
 - (id) init;
 - (void)setUserInfoName:(NSString*) _name password:(NSString*)_pass appID:(int) _appID;
