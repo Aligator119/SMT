@@ -105,6 +105,7 @@
     } else {
         NSLog(@"Error: failed open db '%s'.", sqlite3_errmsg(database));
     }
+    [list removeObjectAtIndex:0];
     return list;
 }
 

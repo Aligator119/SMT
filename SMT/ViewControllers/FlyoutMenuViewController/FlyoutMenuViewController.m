@@ -41,6 +41,7 @@
 
 #define koefPageControlHeigth 0.295
 
+
 @interface FlyoutMenuViewController ()
 {
     DataLoader * dataLoader;
@@ -63,7 +64,7 @@
     int activeSegment;
     NSIndexPath * index;
     NSArray * recipes;
-    NSArray * searchResults;
+    //NSArray * searchResults;
     NSDateFormatter * format1;
     NSDateFormatter * format2;
     UIRefreshControl *refreshControl;
@@ -72,6 +73,7 @@
     DBLoader * dataBaseLoader;
     NSArray * countryList;
     NSArray * regionList;
+    BOOL  isCountry;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *seasonSectioHiegth;
 @property (strong, nonatomic) IBOutlet UIView *forTabBar;
@@ -254,9 +256,9 @@
     isDownloadPhoto = NO;
     
     [self downloadSeasons];
+    isCountry = NO;
     
     
-    //[dataBaseLoader getContryList];
 }
 
 
@@ -267,6 +269,11 @@
 
 - (IBAction)actSelectRegion:(id)sender {
     countryList = [dataBaseLoader getContryList];
+    isCountry = YES;
+    self.tableSelect.tag = 1;
+    [self.tableSelect reloadData];
+    self.subView.frame = self.view.frame;
+    [self.view addSubview:self.subView];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -586,34 +593,49 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     int num;
-    if (self.tableSelect.tag == 1) {
-        num = appDelegate.speciesList.count;
-    } else if (tableView.tag == 2) {
-        num = subSpecies.count;
+    if (isCountry) {
+        if (self.tableSelect.tag == 1) {
+            num = countryList.count;
+        } else if (tableView.tag == 2) {
+            num = regionList.count;
+        }
     } else {
-        num = searchResults.count;
+        if (self.tableSelect.tag == 1) {
+            num = appDelegate.speciesList.count;
+        } else if (tableView.tag == 2) {
+            num = subSpecies.count;
+        }
     }
+    
+    
     return num;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell * cell;
-    
-    if (tableView.tag == 1) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"SpeciesCell"];
-        [(SpeciesCell *)cell setSpecie:[appDelegate.speciesList objectAtIndex:indexPath.row]andImage:nil];
-    } else if (tableView.tag == 2) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"SpeciesCell"];
-        [(SpeciesCell *)cell setSpecie:[subSpecies objectAtIndex:indexPath.row]andImage:nil];
-    } else {
-       cell = [tableView dequeueReusableCellWithIdentifier:@"RecipeCell"];
+    if (isCountry) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"RecipeCell"];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RecipeCell"];
         }
-        
-        cell.textLabel.text = [searchResults objectAtIndex:indexPath.row];
+        if (tableView.tag == 1) {
+            Country * buf = [countryList objectAtIndex:indexPath.row];
+            cell.textLabel.text = buf.name;
+        } else {
+            Region * buf = [regionList objectAtIndex:indexPath.row];
+            cell.textLabel.text = buf.name;
+        }
+    } else {
+        if (tableView.tag == 1) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"SpeciesCell"];
+            [(SpeciesCell *)cell setSpecie:[appDelegate.speciesList objectAtIndex:indexPath.row]andImage:nil];
+        } else if (tableView.tag == 2) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"SpeciesCell"];
+            [(SpeciesCell *)cell setSpecie:[subSpecies objectAtIndex:indexPath.row]andImage:nil];
+        }
     }
+    
     //cell.contentView.backgroundColor = [UIColor clearColor];
     
     return cell;
@@ -622,15 +644,29 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell * buf = [self.colectionView cellForItemAtIndexPath:index];
-    if (tableView.tag == 1) {
-        selectSpecie = [appDelegate.speciesList objectAtIndex:indexPath.row];
-        [((CreateTipsCell *)buf).btnSelectSpecie setTitle:selectSpecie.name forState:UIControlStateNormal];
-        [self.subView removeFromSuperview];
+    if (isCountry) {
+        if (tableView.tag == 1) {
+            Country * country = [countryList objectAtIndex:indexPath.row];
+            regionList = [dataBaseLoader getRegionListWithCountry_id:country._id];
+            self.tableSelect.tag = 2;
+            [self.tableSelect reloadData];
+        } else {
+            Region * region = [regionList objectAtIndex:indexPath.row];
+            appDelegate.user.region_id = region._id;
+            [self.subView removeFromSuperview];
+        }
     } else {
-        selectSubSpecie = [subSpecies objectAtIndex:indexPath.row];
-        [((CreateTipsCell *)buf).btnSelectSubSpecie setTitle:selectSubSpecie.name forState:UIControlStateNormal];
-        [self.subView removeFromSuperview];
+        if (tableView.tag == 1) {
+            selectSpecie = [appDelegate.speciesList objectAtIndex:indexPath.row];
+            [((CreateTipsCell *)buf).btnSelectSpecie setTitle:selectSpecie.name forState:UIControlStateNormal];
+            [self.subView removeFromSuperview];
+        } else {
+            selectSubSpecie = [subSpecies objectAtIndex:indexPath.row];
+            [((CreateTipsCell *)buf).btnSelectSubSpecie setTitle:selectSubSpecie.name forState:UIControlStateNormal];
+            [self.subView removeFromSuperview];
+        }
     }
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -642,6 +678,7 @@
 
 - (void)actSelectSpecie
 {
+    isCountry = NO;
     self.tableSelect.tag = 1;
     [self.tableSelect reloadData];
     self.subView.frame = self.view.frame;
@@ -734,27 +771,6 @@
         [textView resignFirstResponder];
         return NO;
     }
-    return YES;
-}
-
-
-- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
-{
-   
-    NSPredicate *resultPredicate = [NSPredicate
-                                    predicateWithFormat:@"SELF contains[cd] %@",
-                                    searchText];
-    
-    searchResults = [recipes filteredArrayUsingPredicate:resultPredicate];
-}
-
--(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
-{
-    [self filterContentForSearchText:searchString
-                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
-                                      objectAtIndex:[self.searchDisplayController.searchBar
-                                                     selectedScopeButtonIndex]]];
-    
     return YES;
 }
 
