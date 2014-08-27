@@ -37,7 +37,7 @@
 #define NEW_TIPS @"new tips"
 
 #define minHeaderHeight 0
-#define maxHeaderHeight 125
+#define maxHeaderHeight 159
 
 #define koefPageControlHeigth 0.295
 
@@ -539,32 +539,32 @@
 - (void)setImageWithAllButton
 {
     if (selectedBtn1) {
-        self.btn1.image = [UIImage imageNamed:@"foto_icon.png"];
-        self.btn1fone.backgroundColor = [UIColor colorWithRed:26/255.0 green:26/255.0 blue:26/255.0 alpha:1.0];
+        self.btn1.image = [UIImage imageNamed:@"photo_icon"];
+        self.btn1fone.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4f];
     } else {
-        self.btn1fone.backgroundColor = [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1.0];
-        self.btn1.image = [UIImage imageNamed:@"foto_icon_press.png"];
+        self.btn1fone.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7f];
+        self.btn1.image = [UIImage imageNamed:@"photo_icon_select"];
     }
     if (selectedBtn2) {
-        self.btn2.image = [UIImage imageNamed:@"look_icon.png"];
-        self.btn2fone.backgroundColor = [UIColor colorWithRed:26/255.0 green:26/255.0 blue:26/255.0 alpha:1.0];
+        self.btn2.image = [UIImage imageNamed:@"stuff_icon.png"];
+        self.btn2fone.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4f];
     } else {
-        self.btn2fone.backgroundColor = [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1.0];
-        self.btn2.image = [UIImage imageNamed:@"look_icon_press.png"];
+        self.btn2fone.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7f];
+        self.btn2.image = [UIImage imageNamed:@"stuff_icon_select.png"];
     }
     if (selectedBtn3) {
-        self.btn3.image = [UIImage imageNamed:@"outfiters_icon.png"];
-        self.btn3fone.backgroundColor = [UIColor colorWithRed:26/255.0 green:26/255.0 blue:26/255.0 alpha:1.0];
+        self.btn3.image = [UIImage imageNamed:@"outfitters_icon.png"];
+        self.btn3fone.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4f];
     } else {
-        self.btn3fone.backgroundColor = [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1.0];
-        self.btn3.image = [UIImage imageNamed:@"outfiters_icon_press.png"];
+        self.btn3fone.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7f];
+        self.btn3.image = [UIImage imageNamed:@"outfitters_icon_select.png"];
     }
     if (selectedBtn4) {
         self.btn4.image = [UIImage imageNamed:@"tips_icon.png"];
-        self.btn4fone.backgroundColor = [UIColor colorWithRed:26/255.0 green:26/255.0 blue:26/255.0 alpha:1.0];
+        self.btn4fone.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4f];
     } else {
-        self.btn4fone.backgroundColor = [UIColor colorWithRed:222/255.0 green:222/255.0 blue:222/255.0 alpha:1.0];
-        self.btn4.image = [UIImage imageNamed:@"tips_icon_press.png"];
+        self.btn4fone.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7f];
+        self.btn4.image = [UIImage imageNamed:@"tips_icon_select.png"];
     }
 }
 
