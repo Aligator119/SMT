@@ -91,7 +91,6 @@
         if(sqlite3_prepare_v2(database, [sqlStatement UTF8String], -1, &compiledStatement, NULL) == SQLITE_OK) {
             while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
                 
-                //NSLog(@"OK %@", [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 1)]);
                 Region * reg = [Region new];
                 reg._id = [[NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 0)]intValue];
                 reg.name = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 1)];

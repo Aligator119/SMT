@@ -36,8 +36,8 @@
 
 #define NEW_TIPS @"new tips"
 
-#define minHeaderHeight 33
-#define maxHeaderHeight 159
+#define minHeaderHeight 0
+#define maxHeaderHeight 126
 
 #define koefPageControlHeigth 0.295
 
@@ -73,13 +73,15 @@
     DBLoader * dataBaseLoader;
     NSArray * countryList;
     NSArray * regionList;
-    BOOL  isCountry;
+    int  currentSubView;
+    Country * country;
+    Region * region;
 }
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *seasonSectioHiegth;
+
 @property (strong, nonatomic) IBOutlet UIView *forTabBar;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *topBarHiegthConstrainsSubView;
 @property (strong, nonatomic) IBOutlet UITableView *tableSelect;
 @property (strong, nonatomic) IBOutlet UIView *subView;
+@property (weak, nonatomic) IBOutlet UIView *popUpViewRound;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *pageControllerHeigth;
 
 @property (nonatomic, weak) IBOutlet NSLayoutConstraint * topViewHeightConstr;
@@ -124,6 +126,7 @@
 - (void)actCamera:(id)sender;
 
 - (IBAction)actCloseSubView:(id)sender;
+- (IBAction)actSelectRegionOrSpecie:(id)sender;
 - (void)cashedImageFromCell:(NSNotification *)info;
 
 - (void)keyboardDidShow: (NSNotification *) notif;
@@ -156,7 +159,6 @@
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0){
         self.topViewHeightConstr.constant -= 20;
-        self.topBarHiegthConstrainsSubView.constant -=20;
     }
     
     [self.colectionView registerNib:[UINib nibWithNibName:@"TipsCell" bundle:nil] forCellWithReuseIdentifier:@"TipsCell"];
@@ -189,8 +191,6 @@
     
     self.table.backgroundView = nil;
     
-    isPresent = YES;
-    [((UIButton *)[self.tabBar viewWithTag:1]) setBackgroundImage:[UIImage imageNamed:@"home_icon_press.png"] forState:UIControlStateNormal];
     selectedBtn1 = NO;
     selectedBtn2 = NO;
     selectedBtn3 = NO;
@@ -256,9 +256,14 @@
     isDownloadPhoto = NO;
     
     [self downloadSeasons];
-    isCountry = NO;
+    currentSubView = 0;
     
-    
+    UITapGestureRecognizer * subViewRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(actCloseSubView:)];
+    [subViewRecognizer setNumberOfTapsRequired:1];
+    [subViewRecognizer setDelegate:self];
+    [self.subView addGestureRecognizer:subViewRecognizer];
+    [self.popUpViewRound.layer setMasksToBounds:YES];
+    self.popUpViewRound.layer.cornerRadius = 5;
 }
 
 
@@ -269,7 +274,7 @@
 
 - (IBAction)actSelectRegion:(id)sender {
     countryList = [dataBaseLoader getContryList];
-    isCountry = YES;
+    currentSubView = 2;
     self.tableSelect.tag = 1;
     [self.tableSelect reloadData];
     self.subView.frame = self.view.frame;
@@ -448,25 +453,26 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     CGFloat position = scrollView.contentOffset.y;
-    
-    if (position > 0) {
-        if (self.heigthShowColectionViewConstraint.constant > minHeaderHeight) {
-            self.heigthShowColectionViewConstraint.constant = MAX(self.heigthShowColectionViewConstraint.constant - ABS(position), minHeaderHeight);
-            scrollView.contentOffset = CGPointZero;
+    if (currentSubView == 0) {
+        if (position > 0) {
+            if (self.heigthShowColectionViewConstraint.constant > minHeaderHeight) {
+                self.heigthShowColectionViewConstraint.constant = MAX(self.heigthShowColectionViewConstraint.constant - ABS(position), minHeaderHeight);
+                scrollView.contentOffset = CGPointZero;
+            }
+        } else {
+            if (self.heigthShowColectionViewConstraint.constant < heigthSeasonsTable) {
+                self.heigthShowColectionViewConstraint.constant = MIN(self.heigthShowColectionViewConstraint.constant + ABS(position), heigthSeasonsTable);
+                scrollView.contentOffset = CGPointZero;
+            }
         }
-    } else {
-        if (self.heigthShowColectionViewConstraint.constant < heigthSeasonsTable) {
-            self.heigthShowColectionViewConstraint.constant = MIN(self.heigthShowColectionViewConstraint.constant + ABS(position), heigthSeasonsTable);
-            scrollView.contentOffset = CGPointZero;
+        self.pageControllerHeigth.constant = self.heigthShowColectionViewConstraint.constant * koefPageControlHeigth;
+        if (self.pageControllerHeigth.constant < 5.0) {
+            self.pageController.hidden = YES;
+        } else {
+            self.pageController.hidden = NO;
         }
+        [self.view updateConstraintsIfNeeded];
     }
-    self.pageControllerHeigth.constant = self.heigthShowColectionViewConstraint.constant * koefPageControlHeigth;
-    if (self.pageControllerHeigth.constant < 15.0) {
-        self.pageController.hidden = YES;
-    } else {
-        self.pageController.hidden = NO;
-    }
-    [self.view updateConstraintsIfNeeded];
 }
 
 
@@ -593,13 +599,13 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     int num;
-    if (isCountry) {
+    if (currentSubView == 2) {
         if (self.tableSelect.tag == 1) {
             num = countryList.count;
         } else if (tableView.tag == 2) {
             num = regionList.count;
         }
-    } else {
+    } else if (currentSubView == 1) {
         if (self.tableSelect.tag == 1) {
             num = appDelegate.speciesList.count;
         } else if (tableView.tag == 2) {
@@ -614,7 +620,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell * cell;
-    if (isCountry) {
+    if (currentSubView == 2) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"RecipeCell"];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"RecipeCell"];
@@ -626,7 +632,7 @@
             Region * buf = [regionList objectAtIndex:indexPath.row];
             cell.textLabel.text = buf.name;
         }
-    } else {
+    } else if (currentSubView == 1) {
         if (tableView.tag == 1) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"SpeciesCell"];
             [(SpeciesCell *)cell setSpecie:[appDelegate.speciesList objectAtIndex:indexPath.row]andImage:nil];
@@ -644,26 +650,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell * buf = [self.colectionView cellForItemAtIndexPath:index];
-    if (isCountry) {
+    if (currentSubView == 2) {
         if (tableView.tag == 1) {
-            Country * country = [countryList objectAtIndex:indexPath.row];
-            regionList = [dataBaseLoader getRegionListWithCountry_id:country._id];
-            self.tableSelect.tag = 2;
-            [self.tableSelect reloadData];
+            country = [countryList objectAtIndex:indexPath.row];
         } else {
-            Region * region = [regionList objectAtIndex:indexPath.row];
-            appDelegate.user.region_id = region._id;
-            [self.subView removeFromSuperview];
+            region = [regionList objectAtIndex:indexPath.row];
         }
-    } else {
+    } else if (currentSubView == 1) {
         if (tableView.tag == 1) {
             selectSpecie = [appDelegate.speciesList objectAtIndex:indexPath.row];
             [((CreateTipsCell *)buf).btnSelectSpecie setTitle:selectSpecie.name forState:UIControlStateNormal];
-            [self.subView removeFromSuperview];
         } else {
             selectSubSpecie = [subSpecies objectAtIndex:indexPath.row];
             [((CreateTipsCell *)buf).btnSelectSubSpecie setTitle:selectSubSpecie.name forState:UIControlStateNormal];
-            [self.subView removeFromSuperview];
         }
     }
     
@@ -671,6 +670,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (currentSubView == 2) {
+        return 40;
+    }
     return 60;
 }
 
@@ -678,7 +680,7 @@
 
 - (void)actSelectSpecie
 {
-    isCountry = NO;
+    currentSubView = 1;
     self.tableSelect.tag = 1;
     [self.tableSelect reloadData];
     self.subView.frame = self.view.frame;
@@ -690,6 +692,7 @@
     if (!selectSpecie) {
         [[[UIAlertView alloc]initWithTitle:@"Error" message:@"Please select Species" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] show];
     } else {
+        currentSubView = 1;
         [self startLoader];
         self.tableSelect.tag = 2;
         dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
@@ -703,7 +706,7 @@
                     [self endLoader];
                 } else {
                     [self.tableSelect reloadData];
-                    self.subView.frame = self.view.frame;
+                    self.subView.center = self.view.center;
                     [self.view addSubview:self.subView];
                     [self endLoader];
                 }
@@ -918,6 +921,30 @@
 
 - (IBAction)actCloseSubView:(id)sender {
     [self.subView removeFromSuperview];
+    currentSubView = 0;
+}
+
+- (IBAction)actSelectRegionOrSpecie:(id)sender {
+    
+    if (currentSubView == 2) {
+        if (self.tableSelect.tag == 1) {
+            regionList = [dataBaseLoader getRegionListWithCountry_id:country._id];
+            self.tableSelect.tag = 2;
+            [self.tableSelect reloadData];
+        } else {
+            appDelegate.user.region_id = region._id;
+            [self.subView removeFromSuperview];
+            currentSubView = 0;
+        }
+    } else if (currentSubView == 1) {
+        if (self.tableSelect.tag == 1) {
+            [self.subView removeFromSuperview];
+            currentSubView = 0;
+        } else {
+            [self.subView removeFromSuperview];
+            currentSubView = 0;
+        }
+    }
 }
 
 - (UIImage *)createImageWithColor:(UIColor *)color
