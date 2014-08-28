@@ -140,6 +140,7 @@
 
 - (void) actCancelPhotoDownload;
 - (IBAction)actSelectRegion:(id)sender;
+//- (void) actCloseSubViewWithTachView:(UIGestureRecognizer *)recognizer;
 @end
 
 @implementation FlyoutMenuViewController
@@ -258,12 +259,19 @@
     [self downloadSeasons];
     currentSubView = 0;
     
-    UITapGestureRecognizer * subViewRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(actCloseSubView:)];
-    [subViewRecognizer setNumberOfTapsRequired:1];
-    [subViewRecognizer setDelegate:self];
-    [self.subView addGestureRecognizer:subViewRecognizer];
+//    UIGestureRecognizer * subViewRecognizer = [[UIGestureRecognizer alloc]initWithTarget:self action:@selector(actCloseSubViewWithTachView:)];
+//    [subViewRecognizer setDelegate:self];
+//    [self.subView addGestureRecognizer:subViewRecognizer];
+    
     [self.popUpViewRound.layer setMasksToBounds:YES];
     self.popUpViewRound.layer.cornerRadius = 5;
+    
+    [self.tableSelect.layer setMasksToBounds:YES];
+    self.tableSelect.layer.cornerRadius = 5;
+    [self.tableSelect.layer setBorderColor:[UIColor colorWithRed:205/255.0 green:208/255.0 blue:213/255.0 alpha:1].CGColor];
+    [self.tableSelect.layer setBorderWidth:1];
+    
+    [self.tableSelect setUserInteractionEnabled:YES];
 }
 
 
@@ -304,8 +312,10 @@
 
 - (void)cashedImageFromCell:(NSNotification *)info
 {
-    NSDictionary * userImage = [info userInfo];
-    [cashedPhoto addEntriesFromDictionary:userImage];
+    if ([info userInfo]) {
+        NSDictionary * userImage = [info userInfo];
+        [cashedPhoto addEntriesFromDictionary:userImage];
+    }
 }
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -628,9 +638,13 @@
         if (tableView.tag == 1) {
             Country * buf = [countryList objectAtIndex:indexPath.row];
             cell.textLabel.text = buf.name;
+            cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
+            cell.textLabel.textColor = [UIColor colorWithRed:105/255.0 green:108/255.0 blue:113/255.0 alpha:1];
         } else {
             Region * buf = [regionList objectAtIndex:indexPath.row];
             cell.textLabel.text = buf.name;
+            cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
+            cell.textLabel.textColor = [UIColor colorWithRed:105/255.0 green:108/255.0 blue:113/255.0 alpha:1];
         }
     } else if (currentSubView == 1) {
         if (tableView.tag == 1) {
@@ -638,7 +652,7 @@
             [(SpeciesCell *)cell setSpecie:[appDelegate.speciesList objectAtIndex:indexPath.row]andImage:nil];
         } else if (tableView.tag == 2) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"SpeciesCell"];
-            [(SpeciesCell *)cell setSpecie:[subSpecies objectAtIndex:indexPath.row]andImage:nil];
+            [(SpeciesCell *)cell setSpecie:[subSpecies objectAtIndex:indexPath.row]];
         }
     }
     
@@ -651,10 +665,14 @@
 {
     UICollectionViewCell * buf = [self.colectionView cellForItemAtIndexPath:index];
     if (currentSubView == 2) {
+        //UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+        //[tableView deselectRowAtIndexPath:indexPath animated:YES];
         if (tableView.tag == 1) {
             country = [countryList objectAtIndex:indexPath.row];
+            //cell.textLabel.textColor = [UIColor blueColor];
         } else {
             region = [regionList objectAtIndex:indexPath.row];
+            //cell.textLabel.textColor = [UIColor blueColor];
         }
     } else if (currentSubView == 1) {
         if (tableView.tag == 1) {
@@ -671,7 +689,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (currentSubView == 2) {
-        return 40;
+        return 25;
     }
     return 60;
 }
@@ -682,6 +700,9 @@
 {
     currentSubView = 1;
     self.tableSelect.tag = 1;
+    if ([appDelegate.speciesList firstObject] == nil) {
+        [dataLoader getAllSpecies];
+    }
     [self.tableSelect reloadData];
     self.subView.frame = self.view.frame;
     [self.view addSubview:self.subView];
@@ -919,6 +940,14 @@
 }
 
 
+//- (void) actCloseSubViewWithTachView:(UIGestureRecognizer *)recognizer
+//{
+//    CGPoint point = [recognizer locationInView:self.subView];
+//    if ([self.tableSelect pointInside:point withEvent:nil]) {
+//        [self actCloseSubView:nil];
+//    }
+//}
+
 - (IBAction)actCloseSubView:(id)sender {
     [self.subView removeFromSuperview];
     currentSubView = 0;
@@ -928,21 +957,40 @@
     
     if (currentSubView == 2) {
         if (self.tableSelect.tag == 1) {
-            regionList = [dataBaseLoader getRegionListWithCountry_id:country._id];
-            self.tableSelect.tag = 2;
-            [self.tableSelect reloadData];
+            if (country != nil) {
+                regionList = [dataBaseLoader getRegionListWithCountry_id:country._id];
+                self.tableSelect.tag = 2;
+                [self.tableSelect reloadData];
+            } else {
+                [[[UIAlertView alloc]initWithTitle:@"Warning" message:@"No select country" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+            }
+            
         } else {
-            appDelegate.user.region_id = region._id;
-            [self.subView removeFromSuperview];
-            currentSubView = 0;
+            if (region != nil) {
+                appDelegate.user.region_id = region._id;
+                [self.subView removeFromSuperview];
+                currentSubView = 0;
+                country = nil;
+                region = nil;
+            } else {
+                [[[UIAlertView alloc]initWithTitle:@"Warning" message:@"No select state" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+            }
         }
     } else if (currentSubView == 1) {
         if (self.tableSelect.tag == 1) {
-            [self.subView removeFromSuperview];
-            currentSubView = 0;
+            if (selectSpecie != nil) {
+                [self.subView removeFromSuperview];
+                currentSubView = 0;
+            } else {
+                [[[UIAlertView alloc]initWithTitle:@"Warning" message:@"No select specie" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+            }
         } else {
-            [self.subView removeFromSuperview];
-            currentSubView = 0;
+            if (selectSubSpecie != nil) {
+                [self.subView removeFromSuperview];
+                currentSubView = 0;
+            } else {
+                [[[UIAlertView alloc]initWithTitle:@"Warning" message:@"No select subspecie" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+            }
         }
     }
 }

@@ -12,5 +12,6 @@
 @interface SpeciesCell : UITableViewCell
 
 - (void) setSpecie:(Species *) specie andImage:(UIImage *)image;
+- (void) setSpecie:(Species *)specie;
 
 @end

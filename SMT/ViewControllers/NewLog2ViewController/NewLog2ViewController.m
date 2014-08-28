@@ -295,8 +295,10 @@
 
 - (void)cashedImageFromCell:(NSNotification *)info
 {
+    
     NSDictionary * userImage = [info userInfo];
     [cashedPhoto addEntriesFromDictionary:userImage];
+   
 }
 
 

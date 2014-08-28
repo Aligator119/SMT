@@ -56,6 +56,17 @@
     }
 }
 
+- (void) setSpecie:(Species *)specie
+{
+    self.name.text = specie.name;
+    
+    self.img.layer.masksToBounds = YES;
+    self.img.layer.cornerRadius = self.img.frame.size.height / 2;
+    self.img.layer.borderColor = [UIColor grayColor].CGColor;
+    self.img.layer.borderWidth = 1.0f;
+    
+}
+
 
 - (void)prepareForReuse
 {
