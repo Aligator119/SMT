@@ -3,7 +3,8 @@
 
 #define MAX_STRING_LENGTH 32
 
-@interface RegisterViewController : GAITrackedViewController <UITextFieldDelegate>{
+@interface RegisterViewController : GAITrackedViewController <UITextFieldDelegate, MenuViewControllerDelegate>
+{
     NSString * userFirstName;
     NSString * userSecondName;
     NSString * userName;
