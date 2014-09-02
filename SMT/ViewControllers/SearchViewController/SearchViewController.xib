@@ -24,14 +24,14 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" background="BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="jCA-2t-XpO">
-                            <rect key="frame" x="18" y="29" width="232" height="25"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="jCA-2t-XpO">
+                            <rect key="frame" x="17" y="27" width="232" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" red="0.0" green="0.25882352941176467" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="25" id="3gZ-mc-9Pa"/>
+                                <constraint firstAttribute="height" constant="30" id="3gZ-mc-9Pa"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                             <textInputTraits key="textInputTraits" returnKeyType="search"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="AXu-P7-ncC"/>
@@ -56,11 +56,11 @@
                     <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="jdJ-8G-M3O" secondAttribute="bottom" constant="7" id="2Lr-Le-Bdn"/>
-                        <constraint firstAttribute="bottom" secondItem="jCA-2t-XpO" secondAttribute="bottom" constant="10" id="BxY-uI-jVQ"/>
+                        <constraint firstAttribute="bottom" secondItem="jCA-2t-XpO" secondAttribute="bottom" constant="7" id="BxY-uI-jVQ"/>
                         <constraint firstAttribute="trailing" secondItem="jdJ-8G-M3O" secondAttribute="trailing" constant="5" id="QBr-rN-FNz"/>
                         <constraint firstAttribute="height" constant="64" id="RZT-dn-4cM"/>
-                        <constraint firstItem="jCA-2t-XpO" firstAttribute="leading" secondItem="3PU-AG-8C6" secondAttribute="leading" constant="18" id="Yzx-Nj-kth"/>
-                        <constraint firstItem="jdJ-8G-M3O" firstAttribute="leading" secondItem="jCA-2t-XpO" secondAttribute="trailing" constant="5" id="yU6-B0-Psg"/>
+                        <constraint firstItem="jCA-2t-XpO" firstAttribute="leading" secondItem="3PU-AG-8C6" secondAttribute="leading" constant="17" id="Yzx-Nj-kth"/>
+                        <constraint firstItem="jdJ-8G-M3O" firstAttribute="leading" secondItem="jCA-2t-XpO" secondAttribute="trailing" constant="6" id="yU6-B0-Psg"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="haz-nJ-7bD">
@@ -87,7 +87,7 @@
                     </connections>
                 </segmentedControl>
             </subviews>
-            <color key="backgroundColor" white="0.81697650550000001" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="LGA-rB-frp" firstAttribute="top" secondItem="3PU-AG-8C6" secondAttribute="bottom" constant="2" id="9H3-B2-ri9"/>
                 <constraint firstItem="haz-nJ-7bD" firstAttribute="top" secondItem="LGA-rB-frp" secondAttribute="bottom" constant="3" id="H6v-24-rEE"/>
@@ -104,7 +104,4 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
-    <resources>
-        <image name="BG.png" width="243" height="25"/>
-    </resources>
 </document>

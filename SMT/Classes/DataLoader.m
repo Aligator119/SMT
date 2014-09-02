@@ -106,7 +106,7 @@
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@",strUrl,SubstringRegister];
    // NSString * strUrlRequestData = [NSString stringWithFormat:URL_USER_CREATE,_firstName,_secondName,_userName,_userPassword,_birthYear,_userMale,APP_ID_KEY];
     
-    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[firstName, secondName, userName, userPassword, _birthYear, userMale, @"b63800ad", @"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"firstname", @"lastname", @"username", @"password", @"birthYear", @"sex", @"app_id", @"app_key"]];
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[firstName, secondName, userName, userPassword, _birthYear, userMale, @"b63800ad", @"34eddb50efc407d00f3498dc1874526c", @"createdWith"] forKeys:@[@"firstname", @"lastname", @"username", @"password", @"birthYear", @"sex", @"app_id", @"app_key", @"smt"]];
     
     enterPassword = userPassword;
     
