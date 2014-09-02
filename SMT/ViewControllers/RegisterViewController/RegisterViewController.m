@@ -1,14 +1,6 @@
-//
-//  HPSignUpViaEmailViewController.m
-//  HunterPredictor
-//
-//  Created by Admin on 12/25/13.
-//  Copyright (c) 2013 mobilesoft365. All rights reserved.
-//
-
 #import "RegisterViewController.h"
 #import "LoginViewController.h"
-//#import "HPHomeViewController.h"
+#import "FirstViewController.h"
 #import "DataLoader.h"
 #import "UserInfo.h"
 #import "AppDelegate.h"
@@ -215,8 +207,18 @@
                 NSLog(@"userFid : %@",userFid);
                 [appDelegate.user redwriteUserFbID:appDelegate.user.userEmail andFID:userFid];
                 
-                FlyoutMenuViewController * flyOutVC = [[FlyoutMenuViewController alloc] init];
-                [self.navigationController pushViewController:flyOutVC animated:YES];
+                FlyoutMenuViewController * fvc = [[FlyoutMenuViewController alloc]initWithNibName:@"FlyoutMenuViewController" bundle:nil];
+                FirstViewController * firstVC =[FirstViewController instance];
+                
+                MenuViewController * menuVC = [[MenuViewController alloc]initWithRearViewController:firstVC frontViewController:fvc];
+                menuVC.rearViewRevealWidth = 0;
+                menuVC.rearViewRevealOverdraw = 220;
+                menuVC.bounceBackOnOverdraw = NO;
+                menuVC.stableDragOnOverdraw = YES;
+                [menuVC setFrontViewPosition:FrontViewPositionRight];
+                
+                menuVC.delegate = self;
+                [self.navigationController pushViewController:menuVC animated:YES];
             
             }
         });

@@ -1,11 +1,3 @@
-//
-//  HistoryCell.m
-//  SMT
-//
-//  Created by Mac on 5/29/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import "HistoryCell.h"
 
 
@@ -15,7 +7,7 @@
 }
 
 @property (strong, nonatomic) IBOutlet UILabel *lbName;
-@property (strong, nonatomic) IBOutlet UIImageView *img;
+@property (weak, nonatomic) IBOutlet UIImageView *img;
 @property (strong, nonatomic) IBOutlet UILabel *lbLocation;
 @property (strong, nonatomic) IBOutlet UILabel *lbDate;
 
