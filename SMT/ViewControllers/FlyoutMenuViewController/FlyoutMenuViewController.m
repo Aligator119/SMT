@@ -36,8 +36,8 @@
 
 #define NEW_TIPS @"new tips"
 
-#define minHeaderHeight 0
-#define maxHeaderHeight 126
+#define minHeaderHeight 33
+#define maxHeaderHeight 159
 
 #define koefPageControlHeigth 0.295
 
@@ -476,7 +476,7 @@
             }
         }
         self.pageControllerHeigth.constant = self.heigthShowColectionViewConstraint.constant * koefPageControlHeigth;
-        if (self.pageControllerHeigth.constant < 5.0) {
+        if (self.pageControllerHeigth.constant < 15.0) {
             self.pageController.hidden = YES;
         } else {
             self.pageController.hidden = NO;
