@@ -24,7 +24,7 @@
 #define USER_DATA @"userdata"
 #define DOWNLOAD_IMAGE_SUCCES @"image is download"
 
-#define HEIGTH_IMAGE_CELL 200
+#define HEIGTH_IMAGE_CELL 233
 #define HEIGTH_CREATE_TIPS_CELL  200
 #define HEIGTH_TIPS_CELL  35
 
@@ -76,6 +76,8 @@
     int  currentSubView;
     Country * country;
     Region * region;
+    
+    CALayer *bottomBorder;
 }
 
 @property (strong, nonatomic) IBOutlet UIView *forTabBar;
@@ -196,6 +198,9 @@
     selectedBtn2 = NO;
     selectedBtn3 = NO;
     selectedBtn4 = NO;
+    bottomBorder = [CALayer layer];
+    bottomBorder.frame = CGRectMake(0.f, self.btn2fone.frame.size.height - 2, self.btn2fone.frame.size.width, 2.f);
+    bottomBorder.backgroundColor = [UIColor colorWithRed:123/255.f green:171/255.f blue:72/255.f alpha:1.f].CGColor;
     [self reverseBackroundImageWithNumber:1];
     
     
@@ -303,11 +308,17 @@
     self.btn2Hegth.constant = self.btn1Hegth.constant;
     self.btn3Hegth.constant = self.btn1Hegth.constant;
     self.btn4Hegth.constant = self.btn1Hegth.constant;
-    self.heigthShowColectionViewConstraint.constant = width * 0.39;
+    //self.heigthShowColectionViewConstraint.constant = width * 0.39;
     [self.view updateConstraintsIfNeeded];
     heigthSeasonsTable = self.heigthShowColectionViewConstraint.constant;
     
     [self downloadPhotos];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+
 }
 
 - (void)cashedImageFromCell:(NSNotification *)info
@@ -349,7 +360,7 @@
                     Photo * photo = [photoList objectAtIndex:indexPath.row];
                     if ([[cashedPhoto allKeys] containsObject:photo.photoID]) {
                         [((ImageShow *)cell) stopLoaderInCell];
-                        [((ImageShow *)cell) setPhotoDescriptions:photo.description andUserName:photo.userName andImage:[cashedPhoto objectForKey:photo.photoID] photoID:photo.photoID];
+                        [((ImageShow *)cell) setPhotoDescriptions:photo.description andUserName:photo.userName andTime:photo.time andImage:[cashedPhoto objectForKey:photo.photoID] photoID:photo.photoID];
                         [((ImageShow *)cell).btnComment addTarget:self action:@selector(openComments:) forControlEvents:UIControlEventTouchUpInside];
                     } else {
                         [((ImageShow *)cell) startLaderInCell];
@@ -561,33 +572,42 @@
 
 - (void)setImageWithAllButton
 {
+
+    if ([bottomBorder superlayer]){
+        [bottomBorder removeFromSuperlayer];
+    }
+    
     if (selectedBtn1) {
         self.btn1.image = [UIImage imageNamed:@"photo_icon"];
         self.btn1fone.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4f];
     } else {
-        self.btn1fone.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7f];
-        self.btn1.image = [UIImage imageNamed:@"photo_icon_select"];
+        self.btn1fone.backgroundColor = [UIColor colorWithRed:123/255.f green:171/255.f blue:72/255.f alpha:0.25f];
+        [self.btn1fone.layer addSublayer:bottomBorder];
+        self.btn1.image = [UIImage imageNamed:@"photo_icon_press"];
     }
     if (selectedBtn2) {
-        self.btn2.image = [UIImage imageNamed:@"stuff_icon.png"];
+        self.btn2.image = [UIImage imageNamed:@"stuff_icon"];
         self.btn2fone.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4f];
     } else {
-        self.btn2fone.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7f];
-        self.btn2.image = [UIImage imageNamed:@"stuff_icon_select.png"];
+        self.btn2fone.backgroundColor = [UIColor colorWithRed:123/255.f green:171/255.f blue:72/255.f alpha:0.25f];
+        [self.btn2fone.layer addSublayer:bottomBorder];
+        self.btn2.image = [UIImage imageNamed:@"stuff_icon_press"];
     }
     if (selectedBtn3) {
-        self.btn3.image = [UIImage imageNamed:@"outfitters_icon.png"];
+        self.btn3.image = [UIImage imageNamed:@"outfitters_icon"];
         self.btn3fone.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4f];
     } else {
-        self.btn3fone.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7f];
-        self.btn3.image = [UIImage imageNamed:@"outfitters_icon_select.png"];
+        self.btn3fone.backgroundColor = [UIColor colorWithRed:123/255.f green:171/255.f blue:72/255.f alpha:0.25f];
+        [self.btn3fone.layer addSublayer:bottomBorder];
+        self.btn3.image = [UIImage imageNamed:@"outfitters_icon_press"];
     }
     if (selectedBtn4) {
-        self.btn4.image = [UIImage imageNamed:@"tips_icon.png"];
+        self.btn4.image = [UIImage imageNamed:@"tips_icon"];
         self.btn4fone.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4f];
     } else {
-        self.btn4fone.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.7f];
-        self.btn4.image = [UIImage imageNamed:@"tips_icon_select.png"];
+        self.btn4fone.backgroundColor = [UIColor colorWithRed:123/255.f green:171/255.f blue:72/255.f alpha:0.25f];
+        [self.btn4fone.layer addSublayer:bottomBorder];
+        self.btn4.image = [UIImage imageNamed:@"tips_icon_press"];
     }
 }
 

@@ -154,7 +154,7 @@
 }
 
 
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+/*-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     
     if([string isEqualToString:@"\n"]) {
         [textField resignFirstResponder];
@@ -177,6 +177,30 @@
         }
         return NO;
     }
+    return YES;
+}*/
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    switch (self.segment.selectedSegmentIndex) {
+        case 0:
+        {
+            [self searchUserWithName:textField.text];
+        }
+            break;
+        case 1:
+        {
+            [self searchLocationWithName:textField.text];
+        }
+            break;
+        case 2:
+        {
+            [self searchOutfitterWithName:textField.text];
+        }
+            break;
+    }
+    
     return YES;
 }
 

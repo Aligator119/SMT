@@ -106,7 +106,7 @@
     NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@",strUrl,SubstringRegister];
    // NSString * strUrlRequestData = [NSString stringWithFormat:URL_USER_CREATE,_firstName,_secondName,_userName,_userPassword,_birthYear,_userMale,APP_ID_KEY];
     
-    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[firstName, secondName, userName, userPassword, _birthYear, userMale, @"b63800ad", @"34eddb50efc407d00f3498dc1874526c"] forKeys:@[@"firstname", @"lastname", @"username", @"password", @"birthYear", @"sex", @"app_id", @"app_key"]];
+    NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithObjects:@[firstName, secondName, userName, userPassword, _birthYear, userMale, @"b63800ad", @"34eddb50efc407d00f3498dc1874526c", @"createdWith"] forKeys:@[@"firstname", @"lastname", @"username", @"password", @"birthYear", @"sex", @"app_id", @"app_key", @"smt"]];
     
     enterPassword = userPassword;
     
@@ -667,6 +667,7 @@
         ithem.userName = [act objectForKey:@"username"];
         ithem.description = [[act objectForKey:@"raw"] objectForKey:@"description"];
         ithem.caption = [[act objectForKey:@"raw"] objectForKey:@"caption"];
+        ithem.time = [act objectForKey:@"upload_date"];
         [photoList addObject:ithem];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"get photo finished" object:nil];
@@ -684,7 +685,7 @@
     ithem.thumbnail = [act objectForKey:@"url"];
     ithem.uploadDate = [act objectForKey:@"upload_date"];
     ithem.userName = [act objectForKey:@"username"];
-    
+    ithem.time = [act objectForKey:@"upload_date"];
     return ithem;
 }
 
@@ -703,6 +704,7 @@
             ithem.thumbnail = [act objectForKey:@"url"];
             ithem.uploadDate = [act objectForKey:@"upload_date"];
             ithem.userName = [act objectForKey:@"username"];
+            ithem.time = [act objectForKey:@"upload_date"];
             [photoList addObject:ithem];
         }
     }

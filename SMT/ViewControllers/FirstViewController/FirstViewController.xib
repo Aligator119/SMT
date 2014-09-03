@@ -25,7 +25,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_menu.png" translatesAutoresizingMaskIntoConstraints="NO" id="mPI-b6-H43">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="mPI-b6-H43">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -133,7 +133,7 @@
         </view>
     </objects>
     <resources>
-        <image name="bg_menu.png" width="640" height="1136"/>
         <image name="logo.png" width="130" height="40"/>
+        <image name="menu_BG.png" width="640" height="1136"/>
     </resources>
 </document>
