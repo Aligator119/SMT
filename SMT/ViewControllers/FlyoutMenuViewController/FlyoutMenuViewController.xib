@@ -260,7 +260,6 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="caK-EW-bWK" secondAttribute="bottom" id="5wc-15-8CS"/>
                 <constraint firstAttribute="trailing" secondItem="b9f-ed-cPn" secondAttribute="trailing" id="D74-ol-WeO"/>
-                <constraint firstItem="SWC-e9-rUe" firstAttribute="top" secondItem="b9f-ed-cPn" secondAttribute="bottom" constant="89" id="QK6-44-OZS"/>
                 <constraint firstItem="exG-Uq-koA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="V6T-eM-MLW"/>
                 <constraint firstItem="caK-EW-bWK" firstAttribute="top" secondItem="SWC-e9-rUe" secondAttribute="bottom" constant="33" id="XQF-5K-60v"/>
                 <constraint firstItem="caK-EW-bWK" firstAttribute="top" secondItem="iqr-cj-RxU" secondAttribute="bottom" id="ZDl-Cx-AZe"/>
