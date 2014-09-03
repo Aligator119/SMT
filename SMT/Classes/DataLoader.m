@@ -667,6 +667,7 @@
         ithem.userName = [act objectForKey:@"username"];
         ithem.description = [[act objectForKey:@"raw"] objectForKey:@"description"];
         ithem.caption = [[act objectForKey:@"raw"] objectForKey:@"caption"];
+        ithem.time = [act objectForKey:@"upload_date"];
         [photoList addObject:ithem];
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"get photo finished" object:nil];
@@ -684,7 +685,7 @@
     ithem.thumbnail = [act objectForKey:@"url"];
     ithem.uploadDate = [act objectForKey:@"upload_date"];
     ithem.userName = [act objectForKey:@"username"];
-    
+    ithem.time = [act objectForKey:@"upload_date"];
     return ithem;
 }
 
@@ -703,6 +704,7 @@
             ithem.thumbnail = [act objectForKey:@"url"];
             ithem.uploadDate = [act objectForKey:@"upload_date"];
             ithem.userName = [act objectForKey:@"username"];
+            ithem.time = [act objectForKey:@"upload_date"];
             [photoList addObject:ithem];
         }
     }

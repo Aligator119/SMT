@@ -80,9 +80,11 @@
     
     NSArray *functionsArrayIdentifiers = [[NSArray alloc] initWithObjects:@"openHome", @"openMap", @"openLoagAnActivity", @"openLogHistory", @"openCameraAndPhotos", @"openPrediction", @"openWeather", @"openBuddies", @"openSettings", @"logout", nil];
     
-    NSArray *iconsArray = [NSArray arrayWithObjects:@"home_icon", @"global_icon", @"note_icon", @"calendar", @"camera", @"prediction", @"weather", @"buddies", @"settings", @"logout", nil];
+    NSArray *iconsArray = [NSArray arrayWithObjects:@"ic_home", @"ic_map", @"ic_note", @"ic_date", @"ic_camera", @"ic_prediction", @"ic_weather", @"ic_buddies", @"ic_config", @"ic_logout", nil];
     
-    functionsDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:functionsArrayIdentifiers, @"identifiers", menuItems, @"strings", iconsArray, @"icons", nil];
+    NSArray *selectedIconsArray = [NSArray arrayWithObjects:@"ic_home_press", @"ic_map_press", @"ic_note_press", @"ic_date_press", @"ic_camera_press", @"ic_prediction_press", @"ic_weather_press", @"ic_buddies_press", @"ic_config_press", @"ic_logout", nil];
+    
+    functionsDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:functionsArrayIdentifiers, @"identifiers", menuItems, @"strings", iconsArray, @"icons", selectedIconsArray, @"selectedIcons", nil];
 //----------------------------------------------------------------------------------------------------------------
     UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(photoClick:)];
     [recognizer setNumberOfTapsRequired:1];
@@ -139,6 +141,11 @@
     [cell.contentView setBackgroundColor:[UIColor clearColor]];
     [cell setBackgroundColor:[UIColor clearColor]];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+    UIView *selectionView = [UIView new];
+    selectionView.backgroundColor = [UIColor colorWithRed:123/255.f green:171/255.f blue:72/255.f alpha:0.25];
+    cell.selectedBackgroundView = selectionView;
+    
     return cell;
 }
 
@@ -155,10 +162,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.imageView.image = [UIImage imageNamed:[[functionsDictionary objectForKey:@"selectedIcons"] objectAtIndex:indexPath.row]];
+    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self performSelector:NSSelectorFromString([[functionsDictionary objectForKey:@"identifiers"] objectAtIndex:indexPath.row])];
 }
 
+- (void) tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.imageView.image = [UIImage imageNamed:[[functionsDictionary objectForKey:@"icons"] objectAtIndex:indexPath.row]];
+}
 //------------------------------------------------------------------------------------------------------------------------
 
 - (void) openHome

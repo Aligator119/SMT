@@ -21,8 +21,13 @@
         dispatch_async(dispatch_get_main_queue(), ^(){
             
             self.imgShow.image = image;
+            if (!self.imgShow.image){
+                self.imgShow.image = [UIImage imageNamed:@"menu_BG"];
+            }
         });
     });
+    
+
 }
 
 @end

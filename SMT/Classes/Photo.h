@@ -10,5 +10,6 @@
 @property (strong, nonatomic) NSString * fullPhoto;
 @property (strong, nonatomic) NSString * description;
 @property (strong, nonatomic) NSString * caption;
+@property (strong, nonatomic) NSDate *time;
 
 @end

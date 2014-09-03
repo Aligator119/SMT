@@ -9,6 +9,7 @@
 
 - (void)setImageWithURL:(NSURL *) url andImageID:(NSString *) photoID descriptions:(NSString *)str andUserName:(NSString *)name;
 - (void)setPhotoDescriptions:(NSString *)str andUserName:(NSString *)name andImage:(UIImage *)image photoID:(NSString *)photo_id;
+- (void)setPhotoDescriptions:(NSString *)str andUserName:(NSString *)name andTime:(NSDate*)time andImage:(UIImage *)image photoID:(NSString *)photo_id;
 - (void)startLaderInCell;
 - (void)stopLoaderInCell;
 @end
