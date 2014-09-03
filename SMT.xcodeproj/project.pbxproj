@@ -149,7 +149,6 @@
 		04B06C2B1990F94B00F42B8E /* search_BTN.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B06C271990F94B00F42B8E /* search_BTN.png */; };
 		04B06C2C1990F94B00F42B8E /* search_BTN@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04B06C281990F94B00F42B8E /* search_BTN@2x.png */; };
 		04B312FA191A281C0055D460 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04B312F9191A281C0055D460 /* AssetsLibrary.framework */; };
-		04C92DDD19ADBD0B0084E5D8 /* country.sql in Resources */ = {isa = PBXBuildFile; fileRef = 04C92DDC19ADBD0B0084E5D8 /* country.sql */; };
 		04CE20A119ACA381009A22F1 /* region_data in Resources */ = {isa = PBXBuildFile; fileRef = 04CE20A019ACA381009A22F1 /* region_data */; };
 		04CE20A519ACA3C3009A22F1 /* DBLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CE20A419ACA3C3009A22F1 /* DBLoader.m */; };
 		04CE20A819ACA8CC009A22F1 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 04CE20A719ACA8CC009A22F1 /* Country.m */; };
@@ -597,7 +596,6 @@
 		04B06C271990F94B00F42B8E /* search_BTN.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search_BTN.png; path = Image/search_BTN.png; sourceTree = "<group>"; };
 		04B06C281990F94B00F42B8E /* search_BTN@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "search_BTN@2x.png"; path = "Image/search_BTN@2x.png"; sourceTree = "<group>"; };
 		04B312F9191A281C0055D460 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		04C92DDC19ADBD0B0084E5D8 /* country.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = country.sql; path = SMT/DataBase/country.sql; sourceTree = "<group>"; };
 		04CE20A019ACA381009A22F1 /* region_data */ = {isa = PBXFileReference; lastKnownFileType = file; name = region_data; path = SMT/DataBase/region_data; sourceTree = "<group>"; };
 		04CE20A319ACA3C3009A22F1 /* DBLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DBLoader.h; path = Classes/DBLoader.h; sourceTree = "<group>"; };
 		04CE20A419ACA3C3009A22F1 /* DBLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DBLoader.m; path = Classes/DBLoader.m; sourceTree = "<group>"; };
@@ -1747,7 +1745,6 @@
 		04CE20A219ACA38B009A22F1 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
-				04C92DDC19ADBD0B0084E5D8 /* country.sql */,
 				04CE20A019ACA381009A22F1 /* region_data */,
 			);
 			name = DataBase;
@@ -2469,7 +2466,6 @@
 				84E605AD194AF5CC00F8D61F /* log_and_activity.png in Resources */,
 				04409424190F975E00C4A558 /* LoginViewController~ipad.xib in Resources */,
 				04D76FDC1934D14E00E1F59B /* star_opasity_orange@2x.png in Resources */,
-				04C92DDD19ADBD0B0084E5D8 /* country.sql in Resources */,
 				04D9F3D81990B18400B9433D /* galery_BTN.png in Resources */,
 				04A2A371191B7F530006677E /* SettingsViewController.xib in Resources */,
 				84E605AA194AF5CC00F8D61F /* hunting_map@2x.png in Resources */,
@@ -2499,7 +2495,6 @@
 				04DF997019222A2400D66BEC /* LogDetailCell.xib in Resources */,
 				84F23EC119ADC82200774AB9 /* outfitters_icon@2x.png in Resources */,
 				04D76FDB1934D14E00E1F59B /* star_opasity_orange.png in Resources */,
-				0416596C195AD3EE0078AD3A /* tips_icon.png in Resources */,
 				04CE20A119ACA381009A22F1 /* region_data in Resources */,
 				04FBA8991963ED0800D5D713 /* CreateTipsCell.xib in Resources */,
 				04F75C2919582791000C42DA /* camera_icon@2x.png in Resources */,
