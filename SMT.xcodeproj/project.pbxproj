@@ -296,11 +296,14 @@
 		84E8158919B74564009FDA26 /* ic_comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E8158519B74564009FDA26 /* ic_comment@2x.png */; };
 		84E8158A19B74564009FDA26 /* ic_time_ago.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E8158619B74564009FDA26 /* ic_time_ago.png */; };
 		84E8158B19B74564009FDA26 /* ic_time_ago@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84E8158719B74564009FDA26 /* ic_time_ago@2x.png */; };
+		84E99C7719B8602E00EC5265 /* CommentHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E99C7619B8602E00EC5265 /* CommentHeaderView.m */; };
+		84E99C7919B8604600EC5265 /* CommentHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E99C7819B8604600EC5265 /* CommentHeaderView.xib */; };
+		84E99C7E19B8AA6100EC5265 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E99C7C19B8AA6100EC5265 /* CommentTableViewCell.m */; };
+		84E99C7F19B8AA6100EC5265 /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E99C7D19B8AA6100EC5265 /* CommentTableViewCell.xib */; };
 		84F0115F1947178A00BC032B /* ReportsHarvestrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F0115E1947178A00BC032B /* ReportsHarvestrow.m */; };
 		84F2893119407D2B00D61E4C /* ReportsActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 84F2893019407D2B00D61E4C /* ReportsActivity.m */; };
 		84F6BC6019B6F5F200775768 /* ic_buddies_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F6BC5C19B6F5F200775768 /* ic_buddies_press.png */; };
 		84F6BC6119B6F5F200775768 /* ic_buddies_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F6BC5D19B6F5F200775768 /* ic_buddies_press@2x.png */; };
-		84F6BC6219B6F5F200775768 /* ic_buddies.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F6BC5E19B6F5F200775768 /* ic_buddies.png */; };
 		84F6BC6319B6F5F200775768 /* ic_buddies@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F6BC5F19B6F5F200775768 /* ic_buddies@2x.png */; };
 		84F6BC6819B6F83300775768 /* ic_camera_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F6BC6419B6F83300775768 /* ic_camera_press.png */; };
 		84F6BC6919B6F83300775768 /* ic_camera_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F6BC6519B6F83300775768 /* ic_camera_press@2x.png */; };
@@ -368,10 +371,6 @@
 		A59FFEE21986AB1E006AD37E /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A59FFEE01986AB1E006AD37E /* CommentViewController.xib */; };
 		A59FFEE61986ABEF006AD37E /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59FFEE41986ABEF006AD37E /* CameraViewController.m */; };
 		A59FFEE71986ABEF006AD37E /* CameraViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A59FFEE51986ABEF006AD37E /* CameraViewController.xib */; };
-		A59FFEEC1986AC32006AD37E /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A59FFEEB1986AC32006AD37E /* CommentCell.m */; };
-		A59FFEEE1986AC41006AD37E /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A59FFEED1986AC41006AD37E /* CommentCell.xib */; };
-		A59FFEF01986AC5D006AD37E /* CreateCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A59FFEEF1986AC5D006AD37E /* CreateCommentCell.xib */; };
-		A59FFEF31986AC6A006AD37E /* CreateCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A59FFEF21986AC6A006AD37E /* CreateCommentCell.m */; };
 		A59FFEF81986AD76006AD37E /* FullImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A59FFEF61986AD76006AD37E /* FullImageViewController.m */; };
 		A59FFEF91986AD76006AD37E /* FullImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A59FFEF71986AD76006AD37E /* FullImageViewController.xib */; };
 		A5F757C3198A984E0088E148 /* edit_BTN_press.png in Resources */ = {isa = PBXBuildFile; fileRef = A5F757BF198A984E0088E148 /* edit_BTN_press.png */; };
@@ -880,6 +879,12 @@
 		84E8158519B74564009FDA26 /* ic_comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_comment@2x.png"; sourceTree = "<group>"; };
 		84E8158619B74564009FDA26 /* ic_time_ago.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_time_ago.png; sourceTree = "<group>"; };
 		84E8158719B74564009FDA26 /* ic_time_ago@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_time_ago@2x.png"; sourceTree = "<group>"; };
+		84E99C7519B8602E00EC5265 /* CommentHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentHeaderView.h; sourceTree = "<group>"; };
+		84E99C7619B8602E00EC5265 /* CommentHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentHeaderView.m; sourceTree = "<group>"; };
+		84E99C7819B8604600EC5265 /* CommentHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentHeaderView.xib; sourceTree = "<group>"; };
+		84E99C7B19B8AA6100EC5265 /* CommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTableViewCell.h; sourceTree = "<group>"; };
+		84E99C7C19B8AA6100EC5265 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
+		84E99C7D19B8AA6100EC5265 /* CommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 		84F0115D1947178A00BC032B /* ReportsHarvestrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportsHarvestrow.h; path = Classes/ReportsHarvestrow.h; sourceTree = "<group>"; };
 		84F0115E1947178A00BC032B /* ReportsHarvestrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReportsHarvestrow.m; path = Classes/ReportsHarvestrow.m; sourceTree = "<group>"; };
 		84F2892F19407D2B00D61E4C /* ReportsActivity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReportsActivity.h; path = Classes/ReportsActivity.h; sourceTree = "<group>"; };
@@ -959,12 +964,6 @@
 		A59FFEE31986ABEF006AD37E /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CameraViewController.h; path = ViewControllers/CameraViewController/CameraViewController.h; sourceTree = "<group>"; };
 		A59FFEE41986ABEF006AD37E /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CameraViewController.m; path = ViewControllers/CameraViewController/CameraViewController.m; sourceTree = "<group>"; };
 		A59FFEE51986ABEF006AD37E /* CameraViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraViewController.xib; path = ViewControllers/CameraViewController/CameraViewController.xib; sourceTree = "<group>"; };
-		A59FFEEA1986AC32006AD37E /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
-		A59FFEEB1986AC32006AD37E /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
-		A59FFEED1986AC41006AD37E /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
-		A59FFEEF1986AC5D006AD37E /* CreateCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateCommentCell.xib; sourceTree = "<group>"; };
-		A59FFEF11986AC6A006AD37E /* CreateCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCommentCell.h; sourceTree = "<group>"; };
-		A59FFEF21986AC6A006AD37E /* CreateCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateCommentCell.m; sourceTree = "<group>"; };
 		A59FFEF51986AD76006AD37E /* FullImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullImageViewController.h; sourceTree = "<group>"; };
 		A59FFEF61986AD76006AD37E /* FullImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullImageViewController.m; sourceTree = "<group>"; };
 		A59FFEF71986AD76006AD37E /* FullImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FullImageViewController.xib; sourceTree = "<group>"; };
@@ -2180,6 +2179,28 @@
 			path = Image/icons;
 			sourceTree = "<group>";
 		};
+		84E99C7419B85FC800EC5265 /* CommentHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				84E99C7519B8602E00EC5265 /* CommentHeaderView.h */,
+				84E99C7619B8602E00EC5265 /* CommentHeaderView.m */,
+				84E99C7819B8604600EC5265 /* CommentHeaderView.xib */,
+			);
+			name = CommentHeaderView;
+			path = ViewControllers/CommentViewController/CommentHeaderView;
+			sourceTree = "<group>";
+		};
+		84E99C7A19B8A91200EC5265 /* CommentTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				84E99C7B19B8AA6100EC5265 /* CommentTableViewCell.h */,
+				84E99C7C19B8AA6100EC5265 /* CommentTableViewCell.m */,
+				84E99C7D19B8AA6100EC5265 /* CommentTableViewCell.xib */,
+			);
+			name = CommentTableViewCell;
+			path = ViewControllers/CommentViewController/CommentTableViewCell;
+			sourceTree = "<group>";
+		};
 		84F23EB219ADC7EA00774AB9 /* HomeIcons */ = {
 			isa = PBXGroup;
 			children = (
@@ -2216,35 +2237,13 @@
 		A59FFEDD1986AAF4006AD37E /* CommentViewController */ = {
 			isa = PBXGroup;
 			children = (
-				A59FFEE81986AC00006AD37E /* CommentCell */,
-				A59FFEE91986AC00006AD37E /* CreateCommentCell */,
+				84E99C7A19B8A91200EC5265 /* CommentTableViewCell */,
+				84E99C7419B85FC800EC5265 /* CommentHeaderView */,
 				A59FFEDE1986AB1E006AD37E /* CommentViewController.h */,
 				A59FFEDF1986AB1E006AD37E /* CommentViewController.m */,
 				A59FFEE01986AB1E006AD37E /* CommentViewController.xib */,
 			);
 			name = CommentViewController;
-			sourceTree = "<group>";
-		};
-		A59FFEE81986AC00006AD37E /* CommentCell */ = {
-			isa = PBXGroup;
-			children = (
-				A59FFEEA1986AC32006AD37E /* CommentCell.h */,
-				A59FFEEB1986AC32006AD37E /* CommentCell.m */,
-				A59FFEED1986AC41006AD37E /* CommentCell.xib */,
-			);
-			name = CommentCell;
-			path = ViewControllers/CommentViewController/CommentCell;
-			sourceTree = "<group>";
-		};
-		A59FFEE91986AC00006AD37E /* CreateCommentCell */ = {
-			isa = PBXGroup;
-			children = (
-				A59FFEF11986AC6A006AD37E /* CreateCommentCell.h */,
-				A59FFEF21986AC6A006AD37E /* CreateCommentCell.m */,
-				A59FFEEF1986AC5D006AD37E /* CreateCommentCell.xib */,
-			);
-			name = CreateCommentCell;
-			path = ViewControllers/CommentViewController/CreateCommentCell;
 			sourceTree = "<group>";
 		};
 		A59FFEF41986AD5D006AD37E /* FullImageViewController */ = {
@@ -2342,12 +2341,12 @@
 				04409407190F825F00C4A558 /* FlyoutMenuViewController.xib in Resources */,
 				84F6BC7919B6F93300775768 /* ic_map_press@2x.png in Resources */,
 				A5498E11198A7CC60035A0DC /* delete_lication_BTN.png in Resources */,
+				84E99C7919B8604600EC5265 /* CommentHeaderView.xib in Resources */,
 				04B06C2A1990F94B00F42B8E /* search_BTN_press@2x.png in Resources */,
 				046C6C13190FECEE00E3AC56 /* Cell.xib in Resources */,
 				84E8158919B74564009FDA26 /* ic_comment@2x.png in Resources */,
 				04657AC5192614580018CB70 /* SelectLocationViewController.xib in Resources */,
 				84F6BC6919B6F83300775768 /* ic_camera_press@2x.png in Resources */,
-				A59FFEEE1986AC41006AD37E /* CommentCell.xib in Resources */,
 				A59FFEDC1986980E006AD37E /* AddTips.xib in Resources */,
 				043354CE1910F0A7003767D0 /* BuddySearchCell.xib in Resources */,
 				04F75C3219582791000C42DA /* st_icon_press.png in Resources */,
@@ -2496,7 +2495,6 @@
 				04B06C201990EBA700F42B8E /* takePic_check_BTN@2x.png in Resources */,
 				84F6BC8A19B6F9CB00775768 /* ic_date.png in Resources */,
 				04A2A3C3191B7FDC0006677E /* PhotoVideoViewController.xib in Resources */,
-				A59FFEF01986AC5D006AD37E /* CreateCommentCell.xib in Resources */,
 				04A2A3A3191B7FC00006677E /* LocationListCell.xib in Resources */,
 				84C8208719B70E1300E84FB0 /* tips_icon_press.png in Resources */,
 				04F7F42919235F2A007E39B5 /* PredictionViewController.xib in Resources */,
@@ -2530,6 +2528,7 @@
 				84C8208419B70E1300E84FB0 /* stuff_icon_press@2x.png in Resources */,
 				04A2A382191B7F820006677E /* WeatherCell.xib in Resources */,
 				84FCB4AC19B5F6A70071C5B0 /* foto_icon@2x.png in Resources */,
+				84E99C7F19B8AA6100EC5265 /* CommentTableViewCell.xib in Resources */,
 				0440943E190FA98B00C4A558 /* RegisterViewController_iPhone4.xib in Resources */,
 				A508896819894AB0007E2C57 /* popup_bg.png in Resources */,
 				04D9F3E01990B18400B9433D /* turn_the_camera_BTN.png in Resources */,
@@ -2583,6 +2582,7 @@
 				04E88FC1191BA07B00DEF977 /* NewLog1ViewController.m in Sources */,
 				047EE599192F47D700FD17FC /* InviteFriendViewController.m in Sources */,
 				04409406190F825F00C4A558 /* FlyoutMenuViewController.m in Sources */,
+				84E99C7719B8602E00EC5265 /* CommentHeaderView.m in Sources */,
 				11C9F6811917818800CDAFBA /* HourlyWheather.m in Sources */,
 				047EE597192F47D700FD17FC /* InviteCell.m in Sources */,
 				040806A1190EA37D00E063C3 /* AppDelegate.m in Sources */,
@@ -2617,7 +2617,6 @@
 				0477219019487B330029E450 /* ActivityCell.m in Sources */,
 				11C9F68A1917E52A00CDAFBA /* UIImageView+AFNetworking.m in Sources */,
 				11C9F67B191780DC00CDAFBA /* WheatherPredict.m in Sources */,
-				A59FFEF31986AC6A006AD37E /* CreateCommentCell.m in Sources */,
 				04CE20A819ACA8CC009A22F1 /* Country.m in Sources */,
 				0408069D190EA37D00E063C3 /* main.m in Sources */,
 				043354AA1910ED9F003767D0 /* CDataScanner.m in Sources */,
@@ -2633,6 +2632,7 @@
 				11D48DF71919079800A9787E /* Species.m in Sources */,
 				04409428190FA53900C4A558 /* ForgotPasswordViewController.m in Sources */,
 				04F342F01921118E0054294C /* BuddyPageViewController.m in Sources */,
+				84E99C7E19B8AA6100EC5265 /* CommentTableViewCell.m in Sources */,
 				04F4A50D1936143E00A29912 /* AddCell.m in Sources */,
 				0405E493194996EC0059CCFE /* ShareLocationViewController.m in Sources */,
 				04A2A398191B7F9F0006677E /* SpeciesViewController.m in Sources */,
@@ -2688,7 +2688,6 @@
 				84F0115F1947178A00BC032B /* ReportsHarvestrow.m in Sources */,
 				0433548A1910E7C9003767D0 /* ConstantsClass.m in Sources */,
 				A59FFEE61986ABEF006AD37E /* CameraViewController.m in Sources */,
-				A59FFEEC1986AC32006AD37E /* CommentCell.m in Sources */,
 				0433548C1910E7C9003767D0 /* GTMNSString+HTML.m in Sources */,
 				04657AC4192614580018CB70 /* SelectLocationViewController.m in Sources */,
 				04A2A3A2191B7FC00006677E /* LocationListCell.m in Sources */,

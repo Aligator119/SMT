@@ -62,13 +62,13 @@
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWa-5h-dKb">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kWa-5h-dKb">
                         <rect key="frame" x="57" y="30" width="118" height="15"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="118" id="cTj-D1-hzE"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -110,6 +110,7 @@
             <connections>
                 <outlet property="btnComment" destination="w0b-Yf-iaj" id="Wni-Jc-idF"/>
                 <outlet property="img" destination="EmU-4Q-BPD" id="dP9-T7-9Hm"/>
+                <outlet property="labelWidthConstraint" destination="cTj-D1-hzE" id="SDj-v2-aWw"/>
                 <outlet property="lbDescriptions" destination="am1-bA-N36" id="DZF-u6-vox"/>
                 <outlet property="lbName" destination="k7b-n7-gL6" id="MXK-lO-QQS"/>
                 <outlet property="timeLabel" destination="kWa-5h-dKb" id="iem-qw-4H5"/>
