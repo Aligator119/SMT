@@ -302,13 +302,13 @@
         isiPad = NO;
     }
     [super viewWillAppear:YES];
-    width = self.view.frame.size.width;
+    width = self.table.frame.size.width;
     self.navigationController.navigationBar.hidden = YES;
     self.btn1Hegth.constant = width / 4;
-    self.btn2Hegth.constant = self.btn1Hegth.constant;
-    self.btn3Hegth.constant = self.btn1Hegth.constant;
-    self.btn4Hegth.constant = self.btn1Hegth.constant;
-    //self.heigthShowColectionViewConstraint.constant = width * 0.39;
+    self.btn2Hegth.constant = self.btn1Hegth.constant-1;
+    self.btn3Hegth.constant = self.btn1Hegth.constant-1;
+    self.btn4Hegth.constant = self.btn1Hegth.constant-1;
+    //self.heigthShowColectionViewConstraint.constant = width * 0.42;
     [self.view updateConstraintsIfNeeded];
     heigthSeasonsTable = self.heigthShowColectionViewConstraint.constant;
     
@@ -481,6 +481,8 @@
                 scrollView.contentOffset = CGPointZero;
             }
         } else {
+            [self.table.collectionViewLayout invalidateLayout];
+            //self.table.itemSize = [self itemSizeInCurrentOrientation];
             if (self.heigthShowColectionViewConstraint.constant < heigthSeasonsTable) {
                 self.heigthShowColectionViewConstraint.constant = MIN(self.heigthShowColectionViewConstraint.constant + ABS(position), heigthSeasonsTable);
                 scrollView.contentOffset = CGPointZero;
