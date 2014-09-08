@@ -1,8 +1,8 @@
 #import <UIKit/UIKit.h>
 
-
-@interface CommentViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
-
+@class Photo;
+@interface CommentViewController : UIViewController
+@property (strong, nonatomic) Photo *photo;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil forImageID:(NSString *)photo_id;
 @end

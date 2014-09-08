@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentTableViewCell" rowHeight="74" id="KGk-i7-Jjw" customClass="CommentTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="73"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_user_green.png" translatesAutoresizingMaskIntoConstraints="NO" id="zxH-L4-Qkf">
+                        <rect key="frame" x="13" y="13" width="39" height="39"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="39" id="KDl-mn-DAH"/>
+                            <constraint firstAttribute="width" constant="39" id="vZU-Qe-Fhe"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe g" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIs-DH-Xme">
+                        <rect key="frame" x="66" y="10" width="241" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Tos-Te-EtI"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My first comment is so beautiful..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IsM-rb-H29">
+                        <rect key="frame" x="66" y="33" width="241" height="14"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 minutes ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFp-6f-vjZ">
+                        <rect key="frame" x="66" y="50" width="81" height="13"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="81" id="Ffx-dY-xtj"/>
+                            <constraint firstAttribute="height" constant="13" id="Y5M-yV-ZsP"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_time_ago.png" translatesAutoresizingMaskIntoConstraints="NO" id="hZ9-Y5-8r0">
+                        <rect key="frame" x="153" y="53" width="8" height="8"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="8" id="jZy-6h-klu"/>
+                            <constraint firstAttribute="width" constant="8" id="kOp-db-ev0"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="fIs-DH-Xme" secondAttribute="trailing" constant="13" id="7qD-er-bOf"/>
+                    <constraint firstItem="hZ9-Y5-8r0" firstAttribute="leading" secondItem="aFp-6f-vjZ" secondAttribute="trailing" constant="6" id="K9p-s1-5t5"/>
+                    <constraint firstItem="aFp-6f-vjZ" firstAttribute="top" secondItem="IsM-rb-H29" secondAttribute="bottom" constant="3" id="Mdb-kx-pnd"/>
+                    <constraint firstItem="fIs-DH-Xme" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="Met-17-fKn"/>
+                    <constraint firstItem="IsM-rb-H29" firstAttribute="leading" secondItem="zxH-L4-Qkf" secondAttribute="trailing" constant="14" id="NRP-Bx-YIu"/>
+                    <constraint firstItem="fIs-DH-Xme" firstAttribute="leading" secondItem="zxH-L4-Qkf" secondAttribute="trailing" constant="14" id="Pra-A7-RgO"/>
+                    <constraint firstItem="IsM-rb-H29" firstAttribute="top" secondItem="fIs-DH-Xme" secondAttribute="bottom" constant="2" id="TV7-cc-id1"/>
+                    <constraint firstItem="hZ9-Y5-8r0" firstAttribute="top" secondItem="IsM-rb-H29" secondAttribute="bottom" constant="6" id="Tlu-Po-iiK"/>
+                    <constraint firstItem="zxH-L4-Qkf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="13" id="Wgi-fe-Zay"/>
+                    <constraint firstAttribute="bottom" secondItem="aFp-6f-vjZ" secondAttribute="bottom" constant="10" id="asr-b1-4em"/>
+                    <constraint firstAttribute="trailing" secondItem="IsM-rb-H29" secondAttribute="trailing" constant="13" id="crr-X7-5dj"/>
+                    <constraint firstItem="aFp-6f-vjZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="66" id="edc-mR-Ijw"/>
+                    <constraint firstItem="zxH-L4-Qkf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="h3Z-mW-bW7"/>
+                </constraints>
+            </tableViewCellContentView>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_time_ago.png" width="8" height="8"/>
+        <image name="ic_user_green.png" width="80" height="80"/>
+    </resources>
+</document>

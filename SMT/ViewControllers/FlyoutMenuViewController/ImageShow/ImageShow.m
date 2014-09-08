@@ -4,9 +4,12 @@
 #define DOWNLOAD_IMAGE_SUCCES @"image is download"
 #define ActiveTag 12321
 
+const NSInteger timeFontSize = 13;
+
 @interface ImageShow ()
 
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *labelWidthConstraint;
 @end
 @implementation ImageShow
 
@@ -75,6 +78,9 @@
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     dateFormatter.dateFormat = @"dd MMMM yyyy";
     self.timeLabel.text = [dateFormatter stringFromDate:time];
+    
+    self.labelWidthConstraint.constant = [self getWidthText:self.timeLabel.text andLabelHeight:self.timeLabel.frame.size.height] + 5;
+    
     self.lbName.text = name;
     self.img.image = image;
     self.btnComment.tag = [photo_id intValue];
@@ -112,6 +118,22 @@
 {
     self.lbName.text = @"";
     self.img.image = [UIImage imageNamed:@"placeholderImage.png"];
+}
+
+- (float) getWidthText:(NSString *)str andLabelHeight:(float) lbHeight
+{
+    float f = 0;
+    
+    if (str) {
+        //CGFloat labelWidth = self.view.frame.size.width - 30.0f;
+        CGSize contentTextSize = [str sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Light" size: timeFontSize]
+                                 constrainedToSize:CGSizeMake(200, lbHeight)
+                                     lineBreakMode:NSLineBreakByWordWrapping];
+        
+        f = contentTextSize.width;
+        
+    }
+    return f;
 }
 
 
