@@ -78,6 +78,7 @@
     Region * region;
     
     CALayer *bottomBorder;
+    __weak IBOutlet UIButton *camera;
 }
 
 @property (strong, nonatomic) IBOutlet UIView *forTabBar;
@@ -256,9 +257,9 @@
     
     [self.view addGestureRecognizer:menuController.panGestureRecognizer];
     [__menuButton addTarget:menuController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
-    CameraButton * camera = [[CameraButton alloc]init];
+    
     [camera addTarget:self action:@selector(actCamera:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:camera];
+    
     isDownloadPhoto = NO;
     
     [self downloadSeasons];

@@ -20,6 +20,7 @@
                 <outlet property="btn4" destination="BGh-EF-Zre" id="gby-Ad-JzD"/>
                 <outlet property="btn4Hegth" destination="5H7-zx-i7D" id="iyi-eL-B61"/>
                 <outlet property="btn4fone" destination="krJ-GV-eRC" id="aW5-8U-tkU"/>
+                <outlet property="camera" destination="JZT-HG-naP" id="a48-kU-tua"/>
                 <outlet property="colectionView" destination="RQV-PX-9Oa" id="VWx-Mo-xcy"/>
                 <outlet property="forTabBar" destination="caK-EW-bWK" id="AqC-FX-I4R"/>
                 <outlet property="heigthShowColectionViewConstraint" destination="ZYy-U5-bLi" id="SWZ-qb-GVd"/>
