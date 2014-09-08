@@ -31,6 +31,17 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lake Michigan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPg-4v-ByB">
+                            <rect key="frame" x="10" y="28" width="300" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="qiT-Hk-55F"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hK-wE-oUQ">
                             <rect key="frame" x="10" y="25" width="51" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -38,8 +49,8 @@
                                 <constraint firstAttribute="height" constant="30" id="Kpv-ex-Z1e"/>
                                 <constraint firstAttribute="width" constant="51" id="YBw-uM-a47"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
-                            <inset key="contentEdgeInsets" minX="3" minY="4" maxX="3" maxY="4"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                            <inset key="contentEdgeInsets" minX="3" minY="5" maxX="3" maxY="0.0"/>
                             <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="Back">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -52,21 +63,10 @@
                                 <action selector="backButtonClick:" destination="-1" eventType="touchUpInside" id="cfw-oT-hb8"/>
                             </connections>
                         </button>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lake Michigan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPg-4v-ByB">
-                            <rect key="frame" x="61" y="28" width="249" height="24"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="24" id="qiT-Hk-55F"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                     </subviews>
                     <color key="backgroundColor" red="0.2156862745" green="0.2156862745" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="aPg-4v-ByB" firstAttribute="leading" secondItem="9hK-wE-oUQ" secondAttribute="trailing" id="7g3-4b-5yl"/>
+                        <constraint firstItem="aPg-4v-ByB" firstAttribute="leading" secondItem="9hK-wE-oUQ" secondAttribute="trailing" constant="-51" id="7g3-4b-5yl"/>
                         <constraint firstItem="9hK-wE-oUQ" firstAttribute="top" secondItem="F7V-Kj-L1u" secondAttribute="top" constant="25" id="ABA-0t-Vuq"/>
                         <constraint firstAttribute="height" constant="60" id="Pmm-lU-6oe"/>
                         <constraint firstItem="9hK-wE-oUQ" firstAttribute="leading" secondItem="F7V-Kj-L1u" secondAttribute="leading" constant="10" id="aat-Ob-TGE"/>
@@ -83,7 +83,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="weather_header_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="nUU-2q-hn0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu_BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="nUU-2q-hn0">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -96,33 +96,33 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuesday, September 25" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKt-kb-1n7">
-                                <rect key="frame" x="77" y="15" width="166" height="15"/>
+                                <rect key="frame" x="77" y="14" width="166" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="4j3-nN-bjk"/>
+                                    <constraint firstAttribute="height" constant="18" id="4j3-nN-bjk"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="0.93333333330000001" green="0.97254901959999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moon 99.9%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="wl6-Uz-o5m">
-                                <rect key="frame" x="230" y="40" width="80" height="15"/>
+                                <rect key="frame" x="224" y="40" width="86" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="hJj-qJ-U7q"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="0.4823529412" green="0.6705882353" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moonrise" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0l-RQ-JG7">
                                 <rect key="frame" x="130" y="40" width="80" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="0.4823529412" green="0.6705882353" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:47am" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="m4Z-JR-271">
@@ -133,7 +133,7 @@
                                     <constraint firstAttribute="width" constant="80" id="AHe-bc-ryr"/>
                                     <constraint firstAttribute="height" constant="15" id="PtA-Gg-Anw"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -141,8 +141,8 @@
                                 <rect key="frame" x="20" y="40" width="80" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="0.4823529412" green="0.6705882353" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:23am" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="olX-nM-Pa3">
@@ -153,7 +153,7 @@
                                     <constraint firstAttribute="height" constant="15" id="3Gu-Go-PDW"/>
                                     <constraint firstAttribute="width" constant="80" id="ajJ-ca-mst"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -161,8 +161,8 @@
                                 <rect key="frame" x="130" y="95" width="80" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="0.4823529412" green="0.6705882353" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7:47pm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="4BM-kb-dv4">
@@ -173,7 +173,7 @@
                                     <constraint firstAttribute="height" constant="15" id="30R-4h-6Hh"/>
                                     <constraint firstAttribute="width" constant="80" id="aJu-bQ-3PT"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -181,8 +181,8 @@
                                 <rect key="frame" x="20" y="95" width="80" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="0.4823529412" green="0.6705882353" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7:23pm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="Md7-ll-rRt">
@@ -193,7 +193,7 @@
                                     <constraint firstAttribute="width" constant="80" id="MdR-ak-e1R"/>
                                     <constraint firstAttribute="height" constant="15" id="PHV-S0-RX0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -205,7 +205,7 @@
                                     <constraint firstAttribute="height" constant="21" id="WQh-eS-YZj"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" image="arrow_righrt_BTN.png">
+                                <state key="normal" backgroundImage="arrow_right_white_BTN.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted" image="next_icon_press.png"/>
@@ -221,7 +221,7 @@
                                     <constraint firstAttribute="height" constant="21" id="k1v-i2-peg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" image="back_icon.png">
+                                <state key="normal" image="arrow_left_white_BTN.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted" image="back_icon_press.png"/>
@@ -241,13 +241,13 @@
                             <constraint firstItem="SZq-Tc-T6T" firstAttribute="top" secondItem="m4Z-JR-271" secondAttribute="top" id="BFe-6X-V1O"/>
                             <constraint firstItem="4W1-UJ-xRa" firstAttribute="height" secondItem="olX-nM-Pa3" secondAttribute="height" id="DaR-QP-mXN"/>
                             <constraint firstItem="p0l-RQ-JG7" firstAttribute="width" secondItem="m4Z-JR-271" secondAttribute="width" id="IVR-dV-3ie"/>
-                            <constraint firstItem="wl6-Uz-o5m" firstAttribute="width" secondItem="SZq-Tc-T6T" secondAttribute="width" id="J1v-Bs-kEh"/>
+                            <constraint firstItem="wl6-Uz-o5m" firstAttribute="width" secondItem="SZq-Tc-T6T" secondAttribute="width" constant="6" id="J1v-Bs-kEh"/>
                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Cyg-Hc-mRL" secondAttribute="trailing" priority="599" constant="55" id="Jf0-9N-cQm"/>
                             <constraint firstItem="olX-nM-Pa3" firstAttribute="top" secondItem="4W1-UJ-xRa" secondAttribute="bottom" constant="5" id="KKr-dZ-Cc3"/>
                             <constraint firstAttribute="trailing" secondItem="SZq-Tc-T6T" secondAttribute="trailing" constant="10" id="M8w-se-kGH"/>
                             <constraint firstItem="4BM-kb-dv4" firstAttribute="bottom" secondItem="SZq-Tc-T6T" secondAttribute="bottom" id="MYa-J3-fpP"/>
                             <constraint firstItem="m4Z-JR-271" firstAttribute="top" secondItem="p0l-RQ-JG7" secondAttribute="bottom" constant="5" id="Nje-Hh-Y7r"/>
-                            <constraint firstItem="wl6-Uz-o5m" firstAttribute="leading" secondItem="SZq-Tc-T6T" secondAttribute="leading" id="P6K-UQ-Vm7"/>
+                            <constraint firstItem="wl6-Uz-o5m" firstAttribute="leading" secondItem="SZq-Tc-T6T" secondAttribute="leading" constant="-6" id="P6K-UQ-Vm7"/>
                             <constraint firstItem="Md7-ll-rRt" firstAttribute="top" secondItem="6oA-J9-RNJ" secondAttribute="bottom" constant="5" id="W10-Cs-Vs4"/>
                             <constraint firstItem="SZq-Tc-T6T" firstAttribute="leading" secondItem="m4Z-JR-271" secondAttribute="trailing" constant="20" id="Wo6-wY-dOB"/>
                             <constraint firstItem="6oA-J9-RNJ" firstAttribute="leading" secondItem="Md7-ll-rRt" secondAttribute="leading" id="XEk-Wm-Kvy"/>
@@ -257,7 +257,7 @@
                             <constraint firstAttribute="centerX" secondItem="kKt-kb-1n7" secondAttribute="centerX" id="gum-Mq-h76"/>
                             <constraint firstItem="olX-nM-Pa3" firstAttribute="leading" secondItem="E9I-Fq-oYp" secondAttribute="leading" constant="20" id="h22-lR-avl"/>
                             <constraint firstItem="NeC-Lz-cwD" firstAttribute="width" secondItem="4BM-kb-dv4" secondAttribute="width" id="hb7-In-ko2"/>
-                            <constraint firstItem="kKt-kb-1n7" firstAttribute="top" secondItem="E9I-Fq-oYp" secondAttribute="top" constant="15" id="j1V-el-Omi"/>
+                            <constraint firstItem="kKt-kb-1n7" firstAttribute="top" secondItem="E9I-Fq-oYp" secondAttribute="top" constant="14" id="j1V-el-Omi"/>
                             <constraint firstAttribute="height" constant="140" id="l7R-h4-ajW"/>
                             <constraint firstItem="SZq-Tc-T6T" firstAttribute="top" secondItem="wl6-Uz-o5m" secondAttribute="bottom" constant="5" id="leF-kA-AHQ"/>
                             <constraint firstItem="Md7-ll-rRt" firstAttribute="leading" secondItem="E9I-Fq-oYp" secondAttribute="leading" constant="20" id="nI2-eY-8tT"/>
@@ -292,10 +292,10 @@
         </view>
     </objects>
     <resources>
-        <image name="arrow_righrt_BTN.png" width="20" height="20"/>
-        <image name="back_icon.png" width="12" height="21"/>
+        <image name="arrow_left_white_BTN.png" width="44" height="44"/>
+        <image name="arrow_right_white_BTN.png" width="44" height="44"/>
         <image name="back_icon_press.png" width="12" height="21"/>
+        <image name="menu_BG.png" width="640" height="1136"/>
         <image name="next_icon_press.png" width="12" height="21"/>
-        <image name="weather_header_bg.png" width="320" height="315"/>
     </resources>
 </document>

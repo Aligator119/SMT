@@ -89,15 +89,19 @@
                     <rect key="frame" x="0.0" y="64" width="320" height="46"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu_BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="dND-xA-tZE">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fTT-SD-RM8">
-                            <rect key="frame" x="5" y="9" width="310" height="29"/>
+                            <rect key="frame" x="0.0" y="9" width="320" height="29"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="My Locations"/>
                                 <segment title="Shared Locations"/>
                                 <segment title="Public Locations"/>
                             </segments>
-                            <color key="tintColor" red="0.21568627450980393" green="0.21568627450980393" blue="0.21568627450980393" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.4823529412" green="0.6705882353" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="locationTypeChange:" destination="-1" eventType="valueChanged" id="tSi-b1-jmL"/>
                             </connections>
@@ -107,9 +111,9 @@
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="fTT-SD-RM8" firstAttribute="top" secondItem="aPU-FT-i8P" secondAttribute="top" constant="9" id="9uV-3g-S0R"/>
-                        <constraint firstItem="fTT-SD-RM8" firstAttribute="leading" secondItem="aPU-FT-i8P" secondAttribute="leading" constant="5" id="KOG-Eh-WQE"/>
+                        <constraint firstItem="fTT-SD-RM8" firstAttribute="leading" secondItem="aPU-FT-i8P" secondAttribute="leading" id="KOG-Eh-WQE"/>
                         <constraint firstAttribute="bottom" secondItem="fTT-SD-RM8" secondAttribute="bottom" constant="9" id="NZm-Pb-I7E"/>
-                        <constraint firstAttribute="trailing" secondItem="fTT-SD-RM8" secondAttribute="trailing" constant="5" id="cPV-h1-jaz"/>
+                        <constraint firstAttribute="trailing" secondItem="fTT-SD-RM8" secondAttribute="trailing" id="cPV-h1-jaz"/>
                         <constraint firstAttribute="height" constant="46" id="thR-03-eSw"/>
                     </constraints>
                 </view>
@@ -251,7 +255,8 @@
     <resources>
         <image name="edit_BTN.png" width="30" height="30"/>
         <image name="edit_BTN_press.png" width="30" height="30"/>
+        <image name="menu_BG.png" width="640" height="1136"/>
         <image name="popup_bg.png" width="220" height="120"/>
-        <image name="st_icon.png" width="30" height="30"/>
+        <image name="st_icon.png" width="129" height="75"/>
     </resources>
 </document>
