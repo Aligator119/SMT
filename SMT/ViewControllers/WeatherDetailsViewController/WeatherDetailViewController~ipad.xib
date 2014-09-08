@@ -38,11 +38,11 @@
                                 <constraint firstAttribute="width" constant="51" id="F5L-3y-Hfq"/>
                                 <constraint firstAttribute="height" constant="30" id="wm9-AT-oNB"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                             <inset key="contentEdgeInsets" minX="3" minY="4" maxX="3" maxY="4"/>
                             <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="Back" image="back_icon.png">
-                                <color key="titleColor" red="0.68627450980000004" green="0.86274509799999999" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <state key="normal" title="Back">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="highlighted" image="back_icon_press.png">
@@ -60,7 +60,7 @@
                                 <constraint firstAttribute="width" constant="600" id="2Zu-bT-wts"/>
                                 <constraint firstAttribute="height" constant="24" id="gOq-ix-cvR"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -83,7 +83,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="140"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="predict_counter_farms_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="P8o-vE-Orb">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu_BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="P8o-vE-Orb">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="140"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -103,27 +103,27 @@
                                     <constraint firstAttribute="height" constant="15" id="H1g-s4-p3b"/>
                                     <constraint firstAttribute="width" constant="190" id="vP4-Rw-q4A"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moon 99.9%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Aop-H0-waY">
-                                <rect key="frame" x="644" y="40" width="80" height="15"/>
+                                <rect key="frame" x="638" y="37" width="93" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="YK6-Y5-K3P"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="0.4823529412" green="0.6705882353" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moonrise" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zYI-HA-XpV">
                                 <rect key="frame" x="344" y="68" width="80" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="0.4823529412" green="0.6705882353" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:47am" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="XCq-RP-BoU">
@@ -134,7 +134,7 @@
                                     <constraint firstAttribute="width" constant="80" id="vrw-jJ-aGS"/>
                                     <constraint firstAttribute="height" constant="15" id="ywn-wU-fIO"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -142,8 +142,8 @@
                                 <rect key="frame" x="44" y="68" width="80" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="0.4823529412" green="0.6705882353" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:23am" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="MUY-Qh-blh">
@@ -154,7 +154,7 @@
                                     <constraint firstAttribute="width" constant="80" id="M2N-NN-cbG"/>
                                     <constraint firstAttribute="height" constant="15" id="dQ4-Ac-aeY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -162,8 +162,8 @@
                                 <rect key="frame" x="494" y="68" width="80" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="0.4823529412" green="0.6705882353" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7:47pm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="ChB-E9-BjI">
@@ -174,7 +174,7 @@
                                     <constraint firstAttribute="height" constant="15" id="X6m-n0-UMm"/>
                                     <constraint firstAttribute="width" constant="80" id="nai-qX-Wyc"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -182,8 +182,8 @@
                                 <rect key="frame" x="194" y="68" width="80" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" red="0.4823529412" green="0.6705882353" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7:23pm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="nYw-V6-sIZ">
@@ -194,7 +194,7 @@
                                     <constraint firstAttribute="height" constant="15" id="ulf-QQ-yjB"/>
                                     <constraint firstAttribute="width" constant="80" id="wer-MB-BTW"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -206,7 +206,7 @@
                                     <constraint firstAttribute="height" constant="21" id="lK8-75-117"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" image="next_icon.png">
+                                <state key="normal" image="arrow_right_white_BTN.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted" image="next_icon_press.png"/>
@@ -222,7 +222,7 @@
                                     <constraint firstAttribute="width" constant="22" id="pmL-2b-6wC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" image="back_icon.png">
+                                <state key="normal" image="arrow_left_white_BTN.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted" image="back_icon_press.png"/>
@@ -241,6 +241,7 @@
                             <constraint firstItem="f81-YV-inr" firstAttribute="leading" secondItem="ChB-E9-BjI" secondAttribute="leading" id="46a-h3-NBb"/>
                             <constraint firstItem="MUY-Qh-blh" firstAttribute="centerY" secondItem="ChB-E9-BjI" secondAttribute="centerY" id="6Hy-qR-VcZ"/>
                             <constraint firstItem="XCq-RP-BoU" firstAttribute="top" secondItem="zYI-HA-XpV" secondAttribute="bottom" constant="5" id="AOa-LZ-pch"/>
+                            <constraint firstItem="Aop-H0-waY" firstAttribute="width" secondItem="RGh-mY-dHj" secondAttribute="width" constant="13" id="AW3-on-1Nq"/>
                             <constraint firstAttribute="trailing" secondItem="P8o-vE-Orb" secondAttribute="trailing" id="Akd-c4-dCn"/>
                             <constraint firstItem="8Ao-j1-Kcl" firstAttribute="centerY" secondItem="hZK-gZ-akD" secondAttribute="centerY" id="Atl-2K-y5e"/>
                             <constraint firstItem="ChB-E9-BjI" firstAttribute="centerY" secondItem="XCq-RP-BoU" secondAttribute="centerY" id="BU5-xu-Fpc"/>
@@ -250,14 +251,15 @@
                             <constraint firstItem="f81-YV-inr" firstAttribute="width" secondItem="ChB-E9-BjI" secondAttribute="width" id="IIo-RL-ibc"/>
                             <constraint firstItem="nYw-V6-sIZ" firstAttribute="leading" secondItem="MUY-Qh-blh" secondAttribute="trailing" constant="70" id="Ihe-SY-0zD"/>
                             <constraint firstAttribute="centerX" secondItem="XCq-RP-BoU" secondAttribute="centerX" id="L1W-dP-Ycm"/>
-                            <constraint firstItem="RGh-mY-dHj" firstAttribute="top" secondItem="Aop-H0-waY" secondAttribute="bottom" constant="5" id="Mkg-sc-uaT"/>
+                            <constraint firstItem="RGh-mY-dHj" firstAttribute="top" secondItem="Aop-H0-waY" secondAttribute="bottom" constant="8" id="Mkg-sc-uaT"/>
                             <constraint firstItem="XCq-RP-BoU" firstAttribute="leading" secondItem="nYw-V6-sIZ" secondAttribute="trailing" constant="70" id="NlF-Z4-Gzx"/>
                             <constraint firstItem="8Ao-j1-Kcl" firstAttribute="leading" secondItem="hZK-gZ-akD" secondAttribute="trailing" id="Qgi-Dj-L59"/>
                             <constraint firstItem="qwF-wz-3N6" firstAttribute="width" secondItem="MUY-Qh-blh" secondAttribute="width" id="Y0X-Dy-AJj"/>
                             <constraint firstItem="qwF-wz-3N6" firstAttribute="height" secondItem="MUY-Qh-blh" secondAttribute="height" id="Yd7-3v-quA"/>
-                            <constraint firstItem="Aop-H0-waY" firstAttribute="leading" secondItem="RGh-mY-dHj" secondAttribute="leading" id="Zgd-fl-809"/>
+                            <constraint firstItem="Aop-H0-waY" firstAttribute="leading" secondItem="RGh-mY-dHj" secondAttribute="leading" constant="-6" id="Zgd-fl-809"/>
                             <constraint firstItem="ChB-E9-BjI" firstAttribute="leading" secondItem="XCq-RP-BoU" secondAttribute="trailing" constant="70" id="ak5-oV-SUD"/>
                             <constraint firstItem="zYI-HA-XpV" firstAttribute="leading" secondItem="XCq-RP-BoU" secondAttribute="leading" id="cd7-OG-5qu"/>
+                            <constraint firstItem="Aop-H0-waY" firstAttribute="centerX" secondItem="RGh-mY-dHj" secondAttribute="centerX" id="dun-Co-t2c"/>
                             <constraint firstItem="nYw-V6-sIZ" firstAttribute="top" secondItem="Liz-5H-6ZR" secondAttribute="bottom" constant="5" id="hR3-PI-VBc"/>
                             <constraint firstAttribute="centerX" secondItem="hZK-gZ-akD" secondAttribute="centerX" id="jBJ-wf-Vhq"/>
                             <constraint firstItem="Liz-5H-6ZR" firstAttribute="leading" secondItem="nYw-V6-sIZ" secondAttribute="leading" id="l8K-6P-tfp"/>
@@ -268,7 +270,6 @@
                             <constraint firstItem="P8o-vE-Orb" firstAttribute="leading" secondItem="5Jv-uC-gmA" secondAttribute="leading" id="u6q-hS-EyE"/>
                             <constraint firstItem="MUY-Qh-blh" firstAttribute="top" secondItem="qwF-wz-3N6" secondAttribute="bottom" constant="5" id="uO9-oK-AbD"/>
                             <constraint firstItem="RGh-mY-dHj" firstAttribute="centerY" secondItem="ChB-E9-BjI" secondAttribute="centerY" id="vaO-G2-oT0"/>
-                            <constraint firstItem="Aop-H0-waY" firstAttribute="width" secondItem="RGh-mY-dHj" secondAttribute="width" id="vie-vR-TrB"/>
                             <constraint firstItem="ChB-E9-BjI" firstAttribute="top" secondItem="f81-YV-inr" secondAttribute="bottom" constant="5" id="vlu-T0-Szd"/>
                             <constraint firstItem="Liz-5H-6ZR" firstAttribute="width" secondItem="nYw-V6-sIZ" secondAttribute="width" id="wUX-Bh-TmO"/>
                             <constraint firstItem="Liz-5H-6ZR" firstAttribute="height" secondItem="nYw-V6-sIZ" secondAttribute="height" id="wpR-mX-vav"/>
@@ -295,10 +296,10 @@
         </view>
     </objects>
     <resources>
-        <image name="back_icon.png" width="12" height="21"/>
+        <image name="arrow_left_white_BTN.png" width="44" height="44"/>
+        <image name="arrow_right_white_BTN.png" width="44" height="44"/>
         <image name="back_icon_press.png" width="12" height="21"/>
-        <image name="next_icon.png" width="12" height="21"/>
+        <image name="menu_BG.png" width="640" height="1136"/>
         <image name="next_icon_press.png" width="12" height="21"/>
-        <image name="predict_counter_farms_bg.png" width="768" height="210"/>
     </resources>
 </document>

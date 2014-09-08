@@ -21,7 +21,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="OR6-uE-sXg"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="12"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -40,7 +40,7 @@
                             <constraint firstAttribute="height" constant="18" id="EvP-Mt-Y5P"/>
                             <constraint firstAttribute="width" constant="157" id="Oa5-9b-kQH"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="17"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunny" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNI-li-y51">
@@ -50,15 +50,15 @@
                             <constraint firstAttribute="height" constant="18" id="kOn-Yt-Xob"/>
                             <constraint firstAttribute="width" constant="172" id="tfN-jh-znY"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="15"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next_icon.png" highlightedImage="next_icon_press.png" translatesAutoresizingMaskIntoConstraints="NO" id="pcJ-ZB-hxr">
-                        <rect key="frame" x="298" y="43" width="12" height="21"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_black_right_BTN.png" translatesAutoresizingMaskIntoConstraints="NO" id="pcJ-ZB-hxr">
+                        <rect key="frame" x="286" y="40" width="25" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="12" id="Ggb-Xq-lwj"/>
-                            <constraint firstAttribute="height" constant="21" id="hCj-XQ-lhZ"/>
+                            <constraint firstAttribute="width" constant="25" id="Ggb-Xq-lwj"/>
+                            <constraint firstAttribute="height" constant="25" id="hCj-XQ-lhZ"/>
                         </constraints>
                     </imageView>
                 </subviews>
@@ -70,10 +70,10 @@
                     <constraint firstItem="zVM-qV-2oZ" firstAttribute="top" secondItem="XBH-OL-COU" secondAttribute="bottom" constant="8" id="L03-HF-wvO"/>
                     <constraint firstItem="dNI-li-y51" firstAttribute="leading" secondItem="zVM-qV-2oZ" secondAttribute="trailing" constant="10" id="OJF-mx-uvL"/>
                     <constraint firstItem="a6B-w9-dDH" firstAttribute="leading" secondItem="zVM-qV-2oZ" secondAttribute="trailing" constant="10" id="RXU-oa-Zq9"/>
-                    <constraint firstAttribute="trailing" secondItem="pcJ-ZB-hxr" secondAttribute="trailing" constant="10" id="dkA-2t-nnM"/>
+                    <constraint firstAttribute="trailing" secondItem="pcJ-ZB-hxr" secondAttribute="trailing" constant="9" id="dkA-2t-nnM"/>
                     <constraint firstItem="XBH-OL-COU" firstAttribute="leading" secondItem="lre-A0-D89" secondAttribute="leading" id="f8u-Ep-nO1"/>
                     <constraint firstItem="zVM-qV-2oZ" firstAttribute="leading" secondItem="lre-A0-D89" secondAttribute="leading" constant="10" id="v2U-mO-BSE"/>
-                    <constraint firstItem="pcJ-ZB-hxr" firstAttribute="top" secondItem="XBH-OL-COU" secondAttribute="bottom" constant="25" id="xvk-Zx-QCe"/>
+                    <constraint firstItem="pcJ-ZB-hxr" firstAttribute="top" secondItem="XBH-OL-COU" secondAttribute="bottom" constant="22" id="xvk-Zx-QCe"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -86,7 +86,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="next_icon.png" width="12" height="21"/>
-        <image name="next_icon_press.png" width="12" height="21"/>
+        <image name="arrow_black_right_BTN.png" width="100" height="100"/>
     </resources>
 </document>

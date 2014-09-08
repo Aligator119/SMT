@@ -430,7 +430,7 @@
         } else if (!selectedBtn2) {
             //num = 1;
         } else if (!selectedBtn3) {
-            size = CGSizeMake(self.colectionView.frame.size.width-10, 100);
+            size = CGSizeMake(self.colectionView.frame.size.width-10, 65);
         } else if (!selectedBtn4) {
              if ([[tipsList objectAtIndex:indexPath.row] isKindOfClass:[NSString class]]) {
                  NSString * str = [tipsList objectAtIndex:indexPath.row];
