@@ -308,7 +308,7 @@
     self.btn2Hegth.constant = self.btn1Hegth.constant-1;
     self.btn3Hegth.constant = self.btn1Hegth.constant-1;
     self.btn4Hegth.constant = self.btn1Hegth.constant-1;
-    //self.heigthShowColectionViewConstraint.constant = width * 0.42;
+    self.heigthShowColectionViewConstraint.constant = width * 0.5;
     [self.view updateConstraintsIfNeeded];
     heigthSeasonsTable = self.heigthShowColectionViewConstraint.constant;
     
@@ -362,6 +362,7 @@
                         [((ImageShow *)cell) stopLoaderInCell];
                         [((ImageShow *)cell) setPhotoDescriptions:photo.description andUserName:photo.userName andTime:photo.time andImage:[cashedPhoto objectForKey:photo.photoID] photoID:photo.photoID];
                         [((ImageShow *)cell).btnComment addTarget:self action:@selector(openComments:) forControlEvents:UIControlEventTouchUpInside];
+                        ((ImageShow *)cell).btnComment.tag = indexPath.row;
                     } else {
                         [((ImageShow *)cell) startLaderInCell];
                     }
@@ -1063,8 +1064,8 @@
 
 - (void) openComments:(UIButton *)sender
 {
-    NSString * str_id = [NSString stringWithFormat:@"%d",sender.tag];
-    CommentViewController * cVC = [[CommentViewController alloc]initWithNibName:@"CommentViewController" bundle:nil forImageID:str_id];
+    Photo * bufferPhoto = [photoList objectAtIndex:sender.tag];
+    CommentViewController * cVC = [[CommentViewController alloc]initWithNibName:@"CommentViewController" bundle:nil forPhoto:bufferPhoto];
     [self.navigationController pushViewController:cVC animated:YES];
 }
 

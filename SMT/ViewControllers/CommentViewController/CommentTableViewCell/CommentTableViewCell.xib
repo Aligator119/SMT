@@ -73,6 +73,13 @@
                     <constraint firstItem="zxH-L4-Qkf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="h3Z-mW-bW7"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="UserNameLabel" destination="fIs-DH-Xme" id="MZB-lP-oQr"/>
+                <outlet property="avatarImageView" destination="zxH-L4-Qkf" id="cge-Nb-71p"/>
+                <outlet property="commentLabel" destination="IsM-rb-H29" id="F8Z-pC-Fre"/>
+                <outlet property="timeLabel" destination="aFp-6f-vjZ" id="386-g9-CuR"/>
+                <outlet property="userNameLabel" destination="fIs-DH-Xme" id="CVr-Je-JrD"/>
+            </connections>
         </tableViewCell>
     </objects>
     <resources>

@@ -1014,7 +1014,7 @@
 {
     NSString *strUrlRequestAddress = [NSString stringWithFormat:@"%@photocomment?&photo_id=%d&app_id=%@&app_key=%@&last=-1",strUrl, photo_id, @"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
     NSDictionary *info = [NSDictionary new];
-    info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:NO andTypeRequest:ApplicationServiceRequestComment];
+    info = [self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestComment];
     NSMutableArray * array = [NSMutableArray new];
     @try {
         for(NSDictionary * dic in info){

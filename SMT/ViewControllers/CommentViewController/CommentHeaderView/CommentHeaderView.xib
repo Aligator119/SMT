@@ -7,7 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommentHeaderView">
             <connections>
-                <outlet property="descriptionLabel" destination="5jt-B0-rnu" id="NCc-ok-p5y"/>
+                <outlet property="avatarImageView" destination="67R-Cl-Wsk" id="LEy-H5-03l"/>
+                <outlet property="descriptionLabel" destination="5jt-B0-rnu" id="fTo-bN-43b"/>
+                <outlet property="nameLabel" destination="fSr-O2-4Mp" id="eIp-xJ-lYc"/>
+                <outlet property="photoImageView" destination="h9Z-bL-Ffq" id="Zfz-pU-FIE"/>
+                <outlet property="timeLabel" destination="rE0-VV-Jx1" id="ghh-fy-sew"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

@@ -10,6 +10,7 @@
                 <outlet property="bottomConstr" destination="EhV-50-K2f" id="AVt-2e-hb1"/>
                 <outlet property="bottomView" destination="iul-hG-fWt" id="dd8-GH-J9H"/>
                 <outlet property="commentHeaderView" destination="1cu-hs-O2O" id="UKH-ym-feQ"/>
+                <outlet property="messageTextField" destination="TNY-aQ-IO3" id="9j0-wP-I0B"/>
                 <outlet property="tableView" destination="dwA-PL-pk5" id="ZeJ-jA-E65"/>
                 <outlet property="topViewHeightConstr" destination="s8R-1V-RKb" id="qCo-ns-nUB"/>
                 <outlet property="topViewVerticalConstr" destination="tZP-ad-bwP" id="xpN-TA-arJ"/>
@@ -83,6 +84,9 @@
                                 <color key="titleColor" red="0.4823529412" green="0.6705882353" blue="0.28235294119999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="actSend:" destination="-1" eventType="touchUpInside" id="eFu-yt-hv9"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

@@ -1,14 +1,13 @@
-//
-//  CommentHeaderView.h
-//  SMT
-//
-//  Created by Admin on 9/4/14.
-//  Copyright (c) 2014 Mac. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
+#import "Photo.h"
 
 @interface CommentHeaderView : UIView
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+- (void)initWithPhoto:(Photo *)photo;
 
 @end
