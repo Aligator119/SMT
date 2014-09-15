@@ -120,7 +120,7 @@ enum ApplicationServiceRequest
 - (void) deleteActivityWithId: (NSInteger) _activityId;
 
 //------- Photo metods -----------------------------------------
-- (NSArray *)getPhoto;
+- (NSArray *)getPhotoWithLimit:(NSString *)limit;
 - (Photo *)getPhotoWithId:(int)photo_id;
 - (NSArray *)getPhotoWithBuddyId:(int)buddy_id;
 - (NSString *)uploadPhoto:(UIImage *)photo;

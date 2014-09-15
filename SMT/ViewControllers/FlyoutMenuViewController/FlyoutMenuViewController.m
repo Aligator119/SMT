@@ -34,6 +34,8 @@
 # define CGFLOAT_MAX FLT_MAX
 
 
+#define USER_DATA @"userdata"
+
 #define NEW_TIPS @"new tips"
 
 #define minHeaderHeight 33
@@ -293,6 +295,7 @@
     [self.tableSelect reloadData];
     self.subView.frame = self.view.frame;
     [self.view addSubview:self.subView];
+    [self.table reloadData];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -689,8 +692,6 @@
 {
     UICollectionViewCell * buf = [self.colectionView cellForItemAtIndexPath:index];
     if (currentSubView == 2) {
-        //UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
-        //[tableView deselectRowAtIndexPath:indexPath animated:YES];
         if (tableView.tag == 1) {
             country = [countryList objectAtIndex:indexPath.row];
             //cell.textLabel.textColor = [UIColor blueColor];
@@ -878,7 +879,7 @@
         photoList = [[NSMutableArray alloc]init];
         dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(newQueue, ^(){
-            photoList = [[NSMutableArray alloc]initWithArray:[dataLoader getPhoto]];
+            photoList = [[NSMutableArray alloc]initWithArray:[dataLoader getPhotoWithLimit:@"0"]];
             
             dispatch_async(dispatch_get_main_queue(), ^(){
                 
@@ -948,10 +949,9 @@
     [self startLoader];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
-        seasonsList = [[NSArray alloc]initWithArray:[dataLoader getSeasonWithRegion:144]];//appDelegate.user.region_id]];
+        seasonsList = [[NSArray alloc]initWithArray:[dataLoader getSeasonWithRegion:appDelegate.user.region_id]];
         
         dispatch_async(dispatch_get_main_queue(), ^(){
-            
             if(!dataLoader.isCorrectRezult) {
                 NSLog(@"Error download seasons");
                 [self endLoader];
@@ -992,6 +992,11 @@
         } else {
             if (region != nil) {
                 appDelegate.user.region_id = region._id;
+                NSData * data = [NSKeyedArchiver archivedDataWithRootObject:appDelegate.user];
+                [[NSUserDefaults  standardUserDefaults] removeObjectForKey:USER_DATA];
+                [[NSUserDefaults  standardUserDefaults] synchronize];
+                [[NSUserDefaults  standardUserDefaults] setObject:data forKey:USER_DATA];
+                [[NSUserDefaults  standardUserDefaults] synchronize];
                 [self.subView removeFromSuperview];
                 currentSubView = 0;
                 country = nil;

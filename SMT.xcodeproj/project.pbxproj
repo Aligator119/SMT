@@ -1348,10 +1348,10 @@
 			isa = PBXGroup;
 			children = (
 				04409408190F951800C4A558 /* ForgorYourPaswordWebView */,
-				0440941C190F975E00C4A558 /* LoginViewController_iPhone4.xib */,
-				0440941D190F975E00C4A558 /* LoginViewController_iPhone5.xib */,
 				0440941E190F975E00C4A558 /* LoginViewController.h */,
 				0440941F190F975E00C4A558 /* LoginViewController.m */,
+				0440941C190F975E00C4A558 /* LoginViewController_iPhone4.xib */,
+				0440941D190F975E00C4A558 /* LoginViewController_iPhone5.xib */,
 				04409420190F975E00C4A558 /* LoginViewController~ipad.xib */,
 			);
 			name = LoginViewController;

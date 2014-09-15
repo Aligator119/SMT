@@ -1,17 +1,28 @@
 #import "FullImageViewController.h"
 #import "UIViewController+LoaderCategory.h"
+#import "Photo.h"
+#import "AppDelegate.h"
+#import "DataLoader.h"
 
 #define ZOOM_STEP 2.0
 
 @interface FullImageViewController ()
 {
     NSURL * url;
+    Photo * _photo;
+    AppDelegate * appDelegate;
+    DataLoader * dataLoader;
 }
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstr;
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrolView;
+@property (weak, nonatomic) IBOutlet UIButton *remuvePhotoButton;
+@property (weak, nonatomic) IBOutlet UIButton *sharePhotoButton;
 
 - (IBAction)actBack:(id)sender;
+- (IBAction)actRemovePhoto:(id)sender;
+- (IBAction)actSharePhoto:(id)sender;
+
 
 - (CGRect)zoomRectForScale:(float)scale withCenter:(CGPoint)center;
 @end
@@ -23,6 +34,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        _photo = photo;
         url = [NSURL URLWithString:photo.fullPhoto];
     }
     return self;
@@ -36,6 +48,14 @@
         self.topViewHeightConstr.constant -= 20;
     }
     [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
+    
+    appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    // setting remove and shared button
+    if ([_photo.userName isEqualToString:appDelegate.user.name]) {
+        self.remuvePhotoButton.enabled = YES;
+        self.sharePhotoButton.enabled = YES;
+        dataLoader = [DataLoader instance];
+    }
     
     //Setting up the scrollView
     _scrolView.bouncesZoom = YES;
@@ -168,5 +188,25 @@
 
 - (IBAction)actBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)actRemovePhoto:(id)sender {
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        [dataLoader deletePhotoWithId:[_photo.photoID intValue]];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            
+            if(!dataLoader.isCorrectRezult) {
+                NSLog(@"Error delete photo");
+            } else {
+                [self actBack:nil];
+            }
+        });
+    });
+
+}
+
+- (IBAction)actSharePhoto:(id)sender {
 }
 @end

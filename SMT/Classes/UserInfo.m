@@ -11,7 +11,7 @@
 
 @implementation UserInfo
 
-@synthesize name, userPassword, userID, userFID, userEmail;
+@synthesize name, userPassword, userID, userFID, userEmail, region_id;
 
 - (id)init
 {
@@ -54,6 +54,7 @@
         name = [aDecoder decodeObjectForKey:@"Name"];
         userPassword = [aDecoder decodeObjectForKey:@"userPassword"];
         userEmail = [aDecoder decodeObjectForKey:@"userName"];
+        region_id = [[aDecoder decodeObjectForKey:@"reginID"] intValue];
     }
     return self;
 }
@@ -64,6 +65,7 @@
     [aCoder encodeObject:name forKey:@"userName"];
     [aCoder encodeObject:userPassword forKey:@"userPassword"];
     [aCoder encodeObject:userEmail forKey:@"userName"];
+    [aCoder encodeObject:@(region_id) forKey:@"reginID"];
 }
 
 + (BOOL)itsFirstMomentWhenUserLogin:(NSString*)usName{

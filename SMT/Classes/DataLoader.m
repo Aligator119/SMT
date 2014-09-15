@@ -652,9 +652,9 @@
 
 #pragma mark - Photo
 
-- (NSArray *) getPhoto
+- (NSArray *) getPhotoWithLimit:(NSString *)limit
 {
-    NSString * strUrlRequestAddress = [NSString stringWithFormat:@"%@%@?app_id=%@&app_key=%@&last=-1", strUrl, SubstringPhoto, App_id, App_key];
+    NSString * strUrlRequestAddress = [limit isEqualToString:@"0"] ? [NSString stringWithFormat:@"%@%@?app_id=%@&app_key=%@", strUrl, SubstringPhoto, App_id, App_key] : [NSString stringWithFormat:@"%@%@?app_id=%@&app_key=%@&last=%@", strUrl, SubstringPhoto, App_id, App_key, limit];
     NSMutableArray * photoList = [NSMutableArray new];
     NSDictionary * buf = [[self startRequest:strUrlRequestAddress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestPhoto] objectForKey:@"photos"];
     for (NSDictionary *act in buf){

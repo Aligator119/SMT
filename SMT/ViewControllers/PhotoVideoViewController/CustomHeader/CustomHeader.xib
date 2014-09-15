@@ -12,10 +12,9 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wa-iS-DK7">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
+                    <rect key="frame" x="10" y="0.0" width="310" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="0.61568627450980395" green="0.61568627450980395" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
@@ -24,7 +23,7 @@
                 <constraint firstAttribute="bottom" secondItem="7wa-iS-DK7" secondAttribute="bottom" id="RbQ-TI-opN"/>
                 <constraint firstItem="7wa-iS-DK7" firstAttribute="top" secondItem="yvw-46-87d" secondAttribute="top" id="oXa-cM-ihf"/>
                 <constraint firstAttribute="trailing" secondItem="7wa-iS-DK7" secondAttribute="trailing" id="wld-Zu-yve"/>
-                <constraint firstItem="7wa-iS-DK7" firstAttribute="leading" secondItem="yvw-46-87d" secondAttribute="leading" id="wnB-Fv-Qek"/>
+                <constraint firstItem="7wa-iS-DK7" firstAttribute="leading" secondItem="yvw-46-87d" secondAttribute="leading" constant="10" id="wnB-Fv-Qek"/>
             </constraints>
             <connections>
                 <outlet property="lbName" destination="7wa-iS-DK7" id="LFA-PN-9in"/>
