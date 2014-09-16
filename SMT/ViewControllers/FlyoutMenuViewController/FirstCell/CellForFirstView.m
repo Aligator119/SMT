@@ -16,7 +16,7 @@
     self.lbName.text = season.name;
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
-        UIImage * image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:season.thumbnail]]];
+        UIImage * image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[@"http://sportsmantracker.com/" stringByAppendingString:season.photo == nil ? season.thumbnail : season.photo]]]];
         
         dispatch_async(dispatch_get_main_queue(), ^(){
             
