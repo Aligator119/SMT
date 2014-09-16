@@ -62,7 +62,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IGz-XK-4wB">
-                            <rect key="frame" x="11" y="25" width="40" height="30"/>
+                            <rect key="frame" x="5" y="25" width="40" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="UKw-Fr-BKT"/>
@@ -97,7 +97,7 @@
                         <constraint firstAttribute="trailing" secondItem="HW0-nG-Mei" secondAttribute="trailing" constant="10" id="7jy-fG-EfY"/>
                         <constraint firstAttribute="bottom" secondItem="HW0-nG-Mei" secondAttribute="bottom" constant="9" id="FLR-wc-9XG"/>
                         <constraint firstAttribute="height" constant="64" id="RE8-zp-aK1"/>
-                        <constraint firstItem="IGz-XK-4wB" firstAttribute="leading" secondItem="b9f-ed-cPn" secondAttribute="leading" constant="11" id="TkX-eK-h1K"/>
+                        <constraint firstItem="IGz-XK-4wB" firstAttribute="leading" secondItem="b9f-ed-cPn" secondAttribute="leading" constant="5" id="TkX-eK-h1K"/>
                         <constraint firstAttribute="bottom" secondItem="IGz-XK-4wB" secondAttribute="bottom" constant="9" id="kFs-iP-1Vj"/>
                     </constraints>
                 </view>

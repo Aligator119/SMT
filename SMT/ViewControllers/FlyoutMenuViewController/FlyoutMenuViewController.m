@@ -317,6 +317,8 @@
     heigthSeasonsTable = self.heigthShowColectionViewConstraint.constant;
     
     [self downloadPhotos];
+    [self.colectionView reloadData];
+
 }
 
 - (void)viewDidLayoutSubviews

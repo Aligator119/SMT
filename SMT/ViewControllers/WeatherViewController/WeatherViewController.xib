@@ -50,7 +50,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F22-Ki-Nvv">
-                                    <rect key="frame" x="5" y="0.0" width="40" height="40"/>
+                                    <rect key="frame" x="5" y="7" width="40" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
                                     <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>

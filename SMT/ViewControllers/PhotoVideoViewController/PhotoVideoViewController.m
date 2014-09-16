@@ -75,9 +75,8 @@
     
     dataLoader = [DataLoader instance];
     
-    UINib *headerNib = [UINib nibWithNibName:@"CustomHeader" bundle:[NSBundle mainBundle]];
-    [self.collectionTable registerClass:[CustomHeader class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
-    [self.collectionTable registerNib:headerNib forCellWithReuseIdentifier:@"header"];
+    UINib *headerNib = [UINib nibWithNibName:@"CustomHeader" bundle:nil];
+    [self.collectionTable registerNib:headerNib forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
     
     //def = [NSUserDefaults standardUserDefaults];
     
@@ -143,13 +142,10 @@
     NSDate * mont = [dateFormatter dateFromString:buffer.uploadDate];
     
     if (kind == UICollectionElementKindSectionHeader) {
+        
         headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
-        //UILabel * lb = [[UILabel alloc]initWithFrame:headerView.frame];
-        //lb.text = [sectionFormatter stringFromDate:mont];
-        //lb.textColor = [UIColor colorWithRed:157.0/255.0 green:157.0/255.0 blue:159.0/255.0 alpha:1.0];
-        [headerView setBackgroundColor:[UIColor colorWithRed:239.0/255.0 green:239.0/255.0 blue:244.0/255.0 alpha:1.0]];
         headerView.lbName.text = [sectionFormatter stringFromDate:mont];
-        //[headerView addSubview:lb];
+
         return headerView;
     }
     return nil;
@@ -274,7 +270,7 @@
     [self.list removeAllObjects];
     dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(newQueue, ^(){
-        
+        limit = 0;
         arrayData = [dataLoader getPhotoWithLimit:[NSString stringWithFormat:@"%d", limit]];
         
         dispatch_async(dispatch_get_main_queue(), ^(){
@@ -297,7 +293,7 @@
                         dict = [newDict mutableCopy];
                     }
                 }
-                for (NSString * key in [[dict allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]) {
+                for (NSString * key in [[dict allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)].reverseObjectEnumerator) {
                     NSArray * newArray = [dict objectForKey:key];
                     [self.list addObject:newArray];
                 }

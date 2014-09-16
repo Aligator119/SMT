@@ -30,13 +30,13 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IpR-vi-Xhz">
-                                    <rect key="frame" x="5" y="0.0" width="44" height="44"/>
+                                    <rect key="frame" x="5" y="7" width="40" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="44" id="E6c-fa-IFW"/>
+                                        <constraint firstAttribute="width" constant="40" id="E6c-fa-IFW"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal" backgroundImage="st_icon.png">
+                                    <state key="normal" backgroundImage="menu_BTN.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
@@ -50,10 +50,10 @@
                             </subviews>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="maQ-8p-Si3" secondAttribute="trailing" constant="65" id="ChI-BK-FLn"/>
-                                <constraint firstAttribute="bottom" secondItem="IpR-vi-Xhz" secondAttribute="bottom" id="GwD-I0-n3E"/>
+                                <constraint firstAttribute="bottom" secondItem="IpR-vi-Xhz" secondAttribute="bottom" constant="7" id="GwD-I0-n3E"/>
                                 <constraint firstItem="IpR-vi-Xhz" firstAttribute="leading" secondItem="1eQ-Wg-GBD" secondAttribute="leading" constant="5" id="Gxx-sY-gwp"/>
-                                <constraint firstItem="IpR-vi-Xhz" firstAttribute="top" secondItem="1eQ-Wg-GBD" secondAttribute="top" id="Kjo-ra-oxm"/>
-                                <constraint firstItem="maQ-8p-Si3" firstAttribute="leading" secondItem="IpR-vi-Xhz" secondAttribute="trailing" constant="16" id="ODn-KC-wnQ"/>
+                                <constraint firstItem="IpR-vi-Xhz" firstAttribute="top" secondItem="1eQ-Wg-GBD" secondAttribute="top" constant="7" id="Kjo-ra-oxm"/>
+                                <constraint firstItem="maQ-8p-Si3" firstAttribute="leading" secondItem="IpR-vi-Xhz" secondAttribute="trailing" constant="20" id="ODn-KC-wnQ"/>
                                 <constraint firstAttribute="height" constant="44" id="dzW-Wh-ysq"/>
                                 <constraint firstItem="maQ-8p-Si3" firstAttribute="top" secondItem="1eQ-Wg-GBD" secondAttribute="top" constant="7" id="f45-Xt-IMR"/>
                                 <constraint firstAttribute="bottom" secondItem="maQ-8p-Si3" secondAttribute="bottom" constant="7" id="gw0-Oo-S06"/>
@@ -130,6 +130,6 @@
     <resources>
         <image name="download_fish.png" width="600" height="160"/>
         <image name="download_hunt.png" width="600" height="160"/>
-        <image name="st_icon.png" width="30" height="30"/>
+        <image name="menu_BTN.png" width="40" height="30"/>
     </resources>
 </document>

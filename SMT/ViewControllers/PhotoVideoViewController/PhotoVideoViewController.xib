@@ -92,13 +92,13 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5X-sy-3aZ">
-                                    <rect key="frame" x="5" y="0.0" width="44" height="44"/>
+                                    <rect key="frame" x="5" y="7" width="40" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="44" id="uVX-bv-QGg"/>
+                                        <constraint firstAttribute="width" constant="40" id="uVX-bv-QGg"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal" backgroundImage="st_icon.png">
+                                    <state key="normal" backgroundImage="menu_BTN.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
@@ -113,12 +113,12 @@
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="LsB-Ia-Nn9" secondAttribute="trailing" constant="65" id="4Kp-V7-ng3"/>
                                 <constraint firstAttribute="height" constant="44" id="5wb-7X-gjH"/>
-                                <constraint firstAttribute="bottom" secondItem="e5X-sy-3aZ" secondAttribute="bottom" id="6Pr-0r-GsE"/>
-                                <constraint firstItem="e5X-sy-3aZ" firstAttribute="top" secondItem="jhX-Dw-mJB" secondAttribute="top" id="Mxv-Ut-F92"/>
+                                <constraint firstAttribute="bottom" secondItem="e5X-sy-3aZ" secondAttribute="bottom" constant="7" id="6Pr-0r-GsE"/>
+                                <constraint firstItem="e5X-sy-3aZ" firstAttribute="top" secondItem="jhX-Dw-mJB" secondAttribute="top" constant="7" id="Mxv-Ut-F92"/>
                                 <constraint firstItem="LsB-Ia-Nn9" firstAttribute="top" secondItem="jhX-Dw-mJB" secondAttribute="top" constant="7" id="ciD-1h-z0C"/>
                                 <constraint firstAttribute="bottom" secondItem="LsB-Ia-Nn9" secondAttribute="bottom" constant="7" id="gor-z3-19K"/>
                                 <constraint firstItem="e5X-sy-3aZ" firstAttribute="leading" secondItem="jhX-Dw-mJB" secondAttribute="leading" constant="5" id="oWy-Uj-s4Y"/>
-                                <constraint firstItem="LsB-Ia-Nn9" firstAttribute="leading" secondItem="e5X-sy-3aZ" secondAttribute="trailing" constant="16" id="vfh-0H-faI"/>
+                                <constraint firstItem="LsB-Ia-Nn9" firstAttribute="leading" secondItem="e5X-sy-3aZ" secondAttribute="trailing" constant="20" id="vfh-0H-faI"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -148,6 +148,6 @@
         </view>
     </objects>
     <resources>
-        <image name="st_icon.png" width="129" height="75"/>
+        <image name="menu_BTN.png" width="40" height="30"/>
     </resources>
 </document>

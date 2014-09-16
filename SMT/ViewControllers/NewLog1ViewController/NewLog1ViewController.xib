@@ -35,23 +35,23 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Orl-D0-Sat">
-                                    <rect key="frame" x="5" y="0.0" width="44" height="44"/>
+                                    <rect key="frame" x="5" y="7" width="40" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="44" id="9gy-VB-pfc"/>
-                                        <constraint firstAttribute="height" constant="44" id="cx6-Mo-22P"/>
+                                        <constraint firstAttribute="width" constant="40" id="9gy-VB-pfc"/>
+                                        <constraint firstAttribute="height" constant="30" id="cx6-Mo-22P"/>
                                     </constraints>
-                                    <state key="normal" backgroundImage="st_icon.png">
+                                    <state key="normal" backgroundImage="menu_BTN.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="r9h-vW-Uk0" firstAttribute="leading" secondItem="Orl-D0-Sat" secondAttribute="trailing" constant="21" id="ByG-Zn-f4w"/>
+                                <constraint firstItem="r9h-vW-Uk0" firstAttribute="leading" secondItem="Orl-D0-Sat" secondAttribute="trailing" constant="25" id="ByG-Zn-f4w"/>
                                 <constraint firstAttribute="trailing" secondItem="r9h-vW-Uk0" secondAttribute="trailing" constant="72" id="S46-UJ-Buk"/>
                                 <constraint firstItem="Orl-D0-Sat" firstAttribute="leading" secondItem="GZX-gT-dq3" secondAttribute="leading" constant="5" id="TW2-zY-LMz"/>
                                 <constraint firstAttribute="height" constant="44" id="Vb5-Hz-HTU"/>
-                                <constraint firstAttribute="bottom" secondItem="Orl-D0-Sat" secondAttribute="bottom" id="gSe-zj-Jqz"/>
+                                <constraint firstAttribute="bottom" secondItem="Orl-D0-Sat" secondAttribute="bottom" constant="7" id="gSe-zj-Jqz"/>
                                 <constraint firstItem="r9h-vW-Uk0" firstAttribute="top" secondItem="GZX-gT-dq3" secondAttribute="top" constant="7" id="uZU-mo-2Ra"/>
                                 <constraint firstAttribute="bottom" secondItem="r9h-vW-Uk0" secondAttribute="bottom" constant="7" id="zUy-gC-BVO"/>
                             </constraints>
@@ -92,6 +92,6 @@
         </view>
     </objects>
     <resources>
-        <image name="st_icon.png" width="30" height="30"/>
+        <image name="menu_BTN.png" width="40" height="30"/>
     </resources>
 </document>

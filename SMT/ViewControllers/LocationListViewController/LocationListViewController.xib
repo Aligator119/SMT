@@ -53,13 +53,13 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zOq-eE-YGu">
-                                    <rect key="frame" x="5" y="0.0" width="44" height="44"/>
+                                    <rect key="frame" x="5" y="7" width="40" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="44" id="R0I-Dg-4TU"/>
-                                        <constraint firstAttribute="width" constant="44" id="TN0-Tf-LkG"/>
+                                        <constraint firstAttribute="height" constant="30" id="R0I-Dg-4TU"/>
+                                        <constraint firstAttribute="width" constant="40" id="TN0-Tf-LkG"/>
                                     </constraints>
-                                    <state key="normal" backgroundImage="st_icon.png">
+                                    <state key="normal" backgroundImage="menu_BTN.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
@@ -68,7 +68,7 @@
                                 <constraint firstAttribute="bottom" secondItem="yNZ-hS-UkJ" secondAttribute="bottom" constant="7" id="67i-Md-enr"/>
                                 <constraint firstAttribute="trailing" secondItem="yNZ-hS-UkJ" secondAttribute="trailing" constant="5" id="MRR-ft-Xb1"/>
                                 <constraint firstItem="zOq-eE-YGu" firstAttribute="leading" secondItem="kag-FE-Imf" secondAttribute="leading" constant="5" id="Oly-uH-uQV"/>
-                                <constraint firstAttribute="bottom" secondItem="zOq-eE-YGu" secondAttribute="bottom" id="Op6-0Y-wtn"/>
+                                <constraint firstAttribute="bottom" secondItem="zOq-eE-YGu" secondAttribute="bottom" constant="7" id="Op6-0Y-wtn"/>
                                 <constraint firstItem="yNZ-hS-UkJ" firstAttribute="top" secondItem="kag-FE-Imf" secondAttribute="top" constant="7" id="jxT-sn-q1B"/>
                             </constraints>
                         </view>
@@ -256,7 +256,7 @@
         <image name="edit_BTN.png" width="30" height="30"/>
         <image name="edit_BTN_press.png" width="30" height="30"/>
         <image name="menu_BG.png" width="640" height="1136"/>
+        <image name="menu_BTN.png" width="40" height="30"/>
         <image name="popup_bg.png" width="220" height="120"/>
-        <image name="st_icon.png" width="129" height="75"/>
     </resources>
 </document>

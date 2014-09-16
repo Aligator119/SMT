@@ -28,13 +28,13 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02e-IT-v9d">
-                                    <rect key="frame" x="5" y="0.0" width="44" height="44"/>
+                                    <rect key="frame" x="5" y="7" width="40" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="44" id="Q42-MR-lCh"/>
+                                        <constraint firstAttribute="width" constant="40" id="Q42-MR-lCh"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <state key="normal" backgroundImage="st_icon.png">
+                                    <state key="normal" backgroundImage="menu_BTN.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
@@ -52,9 +52,9 @@
                                 <constraint firstAttribute="bottom" secondItem="mDE-cr-NaA" secondAttribute="bottom" constant="7" id="A9l-17-mGe"/>
                                 <constraint firstAttribute="height" constant="44" id="HDd-eD-GM9"/>
                                 <constraint firstItem="mDE-cr-NaA" firstAttribute="top" secondItem="TzR-Q7-DCf" secondAttribute="top" constant="7" id="UT3-31-kAb"/>
-                                <constraint firstItem="mDE-cr-NaA" firstAttribute="leading" secondItem="02e-IT-v9d" secondAttribute="trailing" constant="21" id="VKQ-RB-iCM"/>
-                                <constraint firstItem="02e-IT-v9d" firstAttribute="top" secondItem="TzR-Q7-DCf" secondAttribute="top" id="WEh-3m-Vcb"/>
-                                <constraint firstAttribute="bottom" secondItem="02e-IT-v9d" secondAttribute="bottom" id="eZn-Y0-NF9"/>
+                                <constraint firstItem="mDE-cr-NaA" firstAttribute="leading" secondItem="02e-IT-v9d" secondAttribute="trailing" constant="25" id="VKQ-RB-iCM"/>
+                                <constraint firstItem="02e-IT-v9d" firstAttribute="top" secondItem="TzR-Q7-DCf" secondAttribute="top" constant="7" id="WEh-3m-Vcb"/>
+                                <constraint firstAttribute="bottom" secondItem="02e-IT-v9d" secondAttribute="bottom" constant="7" id="eZn-Y0-NF9"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -91,6 +91,6 @@
         </view>
     </objects>
     <resources>
-        <image name="st_icon.png" width="30" height="30"/>
+        <image name="menu_BTN.png" width="40" height="30"/>
     </resources>
 </document>
