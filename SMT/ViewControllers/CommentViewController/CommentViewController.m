@@ -181,7 +181,7 @@ const CGFloat standartHeaderCommentViewHeight = 244;
     //[self.tableView scrollRectToVisible:self.activeTextField.frame animated:YES];
     //}
     
-    self.bottomConstr.constant = self.bottomView.frame.origin.y - keyboardSize.height;
+    self.bottomConstr.constant = keyboardSize.height;
     [UIView animateWithDuration:0.5 animations:^(){
         [self.view layoutIfNeeded];
     }];

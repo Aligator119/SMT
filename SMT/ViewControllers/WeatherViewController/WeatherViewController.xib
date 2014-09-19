@@ -56,7 +56,7 @@
                                     <inset key="contentEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                     <inset key="titleEdgeInsets" minX="6" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="32" maxY="0.0"/>
-                                    <state key="normal" backgroundImage="st_icon.png">
+                                    <state key="normal" backgroundImage="menu_BTN.png">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -275,6 +275,6 @@
     <resources>
         <image name="back_icon_press.png" width="12" height="21"/>
         <image name="menu_BG.png" width="640" height="1136"/>
-        <image name="st_icon.png" width="129" height="75"/>
+        <image name="menu_BTN.png" width="40" height="30"/>
     </resources>
 </document>

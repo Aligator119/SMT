@@ -56,7 +56,6 @@
                             <state key="normal" backgroundImage="search_icon.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
-                            <state key="highlighted" backgroundImage="search_BTN_press.png"/>
                             <connections>
                                 <action selector="actSearch:" destination="-1" eventType="touchUpInside" id="aiW-uh-W2j"/>
                             </connections>
@@ -401,7 +400,6 @@
         <image name="photo_icon.png" width="24" height="24"/>
         <image name="photo_top_button.png" width="30" height="30"/>
         <image name="region_top_button.png" width="30" height="30"/>
-        <image name="search_BTN_press.png" width="30" height="30"/>
         <image name="search_icon.png" width="30" height="30"/>
         <image name="stuff_icon.png" width="24" height="24"/>
         <image name="tips_icon.png" width="24" height="24"/>

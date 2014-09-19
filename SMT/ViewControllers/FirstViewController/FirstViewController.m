@@ -145,7 +145,9 @@
     UIView *selectionView = [UIView new];
     selectionView.backgroundColor = [UIColor colorWithRed:123/255.f green:171/255.f blue:72/255.f alpha:0.25];
     cell.selectedBackgroundView = selectionView;
-    
+    if (indexPath.row == 0) {
+        [self.table selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
+    }
     return cell;
 }
 

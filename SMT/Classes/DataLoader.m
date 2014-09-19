@@ -369,11 +369,12 @@
 
 - (void) buddyGetListUsersBuddies
 {
-    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@%@?app_id=%@&app_key=%@",strUrl,SubstringBuddies ,@"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
+    NSString * strUrlRequestAdress = [NSString stringWithFormat:@"%@buddy?app_id=%@&app_key=%@",strUrl ,@"b63800ad",@"34eddb50efc407d00f3498dc1874526c"];
     
     NSMutableArray * buddiesList = [NSMutableArray new];
     @try {
-        for(NSDictionary * dic in [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListOfBuddies]){
+        NSDictionary * info = [self startRequest:strUrlRequestAdress andData:nil typeRequest:RequestGet setHeaders:YES andTypeRequest:ApplicationServiceRequestGetListOfBuddies];
+        for(NSDictionary * dic in info){
             Buddy * buddy = [Buddy new];
             [buddy setData:dic];
             [buddiesList addObject:buddy];

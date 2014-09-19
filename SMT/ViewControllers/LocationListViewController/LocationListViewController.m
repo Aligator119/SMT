@@ -29,6 +29,7 @@
 - (IBAction) actAddLocationWithLatLong:(id)sender;
 
 - (void)clickNotPopUpMenu;
+- (void)actSelectLocationType;
 @end
 
 @implementation LocationListViewController
@@ -68,40 +69,28 @@
     
     [self.view addGestureRecognizer:menuController.panGestureRecognizer];
     [_menuButton addTarget:menuController action:@selector(revealToggle:) forControlEvents:UIControlEventTouchUpInside];
+//-------------------------------------------------------------------------------------
+    dispatch_queue_t newQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(newQueue, ^(){
+        [dataLoader getLocationsAssociatedWithUser];
+        
+        dispatch_async(dispatch_get_main_queue(), ^(){
+            
+            if(!dataLoader.isCorrectRezult) {
+                NSLog(@"Error download location");
+            } else {
+                [self actSelectLocationType];
+            }
+            [self endLoader];
+        });
+    });
 }
 
 
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    switch (self.locationChangeSegmentControl.selectedSegmentIndex) {
-        case 0:
-        {
-            NSMutableArray * buf =[[NSMutableArray alloc]initWithArray:appDel.listFishLocations];
-            [buf addObjectsFromArray:appDel.listHuntLocations];
-            listLocations = [NSArray arrayWithArray:buf];
-            [self.tableView reloadData];
-        }
-            break;
-        case 1:
-        {
-            NSMutableArray * buf =[[NSMutableArray alloc]initWithArray:appDel.listSharedFishLocations];
-            [buf addObjectsFromArray:appDel.listSharedHuntLocations];
-            listLocations = [NSArray arrayWithArray:buf];
-            [self.tableView reloadData];
-        }
-            break;
-        case 2:
-        {
-            NSMutableArray * buf =[[NSMutableArray alloc]initWithArray:appDel.publicLocations];
-            listLocations = [NSArray arrayWithArray:buf];
-            [self.tableView reloadData];
-        }
-            break;
-            
-        default:
-            break;
-    }
+    [self actSelectLocationType];
 
     self.tabBarWidth.constant = self.view.frame.size.width;
     
@@ -255,6 +244,38 @@
     [self.navigationController pushViewController:map animated:YES];
 }
 
+
+- (void)actSelectLocationType
+{
+    switch (self.locationChangeSegmentControl.selectedSegmentIndex) {
+        case 0:
+        {
+            NSMutableArray * buf =[[NSMutableArray alloc]initWithArray:appDel.listFishLocations];
+            [buf addObjectsFromArray:appDel.listHuntLocations];
+            listLocations = [NSArray arrayWithArray:buf];
+            [self.tableView reloadData];
+        }
+            break;
+        case 1:
+        {
+            NSMutableArray * buf =[[NSMutableArray alloc]initWithArray:appDel.listSharedFishLocations];
+            [buf addObjectsFromArray:appDel.listSharedHuntLocations];
+            listLocations = [NSArray arrayWithArray:buf];
+            [self.tableView reloadData];
+        }
+            break;
+        case 2:
+        {
+            NSMutableArray * buf =[[NSMutableArray alloc]initWithArray:appDel.publicLocations];
+            listLocations = [NSArray arrayWithArray:buf];
+            [self.tableView reloadData];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
 
 - (void)clickNotPopUpMenu
 {

@@ -95,6 +95,26 @@ const NSInteger timeFontSize = 13;
     [self.btnComment setBackgroundColor:[UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1.0]];
 }
 
+- (void)setPhotoDescriptions:(NSString *)str andUserName:(NSString *)name andTime:(NSDate*)time photoID:(NSString *)photo_id
+{
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateFormat = @"dd MMMM yyyy";
+    self.timeLabel.text = [dateFormatter stringFromDate:time];
+    
+    self.labelWidthConstraint.constant = [self getWidthText:self.timeLabel.text andLabelHeight:self.timeLabel.frame.size.height] + 5;
+    
+    self.lbName.text = name;
+    self.btnComment.tag = [photo_id intValue];
+    if (str) {
+        self.lbDescriptions.text = str;
+    } else {
+        self.lbDescriptions.text = @"";
+    }
+    [self.btnComment.layer setMasksToBounds:YES];
+    self.btnComment.layer.borderWidth = 0.5f;
+    self.btnComment.layer.borderColor = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0].CGColor;
+    [self.btnComment setBackgroundColor:[UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1.0]];
+}
 
 - (void)startLaderInCell
 {

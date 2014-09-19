@@ -314,11 +314,9 @@
     self.btn4Hegth.constant = self.btn1Hegth.constant-1;
     self.heigthShowColectionViewConstraint.constant = width * 0.5;
     [self.view updateConstraintsIfNeeded];
-    heigthSeasonsTable = self.heigthShowColectionViewConstraint.constant;
-    
+    heigthSeasonsTable = width * 0.5;;
     [self downloadPhotos];
     [self.colectionView reloadData];
-
 }
 
 - (void)viewDidLayoutSubviews
@@ -356,7 +354,9 @@
 
 - (UICollectionViewCell*) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     UICollectionViewCell * cell;
-    cell.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.bounds].CGPath;
+    //cell.layer.shadowPath = [UIBezierPath bezierPathWithRect:cell.bounds].CGPath;
+    @try {
+        
     if (collectionView.tag == COLECTION_DATA) {
         switch (activeSegment) {
             case 1:
@@ -371,6 +371,9 @@
                         ((ImageShow *)cell).btnComment.tag = indexPath.row;
                     } else {
                         [((ImageShow *)cell) startLaderInCell];
+                        [((ImageShow *)cell) setPhotoDescriptions:photo.description andUserName:photo.userName andTime:photo.time photoID:photo.photoID];
+                        [((ImageShow *)cell).btnComment addTarget:self action:@selector(openComments:) forControlEvents:UIControlEventTouchUpInside];
+                        ((ImageShow *)cell).btnComment.tag = indexPath.row;
                     }
                 }
             }
@@ -421,6 +424,10 @@
 //set image for image show collection view
         Season * sBuf = [seasonsList objectAtIndex:indexPath.row];
         [((CellForFirstView *)cell) initWithSeason:sBuf];
+    }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Error create cell");
     }
     
     return cell;
