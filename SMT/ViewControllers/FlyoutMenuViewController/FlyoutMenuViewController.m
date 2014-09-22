@@ -210,19 +210,19 @@
     UITapGestureRecognizer * btn1Recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(actHome:)];
     [btn1Recognizer setNumberOfTapsRequired:1];
     [btn1Recognizer setDelegate:self];
-    [self.btn1 addGestureRecognizer:btn1Recognizer];
+    [self.btn1fone addGestureRecognizer:btn1Recognizer];
     UITapGestureRecognizer * btn2Recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(actLookSee:)];
     [btn2Recognizer setNumberOfTapsRequired:1];
     [btn2Recognizer setDelegate:self];
-    [self.btn2 addGestureRecognizer:btn2Recognizer];
+    [self.btn2fone addGestureRecognizer:btn2Recognizer];
     UITapGestureRecognizer * btn3Recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(actVideo:)];
     [btn3Recognizer setNumberOfTapsRequired:1];
     [btn3Recognizer setDelegate:self];
-    [self.btn3 addGestureRecognizer:btn3Recognizer];
+    [self.btn3fone addGestureRecognizer:btn3Recognizer];
     UITapGestureRecognizer * btn4Recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(actTIPS:)];
     [btn4Recognizer setNumberOfTapsRequired:1];
     [btn4Recognizer setDelegate:self];
-    [self.btn4 addGestureRecognizer:btn4Recognizer];
+    [self.btn4fone addGestureRecognizer:btn4Recognizer];
     
     [self AddActivityIndicator:[UIColor grayColor] forView:self.view];
     
